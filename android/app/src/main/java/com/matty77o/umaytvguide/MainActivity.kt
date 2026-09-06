@@ -159,6 +159,8 @@ enum class GuideFilter(val label: String) {
     FAVOURITES("Favourite Shows")
 }
 
+enum class GuideJumpTarget { NOW, TONIGHT, TOMORROW }
+
 enum class AppSection(val label: String) {
     HOME("Home"), GUIDE("Guide"), FAVOURITES("Favourites"), SETTINGS("Settings")
 }
@@ -261,8 +263,12 @@ fun GuideScreen(
     var error by remember { mutableStateOf<String?>(null) }
     var loading by remember { mutableStateOf(true) }
     var refreshToken by remember { mutableIntStateOf(0) }
-    var selectedDay by remember { mutableStateOf(LocalDate.now()) }
-    var selectedGroup by remember { mutableStateOf("All") }
+    var selectedDay by remember {
+        mutableStateOf(LocalDate.now().plusDays(prefs.getInt("guide_day_offset", 0).toLong()))
+    }
+    var selectedGroup by remember {
+        mutableStateOf(prefs.getString("guide_group", "All") ?: "All")
+    }
     var selectedProgramme by remember { mutableStateOf<Programme?>(null) }
     var selectedChannel by remember { mutableStateOf<TvChannel?>(null) }
     var lastUpdated by remember { mutableStateOf<LocalTime?>(null) }
@@ -306,6 +312,15 @@ fun GuideScreen(
 
     LaunchedEffect(autoRefresh) {
         BackgroundRefreshManager.configure(context, autoRefresh)
+    }
+
+    LaunchedEffect(selectedDay) {
+        val offset = java.time.temporal.ChronoUnit.DAYS.between(LocalDate.now(), selectedDay).toInt()
+        prefs.edit().putInt("guide_day_offset", offset).apply()
+    }
+
+    LaunchedEffect(selectedGroup) {
+        prefs.edit().putString("guide_group", selectedGroup).apply()
     }
 
     LaunchedEffect(guide, favouriteShows, reminderMode, showReminderModes) {
@@ -792,7 +807,7 @@ private fun NowNextRow(
     Card(colors = CardDefaults.cardColors(containerColor = Panel2)) {
         Row(Modifier.fillMaxWidth().padding(10.dp), verticalAlignment = Alignment.CenterVertically) {
             Box(
-                Modifier.size(50.dp).clip(RoundedCornerShape(12.dp)).background(Panel),
+                Modifier.size(42.dp).clip(RoundedCornerShape(12.dp)).background(Panel),
                 contentAlignment = Alignment.Center
             ) {
                 if (!channel.icon.isNullOrBlank()) {
@@ -842,9 +857,31 @@ private fun ProgrammePosterCard(
                 } else Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) { LogoFallback(channel?.name ?: programme.channelId) }
             }
             Column(Modifier.padding(10.dp)) {
-                Text(programme.title, fontWeight = FontWeight.Bold, maxLines = 2, overflow = TextOverflow.Ellipsis)
+                val now = ZonedDateTime.now()
+                val isLive = !now.isBefore(programme.start) && now.isBefore(programme.stop)
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(
+                        programme.title,
+                        fontWeight = FontWeight.Bold,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.weight(1f)
+                    )
+                    if (isLive) {
+                        Spacer(Modifier.width(6.dp))
+                        Text("LIVE", color = PinkSoft, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                    }
+                }
                 Text("${channel?.name ?: programme.channelId} • ${formatTime(programme.start.toLocalTime(), use24Hour)}",
                     color = TextSecondary, fontSize = 11.sp)
+                if (isLive) {
+                    val total = Duration.between(programme.start, programme.stop).toMinutes().coerceAtLeast(1)
+                    val elapsed = Duration.between(programme.start, now).toMinutes().coerceIn(0, total)
+                    LinearProgressIndicator(
+                        progress = { elapsed.toFloat() / total.toFloat() },
+                        modifier = Modifier.fillMaxWidth().padding(top = 6.dp)
+                    )
+                }
             }
         }
     }
@@ -862,6 +899,7 @@ private fun DynamicGuideContent(
     favouriteShows: Set<String>,
     onProgramme: (Programme) -> Unit,
 ) {
+    var jumpTarget by rememberSaveable { mutableStateOf(GuideJumpTarget.NOW) }
     val configById = channelConfig.associateBy { it.id }
     val groups = listOf("All", "Favourite Shows") + channelConfig
         .map { it.group }.filter { it.isNotBlank() }.distinct()
@@ -882,9 +920,9 @@ private fun DynamicGuideContent(
             Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(horizontal = 14.dp),
             horizontalArrangement = Arrangement.spacedBy(6.dp)
         ) {
-            AssistChip(onClick = { onSelectedDay(LocalDate.now()) }, label = { Text("NOW") })
-            AssistChip(onClick = { onSelectedDay(LocalDate.now()) }, label = { Text("Tonight") })
-            AssistChip(onClick = { onSelectedDay(LocalDate.now().plusDays(1)) }, label = { Text("Tomorrow") })
+            AssistChip(onClick = { onSelectedDay(LocalDate.now()); jumpTarget = GuideJumpTarget.NOW }, label = { Text("NOW") })
+            AssistChip(onClick = { onSelectedDay(LocalDate.now()); jumpTarget = GuideJumpTarget.TONIGHT }, label = { Text("Tonight") })
+            AssistChip(onClick = { onSelectedDay(LocalDate.now().plusDays(1)); jumpTarget = GuideJumpTarget.TOMORROW }, label = { Text("Tomorrow") })
         }
         LazyRow(
             modifier = Modifier.fillMaxWidth().padding(horizontal = 14.dp, vertical = 4.dp),
@@ -909,7 +947,7 @@ private fun DynamicGuideContent(
                 Text("No channels in this section", color = TextSecondary)
             }
         } else {
-            TvGrid(visible, guide.programmes, selectedDay, favouriteShows, onProgramme)
+            TvGrid(visible, guide.programmes, selectedDay, favouriteShows, jumpTarget, onProgramme)
         }
     }
 }
@@ -1550,8 +1588,8 @@ private fun FilterPicker(filter: GuideFilter, onFilter: (GuideFilter) -> Unit) {
     Spacer(Modifier.height(4.dp))
 }
 
-private val ChannelWidth = 150.dp
-private val HalfHourWidth = 126.dp
+private val ChannelWidth = 118.dp
+private val HalfHourWidth = 132.dp
 private const val WindowHours = 6L
 
 @Composable
@@ -1560,6 +1598,7 @@ private fun TvGrid(
     programmes: List<Programme>,
     selectedDay: LocalDate,
     favouriteShows: Set<String>,
+    jumpTarget: GuideJumpTarget,
     onProgramme: (Programme) -> Unit,
 ) {
     val zone = ZoneId.systemDefault()
@@ -1577,37 +1616,34 @@ private fun TvGrid(
     val scroll = rememberScrollState()
     val configuration = LocalConfiguration.current
     val landscape = configuration.screenWidthDp > configuration.screenHeightDp
-    val effectiveHalfHourWidth = if (landscape) 96.dp else HalfHourWidth
+    val effectiveHalfHourWidth = if (landscape) 144.dp else HalfHourWidth
     val pixelsPerMinute = effectiveHalfHourWidth.value / 30f
 
-LaunchedEffect(selectedDay, guideStart) {
-    if (selectedDay == now.toLocalDate()) {
+LaunchedEffect(selectedDay, guideStart, jumpTarget) {
+        val target = when (jumpTarget) {
+            GuideJumpTarget.NOW -> if (selectedDay == now.toLocalDate()) now else guideStart
+            GuideJumpTarget.TONIGHT -> selectedDay.atTime(18, 0).atZone(zone)
+            GuideJumpTarget.TOMORROW -> selectedDay.atStartOfDay(zone)
+        }
 
-        val minutesFromStart =
-            Duration.between(guideStart, now).toMinutes()
+        val minutesFromStart = Duration.between(guideStart, target)
+            .toMinutes()
+            .coerceIn(0, WindowHours * 60)
 
-        val nowPosition =
-            minutesFromStart * pixelsPerMinute
-
-        // Width of the actual programme area, excluding channel names
-        val visibleGuideWidth =
-            configuration.screenWidthDp - ChannelWidth.value
-
-        // Put NOW roughly in the middle of the visible programme grid
-        val centreOffset =
-            visibleGuideWidth / 2f
+        val targetPosition = minutesFromStart * pixelsPerMinute
+        val visibleGuideWidth = configuration.screenWidthDp - ChannelWidth.value
+        val centreOffset = visibleGuideWidth / 2f
 
         scroll.scrollTo(
-            (nowPosition - centreOffset)
+            (targetPosition - centreOffset)
                 .toInt()
                 .coerceAtLeast(0)
         )
     }
-}
     val totalWidth = effectiveHalfHourWidth * (WindowHours.toInt() * 2)
 
     Column(Modifier.fillMaxSize()) {
-        TimelineHeader(guideStart, totalWidth, scroll)
+        TimelineHeader(guideStart, totalWidth, effectiveHalfHourWidth, scroll)
 
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
@@ -1646,6 +1682,7 @@ LaunchedEffect(selectedDay, guideStart) {
 private fun TimelineHeader(
     guideStart: ZonedDateTime,
     totalWidth: Dp,
+    halfHourWidth: Dp,
     scroll: androidx.compose.foundation.ScrollState,
 ) {
     Row(
@@ -1675,7 +1712,7 @@ private fun TimelineHeader(
                     val time = guideStart.plusMinutes(index * 30L)
                     Box(
                         Modifier
-                            .width(HalfHourWidth)
+                            .width(halfHourWidth)
                             .fillMaxHeight(),
                         contentAlignment = Alignment.CenterStart
                     ) {
@@ -1750,9 +1787,9 @@ private fun GuideRow(
                     Box(
                         Modifier
                             .offset(x = (nowMinutes * pixelsPerMinute).dp)
-                            .width(2.dp)
+                            .width(3.dp)
                             .fillMaxHeight()
-                            .background(Pink)
+                            .background(PinkSoft)
                     )
                 }
             }
@@ -1767,7 +1804,7 @@ private fun ChannelCell(channel: TvChannel) {
         modifier = Modifier
             .width(ChannelWidth)
             .fillMaxHeight()
-            .padding(horizontal = 10.dp, vertical = 10.dp),
+            .padding(horizontal = 8.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
 
