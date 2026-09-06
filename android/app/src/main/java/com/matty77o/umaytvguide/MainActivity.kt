@@ -211,7 +211,7 @@ class MainActivity : ComponentActivity() {
             intent.getLongExtra(ProgrammeReminderReceiver.EXTRA_START_EPOCH, -1L)
 
         return ReminderOpenRequest(
-            title = cleanedTitle,
+            title = title,
             channelId = channelId,
             startEpochMillis = startEpochMillis,
         )
@@ -2803,7 +2803,7 @@ object XmlTvParser {
                                 channelId = ch,
                                 start = start.withZoneSameInstant(ZoneId.systemDefault()),
                                 stop = stop.withZoneSameInstant(ZoneId.systemDefault()),
-                                title = title,
+                                title = cleanedTitle,
                                 description = pDesc,
                                 category = pCategory,
                                 icon = pIcon,
