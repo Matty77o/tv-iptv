@@ -1510,6 +1510,7 @@ private fun GuideContent(
                 programmes = guide.programmes,
                 selectedDay = selectedDay,
                 favouriteShows = favouriteShows,
+                jumpTarget = GuideJumpTarget.NOW,
                 onProgramme = onProgramme,
             )
         }
