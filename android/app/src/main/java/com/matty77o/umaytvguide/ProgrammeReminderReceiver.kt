@@ -34,12 +34,16 @@ class ProgrammeReminderReceiver : BroadcastReceiver() {
         val startTime = intent.getStringExtra(EXTRA_START_TIME).orEmpty()
         val startEpoch = intent.getLongExtra(EXTRA_START_EPOCH, -1L)
         val channelIconUrl = intent.getStringExtra(EXTRA_CHANNEL_ICON_URL)
+        val programmeIconUrl = intent.getStringExtra(EXTRA_PROGRAMME_ICON_URL)
 
         val pendingResult = goAsync()
 
         thread(name = "UmayTVGuideNotification") {
             try {
                 val largeIcon = channelIconUrl
+                    ?.takeIf { it.isNotBlank() }
+                    ?.let(::downloadBitmap)
+                val programmeArtwork = programmeIconUrl
                     ?.takeIf { it.isNotBlank() }
                     ?.let(::downloadBitmap)
 
@@ -51,6 +55,7 @@ class ProgrammeReminderReceiver : BroadcastReceiver() {
                     startTime = startTime,
                     startEpoch = startEpoch,
                     largeIcon = largeIcon,
+                    programmeArtwork = programmeArtwork,
                 )
             } finally {
                 pendingResult.finish()
@@ -66,6 +71,7 @@ class ProgrammeReminderReceiver : BroadcastReceiver() {
         startTime: String,
         startEpoch: Long,
         largeIcon: Bitmap?,
+        programmeArtwork: Bitmap?,
     ) {
         val manager =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -106,7 +112,7 @@ class ProgrammeReminderReceiver : BroadcastReceiver() {
         val builder = Notification.Builder(context, CHANNEL_ID)
             // Android requires the status-bar small icon to be a normal app resource.
             // The colourful channel logo is shown as the large notification icon.
-            .setSmallIcon(R.mipmap.ic_launcher)
+            .setSmallIcon(R.drawable.ic_notification)
             .setContentTitle(heading)
             .setContentText(body)
             .setStyle(Notification.BigTextStyle().bigText(body))
@@ -116,6 +122,13 @@ class ProgrammeReminderReceiver : BroadcastReceiver() {
 
         if (largeIcon != null) {
             builder.setLargeIcon(largeIcon)
+        }
+        if (programmeArtwork != null) {
+            builder.setStyle(
+                Notification.BigPictureStyle()
+                    .bigPicture(programmeArtwork)
+                    .bigLargeIcon(largeIcon)
+            )
         }
 
         val notificationId = (title + startEpoch + kind).hashCode()
@@ -130,7 +143,7 @@ class ProgrammeReminderReceiver : BroadcastReceiver() {
             connection.connectTimeout = 5_000
             connection.readTimeout = 7_000
             connection.instanceFollowRedirects = true
-            connection.setRequestProperty("User-Agent", "UmayTVGuide/1.1")
+            connection.setRequestProperty("User-Agent", "UmayTVGuide/2.0")
             connection.connect()
 
             if (connection.responseCode !in 200..299) {
@@ -166,6 +179,7 @@ class ProgrammeReminderReceiver : BroadcastReceiver() {
         const val EXTRA_START_TIME = "start_time"
         const val EXTRA_START_EPOCH = "start_epoch"
         const val EXTRA_CHANNEL_ICON_URL = "channel_icon_url"
+        const val EXTRA_PROGRAMME_ICON_URL = "programme_icon_url"
         const val EXTRA_OPEN_PROGRAMME = "open_programme"
 
         const val KIND_SOON = "soon"

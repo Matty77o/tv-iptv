@@ -21,7 +21,9 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -31,6 +33,14 @@ import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.FavoriteBorder
 import androidx.compose.material.icons.rounded.Schedule
+import androidx.compose.material.icons.rounded.Home
+import androidx.compose.material.icons.rounded.Search
+import androidx.compose.material.icons.rounded.Settings
+import androidx.compose.material.icons.rounded.Tv
+import androidx.compose.material.icons.rounded.Star
+import androidx.compose.material.icons.rounded.StarBorder
+import androidx.compose.material.icons.rounded.Notifications
+import androidx.compose.material.icons.rounded.KeyboardArrowRight
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -48,12 +58,17 @@ import coil.compose.AsyncImage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONArray
+import org.json.JSONObject
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserFactory
 import java.io.BufferedInputStream
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
 import java.net.HttpURLConnection
 import java.net.URL
 import java.time.*
+import java.text.Normalizer
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 import java.util.zip.GZIPInputStream
@@ -71,6 +86,12 @@ private const val CHANNEL_CONFIG_URL =
 
 private const val PREFS_NAME = "umay_tv_guide"
 private const val PREF_FAVOURITES = "favourite_show_titles"
+private const val PREF_FAVOURITE_CHANNELS = "favourite_channels"
+private const val PREF_REMINDER_MODE = "reminder_mode"
+private const val PREF_SHOW_REMINDER_MODES = "show_reminder_modes"
+private const val PREF_TIME_24 = "time_24_hour"
+private const val PREF_AUTO_REFRESH = "auto_refresh"
+private const val PREF_DEFAULT_SECTION = "default_section"
 
 data class ChannelConfig(
     val id: String,
@@ -109,6 +130,7 @@ data class Programme(
     val title: String,
     val description: String?,
     val category: String?,
+    val icon: String? = null,
 )
 
 data class GuideData(
@@ -127,6 +149,17 @@ enum class GuideFilter(val label: String) {
     KIDS("Kids"),
     TURKISH("Turkish TV"),
     FAVOURITES("Favourite Shows")
+}
+
+enum class AppSection(val label: String) {
+    HOME("Home"), GUIDE("Guide"), FAVOURITES("Favourites"), SETTINGS("Settings")
+}
+
+enum class ReminderMode(val label: String) {
+    BOTH("10 min before + start"),
+    TEN_MINUTES("10 min before only"),
+    START("When it starts only"),
+    OFF("Off")
 }
 
 class MainActivity : ComponentActivity() {
@@ -211,36 +244,49 @@ fun GuideScreen(
     reminderOpenRequest: ReminderOpenRequest? = null,
     onReminderConsumed: () -> Unit = {},
 ) {
+    val context = LocalContext.current
+    val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+
     var guide by remember { mutableStateOf<GuideData?>(null) }
     var channelConfig by remember { mutableStateOf(DefaultChannelConfig) }
     var error by remember { mutableStateOf<String?>(null) }
     var loading by remember { mutableStateOf(true) }
     var refreshToken by remember { mutableIntStateOf(0) }
     var selectedDay by remember { mutableStateOf(LocalDate.now()) }
-    var filter by remember { mutableStateOf(GuideFilter.ALL) }
+    var selectedGroup by remember { mutableStateOf("All") }
     var selectedProgramme by remember { mutableStateOf<Programme?>(null) }
+    var selectedChannel by remember { mutableStateOf<TvChannel?>(null) }
     var lastUpdated by remember { mutableStateOf<LocalTime?>(null) }
-    val context = LocalContext.current
+    var searchOpen by remember { mutableStateOf(false) }
+    var searchQuery by remember { mutableStateOf("") }
     var favouriteShows by remember { mutableStateOf(loadFavouriteShows(context)) }
+    var favouriteChannels by remember { mutableStateOf(loadFavouriteChannels(context)) }
+    var reminderMode by remember { mutableStateOf(loadReminderMode(context)) }
+    var showReminderModes by remember { mutableStateOf(loadShowReminderModes(context)) }
+    var use24Hour by remember { mutableStateOf(prefs.getBoolean(PREF_TIME_24, true)) }
+    var autoRefresh by remember { mutableStateOf(prefs.getBoolean(PREF_AUTO_REFRESH, true)) }
+    var section by remember {
+        mutableStateOf(
+            runCatching {
+                AppSection.valueOf(prefs.getString(PREF_DEFAULT_SECTION, AppSection.HOME.name)!!)
+            }.getOrDefault(AppSection.HOME)
+        )
+    }
 
     val notificationPermissionLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.RequestPermission()
     ) { }
 
     LaunchedEffect(refreshToken) {
-        loading = true
+        loading = guide == null
         error = null
         try {
-            guide = withContext(Dispatchers.IO) { XmlTvRepository.load(GUIDE_URL) }
-
-            channelConfig = withContext(Dispatchers.IO) {
-                try {
-                    ChannelConfigRepository.load(CHANNEL_CONFIG_URL)
-                } catch (_: Throwable) {
-                    DefaultChannelConfig
-                }
+            guide = withContext(Dispatchers.IO) {
+                XmlTvRepository.loadCached(context, GUIDE_URL, "guide-cache.xml")
             }
-
+            channelConfig = withContext(Dispatchers.IO) {
+                ChannelConfigRepository.loadCached(context, CHANNEL_CONFIG_URL, "channels-cache.json")
+            }
             lastUpdated = LocalTime.now()
         } catch (t: Throwable) {
             error = t.message ?: t.javaClass.simpleName
@@ -249,7 +295,11 @@ fun GuideScreen(
         }
     }
 
-    LaunchedEffect(guide, favouriteShows) {
+    LaunchedEffect(autoRefresh) {
+        BackgroundRefreshManager.configure(context, autoRefresh)
+    }
+
+    LaunchedEffect(guide, favouriteShows, reminderMode, showReminderModes) {
         val currentGuide = guide ?: return@LaunchedEffect
         ProgrammeReminderScheduler.scheduleAll(
             context = context,
@@ -262,30 +312,20 @@ fun GuideScreen(
     LaunchedEffect(guide, reminderOpenRequest) {
         val currentGuide = guide ?: return@LaunchedEffect
         val request = reminderOpenRequest ?: return@LaunchedEffect
-
         val match = currentGuide.programmes
             .asSequence()
             .filter { sameShowTitle(it.title, request.title) }
-            .filter {
-                request.channelId.isBlank() ||
-                    it.channelId == request.channelId
-            }
-            .minByOrNull { programme ->
+            .filter { request.channelId.isBlank() || it.channelId == request.channelId }
+            .minByOrNull { p ->
                 if (request.startEpochMillis > 0L) {
-                    kotlin.math.abs(
-                        programme.start.toInstant().toEpochMilli() -
-                            request.startEpochMillis
-                    )
-                } else {
-                    0L
-                }
+                    kotlin.math.abs(p.start.toInstant().toEpochMilli() - request.startEpochMillis)
+                } else 0L
             }
-
         if (match != null) {
             selectedDay = match.start.toLocalDate()
             selectedProgramme = match
+            section = AppSection.GUIDE
         }
-
         onReminderConsumed()
     }
 
@@ -295,73 +335,139 @@ fun GuideScreen(
             TopAppBar(
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = Midnight),
                 title = {
-                    Column {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text(
-                                "Umay",
-                                color = PinkSoft,
-                                fontWeight = FontWeight.Black,
-                                fontSize = 24.sp
-                            )
-                            Spacer(Modifier.width(6.dp))
-                            Text(
-                                "TV Guide",
-                                color = TextPrimary,
-                                fontWeight = FontWeight.Bold,
-                                fontSize = 22.sp
-                            )
-                            Spacer(Modifier.width(7.dp))
-                            Text("♥", color = Pink, fontSize = 18.sp)
-                        }
-                        Text(
-                            lastUpdated?.let {
-                                "Guide refreshed ${it.format(DateTimeFormatter.ofPattern("HH:mm"))}"
-                            } ?: "Your family TV guide",
-                            color = TextSecondary,
-                            fontSize = 11.sp
+                    if (searchOpen) {
+                        OutlinedTextField(
+                            value = searchQuery,
+                            onValueChange = { searchQuery = it },
+                            singleLine = true,
+                            placeholder = { Text("Search English or Turkish shows") },
+                            modifier = Modifier.fillMaxWidth(),
+                            trailingIcon = {
+                                IconButton(onClick = { searchQuery = ""; searchOpen = false }) {
+                                    Icon(Icons.Rounded.Close, "Close search")
+                                }
+                            }
                         )
+                    } else {
+                        Column {
+                            Text("Umay TV Guide", fontWeight = FontWeight.Black)
+                            lastUpdated?.let {
+                                Text(
+                                    "Updated ${formatTime(it, use24Hour)}",
+                                    color = TextSecondary,
+                                    fontSize = 11.sp
+                                )
+                            }
+                        }
                     }
                 },
                 actions = {
-                    FilledIconButton(
-                        onClick = { refreshToken++ },
-                        colors = IconButtonDefaults.filledIconButtonColors(
-                            containerColor = Panel2,
-                            contentColor = PinkSoft
-                        )
-                    ) {
-                        Icon(Icons.Rounded.Refresh, contentDescription = "Refresh guide")
+                    if (!searchOpen) {
+                        IconButton(onClick = { searchOpen = true }) {
+                            Icon(Icons.Rounded.Search, "Search")
+                        }
+                        IconButton(onClick = { refreshToken++ }) {
+                            Icon(Icons.Rounded.Refresh, "Refresh")
+                        }
                     }
-                    Spacer(Modifier.width(8.dp))
                 }
             )
         },
-    ) { padding ->
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-                .background(
-                    Brush.verticalGradient(
-                        listOf(Midnight, Color(0xFF0C1120), Midnight)
+        bottomBar = {
+            NavigationBar(containerColor = Panel) {
+                AppSection.entries.forEach { item ->
+                    val icon = when (item) {
+                        AppSection.HOME -> Icons.Rounded.Home
+                        AppSection.GUIDE -> Icons.Rounded.Tv
+                        AppSection.FAVOURITES -> Icons.Rounded.Favorite
+                        AppSection.SETTINGS -> Icons.Rounded.Settings
+                    }
+                    NavigationBarItem(
+                        selected = section == item,
+                        onClick = { section = item; searchOpen = false },
+                        icon = { Icon(icon, null) },
+                        label = { Text(item.label) }
                     )
-                )
-        ) {
+                }
+            }
+        }
+    ) { padding ->
+        Box(Modifier.fillMaxSize().padding(padding)) {
             when {
                 loading && guide == null -> LoadingView()
                 error != null && guide == null -> ErrorView(error!!) { refreshToken++ }
                 guide != null -> {
-                    GuideContent(
-                        guide = guide!!,
-                        channelConfig = channelConfig,
-                        selectedDay = selectedDay,
-                        onSelectedDay = { selectedDay = it },
-                        filter = filter,
-                        onFilter = { filter = it },
-                        selectedProgramme = selectedProgramme,
-                        favouriteShows = favouriteShows,
-                        onProgramme = { selectedProgramme = it },
-                    )
+                    val currentGuide = guide!!
+                    val visibleChannels = mergedChannels(currentGuide.channels, channelConfig)
+
+                    if (searchOpen) {
+                        SearchResultsView(
+                            query = searchQuery,
+                            guide = currentGuide,
+                            channels = visibleChannels,
+                            favouriteShows = favouriteShows,
+                            onProgramme = { selectedProgramme = it },
+                            use24Hour = use24Hour,
+                        )
+                    } else when (section) {
+                        AppSection.HOME -> HomeView(
+                            guide = currentGuide,
+                            channels = visibleChannels,
+                            channelConfig = channelConfig,
+                            favouriteShows = favouriteShows,
+                            favouriteChannels = favouriteChannels,
+                            onProgramme = { selectedProgramme = it },
+                            onChannel = { selectedChannel = it },
+                            onOpenGuide = { group -> selectedGroup = group; section = AppSection.GUIDE },
+                            use24Hour = use24Hour,
+                        )
+                        AppSection.GUIDE -> DynamicGuideContent(
+                            guide = currentGuide,
+                            channels = visibleChannels,
+                            channelConfig = channelConfig,
+                            selectedDay = selectedDay,
+                            onSelectedDay = { selectedDay = it },
+                            selectedGroup = selectedGroup,
+                            onGroup = { selectedGroup = it },
+                            favouriteShows = favouriteShows,
+                            onProgramme = { selectedProgramme = it },
+                        )
+                        AppSection.FAVOURITES -> FavouritesView(
+                            guide = currentGuide,
+                            channels = visibleChannels,
+                            favouriteShows = favouriteShows,
+                            favouriteChannels = favouriteChannels,
+                            onProgramme = { selectedProgramme = it },
+                            onChannel = { selectedChannel = it },
+                            use24Hour = use24Hour,
+                        )
+                        AppSection.SETTINGS -> SettingsView(
+                            reminderMode = reminderMode,
+                            onReminderMode = {
+                                reminderMode = it
+                                saveReminderMode(context, it)
+                            },
+                            use24Hour = use24Hour,
+                            onUse24Hour = {
+                                use24Hour = it
+                                prefs.edit().putBoolean(PREF_TIME_24, it).apply()
+                            },
+                            autoRefresh = autoRefresh,
+                            onAutoRefresh = {
+                                autoRefresh = it
+                                prefs.edit().putBoolean(PREF_AUTO_REFRESH, it).apply()
+                            },
+                            defaultSection = runCatching {
+                                AppSection.valueOf(prefs.getString(PREF_DEFAULT_SECTION, AppSection.HOME.name)!!)
+                            }.getOrDefault(AppSection.HOME),
+                            onDefaultSection = {
+                                prefs.edit().putString(PREF_DEFAULT_SECTION, it.name).apply()
+                            },
+                            channelConfig = channelConfig,
+                            lastUpdated = lastUpdated,
+                            use24HourForLabel = use24Hour,
+                        )
+                    }
 
                     AnimatedVisibility(
                         visible = loading,
@@ -379,59 +485,704 @@ fun GuideScreen(
     }
 
     selectedProgramme?.let { programme ->
+        val currentGuide = guide
         ModalBottomSheet(
             onDismissRequest = { selectedProgramme = null },
             containerColor = Panel,
             contentColor = TextPrimary,
-            dragHandle = {
-                BottomSheetDefaults.DragHandle(color = Color(0xFF656A7A))
-            }
         ) {
             val isFavourite = favouriteShows.any { sameShowTitle(it, programme.title) }
-            ProgrammeSheet(
+            val effectiveReminderMode = showReminderModes[normaliseShowTitle(programme.title)] ?: reminderMode
+            ProgrammeSheetV2(
                 programme = programme,
-                channel = guide?.channels?.firstOrNull { it.id == programme.channelId },
+                channel = currentGuide?.channels?.firstOrNull { it.id == programme.channelId },
+                allProgrammes = currentGuide?.programmes.orEmpty(),
                 isFavourite = isFavourite,
+                reminderMode = effectiveReminderMode,
+                use24Hour = use24Hour,
                 onToggleFavourite = {
                     val title = programme.title.trim()
                     val updated = if (isFavourite) {
                         favouriteShows.filterNot { sameShowTitle(it, title) }.toSet()
-                    } else {
-                        favouriteShows + title
-                    }
-
+                    } else favouriteShows + title
                     favouriteShows = updated
                     saveFavouriteShows(context, updated)
-
                     if (!isFavourite) {
-                        if (Build.VERSION.SDK_INT >= 33 &&
-                            ContextCompat.checkSelfPermission(
-                                context,
-                                Manifest.permission.POST_NOTIFICATIONS
+                        if (Build.VERSION.SDK_INT >= 33 && ContextCompat.checkSelfPermission(
+                                context, Manifest.permission.POST_NOTIFICATIONS
                             ) != PackageManager.PERMISSION_GRANTED
                         ) {
                             notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
                         }
-
                         ProgrammeReminderScheduler.scheduleForTitle(
                             context = context,
                             title = title,
-                            programmes = guide?.programmes.orEmpty(),
-                            channels = guide?.channels.orEmpty(),
+                            programmes = currentGuide?.programmes.orEmpty(),
+                            channels = currentGuide?.channels.orEmpty(),
+                            explicitMode = showReminderModes[normaliseShowTitle(title)] ?: reminderMode,
                         )
                     } else {
                         ProgrammeReminderScheduler.cancelForTitle(
-                            context = context,
-                            title = title,
-                            programmes = guide?.programmes.orEmpty(),
+                            context, title, currentGuide?.programmes.orEmpty()
                         )
                     }
                 },
+                onReminderMode = { mode ->
+                    val key = normaliseShowTitle(programme.title)
+                    val updatedModes = showReminderModes.toMutableMap()
+                    updatedModes[key] = mode
+                    showReminderModes = updatedModes
+                    saveShowReminderModes(context, updatedModes)
+
+                    if (mode != ReminderMode.OFF && !isFavourite) {
+                        val updatedFavourites = favouriteShows + programme.title.trim()
+                        favouriteShows = updatedFavourites
+                        saveFavouriteShows(context, updatedFavourites)
+                    }
+
+                    if (Build.VERSION.SDK_INT >= 33 && mode != ReminderMode.OFF &&
+                        ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
+                    ) {
+                        notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                    }
+
+                    ProgrammeReminderScheduler.cancelForTitle(
+                        context, programme.title, currentGuide?.programmes.orEmpty()
+                    )
+                    if (mode != ReminderMode.OFF) {
+                        ProgrammeReminderScheduler.scheduleForTitle(
+                            context = context,
+                            title = programme.title,
+                            programmes = currentGuide?.programmes.orEmpty(),
+                            channels = currentGuide?.channels.orEmpty(),
+                            explicitMode = mode,
+                        )
+                    }
+                },
+                onProgramme = { selectedProgramme = it },
                 onClose = { selectedProgramme = null }
             )
         }
     }
+
+    selectedChannel?.let { channel ->
+        ModalBottomSheet(
+            onDismissRequest = { selectedChannel = null },
+            containerColor = Panel,
+            contentColor = TextPrimary,
+        ) {
+            ChannelScheduleSheet(
+                channel = channel,
+                programmes = guide?.programmes.orEmpty(),
+                isFavourite = favouriteChannels.contains(channel.id),
+                onToggleFavourite = {
+                    favouriteChannels = if (favouriteChannels.contains(channel.id)) {
+                        favouriteChannels - channel.id
+                    } else favouriteChannels + channel.id
+                    saveFavouriteChannels(context, favouriteChannels)
+                },
+                onProgramme = { selectedProgramme = it },
+                use24Hour = use24Hour,
+                onClose = { selectedChannel = null }
+            )
+        }
+    }
 }
+
+@Composable
+private fun HomeView(
+    guide: GuideData,
+    channels: List<TvChannel>,
+    channelConfig: List<ChannelConfig>,
+    favouriteShows: Set<String>,
+    favouriteChannels: Set<String>,
+    onProgramme: (Programme) -> Unit,
+    onChannel: (TvChannel) -> Unit,
+    onOpenGuide: (String) -> Unit,
+    use24Hour: Boolean,
+) {
+    val now = ZonedDateTime.now()
+    val configById = channelConfig.associateBy { it.id }
+    val nowItems = channels.mapNotNull { ch ->
+        val current = guide.programmes.firstOrNull {
+            it.channelId == ch.id && !now.isBefore(it.start) && now.isBefore(it.stop)
+        }
+        val next = guide.programmes.filter { it.channelId == ch.id && it.start.isAfter(now) }.minByOrNull { it.start }
+        if (current != null || next != null) Triple(ch, current, next) else null
+    }
+    val favouriteUpcoming = guide.programmes
+        .filter { it.start.isAfter(now) && favouriteShows.any { fav -> sameShowTitle(fav, it.title) } }
+        .sortedBy { it.start }
+        .take(8)
+
+    LazyColumn(
+        Modifier.fillMaxSize(),
+        contentPadding = PaddingValues(14.dp, 8.dp, 14.dp, 30.dp),
+        verticalArrangement = Arrangement.spacedBy(14.dp)
+    ) {
+        item {
+            Text("On now", fontSize = 24.sp, fontWeight = FontWeight.Black)
+            Text("A quick look across all your channels", color = TextSecondary)
+        }
+
+        if (favouriteUpcoming.isNotEmpty()) {
+            item {
+                SectionHeader("Coming up in favourites") { }
+                LazyRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                    items(favouriteUpcoming) { p ->
+                        ProgrammePosterCard(
+                            programme = p,
+                            channel = channels.firstOrNull { it.id == p.channelId },
+                            use24Hour = use24Hour,
+                            onClick = { onProgramme(p) }
+                        )
+                    }
+                }
+            }
+        }
+
+        if (favouriteChannels.isNotEmpty()) {
+            item {
+                SectionHeader("Pinned channels") { }
+                LazyRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                    items(channels.filter { favouriteChannels.contains(it.id) }) { ch ->
+                        ChannelTile(ch) { onChannel(ch) }
+                    }
+                }
+            }
+        }
+
+        val groups = channelConfig.map { it.group }.filter { it.isNotBlank() }.distinct()
+        groups.forEach { group ->
+            val groupItems = nowItems.filter { (ch, _, _) -> configById[ch.id]?.group == group }
+            if (groupItems.isNotEmpty()) {
+                item {
+                    SectionHeader(group) { onOpenGuide(group) }
+                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        groupItems.forEach { (ch, current, next) ->
+                            NowNextRow(ch, current, next, use24Hour, onChannel, onProgramme)
+                        }
+                    }
+                }
+            }
+        }
+
+        val ungrouped = nowItems.filter { (ch, _, _) -> configById[ch.id]?.group.isNullOrBlank() }
+        if (ungrouped.isNotEmpty()) {
+            item {
+                SectionHeader("Other channels") { onOpenGuide("All") }
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    ungrouped.forEach { (ch, current, next) ->
+                        NowNextRow(ch, current, next, use24Hour, onChannel, onProgramme)
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun SectionHeader(title: String, onSeeAll: () -> Unit) {
+    Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+        Text(title, fontSize = 18.sp, fontWeight = FontWeight.Bold, modifier = Modifier.weight(1f))
+        TextButton(onClick = onSeeAll) {
+            Text("See all")
+            Icon(Icons.Rounded.KeyboardArrowRight, null)
+        }
+    }
+}
+
+@Composable
+private fun ChannelTile(channel: TvChannel, onClick: () -> Unit) {
+    Card(
+        modifier = Modifier.width(112.dp).clickable(onClick = onClick),
+        colors = CardDefaults.cardColors(containerColor = Panel2)
+    ) {
+        Column(Modifier.padding(10.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+            Box(Modifier.size(58.dp), contentAlignment = Alignment.Center) {
+                if (!channel.icon.isNullOrBlank()) {
+                    SubcomposeAsyncImage(
+                        model = channel.icon,
+                        contentDescription = channel.name,
+                        contentScale = ContentScale.Fit,
+                        modifier = Modifier.fillMaxSize()
+                    ) {
+                        if (painter.state is AsyncImagePainter.State.Success) SubcomposeAsyncImageContent()
+                        else LogoFallback(channel.name)
+                    }
+                } else LogoFallback(channel.name)
+            }
+            Spacer(Modifier.height(6.dp))
+            Text(channel.name, maxLines = 1, overflow = TextOverflow.Ellipsis, fontSize = 12.sp)
+        }
+    }
+}
+
+@Composable
+private fun NowNextRow(
+    channel: TvChannel,
+    current: Programme?,
+    next: Programme?,
+    use24Hour: Boolean,
+    onChannel: (TvChannel) -> Unit,
+    onProgramme: (Programme) -> Unit,
+) {
+    Card(colors = CardDefaults.cardColors(containerColor = Panel2)) {
+        Row(Modifier.fillMaxWidth().padding(10.dp), verticalAlignment = Alignment.CenterVertically) {
+            Box(
+                Modifier.size(50.dp).clip(RoundedCornerShape(12.dp)).background(Panel),
+                contentAlignment = Alignment.Center
+            ) {
+                if (!channel.icon.isNullOrBlank()) {
+                    AsyncImage(channel.icon, channel.name, Modifier.fillMaxSize().padding(5.dp), contentScale = ContentScale.Fit)
+                } else LogoFallback(channel.name)
+            }
+            Spacer(Modifier.width(10.dp))
+            Column(Modifier.weight(1f)) {
+                Text(channel.name, color = PinkSoft, fontWeight = FontWeight.Bold, modifier = Modifier.clickable { onChannel(channel) })
+                current?.let { p ->
+                    Text(p.title, fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.clickable { onProgramme(p) })
+                    val total = Duration.between(p.start, p.stop).toMinutes().coerceAtLeast(1)
+                    val elapsed = Duration.between(p.start, ZonedDateTime.now()).toMinutes().coerceIn(0, total)
+                    LinearProgressIndicator(
+                        progress = { elapsed.toFloat() / total.toFloat() },
+                        modifier = Modifier.fillMaxWidth().height(4.dp).clip(RoundedCornerShape(99.dp)),
+                        color = Pink, trackColor = Color(0xFF2A3042)
+                    )
+                    Text("${(total - elapsed).coerceAtLeast(0)} min left", color = TextSecondary, fontSize = 10.sp)
+                } ?: Text("Nothing listed right now", color = TextSecondary, fontSize = 12.sp)
+                next?.let { p ->
+                    Text("Next ${formatTime(p.start.toLocalTime(), use24Hour)} • ${p.title}", color = TextSecondary, fontSize = 11.sp,
+                        maxLines = 1, overflow = TextOverflow.Ellipsis)
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun ProgrammePosterCard(
+    programme: Programme,
+    channel: TvChannel?,
+    use24Hour: Boolean,
+    onClick: () -> Unit,
+) {
+    Card(
+        modifier = Modifier.width(180.dp).clickable(onClick = onClick),
+        colors = CardDefaults.cardColors(containerColor = Panel2)
+    ) {
+        Column {
+            Box(Modifier.fillMaxWidth().height(95.dp).background(Panel)) {
+                val image = programme.icon ?: channel?.icon
+                if (!image.isNullOrBlank()) {
+                    AsyncImage(image, programme.title, Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
+                } else Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) { LogoFallback(channel?.name ?: programme.channelId) }
+            }
+            Column(Modifier.padding(10.dp)) {
+                Text(programme.title, fontWeight = FontWeight.Bold, maxLines = 2, overflow = TextOverflow.Ellipsis)
+                Text("${channel?.name ?: programme.channelId} • ${formatTime(programme.start.toLocalTime(), use24Hour)}",
+                    color = TextSecondary, fontSize = 11.sp)
+            }
+        }
+    }
+}
+
+@Composable
+private fun DynamicGuideContent(
+    guide: GuideData,
+    channels: List<TvChannel>,
+    channelConfig: List<ChannelConfig>,
+    selectedDay: LocalDate,
+    onSelectedDay: (LocalDate) -> Unit,
+    selectedGroup: String,
+    onGroup: (String) -> Unit,
+    favouriteShows: Set<String>,
+    onProgramme: (Programme) -> Unit,
+) {
+    val configById = channelConfig.associateBy { it.id }
+    val groups = listOf("All", "Favourite Shows") + channelConfig
+        .map { it.group }.filter { it.isNotBlank() }.distinct()
+    val visible = channels.filter { channel ->
+        when (selectedGroup) {
+            "All" -> true
+            "Favourite Shows" -> guide.programmes.any { p ->
+                p.channelId == channel.id && p.start.toLocalDate() == selectedDay &&
+                    favouriteShows.any { sameShowTitle(it, p.title) }
+            }
+            else -> configById[channel.id]?.group == selectedGroup
+        }
+    }
+
+    Column(Modifier.fillMaxSize()) {
+        DayPicker(selectedDay, onSelectedDay)
+        LazyRow(
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 14.dp, vertical = 4.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            items(groups.distinct()) { group ->
+                FilterChip(
+                    selected = selectedGroup == group,
+                    onClick = { onGroup(group) },
+                    label = { Text(group) },
+                    colors = FilterChipDefaults.filterChipColors(
+                        selectedContainerColor = Pink,
+                        selectedLabelColor = Color(0xFF210012),
+                        containerColor = Panel2,
+                        labelColor = TextSecondary
+                    )
+                )
+            }
+        }
+        if (visible.isEmpty()) {
+            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                Text("No channels in this section", color = TextSecondary)
+            }
+        } else {
+            TvGrid(visible, guide.programmes, selectedDay, favouriteShows, onProgramme)
+        }
+    }
+}
+
+@Composable
+private fun SearchResultsView(
+    query: String,
+    guide: GuideData,
+    channels: List<TvChannel>,
+    favouriteShows: Set<String>,
+    onProgramme: (Programme) -> Unit,
+    use24Hour: Boolean,
+) {
+    val normalised = searchNormalise(query)
+    val results = if (normalised.length < 2) emptyList() else guide.programmes
+        .filter { p ->
+            searchNormalise(p.title).contains(normalised) ||
+                searchNormalise(p.description.orEmpty()).contains(normalised)
+        }
+        .filter { it.stop.isAfter(ZonedDateTime.now().minusHours(1)) }
+        .sortedBy { it.start }
+        .take(100)
+
+    LazyColumn(
+        Modifier.fillMaxSize(),
+        contentPadding = PaddingValues(14.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        item {
+            Text(
+                if (query.length < 2) "Type at least 2 characters" else "${results.size} results",
+                color = TextSecondary
+            )
+        }
+        items(results) { p ->
+            ProgrammeListRow(
+                p,
+                channels.firstOrNull { it.id == p.channelId },
+                favouriteShows.any { sameShowTitle(it, p.title) },
+                use24Hour,
+                onProgramme
+            )
+        }
+    }
+}
+
+@Composable
+private fun FavouritesView(
+    guide: GuideData,
+    channels: List<TvChannel>,
+    favouriteShows: Set<String>,
+    favouriteChannels: Set<String>,
+    onProgramme: (Programme) -> Unit,
+    onChannel: (TvChannel) -> Unit,
+    use24Hour: Boolean,
+) {
+    val now = ZonedDateTime.now()
+    val upcoming = guide.programmes
+        .filter { it.stop.isAfter(now) && favouriteShows.any { f -> sameShowTitle(f, it.title) } }
+        .sortedBy { it.start }
+
+    LazyColumn(
+        Modifier.fillMaxSize(),
+        contentPadding = PaddingValues(14.dp, 8.dp, 14.dp, 30.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        item { Text("My shows", fontSize = 24.sp, fontWeight = FontWeight.Black) }
+        if (favouriteChannels.isNotEmpty()) {
+            item {
+                Text("Pinned channels", fontWeight = FontWeight.Bold, color = PinkSoft)
+                Spacer(Modifier.height(8.dp))
+                LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    items(channels.filter { favouriteChannels.contains(it.id) }) { ch -> ChannelTile(ch) { onChannel(ch) } }
+                }
+            }
+        }
+        if (upcoming.isEmpty()) {
+            item { Text("Favourite a programme and its future airings will appear here.", color = TextSecondary) }
+        } else {
+            items(upcoming.take(100)) { p ->
+                ProgrammeListRow(p, channels.firstOrNull { it.id == p.channelId }, true, use24Hour, onProgramme)
+            }
+        }
+    }
+}
+
+@Composable
+private fun ProgrammeListRow(
+    programme: Programme,
+    channel: TvChannel?,
+    favourite: Boolean,
+    use24Hour: Boolean,
+    onProgramme: (Programme) -> Unit,
+) {
+    Card(
+        modifier = Modifier.fillMaxWidth().clickable { onProgramme(programme) },
+        colors = CardDefaults.cardColors(containerColor = Panel2)
+    ) {
+        Row(Modifier.padding(10.dp), verticalAlignment = Alignment.CenterVertically) {
+            val image = programme.icon ?: channel?.icon
+            Box(Modifier.size(64.dp).clip(RoundedCornerShape(12.dp)).background(Panel), contentAlignment = Alignment.Center) {
+                if (!image.isNullOrBlank()) AsyncImage(image, programme.title, Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
+                else LogoFallback(channel?.name ?: programme.channelId)
+            }
+            Spacer(Modifier.width(10.dp))
+            Column(Modifier.weight(1f)) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(programme.title, fontWeight = FontWeight.Bold, modifier = Modifier.weight(1f), maxLines = 2)
+                    if (favourite) Text("♥", color = PinkSoft)
+                }
+                Text(channel?.name ?: programme.channelId, color = PinkSoft, fontSize = 12.sp)
+                Text(
+                    "${programme.start.format(DateTimeFormatter.ofPattern("EEE d MMM", Locale.UK))} • ${formatTime(programme.start.toLocalTime(), use24Hour)}",
+                    color = TextSecondary, fontSize = 11.sp
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun SettingsView(
+    reminderMode: ReminderMode,
+    onReminderMode: (ReminderMode) -> Unit,
+    use24Hour: Boolean,
+    onUse24Hour: (Boolean) -> Unit,
+    autoRefresh: Boolean,
+    onAutoRefresh: (Boolean) -> Unit,
+    defaultSection: AppSection,
+    onDefaultSection: (AppSection) -> Unit,
+    channelConfig: List<ChannelConfig>,
+    lastUpdated: LocalTime?,
+    use24HourForLabel: Boolean,
+) {
+    var default by remember(defaultSection) { mutableStateOf(defaultSection) }
+    LazyColumn(
+        Modifier.fillMaxSize(),
+        contentPadding = PaddingValues(14.dp, 8.dp, 14.dp, 30.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        item { Text("Settings", fontSize = 24.sp, fontWeight = FontWeight.Black) }
+        item {
+            SettingsCard("Default reminder for new favourites") {
+                ReminderMode.entries.forEach { mode ->
+                    Row(
+                        Modifier.fillMaxWidth().clickable { onReminderMode(mode) }.padding(vertical = 7.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        RadioButton(selected = reminderMode == mode, onClick = { onReminderMode(mode) })
+                        Text(mode.label)
+                    }
+                }
+            }
+        }
+        item {
+            SettingsCard("Guide") {
+                SettingSwitch("24-hour clock", use24Hour, onUse24Hour)
+                SettingSwitch("Background guide refresh", autoRefresh, onAutoRefresh)
+                Text("When enabled, Android refreshes the cached EPG about every 6 hours.", color = TextSecondary, fontSize = 11.sp)
+            }
+        }
+        item {
+            SettingsCard("Start screen") {
+                AppSection.entries.forEach { item ->
+                    FilterChip(
+                        selected = default == item,
+                        onClick = { default = item; onDefaultSection(item) },
+                        label = { Text(item.label) },
+                        modifier = Modifier.padding(end = 6.dp)
+                    )
+                }
+            }
+        }
+        item {
+            SettingsCard("Dynamic channel setup") {
+                Text("${channelConfig.size} configured channels", fontWeight = FontWeight.SemiBold)
+                Text("Categories and channel order come from channels.json. New groups appear automatically without rebuilding the APK.", color = TextSecondary)
+                lastUpdated?.let { Text("Last refreshed ${formatTime(it, use24HourForLabel)}", color = PinkSoft, fontSize = 12.sp) }
+            }
+        }
+    }
+}
+
+@Composable
+private fun SettingsCard(title: String, content: @Composable ColumnScope.() -> Unit) {
+    Card(colors = CardDefaults.cardColors(containerColor = Panel2)) {
+        Column(Modifier.fillMaxWidth().padding(14.dp)) {
+            Text(title, color = PinkSoft, fontWeight = FontWeight.Bold)
+            Spacer(Modifier.height(8.dp))
+            content()
+        }
+    }
+}
+
+@Composable
+private fun SettingSwitch(label: String, value: Boolean, onValue: (Boolean) -> Unit) {
+    Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+        Text(label, modifier = Modifier.weight(1f))
+        Switch(checked = value, onCheckedChange = onValue)
+    }
+}
+
+@Composable
+private fun ChannelScheduleSheet(
+    channel: TvChannel,
+    programmes: List<Programme>,
+    isFavourite: Boolean,
+    onToggleFavourite: () -> Unit,
+    onProgramme: (Programme) -> Unit,
+    use24Hour: Boolean,
+    onClose: () -> Unit,
+) {
+    val upcoming = programmes.filter { it.channelId == channel.id && it.stop.isAfter(ZonedDateTime.now()) }.sortedBy { it.start }.take(30)
+    Column(Modifier.fillMaxWidth().padding(horizontal = 18.dp).padding(bottom = 30.dp)) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            ChannelTile(channel) { }
+            Spacer(Modifier.width(12.dp))
+            Column(Modifier.weight(1f)) {
+                Text(channel.name, fontSize = 24.sp, fontWeight = FontWeight.Black)
+                FilledTonalButton(onClick = onToggleFavourite) {
+                    Icon(if (isFavourite) Icons.Rounded.Star else Icons.Rounded.StarBorder, null)
+                    Spacer(Modifier.width(6.dp))
+                    Text(if (isFavourite) "Pinned channel" else "Pin channel")
+                }
+            }
+            IconButton(onClick = onClose) { Icon(Icons.Rounded.Close, "Close") }
+        }
+        Spacer(Modifier.height(12.dp))
+        Text("Upcoming", fontWeight = FontWeight.Bold, color = PinkSoft)
+        Spacer(Modifier.height(6.dp))
+        LazyColumn(Modifier.heightIn(max = 520.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            items(upcoming) { p -> ProgrammeListRow(p, channel, false, use24Hour, onProgramme) }
+        }
+    }
+}
+
+@Composable
+private fun ProgrammeSheetV2(
+    programme: Programme,
+    channel: TvChannel?,
+    allProgrammes: List<Programme>,
+    isFavourite: Boolean,
+    reminderMode: ReminderMode,
+    use24Hour: Boolean,
+    onToggleFavourite: () -> Unit,
+    onReminderMode: (ReminderMode) -> Unit,
+    onProgramme: (Programme) -> Unit,
+    onClose: () -> Unit,
+) {
+    val now = ZonedDateTime.now()
+    val live = !now.isBefore(programme.start) && now.isBefore(programme.stop)
+    val total = Duration.between(programme.start, programme.stop).toMinutes().coerceAtLeast(1)
+    val elapsed = Duration.between(programme.start, now).toMinutes().coerceIn(0, total)
+    val nextAirings = allProgrammes.filter {
+        sameShowTitle(it.title, programme.title) && it.start.isAfter(programme.start)
+    }.sortedBy { it.start }.take(5)
+
+    LazyColumn(
+        Modifier.fillMaxWidth().padding(horizontal = 18.dp),
+        contentPadding = PaddingValues(bottom = 34.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        item {
+            Box(Modifier.fillMaxWidth().height(190.dp).clip(RoundedCornerShape(18.dp)).background(Panel2)) {
+                val image = programme.icon ?: channel?.icon
+                if (!image.isNullOrBlank()) {
+                    AsyncImage(image, programme.title, Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
+                } else Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) { LogoFallback(channel?.name ?: programme.channelId) }
+                IconButton(onClick = onClose, modifier = Modifier.align(Alignment.TopEnd)) {
+                    Icon(Icons.Rounded.Close, "Close", tint = Color.White)
+                }
+            }
+        }
+        item {
+            Text(channel?.name ?: programme.channelId, color = PinkSoft, fontWeight = FontWeight.Bold)
+            Text(programme.title, fontSize = 28.sp, lineHeight = 31.sp, fontWeight = FontWeight.Black)
+            Text(
+                "${programme.start.format(DateTimeFormatter.ofPattern("EEEE d MMMM", Locale.UK))} • " +
+                    "${formatTime(programme.start.toLocalTime(), use24Hour)} – ${formatTime(programme.stop.toLocalTime(), use24Hour)}",
+                color = TextSecondary
+            )
+        }
+        item {
+            FilledTonalButton(onClick = onToggleFavourite) {
+                Icon(if (isFavourite) Icons.Rounded.Favorite else Icons.Rounded.FavoriteBorder, null)
+                Spacer(Modifier.width(8.dp))
+                Text(if (isFavourite) "Favourite show" else "Add to favourite shows")
+            }
+            if (isFavourite) {
+                Spacer(Modifier.height(8.dp))
+                Text("Reminder for this show", color = PinkSoft, fontWeight = FontWeight.SemiBold, fontSize = 12.sp)
+                Row(
+                    Modifier.horizontalScroll(rememberScrollState()),
+                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    ReminderMode.entries.forEach { mode ->
+                        FilterChip(
+                            selected = reminderMode == mode,
+                            onClick = { onReminderMode(mode) },
+                            label = { Text(mode.label) }
+                        )
+                    }
+                }
+            }
+        }
+        programme.category?.takeIf { it.isNotBlank() }?.let { category ->
+            item { SuggestionChip(onClick = {}, label = { Text(englishCategory(category)) }) }
+        }
+        if (live) {
+            item {
+                LinearProgressIndicator(
+                    progress = { elapsed.toFloat() / total.toFloat() },
+                    modifier = Modifier.fillMaxWidth().height(6.dp).clip(RoundedCornerShape(99.dp)),
+                    color = Pink, trackColor = Color(0xFF2A3042)
+                )
+                Text("${(total - elapsed).coerceAtLeast(0)} min left", color = PinkSoft, fontSize = 12.sp)
+            }
+        }
+        item {
+            Text(programme.description?.takeIf { it.isNotBlank() } ?: "No description available for this programme.",
+                color = Color(0xFFD6D7E0), lineHeight = 22.sp)
+        }
+        if (nextAirings.isNotEmpty()) {
+            item { Text("Next airings", color = PinkSoft, fontWeight = FontWeight.Bold) }
+            items(nextAirings) { p -> ProgrammeListRow(p, channel, isFavourite, use24Hour, onProgramme) }
+        }
+    }
+}
+
+private fun mergedChannels(channels: List<TvChannel>, config: List<ChannelConfig>): List<TvChannel> {
+    val configById = config.associateBy { it.id }
+    return channels.map { ch ->
+        val c = configById[ch.id]
+        ch.copy(
+            name = c?.name?.takeIf { it.isNotBlank() } ?: ch.name,
+            icon = c?.icon?.takeIf { it.isNotBlank() } ?: ch.icon,
+        )
+    }.filterNot { configById[it.id]?.hidden == true }
+        .sortedWith(compareBy<TvChannel> { configById[it.id]?.order ?: Int.MAX_VALUE }.thenBy { it.name.lowercase(Locale.UK) })
+}
+
+private fun formatTime(time: LocalTime, use24Hour: Boolean): String =
+    time.format(DateTimeFormatter.ofPattern(if (use24Hour) "HH:mm" else "h:mm a", Locale.UK))
 
 @Composable
 private fun LoadingView() {
@@ -970,8 +1721,17 @@ private fun LogoFallback(channelName: String) {
 }
 
 
+private fun searchNormalise(value: String): String {
+    val lowered = value
+        .lowercase(Locale.forLanguageTag("tr-TR"))
+        .replace('ı', 'i')
+    return Normalizer.normalize(lowered, Normalizer.Form.NFD)
+        .replace(Regex("\\p{Mn}+"), "")
+        .trim()
+}
+
 private fun normaliseShowTitle(title: String): String =
-    title.trim().lowercase(Locale.ROOT)
+    searchNormalise(title)
 
 private fun sameShowTitle(a: String, b: String): Boolean =
     normaliseShowTitle(a) == normaliseShowTitle(b)
@@ -987,6 +1747,63 @@ private fun saveFavouriteShows(context: Context, favourites: Set<String>) {
         .edit()
         .putStringSet(PREF_FAVOURITES, favourites)
         .apply()
+}
+
+private fun loadFavouriteChannels(context: Context): Set<String> =
+    context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        .getStringSet(PREF_FAVOURITE_CHANNELS, emptySet())
+        ?.toSet()
+        .orEmpty()
+
+private fun saveFavouriteChannels(context: Context, favourites: Set<String>) {
+    context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        .edit()
+        .putStringSet(PREF_FAVOURITE_CHANNELS, favourites)
+        .apply()
+}
+
+private fun loadReminderMode(context: Context): ReminderMode =
+    runCatching {
+        ReminderMode.valueOf(
+            context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+                .getString(PREF_REMINDER_MODE, ReminderMode.BOTH.name)!!
+        )
+    }.getOrDefault(ReminderMode.BOTH)
+
+private fun saveReminderMode(context: Context, mode: ReminderMode) {
+    context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        .edit()
+        .putString(PREF_REMINDER_MODE, mode.name)
+        .apply()
+}
+
+private fun loadShowReminderModes(context: Context): Map<String, ReminderMode> {
+    val raw = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        .getString(PREF_SHOW_REMINDER_MODES, "{}") ?: "{}"
+    return try {
+        val json = JSONObject(raw)
+        buildMap {
+            json.keys().forEach { key ->
+                val value = json.optString(key)
+                ReminderMode.entries.firstOrNull { it.name == value }?.let { put(key, it) }
+            }
+        }
+    } catch (_: Throwable) {
+        emptyMap()
+    }
+}
+
+private fun saveShowReminderModes(context: Context, modes: Map<String, ReminderMode>) {
+    val json = JSONObject()
+    modes.forEach { (title, mode) -> json.put(title, mode.name) }
+    context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        .edit()
+        .putString(PREF_SHOW_REMINDER_MODES, json.toString())
+        .apply()
+}
+
+private fun reminderModeForTitle(context: Context, title: String): ReminderMode {
+    return loadShowReminderModes(context)[normaliseShowTitle(title)] ?: loadReminderMode(context)
 }
 
 object ProgrammeReminderScheduler {
@@ -1008,6 +1825,7 @@ object ProgrammeReminderScheduler {
         title: String,
         programmes: List<Programme>,
         channels: List<TvChannel>,
+        explicitMode: ReminderMode? = null,
     ) {
         val now = System.currentTimeMillis()
         programmes
@@ -1018,20 +1836,29 @@ object ProgrammeReminderScheduler {
                     .firstOrNull { it.id == programme.channelId }
                     ?.icon
 
-                scheduleAlarm(
-                    context = context,
-                    programme = programme,
-                    triggerAtMillis = programme.start.toInstant().toEpochMilli() - TEN_MINUTES_MS,
-                    kind = ProgrammeReminderReceiver.KIND_SOON,
-                    channelIconUrl = channelIconUrl,
-                )
-                scheduleAlarm(
-                    context = context,
-                    programme = programme,
-                    triggerAtMillis = programme.start.toInstant().toEpochMilli(),
-                    kind = ProgrammeReminderReceiver.KIND_NOW,
-                    channelIconUrl = channelIconUrl,
-                )
+                val mode = explicitMode ?: reminderModeForTitle(context, title)
+                if (mode == ReminderMode.BOTH || mode == ReminderMode.TEN_MINUTES) {
+                    scheduleAlarm(
+                        context = context,
+                        programme = programme,
+                        triggerAtMillis = programme.start.toInstant().toEpochMilli() - TEN_MINUTES_MS,
+                        kind = ProgrammeReminderReceiver.KIND_SOON,
+                        channelIconUrl = channelIconUrl,
+                    )
+                } else {
+                    cancelAlarm(context, programme, ProgrammeReminderReceiver.KIND_SOON)
+                }
+                if (mode == ReminderMode.BOTH || mode == ReminderMode.START) {
+                    scheduleAlarm(
+                        context = context,
+                        programme = programme,
+                        triggerAtMillis = programme.start.toInstant().toEpochMilli(),
+                        kind = ProgrammeReminderReceiver.KIND_NOW,
+                        channelIconUrl = channelIconUrl,
+                    )
+                } else {
+                    cancelAlarm(context, programme, ProgrammeReminderReceiver.KIND_NOW)
+                }
             }
     }
 
@@ -1105,6 +1932,7 @@ object ProgrammeReminderScheduler {
             putExtra(ProgrammeReminderReceiver.EXTRA_CHANNEL, programme.channelId)
             putExtra(ProgrammeReminderReceiver.EXTRA_KIND, kind)
             putExtra(ProgrammeReminderReceiver.EXTRA_CHANNEL_ICON_URL, channelIconUrl)
+            putExtra(ProgrammeReminderReceiver.EXTRA_PROGRAMME_ICON_URL, programme.icon)
             putExtra(
                 ProgrammeReminderReceiver.EXTRA_START_TIME,
                 programme.start.format(DateTimeFormatter.ofPattern("HH:mm"))
@@ -1407,45 +2235,86 @@ private fun ProgrammeSheet(
 }
 
 object ChannelConfigRepository {
+    fun loadCached(context: Context, url: String, cacheName: String): List<ChannelConfig> {
+        val cache = File(context.filesDir, cacheName)
+        return try {
+            val result = load(url)
+            cache.writeText(channelConfigToJson(result), Charsets.UTF_8)
+            result
+        } catch (t: Throwable) {
+            if (cache.exists()) parseJson(cache.readText(Charsets.UTF_8)) else DefaultChannelConfig
+        }
+    }
+
+    private fun channelConfigToJson(items: List<ChannelConfig>): String {
+        val array = JSONArray()
+        items.forEach { item ->
+            val obj = org.json.JSONObject()
+            obj.put("id", item.id)
+            obj.put("group", item.group)
+            obj.put("order", item.order)
+            item.name?.let { obj.put("name", it) }
+            item.icon?.let { obj.put("icon", it) }
+            obj.put("hidden", item.hidden)
+            array.put(obj)
+        }
+        return array.toString()
+    }
+
+    private fun parseJson(json: String): List<ChannelConfig> {
+        val array = JSONArray(json)
+        val result = mutableListOf<ChannelConfig>()
+        for (index in 0 until array.length()) {
+            val item = array.getJSONObject(index)
+            val id = item.optString("id").trim()
+            if (id.isBlank()) continue
+            result += ChannelConfig(
+                id = id,
+                group = item.optString("group", "").trim(),
+                order = item.optInt("order", Int.MAX_VALUE),
+                name = item.optString("name", "").trim().takeIf { it.isNotBlank() },
+                icon = item.optString("icon", "").trim().takeIf { it.isNotBlank() },
+                hidden = item.optBoolean("hidden", false),
+            )
+        }
+        return result.ifEmpty { DefaultChannelConfig }
+    }
+
     fun load(url: String): List<ChannelConfig> {
         val connection = URL(url).openConnection() as HttpURLConnection
         connection.connectTimeout = 10_000
         connection.readTimeout = 15_000
-        connection.setRequestProperty("User-Agent", "UmayTVGuide/1.3")
+        connection.setRequestProperty("User-Agent", "UmayTVGuide/2.0")
         connection.instanceFollowRedirects = true
-
         try {
-            val json = connection.inputStream
-                .bufferedReader(Charsets.UTF_8)
-                .use { it.readText() }
-
-            val array = JSONArray(json)
-            val result = mutableListOf<ChannelConfig>()
-
-            for (index in 0 until array.length()) {
-                val item = array.getJSONObject(index)
-                val id = item.optString("id").trim()
-
-                if (id.isBlank()) continue
-
-                result += ChannelConfig(
-                    id = id,
-                    group = item.optString("group", "").trim(),
-                    order = item.optInt("order", Int.MAX_VALUE),
-                    name = item.optString("name", "").trim().takeIf { it.isNotBlank() },
-                    icon = item.optString("icon", "").trim().takeIf { it.isNotBlank() },
-                    hidden = item.optBoolean("hidden", false),
-                )
-            }
-
-            return result.ifEmpty { DefaultChannelConfig }
+            val json = connection.inputStream.bufferedReader(Charsets.UTF_8).use { it.readText() }
+            return parseJson(json)
         } finally {
             connection.disconnect()
         }
     }
+
 }
 
 object XmlTvRepository {
+    fun loadCached(context: Context, url: String, cacheName: String): GuideData {
+        val cache = File(context.filesDir, cacheName)
+        return try {
+            val connection = URL(url).openConnection() as HttpURLConnection
+            connection.connectTimeout = 15_000
+            connection.readTimeout = 25_000
+            connection.setRequestProperty("User-Agent", "UmayTVGuide/2.0")
+            connection.instanceFollowRedirects = true
+            try {
+                val bytes = connection.inputStream.use { it.readBytes() }
+                cache.writeBytes(bytes)
+                XmlTvParser.parse(bytes.inputStream())
+            } finally { connection.disconnect() }
+        } catch (t: Throwable) {
+            if (cache.exists()) XmlTvParser.parse(cache.inputStream()) else throw t
+        }
+    }
+
     fun load(url: String): GuideData {
         val connection = URL(url).openConnection() as HttpURLConnection
         connection.connectTimeout = 15_000
@@ -1492,6 +2361,7 @@ object XmlTvParser {
         var pTitle: String? = null
         var pDesc: String? = null
         var pCategory: String? = null
+        var pIcon: String? = null
 
         while (event != XmlPullParser.END_DOCUMENT) {
             when (event) {
@@ -1504,8 +2374,12 @@ object XmlTvParser {
                     "display-name" -> if (channelId != null) {
                         channelName = parser.nextText()
                     }
-                    "icon" -> if (channelId != null) {
-                        channelIcon = parser.getAttributeValue(null, "src")
+                    "icon" -> {
+                        if (pChannel != null) {
+                            pIcon = parser.getAttributeValue(null, "src")
+                        } else if (channelId != null) {
+                            channelIcon = parser.getAttributeValue(null, "src")
+                        }
                     }
                     "programme" -> {
                         pChannel = parser.getAttributeValue(null, "channel")
@@ -1514,6 +2388,7 @@ object XmlTvParser {
                         pTitle = null
                         pDesc = null
                         pCategory = null
+                        pIcon = null
                     }
                     "title" -> if (pChannel != null) pTitle = parser.nextText()
                     "desc" -> if (pChannel != null) pDesc = parser.nextText()
@@ -1547,6 +2422,7 @@ object XmlTvParser {
                                 title = title,
                                 description = pDesc,
                                 category = pCategory,
+                                icon = pIcon,
                             )
                         }
                         pChannel = null
