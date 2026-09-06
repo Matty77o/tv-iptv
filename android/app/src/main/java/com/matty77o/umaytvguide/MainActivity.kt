@@ -664,11 +664,78 @@ private fun HomeView(
         .sortedBy { it.start }
         .take(8)
 
+    // Shared household agenda: favourite programmes still to come today.
+    // This intentionally stays household-wide rather than introducing profiles.
+    val forUsToday = guide.programmes
+        .filter {
+            it.start.isAfter(now) &&
+                it.start.toLocalDate() == now.toLocalDate() &&
+                favouriteShows.any { fav -> sameShowTitle(fav, it.title) }
+        }
+        .distinctBy {
+            Triple(
+                it.channelId.trim().lowercase(Locale.ROOT),
+                normaliseShowTitle(it.title),
+                it.start.toInstant(),
+            )
+        }
+        .sortedBy { it.start }
+        .take(6)
+
     LazyColumn(
         Modifier.fillMaxSize(),
         contentPadding = PaddingValues(14.dp, 8.dp, 14.dp, 30.dp),
         verticalArrangement = Arrangement.spacedBy(18.dp)
     ) {
+        if (forUsToday.isNotEmpty()) {
+            item {
+                SectionHeader("For us today") { onOpenGuide("All") }
+                Card(
+                    colors = CardDefaults.cardColors(containerColor = Panel2),
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Column(Modifier.padding(horizontal = 14.dp, vertical = 8.dp)) {
+                        forUsToday.forEachIndexed { index, programme ->
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clickable { onProgramme(programme) }
+                                    .padding(vertical = 8.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Text(
+                                    formatTime(programme.start, use24Hour),
+                                    color = Accent,
+                                    style = MaterialTheme.typography.labelLarge,
+                                    modifier = Modifier.width(58.dp)
+                                )
+                                Column(Modifier.weight(1f)) {
+                                    Text(
+                                        programme.title,
+                                        color = TextPrimary,
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        maxLines = 1,
+                                        overflow = TextOverflow.Ellipsis
+                                    )
+                                    Text(
+                                        channels.firstOrNull { it.id == programme.channelId }?.name
+                                            ?: programme.channelId,
+                                        color = TextSecondary,
+                                        style = MaterialTheme.typography.bodySmall,
+                                        maxLines = 1,
+                                        overflow = TextOverflow.Ellipsis
+                                    )
+                                }
+                            }
+                            if (index != forUsToday.lastIndex) {
+                                HorizontalDivider(color = Border)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         item {
             SectionHeader("On now") { onOpenGuide("All") }
             if (onNow.isEmpty()) {
@@ -881,6 +948,12 @@ private fun ProgrammePosterCard(
                     LinearProgressIndicator(
                         progress = { elapsed.toFloat() / total.toFloat() },
                         modifier = Modifier.fillMaxWidth().padding(top = 6.dp)
+                    )
+                    Text(
+                        "${(total - elapsed).coerceAtLeast(0)} min left",
+                        color = TextSecondary,
+                        fontSize = 10.sp,
+                        modifier = Modifier.padding(top = 3.dp)
                     )
                 }
             }
@@ -1177,6 +1250,14 @@ private fun SettingsView(
                         fontSize = 12.sp
                     )
                 }
+                if (newest != null && newest.isBefore(ZonedDateTime.now().plusHours(6))) {
+                    Text(
+                        "Guide data may be stale or running out soon.",
+                        color = PinkSoft,
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                }
                 if (missing.isNotEmpty()) {
                     Spacer(Modifier.height(6.dp))
                     Text(
@@ -1301,7 +1382,8 @@ private fun ProgrammeSheetV2(
             if (meta.isNotBlank()) Text(meta, color = TextSecondary, fontSize = 12.sp)
             Text(
                 "${programme.start.format(DateTimeFormatter.ofPattern("EEEE d MMMM", Locale.UK))} • " +
-                    "${formatTime(programme.start.toLocalTime(), use24Hour)} – ${formatTime(programme.stop.toLocalTime(), use24Hour)}",
+                    "${formatTime(programme.start.toLocalTime(), use24Hour)} – ${formatTime(programme.stop.toLocalTime(), use24Hour)} • " +
+                    "${Duration.between(programme.start, programme.stop).toMinutes().coerceAtLeast(1)} min",
                 color = TextSecondary
             )
         }
@@ -1763,6 +1845,21 @@ private fun GuideRow(
                     .width(totalWidth)
                     .fillMaxHeight()
             ) {
+                if (programmes.isEmpty()) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(start = 14.dp),
+                        contentAlignment = Alignment.CenterStart
+                    ) {
+                        Text(
+                            "No listings available",
+                            color = TextSecondary,
+                            fontSize = 12.sp
+                        )
+                    }
+                }
+
                 programmes.forEach { p ->
                     val visibleStart = if (p.start.isBefore(guideStart)) guideStart else p.start
                     val visibleStop = if (p.stop.isAfter(guideEnd)) guideEnd else p.stop
@@ -1792,6 +1889,16 @@ private fun GuideRow(
                             .width(3.dp)
                             .fillMaxHeight()
                             .background(PinkSoft)
+                    )
+                    Text(
+                        "NOW",
+                        color = PinkSoft,
+                        fontSize = 9.sp,
+                        fontWeight = FontWeight.Black,
+                        modifier = Modifier.offset(
+                            x = ((nowMinutes * pixelsPerMinute) + 5f).dp,
+                            y = 2.dp
+                        )
                     )
                 }
             }
