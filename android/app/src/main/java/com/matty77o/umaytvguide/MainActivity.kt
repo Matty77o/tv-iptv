@@ -47,6 +47,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import org.json.JSONArray
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserFactory
 import java.io.BufferedInputStream
@@ -65,38 +66,34 @@ import androidx.core.content.ContextCompat
 private const val GUIDE_URL =
     "https://raw.githubusercontent.com/Matty77o/tv-iptv/main/guide.xml"
 
+private const val CHANNEL_CONFIG_URL =
+    "https://raw.githubusercontent.com/Matty77o/tv-iptv/main/channels.json"
+
 private const val PREFS_NAME = "umay_tv_guide"
 private const val PREF_FAVOURITES = "favourite_show_titles"
 
-private val KidsIds = setOf(
-    "BabyFirst",
-    "CBeebies",
-    "Moonbug Kids",
-    "Baby Shark TV",
-    "Super Simple Songs",
-    "TRT Çocuk",
-    "Minika Çocuk",
+data class ChannelConfig(
+    val id: String,
+    val group: String,
+    val order: Int,
+    val name: String? = null,
+    val icon: String? = null,
+    val hidden: Boolean = false,
 )
 
-private val TurkishIds = setOf(
-    "Star TV",
-    "NOW",
-    "ATV",
-    "Show TV",
-)
-
-private val PreferredOrder = listOf(
-    "BabyFirst",
-    "CBeebies",
-    "Moonbug Kids",
-    "Baby Shark TV",
-    "Super Simple Songs",
-    "TRT Çocuk",
-    "Minika Çocuk",
-    "Star TV",
-    "NOW",
-    "ATV",
-    "Show TV",
+private val DefaultChannelConfig = listOf(
+    ChannelConfig("BabyFirst", "Kids", 10),
+    ChannelConfig("CBeebies", "Kids", 20),
+    ChannelConfig("PBS KIDS", "Kids", 30),
+    ChannelConfig("Moonbug Kids", "Kids", 40),
+    ChannelConfig("Baby Shark TV", "Kids", 50),
+    ChannelConfig("Super Simple Songs", "Kids", 60),
+    ChannelConfig("TRT Çocuk", "Kids", 70),
+    ChannelConfig("Minika Çocuk", "Kids", 80),
+    ChannelConfig("Star TV", "Turkish TV", 100),
+    ChannelConfig("NOW", "Turkish TV", 110),
+    ChannelConfig("ATV", "Turkish TV", 120),
+    ChannelConfig("Show TV", "Turkish TV", 130),
 )
 
 data class TvChannel(
@@ -215,6 +212,7 @@ fun GuideScreen(
     onReminderConsumed: () -> Unit = {},
 ) {
     var guide by remember { mutableStateOf<GuideData?>(null) }
+    var channelConfig by remember { mutableStateOf(DefaultChannelConfig) }
     var error by remember { mutableStateOf<String?>(null) }
     var loading by remember { mutableStateOf(true) }
     var refreshToken by remember { mutableIntStateOf(0) }
@@ -234,6 +232,15 @@ fun GuideScreen(
         error = null
         try {
             guide = withContext(Dispatchers.IO) { XmlTvRepository.load(GUIDE_URL) }
+
+            channelConfig = withContext(Dispatchers.IO) {
+                try {
+                    ChannelConfigRepository.load(CHANNEL_CONFIG_URL)
+                } catch (_: Throwable) {
+                    DefaultChannelConfig
+                }
+            }
+
             lastUpdated = LocalTime.now()
         } catch (t: Throwable) {
             error = t.message ?: t.javaClass.simpleName
@@ -346,6 +353,7 @@ fun GuideScreen(
                 guide != null -> {
                     GuideContent(
                         guide = guide!!,
+                        channelConfig = channelConfig,
                         selectedDay = selectedDay,
                         onSelectedDay = { selectedDay = it },
                         filter = filter,
@@ -478,6 +486,7 @@ private fun ErrorView(message: String, retry: () -> Unit) {
 @Composable
 private fun GuideContent(
     guide: GuideData,
+    channelConfig: List<ChannelConfig>,
     selectedDay: LocalDate,
     onSelectedDay: (LocalDate) -> Unit,
     filter: GuideFilter,
@@ -490,31 +499,36 @@ private fun GuideContent(
         DayPicker(selectedDay, onSelectedDay)
         FilterPicker(filter, onFilter)
 
-        val channels = remember(guide, filter, selectedDay, favouriteShows) {
-            // Keep CBeebies visible even if the current XMLTV source does not
-            // include a <channel> entry for it. If programmes with channelId
-            // "CBeebies" are present, they will attach to this row normally.
+        val channels = remember(
+            guide,
+            channelConfig,
+            filter,
+            selectedDay,
+            favouriteShows
+        ) {
+            val configById = channelConfig.associateBy { it.id }
+
+            // Every channel present in guide.xml appears automatically.
+            // channels.json is only used for group/order/name/icon overrides.
             val availableChannels = guide.channels
-                .associateBy { it.id }
-                .toMutableMap()
-                .apply {
-                    putIfAbsent(
-                        "CBeebies",
-                        TvChannel(
-                            id = "CBeebies",
-                            name = "CBeebies",
-                            icon = null
-                        )
+                .map { channel ->
+                    val config = configById[channel.id]
+                    channel.copy(
+                        name = config?.name?.takeIf { it.isNotBlank() } ?: channel.name,
+                        icon = config?.icon?.takeIf { it.isNotBlank() } ?: channel.icon,
                     )
                 }
-                .values
-                .toList()
+                .filterNot { channel ->
+                    configById[channel.id]?.hidden == true
+                }
 
             val filtered = availableChannels.filter { channel ->
+                val group = configById[channel.id]?.group.orEmpty()
+
                 when (filter) {
                     GuideFilter.ALL -> true
-                    GuideFilter.KIDS -> channel.id in KidsIds
-                    GuideFilter.TURKISH -> channel.id in TurkishIds
+                    GuideFilter.KIDS -> group.equals("Kids", ignoreCase = true)
+                    GuideFilter.TURKISH -> group.equals("Turkish TV", ignoreCase = true)
                     GuideFilter.FAVOURITES -> guide.programmes.any { programme ->
                         programme.channelId == channel.id &&
                             programme.start.toLocalDate() == selectedDay &&
@@ -523,10 +537,11 @@ private fun GuideContent(
                 }
             }
 
-            filtered.sortedBy {
-                val index = PreferredOrder.indexOf(it.id)
-                if (index == -1) Int.MAX_VALUE else index
-            }
+            filtered.sortedWith(
+                compareBy<TvChannel> {
+                    configById[it.id]?.order ?: Int.MAX_VALUE
+                }.thenBy { it.name.lowercase(Locale.UK) }
+            )
         }
 
         if (channels.isEmpty()) {
@@ -911,6 +926,7 @@ private fun LogoFallback(channelName: String) {
     val initials = when (channelName) {
         "BabyFirst" -> "BF"
         "CBeebies" -> "CB"
+        "PBS KIDS" -> "PBS"
         "Moonbug Kids" -> "MK"
         "Baby Shark TV" -> "BS"
         "Super Simple Songs" -> "SS"
@@ -1386,6 +1402,45 @@ private fun ProgrammeSheet(
                     )
                 }
             }
+        }
+    }
+}
+
+object ChannelConfigRepository {
+    fun load(url: String): List<ChannelConfig> {
+        val connection = URL(url).openConnection() as HttpURLConnection
+        connection.connectTimeout = 10_000
+        connection.readTimeout = 15_000
+        connection.setRequestProperty("User-Agent", "UmayTVGuide/1.3")
+        connection.instanceFollowRedirects = true
+
+        try {
+            val json = connection.inputStream
+                .bufferedReader(Charsets.UTF_8)
+                .use { it.readText() }
+
+            val array = JSONArray(json)
+            val result = mutableListOf<ChannelConfig>()
+
+            for (index in 0 until array.length()) {
+                val item = array.getJSONObject(index)
+                val id = item.optString("id").trim()
+
+                if (id.isBlank()) continue
+
+                result += ChannelConfig(
+                    id = id,
+                    group = item.optString("group", "").trim(),
+                    order = item.optInt("order", Int.MAX_VALUE),
+                    name = item.optString("name", "").trim().takeIf { it.isNotBlank() },
+                    icon = item.optString("icon", "").trim().takeIf { it.isNotBlank() },
+                    hidden = item.optBoolean("hidden", false),
+                )
+            }
+
+            return result.ifEmpty { DefaultChannelConfig }
+        } finally {
+            connection.disconnect()
         }
     }
 }

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "BabyFirst",
+    "group": "Kids",
+    "order": 10
+  },
+  {
+    "id": "CBeebies",
+    "group": "Kids",
+    "order": 20
+  },
+  {
+    "id": "PBS KIDS",
+    "group": "Kids",
+    "order": 30
+  },
+  {
+    "id": "Moonbug Kids",
+    "group": "Kids",
+    "order": 40
+  },
+  {
+    "id": "Baby Shark TV",
+    "group": "Kids",
+    "order": 50
+  },
+  {
+    "id": "Super Simple Songs",
+    "group": "Kids",
+    "order": 60
+  },
+  {
+    "id": "TRT Çocuk",
+    "group": "Kids",
+    "order": 70
+  },
+  {
+    "id": "Minika Çocuk",
+    "group": "Kids",
+    "order": 80
+  },
+  {
+    "id": "Star TV",
+    "group": "Turkish TV",
+    "order": 100
+  },
+  {
+    "id": "NOW",
+    "group": "Turkish TV",
+    "order": 110
+  },
+  {
+    "id": "ATV",
+    "group": "Turkish TV",
+    "order": 120
+  },
+  {
+    "id": "Show TV",
+    "group": "Turkish TV",
+    "order": 130
+  }
+]
