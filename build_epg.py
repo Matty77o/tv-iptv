@@ -18,6 +18,7 @@ CHANNELS = {
     # Extra Kids
     "MOONBUG.KIDS.TV.tr": "Moonbug Kids",
     "plex.tv.BABY.SHARK.TV.plex": "Baby Shark TV",
+    "PBS.Kids.Stream.us2": "PBS KIDS",
 
     # Turkish / Kids
     "TRT.ÇOCUK.HD.tr": "TRT Çocuk",
@@ -149,6 +150,7 @@ for channel in sorted(added_channels):
 wanted_output = {
     "BabyFirst",
     "CBeebies",
+    "PBS KIDS",
     "TRT Çocuk",
     "Minika Çocuk",
     "Star TV",
