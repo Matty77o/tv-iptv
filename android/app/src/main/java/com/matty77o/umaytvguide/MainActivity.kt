@@ -349,13 +349,33 @@ private fun GuideContent(
         FilterPicker(filter, onFilter)
 
         val channels = remember(guide, filter) {
-            val filtered = guide.channels.filter { channel ->
+            // Keep CBeebies visible even if the current XMLTV source does not
+            // include a <channel> entry for it. If programmes with channelId
+            // "CBeebies" are present, they will attach to this row normally.
+            val availableChannels = guide.channels
+                .associateBy { it.id }
+                .toMutableMap()
+                .apply {
+                    putIfAbsent(
+                        "CBeebies",
+                        TvChannel(
+                            id = "CBeebies",
+                            name = "CBeebies",
+                            icon = null
+                        )
+                    )
+                }
+                .values
+                .toList()
+
+            val filtered = availableChannels.filter { channel ->
                 when (filter) {
                     GuideFilter.ALL -> true
                     GuideFilter.KIDS -> channel.id in KidsIds
                     GuideFilter.TURKISH -> channel.id in TurkishIds
                 }
             }
+
             filtered.sortedBy {
                 val index = PreferredOrder.indexOf(it.id)
                 if (index == -1) Int.MAX_VALUE else index
