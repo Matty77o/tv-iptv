@@ -44,6 +44,9 @@ import java.time.format.DateTimeFormatter
 import java.util.Locale
 import java.util.zip.GZIPInputStream
 import kotlin.math.max
+import coil.compose.SubcomposeAsyncImage
+import coil.compose.SubcomposeAsyncImageContent
+import coil.compose.AsyncImagePainter
 
 private const val GUIDE_URL =
     "https://raw.githubusercontent.com/Matty77o/tv-iptv/main/guide.xml"
@@ -59,8 +62,6 @@ private val KidsIds = setOf(
 )
 
 private val TurkishIds = setOf(
-    "TRT Çocuk",
-    "Minika Çocuk",
     "Star TV",
     "NOW",
     "ATV",
@@ -446,7 +447,7 @@ private fun FilterPicker(filter: GuideFilter, onFilter: (GuideFilter) -> Unit) {
     Spacer(Modifier.height(4.dp))
 }
 
-private val ChannelWidth = 122.dp
+private val ChannelWidth = 150.dp
 private val HalfHourWidth = 126.dp
 private const val WindowHours = 6L
 
@@ -626,6 +627,7 @@ private fun GuideRow(
 
 @Composable
 private fun ChannelCell(channel: TvChannel) {
+
     Row(
         modifier = Modifier
             .width(ChannelWidth)
@@ -633,37 +635,114 @@ private fun ChannelCell(channel: TvChannel) {
             .padding(horizontal = 10.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Surface(
-            shape = RoundedCornerShape(10.dp),
-            color = Color.White,
-            modifier = Modifier.size(42.dp)
+
+        Box(
+            modifier = Modifier
+                .size(50.dp)
+                .clip(RoundedCornerShape(13.dp))
+                .background(Color(0xFF171D30))
+                .border(
+                    1.dp,
+                    Color(0xFF252C40),
+                    RoundedCornerShape(13.dp)
+                ),
+            contentAlignment = Alignment.Center
         ) {
+
             if (!channel.icon.isNullOrBlank()) {
-                AsyncImage(
+
+                SubcomposeAsyncImage(
                     model = channel.icon,
                     contentDescription = channel.name,
                     contentScale = ContentScale.Fit,
-                    modifier = Modifier.padding(3.dp)
-                )
-            } else {
-                Box(contentAlignment = Alignment.Center) {
-                    Text(
-                        channel.name.take(1),
-                        color = Color(0xFF202335),
-                        fontWeight = FontWeight.Black
-                    )
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(5.dp)
+                ) {
+
+                    when (painter.state) {
+
+                        is AsyncImagePainter.State.Success -> {
+                            SubcomposeAsyncImageContent()
+                        }
+
+                        is AsyncImagePainter.State.Loading -> {
+                            CircularProgressIndicator(
+                                modifier = Modifier.size(18.dp),
+                                strokeWidth = 2.dp,
+                                color = Pink
+                            )
+                        }
+
+                        else -> {
+                            LogoFallback(channel.name)
+                        }
+                    }
                 }
+
+            } else {
+                LogoFallback(channel.name)
             }
         }
-        Spacer(Modifier.width(8.dp))
+
+        Spacer(Modifier.width(10.dp))
+
         Text(
-            channel.name,
+            text = channel.name,
             color = TextPrimary,
-            fontSize = 12.sp,
-            lineHeight = 14.sp,
+            fontSize = 13.sp,
+            lineHeight = 15.sp,
             fontWeight = FontWeight.SemiBold,
             maxLines = 2,
             overflow = TextOverflow.Ellipsis
+        )
+    }
+}
+
+@Composable
+private fun LogoFallback(channelName: String) {
+
+    val initials = when (channelName) {
+        "BabyFirst" -> "BF"
+        "CBeebies" -> "CB"
+        "Moonbug Kids" -> "MK"
+        "Baby Shark TV" -> "BS"
+        "Super Simple Songs" -> "SS"
+        "TRT Çocuk" -> "TRT"
+        "Minika Çocuk" -> "M"
+        "Star TV" -> "★"
+        "NOW" -> "NOW"
+        "ATV" -> "atv"
+        "Show TV" -> "SHOW"
+        else -> channelName
+            .split(" ")
+            .take(2)
+            .mapNotNull { it.firstOrNull()?.toString() }
+            .joinToString("")
+    }
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(
+                Brush.linearGradient(
+                    listOf(
+                        Color(0xFF252B43),
+                        Color(0xFF161B2C)
+                    )
+                )
+            ),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = initials,
+            color = PinkSoft,
+            fontWeight = FontWeight.Black,
+            fontSize = when {
+                initials.length >= 4 -> 9.sp
+                initials.length == 3 -> 11.sp
+                else -> 14.sp
+            }
         )
     }
 }
