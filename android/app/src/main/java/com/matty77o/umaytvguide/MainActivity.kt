@@ -684,14 +684,39 @@ private fun HomeView(
 
     LazyColumn(
         Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(14.dp, 8.dp, 14.dp, 30.dp),
-        verticalArrangement = Arrangement.spacedBy(18.dp)
+        contentPadding = PaddingValues(16.dp, 10.dp, 16.dp, 34.dp),
+        verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
+        item {
+            Card(
+                colors = CardDefaults.cardColors(containerColor = Panel2),
+                elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
+                shape = RoundedCornerShape(28.dp),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Column(Modifier.padding(horizontal = 18.dp, vertical = 16.dp)) {
+                    Text(
+                        "Umay TV Guide",
+                        style = MaterialTheme.typography.headlineSmall,
+                        fontWeight = FontWeight.Bold,
+                        color = TextPrimary
+                    )
+                    Text(
+                        "Now, next and everything worth remembering.",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = TextSecondary,
+                        modifier = Modifier.padding(top = 4.dp)
+                    )
+                }
+            }
+        }
         if (forUsToday.isNotEmpty()) {
             item {
                 SectionHeader("For us today") { onOpenGuide("All") }
                 Card(
                     colors = CardDefaults.cardColors(containerColor = Panel2),
+                    elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+                    shape = RoundedCornerShape(22.dp),
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Column(Modifier.padding(horizontal = 14.dp, vertical = 8.dp)) {
@@ -713,7 +738,8 @@ private fun HomeView(
                                     Text(
                                         programme.title,
                                         color = TextPrimary,
-                                        style = MaterialTheme.typography.bodyMedium,
+                                        style = MaterialTheme.typography.titleSmall,
+                                        fontWeight = FontWeight.SemiBold,
                                         maxLines = 1,
                                         overflow = TextOverflow.Ellipsis
                                     )
@@ -728,7 +754,7 @@ private fun HomeView(
                                 }
                             }
                             if (index != forUsToday.lastIndex) {
-                                HorizontalDivider(color = TextSecondary.copy(alpha = 0.22f))
+                                HorizontalDivider(color = TextSecondary.copy(alpha = 0.16f))
                             }
                         }
                     }
@@ -741,10 +767,12 @@ private fun HomeView(
             if (onNow.isEmpty()) {
                 Card(
                     colors = CardDefaults.cardColors(containerColor = Panel2),
+                    elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+                    shape = RoundedCornerShape(22.dp),
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
-                        "No programmes are currently listed as live.",
+                        "Nothing is live in the guide right now.",
                         color = TextSecondary,
                         modifier = Modifier.padding(16.dp)
                     )
@@ -994,9 +1022,12 @@ private fun DynamicGuideContent(
             Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(horizontal = 14.dp),
             horizontalArrangement = Arrangement.spacedBy(6.dp)
         ) {
-            AssistChip(onClick = { onSelectedDay(LocalDate.now()); jumpTarget = GuideJumpTarget.NOW }, label = { Text("NOW") })
-            AssistChip(onClick = { onSelectedDay(LocalDate.now()); jumpTarget = GuideJumpTarget.TONIGHT }, label = { Text("Tonight") })
-            AssistChip(onClick = { onSelectedDay(LocalDate.now().plusDays(1)); jumpTarget = GuideJumpTarget.TOMORROW }, label = { Text("Tomorrow") })
+            AssistChip(
+                shape = RoundedCornerShape(22.dp),onClick = { onSelectedDay(LocalDate.now()); jumpTarget = GuideJumpTarget.NOW }, label = { Text("NOW") })
+            AssistChip(
+                shape = RoundedCornerShape(22.dp),onClick = { onSelectedDay(LocalDate.now()); jumpTarget = GuideJumpTarget.TONIGHT }, label = { Text("Tonight") })
+            AssistChip(
+                shape = RoundedCornerShape(22.dp),onClick = { onSelectedDay(LocalDate.now().plusDays(1)); jumpTarget = GuideJumpTarget.TOMORROW }, label = { Text("Tomorrow") })
         }
         LazyRow(
             modifier = Modifier.fillMaxWidth().padding(horizontal = 14.dp, vertical = 4.dp),
@@ -1154,7 +1185,8 @@ private fun ProgrammeListRow(
             Spacer(Modifier.width(10.dp))
             Column(Modifier.weight(1f)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(programme.title, fontWeight = FontWeight.Bold, modifier = Modifier.weight(1f), maxLines = 2)
+                    Text(programme.title,
+                modifier = Modifier.padding(top = 4.dp), fontWeight = FontWeight.Bold, modifier = Modifier.weight(1f), maxLines = 2)
                     if (favourite) Text("♥", color = PinkSoft)
                 }
                 Text(channel?.name ?: programme.channelId, color = PinkSoft, fontSize = 12.sp)
@@ -1357,7 +1389,7 @@ private fun ProgrammeSheetV2(
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         item {
-            Box(Modifier.fillMaxWidth().height(190.dp).clip(RoundedCornerShape(18.dp)).background(Panel2)) {
+            Box(Modifier.fillMaxWidth().height(190.dp).clip(RoundedCornerShape(22.dp)).background(Panel2)) {
                 val image = programme.icon ?: channel?.icon
                 if (!image.isNullOrBlank()) {
                     AsyncImage(image, programme.title, Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
@@ -1372,7 +1404,8 @@ private fun ProgrammeSheetV2(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(programme.title, fontSize = 28.sp, lineHeight = 31.sp, fontWeight = FontWeight.Black, modifier = Modifier.weight(1f))
                 if (programme.isNew) {
-                    AssistChip(onClick = {}, label = { Text("NEW") })
+                    AssistChip(
+                shape = RoundedCornerShape(22.dp),onClick = {}, label = { Text("NEW") })
                 }
             }
             programme.subtitle?.takeIf { it.isNotBlank() }?.let {
@@ -1656,6 +1689,7 @@ private fun FilterPicker(filter: GuideFilter, onFilter: (GuideFilter) -> Unit) {
         GuideFilter.entries.forEach { item ->
             val selected = item == filter
             AssistChip(
+                shape = RoundedCornerShape(22.dp),
                 onClick = { onFilter(item) },
                 label = { Text(item.label) },
                 colors = AssistChipDefaults.assistChipColors(
@@ -1853,7 +1887,7 @@ private fun GuideRow(
                         contentAlignment = Alignment.CenterStart
                     ) {
                         Text(
-                            "No listings available",
+                            "No listings available yet",
                             color = TextSecondary,
                             fontSize = 12.sp
                         )
@@ -2527,7 +2561,7 @@ private fun ProgrammeSheet(
         Spacer(Modifier.height(20.dp))
         Surface(
             color = Panel2,
-            shape = RoundedCornerShape(16.dp)
+            shape = RoundedCornerShape(22.dp)
         ) {
             Row(
                 Modifier.fillMaxWidth().padding(14.dp),
