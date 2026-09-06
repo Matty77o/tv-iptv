@@ -473,6 +473,7 @@ fun GuideScreen(
                                 prefs.edit().putString(PREF_DEFAULT_SECTION, it.name).apply()
                             },
                             channelConfig = channelConfig,
+                            guide = currentGuide,
                             lastUpdated = lastUpdated,
                             use24HourForLabel = use24Hour,
                         )
