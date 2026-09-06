@@ -774,6 +774,29 @@ private fun LogoFallback(channelName: String) {
     }
 }
 
+
+private fun englishCategory(category: String): String {
+    return when (category.trim().lowercase()) {
+        "film", "sinema", "movie" -> "Movie"
+        "dizi", "series" -> "Series"
+        "haber", "haberler", "news" -> "News"
+        "çocuk", "cocuk", "kids", "children" -> "Kids"
+        "spor", "sports" -> "Sports"
+        "eğlence", "eglence", "entertainment" -> "Entertainment"
+        "belgesel", "documentary" -> "Documentary"
+        "müzik", "muzik", "music" -> "Music"
+        "yarışma", "yarisma", "game show" -> "Game Show"
+        "magazin" -> "Entertainment"
+        "yaşam", "yasam", "lifestyle" -> "Lifestyle"
+        "animasyon", "animation" -> "Animation"
+        "aile", "family" -> "Family"
+        "eğitim", "egitim", "education" -> "Education"
+        else -> category.replaceFirstChar {
+            if (it.isLowerCase()) it.titlecase() else it.toString()
+        }
+    }
+}
+
 @Composable
 private fun ProgrammeCard(
     programme: Programme,
@@ -849,18 +872,47 @@ private fun ProgrammeSheet(
             .padding(bottom = 34.dp)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Surface(
-                modifier = Modifier.size(52.dp),
-                shape = RoundedCornerShape(14.dp),
-                color = Color.White
+            Box(
+                modifier = Modifier
+                    .size(52.dp)
+                    .clip(RoundedCornerShape(14.dp))
+                    .background(Panel2)
+                    .border(
+                        1.dp,
+                        Color(0xFF252C40),
+                        RoundedCornerShape(14.dp)
+                    ),
+                contentAlignment = Alignment.Center
             ) {
                 if (!channel?.icon.isNullOrBlank()) {
-                    AsyncImage(
+                    SubcomposeAsyncImage(
                         model = channel?.icon,
-                        contentDescription = null,
+                        contentDescription = channel?.name,
                         contentScale = ContentScale.Fit,
-                        modifier = Modifier.padding(4.dp)
-                    )
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(5.dp)
+                    ) {
+                        when (painter.state) {
+                            is AsyncImagePainter.State.Success -> {
+                                SubcomposeAsyncImageContent()
+                            }
+
+                            is AsyncImagePainter.State.Loading -> {
+                                CircularProgressIndicator(
+                                    modifier = Modifier.size(16.dp),
+                                    strokeWidth = 2.dp,
+                                    color = Pink
+                                )
+                            }
+
+                            else -> {
+                                LogoFallback(channel?.name ?: programme.channelId)
+                            }
+                        }
+                    }
+                } else {
+                    LogoFallback(channel?.name ?: programme.channelId)
                 }
             }
             Spacer(Modifier.width(12.dp))
@@ -891,7 +943,7 @@ private fun ProgrammeSheet(
             Spacer(Modifier.height(10.dp))
             SuggestionChip(
                 onClick = {},
-                label = { Text(it) },
+                label = { Text(englishCategory(it)) },
                 colors = SuggestionChipDefaults.suggestionChipColors(
                     containerColor = Pink.copy(alpha = .12f),
                     labelColor = PinkSoft
@@ -924,7 +976,11 @@ private fun ProgrammeSheet(
             Text(it, color = Color(0xFFD6D7E0), lineHeight = 22.sp)
         } ?: run {
             Spacer(Modifier.height(20.dp))
-            Text("No programme description supplied by the guide.", color = TextSecondary)
+            Text(
+                "No description available for this programme.",
+                color = TextSecondary,
+                lineHeight = 22.sp
+            )
         }
 
         Spacer(Modifier.height(20.dp))
