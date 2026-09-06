@@ -704,8 +704,8 @@ private fun HomeView(
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 Text(
-                                    formatTime(programme.start, use24Hour),
-                                    color = Accent,
+                                    formatTime(programme.start.toLocalTime(), use24Hour),
+                                    color = Pink,
                                     style = MaterialTheme.typography.labelLarge,
                                     modifier = Modifier.width(58.dp)
                                 )
@@ -728,7 +728,7 @@ private fun HomeView(
                                 }
                             }
                             if (index != forUsToday.lastIndex) {
-                                HorizontalDivider(color = Border)
+                                HorizontalDivider(color = TextSecondary.copy(alpha = 0.22f))
                             }
                         }
                     }
