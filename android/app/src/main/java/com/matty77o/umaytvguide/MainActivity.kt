@@ -615,12 +615,31 @@ private fun HomeView(
 
     // Home is deliberately kept as a quick dashboard. Full channel/category
     // browsing lives in Guide so the same information is not repeated twice.
+    // Some XMLTV feeds can contain the same programme more than once.
+    // De-duplicate before rendering Home so one broadcast only gets one card.
     val onNow = guide.programmes
         .filter { !now.isBefore(it.start) && now.isBefore(it.stop) }
-        .sortedBy { programme -> channels.indexOfFirst { it.id == programme.channelId }.let { if (it < 0) Int.MAX_VALUE else it } }
+        .distinctBy {
+            Triple(
+                it.channelId.trim().lowercase(Locale.ROOT),
+                normaliseShowTitle(it.title),
+                it.start.toInstant(),
+            )
+        }
+        .sortedBy { programme ->
+            channels.indexOfFirst { it.id == programme.channelId }
+                .let { if (it < 0) Int.MAX_VALUE else it }
+        }
 
     val startingSoon = guide.programmes
         .filter { it.start.isAfter(now) && !it.start.isAfter(now.plusMinutes(30)) }
+        .distinctBy {
+            Triple(
+                it.channelId.trim().lowercase(Locale.ROOT),
+                normaliseShowTitle(it.title),
+                it.start.toInstant(),
+            )
+        }
         .sortedBy { it.start }
         .take(10)
 
