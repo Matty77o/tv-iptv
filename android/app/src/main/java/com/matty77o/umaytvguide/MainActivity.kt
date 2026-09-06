@@ -211,7 +211,7 @@ class MainActivity : ComponentActivity() {
             intent.getLongExtra(ProgrammeReminderReceiver.EXTRA_START_EPOCH, -1L)
 
         return ReminderOpenRequest(
-            title = title,
+            title = cleanedTitle,
             channelId = channelId,
             startEpochMillis = startEpochMillis,
         )
@@ -687,29 +687,6 @@ private fun HomeView(
         contentPadding = PaddingValues(16.dp, 10.dp, 16.dp, 34.dp),
         verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
-        item {
-            Card(
-                colors = CardDefaults.cardColors(containerColor = Panel2),
-                elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
-                shape = RoundedCornerShape(28.dp),
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Column(Modifier.padding(horizontal = 18.dp, vertical = 16.dp)) {
-                    Text(
-                        "Umay TV Guide",
-                        style = MaterialTheme.typography.headlineSmall,
-                        fontWeight = FontWeight.Bold,
-                        color = TextPrimary
-                    )
-                    Text(
-                        "Now, next and everything worth remembering.",
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = TextSecondary,
-                        modifier = Modifier.padding(top = 4.dp)
-                    )
-                }
-            }
-        }
         if (forUsToday.isNotEmpty()) {
             item {
                 SectionHeader("For us today") { onOpenGuide("All") }
@@ -1712,7 +1689,7 @@ private fun FilterPicker(filter: GuideFilter, onFilter: (GuideFilter) -> Unit) {
     Spacer(Modifier.height(4.dp))
 }
 
-private val ChannelWidth = 118.dp
+private val ChannelWidth = 132.dp
 private val HalfHourWidth = 132.dp
 private const val WindowHours = 6L
 
@@ -1930,16 +1907,6 @@ private fun GuideRow(
                             .fillMaxHeight()
                             .background(PinkSoft)
                     )
-                    Text(
-                        "NOW",
-                        color = PinkSoft,
-                        fontSize = 9.sp,
-                        fontWeight = FontWeight.Black,
-                        modifier = Modifier.offset(
-                            x = ((nowMinutes * pixelsPerMinute) + 5f).dp,
-                            y = 2.dp
-                        )
-                    )
                 }
             }
         }
@@ -1959,7 +1926,7 @@ private fun ChannelCell(channel: TvChannel) {
 
         Box(
             modifier = Modifier
-                .size(50.dp)
+                .size(46.dp)
                 .clip(RoundedCornerShape(13.dp))
                 .background(Color(0xFF171D30))
                 .border(
@@ -2011,8 +1978,8 @@ private fun ChannelCell(channel: TvChannel) {
         Text(
             text = channel.name,
             color = TextPrimary,
-            fontSize = 13.sp,
-            lineHeight = 15.sp,
+            fontSize = 12.sp,
+            lineHeight = 14.sp,
             fontWeight = FontWeight.SemiBold,
             maxLines = 2,
             overflow = TextOverflow.Ellipsis
@@ -2820,7 +2787,18 @@ object XmlTvParser {
                         val start = pStart
                         val stop = pStop
                         val title = pTitle
-                        if (ch != null && start != null && stop != null && !title.isNullOrBlank()) {
+                        val cleanedTitle = title?.trim()
+                        val placeholderTitle = cleanedTitle?.lowercase(Locale.ROOT)?.let { normalised ->
+                            normalised.contains("programmes start at") ||
+                                normalised.contains("programs start at") ||
+                                normalised.contains("programming starts at") ||
+                                normalised == "no programme information" ||
+                                normalised == "no program information"
+                        } ?: false
+
+                        if (ch != null && start != null && stop != null &&
+                            !cleanedTitle.isNullOrBlank() && !placeholderTitle
+                        ) {
                             programmes += Programme(
                                 channelId = ch,
                                 start = start.withZoneSameInstant(ZoneId.systemDefault()),
