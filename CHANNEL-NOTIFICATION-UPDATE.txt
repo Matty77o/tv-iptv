@@ -1,0 +1,12 @@
+Umay TV Guide — channel-logo notification update
+
+Added:
+- Favourite-show notifications use the channel logo from guide.xml as the large notification icon.
+- If the logo cannot be downloaded, the notification still appears normally.
+- Android's required small/status-bar icon remains the app icon.
+- Tapping a favourite-show notification opens Umay TV Guide directly to that programme's detail sheet.
+- Works whether the app was closed or already open.
+- Reminder metadata now includes channel ID, channel logo URL and exact programme start time.
+- Existing 10-minutes-before and programme-start notifications remain.
+- JVM Java/Kotlin target fixed to 17 in app/build.gradle.kts.
+- Version bumped to 1.1 (versionCode 2).

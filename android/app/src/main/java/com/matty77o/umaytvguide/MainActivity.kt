@@ -119,6 +119,12 @@ data class GuideData(
     val programmes: List<Programme>,
 )
 
+data class ReminderOpenRequest(
+    val title: String,
+    val channelId: String,
+    val startEpochMillis: Long,
+)
+
 enum class GuideFilter(val label: String) {
     ALL("All"),
     KIDS("Kids"),
@@ -127,15 +133,46 @@ enum class GuideFilter(val label: String) {
 }
 
 class MainActivity : ComponentActivity() {
+    private val reminderOpenRequest = mutableStateOf<ReminderOpenRequest?>(null)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        reminderOpenRequest.value = reminderRequestFromIntent(intent)
+
         setContent {
             UmayTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
-                    GuideScreen()
+                    GuideScreen(
+                        reminderOpenRequest = reminderOpenRequest.value,
+                        onReminderConsumed = { reminderOpenRequest.value = null },
+                    )
                 }
             }
         }
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        reminderOpenRequest.value = reminderRequestFromIntent(intent)
+    }
+
+    private fun reminderRequestFromIntent(intent: Intent?): ReminderOpenRequest? {
+        intent ?: return null
+        if (!intent.getBooleanExtra(ProgrammeReminderReceiver.EXTRA_OPEN_PROGRAMME, false)) {
+            return null
+        }
+
+        val title = intent.getStringExtra(ProgrammeReminderReceiver.EXTRA_TITLE) ?: return null
+        val channelId = intent.getStringExtra(ProgrammeReminderReceiver.EXTRA_CHANNEL).orEmpty()
+        val startEpochMillis =
+            intent.getLongExtra(ProgrammeReminderReceiver.EXTRA_START_EPOCH, -1L)
+
+        return ReminderOpenRequest(
+            title = title,
+            channelId = channelId,
+            startEpochMillis = startEpochMillis,
+        )
     }
 }
 
@@ -173,7 +210,10 @@ fun UmayTheme(content: @Composable () -> Unit) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun GuideScreen() {
+fun GuideScreen(
+    reminderOpenRequest: ReminderOpenRequest? = null,
+    onReminderConsumed: () -> Unit = {},
+) {
     var guide by remember { mutableStateOf<GuideData?>(null) }
     var error by remember { mutableStateOf<String?>(null) }
     var loading by remember { mutableStateOf(true) }
@@ -208,7 +248,38 @@ fun GuideScreen() {
             context = context,
             favouriteTitles = favouriteShows,
             programmes = currentGuide.programmes,
+            channels = currentGuide.channels,
         )
+    }
+
+    LaunchedEffect(guide, reminderOpenRequest) {
+        val currentGuide = guide ?: return@LaunchedEffect
+        val request = reminderOpenRequest ?: return@LaunchedEffect
+
+        val match = currentGuide.programmes
+            .asSequence()
+            .filter { sameShowTitle(it.title, request.title) }
+            .filter {
+                request.channelId.isBlank() ||
+                    it.channelId == request.channelId
+            }
+            .minByOrNull { programme ->
+                if (request.startEpochMillis > 0L) {
+                    kotlin.math.abs(
+                        programme.start.toInstant().toEpochMilli() -
+                            request.startEpochMillis
+                    )
+                } else {
+                    0L
+                }
+            }
+
+        if (match != null) {
+            selectedDay = match.start.toLocalDate()
+            selectedProgramme = match
+        }
+
+        onReminderConsumed()
     }
 
     Scaffold(
@@ -338,6 +409,7 @@ fun GuideScreen() {
                             context = context,
                             title = title,
                             programmes = guide?.programmes.orEmpty(),
+                            channels = guide?.channels.orEmpty(),
                         )
                     } else {
                         ProgrammeReminderScheduler.cancelForTitle(
@@ -908,9 +980,10 @@ object ProgrammeReminderScheduler {
         context: Context,
         favouriteTitles: Set<String>,
         programmes: List<Programme>,
+        channels: List<TvChannel>,
     ) {
         favouriteTitles.forEach { title ->
-            scheduleForTitle(context, title, programmes)
+            scheduleForTitle(context, title, programmes, channels)
         }
     }
 
@@ -918,23 +991,30 @@ object ProgrammeReminderScheduler {
         context: Context,
         title: String,
         programmes: List<Programme>,
+        channels: List<TvChannel>,
     ) {
         val now = System.currentTimeMillis()
         programmes
             .filter { sameShowTitle(it.title, title) }
             .filter { it.start.toInstant().toEpochMilli() > now }
             .forEach { programme ->
+                val channelIconUrl = channels
+                    .firstOrNull { it.id == programme.channelId }
+                    ?.icon
+
                 scheduleAlarm(
                     context = context,
                     programme = programme,
                     triggerAtMillis = programme.start.toInstant().toEpochMilli() - TEN_MINUTES_MS,
                     kind = ProgrammeReminderReceiver.KIND_SOON,
+                    channelIconUrl = channelIconUrl,
                 )
                 scheduleAlarm(
                     context = context,
                     programme = programme,
                     triggerAtMillis = programme.start.toInstant().toEpochMilli(),
                     kind = ProgrammeReminderReceiver.KIND_NOW,
+                    channelIconUrl = channelIconUrl,
                 )
             }
     }
@@ -957,11 +1037,17 @@ object ProgrammeReminderScheduler {
         programme: Programme,
         triggerAtMillis: Long,
         kind: String,
+        channelIconUrl: String?,
     ) {
         if (triggerAtMillis <= System.currentTimeMillis()) return
 
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val pendingIntent = reminderPendingIntent(context, programme, kind)
+        val pendingIntent = reminderPendingIntent(
+            context = context,
+            programme = programme,
+            kind = kind,
+            channelIconUrl = channelIconUrl,
+        )
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S &&
             !alarmManager.canScheduleExactAlarms()
@@ -982,21 +1068,34 @@ object ProgrammeReminderScheduler {
 
     private fun cancelAlarm(context: Context, programme: Programme, kind: String) {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        alarmManager.cancel(reminderPendingIntent(context, programme, kind))
+        alarmManager.cancel(
+            reminderPendingIntent(
+                context = context,
+                programme = programme,
+                kind = kind,
+                channelIconUrl = null,
+            )
+        )
     }
 
     private fun reminderPendingIntent(
         context: Context,
         programme: Programme,
         kind: String,
+        channelIconUrl: String?,
     ): PendingIntent {
         val intent = Intent(context, ProgrammeReminderReceiver::class.java).apply {
             putExtra(ProgrammeReminderReceiver.EXTRA_TITLE, programme.title)
             putExtra(ProgrammeReminderReceiver.EXTRA_CHANNEL, programme.channelId)
             putExtra(ProgrammeReminderReceiver.EXTRA_KIND, kind)
+            putExtra(ProgrammeReminderReceiver.EXTRA_CHANNEL_ICON_URL, channelIconUrl)
             putExtra(
                 ProgrammeReminderReceiver.EXTRA_START_TIME,
                 programme.start.format(DateTimeFormatter.ofPattern("HH:mm"))
+            )
+            putExtra(
+                ProgrammeReminderReceiver.EXTRA_START_EPOCH,
+                programme.start.toInstant().toEpochMilli()
             )
         }
 
