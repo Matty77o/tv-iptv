@@ -8,6 +8,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -472,6 +473,32 @@ private fun TvGrid(
     val guideEnd = guideStart.plusHours(WindowHours)
     val scroll = rememberScrollState()
     val pixelsPerMinute = HalfHourWidth.value / 30f
+    val configuration = LocalConfiguration.current
+
+LaunchedEffect(selectedDay, guideStart) {
+    if (selectedDay == now.toLocalDate()) {
+
+        val minutesFromStart =
+            Duration.between(guideStart, now).toMinutes()
+
+        val nowPosition =
+            minutesFromStart * pixelsPerMinute
+
+        // Width of the actual programme area, excluding channel names
+        val visibleGuideWidth =
+            configuration.screenWidthDp - ChannelWidth.value
+
+        // Put NOW roughly in the middle of the visible programme grid
+        val centreOffset =
+            visibleGuideWidth / 2f
+
+        scroll.scrollTo(
+            (nowPosition - centreOffset)
+                .toInt()
+                .coerceAtLeast(0)
+        )
+    }
+}
     val totalWidth = HalfHourWidth * (WindowHours.toInt() * 2)
 
     Column(Modifier.fillMaxSize()) {
