@@ -1185,8 +1185,14 @@ private fun ProgrammeListRow(
             Spacer(Modifier.width(10.dp))
             Column(Modifier.weight(1f)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(programme.title,
-                modifier = Modifier.padding(top = 4.dp), fontWeight = FontWeight.Bold, modifier = Modifier.weight(1f), maxLines = 2)
+                    Text(
+                        programme.title,
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(top = 4.dp),
+                        fontWeight = FontWeight.Bold,
+                        maxLines = 2
+                    )
                     if (favourite) Text("♥", color = PinkSoft)
                 }
                 Text(channel?.name ?: programme.channelId, color = PinkSoft, fontSize = 12.sp)
