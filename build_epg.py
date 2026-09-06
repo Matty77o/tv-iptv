@@ -1,102 +1,45 @@
 import gzip
 import urllib.request
 import xml.etree.ElementTree as ET
-from datetime import datetime, timezone
 
-SOURCES = [
-    "https://epgshare01.online/epgshare01/epg_ripper_UK1.xml.gz",
-    "https://epgshare01.online/epgshare01/epg_ripper_TR1.xml.gz",
-]
-
-# Exact output IDs we want TiviMate to see.
-WANTED = {
-    "BabyFirst": [
-        "babyfirst",
-        "baby first",
-    ],
-    "CBeebies": [
-        "cbeebies",
-        "cbeebies hd",
-    ],
-    "TRT Çocuk": [
-        "trt çocuk",
-        "trt cocuk",
-        "trt çocuk hd",
-        "trt cocuk hd",
-    ],
-    "Minika Çocuk": [
-        "minika çocuk",
-        "minika cocuk",
-        "minika çocuk hd",
-        "minika cocuk hd",
-    ],
-    "Star TV": [
-        "star tv",
-        "star tv hd",
-        "star",
-    ],
-    "NOW": [
-        "now",
-        "now tv",
-        "now hd",
-        "fox",
-        "fox hd",
-    ],
-    "ATV": [
-        "atv",
-        "atv hd",
-    ],
-    "Show TV": [
-        "show tv",
-        "show tv hd",
-        "show",
-    ],
+SOURCES = {
+    "uk": "https://epgshare01.online/epgshare01/epg_ripper_UK1.xml.gz",
+    "tr": "https://epgshare01.online/epgshare01/epg_ripper_TR3.xml.gz",
+    "us": "https://epgshare01.online/epgshare01/epg_ripper_US2.xml.gz",
 }
 
+# Exact source EPG IDs -> the IDs you want TiviMate to use
+CHANNELS = {
+    # English / Kids
+    "CBeebies.uk": "CBeebies",
+    "BabyFirst.TV.us2": "BabyFirst",
 
-def normalise(text):
-    if not text:
-        return ""
+    # Turkish / Kids
+    "TRT.ÇOCUK.HD.tr": "TRT Çocuk",
+    "TRT.ÇOCUK.tr": "TRT Çocuk",
+    "MİNİKA.ÇOCUK.tr": "Minika Çocuk",
 
-    return (
-        text.lower()
-        .strip()
-        .replace("İ", "i")
-        .replace("I", "i")
-        .replace("ş", "s")
-        .replace("Ş", "s")
-        .replace("ç", "c")
-        .replace("Ç", "c")
-        .replace("ğ", "g")
-        .replace("Ğ", "g")
-        .replace("ü", "u")
-        .replace("Ü", "u")
-        .replace("ö", "o")
-        .replace("Ö", "o")
-    )
-
-
-NORMALISED_WANTED = {
-    output_name: [normalise(alias) for alias in aliases]
-    for output_name, aliases in WANTED.items()
+    # Turkish TV
+    "STAR.TV.HD.tr": "Star TV",
+    "STAR.TV.tr": "Star TV",
+    "NOW.tr": "NOW",
+    "ATV.HD.tr": "ATV",
+    "ATV.tr": "ATV",
+    "SHOW.TV.HD.tr": "Show TV",
+    "SHOW.TV.tr": "Show TV",
 }
-
 
 def download(url):
-    print(f"Downloading {url}")
+    print(f"Downloading: {url}")
 
     req = urllib.request.Request(
         url,
-        headers={
-            "User-Agent": "Mozilla/5.0",
-            "Accept-Encoding": "gzip",
-        },
+        headers={"User-Agent": "Mozilla/5.0"}
     )
 
     with urllib.request.urlopen(req, timeout=120) as response:
         data = response.read()
 
-    # EPGShare files are gzip-compressed.
     try:
         data = gzip.decompress(data)
     except gzip.BadGzipFile:
@@ -105,170 +48,114 @@ def download(url):
     return ET.fromstring(data)
 
 
-def find_match(channel):
-    names = []
-
-    channel_id = channel.get("id")
-    if channel_id:
-        names.append(channel_id)
-
-    for display_name in channel.findall("display-name"):
-        if display_name.text:
-            names.append(display_name.text)
-
-    normalised_names = [normalise(name) for name in names]
-
-    # First try exact matches.
-    for output_name, aliases in NORMALISED_WANTED.items():
-        for name in normalised_names:
-            if name in aliases:
-                return output_name
-
-    # Then slightly looser matches for HD/etc suffixes.
-    for output_name, aliases in NORMALISED_WANTED.items():
-        for name in normalised_names:
-            for alias in aliases:
-                if name.startswith(alias + " "):
-                    return output_name
-
-    return None
-
-
-def programme_is_current(programme):
-    """
-    Keep programmes that have not already finished.
-    Also prevents old/stale guide entries from surviving.
-    """
-    stop = programme.get("stop")
-
-    if not stop:
-        return True
-
-    # XMLTV date normally looks like:
-    # 20260906143000 +0100
-    try:
-        dt = datetime.strptime(stop[:14], "%Y%m%d%H%M%S")
-        dt = dt.replace(tzinfo=timezone.utc)
-
-        # Allow some recently-finished programmes so the guide
-        # doesn't look empty around the current programme boundary.
-        now = datetime.now(timezone.utc)
-
-        return dt >= now
-    except Exception:
-        return True
-
-
 output = ET.Element(
     "tv",
-    {
-        "generator-info-name": "Matty77o Custom EPG",
-    },
+    {"generator-info-name": "Matty77o Custom EPG"}
 )
 
-channel_mapping = {}
 added_channels = set()
+matched_source_ids = set()
+programme_count = 0
 
-for source in SOURCES:
+
+for source_name, source_url in SOURCES.items():
     try:
-        root = download(source)
+        root = download(source_url)
     except Exception as e:
-        print(f"FAILED to download {source}: {e}")
+        print(f"FAILED {source_name}: {e}")
         continue
 
-    print(f"Loaded source with {len(root.findall('channel'))} channels")
+    print(f"{source_name}: {len(root.findall('channel'))} channels loaded")
 
-    source_mapping = {}
-
-    # Find wanted channels.
+    # Add channel definitions
     for channel in root.findall("channel"):
-        old_id = channel.get("id")
-        matched_name = find_match(channel)
+        source_id = channel.get("id")
 
-        if not old_id or not matched_name:
+        if source_id not in CHANNELS:
             continue
 
-        source_mapping[old_id] = matched_name
-        channel_mapping[old_id] = matched_name
+        output_id = CHANNELS[source_id]
+        matched_source_ids.add(source_id)
 
-        if matched_name not in added_channels:
-            new_channel = ET.Element(
-                "channel",
-                {"id": matched_name},
+        if output_id in added_channels:
+            continue
+
+        new_channel = ET.Element(
+            "channel",
+            {"id": output_id}
+        )
+
+        display = ET.SubElement(new_channel, "display-name")
+        display.text = output_id
+
+        icon = channel.find("icon")
+        if icon is not None and icon.get("src"):
+            ET.SubElement(
+                new_channel,
+                "icon",
+                {"src": icon.get("src")}
             )
 
-            display = ET.SubElement(new_channel, "display-name")
-            display.text = matched_name
+        output.append(new_channel)
+        added_channels.add(output_id)
 
-            icon = channel.find("icon")
-            if icon is not None:
-                icon_src = icon.get("src")
+        print(f"MATCHED CHANNEL: {source_id} -> {output_id}")
 
-                if icon_src:
-                    ET.SubElement(
-                        new_channel,
-                        "icon",
-                        {"src": icon_src},
-                    )
-
-            output.append(new_channel)
-            added_channels.add(matched_name)
-
-            print(f"MATCHED: {matched_name} <- {old_id}")
-
-    # Add programmes for channels found in THIS source.
-    programme_count = 0
-
+    # Add programmes
     for programme in root.findall("programme"):
-        old_channel = programme.get("channel")
+        source_id = programme.get("channel")
 
-        if old_channel not in source_mapping:
+        if source_id not in CHANNELS:
             continue
 
-        if not programme_is_current(programme):
-            continue
+        output_id = CHANNELS[source_id]
 
         new_programme = ET.Element(
             "programme",
-            dict(programme.attrib),
+            dict(programme.attrib)
         )
 
-        new_programme.set(
-            "channel",
-            source_mapping[old_channel],
-        )
+        new_programme.set("channel", output_id)
 
-        # Copy all title/desc/category/etc.
         for child in programme:
             new_programme.append(child)
 
         output.append(new_programme)
         programme_count += 1
 
-    print(f"Added {programme_count} programmes from {source}")
-
 
 ET.indent(output, space="  ")
 
-tree = ET.ElementTree(output)
-
-tree.write(
+ET.ElementTree(output).write(
     "guide.xml",
     encoding="utf-8",
-    xml_declaration=True,
+    xml_declaration=True
 )
 
 print()
 print("Generated guide.xml")
-print("Channels found:")
+print(f"Programmes added: {programme_count}")
 
+print()
+print("Channels generated:")
 for channel in sorted(added_channels):
     print(f" - {channel}")
 
-missing = set(WANTED.keys()) - added_channels
+wanted_output = {
+    "BabyFirst",
+    "CBeebies",
+    "TRT Çocuk",
+    "Minika Çocuk",
+    "Star TV",
+    "NOW",
+    "ATV",
+    "Show TV",
+}
+
+missing = wanted_output - added_channels
 
 if missing:
     print()
-    print("WARNING - no EPG source found for:")
+    print("MISSING:")
     for channel in sorted(missing):
         print(f" - {channel}")
