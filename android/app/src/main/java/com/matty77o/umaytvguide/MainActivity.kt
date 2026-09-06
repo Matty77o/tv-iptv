@@ -612,14 +612,18 @@ private fun HomeView(
     use24Hour: Boolean,
 ) {
     val now = ZonedDateTime.now()
-    val configById = channelConfig.associateBy { it.id }
-    val nowItems = channels.mapNotNull { ch ->
-        val current = guide.programmes.firstOrNull {
-            it.channelId == ch.id && !now.isBefore(it.start) && now.isBefore(it.stop)
-        }
-        val next = guide.programmes.filter { it.channelId == ch.id && it.start.isAfter(now) }.minByOrNull { it.start }
-        if (current != null || next != null) Triple(ch, current, next) else null
-    }
+
+    // Home is deliberately kept as a quick dashboard. Full channel/category
+    // browsing lives in Guide so the same information is not repeated twice.
+    val onNow = guide.programmes
+        .filter { !now.isBefore(it.start) && now.isBefore(it.stop) }
+        .sortedBy { programme -> channels.indexOfFirst { it.id == programme.channelId }.let { if (it < 0) Int.MAX_VALUE else it } }
+
+    val startingSoon = guide.programmes
+        .filter { it.start.isAfter(now) && !it.start.isAfter(now.plusMinutes(30)) }
+        .sortedBy { it.start }
+        .take(10)
+
     val favouriteUpcoming = guide.programmes
         .filter { it.start.isAfter(now) && favouriteShows.any { fav -> sameShowTitle(fav, it.title) } }
         .sortedBy { it.start }
@@ -628,22 +632,24 @@ private fun HomeView(
     LazyColumn(
         Modifier.fillMaxSize(),
         contentPadding = PaddingValues(14.dp, 8.dp, 14.dp, 30.dp),
-        verticalArrangement = Arrangement.spacedBy(14.dp)
+        verticalArrangement = Arrangement.spacedBy(18.dp)
     ) {
         item {
-            Text("On now", fontSize = 24.sp, fontWeight = FontWeight.Black)
-            Text("A quick look across all your channels", color = TextSecondary)
-        }
-
-        val startingSoon = guide.programmes
-            .filter { it.start.isAfter(now) && !it.start.isAfter(now.plusMinutes(30)) }
-            .sortedBy { it.start }
-            .take(12)
-        if (startingSoon.isNotEmpty()) {
-            item {
-                SectionHeader("Starting soon") { }
+            SectionHeader("On now") { onOpenGuide("All") }
+            if (onNow.isEmpty()) {
+                Card(
+                    colors = CardDefaults.cardColors(containerColor = Panel2),
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(
+                        "No programmes are currently listed as live.",
+                        color = TextSecondary,
+                        modifier = Modifier.padding(16.dp)
+                    )
+                }
+            } else {
                 LazyRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                    items(startingSoon) { p ->
+                    items(onNow) { p ->
                         ProgrammePosterCard(
                             programme = p,
                             channel = channels.firstOrNull { it.id == p.channelId },
@@ -655,23 +661,36 @@ private fun HomeView(
             }
         }
 
-        val tonightStart = now.toLocalDate().atTime(18, 0).atZone(now.zone)
-        val tonightEnd = now.toLocalDate().plusDays(1).atStartOfDay(now.zone)
-        val tonight = guide.programmes
-            .filter { it.start >= tonightStart && it.start < tonightEnd }
-            .sortedBy { it.start }
-            .take(40)
-        if (tonight.isNotEmpty()) {
+        if (startingSoon.isNotEmpty()) {
             item {
-                SectionHeader("Tonight") { onOpenGuide("All") }
-                LazyRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                    items(tonight.take(12)) { p ->
-                        ProgrammePosterCard(
-                            programme = p,
-                            channel = channels.firstOrNull { it.id == p.channelId },
-                            use24Hour = use24Hour,
-                            onClick = { onProgramme(p) }
-                        )
+                SectionHeader("Starting soon") { onOpenGuide("All") }
+                Card(colors = CardDefaults.cardColors(containerColor = Panel2)) {
+                    Column {
+                        startingSoon.take(5).forEachIndexed { index, p ->
+                            val channel = channels.firstOrNull { it.id == p.channelId }
+                            Row(
+                                Modifier
+                                    .fillMaxWidth()
+                                    .clickable { onProgramme(p) }
+                                    .padding(horizontal = 14.dp, vertical = 11.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Text(
+                                    formatTime(p.start.toLocalTime(), use24Hour),
+                                    color = PinkSoft,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier.width(58.dp)
+                                )
+                                Column(Modifier.weight(1f)) {
+                                    Text(p.title, fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                                    Text(channel?.name ?: p.channelId, color = TextSecondary, fontSize = 12.sp)
+                                }
+                                Icon(Icons.Rounded.KeyboardArrowRight, contentDescription = null, tint = TextSecondary)
+                            }
+                            if (index < minOf(4, startingSoon.lastIndex)) {
+                                HorizontalDivider(color = TextSecondary.copy(alpha = 0.12f))
+                            }
+                        }
                     }
                 }
             }
@@ -703,36 +722,8 @@ private fun HomeView(
                 }
             }
         }
-
-        val groups = channelConfig.map { it.group }.filter { it.isNotBlank() }.distinct()
-        groups.forEach { group ->
-            val groupItems = nowItems.filter { (ch, _, _) -> configById[ch.id]?.group == group }
-            if (groupItems.isNotEmpty()) {
-                item {
-                    SectionHeader(group) { onOpenGuide(group) }
-                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        groupItems.forEach { (ch, current, next) ->
-                            NowNextRow(ch, current, next, use24Hour, onChannel, onProgramme)
-                        }
-                    }
-                }
-            }
-        }
-
-        val ungrouped = nowItems.filter { (ch, _, _) -> configById[ch.id]?.group.isNullOrBlank() }
-        if (ungrouped.isNotEmpty()) {
-            item {
-                SectionHeader("Other channels") { onOpenGuide("All") }
-                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    ungrouped.forEach { (ch, current, next) ->
-                        NowNextRow(ch, current, next, use24Hour, onChannel, onProgramme)
-                    }
-                }
-            }
-        }
     }
 }
-
 @Composable
 private fun SectionHeader(title: String, onSeeAll: () -> Unit) {
     Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
