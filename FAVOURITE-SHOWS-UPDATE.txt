@@ -1,0 +1,23 @@
+Umay TV Guide — Favourite Shows update
+
+Added:
+- Favourite Shows filter
+- Add/remove a show as a favourite from the programme popup
+- Favourites are saved on the phone
+- Favourite programmes show a small heart in the guide
+- Notification 10 minutes before each matching programme
+- Notification when the programme starts
+- Tapping the notification opens Umay TV Guide
+- CBeebies fallback row retained
+- Existing dark popup logo fix, English category labels and description fallback retained
+
+Android 13+:
+The app asks for notification permission the first time a show is added as a favourite.
+
+Exact timing:
+The app uses exact alarms when Android allows them and falls back to an idle-safe alarm otherwise.
+
+Files changed:
+android/app/src/main/java/com/matty77o/umaytvguide/MainActivity.kt
+android/app/src/main/java/com/matty77o/umaytvguide/ProgrammeReminderReceiver.kt
+android/app/src/main/AndroidManifest.xml

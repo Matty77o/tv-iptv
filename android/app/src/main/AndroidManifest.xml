@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
 
     <application
         android:allowBackup="true"
@@ -11,6 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UmayTVGuide"
         android:usesCleartextTraffic="true">
+
+        <receiver
+            android:name=".ProgrammeReminderReceiver"
+            android:exported="false" />
 
         <activity
             android:name=".MainActivity"

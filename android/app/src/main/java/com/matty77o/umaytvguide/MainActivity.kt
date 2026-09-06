@@ -1,14 +1,24 @@
 package com.matty77o.umaytvguide
 
+import android.Manifest
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -18,6 +28,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.CalendarMonth
 import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.Refresh
+import androidx.compose.material.icons.rounded.Favorite
+import androidx.compose.material.icons.rounded.FavoriteBorder
 import androidx.compose.material.icons.rounded.Schedule
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -48,9 +60,13 @@ import kotlin.math.max
 import coil.compose.SubcomposeAsyncImage
 import coil.compose.SubcomposeAsyncImageContent
 import coil.compose.AsyncImagePainter
+import androidx.core.content.ContextCompat
 
 private const val GUIDE_URL =
     "https://raw.githubusercontent.com/Matty77o/tv-iptv/main/guide.xml"
+
+private const val PREFS_NAME = "umay_tv_guide"
+private const val PREF_FAVOURITES = "favourite_show_titles"
 
 private val KidsIds = setOf(
     "BabyFirst",
@@ -106,7 +122,8 @@ data class GuideData(
 enum class GuideFilter(val label: String) {
     ALL("All"),
     KIDS("Kids"),
-    TURKISH("Turkish TV")
+    TURKISH("Turkish TV"),
+    FAVOURITES("Favourite Shows")
 }
 
 class MainActivity : ComponentActivity() {
@@ -165,6 +182,12 @@ fun GuideScreen() {
     var filter by remember { mutableStateOf(GuideFilter.ALL) }
     var selectedProgramme by remember { mutableStateOf<Programme?>(null) }
     var lastUpdated by remember { mutableStateOf<LocalTime?>(null) }
+    val context = LocalContext.current
+    var favouriteShows by remember { mutableStateOf(loadFavouriteShows(context)) }
+
+    val notificationPermissionLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestPermission()
+    ) { }
 
     LaunchedEffect(refreshToken) {
         loading = true
@@ -177,6 +200,15 @@ fun GuideScreen() {
         } finally {
             loading = false
         }
+    }
+
+    LaunchedEffect(guide, favouriteShows) {
+        val currentGuide = guide ?: return@LaunchedEffect
+        ProgrammeReminderScheduler.scheduleAll(
+            context = context,
+            favouriteTitles = favouriteShows,
+            programmes = currentGuide.programmes,
+        )
     }
 
     Scaffold(
@@ -248,6 +280,7 @@ fun GuideScreen() {
                         filter = filter,
                         onFilter = { filter = it },
                         selectedProgramme = selectedProgramme,
+                        favouriteShows = favouriteShows,
                         onProgramme = { selectedProgramme = it },
                     )
 
@@ -275,9 +308,45 @@ fun GuideScreen() {
                 BottomSheetDefaults.DragHandle(color = Color(0xFF656A7A))
             }
         ) {
+            val isFavourite = favouriteShows.any { sameShowTitle(it, programme.title) }
             ProgrammeSheet(
                 programme = programme,
                 channel = guide?.channels?.firstOrNull { it.id == programme.channelId },
+                isFavourite = isFavourite,
+                onToggleFavourite = {
+                    val title = programme.title.trim()
+                    val updated = if (isFavourite) {
+                        favouriteShows.filterNot { sameShowTitle(it, title) }.toSet()
+                    } else {
+                        favouriteShows + title
+                    }
+
+                    favouriteShows = updated
+                    saveFavouriteShows(context, updated)
+
+                    if (!isFavourite) {
+                        if (Build.VERSION.SDK_INT >= 33 &&
+                            ContextCompat.checkSelfPermission(
+                                context,
+                                Manifest.permission.POST_NOTIFICATIONS
+                            ) != PackageManager.PERMISSION_GRANTED
+                        ) {
+                            notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                        }
+
+                        ProgrammeReminderScheduler.scheduleForTitle(
+                            context = context,
+                            title = title,
+                            programmes = guide?.programmes.orEmpty(),
+                        )
+                    } else {
+                        ProgrammeReminderScheduler.cancelForTitle(
+                            context = context,
+                            title = title,
+                            programmes = guide?.programmes.orEmpty(),
+                        )
+                    }
+                },
                 onClose = { selectedProgramme = null }
             )
         }
@@ -342,13 +411,14 @@ private fun GuideContent(
     filter: GuideFilter,
     onFilter: (GuideFilter) -> Unit,
     selectedProgramme: Programme?,
+    favouriteShows: Set<String>,
     onProgramme: (Programme) -> Unit,
 ) {
     Column(Modifier.fillMaxSize()) {
         DayPicker(selectedDay, onSelectedDay)
         FilterPicker(filter, onFilter)
 
-        val channels = remember(guide, filter) {
+        val channels = remember(guide, filter, selectedDay, favouriteShows) {
             // Keep CBeebies visible even if the current XMLTV source does not
             // include a <channel> entry for it. If programmes with channelId
             // "CBeebies" are present, they will attach to this row normally.
@@ -373,6 +443,11 @@ private fun GuideContent(
                     GuideFilter.ALL -> true
                     GuideFilter.KIDS -> channel.id in KidsIds
                     GuideFilter.TURKISH -> channel.id in TurkishIds
+                    GuideFilter.FAVOURITES -> guide.programmes.any { programme ->
+                        programme.channelId == channel.id &&
+                            programme.start.toLocalDate() == selectedDay &&
+                            favouriteShows.any { sameShowTitle(it, programme.title) }
+                    }
                 }
             }
 
@@ -384,13 +459,20 @@ private fun GuideContent(
 
         if (channels.isEmpty()) {
             Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                Text("No channels in this section", color = TextSecondary)
+                Text(
+                    if (filter == GuideFilter.FAVOURITES)
+                        "No favourite shows scheduled for this day"
+                    else
+                        "No channels in this section",
+                    color = TextSecondary
+                )
             }
         } else {
             TvGrid(
                 channels = channels,
                 programmes = guide.programmes,
                 selectedDay = selectedDay,
+                favouriteShows = favouriteShows,
                 onProgramme = onProgramme,
             )
         }
@@ -446,6 +528,7 @@ private fun FilterPicker(filter: GuideFilter, onFilter: (GuideFilter) -> Unit) {
     Row(
         Modifier
             .fillMaxWidth()
+            .horizontalScroll(rememberScrollState())
             .padding(horizontal = 14.dp, vertical = 4.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
@@ -477,6 +560,7 @@ private fun TvGrid(
     channels: List<TvChannel>,
     programmes: List<Programme>,
     selectedDay: LocalDate,
+    favouriteShows: Set<String>,
     onProgramme: (Programme) -> Unit,
 ) {
     val zone = ZoneId.systemDefault()
@@ -545,6 +629,7 @@ LaunchedEffect(selectedDay, guideStart) {
                     pixelsPerMinute = pixelsPerMinute,
                     scroll = scroll,
                     now = now,
+                    favouriteShows = favouriteShows,
                     onProgramme = onProgramme,
                 )
                 HorizontalDivider(
@@ -616,6 +701,7 @@ private fun GuideRow(
     pixelsPerMinute: Float,
     scroll: androidx.compose.foundation.ScrollState,
     now: ZonedDateTime,
+    favouriteShows: Set<String>,
     onProgramme: (Programme) -> Unit,
 ) {
     Row(
@@ -647,6 +733,7 @@ private fun GuideRow(
 
                     ProgrammeCard(
                         programme = p,
+                        isFavourite = favouriteShows.any { sameShowTitle(it, p.title) },
                         modifier = Modifier
                             .offset(x = x, y = 7.dp)
                             .width(width - 3.dp)
@@ -795,6 +882,139 @@ private fun LogoFallback(channelName: String) {
 }
 
 
+private fun normaliseShowTitle(title: String): String =
+    title.trim().lowercase(Locale.ROOT)
+
+private fun sameShowTitle(a: String, b: String): Boolean =
+    normaliseShowTitle(a) == normaliseShowTitle(b)
+
+private fun loadFavouriteShows(context: Context): Set<String> =
+    context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        .getStringSet(PREF_FAVOURITES, emptySet())
+        ?.toSet()
+        .orEmpty()
+
+private fun saveFavouriteShows(context: Context, favourites: Set<String>) {
+    context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        .edit()
+        .putStringSet(PREF_FAVOURITES, favourites)
+        .apply()
+}
+
+object ProgrammeReminderScheduler {
+    private const val TEN_MINUTES_MS = 10 * 60 * 1000L
+
+    fun scheduleAll(
+        context: Context,
+        favouriteTitles: Set<String>,
+        programmes: List<Programme>,
+    ) {
+        favouriteTitles.forEach { title ->
+            scheduleForTitle(context, title, programmes)
+        }
+    }
+
+    fun scheduleForTitle(
+        context: Context,
+        title: String,
+        programmes: List<Programme>,
+    ) {
+        val now = System.currentTimeMillis()
+        programmes
+            .filter { sameShowTitle(it.title, title) }
+            .filter { it.start.toInstant().toEpochMilli() > now }
+            .forEach { programme ->
+                scheduleAlarm(
+                    context = context,
+                    programme = programme,
+                    triggerAtMillis = programme.start.toInstant().toEpochMilli() - TEN_MINUTES_MS,
+                    kind = ProgrammeReminderReceiver.KIND_SOON,
+                )
+                scheduleAlarm(
+                    context = context,
+                    programme = programme,
+                    triggerAtMillis = programme.start.toInstant().toEpochMilli(),
+                    kind = ProgrammeReminderReceiver.KIND_NOW,
+                )
+            }
+    }
+
+    fun cancelForTitle(
+        context: Context,
+        title: String,
+        programmes: List<Programme>,
+    ) {
+        programmes
+            .filter { sameShowTitle(it.title, title) }
+            .forEach { programme ->
+                cancelAlarm(context, programme, ProgrammeReminderReceiver.KIND_SOON)
+                cancelAlarm(context, programme, ProgrammeReminderReceiver.KIND_NOW)
+            }
+    }
+
+    private fun scheduleAlarm(
+        context: Context,
+        programme: Programme,
+        triggerAtMillis: Long,
+        kind: String,
+    ) {
+        if (triggerAtMillis <= System.currentTimeMillis()) return
+
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val pendingIntent = reminderPendingIntent(context, programme, kind)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S &&
+            !alarmManager.canScheduleExactAlarms()
+        ) {
+            alarmManager.setAndAllowWhileIdle(
+                AlarmManager.RTC_WAKEUP,
+                triggerAtMillis,
+                pendingIntent
+            )
+        } else {
+            alarmManager.setExactAndAllowWhileIdle(
+                AlarmManager.RTC_WAKEUP,
+                triggerAtMillis,
+                pendingIntent
+            )
+        }
+    }
+
+    private fun cancelAlarm(context: Context, programme: Programme, kind: String) {
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager.cancel(reminderPendingIntent(context, programme, kind))
+    }
+
+    private fun reminderPendingIntent(
+        context: Context,
+        programme: Programme,
+        kind: String,
+    ): PendingIntent {
+        val intent = Intent(context, ProgrammeReminderReceiver::class.java).apply {
+            putExtra(ProgrammeReminderReceiver.EXTRA_TITLE, programme.title)
+            putExtra(ProgrammeReminderReceiver.EXTRA_CHANNEL, programme.channelId)
+            putExtra(ProgrammeReminderReceiver.EXTRA_KIND, kind)
+            putExtra(
+                ProgrammeReminderReceiver.EXTRA_START_TIME,
+                programme.start.format(DateTimeFormatter.ofPattern("HH:mm"))
+            )
+        }
+
+        val requestCode = (
+            normaliseShowTitle(programme.title) +
+                "|" + programme.start.toInstant().toEpochMilli() +
+                "|" + kind
+            ).hashCode()
+
+        return PendingIntent.getBroadcast(
+            context,
+            requestCode,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+    }
+}
+
 private fun englishCategory(category: String): String {
     return when (category.trim().lowercase()) {
         "film", "sinema", "movie" -> "Movie"
@@ -820,6 +1040,7 @@ private fun englishCategory(category: String): String {
 @Composable
 private fun ProgrammeCard(
     programme: Programme,
+    isFavourite: Boolean,
     modifier: Modifier,
     onClick: () -> Unit,
 ) {
@@ -871,6 +1092,16 @@ private fun ProgrammeCard(
                 )
             }
         }
+
+        if (isFavourite) {
+            Text(
+                "♥",
+                color = PinkSoft,
+                fontSize = 11.sp,
+                fontWeight = FontWeight.Black,
+                modifier = Modifier.align(Alignment.TopEnd)
+            )
+        }
     }
 }
 
@@ -878,6 +1109,8 @@ private fun ProgrammeCard(
 private fun ProgrammeSheet(
     programme: Programme,
     channel: TvChannel?,
+    isFavourite: Boolean,
+    onToggleFavourite: () -> Unit,
     onClose: () -> Unit,
 ) {
     val now = ZonedDateTime.now()
@@ -958,6 +1191,32 @@ private fun ProgrammeSheet(
             fontWeight = FontWeight.Black,
             color = TextPrimary
         )
+
+        Spacer(Modifier.height(12.dp))
+        FilledTonalButton(
+            onClick = onToggleFavourite,
+            colors = ButtonDefaults.filledTonalButtonColors(
+                containerColor = if (isFavourite) Pink.copy(alpha = .20f) else Panel2,
+                contentColor = if (isFavourite) PinkSoft else TextPrimary,
+            )
+        ) {
+            Icon(
+                if (isFavourite) Icons.Rounded.Favorite else Icons.Rounded.FavoriteBorder,
+                contentDescription = null,
+                modifier = Modifier.size(18.dp)
+            )
+            Spacer(Modifier.width(8.dp))
+            Text(if (isFavourite) "Favourite show" else "Add to favourite shows")
+        }
+
+        if (isFavourite) {
+            Spacer(Modifier.height(6.dp))
+            Text(
+                "Alerts are set for 10 minutes before and when the show starts.",
+                color = TextSecondary,
+                fontSize = 11.sp
+            )
+        }
 
         programme.category?.takeIf { it.isNotBlank() }?.let {
             Spacer(Modifier.height(10.dp))
