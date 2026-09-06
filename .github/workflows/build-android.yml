@@ -29,6 +29,10 @@ jobs:
         with:
           gradle-version: "8.10.2"
 
+      - name: Compile Kotlin with full errors
+        working-directory: android
+        run: gradle :app:compileDebugKotlin --info --console=plain
+
       - name: Build debug APK
         working-directory: android
         run: gradle :app:assembleDebug --stacktrace --console=plain
@@ -37,5 +41,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Umay-TV-Guide-APK
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          path: android/app/build/outputs/apk/debug/UmayTVGuide.apk
           if-no-files-found: error
