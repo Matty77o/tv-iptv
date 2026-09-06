@@ -8,6 +8,9 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -131,6 +134,11 @@ data class Programme(
     val description: String?,
     val category: String?,
     val icon: String? = null,
+    val subtitle: String? = null,
+    val episodeNumber: String? = null,
+    val originalDate: String? = null,
+    val rating: String? = null,
+    val isNew: Boolean = false,
 )
 
 data class GuideData(
@@ -167,6 +175,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         reminderOpenRequest.value = reminderRequestFromIntent(intent)
 
         setContent {
@@ -625,6 +634,48 @@ private fun HomeView(
             Text("A quick look across all your channels", color = TextSecondary)
         }
 
+        val startingSoon = guide.programmes
+            .filter { it.start.isAfter(now) && !it.start.isAfter(now.plusMinutes(30)) }
+            .sortedBy { it.start }
+            .take(12)
+        if (startingSoon.isNotEmpty()) {
+            item {
+                SectionHeader("Starting soon") { }
+                LazyRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                    items(startingSoon) { p ->
+                        ProgrammePosterCard(
+                            programme = p,
+                            channel = channels.firstOrNull { it.id == p.channelId },
+                            use24Hour = use24Hour,
+                            onClick = { onProgramme(p) }
+                        )
+                    }
+                }
+            }
+        }
+
+        val tonightStart = now.toLocalDate().atTime(18, 0).atZone(now.zone)
+        val tonightEnd = now.toLocalDate().plusDays(1).atStartOfDay(now.zone)
+        val tonight = guide.programmes
+            .filter { it.start >= tonightStart && it.start < tonightEnd }
+            .sortedBy { it.start }
+            .take(40)
+        if (tonight.isNotEmpty()) {
+            item {
+                SectionHeader("Tonight") { onOpenGuide("All") }
+                LazyRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                    items(tonight.take(12)) { p ->
+                        ProgrammePosterCard(
+                            programme = p,
+                            channel = channels.firstOrNull { it.id == p.channelId },
+                            use24Hour = use24Hour,
+                            onClick = { onProgramme(p) }
+                        )
+                    }
+                }
+            }
+        }
+
         if (favouriteUpcoming.isNotEmpty()) {
             item {
                 SectionHeader("Coming up in favourites") { }
@@ -816,6 +867,14 @@ private fun DynamicGuideContent(
 
     Column(Modifier.fillMaxSize()) {
         DayPicker(selectedDay, onSelectedDay)
+        Row(
+            Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(horizontal = 14.dp),
+            horizontalArrangement = Arrangement.spacedBy(6.dp)
+        ) {
+            AssistChip(onClick = { onSelectedDay(LocalDate.now()) }, label = { Text("NOW") })
+            AssistChip(onClick = { onSelectedDay(LocalDate.now()) }, label = { Text("Tonight") })
+            AssistChip(onClick = { onSelectedDay(LocalDate.now().plusDays(1)) }, label = { Text("Tomorrow") })
+        }
         LazyRow(
             modifier = Modifier.fillMaxWidth().padding(horizontal = 14.dp, vertical = 4.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -916,6 +975,31 @@ private fun FavouritesView(
                 }
             }
         }
+        val weekly = upcoming
+            .filter { it.start.toLocalDate() <= LocalDate.now().plusDays(6) }
+            .groupBy { it.start.toLocalDate() }
+        if (weekly.isNotEmpty()) {
+            item {
+                Text("This week", fontWeight = FontWeight.Bold, color = PinkSoft)
+                Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
+                    weekly.entries.sortedBy { it.key }.forEach { (day, shows) ->
+                        Text(
+                            day.format(DateTimeFormatter.ofPattern("EEEE d MMM", Locale.UK)),
+                            fontWeight = FontWeight.SemiBold,
+                            fontSize = 13.sp
+                        )
+                        shows.take(5).forEach { p ->
+                            Text(
+                                "${formatTime(p.start.toLocalTime(), use24Hour)}  ${p.title}",
+                                color = TextSecondary,
+                                fontSize = 12.sp
+                            )
+                        }
+                    }
+                }
+            }
+        }
+
         if (upcoming.isEmpty()) {
             item { Text("Favourite a programme and its future airings will appear here.", color = TextSecondary) }
         } else {
@@ -951,6 +1035,10 @@ private fun ProgrammeListRow(
                     if (favourite) Text("♥", color = PinkSoft)
                 }
                 Text(channel?.name ?: programme.channelId, color = PinkSoft, fontSize = 12.sp)
+                val meta = programmeMeta(programme)
+                if (meta.isNotBlank()) {
+                    Text(meta, color = Lavender, fontSize = 11.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                }
                 Text(
                     "${programme.start.format(DateTimeFormatter.ofPattern("EEE d MMM", Locale.UK))} • ${formatTime(programme.start.toLocalTime(), use24Hour)}",
                     color = TextSecondary, fontSize = 11.sp
@@ -971,6 +1059,7 @@ private fun SettingsView(
     defaultSection: AppSection,
     onDefaultSection: (AppSection) -> Unit,
     channelConfig: List<ChannelConfig>,
+    guide: GuideData,
     lastUpdated: LocalTime?,
     use24HourForLabel: Boolean,
 ) {
@@ -1018,6 +1107,39 @@ private fun SettingsView(
                 Text("${channelConfig.size} configured channels", fontWeight = FontWeight.SemiBold)
                 Text("Categories and channel order come from channels.json. New groups appear automatically without rebuilding the APK.", color = TextSecondary)
                 lastUpdated?.let { Text("Last refreshed ${formatTime(it, use24HourForLabel)}", color = PinkSoft, fontSize = 12.sp) }
+            }
+        }
+
+        item {
+            val channelIdsWithListings = guide.programmes.map { it.channelId }.toSet()
+            val missing = guide.channels.filterNot { channelIdsWithListings.contains(it.id) }
+            val newest = guide.programmes.maxByOrNull { it.stop }?.stop
+            SettingsCard("EPG health") {
+                Text("${guide.channels.size} channels • ${guide.programmes.size} programmes", fontWeight = FontWeight.SemiBold)
+                Text(
+                    "${guide.channels.size - missing.size}/${guide.channels.size} channels currently have listings",
+                    color = if (missing.isEmpty()) Mint else PinkSoft
+                )
+                newest?.let {
+                    Text(
+                        "Guide reaches ${it.format(DateTimeFormatter.ofPattern("EEE d MMM HH:mm", Locale.UK))}",
+                        color = TextSecondary,
+                        fontSize = 12.sp
+                    )
+                }
+                if (missing.isNotEmpty()) {
+                    Spacer(Modifier.height(6.dp))
+                    Text(
+                        "Missing EPG: " + missing.joinToString { it.name },
+                        color = PinkSoft,
+                        fontSize = 12.sp
+                    )
+                }
+                Text(
+                    "New downloads are validated before replacing the last-known-good cache.",
+                    color = TextSecondary,
+                    fontSize = 11.sp
+                )
             }
         }
     }
@@ -1089,6 +1211,7 @@ private fun ProgrammeSheetV2(
     onProgramme: (Programme) -> Unit,
     onClose: () -> Unit,
 ) {
+    val context = LocalContext.current
     val now = ZonedDateTime.now()
     val live = !now.isBefore(programme.start) && now.isBefore(programme.stop)
     val total = Duration.between(programme.start, programme.stop).toMinutes().coerceAtLeast(1)
@@ -1115,7 +1238,17 @@ private fun ProgrammeSheetV2(
         }
         item {
             Text(channel?.name ?: programme.channelId, color = PinkSoft, fontWeight = FontWeight.Bold)
-            Text(programme.title, fontSize = 28.sp, lineHeight = 31.sp, fontWeight = FontWeight.Black)
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(programme.title, fontSize = 28.sp, lineHeight = 31.sp, fontWeight = FontWeight.Black, modifier = Modifier.weight(1f))
+                if (programme.isNew) {
+                    AssistChip(onClick = {}, label = { Text("NEW") })
+                }
+            }
+            programme.subtitle?.takeIf { it.isNotBlank() }?.let {
+                Text(it, color = Lavender, fontWeight = FontWeight.SemiBold)
+            }
+            val meta = programmeMeta(programme)
+            if (meta.isNotBlank()) Text(meta, color = TextSecondary, fontSize = 12.sp)
             Text(
                 "${programme.start.format(DateTimeFormatter.ofPattern("EEEE d MMMM", Locale.UK))} • " +
                     "${formatTime(programme.start.toLocalTime(), use24Hour)} – ${formatTime(programme.stop.toLocalTime(), use24Hour)}",
@@ -1145,6 +1278,23 @@ private fun ProgrammeSheetV2(
                 }
             }
         }
+        item {
+            OutlinedButton(
+                onClick = {
+                    val share = Intent(Intent.ACTION_SEND).apply {
+                        type = "text/plain"
+                        putExtra(
+                            Intent.EXTRA_TEXT,
+                            "${programme.title} — ${channel?.name ?: programme.channelId}, " +
+                                programme.start.format(DateTimeFormatter.ofPattern("EEEE d MMM 'at' HH:mm", Locale.UK))
+                        )
+                    }
+                    context.startActivity(Intent.createChooser(share, "Share programme"))
+                }
+            ) {
+                Text("Share programme")
+            }
+        }
         programme.category?.takeIf { it.isNotBlank() }?.let { category ->
             item { SuggestionChip(onClick = {}, label = { Text(englishCategory(category)) }) }
         }
@@ -1163,7 +1313,7 @@ private fun ProgrammeSheetV2(
                 color = Color(0xFFD6D7E0), lineHeight = 22.sp)
         }
         if (nextAirings.isNotEmpty()) {
-            item { Text("Next airings", color = PinkSoft, fontWeight = FontWeight.Bold) }
+            item { Text("When is this next on?", color = PinkSoft, fontWeight = FontWeight.Bold, fontSize = 18.sp) }
             items(nextAirings) { p -> ProgrammeListRow(p, channel, isFavourite, use24Hour, onProgramme) }
         }
     }
@@ -1414,8 +1564,10 @@ private fun TvGrid(
     }
     val guideEnd = guideStart.plusHours(WindowHours)
     val scroll = rememberScrollState()
-    val pixelsPerMinute = HalfHourWidth.value / 30f
     val configuration = LocalConfiguration.current
+    val landscape = configuration.screenWidthDp > configuration.screenHeightDp
+    val effectiveHalfHourWidth = if (landscape) 96.dp else HalfHourWidth
+    val pixelsPerMinute = effectiveHalfHourWidth.value / 30f
 
 LaunchedEffect(selectedDay, guideStart) {
     if (selectedDay == now.toLocalDate()) {
@@ -1441,7 +1593,7 @@ LaunchedEffect(selectedDay, guideStart) {
         )
     }
 }
-    val totalWidth = HalfHourWidth * (WindowHours.toInt() * 2)
+    val totalWidth = effectiveHalfHourWidth * (WindowHours.toInt() * 2)
 
     Column(Modifier.fillMaxSize()) {
         TimelineHeader(guideStart, totalWidth, scroll)
@@ -1720,6 +1872,16 @@ private fun LogoFallback(channelName: String) {
     }
 }
 
+
+
+private fun programmeMeta(programme: Programme): String {
+    val parts = mutableListOf<String>()
+    programme.episodeNumber?.takeIf { it.isNotBlank() }?.let { parts += it }
+    programme.originalDate?.takeIf { it.isNotBlank() }?.let { parts += it }
+    programme.rating?.takeIf { it.isNotBlank() }?.let { parts += it }
+    if (programme.isNew) parts += "NEW"
+    return parts.distinct().joinToString(" • ")
+}
 
 private fun searchNormalise(value: String): String {
     val lowered = value
@@ -2297,42 +2459,74 @@ object ChannelConfigRepository {
 }
 
 object XmlTvRepository {
+    private const val MIN_PROGRAMMES = 5
+
     fun loadCached(context: Context, url: String, cacheName: String): GuideData {
         val cache = File(context.filesDir, cacheName)
+
+        if (!isNetworkAvailable(context) && cache.exists()) {
+            return XmlTvParser.parse(openMaybeGzip(cache.readBytes(), cacheName))
+        }
+
         return try {
-            val connection = URL(url).openConnection() as HttpURLConnection
-            connection.connectTimeout = 15_000
-            connection.readTimeout = 25_000
-            connection.setRequestProperty("User-Agent", "UmayTVGuide/2.0")
-            connection.instanceFollowRedirects = true
-            try {
-                val bytes = connection.inputStream.use { it.readBytes() }
-                cache.writeBytes(bytes)
-                XmlTvParser.parse(bytes.inputStream())
-            } finally { connection.disconnect() }
+            val bytes = downloadBytes(url)
+            val candidate = XmlTvParser.parse(openMaybeGzip(bytes, url))
+            validate(candidate)
+
+            val tmp = File(context.filesDir, "$cacheName.tmp")
+            tmp.writeBytes(bytes)
+            if (cache.exists()) cache.delete()
+            tmp.renameTo(cache)
+            candidate
         } catch (t: Throwable) {
-            if (cache.exists()) XmlTvParser.parse(cache.inputStream()) else throw t
+            if (cache.exists()) {
+                XmlTvParser.parse(openMaybeGzip(cache.readBytes(), cacheName))
+            } else throw t
         }
     }
 
     fun load(url: String): GuideData {
+        val bytes = downloadBytes(url)
+        val guide = XmlTvParser.parse(openMaybeGzip(bytes, url))
+        validate(guide)
+        return guide
+    }
+
+    private fun validate(guide: GuideData) {
+        require(guide.channels.isNotEmpty()) { "EPG validation failed: no channels" }
+        require(guide.programmes.size >= MIN_PROGRAMMES) { "EPG validation failed: too few programmes" }
+        require(guide.programmes.all { it.stop.isAfter(it.start) }) { "EPG validation failed: invalid programme times" }
+        val newest = guide.programmes.maxByOrNull { it.stop }?.stop
+        require(newest != null && newest.isAfter(ZonedDateTime.now().minusHours(2))) {
+            "EPG validation failed: guide appears stale"
+        }
+    }
+
+    private fun downloadBytes(url: String): ByteArray {
         val connection = URL(url).openConnection() as HttpURLConnection
         connection.connectTimeout = 15_000
         connection.readTimeout = 25_000
-        connection.setRequestProperty("User-Agent", "UmayTVGuide/1.0")
+        connection.setRequestProperty("User-Agent", "UmayTVGuide/2.1")
         connection.instanceFollowRedirects = true
-
-        try {
-            val raw = BufferedInputStream(connection.inputStream)
-            val input = if (
-                url.endsWith(".gz", ignoreCase = true) ||
-                connection.contentEncoding?.contains("gzip", ignoreCase = true) == true
-            ) GZIPInputStream(raw) else raw
-
-            return input.use { XmlTvParser.parse(it) }
+        return try {
+            connection.inputStream.use { it.readBytes() }
         } finally {
             connection.disconnect()
         }
+    }
+
+    private fun openMaybeGzip(bytes: ByteArray, name: String): java.io.InputStream {
+        val raw = BufferedInputStream(bytes.inputStream())
+        val gzipMagic = bytes.size >= 2 && bytes[0] == 0x1f.toByte() && bytes[1] == 0x8b.toByte()
+        return if (name.endsWith(".gz", true) || gzipMagic) GZIPInputStream(raw) else raw
+    }
+
+    private fun isNetworkAvailable(context: Context): Boolean {
+        val manager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val network = manager.activeNetwork ?: return false
+        val caps = manager.getNetworkCapabilities(network) ?: return false
+        return caps.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) &&
+            caps.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)
     }
 }
 
@@ -2362,6 +2556,11 @@ object XmlTvParser {
         var pDesc: String? = null
         var pCategory: String? = null
         var pIcon: String? = null
+        var pSubtitle: String? = null
+        var pEpisodeNumber: String? = null
+        var pOriginalDate: String? = null
+        var pRating: String? = null
+        var pIsNew = false
 
         while (event != XmlPullParser.END_DOCUMENT) {
             when (event) {
@@ -2389,9 +2588,19 @@ object XmlTvParser {
                         pDesc = null
                         pCategory = null
                         pIcon = null
+                        pSubtitle = null
+                        pEpisodeNumber = null
+                        pOriginalDate = null
+                        pRating = null
+                        pIsNew = false
                     }
                     "title" -> if (pChannel != null) pTitle = parser.nextText()
+                    "sub-title" -> if (pChannel != null) pSubtitle = parser.nextText()
                     "desc" -> if (pChannel != null) pDesc = parser.nextText()
+                    "episode-num" -> if (pChannel != null && pEpisodeNumber == null) pEpisodeNumber = parser.nextText()
+                    "date" -> if (pChannel != null) pOriginalDate = parser.nextText()
+                    "new" -> if (pChannel != null) pIsNew = true
+                    "value" -> if (pChannel != null && pRating == null) pRating = parser.nextText()
                     "category" -> if (pChannel != null && pCategory == null) {
                         pCategory = parser.nextText()
                     }
@@ -2423,6 +2632,11 @@ object XmlTvParser {
                                 description = pDesc,
                                 category = pCategory,
                                 icon = pIcon,
+                                subtitle = pSubtitle,
+                                episodeNumber = pEpisodeNumber,
+                                originalDate = pOriginalDate,
+                                rating = pRating,
+                                isNew = pIsNew,
                             )
                         }
                         pChannel = null
