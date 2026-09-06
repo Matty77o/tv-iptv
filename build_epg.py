@@ -12,7 +12,7 @@ SOURCES = {
 # Exact source EPG IDs -> the IDs you want TiviMate to use
 CHANNELS = {
     # English / Kids
-    "CBeebies.uk": "CBeebies",
+    "CBeebies.HD.uk": "CBeebies",
     "BabyFirst.TV.us2": "BabyFirst",
 
     # Extra Kids
