@@ -409,30 +409,62 @@ fun GuideScreen(
             )
         },
         bottomBar = {
-            NavigationBar(
-                containerColor = Panel,
-                tonalElevation = 4.dp,
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 14.dp, vertical = 10.dp)
             ) {
-                AppSection.entries.forEach { item ->
-                    val icon = when (item) {
-                        AppSection.HOME -> Icons.Rounded.Home
-                        AppSection.GUIDE -> Icons.Rounded.Tv
-                        AppSection.FAVOURITES -> Icons.Rounded.Favorite
-                        AppSection.SETTINGS -> Icons.Rounded.Settings
-                    }
-                    NavigationBarItem(
-                        selected = section == item,
-                        onClick = { section = item; searchOpen = false },
-                        icon = { Icon(icon, null) },
-                        label = { Text(item.label) },
-                        colors = NavigationBarItemDefaults.colors(
-                            selectedIconColor = Pink,
-                            selectedTextColor = TextPrimary,
-                            indicatorColor = Pink.copy(alpha = 0.16f),
-                            unselectedIconColor = TextSecondary,
-                            unselectedTextColor = TextSecondary,
-                        )
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(34.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = Panel.copy(alpha = 0.98f)
+                    ),
+                    elevation = CardDefaults.cardElevation(
+                        defaultElevation = 10.dp
                     )
+                ) {
+                    NavigationBar(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(82.dp),
+                        containerColor = Color.Transparent,
+                        tonalElevation = 0.dp,
+                    ) {
+                        AppSection.entries.forEach { item ->
+                            val icon = when (item) {
+                                AppSection.HOME -> Icons.Rounded.Home
+                                AppSection.GUIDE -> Icons.Rounded.Tv
+                                AppSection.FAVOURITES -> Icons.Rounded.Favorite
+                                AppSection.SETTINGS -> Icons.Rounded.Settings
+                            }
+                            NavigationBarItem(
+                                selected = section == item,
+                                onClick = { section = item; searchOpen = false },
+                                icon = {
+                                    Icon(
+                                        icon,
+                                        contentDescription = item.label,
+                                        modifier = Modifier.size(27.dp)
+                                    )
+                                },
+                                label = {
+                                    Text(
+                                        item.label,
+                                        fontSize = 12.sp,
+                                        fontWeight = if (section == item) FontWeight.Bold else FontWeight.Medium
+                                    )
+                                },
+                                colors = NavigationBarItemDefaults.colors(
+                                    selectedIconColor = Pink,
+                                    selectedTextColor = TextPrimary,
+                                    indicatorColor = Pink.copy(alpha = 0.22f),
+                                    unselectedIconColor = TextSecondary,
+                                    unselectedTextColor = TextSecondary,
+                                )
+                            )
+                        }
+                    }
                 }
             }
         }
@@ -713,7 +745,7 @@ private fun HomeView(
                 Card(
                     colors = CardDefaults.cardColors(containerColor = Panel2),
                     elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-                    shape = RoundedCornerShape(24.dp),
+                    shape = RoundedCornerShape(26.dp),
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Column(Modifier.padding(horizontal = 14.dp, vertical = 8.dp)) {
@@ -765,7 +797,7 @@ private fun HomeView(
                 Card(
                     colors = CardDefaults.cardColors(containerColor = Panel2),
                     elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-                    shape = RoundedCornerShape(24.dp),
+                    shape = RoundedCornerShape(26.dp),
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
@@ -1020,11 +1052,11 @@ private fun DynamicGuideContent(
             horizontalArrangement = Arrangement.spacedBy(6.dp)
         ) {
             AssistChip(
-                shape = RoundedCornerShape(24.dp),onClick = { onSelectedDay(LocalDate.now()); jumpTarget = GuideJumpTarget.NOW }, label = { Text("NOW") })
+                shape = RoundedCornerShape(26.dp),onClick = { onSelectedDay(LocalDate.now()); jumpTarget = GuideJumpTarget.NOW }, label = { Text("NOW") })
             AssistChip(
-                shape = RoundedCornerShape(24.dp),onClick = { onSelectedDay(LocalDate.now()); jumpTarget = GuideJumpTarget.TONIGHT }, label = { Text("Tonight") })
+                shape = RoundedCornerShape(26.dp),onClick = { onSelectedDay(LocalDate.now()); jumpTarget = GuideJumpTarget.TONIGHT }, label = { Text("Tonight") })
             AssistChip(
-                shape = RoundedCornerShape(24.dp),onClick = { onSelectedDay(LocalDate.now().plusDays(1)); jumpTarget = GuideJumpTarget.TOMORROW }, label = { Text("Tomorrow") })
+                shape = RoundedCornerShape(26.dp),onClick = { onSelectedDay(LocalDate.now().plusDays(1)); jumpTarget = GuideJumpTarget.TOMORROW }, label = { Text("Tomorrow") })
         }
         LazyRow(
             modifier = Modifier.fillMaxWidth().padding(horizontal = 14.dp, vertical = 4.dp),
@@ -1392,7 +1424,7 @@ private fun ProgrammeSheetV2(
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         item {
-            Box(Modifier.fillMaxWidth().height(190.dp).clip(RoundedCornerShape(24.dp)).background(Panel2)) {
+            Box(Modifier.fillMaxWidth().height(190.dp).clip(RoundedCornerShape(26.dp)).background(Panel2)) {
                 val image = programme.icon ?: channel?.icon
                 if (!image.isNullOrBlank()) {
                     AsyncImage(image, programme.title, Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
@@ -1408,7 +1440,7 @@ private fun ProgrammeSheetV2(
                 Text(programme.title, fontSize = 28.sp, lineHeight = 31.sp, fontWeight = FontWeight.Black, modifier = Modifier.weight(1f))
                 if (programme.isNew) {
                     AssistChip(
-                shape = RoundedCornerShape(24.dp),onClick = {}, label = { Text("NEW") })
+                shape = RoundedCornerShape(26.dp),onClick = {}, label = { Text("NEW") })
                 }
             }
             programme.subtitle?.takeIf { it.isNotBlank() }?.let {
@@ -1692,7 +1724,7 @@ private fun FilterPicker(filter: GuideFilter, onFilter: (GuideFilter) -> Unit) {
         GuideFilter.entries.forEach { item ->
             val selected = item == filter
             AssistChip(
-                shape = RoundedCornerShape(24.dp),
+                shape = RoundedCornerShape(26.dp),
                 onClick = { onFilter(item) },
                 label = { Text(item.label) },
                 colors = AssistChipDefaults.assistChipColors(
@@ -2554,7 +2586,7 @@ private fun ProgrammeSheet(
         Spacer(Modifier.height(20.dp))
         Surface(
             color = Panel2,
-            shape = RoundedCornerShape(24.dp)
+            shape = RoundedCornerShape(26.dp)
         ) {
             Row(
                 Modifier.fillMaxWidth().padding(14.dp),
