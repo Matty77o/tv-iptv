@@ -638,12 +638,11 @@ fun GuideScreen(
                         )
                     }
 
-                    AnimatedVisibility(
-                        visible = loading,
-                        modifier = Modifier.align(Alignment.TopCenter)
-                    ) {
+                    if (loading) {
                         LinearProgressIndicator(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier
+                                .align(Alignment.TopCenter)
+                                .fillMaxWidth(),
                             color = Pink,
                             trackColor = Panel2
                         )
