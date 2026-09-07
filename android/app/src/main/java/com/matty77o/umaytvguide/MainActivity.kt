@@ -1,5 +1,7 @@
 package com.matty77o.umaytvguide
 
+import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import android.Manifest
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -262,6 +264,7 @@ fun GuideScreen(
 ) {
     val context = LocalContext.current
     val useSamsungOneUi = remember { isSamsungDevice() }
+    val haptics = LocalHapticFeedback.current
     val configuration = LocalConfiguration.current
     val isLandscape = configuration.screenWidthDp > configuration.screenHeightDp
     val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
@@ -385,14 +388,20 @@ fun GuideScreen(
                             Text(
                                 "Umay TV Guide",
                                 fontWeight = FontWeight.Bold,
-                                style = if (useSamsungOneUi) MaterialTheme.typography.headlineMedium else MaterialTheme.typography.headlineSmall
+                                style = when {
+                                    isLandscape -> MaterialTheme.typography.titleLarge
+                                    useSamsungOneUi -> MaterialTheme.typography.headlineMedium
+                                    else -> MaterialTheme.typography.headlineSmall
+                                }
                             )
-                            lastUpdated?.let {
-                                Text(
-                                    "Updated ${formatTime(it, use24Hour)}",
-                                    color = TextSecondary,
-                                    fontSize = 11.sp
-                                )
+                            if (!isLandscape) {
+                                lastUpdated?.let {
+                                    Text(
+                                        "Updated ${formatTime(it, use24Hour)}",
+                                        color = TextSecondary,
+                                        fontSize = 11.sp
+                                    )
+                                }
                             }
                         }
                     }
@@ -401,13 +410,13 @@ fun GuideScreen(
                     if (!searchOpen) {
                         IconButton(
                             onClick = { searchOpen = true },
-                            modifier = Modifier.size(if (useSamsungOneUi) 52.dp else 48.dp)
+                            modifier = Modifier.size(if (isLandscape) 42.dp else if (useSamsungOneUi) 52.dp else 48.dp)
                         ) {
                             Icon(Icons.Rounded.Search, "Search")
                         }
                         IconButton(
                             onClick = { refreshToken++ },
-                            modifier = Modifier.size(if (useSamsungOneUi) 52.dp else 48.dp)
+                            modifier = Modifier.size(if (isLandscape) 42.dp else if (useSamsungOneUi) 52.dp else 48.dp)
                         ) {
                             Icon(Icons.Rounded.Refresh, "Refresh")
                         }
@@ -450,7 +459,11 @@ fun GuideScreen(
                                 }
 
                                 Surface(
-                                    onClick = { section = item; searchOpen = false },
+                                    onClick = {
+                                        haptics.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                                        section = item
+                                        searchOpen = false
+                                    },
                                     shape = RoundedCornerShape(if (isSamsungDevice()) 28.dp else 24.dp),
                                     color = if (selected) Pink.copy(alpha = 0.18f) else Color.Transparent,
                                     contentColor = if (selected) Pink else TextSecondary,
@@ -521,7 +534,9 @@ fun GuideScreen(
             if (isLandscape) {
                 NavigationRail(
                     containerColor = if (useSamsungOneUi) Color(0xFF151A28) else Panel,
-                    modifier = Modifier.fillMaxHeight()
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .width(76.dp)
                 ) {
                     Spacer(Modifier.height(8.dp))
                     AppSection.entries.forEach { item ->
@@ -533,7 +548,13 @@ fun GuideScreen(
                         }
                         NavigationRailItem(
                             selected = section == item,
-                            onClick = { section = item; searchOpen = false },
+                            onClick = {
+                                if (useSamsungOneUi) {
+                                    haptics.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                                }
+                                section = item
+                                searchOpen = false
+                            },
                             icon = {
                                 Icon(
                                     icon,
@@ -542,9 +563,7 @@ fun GuideScreen(
                                 )
                             },
                             label = {
-                                if (useSamsungOneUi && section == item) {
-                                    Text(item.label, fontSize = 11.sp, fontWeight = FontWeight.Bold)
-                                } else if (!useSamsungOneUi) {
+                                if (!useSamsungOneUi) {
                                     Text(item.label, fontSize = 10.sp)
                                 }
                             },
@@ -560,7 +579,12 @@ fun GuideScreen(
                 }
             }
 
-            Box(Modifier.weight(1f).fillMaxHeight()) {
+            Box(
+                Modifier
+                    .weight(1f)
+                    .fillMaxHeight()
+                    .animateContentSize()
+            ) {
                 when {
                 loading && guide == null -> LoadingView()
                 error != null && guide == null -> ErrorView(error!!) { refreshToken++ }
@@ -639,13 +663,22 @@ fun GuideScreen(
                     }
 
                     if (loading) {
-                        LinearProgressIndicator(
+                        Surface(
                             modifier = Modifier
                                 .align(Alignment.TopCenter)
-                                .fillMaxWidth(),
-                            color = Pink,
-                            trackColor = Panel2
-                        )
+                                .padding(horizontal = 18.dp, vertical = 6.dp),
+                            shape = RoundedCornerShape(12.dp),
+                            color = Panel2.copy(alpha = 0.96f),
+                            tonalElevation = 2.dp
+                        ) {
+                            LinearProgressIndicator(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(4.dp),
+                                color = Pink,
+                                trackColor = Panel2
+                            )
+                        }
                     }
                 }
             }
@@ -827,8 +860,11 @@ private fun HomeView(
 
     LazyColumn(
         Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(18.dp, 10.dp, 18.dp, 32.dp),
-        verticalArrangement = Arrangement.spacedBy(20.dp)
+        contentPadding = if (homeLandscape)
+            PaddingValues(18.dp, 6.dp, 18.dp, 18.dp)
+        else
+            PaddingValues(18.dp, 10.dp, 18.dp, 32.dp),
+        verticalArrangement = Arrangement.spacedBy(if (homeLandscape) 12.dp else 20.dp)
     ) {
         if (forUsToday.isNotEmpty()) {
             item {
@@ -1136,10 +1172,13 @@ private fun DynamicGuideContent(
         }
     }
 
+    val guideConfig = LocalConfiguration.current
+    val guideLandscape = guideConfig.screenWidthDp > guideConfig.screenHeightDp
+
     Column(Modifier.fillMaxSize()) {
         DayPicker(selectedDay, onSelectedDay)
         Row(
-            Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(horizontal = 14.dp),
+            Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(horizontal = if (guideLandscape) 8.dp else 14.dp),
             horizontalArrangement = Arrangement.spacedBy(6.dp)
         ) {
             AssistChip(
@@ -1150,7 +1189,7 @@ private fun DynamicGuideContent(
                 shape = RoundedCornerShape(if (isSamsungDevice()) 28.dp else 26.dp),onClick = { onSelectedDay(LocalDate.now().plusDays(1)); jumpTarget = GuideJumpTarget.TOMORROW }, label = { Text("Tomorrow") })
         }
         LazyRow(
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 14.dp, vertical = 4.dp),
+            modifier = Modifier.fillMaxWidth().padding(horizontal = if (guideLandscape) 8.dp else 14.dp, vertical = if (guideLandscape) 2.dp else 4.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(groups.distinct()) { group ->
@@ -1275,7 +1314,48 @@ private fun FavouritesView(
         }
 
         if (upcoming.isEmpty()) {
-            item { Text("Favourite a programme and its future airings will appear here.", color = TextSecondary) }
+            item {
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(if (isSamsungDevice()) 28.dp else 22.dp),
+                    colors = CardDefaults.cardColors(containerColor = Panel2)
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(18.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .size(48.dp)
+                                .clip(CircleShape)
+                                .background(Pink.copy(alpha = 0.14f)),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Icon(
+                                Icons.Rounded.Favorite,
+                                contentDescription = null,
+                                tint = Pink,
+                                modifier = Modifier.size(25.dp)
+                            )
+                        }
+                        Spacer(Modifier.width(14.dp))
+                        Column(Modifier.weight(1f)) {
+                            Text(
+                                "No favourite shows yet",
+                                fontWeight = FontWeight.Bold,
+                                color = TextPrimary
+                            )
+                            Text(
+                                "Favourite a programme and its future airings will appear here.",
+                                color = TextSecondary,
+                                fontSize = 12.sp
+                            )
+                        }
+                    }
+                }
+            }
         } else {
             items(upcoming.take(100)) { p ->
                 ProgrammeListRow(p, channels.firstOrNull { it.id == p.channelId }, true, use24Hour, onProgramme)
