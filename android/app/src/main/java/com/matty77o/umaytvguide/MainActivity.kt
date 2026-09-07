@@ -218,6 +218,10 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+private fun isSamsungDevice(): Boolean =
+    Build.MANUFACTURER.equals("samsung", ignoreCase = true) ||
+        Build.BRAND.equals("samsung", ignoreCase = true)
+
 private val Midnight = Color(0xFF090B15)
 private val Panel = Color(0xFF111626)
 private val Panel2 = Color(0xFF171D30)
@@ -257,6 +261,9 @@ fun GuideScreen(
     onReminderConsumed: () -> Unit = {},
 ) {
     val context = LocalContext.current
+    val useSamsungOneUi = remember { isSamsungDevice() }
+    val configuration = LocalConfiguration.current
+    val isLandscape = configuration.screenWidthDp > configuration.screenHeightDp
     val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
     var guide by remember { mutableStateOf<GuideData?>(null) }
@@ -357,7 +364,7 @@ fun GuideScreen(
     Scaffold(
         containerColor = Midnight,
         topBar = {
-            MediumTopAppBar(
+            TopAppBar(
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = Midnight),
                 title = {
                     if (searchOpen) {
@@ -378,7 +385,7 @@ fun GuideScreen(
                             Text(
                                 "Umay TV Guide",
                                 fontWeight = FontWeight.Bold,
-                                style = MaterialTheme.typography.headlineSmall
+                                style = if (useSamsungOneUi) MaterialTheme.typography.headlineMedium else MaterialTheme.typography.headlineSmall
                             )
                             lastUpdated?.let {
                                 Text(
@@ -394,13 +401,13 @@ fun GuideScreen(
                     if (!searchOpen) {
                         IconButton(
                             onClick = { searchOpen = true },
-                            modifier = Modifier.size(48.dp)
+                            modifier = Modifier.size(if (useSamsungOneUi) 52.dp else 48.dp)
                         ) {
                             Icon(Icons.Rounded.Search, "Search")
                         }
                         IconButton(
                             onClick = { refreshToken++ },
-                            modifier = Modifier.size(48.dp)
+                            modifier = Modifier.size(if (useSamsungOneUi) 52.dp else 48.dp)
                         ) {
                             Icon(Icons.Rounded.Refresh, "Refresh")
                         }
@@ -409,68 +416,152 @@ fun GuideScreen(
             )
         },
         bottomBar = {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 14.dp, vertical = 10.dp)
-            ) {
-                Card(
-                    modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(34.dp),
-                    colors = CardDefaults.cardColors(
-                        containerColor = Panel.copy(alpha = 0.98f)
-                    ),
-                    elevation = CardDefaults.cardElevation(
-                        defaultElevation = 10.dp
-                    )
+            if (!isLandscape) {
+            if (useSamsungOneUi) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 22.dp, vertical = 8.dp),
+                    contentAlignment = Alignment.Center
                 ) {
-                    NavigationBar(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(82.dp),
-                        containerColor = Color.Transparent,
-                        tonalElevation = 0.dp,
+                    Card(
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(30.dp),
+                        colors = CardDefaults.cardColors(
+                            containerColor = Color(0xFF151A28)
+                        ),
+                        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
                     ) {
-                        AppSection.entries.forEach { item ->
-                            val icon = when (item) {
-                                AppSection.HOME -> Icons.Rounded.Home
-                                AppSection.GUIDE -> Icons.Rounded.Tv
-                                AppSection.FAVOURITES -> Icons.Rounded.Favorite
-                                AppSection.SETTINGS -> Icons.Rounded.Settings
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(68.dp)
+                                .padding(horizontal = 8.dp),
+                            horizontalArrangement = Arrangement.SpaceEvenly,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            AppSection.entries.forEach { item ->
+                                val selected = section == item
+                                val icon = when (item) {
+                                    AppSection.HOME -> Icons.Rounded.Home
+                                    AppSection.GUIDE -> Icons.Rounded.Tv
+                                    AppSection.FAVOURITES -> Icons.Rounded.Favorite
+                                    AppSection.SETTINGS -> Icons.Rounded.Settings
+                                }
+
+                                Surface(
+                                    onClick = { section = item; searchOpen = false },
+                                    shape = RoundedCornerShape(if (isSamsungDevice()) 28.dp else 24.dp),
+                                    color = if (selected) Pink.copy(alpha = 0.18f) else Color.Transparent,
+                                    contentColor = if (selected) Pink else TextSecondary,
+                                    modifier = Modifier.height(48.dp)
+                                ) {
+                                    Row(
+                                        modifier = Modifier.padding(
+                                            horizontal = if (selected) 15.dp else 12.dp,
+                                            vertical = 10.dp
+                                        ),
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        horizontalArrangement = Arrangement.Center
+                                    ) {
+                                        Icon(
+                                            imageVector = icon,
+                                            contentDescription = item.label,
+                                            modifier = Modifier.size(25.dp)
+                                        )
+                                        if (selected) {
+                                            Spacer(Modifier.width(7.dp))
+                                            Text(
+                                                item.label,
+                                                color = TextPrimary,
+                                                fontSize = 12.sp,
+                                                fontWeight = FontWeight.Bold,
+                                                maxLines = 1
+                                            )
+                                        }
+                                    }
+                                }
                             }
-                            NavigationBarItem(
-                                selected = section == item,
-                                onClick = { section = item; searchOpen = false },
-                                icon = {
-                                    Icon(
-                                        icon,
-                                        contentDescription = item.label,
-                                        modifier = Modifier.size(27.dp)
-                                    )
-                                },
-                                label = {
-                                    Text(
-                                        item.label,
-                                        fontSize = 12.sp,
-                                        fontWeight = if (section == item) FontWeight.Bold else FontWeight.Medium
-                                    )
-                                },
-                                colors = NavigationBarItemDefaults.colors(
-                                    selectedIconColor = Pink,
-                                    selectedTextColor = TextPrimary,
-                                    indicatorColor = Pink.copy(alpha = 0.22f),
-                                    unselectedIconColor = TextSecondary,
-                                    unselectedTextColor = TextSecondary,
-                                )
-                            )
                         }
                     }
                 }
+            } else {
+                NavigationBar(
+                    containerColor = Panel,
+                    tonalElevation = 4.dp,
+                ) {
+                    AppSection.entries.forEach { item ->
+                        val icon = when (item) {
+                            AppSection.HOME -> Icons.Rounded.Home
+                            AppSection.GUIDE -> Icons.Rounded.Tv
+                            AppSection.FAVOURITES -> Icons.Rounded.Favorite
+                            AppSection.SETTINGS -> Icons.Rounded.Settings
+                        }
+                        NavigationBarItem(
+                            selected = section == item,
+                            onClick = { section = item; searchOpen = false },
+                            icon = { Icon(icon, contentDescription = item.label) },
+                            label = { Text(item.label) },
+                            colors = NavigationBarItemDefaults.colors(
+                                selectedIconColor = Pink,
+                                selectedTextColor = TextPrimary,
+                                indicatorColor = Pink.copy(alpha = 0.16f),
+                                unselectedIconColor = TextSecondary,
+                                unselectedTextColor = TextSecondary,
+                            )
+                        )
+                    }
+                }
+            }
+        
             }
         }
     ) { padding ->
-        Box(Modifier.fillMaxSize().padding(padding)) {
-            when {
+        Row(Modifier.fillMaxSize().padding(padding)) {
+            if (isLandscape) {
+                NavigationRail(
+                    containerColor = if (useSamsungOneUi) Color(0xFF151A28) else Panel,
+                    modifier = Modifier.fillMaxHeight()
+                ) {
+                    Spacer(Modifier.height(8.dp))
+                    AppSection.entries.forEach { item ->
+                        val icon = when (item) {
+                            AppSection.HOME -> Icons.Rounded.Home
+                            AppSection.GUIDE -> Icons.Rounded.Tv
+                            AppSection.FAVOURITES -> Icons.Rounded.Favorite
+                            AppSection.SETTINGS -> Icons.Rounded.Settings
+                        }
+                        NavigationRailItem(
+                            selected = section == item,
+                            onClick = { section = item; searchOpen = false },
+                            icon = {
+                                Icon(
+                                    icon,
+                                    contentDescription = item.label,
+                                    modifier = Modifier.size(if (useSamsungOneUi) 27.dp else 24.dp)
+                                )
+                            },
+                            label = {
+                                if (useSamsungOneUi && section == item) {
+                                    Text(item.label, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                                } else if (!useSamsungOneUi) {
+                                    Text(item.label, fontSize = 10.sp)
+                                }
+                            },
+                            colors = NavigationRailItemDefaults.colors(
+                                selectedIconColor = Pink,
+                                selectedTextColor = TextPrimary,
+                                indicatorColor = Pink.copy(alpha = if (useSamsungOneUi) 0.22f else 0.16f),
+                                unselectedIconColor = TextSecondary,
+                                unselectedTextColor = TextSecondary,
+                            )
+                        )
+                    }
+                }
+            }
+
+            Box(Modifier.weight(1f).fillMaxHeight()) {
+                when {
                 loading && guide == null -> LoadingView()
                 error != null && guide == null -> ErrorView(error!!) { refreshToken++ }
                 guide != null -> {
@@ -558,6 +649,7 @@ fun GuideScreen(
                         )
                     }
                 }
+            }
             }
         }
     }
@@ -736,7 +828,7 @@ private fun HomeView(
 
     LazyColumn(
         Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(24.dp, 12.dp, 24.dp, 36.dp),
+        contentPadding = PaddingValues(18.dp, 10.dp, 18.dp, 32.dp),
         verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
         if (forUsToday.isNotEmpty()) {
@@ -1052,11 +1144,11 @@ private fun DynamicGuideContent(
             horizontalArrangement = Arrangement.spacedBy(6.dp)
         ) {
             AssistChip(
-                shape = RoundedCornerShape(26.dp),onClick = { onSelectedDay(LocalDate.now()); jumpTarget = GuideJumpTarget.NOW }, label = { Text("NOW") })
+                shape = RoundedCornerShape(if (isSamsungDevice()) 28.dp else 26.dp),onClick = { onSelectedDay(LocalDate.now()); jumpTarget = GuideJumpTarget.NOW }, label = { Text("NOW") })
             AssistChip(
-                shape = RoundedCornerShape(26.dp),onClick = { onSelectedDay(LocalDate.now()); jumpTarget = GuideJumpTarget.TONIGHT }, label = { Text("Tonight") })
+                shape = RoundedCornerShape(if (isSamsungDevice()) 28.dp else 26.dp),onClick = { onSelectedDay(LocalDate.now()); jumpTarget = GuideJumpTarget.TONIGHT }, label = { Text("Tonight") })
             AssistChip(
-                shape = RoundedCornerShape(26.dp),onClick = { onSelectedDay(LocalDate.now().plusDays(1)); jumpTarget = GuideJumpTarget.TOMORROW }, label = { Text("Tomorrow") })
+                shape = RoundedCornerShape(if (isSamsungDevice()) 28.dp else 26.dp),onClick = { onSelectedDay(LocalDate.now().plusDays(1)); jumpTarget = GuideJumpTarget.TOMORROW }, label = { Text("Tomorrow") })
         }
         LazyRow(
             modifier = Modifier.fillMaxWidth().padding(horizontal = 14.dp, vertical = 4.dp),
