@@ -1,5 +1,7 @@
 package com.matty77o.umaytvguide
 
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.animation.animateContentSize
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import android.Manifest
@@ -802,7 +804,9 @@ private fun HomeView(
     onChannel: (TvChannel) -> Unit,
     onOpenGuide: (String) -> Unit,
     use24Hour: Boolean,
-) {
+) {    val homeConfiguration = LocalConfiguration.current
+    val homeLandscape = homeConfiguration.screenWidthDp > homeConfiguration.screenHeightDp
+
     val now = ZonedDateTime.now()
 
     // Home is deliberately kept as a quick dashboard. Full channel/category
