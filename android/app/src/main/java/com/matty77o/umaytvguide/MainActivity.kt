@@ -357,7 +357,7 @@ fun GuideScreen(
     Scaffold(
         containerColor = Midnight,
         topBar = {
-            TopAppBar(
+            MediumTopAppBar(
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = Midnight),
                 title = {
                     if (searchOpen) {
@@ -375,7 +375,11 @@ fun GuideScreen(
                         )
                     } else {
                         Column {
-                            Text("Umay TV Guide", fontWeight = FontWeight.Black)
+                            Text(
+                                "Umay TV Guide",
+                                fontWeight = FontWeight.Bold,
+                                style = MaterialTheme.typography.headlineSmall
+                            )
                             lastUpdated?.let {
                                 Text(
                                     "Updated ${formatTime(it, use24Hour)}",
@@ -388,10 +392,16 @@ fun GuideScreen(
                 },
                 actions = {
                     if (!searchOpen) {
-                        IconButton(onClick = { searchOpen = true }) {
+                        IconButton(
+                            onClick = { searchOpen = true },
+                            modifier = Modifier.size(48.dp)
+                        ) {
                             Icon(Icons.Rounded.Search, "Search")
                         }
-                        IconButton(onClick = { refreshToken++ }) {
+                        IconButton(
+                            onClick = { refreshToken++ },
+                            modifier = Modifier.size(48.dp)
+                        ) {
                             Icon(Icons.Rounded.Refresh, "Refresh")
                         }
                     }
@@ -399,7 +409,10 @@ fun GuideScreen(
             )
         },
         bottomBar = {
-            NavigationBar(containerColor = Panel) {
+            NavigationBar(
+                containerColor = Panel,
+                tonalElevation = 4.dp,
+            ) {
                 AppSection.entries.forEach { item ->
                     val icon = when (item) {
                         AppSection.HOME -> Icons.Rounded.Home
@@ -411,7 +424,14 @@ fun GuideScreen(
                         selected = section == item,
                         onClick = { section = item; searchOpen = false },
                         icon = { Icon(icon, null) },
-                        label = { Text(item.label) }
+                        label = { Text(item.label) },
+                        colors = NavigationBarItemDefaults.colors(
+                            selectedIconColor = Pink,
+                            selectedTextColor = TextPrimary,
+                            indicatorColor = Pink.copy(alpha = 0.16f),
+                            unselectedIconColor = TextSecondary,
+                            unselectedTextColor = TextSecondary,
+                        )
                     )
                 }
             }
@@ -684,7 +704,7 @@ private fun HomeView(
 
     LazyColumn(
         Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(16.dp, 10.dp, 16.dp, 34.dp),
+        contentPadding = PaddingValues(24.dp, 12.dp, 24.dp, 36.dp),
         verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
         if (forUsToday.isNotEmpty()) {
@@ -693,7 +713,7 @@ private fun HomeView(
                 Card(
                     colors = CardDefaults.cardColors(containerColor = Panel2),
                     elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-                    shape = RoundedCornerShape(22.dp),
+                    shape = RoundedCornerShape(24.dp),
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Column(Modifier.padding(horizontal = 14.dp, vertical = 8.dp)) {
@@ -745,7 +765,7 @@ private fun HomeView(
                 Card(
                     colors = CardDefaults.cardColors(containerColor = Panel2),
                     elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-                    shape = RoundedCornerShape(22.dp),
+                    shape = RoundedCornerShape(24.dp),
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
@@ -1000,11 +1020,11 @@ private fun DynamicGuideContent(
             horizontalArrangement = Arrangement.spacedBy(6.dp)
         ) {
             AssistChip(
-                shape = RoundedCornerShape(22.dp),onClick = { onSelectedDay(LocalDate.now()); jumpTarget = GuideJumpTarget.NOW }, label = { Text("NOW") })
+                shape = RoundedCornerShape(24.dp),onClick = { onSelectedDay(LocalDate.now()); jumpTarget = GuideJumpTarget.NOW }, label = { Text("NOW") })
             AssistChip(
-                shape = RoundedCornerShape(22.dp),onClick = { onSelectedDay(LocalDate.now()); jumpTarget = GuideJumpTarget.TONIGHT }, label = { Text("Tonight") })
+                shape = RoundedCornerShape(24.dp),onClick = { onSelectedDay(LocalDate.now()); jumpTarget = GuideJumpTarget.TONIGHT }, label = { Text("Tonight") })
             AssistChip(
-                shape = RoundedCornerShape(22.dp),onClick = { onSelectedDay(LocalDate.now().plusDays(1)); jumpTarget = GuideJumpTarget.TOMORROW }, label = { Text("Tomorrow") })
+                shape = RoundedCornerShape(24.dp),onClick = { onSelectedDay(LocalDate.now().plusDays(1)); jumpTarget = GuideJumpTarget.TOMORROW }, label = { Text("Tomorrow") })
         }
         LazyRow(
             modifier = Modifier.fillMaxWidth().padding(horizontal = 14.dp, vertical = 4.dp),
@@ -1055,7 +1075,7 @@ private fun SearchResultsView(
 
     LazyColumn(
         Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(14.dp),
+        contentPadding = PaddingValues(24.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         item {
@@ -1093,7 +1113,7 @@ private fun FavouritesView(
 
     LazyColumn(
         Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(14.dp, 8.dp, 14.dp, 30.dp),
+        contentPadding = PaddingValues(24.dp, 10.dp, 24.dp, 34.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         item { Text("My shows", fontSize = 24.sp, fontWeight = FontWeight.Black) }
@@ -1204,7 +1224,7 @@ private fun SettingsView(
     var default by remember(defaultSection) { mutableStateOf(defaultSection) }
     LazyColumn(
         Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(14.dp, 8.dp, 14.dp, 30.dp),
+        contentPadding = PaddingValues(24.dp, 10.dp, 24.dp, 34.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         item { Text("Settings", fontSize = 24.sp, fontWeight = FontWeight.Black) }
@@ -1372,7 +1392,7 @@ private fun ProgrammeSheetV2(
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         item {
-            Box(Modifier.fillMaxWidth().height(190.dp).clip(RoundedCornerShape(22.dp)).background(Panel2)) {
+            Box(Modifier.fillMaxWidth().height(190.dp).clip(RoundedCornerShape(24.dp)).background(Panel2)) {
                 val image = programme.icon ?: channel?.icon
                 if (!image.isNullOrBlank()) {
                     AsyncImage(image, programme.title, Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
@@ -1388,7 +1408,7 @@ private fun ProgrammeSheetV2(
                 Text(programme.title, fontSize = 28.sp, lineHeight = 31.sp, fontWeight = FontWeight.Black, modifier = Modifier.weight(1f))
                 if (programme.isNew) {
                     AssistChip(
-                shape = RoundedCornerShape(22.dp),onClick = {}, label = { Text("NEW") })
+                shape = RoundedCornerShape(24.dp),onClick = {}, label = { Text("NEW") })
                 }
             }
             programme.subtitle?.takeIf { it.isNotBlank() }?.let {
@@ -1672,7 +1692,7 @@ private fun FilterPicker(filter: GuideFilter, onFilter: (GuideFilter) -> Unit) {
         GuideFilter.entries.forEach { item ->
             val selected = item == filter
             AssistChip(
-                shape = RoundedCornerShape(22.dp),
+                shape = RoundedCornerShape(24.dp),
                 onClick = { onFilter(item) },
                 label = { Text(item.label) },
                 colors = AssistChipDefaults.assistChipColors(
@@ -2534,7 +2554,7 @@ private fun ProgrammeSheet(
         Spacer(Modifier.height(20.dp))
         Surface(
             color = Panel2,
-            shape = RoundedCornerShape(22.dp)
+            shape = RoundedCornerShape(24.dp)
         ) {
             Row(
                 Modifier.fillMaxWidth().padding(14.dp),
