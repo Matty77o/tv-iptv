@@ -1178,38 +1178,133 @@ private fun DynamicGuideContent(
 
     val guideConfig = LocalConfiguration.current
     val guideLandscape = guideConfig.screenWidthDp > guideConfig.screenHeightDp
+    var landscapeFiltersExpanded by rememberSaveable { mutableStateOf(false) }
 
     Column(Modifier.fillMaxSize()) {
-        DayPicker(selectedDay, onSelectedDay)
-        Row(
-            Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(horizontal = if (guideLandscape) 8.dp else 14.dp),
-            horizontalArrangement = Arrangement.spacedBy(6.dp)
-        ) {
-            AssistChip(
-                shape = RoundedCornerShape(if (isSamsungDevice()) 28.dp else 26.dp),onClick = { onSelectedDay(LocalDate.now()); jumpTarget = GuideJumpTarget.NOW }, label = { Text("NOW") })
-            AssistChip(
-                shape = RoundedCornerShape(if (isSamsungDevice()) 28.dp else 26.dp),onClick = { onSelectedDay(LocalDate.now()); jumpTarget = GuideJumpTarget.TONIGHT }, label = { Text("Tonight") })
-            AssistChip(
-                shape = RoundedCornerShape(if (isSamsungDevice()) 28.dp else 26.dp),onClick = { onSelectedDay(LocalDate.now().plusDays(1)); jumpTarget = GuideJumpTarget.TOMORROW }, label = { Text("Tomorrow") })
-        }
-        LazyRow(
-            modifier = Modifier.fillMaxWidth().padding(horizontal = if (guideLandscape) 8.dp else 14.dp, vertical = if (guideLandscape) 2.dp else 4.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            items(groups.distinct()) { group ->
-                FilterChip(
-                    selected = selectedGroup == group,
-                    onClick = { onGroup(group) },
-                    label = { Text(group) },
-                    colors = FilterChipDefaults.filterChipColors(
-                        selectedContainerColor = Pink,
-                        selectedLabelColor = Color(0xFF210012),
-                        containerColor = Panel2,
-                        labelColor = TextSecondary
-                    )
+        if (guideLandscape) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 10.dp, vertical = 4.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                AssistChip(
+                    onClick = { landscapeFiltersExpanded = !landscapeFiltersExpanded },
+                    shape = RoundedCornerShape(if (isSamsungDevice()) 28.dp else 24.dp),
+                    label = { Text(if (landscapeFiltersExpanded) "Hide filters" else "Filters") }
+                )
+                Spacer(Modifier.width(8.dp))
+                Text(
+                    "${if (selectedDay == LocalDate.now()) "Today" else selectedDay.format(DateTimeFormatter.ofPattern("EEE d MMM", Locale.UK))} • $selectedGroup",
+                    color = TextSecondary,
+                    fontSize = 12.sp,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.weight(1f)
+                )
+                AssistChip(
+                    onClick = {
+                        onSelectedDay(LocalDate.now())
+                        jumpTarget = GuideJumpTarget.NOW
+                    },
+                    shape = RoundedCornerShape(if (isSamsungDevice()) 28.dp else 24.dp),
+                    label = { Text("NOW") }
                 )
             }
+
+            if (landscapeFiltersExpanded) {
+                DayPicker(selectedDay, onSelectedDay)
+                Row(
+                    Modifier
+                        .fillMaxWidth()
+                        .horizontalScroll(rememberScrollState())
+                        .padding(horizontal = 8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    AssistChip(
+                        shape = RoundedCornerShape(if (isSamsungDevice()) 28.dp else 26.dp),
+                        onClick = { onSelectedDay(LocalDate.now()); jumpTarget = GuideJumpTarget.NOW },
+                        label = { Text("NOW") }
+                    )
+                    AssistChip(
+                        shape = RoundedCornerShape(if (isSamsungDevice()) 28.dp else 26.dp),
+                        onClick = { onSelectedDay(LocalDate.now()); jumpTarget = GuideJumpTarget.TONIGHT },
+                        label = { Text("Tonight") }
+                    )
+                    AssistChip(
+                        shape = RoundedCornerShape(if (isSamsungDevice()) 28.dp else 26.dp),
+                        onClick = { onSelectedDay(LocalDate.now().plusDays(1)); jumpTarget = GuideJumpTarget.TOMORROW },
+                        label = { Text("Tomorrow") }
+                    )
+                }
+                LazyRow(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 8.dp, vertical = 2.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    items(groups.distinct()) { group ->
+                        FilterChip(
+                            selected = selectedGroup == group,
+                            onClick = { onGroup(group) },
+                            label = { Text(group) },
+                            colors = FilterChipDefaults.filterChipColors(
+                                selectedContainerColor = Pink,
+                                selectedLabelColor = Color(0xFF210012),
+                                containerColor = Panel2,
+                                labelColor = TextSecondary
+                            )
+                        )
+                    }
+                }
+            }
+        } else {
+            DayPicker(selectedDay, onSelectedDay)
+            Row(
+                Modifier
+                    .fillMaxWidth()
+                    .horizontalScroll(rememberScrollState())
+                    .padding(horizontal = 14.dp),
+                horizontalArrangement = Arrangement.spacedBy(6.dp)
+            ) {
+                AssistChip(
+                    shape = RoundedCornerShape(if (isSamsungDevice()) 28.dp else 26.dp),
+                    onClick = { onSelectedDay(LocalDate.now()); jumpTarget = GuideJumpTarget.NOW },
+                    label = { Text("NOW") }
+                )
+                AssistChip(
+                    shape = RoundedCornerShape(if (isSamsungDevice()) 28.dp else 26.dp),
+                    onClick = { onSelectedDay(LocalDate.now()); jumpTarget = GuideJumpTarget.TONIGHT },
+                    label = { Text("Tonight") }
+                )
+                AssistChip(
+                    shape = RoundedCornerShape(if (isSamsungDevice()) 28.dp else 26.dp),
+                    onClick = { onSelectedDay(LocalDate.now().plusDays(1)); jumpTarget = GuideJumpTarget.TOMORROW },
+                    label = { Text("Tomorrow") }
+                )
+            }
+            LazyRow(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 14.dp, vertical = 4.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                items(groups.distinct()) { group ->
+                    FilterChip(
+                        selected = selectedGroup == group,
+                        onClick = { onGroup(group) },
+                        label = { Text(group) },
+                        colors = FilterChipDefaults.filterChipColors(
+                            selectedContainerColor = Pink,
+                            selectedLabelColor = Color(0xFF210012),
+                            containerColor = Panel2,
+                            labelColor = TextSecondary
+                        )
+                    )
+                }
+            }
         }
+
         if (visible.isEmpty()) {
             Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 Text("No channels in this section", color = TextSecondary)
@@ -1940,11 +2035,12 @@ private fun TvGrid(
             selectedDay.atTime(6, 0).atZone(zone)
         }
     }
-    val guideEnd = guideStart.plusHours(WindowHours)
     val scroll = rememberScrollState()
     val configuration = LocalConfiguration.current
     val landscape = configuration.screenWidthDp > configuration.screenHeightDp
-    val effectiveHalfHourWidth = if (landscape) 144.dp else HalfHourWidth
+    val windowHours = if (landscape) 10L else WindowHours
+    val guideEnd = guideStart.plusHours(windowHours)
+    val effectiveHalfHourWidth = if (landscape) 92.dp else HalfHourWidth
     val pixelsPerMinute = effectiveHalfHourWidth.value / 30f
 
 LaunchedEffect(selectedDay, guideStart, jumpTarget) {
@@ -1956,7 +2052,7 @@ LaunchedEffect(selectedDay, guideStart, jumpTarget) {
 
         val minutesFromStart = Duration.between(guideStart, target)
             .toMinutes()
-            .coerceIn(0, WindowHours * 60)
+            .coerceIn(0, windowHours * 60)
 
         val targetPosition = minutesFromStart * pixelsPerMinute
         val visibleGuideWidth = configuration.screenWidthDp - ChannelWidth.value
@@ -1968,10 +2064,10 @@ LaunchedEffect(selectedDay, guideStart, jumpTarget) {
                 .coerceAtLeast(0)
         )
     }
-    val totalWidth = effectiveHalfHourWidth * (WindowHours.toInt() * 2)
+    val totalWidth = effectiveHalfHourWidth * (windowHours.toInt() * 2)
 
     Column(Modifier.fillMaxSize()) {
-        TimelineHeader(guideStart, totalWidth, effectiveHalfHourWidth, scroll)
+        TimelineHeader(guideStart, totalWidth, effectiveHalfHourWidth, scroll, windowHours)
 
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
@@ -2012,6 +2108,7 @@ private fun TimelineHeader(
     totalWidth: Dp,
     halfHourWidth: Dp,
     scroll: androidx.compose.foundation.ScrollState,
+    windowHours: Long,
 ) {
     Row(
         Modifier
@@ -2036,7 +2133,7 @@ private fun TimelineHeader(
                 .horizontalScroll(scroll)
         ) {
             Row(Modifier.width(totalWidth).fillMaxHeight()) {
-                repeat((WindowHours * 2).toInt()) { index ->
+                repeat((windowHours * 2).toInt()) { index ->
                     val time = guideStart.plusMinutes(index * 30L)
                     Box(
                         Modifier
@@ -2073,7 +2170,9 @@ private fun GuideRow(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .height(84.dp)
+            .height(
+                if (LocalConfiguration.current.screenWidthDp > LocalConfiguration.current.screenHeightDp) 72.dp else 84.dp
+            )
             .background(Midnight)
     ) {
         ChannelCell(channel)
@@ -2118,7 +2217,9 @@ private fun GuideRow(
                         modifier = Modifier
                             .offset(x = x, y = 7.dp)
                             .width(width - 3.dp)
-                            .height(70.dp),
+                            .height(
+                                if (LocalConfiguration.current.screenWidthDp > LocalConfiguration.current.screenHeightDp) 60.dp else 70.dp
+                            ),
                         onClick = { onProgramme(p) }
                     )
                 }
