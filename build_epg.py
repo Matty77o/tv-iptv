@@ -7,8 +7,9 @@ SOURCES = {
     "tr": "https://epgshare01.online/epgshare01/epg_ripper_TR3.xml.gz",
     "us": "https://epgshare01.online/epgshare01/epg_ripper_US2.xml.gz",
     "plex": "https://epgshare01.online/epgshare01/epg_ripper_PLEX1.xml.gz",
-    "pl": "https://epgshare01.online/epgshare01/epg_ripper_PL1.xml.gz",
 }
+
+DUCKTV_SOURCE = "https://epg.pw/api/epg.xml?channel_id=465350"
 
 # Exact source EPG IDs -> the IDs you want TiviMate to use
 CHANNELS = {
@@ -20,7 +21,6 @@ CHANNELS = {
     "MOONBUG.KIDS.TV.tr": "Moonbug Kids",
     "plex.tv.BABY.SHARK.TV.plex": "Baby Shark TV",
     "PBS.Kids.Stream.us2": "PBS KIDS",
-    "ducktv.HD.pl": "ducktv",
 
     # Turkish / Kids
     "TRT.ÇOCUK.HD.tr": "TRT Çocuk",
@@ -130,6 +130,73 @@ for source_name, source_url in SOURCES.items():
 
         output.append(new_programme)
         programme_count += 1
+
+# Add English ducktv EPG
+try:
+    root = download(DUCKTV_SOURCE)
+
+    duck_channel_ids = {
+        channel.get("id")
+        for channel in root.findall("channel")
+        if channel.get("id")
+    }
+
+    print(f"ducktv: {len(duck_channel_ids)} channel IDs loaded")
+
+    # Add ducktv channel
+    if duck_channel_ids and "ducktv" not in added_channels:
+        new_channel = ET.Element(
+            "channel",
+            {"id": "ducktv"}
+        )
+
+        display = ET.SubElement(new_channel, "display-name")
+        display.text = "ducktv"
+
+        # Copy logo from source if available
+        source_channel = root.find("channel")
+        if source_channel is not None:
+            icon = source_channel.find("icon")
+
+            if icon is not None and icon.get("src"):
+                ET.SubElement(
+                    new_channel,
+                    "icon",
+                    {"src": icon.get("src")}
+                )
+
+        output.append(new_channel)
+        added_channels.add("ducktv")
+
+        print("MATCHED CHANNEL: English ducktv -> ducktv")
+
+    # Add ducktv programmes
+    duck_programmes = 0
+
+    for programme in root.findall("programme"):
+        source_id = programme.get("channel")
+
+        if source_id not in duck_channel_ids:
+            continue
+
+        new_programme = ET.Element(
+            "programme",
+            dict(programme.attrib)
+        )
+
+        new_programme.set("channel", "ducktv")
+
+        for child in programme:
+            new_programme.append(child)
+
+        output.append(new_programme)
+        programme_count += 1
+        duck_programmes += 1
+
+    print(f"ducktv programmes added: {duck_programmes}")
+
+except Exception as e:
+    print(f"FAILED ducktv: {e}")
 
 
 ET.indent(output, space="  ")
