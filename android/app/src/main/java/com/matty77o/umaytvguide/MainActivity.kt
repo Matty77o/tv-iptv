@@ -133,10 +133,11 @@ private val DefaultChannelConfig = listOf(
     ChannelConfig("Baby Einstein", "Kids", 65),
     ChannelConfig("TRT Çocuk", "Kids", 70),
     ChannelConfig("Minika Çocuk", "Kids", 80),
-    ChannelConfig("Star TV", "Turkish TV", 90),
-    ChannelConfig("NOW", "Turkish TV", 100),
-    ChannelConfig("ATV", "Turkish TV", 110),
-    ChannelConfig("Show TV", "Turkish TV", 120),
+    ChannelConfig("TRT 1", "Turkish TV", 90),
+    ChannelConfig("Star TV", "Turkish TV", 100),
+    ChannelConfig("NOW", "Turkish TV", 110),
+    ChannelConfig("ATV", "Turkish TV", 120),
+    ChannelConfig("Show TV", "Turkish TV", 130),
 )
 
 data class TvChannel(
@@ -182,7 +183,7 @@ enum class GuideFilter(val label: String) {
 enum class GuideJumpTarget { NOW, TONIGHT, TOMORROW }
 
 enum class AppSection(val label: String) {
-    HOME("Home"), GUIDE("Guide"), FAVOURITES("Favourites"), SETTINGS("Settings")
+    HOME("Home"), GUIDE("Guide"), FAVOURITES("Favourites"), AI("Ask AI"), SETTINGS("Settings")
 }
 
 enum class ReminderMode(val label: String) {
@@ -472,6 +473,7 @@ fun GuideScreen(
                                     AppSection.HOME -> Icons.Rounded.Home
                                     AppSection.GUIDE -> Icons.Rounded.Tv
                                     AppSection.FAVOURITES -> Icons.Rounded.Favorite
+                                    AppSection.AI -> Icons.Rounded.Star
                                     AppSection.SETTINGS -> Icons.Rounded.Settings
                                 }
 
@@ -525,6 +527,7 @@ fun GuideScreen(
                             AppSection.HOME -> Icons.Rounded.Home
                             AppSection.GUIDE -> Icons.Rounded.Tv
                             AppSection.FAVOURITES -> Icons.Rounded.Favorite
+                            AppSection.AI -> Icons.Rounded.Star
                             AppSection.SETTINGS -> Icons.Rounded.Settings
                         }
                         NavigationBarItem(
@@ -561,6 +564,7 @@ fun GuideScreen(
                             AppSection.HOME -> Icons.Rounded.Home
                             AppSection.GUIDE -> Icons.Rounded.Tv
                             AppSection.FAVOURITES -> Icons.Rounded.Favorite
+                            AppSection.AI -> Icons.Rounded.Star
                             AppSection.SETTINGS -> Icons.Rounded.Settings
                         }
                         NavigationRailItem(
@@ -649,6 +653,10 @@ fun GuideScreen(
                             onProgramme = { selectedProgramme = it },
                             onChannel = { selectedChannel = it },
                             use24Hour = use24Hour,
+                        )
+                        AppSection.AI -> ChannelAdviserView(
+                            guide = currentGuide,
+                            channels = visibleChannels,
                         )
                         AppSection.SETTINGS -> SettingsView(
                             reminderMode = reminderMode,
@@ -1519,6 +1527,161 @@ private fun ProgrammeListRow(
                     "${programme.start.format(DateTimeFormatter.ofPattern("EEE d MMM", Locale.UK))} • ${formatTime(programme.start.toLocalTime(), use24Hour)}",
                     color = TextSecondary, fontSize = 11.sp
                 )
+            }
+        }
+    }
+}
+
+private data class AdviserRecommendation(
+    val heading: String,
+    val body: String,
+)
+
+private fun channelAdviserRecommendations(
+    ageMonths: Int,
+    guide: GuideData,
+    channels: List<TvChannel>,
+): List<AdviserRecommendation> {
+    val kids = channels.filter { it.group.equals("Kids", ignoreCase = true) }
+    val now = ZonedDateTime.now()
+    val horizon = now.plusDays(7)
+    val byChannel = guide.programmes
+        .filter { !it.start.isBefore(now.minusHours(2)) && it.start.isBefore(horizon) }
+        .groupBy { it.channelId }
+
+    fun suitableScore(channel: TvChannel): Pair<Int, Int> {
+        val shows = byChannel[channel.id].orEmpty().take(80)
+        var suitable = 0
+        var assessed = 0
+        shows.forEach { programme ->
+            val g = programmeAgeGuidance(programme, true).label
+            if (!g.startsWith("ADULT")) {
+                assessed++
+                val ok = when (g) {
+                    "0–12m" -> ageMonths <= 12
+                    "6m–2y" -> ageMonths in 6..24
+                    "1–3y" -> ageMonths in 12..36
+                    "2–5y" -> ageMonths in 24..60
+                    "2–4y" -> ageMonths in 24..48
+                    "4y+" -> ageMonths >= 48
+                    else -> false
+                }
+                if (ok) suitable++
+            }
+        }
+        return suitable to assessed
+    }
+
+    val ranked = kids.map { it to suitableScore(it) }
+        .sortedByDescending { (_, score) -> if (score.second == 0) -1.0 else score.first.toDouble() / score.second }
+    val best = ranked.filter { it.second.second >= 2 }.take(3).map { it.first.name }
+    val low = ranked.filter { it.second.second >= 3 && it.second.first * 3 < it.second.second }.take(3).map { it.first.name }
+
+    val stage = when {
+        ageMonths < 6 -> "baby sensory, soothing music, faces and very simple repetition"
+        ageMonths < 9 -> "simple songs, repetition, first sounds, colours and sensory programmes"
+        ageMonths < 12 -> "songs, first words, simple cause-and-effect and short stories"
+        ageMonths < 18 -> "first words, movement, repetition and simple toddler stories"
+        ageMonths < 24 -> "language, counting, music and simple social-play stories"
+        ageMonths < 36 -> "preschool language, imaginative play, counting and early problem-solving"
+        else -> "preschool stories, learning, problem-solving and age-appropriate adventures"
+    }
+
+    val result = mutableListOf<AdviserRecommendation>()
+    result += AdviserRecommendation(
+        "Recommended focus at ${if (ageMonths < 24) "${ageMonths} months" else "${ageMonths / 12} years"}",
+        "Prioritise $stage. This adviser uses the descriptions already in your EPG and never sends family data anywhere."
+    )
+    if (best.isNotEmpty()) result += AdviserRecommendation(
+        "Keep prominent",
+        best.joinToString() + " currently have the strongest match among the programmes the guide can assess."
+    )
+    if (low.isNotEmpty()) result += AdviserRecommendation(
+        "Move lower for now",
+        low.joinToString() + " currently skew older than the selected age. Keep them if you want them available to grow into."
+    )
+
+    val currentChannelKeys = channels.map { channelKey(it.id) }.toSet()
+    data class SuggestedChannel(val name: String, val language: String, val minMonths: Int, val maxMonths: Int, val reason: String)
+    // Only recommend channels/services with English- or Turkish-language content.
+    // A stream must still be checked before it is added because FAST feeds can be localised.
+    val suggestionCatalogue = listOf(
+        SuggestedChannel("BabyTV", "English", 0, 36, "baby and toddler songs, first concepts and short gentle programmes"),
+        SuggestedChannel("Pocoyo English", "English", 9, 48, "simple stories, clear English speech, movement and early social concepts"),
+        SuggestedChannel("Super Simple Songs", "English", 6, 48, "English songs, actions, first words and repetition"),
+        SuggestedChannel("Peppa Pig English", "English", 12, 60, "short story-led episodes with everyday English and social situations"),
+        SuggestedChannel("Sesame Street", "English", 18, 60, "English language, numbers, songs and early learning"),
+        SuggestedChannel("Niloya", "Turkish", 12, 60, "Turkish-language songs and simple everyday stories for young children"),
+        SuggestedChannel("Kukuli", "Turkish", 12, 60, "Turkish-language songs, repetition and simple stories for young children"),
+    )
+    val suggestedChannels = suggestionCatalogue
+        .filter { ageMonths in it.minMonths..it.maxMonths && channelKey(it.name) !in currentChannelKeys }
+        .take(3)
+
+    val candidates = if (suggestedChannels.isNotEmpty()) {
+        suggestedChannels.joinToString("\n") { "• ${it.name} (${it.language}) — ${it.reason}." } +
+            "\n\nThese are recommendations to look for, not channels automatically added to channels.json. Only English- or Turkish-speaking channels are recommended. The exact stream language and EPG should still be confirmed before adding one."
+    } else {
+        when {
+            ageMonths < 12 -> "Your current lineup already covers most of the baby-focused options in the adviser catalogue. Look for reliable English- or Turkish-speaking baby sensory, nursery-rhyme and first-word channels."
+            ageMonths < 24 -> "Your current lineup already covers the strongest matching suggestions. Next look for reliable English- or Turkish-speaking toddler channels focused on first words, songs, movement and short stories."
+            else -> "Your current lineup already covers the strongest matching suggestions. Next look for reliable English- or Turkish-speaking preschool channels with language, counting, phonics and simple stories."
+        }
+    }
+    result += AdviserRecommendation("Channels worth adding", candidates)
+    result += AdviserRecommendation(
+        "Important",
+        "This is content guidance generated on-device from programme descriptions, not an official age rating or a screen-time recommendation. Missing Kids descriptions still require adult supervision."
+    )
+    return result
+}
+
+@Composable
+private fun ChannelAdviserView(
+    guide: GuideData,
+    channels: List<TvChannel>,
+) {
+    var ageMonths by rememberSaveable { mutableIntStateOf(7) }
+    val recommendations = remember(ageMonths, guide, channels) {
+        channelAdviserRecommendations(ageMonths, guide, channels)
+    }
+    LazyColumn(
+        Modifier.fillMaxSize(),
+        contentPadding = PaddingValues(24.dp, 12.dp, 24.dp, 36.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        item {
+            Text("Ask AI", fontSize = 28.sp, fontWeight = FontWeight.Black)
+            Text(
+                "Channel Adviser • free & on-device",
+                color = PinkSoft,
+                fontWeight = FontWeight.SemiBold
+            )
+            Spacer(Modifier.height(6.dp))
+            Text(
+                "Choose the child's age and the adviser will review the current Kids lineup and programme descriptions. No API key, account or paid AI service is needed.",
+                color = TextSecondary
+            )
+        }
+        item {
+            SettingsCard("Child age") {
+                Text("$ageMonths months", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                Slider(
+                    value = ageMonths.toFloat(),
+                    onValueChange = { ageMonths = it.toInt().coerceIn(0, 60) },
+                    valueRange = 0f..60f,
+                    steps = 59
+                )
+                Text("Move the slider from newborn to 5 years. Nothing is saved as a child profile.", color = TextSecondary, fontSize = 11.sp)
+            }
+        }
+        items(recommendations) { recommendation ->
+            Card(colors = CardDefaults.cardColors(containerColor = Panel2)) {
+                Column(Modifier.fillMaxWidth().padding(16.dp)) {
+                    Text(recommendation.heading, color = PinkSoft, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                    Spacer(Modifier.height(6.dp))
+                    Text(recommendation.body, color = TextPrimary)
+                }
             }
         }
     }
