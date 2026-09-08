@@ -1,7 +1,6 @@
 package com.matty77o.umaytvguide
 
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.outlined.Info
 import androidx.compose.animation.animateContentSize
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
@@ -43,6 +42,7 @@ import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.FavoriteBorder
 import androidx.compose.material.icons.rounded.Schedule
 import androidx.compose.material.icons.rounded.Home
+import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material.icons.rounded.Tv
