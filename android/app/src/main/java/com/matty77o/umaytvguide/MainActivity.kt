@@ -130,6 +130,7 @@ private val DefaultChannelConfig = listOf(
     ChannelConfig("Moonbug Kids", "Kids", 40),
     ChannelConfig("Baby Shark TV", "Kids", 50),
     ChannelConfig("Duck TV", "Kids", 60, icon = DUCKTV_LOGO_URL),
+    ChannelConfig("Baby Einstein", "Kids", 65),
     ChannelConfig("TRT Çocuk", "Kids", 70),
     ChannelConfig("Minika Çocuk", "Kids", 80),
     ChannelConfig("Star TV", "Turkish TV", 90),
@@ -142,6 +143,7 @@ data class TvChannel(
     val id: String,
     val name: String,
     val icon: String?,
+    val group: String? = null,
 )
 
 data class Programme(
@@ -715,6 +717,7 @@ fun GuideScreen(
                 channel = currentGuide?.channels?.firstOrNull { it.id == programme.channelId },
                 allProgrammes = currentGuide?.programmes.orEmpty(),
                 isFavourite = isFavourite,
+                isKidsChannel = channelConfig.firstOrNull { channelKey(it.id) == channelKey(programme.channelId) }?.group.equals("Kids", ignoreCase = true),
                 reminderMode = effectiveReminderMode,
                 use24Hour = use24Hour,
                 onToggleFavourite = {
@@ -1685,6 +1688,7 @@ private fun ProgrammeSheetV2(
     channel: TvChannel?,
     allProgrammes: List<Programme>,
     isFavourite: Boolean,
+    isKidsChannel: Boolean,
     reminderMode: ReminderMode,
     use24Hour: Boolean,
     onToggleFavourite: () -> Unit,
@@ -1737,6 +1741,13 @@ private fun ProgrammeSheetV2(
                     "${Duration.between(programme.start, programme.stop).toMinutes().coerceAtLeast(1)} min",
                 color = TextSecondary
             )
+            Spacer(Modifier.height(10.dp))
+            val ageGuidance = programmeAgeGuidance(programme, isKidsChannel)
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                AgeGuidanceBadge(ageGuidance)
+                Spacer(Modifier.width(8.dp))
+                Text(ageGuidance.explanation, color = TextSecondary, fontSize = 11.sp, modifier = Modifier.weight(1f))
+            }
         }
         item {
             FilledTonalButton(onClick = onToggleFavourite) {
@@ -1809,6 +1820,7 @@ private fun mergedChannels(channels: List<TvChannel>, config: List<ChannelConfig
         ch.copy(
             name = c?.name?.takeIf { it.isNotBlank() } ?: ch.name,
             icon = resolvedChannelIcon(ch, c),
+            group = c?.group?.takeIf { it.isNotBlank() } ?: ch.group,
         )
     }.filterNot { configById[channelKey(it.id)]?.hidden == true }
         .sortedWith(
@@ -2230,6 +2242,7 @@ private fun GuideRow(
                     ProgrammeCard(
                         programme = p,
                         isFavourite = favouriteShows.any { sameShowTitle(it, p.title) },
+                        isKidsChannel = channels.firstOrNull { channelKey(it.id) == channelKey(p.channelId) }?.group.equals("Kids", ignoreCase = true),
                         modifier = Modifier
                             .offset(x = x, y = 7.dp)
                             .width(width - 3.dp)
@@ -2652,10 +2665,78 @@ private fun englishCategory(category: String): String {
     }
 }
 
+private data class AgeGuidance(val label: String, val explanation: String)
+
+private fun programmeAgeGuidance(programme: Programme, isKidsChannel: Boolean): AgeGuidance {
+    val description = programme.description?.trim().orEmpty()
+    if (description.isBlank()) {
+        return if (isKidsChannel) {
+            AgeGuidance(
+                "ADULT SUPERVISION REQUIRED",
+                "No programme description was available, so an age recommendation could not be estimated."
+            )
+        } else {
+            AgeGuidance("ADULT", "No programme description was available.")
+        }
+    }
+
+    if (!isKidsChannel) {
+        return AgeGuidance("ADULT", "This programme is not in the Kids group.")
+    }
+
+    val text = listOf(programme.title, description, programme.category.orEmpty())
+        .joinToString(" ").lowercase(Locale.UK)
+
+    fun containsAny(vararg terms: String) = terms.any { text.contains(it) }
+
+    // Conservative description-based guidance. More specific developmental cues win first.
+    return when {
+        containsAny("baby sensory", "sensory", "newborn", "infant", "lullaby", "soothing", "tummy time") ->
+            AgeGuidance("0–12m", "Baby-focused sensory, soothing or early-development content.")
+
+        containsAny("first words", "baby", "peekaboo", "nursery rhyme", "nursery rhymes", "sing-along", "sing along",
+            "colours", "colors", "shapes", "animal sounds", "music", "songs") ->
+            AgeGuidance("6m–2y", "Simple words, music, repetition or early-learning themes.")
+
+        containsAny("toddler", "early learning", "counting", "alphabet", "abc", "numbers", "learning to talk",
+            "friendship", "playtime") ->
+            AgeGuidance("1–3y", "Early toddler learning, language or social-play themes.")
+
+        containsAny("preschool", "pre-school", "phonics", "problem solving", "problem-solving", "kindergarten") ->
+            AgeGuidance("2–5y", "Preschool learning or story content.")
+
+        containsAny("school", "science", "history", "adventure", "competition", "quiz", "mystery") ->
+            AgeGuidance("4y+", "Themes appear aimed at older children.")
+
+        else -> AgeGuidance("2–4y", "Kids programme with no clear baby-specific developmental cues in its description.")
+    }
+}
+
+@Composable
+private fun AgeGuidanceBadge(guidance: AgeGuidance, compact: Boolean = false) {
+    Surface(
+        color = if (guidance.label == "ADULT" || guidance.label.startsWith("ADULT SUPERVISION"))
+            Color(0xFF5B3A25).copy(alpha = .75f) else Pink.copy(alpha = .14f),
+        shape = RoundedCornerShape(99.dp)
+    ) {
+        Text(
+            guidance.label,
+            modifier = Modifier.padding(horizontal = if (compact) 6.dp else 9.dp, vertical = if (compact) 2.dp else 4.dp),
+            color = if (guidance.label == "ADULT" || guidance.label.startsWith("ADULT SUPERVISION"))
+                Color(0xFFFFD7B0) else PinkSoft,
+            fontSize = if (compact) 8.sp else 11.sp,
+            fontWeight = FontWeight.Bold,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
+        )
+    }
+}
+
 @Composable
 private fun ProgrammeCard(
     programme: Programme,
     isFavourite: Boolean,
+    isKidsChannel: Boolean,
     modifier: Modifier,
     onClick: () -> Unit,
 ) {
@@ -2705,6 +2786,8 @@ private fun ProgrammeCard(
                     color = TextSecondary,
                     fontSize = 10.sp
                 )
+                Spacer(Modifier.width(5.dp))
+                AgeGuidanceBadge(programmeAgeGuidance(programme, isKidsChannel), compact = true)
             }
         }
 
