@@ -2016,7 +2016,6 @@ private fun ChannelAdviserView(
                         Text("Ask AI", fontSize = 24.sp, fontWeight = FontWeight.Black)
                         Text("Channel Adviser • English + Türkçe", color = PinkSoft, fontWeight = FontWeight.Bold, fontSize = 12.sp)
                     }
-                    AssistChip(onClick = {}, label = { Text("Cloudflare", fontSize = 10.sp) })
                 }
             }
         }
