@@ -150,20 +150,22 @@ try:
             {"id": "Duck TV"}
         )
 
-        display = ET.SubElement(new_channel, "display-name")
+        # Channel name
+        display = ET.SubElement(
+            new_channel,
+            "display-name",
+            {"lang": "en"}
+        )
         display.text = "Duck TV"
 
-        # Copy logo from source if available
-        source_channel = root.find("channel")
-        if source_channel is not None:
-            icon = source_channel.find("icon")
-
-            if icon is not None and icon.get("src"):
-                ET.SubElement(
-                    new_channel,
-                    "icon",
-                    {"src": icon.get("src")}
-                )
+        # Force the same Duck TV logo used by the Android app
+        ET.SubElement(
+            new_channel,
+            "icon",
+            {
+                "src": "https://epg.ovh/logo/Duck+TV.png"
+            }
+        )
 
         output.append(new_channel)
         added_channels.add("Duck TV")
@@ -184,10 +186,34 @@ try:
             dict(programme.attrib)
         )
 
+        # Force programme channel ID to match our playlist/config
         new_programme.set("channel", "Duck TV")
 
         for child in programme:
-            new_programme.append(child)
+            # EPG.PW's English Duck TV feed can incorrectly mark
+            # English metadata as another language, so normalise
+            # text metadata to English.
+            new_child = ET.Element(
+                child.tag,
+                dict(child.attrib)
+            )
+
+            new_child.text = child.text
+            new_child.tail = child.tail
+
+            if child.tag in {
+                "title",
+                "sub-title",
+                "desc",
+                "category"
+            }:
+                new_child.set("lang", "en")
+
+            # Preserve nested XML if the element has children
+            for nested_child in child:
+                new_child.append(nested_child)
+
+            new_programme.append(new_child)
 
         output.append(new_programme)
         programme_count += 1
