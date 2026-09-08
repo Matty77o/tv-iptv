@@ -25,33 +25,38 @@
     "order": 50
   },
   {
-    "id": "TRT Çocuk",
+    "id": "Duck TV",
     "group": "Kids",
     "order": 60
   },
   {
-    "id": "Minika Çocuk",
+    "id": "TRT Çocuk",
     "group": "Kids",
     "order": 70
   },
   {
-    "id": "Star TV",
-    "group": "Turkish TV",
+    "id": "Minika Çocuk",
+    "group": "Kids",
     "order": 80
   },
   {
-    "id": "NOW",
+    "id": "Star TV",
     "group": "Turkish TV",
     "order": 90
   },
   {
-    "id": "ATV",
+    "id": "NOW",
     "group": "Turkish TV",
     "order": 100
   },
   {
-    "id": "Show TV",
+    "id": "ATV",
     "group": "Turkish TV",
     "order": 110
+  },
+  {
+    "id": "Show TV",
+    "group": "Turkish TV",
+    "order": 120
   }
 ]
