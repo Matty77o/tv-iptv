@@ -14,6 +14,7 @@ import android.os.Build
 import android.os.Bundle
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -1685,17 +1686,21 @@ private suspend fun fetchCloudflareAdviserRecommendations(
         "Kartoon Channel",
     )))
 
-    // Send EVERY programme from the current calendar day, but compact each entry so
-    // the full schedule fits comfortably inside the AI request/context window. Nothing
-    // is dropped: title/channel/time/category are preserved and descriptions are capped
-    // to the useful opening portion rather than sending repeated multi-paragraph text.
+    // Keep the AI request small and reliable: send only the EPG window that is
+    // immediately useful for the Kids lineup. Every Kids channel is considered,
+    // including a programme already in progress, from now through the next 3 hours.
     val now = ZonedDateTime.now()
-    val dayStart = now.toLocalDate().atStartOfDay(now.zone)
-    val dayEnd = dayStart.plusDays(1)
+    val windowEnd = now.plusHours(3)
+    val kidsChannelKeys = kidsChannels.flatMap { channel ->
+        listOf(channelKey(channel.id), channelKey(channel.name))
+    }.toSet()
     val programmes = JSONArray()
     guide.programmes.asSequence()
-        .filter { it.start.isBefore(dayEnd) && it.stop.isAfter(dayStart) }
-        .sortedBy { it.start }
+        .filter { programme ->
+            channelKey(programme.channelId) in kidsChannelKeys &&
+                programme.start.isBefore(windowEnd) && programme.stop.isAfter(now)
+        }
+        .sortedWith(compareBy<Programme>({ channelKey(it.channelId) }, { it.start }))
         .forEach { programme ->
             programmes.put(JSONObject().apply {
                 put("channel", programme.channelId)
@@ -1707,12 +1712,15 @@ private suspend fun fetchCloudflareAdviserRecommendations(
             })
         }
     requestBody.put("epgDate", now.toLocalDate().toString())
+    requestBody.put("epgWindowStart", now.toLocalTime().toString().take(5))
+    requestBody.put("epgWindowHours", 3)
+    requestBody.put("epgAvailable", programmes.length() > 0)
     requestBody.put("programmes", programmes)
 
     val connection = (URL(AI_ADVISER_URL).openConnection() as HttpURLConnection).apply {
         requestMethod = "POST"
         connectTimeout = 12_000
-        readTimeout = 30_000
+        readTimeout = 75_000
         doOutput = true
         setRequestProperty("Content-Type", "application/json; charset=utf-8")
         setRequestProperty("Accept", "application/json")
@@ -1815,17 +1823,21 @@ private suspend fun fetchCloudflareAdviserAnswer(
         "Kartoon Channel",
     )))
 
-    // Send EVERY programme from the current calendar day, but compact each entry so
-    // the full schedule fits comfortably inside the AI request/context window. Nothing
-    // is dropped: title/channel/time/category are preserved and descriptions are capped
-    // to the useful opening portion rather than sending repeated multi-paragraph text.
+    // Keep the AI request small and reliable: send only the EPG window that is
+    // immediately useful for the Kids lineup. Every Kids channel is considered,
+    // including a programme already in progress, from now through the next 3 hours.
     val now = ZonedDateTime.now()
-    val dayStart = now.toLocalDate().atStartOfDay(now.zone)
-    val dayEnd = dayStart.plusDays(1)
+    val windowEnd = now.plusHours(3)
+    val kidsChannelKeys = kidsChannels.flatMap { channel ->
+        listOf(channelKey(channel.id), channelKey(channel.name))
+    }.toSet()
     val programmes = JSONArray()
     guide.programmes.asSequence()
-        .filter { it.start.isBefore(dayEnd) && it.stop.isAfter(dayStart) }
-        .sortedBy { it.start }
+        .filter { programme ->
+            channelKey(programme.channelId) in kidsChannelKeys &&
+                programme.start.isBefore(windowEnd) && programme.stop.isAfter(now)
+        }
+        .sortedWith(compareBy<Programme>({ channelKey(it.channelId) }, { it.start }))
         .forEach { programme ->
             programmes.put(JSONObject().apply {
                 put("channel", programme.channelId)
@@ -1837,12 +1849,15 @@ private suspend fun fetchCloudflareAdviserAnswer(
             })
         }
     requestBody.put("epgDate", now.toLocalDate().toString())
+    requestBody.put("epgWindowStart", now.toLocalTime().toString().take(5))
+    requestBody.put("epgWindowHours", 3)
+    requestBody.put("epgAvailable", programmes.length() > 0)
     requestBody.put("programmes", programmes)
 
     val connection = (URL(AI_ADVISER_URL).openConnection() as HttpURLConnection).apply {
         requestMethod = "POST"
         connectTimeout = 12_000
-        readTimeout = 30_000
+        readTimeout = 75_000
         doOutput = true
         setRequestProperty("Content-Type", "application/json; charset=utf-8")
         setRequestProperty("Accept", "application/json")
@@ -2007,6 +2022,17 @@ private fun ChannelAdviserView(
         it.kind != "add" && it !== summaryRecommendation && it !== focusRecommendation
     }
     val additions = recommendations.filter { it.kind == "add" }
+    val kidsEpgAvailable = remember(guide, channels) {
+        val now = ZonedDateTime.now()
+        val windowEnd = now.plusHours(3)
+        val kidsChannelKeys = channels.filter { it.group.equals("Kids", ignoreCase = true) }
+            .flatMap { listOf(channelKey(it.id), channelKey(it.name)) }
+            .toSet()
+        guide.programmes.any { programme ->
+            channelKey(programme.channelId) in kidsChannelKeys &&
+                programme.start.isBefore(windowEnd) && programme.stop.isAfter(now)
+        }
+    }
 
     LazyColumn(
         Modifier.fillMaxSize(),
@@ -2027,6 +2053,25 @@ private fun ChannelAdviserView(
                     Column(Modifier.weight(1f)) {
                         Text("Ask AI", fontSize = 24.sp, fontWeight = FontWeight.Black)
                         Text("Channel Adviser • English + Türkçe", color = PinkSoft, fontWeight = FontWeight.Bold, fontSize = 12.sp)
+                    }
+                }
+            }
+        }
+
+        if (!kidsEpgAvailable) {
+            item {
+                Surface(
+                    shape = RoundedCornerShape(14.dp),
+                    color = Panel2,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Row(Modifier.padding(horizontal = 13.dp, vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
+                        Icon(Icons.Rounded.Info, null, tint = TextSecondary, modifier = Modifier.size(16.dp))
+                        Spacer(Modifier.width(8.dp))
+                        Column {
+                            Text("EPG not available", color = TextPrimary, fontWeight = FontWeight.SemiBold, fontSize = 12.sp)
+                            Text("AI will still advise using the selected age and channel lineup.", color = TextSecondary, fontSize = 10.sp)
+                        }
                     }
                 }
             }
@@ -2075,9 +2120,13 @@ private fun ChannelAdviserView(
                             scope.launch {
                                 runCatching { fetchCloudflareAdviserRecommendations(ageMonths, guide, channels) }
                                     .onSuccess { aiRecommendations = it }
-                                    .onFailure {
-                                        aiRecommendations = null
-                                        aiError = "AI couldn't be reached, so the on-device fallback is shown."
+                                    .onFailure { error ->
+                                        Log.e("UmayTVGuide-AI", "Dashboard adviser failed", error)
+                                        aiError = if (aiRecommendations != null) {
+                                            "Couldn't refresh AI advice just now. Keeping the last result."
+                                        } else {
+                                            "AI is taking a little longer just now. Showing guide-based advice instead."
+                                        }
                                     }
                                 isThinking = false
                             }
@@ -2192,7 +2241,10 @@ private fun ChannelAdviserView(
                             scope.launch {
                                 runCatching { fetchCloudflareAdviserAnswer(ageMonths, question, guide, channels) }
                                     .onSuccess { questionAnswer = it }
-                                    .onFailure { questionError = "AI couldn't answer that right now." }
+                                    .onFailure { error ->
+                                        Log.e("UmayTVGuide-AI", "Question adviser failed", error)
+                                        questionError = "Couldn't get an AI answer just now. Please try again in a moment."
+                                    }
                                 isAnsweringQuestion = false
                             }
                         },
@@ -2298,7 +2350,7 @@ private fun ChannelAdviserView(
 
         item {
             Text(
-                "AI uses the selected age, channel names and a limited sample of Kids EPG data. No child's name, date of birth or profile is sent. Suggestions never edit channels.json automatically.",
+                "AI uses the selected age, channel names and up to 3 hours of Kids EPG when available. If EPG is unavailable, AI still works from the age and channel lineup. No child's name, date of birth or profile is sent. Suggestions never edit channels.json automatically.",
                 color = TextSecondary,
                 fontSize = 10.sp,
                 lineHeight = 15.sp,
