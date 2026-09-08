@@ -151,7 +151,7 @@ try:
         )
 
         display = ET.SubElement(new_channel, "display-name")
-        display.text = "ducktv"
+        display.text = "Duck TV"
 
         # Copy logo from source if available
         source_channel = root.find("channel")
