@@ -159,7 +159,6 @@ wanted_output = {
     "Show TV",
     "Moonbug Kids",
     "Baby Shark TV",
-    "Super Simple Songs",
 }
 
 missing = wanted_output - added_channels
