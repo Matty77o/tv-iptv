@@ -1685,23 +1685,27 @@ private suspend fun fetchCloudflareAdviserRecommendations(
         "Kartoon Channel",
     )))
 
-    val kidsKeys = kidsChannels
-        .flatMap { listOf(channelKey(it.id), channelKey(it.name)) }
-        .toSet()
+    // Give Ask AI the COMPLETE EPG for the current calendar day before it makes
+    // recommendations. Do not cap the number of programmes or truncate descriptions:
+    // programme-level advice should be based on what is genuinely airing today.
     val now = ZonedDateTime.now()
+    val dayStart = now.toLocalDate().atStartOfDay(now.zone)
+    val dayEnd = dayStart.plusDays(1)
     val programmes = JSONArray()
     guide.programmes.asSequence()
-        .filter { channelKey(it.channelId) in kidsKeys }
-        .filter { !it.stop.isBefore(now.minusHours(1)) && it.start.isBefore(now.plusDays(7)) }
-        .take(70)
+        .filter { it.start.isBefore(dayEnd) && it.stop.isAfter(dayStart) }
+        .sortedBy { it.start }
         .forEach { programme ->
             programmes.put(JSONObject().apply {
                 put("channel", programme.channelId)
                 put("title", programme.title)
-                put("description", programme.description.orEmpty().take(260))
+                put("description", programme.description.orEmpty())
                 put("category", programme.category.orEmpty())
+                put("start", programme.start.toString())
+                put("stop", programme.stop.toString())
             })
         }
+    requestBody.put("epgDate", now.toLocalDate().toString())
     requestBody.put("programmes", programmes)
 
     val connection = (URL(AI_ADVISER_URL).openConnection() as HttpURLConnection).apply {
@@ -1810,21 +1814,27 @@ private suspend fun fetchCloudflareAdviserAnswer(
         "Kartoon Channel",
     )))
 
-    val kidsKeys = kidsChannels.flatMap { listOf(channelKey(it.id), channelKey(it.name)) }.toSet()
+    // Give Ask AI the COMPLETE EPG for the current calendar day before it makes
+    // recommendations. Do not cap the number of programmes or truncate descriptions:
+    // programme-level advice should be based on what is genuinely airing today.
     val now = ZonedDateTime.now()
+    val dayStart = now.toLocalDate().atStartOfDay(now.zone)
+    val dayEnd = dayStart.plusDays(1)
     val programmes = JSONArray()
     guide.programmes.asSequence()
-        .filter { channelKey(it.channelId) in kidsKeys }
-        .filter { !it.stop.isBefore(now.minusHours(1)) && it.start.isBefore(now.plusDays(7)) }
-        .take(70)
+        .filter { it.start.isBefore(dayEnd) && it.stop.isAfter(dayStart) }
+        .sortedBy { it.start }
         .forEach { programme ->
             programmes.put(JSONObject().apply {
                 put("channel", programme.channelId)
                 put("title", programme.title)
-                put("description", programme.description.orEmpty().take(260))
+                put("description", programme.description.orEmpty())
                 put("category", programme.category.orEmpty())
+                put("start", programme.start.toString())
+                put("stop", programme.stop.toString())
             })
         }
+    requestBody.put("epgDate", now.toLocalDate().toString())
     requestBody.put("programmes", programmes)
 
     val connection = (URL(AI_ADVISER_URL).openConnection() as HttpURLConnection).apply {
