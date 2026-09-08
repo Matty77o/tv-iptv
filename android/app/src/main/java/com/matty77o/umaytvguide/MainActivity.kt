@@ -1,6 +1,7 @@
 package com.matty77o.umaytvguide
 
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.outlined.Info
 import androidx.compose.animation.animateContentSize
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
