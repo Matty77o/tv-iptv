@@ -65,6 +65,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.launch
 import org.json.JSONArray
 import org.json.JSONObject
 import org.xmlpull.v1.XmlPullParser
@@ -91,6 +92,9 @@ private const val GUIDE_URL =
 
 private const val CHANNEL_CONFIG_URL =
     "https://raw.githubusercontent.com/Matty77o/tv-iptv/main/channels.json"
+
+private const val AI_ADVISER_URL =
+    "https://umay-tv-ai.matthewwood406.workers.dev/api/adviser"
 
 private const val DUCKTV_LOGO_URL =
     "https://epg.ovh/logo/Duck+TV.png"
@@ -1535,6 +1539,16 @@ private fun ProgrammeListRow(
 private data class AdviserRecommendation(
     val heading: String,
     val body: String,
+    val kind: String = "info",
+)
+
+private data class SuggestedChannel(
+    val name: String,
+    val language: String,
+    val minMonths: Int,
+    val maxMonths: Int,
+    val reason: String,
+    val bestFor: String,
 )
 
 private fun channelAdviserRecommendations(
@@ -1547,10 +1561,10 @@ private fun channelAdviserRecommendations(
     val horizon = now.plusDays(7)
     val byChannel = guide.programmes
         .filter { !it.start.isBefore(now.minusHours(2)) && it.start.isBefore(horizon) }
-        .groupBy { it.channelId }
+        .groupBy { channelKey(it.channelId) }
 
     fun suitableScore(channel: TvChannel): Pair<Int, Int> {
-        val shows = byChannel[channel.id].orEmpty().take(80)
+        val shows = byChannel[channelKey(channel.id)].orEmpty().take(80)
         var suitable = 0
         var assessed = 0
         shows.forEach { programme ->
@@ -1578,7 +1592,7 @@ private fun channelAdviserRecommendations(
     val low = ranked.filter { it.second.second >= 3 && it.second.first * 3 < it.second.second }.take(3).map { it.first.name }
 
     val stage = when {
-        ageMonths < 6 -> "baby sensory, soothing music, faces and very simple repetition"
+        ageMonths < 6 -> "sensory pictures, faces, soothing music and very simple repetition"
         ageMonths < 9 -> "simple songs, repetition, first sounds, colours and sensory programmes"
         ageMonths < 12 -> "songs, first words, simple cause-and-effect and short stories"
         ageMonths < 18 -> "first words, movement, repetition and simple toddler stories"
@@ -1589,51 +1603,202 @@ private fun channelAdviserRecommendations(
 
     val result = mutableListOf<AdviserRecommendation>()
     result += AdviserRecommendation(
-        "Recommended focus at ${if (ageMonths < 24) "${ageMonths} months" else "${ageMonths / 12} years"}",
-        "Prioritise $stage. This adviser uses the descriptions already in your EPG and never sends family data anywhere."
+        "Offline fallback",
+        "At ${if (ageMonths < 24) "$ageMonths months" else "${ageMonths / 12} years"}, prioritise $stage.",
+        "focus"
     )
     if (best.isNotEmpty()) result += AdviserRecommendation(
-        "Keep prominent",
-        best.joinToString() + " currently have the strongest match among the programmes the guide can assess."
+        "Strongest matches in your guide",
+        best.joinToString() + " have the best match from programmes with enough EPG information to assess.",
+        "keep"
     )
     if (low.isNotEmpty()) result += AdviserRecommendation(
-        "Move lower for now",
-        low.joinToString() + " currently skew older than the selected age. Keep them if you want them available to grow into."
+        "Better saved for later",
+        low.joinToString() + " currently skew older. There is no need to remove them — they can simply sit lower in the guide for now.",
+        "later"
     )
 
-    val currentChannelKeys = channels.map { channelKey(it.id) }.toSet()
-    data class SuggestedChannel(val name: String, val language: String, val minMonths: Int, val maxMonths: Int, val reason: String)
-    // Only recommend channels/services with English- or Turkish-language content.
-    // A stream must still be checked before it is added because FAST feeds can be localised.
-    val suggestionCatalogue = listOf(
-        SuggestedChannel("BabyTV", "English", 0, 36, "baby and toddler songs, first concepts and short gentle programmes"),
-        SuggestedChannel("Pocoyo English", "English", 9, 48, "simple stories, clear English speech, movement and early social concepts"),
-        SuggestedChannel("Super Simple Songs", "English", 6, 48, "English songs, actions, first words and repetition"),
-        SuggestedChannel("Peppa Pig English", "English", 12, 60, "short story-led episodes with everyday English and social situations"),
-        SuggestedChannel("Sesame Street", "English", 18, 60, "English language, numbers, songs and early learning"),
-        SuggestedChannel("Niloya", "Turkish", 12, 60, "Turkish-language songs and simple everyday stories for young children"),
-        SuggestedChannel("Kukuli", "Turkish", 12, 60, "Turkish-language songs, repetition and simple stories for young children"),
+    val currentKeys = channels.flatMap { listOf(channelKey(it.id), channelKey(it.name)) }.toSet()
+    val catalogue = listOf(
+        SuggestedChannel("BabyTV", "English", 0, 36, "dedicated baby-first channel with short music, movement and first-concept programmes", "Baby-focused"),
+        SuggestedChannel("Sensical Jr.", "English", 6, 36, "younger-viewer service with early-learning and preschool content", "Early learning"),
+        SuggestedChannel("The Wiggles Channel", "English", 10, 48, "action songs, movement, repetition and clear spoken English", "Music & movement"),
+        SuggestedChannel("Tiny Pop", "English", 18, 60, "gentle preschool stories and familiar UK children's programming", "Preschool stories"),
+        SuggestedChannel("Cartoonito", "English", 24, 60, "preschool story-led programmes and social themes", "Preschool"),
+        SuggestedChannel("Niloya", "Turkish", 12, 60, "simple Turkish everyday stories and songs", "Turkish language"),
+        SuggestedChannel("Kukuli", "Turkish", 12, 60, "Turkish songs, repetition and short stories", "Turkish music"),
+        SuggestedChannel("Minika GO", "Turkish", 48, 60, "a Turkish option for older children", "Older Turkish kids"),
     )
-    val suggestedChannels = suggestionCatalogue
-        .filter { ageMonths in it.minMonths..it.maxMonths && channelKey(it.name) !in currentChannelKeys }
-        .take(3)
+    fun alreadyPresent(s: SuggestedChannel): Boolean {
+        val key = channelKey(s.name)
+        return key in currentKeys || currentKeys.any { it.contains(key) || key.contains(it) }
+    }
+    val suggestions = catalogue
+        .filter { ageMonths in it.minMonths..it.maxMonths }
+        .filterNot(::alreadyPresent)
+        .take(2)
 
-    val candidates = if (suggestedChannels.isNotEmpty()) {
-        suggestedChannels.joinToString("\n") { "• ${it.name} (${it.language}) — ${it.reason}." } +
-            "\n\nThese are recommendations to look for, not channels automatically added to channels.json. Only English- or Turkish-speaking channels are recommended. The exact stream language and EPG should still be confirmed before adding one."
-    } else {
-        when {
-            ageMonths < 12 -> "Your current lineup already covers most of the baby-focused options in the adviser catalogue. Look for reliable English- or Turkish-speaking baby sensory, nursery-rhyme and first-word channels."
-            ageMonths < 24 -> "Your current lineup already covers the strongest matching suggestions. Next look for reliable English- or Turkish-speaking toddler channels focused on first words, songs, movement and short stories."
-            else -> "Your current lineup already covers the strongest matching suggestions. Next look for reliable English- or Turkish-speaking preschool channels with language, counting, phonics and simple stories."
+    suggestions.forEach { suggestion ->
+        result += AdviserRecommendation(
+            "${suggestion.name}  •  ${suggestion.language}",
+            "${suggestion.bestFor} — ${suggestion.reason}. Stream and EPG still need verifying.",
+            "add"
+        )
+    }
+    return result
+}
+
+private suspend fun fetchCloudflareAdviserRecommendations(
+    ageMonths: Int,
+    guide: GuideData,
+    channels: List<TvChannel>,
+): List<AdviserRecommendation> = withContext(Dispatchers.IO) {
+    val requestBody = JSONObject()
+    requestBody.put("ageMonths", ageMonths)
+
+    // Send only the live Kids lineup. This is rebuilt from the current channel
+    // configuration every time Ask AI is tapped, so adding/removing a Kids
+    // channel never requires changing the Worker prompt or rebuilding this list.
+    val kidsChannels = channels.filter { it.group.equals("Kids", ignoreCase = true) }
+    val currentChannels = JSONArray()
+    kidsChannels.forEach { channel -> currentChannels.put(channel.name) }
+    requestBody.put("currentChannels", currentChannels)
+
+    requestBody.put("excludedChannels", JSONArray(listOf(
+        "Super Simple Songs",
+        "LooLoo Kids",
+        "HappyKids",
+        "HappyKids Junior",
+        "Ketchup TV",
+        "Kartoon Channel",
+    )))
+
+    val kidsKeys = kidsChannels
+        .flatMap { listOf(channelKey(it.id), channelKey(it.name)) }
+        .toSet()
+    val now = ZonedDateTime.now()
+    val programmes = JSONArray()
+    guide.programmes.asSequence()
+        .filter { channelKey(it.channelId) in kidsKeys }
+        .filter { !it.end.isBefore(now.minusHours(1)) && it.start.isBefore(now.plusDays(7)) }
+        .take(70)
+        .forEach { programme ->
+            programmes.put(JSONObject().apply {
+                put("channel", programme.channelId)
+                put("title", programme.title)
+                put("description", programme.description.orEmpty().take(260))
+                put("category", programme.category.orEmpty())
+            })
+        }
+    requestBody.put("programmes", programmes)
+
+    val connection = (URL(AI_ADVISER_URL).openConnection() as HttpURLConnection).apply {
+        requestMethod = "POST"
+        connectTimeout = 12_000
+        readTimeout = 30_000
+        doOutput = true
+        setRequestProperty("Content-Type", "application/json; charset=utf-8")
+        setRequestProperty("Accept", "application/json")
+    }
+
+    try {
+        connection.outputStream.use { it.write(requestBody.toString().toByteArray(Charsets.UTF_8)) }
+        val code = connection.responseCode
+        val stream = if (code in 200..299) connection.inputStream else connection.errorStream
+        val text = stream?.bufferedReader()?.use { it.readText() }.orEmpty()
+        if (code !in 200..299) error("Cloudflare adviser returned HTTP $code")
+
+        val root = JSONObject(text)
+        if (root.has("error")) error(root.optString("error", "AI request failed"))
+
+        val out = mutableListOf<AdviserRecommendation>()
+        root.optString("summary").takeIf { it.isNotBlank() }?.let {
+            out += AdviserRecommendation("AI recommendation", it, "focus")
+        }
+        root.optString("focus").takeIf { it.isNotBlank() }?.let {
+            out += AdviserRecommendation("Best focus for this age", it, "focus")
+        }
+
+        val existing = root.optJSONArray("existing") ?: JSONArray()
+        for (i in 0 until existing.length()) {
+            val item = existing.optJSONObject(i) ?: continue
+            val channel = item.optString("channel").trim()
+            val verdict = item.optString("verdict").uppercase(Locale.ROOT)
+            val reason = item.optString("reason").trim()
+            if (channel.isBlank() || reason.isBlank()) continue
+            val kind = when (verdict) {
+                "KEEP" -> "keep"
+                "LOWER", "LATER" -> "later"
+                else -> "info"
+            }
+            val label = when (verdict) {
+                "KEEP" -> "Keep prominent"
+                "LOWER" -> "Move lower for now"
+                "LATER" -> "Better for later"
+                else -> "Review"
+            }
+            out += AdviserRecommendation("$channel  •  $label", reason, kind)
+        }
+
+        val currentKeys = channels.flatMap { listOf(channelKey(it.id), channelKey(it.name)) }.toSet()
+        val add = root.optJSONArray("add") ?: JSONArray()
+        for (i in 0 until add.length()) {
+            val item = add.optJSONObject(i) ?: continue
+            val channel = item.optString("channel").trim()
+            val language = item.optString("language").trim()
+            val priority = item.optString("priority").trim()
+            val ageFit = item.optString("ageFit").trim()
+            val reason = item.optString("reason").trim()
+            if (channel.isBlank() || reason.isBlank()) continue
+            val key = channelKey(channel)
+            if (key in currentKeys || currentKeys.any { it == key }) continue
+            if (!language.equals("English", true) && !language.equals("Turkish", true)) continue
+            val meta = listOf(language, ageFit, priority.takeIf { it.isNotBlank() }?.let { "$it priority" })
+                .filterNotNull().filter { it.isNotBlank() }.joinToString(" • ")
+            out += AdviserRecommendation(
+                if (meta.isBlank()) channel else "$channel  •  $meta",
+                "$reason Stream and EPG availability still need verifying before it is added.",
+                "add"
+            )
+        }
+
+        if (out.none { it.kind == "add" }) {
+            out += AdviserRecommendation(
+                "No strong new channel suggestion",
+                "The AI did not find a worthwhile English or Turkish addition that is not already in your lineup.",
+                "add"
+            )
+        }
+        out
+    } finally {
+        connection.disconnect()
+    }
+}
+
+@Composable
+private fun AdviserCard(recommendation: AdviserRecommendation) {
+    val icon = when (recommendation.kind) {
+        "add" -> Icons.Rounded.Tv
+        "keep" -> Icons.Rounded.Star
+        "later" -> Icons.Rounded.Schedule
+        else -> Icons.Rounded.Star
+    }
+    Card(
+        shape = RoundedCornerShape(22.dp),
+        colors = CardDefaults.cardColors(containerColor = Panel2),
+    ) {
+        Row(Modifier.fillMaxWidth().padding(18.dp), verticalAlignment = Alignment.Top) {
+            Surface(shape = RoundedCornerShape(14.dp), color = Pink.copy(alpha = .14f)) {
+                Icon(icon, null, tint = PinkSoft, modifier = Modifier.padding(10.dp).size(22.dp))
+            }
+            Spacer(Modifier.width(14.dp))
+            Column(Modifier.weight(1f)) {
+                Text(recommendation.heading, color = PinkSoft, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                Spacer(Modifier.height(5.dp))
+                Text(recommendation.body, color = TextPrimary, lineHeight = 21.sp)
+            }
         }
     }
-    result += AdviserRecommendation("Channels worth adding", candidates)
-    result += AdviserRecommendation(
-        "Important",
-        "This is content guidance generated on-device from programme descriptions, not an official age rating or a screen-time recommendation. Missing Kids descriptions still require adult supervision."
-    )
-    return result
 }
 
 @Composable
@@ -1642,47 +1807,145 @@ private fun ChannelAdviserView(
     channels: List<TvChannel>,
 ) {
     var ageMonths by rememberSaveable { mutableIntStateOf(7) }
-    val recommendations = remember(ageMonths, guide, channels) {
+    var aiRecommendations by remember { mutableStateOf<List<AdviserRecommendation>?>(null) }
+    var isThinking by remember { mutableStateOf(false) }
+    var aiError by remember { mutableStateOf<String?>(null) }
+    val scope = rememberCoroutineScope()
+    val offlineFallback = remember(ageMonths, guide, channels) {
         channelAdviserRecommendations(ageMonths, guide, channels)
     }
+    val recommendations = aiRecommendations ?: offlineFallback
+
     LazyColumn(
         Modifier.fillMaxSize(),
         contentPadding = PaddingValues(24.dp, 12.dp, 24.dp, 36.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
+        verticalArrangement = Arrangement.spacedBy(14.dp)
     ) {
         item {
-            Text("Ask AI", fontSize = 28.sp, fontWeight = FontWeight.Black)
-            Text(
-                "Channel Adviser • free & on-device",
-                color = PinkSoft,
-                fontWeight = FontWeight.SemiBold
-            )
-            Spacer(Modifier.height(6.dp))
-            Text(
-                "Choose the child's age and the adviser will review the current Kids lineup and programme descriptions. No API key, account or paid AI service is needed.",
-                color = TextSecondary
-            )
-        }
-        item {
-            SettingsCard("Child age") {
-                Text("$ageMonths months", fontSize = 20.sp, fontWeight = FontWeight.Bold)
-                Slider(
-                    value = ageMonths.toFloat(),
-                    onValueChange = { ageMonths = it.toInt().coerceIn(0, 60) },
-                    valueRange = 0f..60f,
-                    steps = 59
-                )
-                Text("Move the slider from newborn to 5 years. Nothing is saved as a child profile.", color = TextSecondary, fontSize = 11.sp)
-            }
-        }
-        items(recommendations) { recommendation ->
-            Card(colors = CardDefaults.cardColors(containerColor = Panel2)) {
-                Column(Modifier.fillMaxWidth().padding(16.dp)) {
-                    Text(recommendation.heading, color = PinkSoft, fontWeight = FontWeight.Bold, fontSize = 16.sp)
-                    Spacer(Modifier.height(6.dp))
-                    Text(recommendation.body, color = TextPrimary)
+            Surface(
+                shape = RoundedCornerShape(28.dp),
+                color = Pink.copy(alpha = .10f),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Column(Modifier.padding(20.dp)) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Surface(shape = RoundedCornerShape(17.dp), color = Pink.copy(alpha = .20f)) {
+                            Icon(Icons.Rounded.Star, null, tint = PinkSoft, modifier = Modifier.padding(12.dp).size(27.dp))
+                        }
+                        Spacer(Modifier.width(13.dp))
+                        Column {
+                            Text("Ask AI", fontSize = 29.sp, fontWeight = FontWeight.Black)
+                            Text("Channel Adviser", color = PinkSoft, fontWeight = FontWeight.Bold)
+                        }
+                    }
+                    Spacer(Modifier.height(12.dp))
+                    Text(
+                        "Ask your Cloudflare AI Worker to review the current guide, spot gaps and suggest genuinely different English or Turkish channels worth looking for.",
+                        color = TextSecondary,
+                        lineHeight = 20.sp
+                    )
+                    Spacer(Modifier.height(12.dp))
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        AssistChip(onClick = {}, label = { Text("English") })
+                        AssistChip(onClick = {}, label = { Text("Türkçe") })
+                        AssistChip(onClick = {}, label = { Text("Cloudflare AI") })
+                    }
                 }
             }
+        }
+        item {
+            Card(shape = RoundedCornerShape(22.dp), colors = CardDefaults.cardColors(containerColor = Panel2)) {
+                Column(Modifier.fillMaxWidth().padding(18.dp)) {
+                    Text("Age to advise for", color = PinkSoft, fontWeight = FontWeight.Bold)
+                    Spacer(Modifier.height(5.dp))
+                    Text(
+                        if (ageMonths < 24) "$ageMonths months" else "${ageMonths / 12} years ${ageMonths % 12} months",
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Black
+                    )
+                    Slider(
+                        value = ageMonths.toFloat(),
+                        onValueChange = {
+                            ageMonths = it.toInt().coerceIn(0, 60)
+                            aiRecommendations = null
+                            aiError = null
+                        },
+                        valueRange = 0f..60f,
+                        steps = 59
+                    )
+                    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                        Text("Newborn", color = TextSecondary, fontSize = 10.sp)
+                        Text("5 years", color = TextSecondary, fontSize = 10.sp)
+                    }
+                    Spacer(Modifier.height(12.dp))
+                    Button(
+                        onClick = {
+                            if (isThinking) return@Button
+                            isThinking = true
+                            aiError = null
+                            scope.launch {
+                                runCatching {
+                                    fetchCloudflareAdviserRecommendations(ageMonths, guide, channels)
+                                }.onSuccess {
+                                    aiRecommendations = it
+                                }.onFailure {
+                                    aiRecommendations = null
+                                    aiError = "AI couldn't be reached, so the on-device fallback is shown."
+                                }
+                                isThinking = false
+                            }
+                        },
+                        enabled = !isThinking,
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(16.dp)
+                    ) {
+                        if (isThinking) {
+                            CircularProgressIndicator(modifier = Modifier.size(18.dp), strokeWidth = 2.dp)
+                            Spacer(Modifier.width(10.dp))
+                            Text("Thinking…")
+                        } else {
+                            Icon(Icons.Rounded.Star, null, modifier = Modifier.size(19.dp))
+                            Spacer(Modifier.width(8.dp))
+                            Text(if (aiRecommendations == null) "Ask AI" else "Ask again")
+                        }
+                    }
+                    Text(
+                        if (aiRecommendations != null) "Live recommendation from your Cloudflare Worker"
+                        else "Nothing is sent until you tap Ask AI",
+                        color = if (aiRecommendations != null) PinkSoft else TextSecondary,
+                        fontSize = 11.sp,
+                        modifier = Modifier.padding(top = 8.dp)
+                    )
+                    aiError?.let {
+                        Text(it, color = TextSecondary, fontSize = 11.sp, modifier = Modifier.padding(top = 5.dp))
+                    }
+                }
+            }
+        }
+        item {
+            Text("Your guide", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+            Text(
+                if (aiRecommendations != null) "Cloudflare AI's view of the current EPG"
+                else "On-device preview until you tap Ask AI",
+                color = TextSecondary,
+                fontSize = 12.sp
+            )
+        }
+        items(recommendations.filter { it.kind != "add" }) { AdviserCard(it) }
+        item {
+            Spacer(Modifier.height(2.dp))
+            Text("Channels worth looking for", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+            Text("English or Turkish only • never channels already in your lineup", color = TextSecondary, fontSize = 12.sp)
+        }
+        items(recommendations.filter { it.kind == "add" }) { AdviserCard(it) }
+        item {
+            Text(
+                "Ask AI sends the selected age, channel names and a limited sample of Kids EPG titles/descriptions to your Cloudflare Worker. It does not send a child's name, date of birth or profile. Suggestions never edit channels.json automatically.",
+                color = TextSecondary,
+                fontSize = 11.sp,
+                lineHeight = 16.sp,
+                modifier = Modifier.padding(horizontal = 4.dp, vertical = 6.dp)
+            )
         }
     }
 }
