@@ -25,38 +25,33 @@
     "order": 50
   },
   {
-    "id": "Super Simple Songs",
+    "id": "TRT Çocuk",
     "group": "Kids",
     "order": 60
   },
   {
-    "id": "TRT Çocuk",
+    "id": "Minika Çocuk",
     "group": "Kids",
     "order": 70
   },
   {
-    "id": "Minika Çocuk",
-    "group": "Kids",
-    "order": 80
-  },
-  {
     "id": "Star TV",
     "group": "Turkish TV",
-    "order": 100
+    "order": 80
   },
   {
     "id": "NOW",
     "group": "Turkish TV",
-    "order": 110
+    "order": 90
   },
   {
     "id": "ATV",
     "group": "Turkish TV",
-    "order": 120
+    "order": 100
   },
   {
     "id": "Show TV",
     "group": "Turkish TV",
-    "order": 130
+    "order": 110
   }
 ]
