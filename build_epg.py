@@ -7,6 +7,7 @@ SOURCES = {
     "tr": "https://epgshare01.online/epgshare01/epg_ripper_TR3.xml.gz",
     "us": "https://epgshare01.online/epgshare01/epg_ripper_US2.xml.gz",
     "plex": "https://epgshare01.online/epgshare01/epg_ripper_PLEX1.xml.gz",
+    "pl": "https://epgshare01.online/epgshare01/epg_ripper_PL1.xml.gz",
 }
 
 # Exact source EPG IDs -> the IDs you want TiviMate to use
@@ -19,6 +20,7 @@ CHANNELS = {
     "MOONBUG.KIDS.TV.tr": "Moonbug Kids",
     "plex.tv.BABY.SHARK.TV.plex": "Baby Shark TV",
     "PBS.Kids.Stream.us2": "PBS KIDS",
+    "ducktv.HD.pl": "ducktv",
 
     # Turkish / Kids
     "TRT.ÇOCUK.HD.tr": "TRT Çocuk",
@@ -159,6 +161,7 @@ wanted_output = {
     "Show TV",
     "Moonbug Kids",
     "Baby Shark TV",
+    "ducktv",
 }
 
 missing = wanted_output - added_channels
