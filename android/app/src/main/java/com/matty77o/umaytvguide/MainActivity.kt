@@ -1685,9 +1685,10 @@ private suspend fun fetchCloudflareAdviserRecommendations(
         "Kartoon Channel",
     )))
 
-    // Give Ask AI the COMPLETE EPG for the current calendar day before it makes
-    // recommendations. Do not cap the number of programmes or truncate descriptions:
-    // programme-level advice should be based on what is genuinely airing today.
+    // Send EVERY programme from the current calendar day, but compact each entry so
+    // the full schedule fits comfortably inside the AI request/context window. Nothing
+    // is dropped: title/channel/time/category are preserved and descriptions are capped
+    // to the useful opening portion rather than sending repeated multi-paragraph text.
     val now = ZonedDateTime.now()
     val dayStart = now.toLocalDate().atStartOfDay(now.zone)
     val dayEnd = dayStart.plusDays(1)
@@ -1699,10 +1700,10 @@ private suspend fun fetchCloudflareAdviserRecommendations(
             programmes.put(JSONObject().apply {
                 put("channel", programme.channelId)
                 put("title", programme.title)
-                put("description", programme.description.orEmpty())
+                put("description", programme.description.orEmpty().replace("\n", " ").replace("\r", " ").trim().take(220))
                 put("category", programme.category.orEmpty())
-                put("start", programme.start.toString())
-                put("stop", programme.stop.toString())
+                put("start", programme.start.toLocalTime().toString().take(5))
+                put("stop", programme.stop.toLocalTime().toString().take(5))
             })
         }
     requestBody.put("epgDate", now.toLocalDate().toString())
@@ -1814,9 +1815,10 @@ private suspend fun fetchCloudflareAdviserAnswer(
         "Kartoon Channel",
     )))
 
-    // Give Ask AI the COMPLETE EPG for the current calendar day before it makes
-    // recommendations. Do not cap the number of programmes or truncate descriptions:
-    // programme-level advice should be based on what is genuinely airing today.
+    // Send EVERY programme from the current calendar day, but compact each entry so
+    // the full schedule fits comfortably inside the AI request/context window. Nothing
+    // is dropped: title/channel/time/category are preserved and descriptions are capped
+    // to the useful opening portion rather than sending repeated multi-paragraph text.
     val now = ZonedDateTime.now()
     val dayStart = now.toLocalDate().atStartOfDay(now.zone)
     val dayEnd = dayStart.plusDays(1)
@@ -1828,10 +1830,10 @@ private suspend fun fetchCloudflareAdviserAnswer(
             programmes.put(JSONObject().apply {
                 put("channel", programme.channelId)
                 put("title", programme.title)
-                put("description", programme.description.orEmpty())
+                put("description", programme.description.orEmpty().replace("\n", " ").replace("\r", " ").trim().take(220))
                 put("category", programme.category.orEmpty())
-                put("start", programme.start.toString())
-                put("stop", programme.stop.toString())
+                put("start", programme.start.toLocalTime().toString().take(5))
+                put("stop", programme.stop.toLocalTime().toString().take(5))
             })
         }
     requestBody.put("epgDate", now.toLocalDate().toString())
