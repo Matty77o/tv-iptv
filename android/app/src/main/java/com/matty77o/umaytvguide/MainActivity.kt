@@ -2242,7 +2242,7 @@ private fun GuideRow(
                     ProgrammeCard(
                         programme = p,
                         isFavourite = favouriteShows.any { sameShowTitle(it, p.title) },
-                        isKidsChannel = channels.firstOrNull { channelKey(it.id) == channelKey(p.channelId) }?.group.equals("Kids", ignoreCase = true),
+                        isKidsChannel = channel.group.equals("Kids", ignoreCase = true),
                         modifier = Modifier
                             .offset(x = x, y = 7.dp)
                             .width(width - 3.dp)
