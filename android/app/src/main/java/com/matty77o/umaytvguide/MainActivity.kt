@@ -46,6 +46,7 @@ import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material.icons.rounded.Tv
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material.icons.rounded.StarBorder
+import androidx.compose.material.icons.rounded.PlayArrow
 import androidx.compose.material.icons.rounded.Notifications
 import androidx.compose.material.icons.rounded.KeyboardArrowRight
 import androidx.compose.material3.*
@@ -1542,6 +1543,17 @@ private data class AdviserRecommendation(
     val kind: String = "info",
 )
 
+private data class AdviserProgrammeSuggestion(
+    val programme: String,
+    val channel: String,
+    val reason: String,
+)
+
+private data class AdviserQuestionAnswer(
+    val answer: String,
+    val programmes: List<AdviserProgrammeSuggestion> = emptyList(),
+)
+
 private data class SuggestedChannel(
     val name: String,
     val language: String,
@@ -1780,7 +1792,7 @@ private suspend fun fetchCloudflareAdviserAnswer(
     question: String,
     guide: GuideData,
     channels: List<TvChannel>,
-): String = withContext(Dispatchers.IO) {
+): AdviserQuestionAnswer = withContext(Dispatchers.IO) {
     val requestBody = JSONObject()
     requestBody.put("ageMonths", ageMonths)
     requestBody.put("question", question.trim().take(500))
@@ -1832,8 +1844,19 @@ private suspend fun fetchCloudflareAdviserAnswer(
         if (code !in 200..299) error("Cloudflare adviser returned HTTP $code")
         val root = JSONObject(text)
         if (root.has("error")) error(root.optString("error", "AI request failed"))
-        root.optString("answer").trim().takeIf { it.isNotBlank() }
+        val answer = root.optString("answer").trim().takeIf { it.isNotBlank() }
             ?: error("AI returned no answer")
+        val programmeSuggestions = mutableListOf<AdviserProgrammeSuggestion>()
+        val programmeArray = root.optJSONArray("programmes") ?: JSONArray()
+        for (i in 0 until programmeArray.length()) {
+            val item = programmeArray.optJSONObject(i) ?: continue
+            val programme = item.optString("programme").trim()
+            val channel = item.optString("channel").trim()
+            val reason = item.optString("reason").trim()
+            if (programme.isBlank() || channel.isBlank()) continue
+            programmeSuggestions += AdviserProgrammeSuggestion(programme, channel, reason)
+        }
+        AdviserQuestionAnswer(answer, programmeSuggestions)
     } finally {
         connection.disconnect()
     }
@@ -1956,7 +1979,7 @@ private fun ChannelAdviserView(
     var isThinking by remember { mutableStateOf(false) }
     var aiError by remember { mutableStateOf<String?>(null) }
     var question by rememberSaveable { mutableStateOf("") }
-    var questionAnswer by remember { mutableStateOf<String?>(null) }
+    var questionAnswer by remember { mutableStateOf<AdviserQuestionAnswer?>(null) }
     var isAnsweringQuestion by remember { mutableStateOf(false) }
     var questionError by remember { mutableStateOf<String?>(null) }
     val scope = rememberCoroutineScope()
@@ -2130,7 +2153,7 @@ private fun ChannelAdviserView(
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Column(Modifier.weight(1f)) {
                             Text("Ask a question", color = PinkSoft, fontWeight = FontWeight.Bold, fontSize = 16.sp)
-                            Text("Ask about this lineup or a future age", color = TextSecondary, fontSize = 11.sp)
+                            Text("Ask about channels, programmes or a future age", color = TextSecondary, fontSize = 11.sp)
                         }
                         Surface(shape = CircleShape, color = Pink.copy(alpha = .12f)) {
                             Icon(Icons.Rounded.StarBorder, null, tint = PinkSoft, modifier = Modifier.padding(8.dp).size(18.dp))
@@ -2177,7 +2200,7 @@ private fun ChannelAdviserView(
                             Text("Ask")
                         }
                     }
-                    questionAnswer?.let { answer ->
+                    questionAnswer?.let { response ->
                         Spacer(Modifier.height(12.dp))
                         Surface(
                             shape = RoundedCornerShape(17.dp, 17.dp, 17.dp, 5.dp),
@@ -2187,7 +2210,61 @@ private fun ChannelAdviserView(
                             Column(Modifier.padding(14.dp)) {
                                 Text("AI", color = PinkSoft, fontWeight = FontWeight.Black, fontSize = 11.sp)
                                 Spacer(Modifier.height(4.dp))
-                                Text(answer, color = TextPrimary, lineHeight = 20.sp, fontSize = 13.sp)
+                                Text(response.answer, color = TextPrimary, lineHeight = 20.sp, fontSize = 13.sp)
+
+                                if (response.programmes.isNotEmpty()) {
+                                    Spacer(Modifier.height(14.dp))
+                                    Text(
+                                        "PROGRAMMES WORTH TRYING",
+                                        color = PinkSoft,
+                                        fontWeight = FontWeight.Black,
+                                        fontSize = 10.sp,
+                                        letterSpacing = .6.sp
+                                    )
+                                    Spacer(Modifier.height(8.dp))
+                                    response.programmes.forEachIndexed { index, suggestion ->
+                                        Row(verticalAlignment = Alignment.Top) {
+                                            Surface(
+                                                shape = RoundedCornerShape(10.dp),
+                                                color = Pink.copy(alpha = .13f)
+                                            ) {
+                                                Icon(
+                                                    Icons.Rounded.PlayArrow,
+                                                    null,
+                                                    tint = PinkSoft,
+                                                    modifier = Modifier.padding(7.dp).size(16.dp)
+                                                )
+                                            }
+                                            Spacer(Modifier.width(10.dp))
+                                            Column(Modifier.weight(1f)) {
+                                                Text(
+                                                    suggestion.programme,
+                                                    color = TextPrimary,
+                                                    fontWeight = FontWeight.Bold,
+                                                    fontSize = 13.sp
+                                                )
+                                                Text(
+                                                    "On ${suggestion.channel}",
+                                                    color = PinkSoft,
+                                                    fontWeight = FontWeight.SemiBold,
+                                                    fontSize = 11.sp
+                                                )
+                                                if (suggestion.reason.isNotBlank()) {
+                                                    Spacer(Modifier.height(2.dp))
+                                                    Text(
+                                                        suggestion.reason,
+                                                        color = TextSecondary,
+                                                        fontSize = 11.sp,
+                                                        lineHeight = 16.sp
+                                                    )
+                                                }
+                                            }
+                                        }
+                                        if (index != response.programmes.lastIndex) {
+                                            Spacer(Modifier.height(10.dp))
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
