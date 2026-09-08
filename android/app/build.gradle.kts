@@ -12,8 +12,8 @@ android {
         applicationId = "com.matty77o.umaytvguide"
         minSdk = 26
         targetSdk = 35
-        versionCode = 31
-        versionName = "2.6.2"
+        versionCode = 32
+        versionName = "2.6.3"
     }
 
     compileOptions {

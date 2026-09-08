@@ -92,6 +92,19 @@ private const val GUIDE_URL =
 private const val CHANNEL_CONFIG_URL =
     "https://raw.githubusercontent.com/Matty77o/tv-iptv/main/channels.json"
 
+private const val DUCKTV_LOGO_URL =
+    "https://epg.ovh/logo/Duck+TV.png"
+
+private fun channelKey(value: String): String =
+    Normalizer.normalize(value.trim(), Normalizer.Form.NFKD)
+        .replace("\\p{M}+".toRegex(), "")
+        .lowercase(Locale.ROOT)
+        .filter { it.isLetterOrDigit() }
+
+private fun resolvedChannelIcon(channel: TvChannel, config: ChannelConfig?): String? =
+    config?.icon?.takeIf { it.isNotBlank() }
+        ?: if (channelKey(channel.id) == "ducktv") DUCKTV_LOGO_URL else channel.icon
+
 private const val PREFS_NAME = "umay_tv_guide"
 private const val PREF_FAVOURITES = "favourite_show_titles"
 private const val PREF_FAVOURITE_CHANNELS = "favourite_channels"
@@ -116,13 +129,13 @@ private val DefaultChannelConfig = listOf(
     ChannelConfig("PBS KIDS", "Kids", 30),
     ChannelConfig("Moonbug Kids", "Kids", 40),
     ChannelConfig("Baby Shark TV", "Kids", 50),
-    ChannelConfig("Super Simple Songs", "Kids", 60),
+    ChannelConfig("Duck TV", "Kids", 60, icon = DUCKTV_LOGO_URL),
     ChannelConfig("TRT Çocuk", "Kids", 70),
     ChannelConfig("Minika Çocuk", "Kids", 80),
-    ChannelConfig("Star TV", "Turkish TV", 100),
-    ChannelConfig("NOW", "Turkish TV", 110),
-    ChannelConfig("ATV", "Turkish TV", 120),
-    ChannelConfig("Show TV", "Turkish TV", 130),
+    ChannelConfig("Star TV", "Turkish TV", 90),
+    ChannelConfig("NOW", "Turkish TV", 100),
+    ChannelConfig("ATV", "Turkish TV", 110),
+    ChannelConfig("Show TV", "Turkish TV", 120),
 )
 
 data class TvChannel(
@@ -1162,7 +1175,7 @@ private fun DynamicGuideContent(
     onProgramme: (Programme) -> Unit,
 ) {
     var jumpTarget by rememberSaveable { mutableStateOf(GuideJumpTarget.NOW) }
-    val configById = channelConfig.associateBy { it.id }
+    val configById = channelConfig.associateBy { channelKey(it.id) }
     val groups = listOf("All", "Favourite Shows") + channelConfig
         .map { it.group }.filter { it.isNotBlank() }.distinct()
     val visible = channels.filter { channel ->
@@ -1172,7 +1185,7 @@ private fun DynamicGuideContent(
                 p.channelId == channel.id && p.start.toLocalDate() == selectedDay &&
                     favouriteShows.any { sameShowTitle(it, p.title) }
             }
-            else -> configById[channel.id]?.group == selectedGroup
+            else -> configById[channelKey(channel.id)]?.group == selectedGroup
         }
     }
 
@@ -1790,15 +1803,18 @@ private fun ProgrammeSheetV2(
 }
 
 private fun mergedChannels(channels: List<TvChannel>, config: List<ChannelConfig>): List<TvChannel> {
-    val configById = config.associateBy { it.id }
+    val configById = config.associateBy { channelKey(it.id) }
     return channels.map { ch ->
-        val c = configById[ch.id]
+        val c = configById[channelKey(ch.id)]
         ch.copy(
             name = c?.name?.takeIf { it.isNotBlank() } ?: ch.name,
-            icon = c?.icon?.takeIf { it.isNotBlank() } ?: ch.icon,
+            icon = resolvedChannelIcon(ch, c),
         )
-    }.filterNot { configById[it.id]?.hidden == true }
-        .sortedWith(compareBy<TvChannel> { configById[it.id]?.order ?: Int.MAX_VALUE }.thenBy { it.name.lowercase(Locale.UK) })
+    }.filterNot { configById[channelKey(it.id)]?.hidden == true }
+        .sortedWith(
+            compareBy<TvChannel> { configById[channelKey(it.id)]?.order ?: Int.MAX_VALUE }
+                .thenBy { it.name.lowercase(Locale.UK) }
+        )
 }
 
 private fun formatTime(time: LocalTime, use24Hour: Boolean): String =
@@ -1877,24 +1893,24 @@ private fun GuideContent(
             selectedDay,
             favouriteShows
         ) {
-            val configById = channelConfig.associateBy { it.id }
+            val configById = channelConfig.associateBy { channelKey(it.id) }
 
             // Every channel present in guide.xml appears automatically.
             // channels.json is only used for group/order/name/icon overrides.
             val availableChannels = guide.channels
                 .map { channel ->
-                    val config = configById[channel.id]
+                    val config = configById[channelKey(channel.id)]
                     channel.copy(
                         name = config?.name?.takeIf { it.isNotBlank() } ?: channel.name,
-                        icon = config?.icon?.takeIf { it.isNotBlank() } ?: channel.icon,
+                        icon = resolvedChannelIcon(channel, config),
                     )
                 }
                 .filterNot { channel ->
-                    configById[channel.id]?.hidden == true
+                    configById[channelKey(channel.id)]?.hidden == true
                 }
 
             val filtered = availableChannels.filter { channel ->
-                val group = configById[channel.id]?.group.orEmpty()
+                val group = configById[channelKey(channel.id)]?.group.orEmpty()
 
                 when (filter) {
                     GuideFilter.ALL -> true
@@ -1910,7 +1926,7 @@ private fun GuideContent(
 
             filtered.sortedWith(
                 compareBy<TvChannel> {
-                    configById[it.id]?.order ?: Int.MAX_VALUE
+                    configById[channelKey(it.id)]?.order ?: Int.MAX_VALUE
                 }.thenBy { it.name.lowercase(Locale.UK) }
             )
         }
@@ -2324,6 +2340,8 @@ private fun LogoFallback(channelName: String) {
         "PBS KIDS" -> "PBS"
         "Moonbug Kids" -> "MK"
         "Baby Shark TV" -> "BS"
+        "Duck TV" -> "DUCK"
+        "ducktv" -> "DUCK"
         "Super Simple Songs" -> "SS"
         "TRT Çocuk" -> "TRT"
         "Minika Çocuk" -> "M"
