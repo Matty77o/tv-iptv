@@ -1840,26 +1840,107 @@ private suspend fun fetchCloudflareAdviserAnswer(
 }
 
 @Composable
-private fun AdviserCard(recommendation: AdviserRecommendation) {
-    val icon = when (recommendation.kind) {
-        "add" -> Icons.Rounded.Tv
-        "keep" -> Icons.Rounded.Star
-        "later" -> Icons.Rounded.Schedule
-        else -> Icons.Rounded.Star
+private fun AdviserStatusPill(kind: String) {
+    val label = when (kind) {
+        "keep" -> "KEEP"
+        "later" -> "LOWER"
+        "add" -> "ADD"
+        else -> "REVIEW"
     }
+    val background = when (kind) {
+        "keep" -> Pink.copy(alpha = .16f)
+        "later" -> Color(0xFFFFC46B).copy(alpha = .12f)
+        "add" -> Lavender.copy(alpha = .15f)
+        else -> Panel
+    }
+    val foreground = when (kind) {
+        "keep" -> PinkSoft
+        "later" -> Color(0xFFFFD18A)
+        "add" -> Lavender
+        else -> TextSecondary
+    }
+    Surface(shape = RoundedCornerShape(99.dp), color = background) {
+        Text(
+            label,
+            modifier = Modifier.padding(horizontal = 9.dp, vertical = 4.dp),
+            color = foreground,
+            fontWeight = FontWeight.Bold,
+            fontSize = 10.sp,
+            letterSpacing = .5.sp
+        )
+    }
+}
+
+private fun adviserChannelName(heading: String): String = heading.substringBefore("  •  ").trim()
+
+@Composable
+private fun AdviserChannelRow(recommendation: AdviserRecommendation) {
     Card(
-        shape = RoundedCornerShape(22.dp),
+        shape = RoundedCornerShape(18.dp),
         colors = CardDefaults.cardColors(containerColor = Panel2),
     ) {
-        Row(Modifier.fillMaxWidth().padding(18.dp), verticalAlignment = Alignment.Top) {
-            Surface(shape = RoundedCornerShape(14.dp), color = Pink.copy(alpha = .14f)) {
-                Icon(icon, null, tint = PinkSoft, modifier = Modifier.padding(10.dp).size(22.dp))
+        Column(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 14.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Surface(shape = RoundedCornerShape(12.dp), color = Pink.copy(alpha = .12f)) {
+                    Icon(
+                        if (recommendation.kind == "later") Icons.Rounded.Schedule else Icons.Rounded.Star,
+                        null,
+                        tint = if (recommendation.kind == "later") Color(0xFFFFD18A) else PinkSoft,
+                        modifier = Modifier.padding(8.dp).size(18.dp)
+                    )
+                }
+                Spacer(Modifier.width(11.dp))
+                Text(
+                    adviserChannelName(recommendation.heading),
+                    modifier = Modifier.weight(1f),
+                    color = TextPrimary,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 15.sp,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+                Spacer(Modifier.width(8.dp))
+                AdviserStatusPill(recommendation.kind)
             }
-            Spacer(Modifier.width(14.dp))
+            Spacer(Modifier.height(8.dp))
+            Text(
+                recommendation.body,
+                color = TextSecondary,
+                fontSize = 12.sp,
+                lineHeight = 17.sp,
+                modifier = Modifier.padding(start = 47.dp)
+            )
+        }
+    }
+}
+
+@Composable
+private fun AdviserAddResult(recommendation: AdviserRecommendation) {
+    val emptyState = recommendation.heading.startsWith("No strong new channel", ignoreCase = true)
+    Surface(
+        shape = RoundedCornerShape(18.dp),
+        color = if (emptyState) Pink.copy(alpha = .07f) else Panel2,
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Row(Modifier.padding(16.dp), verticalAlignment = Alignment.Top) {
+            Surface(shape = RoundedCornerShape(12.dp), color = Pink.copy(alpha = .12f)) {
+                Icon(
+                    if (emptyState) Icons.Rounded.StarBorder else Icons.Rounded.Tv,
+                    null,
+                    tint = PinkSoft,
+                    modifier = Modifier.padding(9.dp).size(19.dp)
+                )
+            }
+            Spacer(Modifier.width(12.dp))
             Column(Modifier.weight(1f)) {
-                Text(recommendation.heading, color = PinkSoft, fontWeight = FontWeight.Bold, fontSize = 16.sp)
-                Spacer(Modifier.height(5.dp))
-                Text(recommendation.body, color = TextPrimary, lineHeight = 21.sp)
+                Text(
+                    if (emptyState) "Your lineup already covers this age well" else adviserChannelName(recommendation.heading),
+                    color = if (emptyState) TextPrimary else PinkSoft,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 14.sp
+                )
+                Spacer(Modifier.height(4.dp))
+                Text(recommendation.body, color = TextSecondary, fontSize = 12.sp, lineHeight = 17.sp)
             }
         }
     }
@@ -1883,54 +1964,59 @@ private fun ChannelAdviserView(
         channelAdviserRecommendations(ageMonths, guide, channels)
     }
     val recommendations = aiRecommendations ?: offlineFallback
+    val summaryRecommendation = recommendations.firstOrNull {
+        it.heading == "AI recommendation" || it.heading == "Offline fallback"
+    }
+    val focusRecommendation = recommendations.firstOrNull { it.heading == "Best focus for this age" }
+    val currentChannelRecommendations = recommendations.filter {
+        it.kind != "add" && it !== summaryRecommendation && it !== focusRecommendation
+    }
+    val additions = recommendations.filter { it.kind == "add" }
 
     LazyColumn(
         Modifier.fillMaxSize(),
         contentPadding = PaddingValues(24.dp, 12.dp, 24.dp, 36.dp),
-        verticalArrangement = Arrangement.spacedBy(14.dp)
+        verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         item {
             Surface(
-                shape = RoundedCornerShape(28.dp),
-                color = Pink.copy(alpha = .10f),
+                shape = RoundedCornerShape(24.dp),
+                color = Pink.copy(alpha = .09f),
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Column(Modifier.padding(20.dp)) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Surface(shape = RoundedCornerShape(17.dp), color = Pink.copy(alpha = .20f)) {
-                            Icon(Icons.Rounded.Star, null, tint = PinkSoft, modifier = Modifier.padding(12.dp).size(27.dp))
-                        }
-                        Spacer(Modifier.width(13.dp))
-                        Column {
-                            Text("Ask AI", fontSize = 29.sp, fontWeight = FontWeight.Black)
-                            Text("Channel Adviser", color = PinkSoft, fontWeight = FontWeight.Bold)
-                        }
+                Row(Modifier.padding(17.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Surface(shape = RoundedCornerShape(15.dp), color = Pink.copy(alpha = .18f)) {
+                        Icon(Icons.Rounded.Star, null, tint = PinkSoft, modifier = Modifier.padding(11.dp).size(23.dp))
                     }
-                    Spacer(Modifier.height(12.dp))
-                    Text(
-                        "Ask your Cloudflare AI Worker to review the current guide, spot gaps and suggest genuinely different English or Turkish channels worth looking for.",
-                        color = TextSecondary,
-                        lineHeight = 20.sp
-                    )
-                    Spacer(Modifier.height(12.dp))
-                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        AssistChip(onClick = {}, label = { Text("English") })
-                        AssistChip(onClick = {}, label = { Text("Türkçe") })
-                        AssistChip(onClick = {}, label = { Text("Cloudflare AI") })
+                    Spacer(Modifier.width(12.dp))
+                    Column(Modifier.weight(1f)) {
+                        Text("Ask AI", fontSize = 24.sp, fontWeight = FontWeight.Black)
+                        Text("Channel Adviser • English + Türkçe", color = PinkSoft, fontWeight = FontWeight.Bold, fontSize = 12.sp)
                     }
+                    AssistChip(onClick = {}, label = { Text("Cloudflare", fontSize = 10.sp) })
                 }
             }
         }
+
         item {
-            Card(shape = RoundedCornerShape(22.dp), colors = CardDefaults.cardColors(containerColor = Panel2)) {
-                Column(Modifier.fillMaxWidth().padding(18.dp)) {
-                    Text("Age to advise for", color = PinkSoft, fontWeight = FontWeight.Bold)
-                    Spacer(Modifier.height(5.dp))
-                    Text(
-                        if (ageMonths < 24) "$ageMonths months" else "${ageMonths / 12} years ${ageMonths % 12} months",
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Black
-                    )
+            Card(shape = RoundedCornerShape(20.dp), colors = CardDefaults.cardColors(containerColor = Panel2)) {
+                Column(Modifier.fillMaxWidth().padding(16.dp)) {
+                    Row(verticalAlignment = Alignment.Bottom) {
+                        Column(Modifier.weight(1f)) {
+                            Text("Age to advise for", color = PinkSoft, fontWeight = FontWeight.Bold, fontSize = 12.sp)
+                            Text(
+                                if (ageMonths < 24) "$ageMonths months" else "${ageMonths / 12} years ${ageMonths % 12} months",
+                                fontSize = 22.sp,
+                                fontWeight = FontWeight.Black
+                            )
+                        }
+                        Text(
+                            if (aiRecommendations != null) "LIVE AI" else "PREVIEW",
+                            color = if (aiRecommendations != null) PinkSoft else TextSecondary,
+                            fontSize = 10.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
                     Slider(
                         value = ageMonths.toFloat(),
                         onValueChange = {
@@ -1939,69 +2025,118 @@ private fun ChannelAdviserView(
                             aiError = null
                         },
                         valueRange = 0f..60f,
-                        steps = 59
+                        steps = 59,
+                        modifier = Modifier.padding(vertical = 2.dp)
                     )
                     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                        Text("Newborn", color = TextSecondary, fontSize = 10.sp)
-                        Text("5 years", color = TextSecondary, fontSize = 10.sp)
+                        Text("Newborn", color = TextSecondary, fontSize = 9.sp)
+                        Text("5 years", color = TextSecondary, fontSize = 9.sp)
                     }
-                    Spacer(Modifier.height(12.dp))
+                    Spacer(Modifier.height(8.dp))
                     Button(
                         onClick = {
                             if (isThinking) return@Button
                             isThinking = true
                             aiError = null
                             scope.launch {
-                                runCatching {
-                                    fetchCloudflareAdviserRecommendations(ageMonths, guide, channels)
-                                }.onSuccess {
-                                    aiRecommendations = it
-                                }.onFailure {
-                                    aiRecommendations = null
-                                    aiError = "AI couldn't be reached, so the on-device fallback is shown."
-                                }
+                                runCatching { fetchCloudflareAdviserRecommendations(ageMonths, guide, channels) }
+                                    .onSuccess { aiRecommendations = it }
+                                    .onFailure {
+                                        aiRecommendations = null
+                                        aiError = "AI couldn't be reached, so the on-device fallback is shown."
+                                    }
                                 isThinking = false
                             }
                         },
                         enabled = !isThinking,
-                        modifier = Modifier.fillMaxWidth(),
-                        shape = RoundedCornerShape(16.dp)
+                        modifier = Modifier.fillMaxWidth().height(44.dp),
+                        shape = RoundedCornerShape(14.dp)
                     ) {
                         if (isThinking) {
-                            CircularProgressIndicator(modifier = Modifier.size(18.dp), strokeWidth = 2.dp)
-                            Spacer(Modifier.width(10.dp))
+                            CircularProgressIndicator(modifier = Modifier.size(17.dp), strokeWidth = 2.dp)
+                            Spacer(Modifier.width(9.dp))
                             Text("Thinking…")
                         } else {
-                            Icon(Icons.Rounded.Star, null, modifier = Modifier.size(19.dp))
-                            Spacer(Modifier.width(8.dp))
-                            Text(if (aiRecommendations == null) "Ask AI" else "Ask again")
+                            Icon(Icons.Rounded.Star, null, modifier = Modifier.size(17.dp))
+                            Spacer(Modifier.width(7.dp))
+                            Text(if (aiRecommendations == null) "Ask AI" else "Refresh advice")
                         }
                     }
-                    Text(
-                        if (aiRecommendations != null) "Live recommendation from your Cloudflare Worker"
-                        else "Nothing is sent until you tap Ask AI",
-                        color = if (aiRecommendations != null) PinkSoft else TextSecondary,
-                        fontSize = 11.sp,
-                        modifier = Modifier.padding(top = 8.dp)
-                    )
                     aiError?.let {
-                        Text(it, color = TextSecondary, fontSize = 11.sp, modifier = Modifier.padding(top = 5.dp))
+                        Text(it, color = TextSecondary, fontSize = 11.sp, modifier = Modifier.padding(top = 6.dp))
                     }
                 }
             }
         }
+
+        if (summaryRecommendation != null) {
+            item {
+                Surface(
+                    shape = RoundedCornerShape(24.dp),
+                    color = Panel2,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Column(Modifier.padding(18.dp)) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Surface(shape = CircleShape, color = Pink.copy(alpha = .16f)) {
+                                Icon(Icons.Rounded.Star, null, tint = PinkSoft, modifier = Modifier.padding(9.dp).size(20.dp))
+                            }
+                            Spacer(Modifier.width(10.dp))
+                            Column(Modifier.weight(1f)) {
+                                Text(
+                                    if (aiRecommendations != null) "AI LINEUP VERDICT" else "ON-DEVICE PREVIEW",
+                                    color = PinkSoft,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 11.sp,
+                                    letterSpacing = .7.sp
+                                )
+                                Text(
+                                    if (ageMonths < 24) "For $ageMonths months" else "For ${ageMonths / 12} years",
+                                    color = TextSecondary,
+                                    fontSize = 11.sp
+                                )
+                            }
+                        }
+                        Spacer(Modifier.height(13.dp))
+                        Text(summaryRecommendation.body, color = TextPrimary, fontSize = 17.sp, lineHeight = 23.sp, fontWeight = FontWeight.SemiBold)
+                        focusRecommendation?.let { focus ->
+                            Spacer(Modifier.height(14.dp))
+                            Surface(shape = RoundedCornerShape(15.dp), color = Pink.copy(alpha = .08f), modifier = Modifier.fillMaxWidth()) {
+                                Row(Modifier.padding(12.dp), verticalAlignment = Alignment.Top) {
+                                    Text("FOCUS", color = PinkSoft, fontSize = 10.sp, fontWeight = FontWeight.Black)
+                                    Spacer(Modifier.width(10.dp))
+                                    Text(focus.body, color = TextSecondary, fontSize = 12.sp, lineHeight = 17.sp, modifier = Modifier.weight(1f))
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        if (currentChannelRecommendations.isNotEmpty()) {
+            item {
+                Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(top = 2.dp)) {
+                    Text("Current channels", fontSize = 17.sp, fontWeight = FontWeight.Bold, modifier = Modifier.weight(1f))
+                    Text("${currentChannelRecommendations.size} assessed", color = TextSecondary, fontSize = 11.sp)
+                }
+            }
+            items(currentChannelRecommendations) { AdviserChannelRow(it) }
+        }
+
         item {
-            Card(shape = RoundedCornerShape(22.dp), colors = CardDefaults.cardColors(containerColor = Panel2)) {
-                Column(Modifier.fillMaxWidth().padding(18.dp)) {
-                    Text("Ask a question", color = PinkSoft, fontWeight = FontWeight.Bold, fontSize = 18.sp)
-                    Spacer(Modifier.height(5.dp))
-                    Text(
-                        "Ask about the current lineup, what to add next, or whether a channel is worth keeping for the selected age.",
-                        color = TextSecondary,
-                        fontSize = 12.sp,
-                        lineHeight = 17.sp
-                    )
-                    Spacer(Modifier.height(12.dp))
+            Card(shape = RoundedCornerShape(20.dp), colors = CardDefaults.cardColors(containerColor = Panel2)) {
+                Column(Modifier.fillMaxWidth().padding(16.dp)) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Column(Modifier.weight(1f)) {
+                            Text("Ask a question", color = PinkSoft, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                            Text("Ask about this lineup or a future age", color = TextSecondary, fontSize = 11.sp)
+                        }
+                        Surface(shape = CircleShape, color = Pink.copy(alpha = .12f)) {
+                            Icon(Icons.Rounded.StarBorder, null, tint = PinkSoft, modifier = Modifier.padding(8.dp).size(18.dp))
+                        }
+                    }
+                    Spacer(Modifier.height(10.dp))
                     OutlinedTextField(
                         value = question,
                         onValueChange = {
@@ -2009,85 +2144,77 @@ private fun ChannelAdviserView(
                             questionError = null
                         },
                         modifier = Modifier.fillMaxWidth(),
-                        placeholder = { Text("e.g. What should we add when she turns 9 months?") },
+                        placeholder = { Text("e.g. What should we add at 9 months?", fontSize = 12.sp) },
                         minLines = 2,
                         maxLines = 4,
-                        shape = RoundedCornerShape(16.dp)
+                        shape = RoundedCornerShape(14.dp)
                     )
-                    Spacer(Modifier.height(10.dp))
+                    Spacer(Modifier.height(8.dp))
                     Button(
                         onClick = {
                             if (isAnsweringQuestion || question.isBlank()) return@Button
                             isAnsweringQuestion = true
                             questionError = null
                             scope.launch {
-                                runCatching {
-                                    fetchCloudflareAdviserAnswer(ageMonths, question, guide, channels)
-                                }.onSuccess {
-                                    questionAnswer = it
-                                }.onFailure {
-                                    questionError = "AI couldn't answer that right now."
-                                }
+                                runCatching { fetchCloudflareAdviserAnswer(ageMonths, question, guide, channels) }
+                                    .onSuccess { questionAnswer = it }
+                                    .onFailure { questionError = "AI couldn't answer that right now." }
                                 isAnsweringQuestion = false
                             }
                         },
                         enabled = !isAnsweringQuestion && question.isNotBlank(),
-                        modifier = Modifier.fillMaxWidth(),
-                        shape = RoundedCornerShape(16.dp)
+                        modifier = Modifier.align(Alignment.End),
+                        shape = RoundedCornerShape(14.dp),
+                        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 10.dp)
                     ) {
                         if (isAnsweringQuestion) {
-                            CircularProgressIndicator(modifier = Modifier.size(18.dp), strokeWidth = 2.dp)
-                            Spacer(Modifier.width(10.dp))
+                            CircularProgressIndicator(modifier = Modifier.size(16.dp), strokeWidth = 2.dp)
+                            Spacer(Modifier.width(8.dp))
                             Text("Thinking…")
                         } else {
-                            Icon(Icons.Rounded.Star, null, modifier = Modifier.size(19.dp))
-                            Spacer(Modifier.width(8.dp))
-                            Text("Ask this question")
+                            Icon(Icons.Rounded.Star, null, modifier = Modifier.size(16.dp))
+                            Spacer(Modifier.width(7.dp))
+                            Text("Ask")
                         }
                     }
                     questionAnswer?.let { answer ->
-                        Spacer(Modifier.height(14.dp))
+                        Spacer(Modifier.height(12.dp))
                         Surface(
-                            shape = RoundedCornerShape(16.dp),
-                            color = Pink.copy(alpha = .10f),
+                            shape = RoundedCornerShape(17.dp, 17.dp, 17.dp, 5.dp),
+                            color = Pink.copy(alpha = .09f),
                             modifier = Modifier.fillMaxWidth()
                         ) {
                             Column(Modifier.padding(14.dp)) {
-                                Text("AI answer", color = PinkSoft, fontWeight = FontWeight.Bold)
-                                Spacer(Modifier.height(5.dp))
-                                Text(answer, color = TextPrimary, lineHeight = 21.sp)
+                                Text("AI", color = PinkSoft, fontWeight = FontWeight.Black, fontSize = 11.sp)
+                                Spacer(Modifier.height(4.dp))
+                                Text(answer, color = TextPrimary, lineHeight = 20.sp, fontSize = 13.sp)
                             }
                         }
                     }
                     questionError?.let {
-                        Text(it, color = TextSecondary, fontSize = 11.sp, modifier = Modifier.padding(top = 8.dp))
+                        Text(it, color = TextSecondary, fontSize = 11.sp, modifier = Modifier.padding(top = 7.dp))
                     }
                 }
             }
         }
+
         item {
-            Text("Your guide", fontSize = 18.sp, fontWeight = FontWeight.Bold)
-            Text(
-                if (aiRecommendations != null) "Cloudflare AI's view of the current EPG"
-                else "On-device preview until you tap Ask AI",
-                color = TextSecondary,
-                fontSize = 12.sp
-            )
+            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(top = 3.dp)) {
+                Column(Modifier.weight(1f)) {
+                    Text("Possible additions", fontSize = 17.sp, fontWeight = FontWeight.Bold)
+                    Text("English or Turkish • never duplicates", color = TextSecondary, fontSize = 11.sp)
+                }
+            }
         }
-        items(recommendations.filter { it.kind != "add" }) { AdviserCard(it) }
-        item {
-            Spacer(Modifier.height(2.dp))
-            Text("Channels worth looking for", fontSize = 18.sp, fontWeight = FontWeight.Bold)
-            Text("English or Turkish only • never channels already in your lineup", color = TextSecondary, fontSize = 12.sp)
-        }
-        items(recommendations.filter { it.kind == "add" }) { AdviserCard(it) }
+        items(additions) { AdviserAddResult(it) }
+
         item {
             Text(
-                "Ask AI sends the selected age, channel names and a limited sample of Kids EPG titles/descriptions to your Cloudflare Worker. It does not send a child's name, date of birth or profile. Suggestions never edit channels.json automatically.",
+                "AI uses the selected age, channel names and a limited sample of Kids EPG data. No child's name, date of birth or profile is sent. Suggestions never edit channels.json automatically.",
                 color = TextSecondary,
-                fontSize = 11.sp,
-                lineHeight = 16.sp,
-                modifier = Modifier.padding(horizontal = 4.dp, vertical = 6.dp)
+                fontSize = 10.sp,
+                lineHeight = 15.sp,
+                modifier = Modifier.padding(horizontal = 4.dp, vertical = 5.dp)
             )
         }
     }
