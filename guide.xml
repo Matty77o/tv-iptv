@@ -22589,7 +22589,7 @@
     </rating>
   </programme>
   <channel id="ducktv">
-    <display-name>ducktv</display-name>
+    <display-name>Duck TV</display-name>
   </channel>
   <programme channel="ducktv" start="20260908000100 +0000" stop="20260908000300 +0000">
     <title lang="zh">Vege-tales</title>
