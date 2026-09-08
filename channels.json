@@ -8,6 +8,7 @@
   {"id":"Baby Einstein","group":"Kids","order":65},
   {"id":"TRT Çocuk","group":"Kids","order":70},
   {"id":"Minika Çocuk","group":"Kids","order":80},
+  {"id":"TRT 1","group":"Turkish TV","order":90},
   {"id":"Star TV","group":"Turkish TV","order":100},
   {"id":"NOW","group":"Turkish TV","order":110},
   {"id":"ATV","group":"Turkish TV","order":120},
