@@ -131,7 +131,7 @@ for source_name, source_url in SOURCES.items():
         output.append(new_programme)
         programme_count += 1
 
-# Add English ducktv EPG
+# Add English Duck TV EPG
 try:
     root = download(DUCKTV_SOURCE)
 
@@ -141,13 +141,13 @@ try:
         if channel.get("id")
     }
 
-    print(f"ducktv: {len(duck_channel_ids)} channel IDs loaded")
+    print(f"Duck TV: {len(duck_channel_ids)} channel IDs loaded")
 
-    # Add ducktv channel
-    if duck_channel_ids and "ducktv" not in added_channels:
+    # Add Duck TV channel
+    if duck_channel_ids and "Duck TV" not in added_channels:
         new_channel = ET.Element(
             "channel",
-            {"id": "ducktv"}
+            {"id": "Duck TV"}
         )
 
         display = ET.SubElement(new_channel, "display-name")
@@ -166,11 +166,11 @@ try:
                 )
 
         output.append(new_channel)
-        added_channels.add("ducktv")
+        added_channels.add("Duck TV")
 
-        print("MATCHED CHANNEL: English ducktv -> ducktv")
+        print("MATCHED CHANNEL: English Duck TV -> Duck TV")
 
-    # Add ducktv programmes
+    # Add Duck TV programmes
     duck_programmes = 0
 
     for programme in root.findall("programme"):
@@ -184,7 +184,7 @@ try:
             dict(programme.attrib)
         )
 
-        new_programme.set("channel", "ducktv")
+        new_programme.set("channel", "Duck TV")
 
         for child in programme:
             new_programme.append(child)
@@ -193,10 +193,10 @@ try:
         programme_count += 1
         duck_programmes += 1
 
-    print(f"ducktv programmes added: {duck_programmes}")
+    print(f"Duck TV programmes added: {duck_programmes}")
 
 except Exception as e:
-    print(f"FAILED ducktv: {e}")
+    print(f"FAILED Duck TV: {e}")
 
 
 ET.indent(output, space="  ")
@@ -228,7 +228,7 @@ wanted_output = {
     "Show TV",
     "Moonbug Kids",
     "Baby Shark TV",
-    "ducktv",
+    "Duck TV",
 }
 
 missing = wanted_output - added_channels
