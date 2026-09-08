@@ -25,17 +25,14 @@ CHANNELS = {
 
     # Turkish / Kids
     "TRT.ÇOCUK.HD.tr": "TRT Çocuk",
-    "TRT.ÇOCUK.tr": "TRT Çocuk",
     "MİNİKA.ÇOCUK.tr": "Minika Çocuk",
 
     # Turkish TV
     "STAR.TV.HD.tr": "Star TV",
-    "STAR.TV.tr": "Star TV",
     "NOW.tr": "NOW",
     "ATV.HD.tr": "ATV",
-    "ATV.tr": "ATV",
     "SHOW.TV.HD.tr": "Show TV",
-    "SHOW.TV.tr": "Show TV",
+    "TRT1.HD.tr": "TRT 1",
 }
 
 def download(url):
@@ -257,6 +254,7 @@ wanted_output = {
     "Baby Shark TV",
     "Duck TV",
     "Baby Einstein",
+    "TRT 1"
 }
 
 missing = wanted_output - added_channels
