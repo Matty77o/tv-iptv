@@ -1680,7 +1680,7 @@ private suspend fun fetchCloudflareAdviserRecommendations(
     val programmes = JSONArray()
     guide.programmes.asSequence()
         .filter { channelKey(it.channelId) in kidsKeys }
-        .filter { !it.end.isBefore(now.minusHours(1)) && it.start.isBefore(now.plusDays(7)) }
+        .filter { !it.stop.isBefore(now.minusHours(1)) && it.start.isBefore(now.plusDays(7)) }
         .take(70)
         .forEach { programme ->
             programmes.put(JSONObject().apply {
