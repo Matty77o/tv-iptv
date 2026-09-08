@@ -1775,6 +1775,70 @@ private suspend fun fetchCloudflareAdviserRecommendations(
     }
 }
 
+private suspend fun fetchCloudflareAdviserAnswer(
+    ageMonths: Int,
+    question: String,
+    guide: GuideData,
+    channels: List<TvChannel>,
+): String = withContext(Dispatchers.IO) {
+    val requestBody = JSONObject()
+    requestBody.put("ageMonths", ageMonths)
+    requestBody.put("question", question.trim().take(500))
+
+    val kidsChannels = channels.filter { it.group.equals("Kids", ignoreCase = true) }
+    val currentChannels = JSONArray()
+    kidsChannels.forEach { channel -> currentChannels.put(channel.name) }
+    requestBody.put("currentChannels", currentChannels)
+    requestBody.put("excludedChannels", JSONArray(listOf(
+        "Super Simple Songs",
+        "LooLoo Kids",
+        "HappyKids",
+        "HappyKids Junior",
+        "Ketchup TV",
+        "Kartoon Channel",
+    )))
+
+    val kidsKeys = kidsChannels.flatMap { listOf(channelKey(it.id), channelKey(it.name)) }.toSet()
+    val now = ZonedDateTime.now()
+    val programmes = JSONArray()
+    guide.programmes.asSequence()
+        .filter { channelKey(it.channelId) in kidsKeys }
+        .filter { !it.stop.isBefore(now.minusHours(1)) && it.start.isBefore(now.plusDays(7)) }
+        .take(70)
+        .forEach { programme ->
+            programmes.put(JSONObject().apply {
+                put("channel", programme.channelId)
+                put("title", programme.title)
+                put("description", programme.description.orEmpty().take(260))
+                put("category", programme.category.orEmpty())
+            })
+        }
+    requestBody.put("programmes", programmes)
+
+    val connection = (URL(AI_ADVISER_URL).openConnection() as HttpURLConnection).apply {
+        requestMethod = "POST"
+        connectTimeout = 12_000
+        readTimeout = 30_000
+        doOutput = true
+        setRequestProperty("Content-Type", "application/json; charset=utf-8")
+        setRequestProperty("Accept", "application/json")
+    }
+
+    try {
+        connection.outputStream.use { it.write(requestBody.toString().toByteArray(Charsets.UTF_8)) }
+        val code = connection.responseCode
+        val stream = if (code in 200..299) connection.inputStream else connection.errorStream
+        val text = stream?.bufferedReader()?.use { it.readText() }.orEmpty()
+        if (code !in 200..299) error("Cloudflare adviser returned HTTP $code")
+        val root = JSONObject(text)
+        if (root.has("error")) error(root.optString("error", "AI request failed"))
+        root.optString("answer").trim().takeIf { it.isNotBlank() }
+            ?: error("AI returned no answer")
+    } finally {
+        connection.disconnect()
+    }
+}
+
 @Composable
 private fun AdviserCard(recommendation: AdviserRecommendation) {
     val icon = when (recommendation.kind) {
@@ -1810,6 +1874,10 @@ private fun ChannelAdviserView(
     var aiRecommendations by remember { mutableStateOf<List<AdviserRecommendation>?>(null) }
     var isThinking by remember { mutableStateOf(false) }
     var aiError by remember { mutableStateOf<String?>(null) }
+    var question by rememberSaveable { mutableStateOf("") }
+    var questionAnswer by remember { mutableStateOf<String?>(null) }
+    var isAnsweringQuestion by remember { mutableStateOf(false) }
+    var questionError by remember { mutableStateOf<String?>(null) }
     val scope = rememberCoroutineScope()
     val offlineFallback = remember(ageMonths, guide, channels) {
         channelAdviserRecommendations(ageMonths, guide, channels)
@@ -1918,6 +1986,81 @@ private fun ChannelAdviserView(
                     )
                     aiError?.let {
                         Text(it, color = TextSecondary, fontSize = 11.sp, modifier = Modifier.padding(top = 5.dp))
+                    }
+                }
+            }
+        }
+        item {
+            Card(shape = RoundedCornerShape(22.dp), colors = CardDefaults.cardColors(containerColor = Panel2)) {
+                Column(Modifier.fillMaxWidth().padding(18.dp)) {
+                    Text("Ask a question", color = PinkSoft, fontWeight = FontWeight.Bold, fontSize = 18.sp)
+                    Spacer(Modifier.height(5.dp))
+                    Text(
+                        "Ask about the current lineup, what to add next, or whether a channel is worth keeping for the selected age.",
+                        color = TextSecondary,
+                        fontSize = 12.sp,
+                        lineHeight = 17.sp
+                    )
+                    Spacer(Modifier.height(12.dp))
+                    OutlinedTextField(
+                        value = question,
+                        onValueChange = {
+                            question = it.take(500)
+                            questionError = null
+                        },
+                        modifier = Modifier.fillMaxWidth(),
+                        placeholder = { Text("e.g. What should we add when she turns 9 months?") },
+                        minLines = 2,
+                        maxLines = 4,
+                        shape = RoundedCornerShape(16.dp)
+                    )
+                    Spacer(Modifier.height(10.dp))
+                    Button(
+                        onClick = {
+                            if (isAnsweringQuestion || question.isBlank()) return@Button
+                            isAnsweringQuestion = true
+                            questionError = null
+                            scope.launch {
+                                runCatching {
+                                    fetchCloudflareAdviserAnswer(ageMonths, question, guide, channels)
+                                }.onSuccess {
+                                    questionAnswer = it
+                                }.onFailure {
+                                    questionError = "AI couldn't answer that right now."
+                                }
+                                isAnsweringQuestion = false
+                            }
+                        },
+                        enabled = !isAnsweringQuestion && question.isNotBlank(),
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(16.dp)
+                    ) {
+                        if (isAnsweringQuestion) {
+                            CircularProgressIndicator(modifier = Modifier.size(18.dp), strokeWidth = 2.dp)
+                            Spacer(Modifier.width(10.dp))
+                            Text("Thinking…")
+                        } else {
+                            Icon(Icons.Rounded.Star, null, modifier = Modifier.size(19.dp))
+                            Spacer(Modifier.width(8.dp))
+                            Text("Ask this question")
+                        }
+                    }
+                    questionAnswer?.let { answer ->
+                        Spacer(Modifier.height(14.dp))
+                        Surface(
+                            shape = RoundedCornerShape(16.dp),
+                            color = Pink.copy(alpha = .10f),
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Column(Modifier.padding(14.dp)) {
+                                Text("AI answer", color = PinkSoft, fontWeight = FontWeight.Bold)
+                                Spacer(Modifier.height(5.dp))
+                                Text(answer, color = TextPrimary, lineHeight = 21.sp)
+                            }
+                        }
+                    }
+                    questionError?.let {
+                        Text(it, color = TextSecondary, fontSize = 11.sp, modifier = Modifier.padding(top = 8.dp))
                     }
                 }
             }
