@@ -3008,6 +3008,16 @@ private fun SettingsView(
         }
 
         item {
+            SettingsCard("App updates", Icons.Rounded.Refresh, Mint) {
+                Text("Installed v${BuildConfig.VERSION_NAME}", fontWeight=FontWeight.Black, fontSize=15.sp)
+                Spacer(Modifier.height(4.dp))
+                Text("Checks the latest GitHub release and downloads the APK directly when a newer build exists.", color=TextSecondary, fontSize=10.sp, lineHeight=14.sp)
+                Spacer(Modifier.height(12.dp))
+                ManualUpdateControl()
+            }
+        }
+
+        item {
             SettingsCard("Channel configuration", Icons.Rounded.Refresh, Pink) {
                 Row(verticalAlignment=Alignment.CenterVertically) {
                     Column(Modifier.weight(1f)) { Text("${channelConfig.size} configured",fontWeight=FontWeight.Black,fontSize=15.sp); Text("channels.json controls order and groups",color=TextSecondary,fontSize=10.sp) }

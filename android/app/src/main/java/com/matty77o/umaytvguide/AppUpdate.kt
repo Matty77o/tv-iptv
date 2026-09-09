@@ -31,7 +31,7 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 private const val UPDATE_MANIFEST_URL =
-    "https://github.com/Matty77o/tv-iptv/releases/download/latest/app-update.json"
+    "https://github.com/Matty77o/tv-iptv/releases/latest/download/app-update.json"
 
 private const val LATEST_RELEASE_API =
     "https://api.github.com/repos/Matty77o/tv-iptv/releases/latest"
@@ -160,6 +160,70 @@ private fun launchInstaller(context: Context, apk: File): Boolean {
         addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_ACTIVITY_NEW_TASK)
     })
     return true
+}
+
+
+
+/** Manual updater used from Settings. This deliberately shows progress/results so update problems are visible. */
+@Composable
+fun ManualUpdateControl() {
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    var checking by remember { mutableStateOf(false) }
+    var status by remember { mutableStateOf<String?>(null) }
+    var update by remember { mutableStateOf<AppUpdateInfo?>(null) }
+    var apk by remember { mutableStateOf<File?>(null) }
+
+    Column {
+        Button(
+            enabled = !checking,
+            onClick = {
+                checking = true
+                status = "Checking GitHub for updates…"
+                update = null
+                apk = null
+                scope.launch {
+                    val manifestUpdate = checkForAppUpdate()
+                    if (manifestUpdate != null) {
+                        update = manifestUpdate
+                        status = "Update ${manifestUpdate.versionName} found — downloading…"
+                        runCatching { downloadUpdate(context, manifestUpdate) }
+                            .onSuccess { apk = it; status = "Update ${manifestUpdate.versionName} is ready to install." }
+                            .onFailure { status = "Update found, but download failed: ${it.message ?: "unknown error"}" }
+                    } else {
+                        status = "Checking the latest GitHub release…"
+                        val fallback = downloadLatestReleaseIfNewer(context)
+                        if (fallback != null) {
+                            update = fallback.first
+                            apk = fallback.second
+                            status = "Update ${fallback.first.versionName} is ready to install."
+                        } else {
+                            status = "You're up to date — v${BuildConfig.VERSION_NAME}."
+                        }
+                    }
+                    checking = false
+                }
+            }
+        ) { Text(if (checking) "Checking…" else "Check for updates") }
+
+        status?.let {
+            Spacer(Modifier.height(8.dp))
+            Text(it)
+        }
+        if (checking) {
+            Spacer(Modifier.height(8.dp))
+            LinearProgressIndicator()
+        }
+        if (apk != null) {
+            Spacer(Modifier.height(10.dp))
+            Button(onClick = {
+                val file = apk ?: return@Button
+                if (!launchInstaller(context, file)) {
+                    status = "Allow Umay TV Guide to install unknown apps, then return here and tap Install update."
+                }
+            }) { Text("Install update") }
+        }
+    }
 }
 
 /**
