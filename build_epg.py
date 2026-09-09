@@ -21,6 +21,7 @@ CHANNELS = {
     "MOONBUG.KIDS.TV.tr": "Moonbug Kids",
     "plex.tv.BABY.SHARK.TV.plex": "Baby Shark TV",
     "PBS.Kids.Stream.us2": "PBS KIDS",
+    "plex.tv.Kidoodle.TV.plex": "Kidoodle TV",
 
     # Turkish / Kids
     "TRT.ÇOCUK.HD.tr": "TRT Çocuk",
@@ -252,7 +253,7 @@ wanted_output = {
     "Moonbug Kids",
     "Baby Shark TV",
     "Duck TV",
-    "Baby Einstein",
+    "Kidoodle TV",
     "TRT 1"
 }
 
