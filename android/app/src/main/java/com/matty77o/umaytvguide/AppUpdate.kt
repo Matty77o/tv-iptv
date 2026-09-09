@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
+import android.content.pm.PackageManager
 import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -31,6 +32,58 @@ import java.net.URL
 
 private const val UPDATE_MANIFEST_URL =
     "https://github.com/Matty77o/tv-iptv/releases/download/latest/app-update.json"
+
+private const val LATEST_RELEASE_API =
+    "https://api.github.com/repos/Matty77o/tv-iptv/releases/latest"
+
+/** Fallback for rolling releases that contain only Umay-TV-Guide.apk. */
+private suspend fun downloadLatestReleaseIfNewer(context: Context): Pair<AppUpdateInfo, File>? = withContext(Dispatchers.IO) {
+    runCatching {
+        val c = (URL(LATEST_RELEASE_API).openConnection() as HttpURLConnection).apply {
+            connectTimeout = 8_000
+            readTimeout = 10_000
+            useCaches = false
+            setRequestProperty("Cache-Control", "no-cache")
+            setRequestProperty("Accept", "application/vnd.github+json")
+            setRequestProperty("User-Agent", "UmayTVGuide/${BuildConfig.VERSION_NAME}")
+        }
+        if (c.responseCode !in 200..299) {
+            c.disconnect()
+            return@runCatching null
+        }
+        val release = JSONObject(c.inputStream.bufferedReader().use { it.readText() })
+        c.disconnect()
+        val assets = release.optJSONArray("assets") ?: return@runCatching null
+        var apkUrl = ""
+        for (i in 0 until assets.length()) {
+            val a = assets.optJSONObject(i) ?: continue
+            if (a.optString("name").equals("Umay-TV-Guide.apk", ignoreCase = true)) {
+                apkUrl = a.optString("browser_download_url").trim()
+                break
+            }
+        }
+        if (apkUrl.isBlank()) return@runCatching null
+
+        val info = AppUpdateInfo(Int.MAX_VALUE, "latest", apkUrl, "A newer Umay TV Guide build is ready.")
+        val apk = downloadUpdate(context, info)
+        val archiveInfo = if (Build.VERSION.SDK_INT >= 33) {
+            context.packageManager.getPackageArchiveInfo(apk.absolutePath, PackageManager.PackageInfoFlags.of(0))
+        } else {
+            @Suppress("DEPRECATION")
+            context.packageManager.getPackageArchiveInfo(apk.absolutePath, 0)
+        } ?: run { apk.delete(); return@runCatching null }
+        val remoteCode = if (Build.VERSION.SDK_INT >= 28) archiveInfo.longVersionCode else {
+            @Suppress("DEPRECATION")
+            archiveInfo.versionCode.toLong()
+        }
+        if (remoteCode <= BuildConfig.VERSION_CODE.toLong()) {
+            apk.delete()
+            return@runCatching null
+        }
+        val remoteName = archiveInfo.versionName ?: remoteCode.toString()
+        AppUpdateInfo(remoteCode.toInt(), remoteName, apkUrl, "Umay TV Guide $remoteName is ready.") to apk
+    }.getOrNull()
+}
 
 data class AppUpdateInfo(
     val versionCode: Int,
@@ -143,7 +196,6 @@ fun AppUpdateGate(content: @Composable () -> Unit) {
         if (checking || downloading) return@LaunchedEffect
         checking = true
         val found = checkForAppUpdate()
-        checking = false
         if (found != null && found.versionCode != update?.versionCode) {
             update = found
             error = null
@@ -152,7 +204,19 @@ fun AppUpdateGate(content: @Composable () -> Unit) {
                 .onSuccess { downloadedApk = it }
                 .onFailure { error = it.message ?: "Could not download update" }
             downloading = false
+        } else if (found == null) {
+            // If the rolling GitHub release only has the APK (no app-update.json),
+            // download that candidate once, read its embedded Android version and compare it.
+            downloading = true
+            val fallback = downloadLatestReleaseIfNewer(context)
+            if (fallback != null) {
+                update = fallback.first
+                downloadedApk = fallback.second
+                error = null
+            }
+            downloading = false
         }
+        checking = false
     }
 
     LaunchedEffect(Unit) { triggerCheck() }

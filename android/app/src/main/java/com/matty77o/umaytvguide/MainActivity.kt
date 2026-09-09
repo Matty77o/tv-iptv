@@ -446,8 +446,8 @@ fun GuideScreen(
                                 fontWeight = FontWeight.Black,
                                 style = when {
                                     isLandscape -> MaterialTheme.typography.titleLarge
-                                    useSamsungOneUi -> MaterialTheme.typography.headlineMedium
-                                    else -> MaterialTheme.typography.headlineSmall
+                                    useSamsungOneUi -> MaterialTheme.typography.headlineSmall
+                                    else -> MaterialTheme.typography.titleLarge
                                 }
                             )
                             if (!isLandscape) {
@@ -466,13 +466,13 @@ fun GuideScreen(
                     if (!searchOpen) {
                         IconButton(
                             onClick = { searchOpen = true },
-                            modifier = Modifier.size(if (isLandscape) 42.dp else if (useSamsungOneUi) 52.dp else 48.dp)
+                            modifier = Modifier.size(if (isLandscape) 40.dp else 44.dp)
                         ) {
                             Icon(Icons.Rounded.Search, "Search")
                         }
                         IconButton(
                             onClick = { refreshToken++ },
-                            modifier = Modifier.size(if (isLandscape) 42.dp else if (useSamsungOneUi) 52.dp else 48.dp)
+                            modifier = Modifier.size(if (isLandscape) 40.dp else 44.dp)
                         ) {
                             Icon(Icons.Rounded.Refresh, "Refresh")
                         }
@@ -491,7 +491,7 @@ fun GuideScreen(
                 ) {
                     Card(
                         modifier = Modifier.fillMaxWidth(),
-                        shape = RoundedCornerShape(28.dp),
+                        shape = RoundedCornerShape(24.dp),
                         colors = CardDefaults.cardColors(
                             containerColor = Color(0xFF101B31)
                         ),
@@ -500,7 +500,7 @@ fun GuideScreen(
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(74.dp)
+                                .height(68.dp)
                                 .padding(horizontal = 6.dp, vertical = 5.dp),
                             horizontalArrangement = Arrangement.spacedBy(2.dp),
                             verticalAlignment = Alignment.CenterVertically
@@ -875,36 +875,36 @@ private fun AppHeroCard(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(30.dp))
+            .clip(RoundedCornerShape(22.dp))
             .background(
                 Brush.linearGradient(
                     listOf(
-                        accent.copy(alpha = .27f),
-                        Lavender.copy(alpha = .17f),
-                        Panel2
+                        accent.copy(alpha = .18f),
+                        Lavender.copy(alpha = .10f),
+                        Panel2.copy(alpha = .96f)
                     )
                 )
             )
-            .border(1.dp, Color.White.copy(alpha = .06f), RoundedCornerShape(30.dp))
+            .border(1.dp, Color.White.copy(alpha = .055f), RoundedCornerShape(22.dp))
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 18.dp),
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 13.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Surface(
-                shape = RoundedCornerShape(18.dp),
-                color = accent.copy(alpha = .18f),
-                modifier = Modifier.size(52.dp)
+                shape = RoundedCornerShape(14.dp),
+                color = accent.copy(alpha = .15f),
+                modifier = Modifier.size(44.dp)
             ) {
                 Box(contentAlignment = Alignment.Center) {
-                    Icon(icon, null, tint = accent, modifier = Modifier.size(28.dp))
+                    Icon(icon, null, tint = accent, modifier = Modifier.size(23.dp))
                 }
             }
-            Spacer(Modifier.width(14.dp))
+            Spacer(Modifier.width(12.dp))
             Column(Modifier.weight(1f)) {
-                Text(title, fontSize = 23.sp, fontWeight = FontWeight.Black, color = TextPrimary)
-                Spacer(Modifier.height(2.dp))
-                Text(subtitle, color = TextSecondary, fontSize = 12.sp, lineHeight = 17.sp)
+                Text(title, fontSize = 19.sp, fontWeight = FontWeight.Black, color = TextPrimary)
+                Spacer(Modifier.height(1.dp))
+                Text(subtitle, color = TextSecondary, fontSize = 11.sp, lineHeight = 15.sp, maxLines = 2, overflow = TextOverflow.Ellipsis)
             }
             trailing?.invoke()
         }
@@ -921,15 +921,15 @@ private fun PolishedSection(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(28.dp))
+            .clip(RoundedCornerShape(22.dp))
             .background(Brush.verticalGradient(listOf(Panel2.copy(alpha = .98f), Panel.copy(alpha = .98f))))
-            .border(1.dp, Color.White.copy(alpha = .055f), RoundedCornerShape(28.dp))
+            .border(1.dp, Color.White.copy(alpha = .055f), RoundedCornerShape(22.dp))
     ) {
-        Column(Modifier.fillMaxWidth().padding(18.dp)) {
+        Column(Modifier.fillMaxWidth().padding(15.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Box(Modifier.size(8.dp).background(accent, CircleShape))
                 Spacer(Modifier.width(9.dp))
-                Text(title, fontSize = 19.sp, fontWeight = FontWeight.Black)
+                Text(title, fontSize = 17.sp, fontWeight = FontWeight.Black)
             }
             subtitle?.let {
                 Spacer(Modifier.height(3.dp))
@@ -1553,7 +1553,7 @@ private fun FavouritesView(
 
     LazyColumn(
         Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(24.dp, 10.dp, 24.dp, 34.dp),
+        contentPadding = PaddingValues(18.dp, 10.dp, 18.dp, 34.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         item {
@@ -2489,24 +2489,15 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
         verticalArrangement = Arrangement.spacedBy(14.dp)
     ) {
         item {
-            AppHeroCard(
-                title = "Recommended TV Schedule",
-                subtitle = "Balanced English + Türkçe exposure for Umay until 17:00, then household TV time.",
-                icon = Icons.Rounded.CalendarMonth,
-                accent = Pink
-            )
-        }
-
-        item {
             Box(
                 Modifier.fillMaxWidth()
-                    .clip(RoundedCornerShape(30.dp))
+                    .clip(RoundedCornerShape(22.dp))
                     .background(Brush.linearGradient(listOf(Color(0xFF6176D9), Color(0xFFB17BC2), Color(0xFFE3A8C9))))
-                    .border(1.dp, Color.White.copy(alpha=.14f), RoundedCornerShape(30.dp))
+                    .border(1.dp, Color.White.copy(alpha=.14f), RoundedCornerShape(22.dp))
             ) {
-                Column(Modifier.padding(22.dp), verticalArrangement = Arrangement.spacedBy(11.dp)) {
+                Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     Text("Umay's age", color = Color.White.copy(alpha=.88f), fontWeight = FontWeight.Bold, fontSize = 13.sp)
-                    Text(if (age < 24) "$age months" else "${age / 12} years ${age % 12} months", color = Color.White, fontSize = 32.sp, fontWeight = FontWeight.Black)
+                    Text(if (age < 24) "$age months" else "${age / 12} years ${age % 12} months", color = Color.White, fontSize = 28.sp, fontWeight = FontWeight.Black)
                     Slider(
                         value = age.toFloat(), onValueChange = { age = it.toInt() }, valueRange = 0f..60f, steps = 59,
                         colors = SliderDefaults.colors(thumbColor = Color.White, activeTrackColor = Pink, inactiveTrackColor = Color.White.copy(alpha=.28f))
@@ -2537,11 +2528,25 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
                                 Text(slot.time, fontWeight = FontWeight.Black, fontSize = 15.sp)
                                 Text(slot.partOfDay, color = TextSecondary, fontSize = 9.sp, maxLines = 1)
                             }
-                            CompactPill(if (slot.language == "Türkçe") "TR" else "EN", if (slot.language == "Türkçe") Lavender else Pink)
-                            Spacer(Modifier.width(11.dp))
+                            val slotChannel = channels.firstOrNull { channelKey(it.name) == channelKey(slot.channel) || channelKey(it.id) == channelKey(slot.channel) }
+                            Box(
+                                Modifier.size(42.dp).clip(RoundedCornerShape(11.dp)).background(Color.White.copy(alpha = .96f)),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                if (!slotChannel?.icon.isNullOrBlank()) {
+                                    AsyncImage(slotChannel?.icon, slot.channel, Modifier.fillMaxSize().padding(5.dp), contentScale = ContentScale.Fit)
+                                } else {
+                                    Text(slot.channel.take(2).uppercase(Locale.ROOT), color = Color(0xFF17213A), fontWeight = FontWeight.Black, fontSize = 10.sp)
+                                }
+                            }
+                            Spacer(Modifier.width(10.dp))
                             Column(Modifier.weight(1f)) {
-                                Text(slot.channel, fontWeight = FontWeight.Black, fontSize = 15.sp)
-                                Text(slot.language, color = TextSecondary, fontSize = 10.sp)
+                                Text(slot.channel, fontWeight = FontWeight.Black, fontSize = 14.sp)
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    CompactPill(if (slot.language == "Türkçe") "TR" else "EN", if (slot.language == "Türkçe") Lavender else Pink)
+                                    Spacer(Modifier.width(6.dp))
+                                    Text(slot.language, color = TextSecondary, fontSize = 10.sp)
+                                }
                                 Text(slot.note, color = TextSecondary, fontSize = 10.sp, maxLines = 2)
                             }
                         }
@@ -3078,7 +3083,7 @@ private fun SettingsView(
     var default by remember(defaultSection) { mutableStateOf(defaultSection) }
     LazyColumn(
         Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(24.dp, 10.dp, 24.dp, 34.dp),
+        contentPadding = PaddingValues(18.dp, 10.dp, 18.dp, 34.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         item {
@@ -3177,12 +3182,12 @@ private fun SettingsCard(title: String, content: @Composable ColumnScope.() -> U
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(26.dp))
+            .clip(RoundedCornerShape(20.dp))
             .background(Brush.verticalGradient(listOf(Panel2, Panel)))
-            .border(1.dp, Color.White.copy(alpha = .05f), RoundedCornerShape(26.dp))
+            .border(1.dp, Color.White.copy(alpha = .05f), RoundedCornerShape(20.dp))
     ) {
         Column(Modifier.fillMaxWidth().padding(18.dp)) {
-            Text(title, color = PinkSoft, fontWeight = FontWeight.Black, fontSize = 16.sp)
+            Text(title, color = PinkSoft, fontWeight = FontWeight.Black, fontSize = 15.sp)
             Spacer(Modifier.height(10.dp))
             content()
         }
