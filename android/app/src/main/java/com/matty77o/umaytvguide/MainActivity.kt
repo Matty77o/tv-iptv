@@ -645,6 +645,7 @@ fun GuideScreen(
                 Modifier
                     .weight(1f)
                     .fillMaxHeight()
+                    .background(Brush.verticalGradient(listOf(Midnight, Color(0xFF091426), Midnight)))
                     .animateContentSize()
             ) {
                 when {
@@ -862,6 +863,95 @@ fun GuideScreen(
     }
 }
 
+
+@Composable
+private fun AppHeroCard(
+    title: String,
+    subtitle: String,
+    icon: androidx.compose.ui.graphics.vector.ImageVector,
+    accent: Color = Pink,
+    trailing: (@Composable () -> Unit)? = null,
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(30.dp))
+            .background(
+                Brush.linearGradient(
+                    listOf(
+                        accent.copy(alpha = .27f),
+                        Lavender.copy(alpha = .17f),
+                        Panel2
+                    )
+                )
+            )
+            .border(1.dp, Color.White.copy(alpha = .06f), RoundedCornerShape(30.dp))
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 18.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Surface(
+                shape = RoundedCornerShape(18.dp),
+                color = accent.copy(alpha = .18f),
+                modifier = Modifier.size(52.dp)
+            ) {
+                Box(contentAlignment = Alignment.Center) {
+                    Icon(icon, null, tint = accent, modifier = Modifier.size(28.dp))
+                }
+            }
+            Spacer(Modifier.width(14.dp))
+            Column(Modifier.weight(1f)) {
+                Text(title, fontSize = 23.sp, fontWeight = FontWeight.Black, color = TextPrimary)
+                Spacer(Modifier.height(2.dp))
+                Text(subtitle, color = TextSecondary, fontSize = 12.sp, lineHeight = 17.sp)
+            }
+            trailing?.invoke()
+        }
+    }
+}
+
+@Composable
+private fun PolishedSection(
+    title: String,
+    subtitle: String? = null,
+    accent: Color = Pink,
+    content: @Composable ColumnScope.() -> Unit,
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(28.dp))
+            .background(Brush.verticalGradient(listOf(Panel2.copy(alpha = .98f), Panel.copy(alpha = .98f))))
+            .border(1.dp, Color.White.copy(alpha = .055f), RoundedCornerShape(28.dp))
+    ) {
+        Column(Modifier.fillMaxWidth().padding(18.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Box(Modifier.size(8.dp).background(accent, CircleShape))
+                Spacer(Modifier.width(9.dp))
+                Text(title, fontSize = 19.sp, fontWeight = FontWeight.Black)
+            }
+            subtitle?.let {
+                Spacer(Modifier.height(3.dp))
+                Text(it, color = TextSecondary, fontSize = 11.sp, lineHeight = 16.sp)
+            }
+            Spacer(Modifier.height(14.dp))
+            content()
+        }
+    }
+}
+
+@Composable
+private fun CompactPill(text: String, accent: Color = Pink) {
+    Surface(
+        color = accent.copy(alpha = .14f),
+        shape = RoundedCornerShape(100.dp),
+        border = androidx.compose.foundation.BorderStroke(1.dp, accent.copy(alpha = .18f))
+    ) {
+        Text(text, color = accent, fontWeight = FontWeight.Bold, fontSize = 10.sp, modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp))
+    }
+}
+
 @Composable
 private fun HomeView(
     guide: GuideData,
@@ -937,8 +1027,16 @@ private fun HomeView(
             PaddingValues(18.dp, 6.dp, 18.dp, 18.dp)
         else
             PaddingValues(18.dp, 10.dp, 18.dp, 32.dp),
-        verticalArrangement = Arrangement.spacedBy(if (homeLandscape) 12.dp else 20.dp)
+        verticalArrangement = Arrangement.spacedBy(if (homeLandscape) 12.dp else 18.dp)
     ) {
+        item {
+            AppHeroCard(
+                title = "Today",
+                subtitle = "What’s on now, what’s coming up and the household picks worth remembering.",
+                icon = Icons.Rounded.Home,
+                accent = Pink
+            )
+        }
         if (forUsToday.isNotEmpty()) {
             item {
                 SectionHeader("For us today") { onOpenGuide("All") }
@@ -1171,7 +1269,11 @@ private fun ProgrammePosterCard(
     onClick: () -> Unit,
 ) {
     Card(
-        modifier = Modifier.width(180.dp).clickable(onClick = onClick),
+        modifier = Modifier
+            .width(180.dp)
+            .border(1.dp, Color.White.copy(alpha = .05f), RoundedCornerShape(22.dp))
+            .clickable(onClick = onClick),
+        shape = RoundedCornerShape(22.dp),
         colors = CardDefaults.cardColors(containerColor = Panel2)
     ) {
         Column {
@@ -1328,6 +1430,14 @@ private fun DynamicGuideContent(
                 }
             }
         } else {
+            Box(Modifier.padding(horizontal = 14.dp, vertical = 8.dp)) {
+                AppHeroCard(
+                    title = "Guide",
+                    subtitle = "Browse the live schedule, jump to tonight or filter by household favourites.",
+                    icon = Icons.Rounded.Tv,
+                    accent = Cyan
+                )
+            }
             DayPicker(selectedDay, onSelectedDay)
             Row(
                 Modifier
@@ -1447,25 +1557,12 @@ private fun FavouritesView(
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         item {
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(26.dp),
-                colors = CardDefaults.cardColors(containerColor = Panel2)
-            ) {
-                Row(
-                    Modifier.fillMaxWidth().padding(horizontal = 18.dp, vertical = 16.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Surface(shape = CircleShape, color = Pink.copy(alpha = .16f)) {
-                        Icon(Icons.Rounded.Favorite, null, tint = Pink, modifier = Modifier.padding(10.dp).size(24.dp))
-                    }
-                    Spacer(Modifier.width(12.dp))
-                    Column {
-                        Text("Favourites", fontSize = 22.sp, fontWeight = FontWeight.Black)
-                        Text("Saved shows and pinned channels for the household", color = TextSecondary, fontSize = 12.sp)
-                    }
-                }
-            }
+            AppHeroCard(
+                title = "Favourites",
+                subtitle = "Saved shows and pinned channels for the household, grouped into a cleaner weekly view.",
+                icon = Icons.Rounded.Favorite,
+                accent = Pink
+            )
         }
         if (favouriteChannels.isNotEmpty()) {
             item {
@@ -2060,6 +2157,7 @@ private fun AdviserAddResult(recommendation: AdviserRecommendation) {
 }
 
 private data class RecommendedTvSlot(
+    val time: String,
     val partOfDay: String,
     val language: String,
     val channel: String,
@@ -2091,10 +2189,10 @@ private fun recommendedTvSchedule(ageMonths: Int, channels: List<TvChannel>): Li
     }
 
     return listOf(
-        RecommendedTvSlot("Morning", "English", english(0), ageNote),
-        RecommendedTvSlot("Late morning / lunch", "Türkçe", turkish(0), ageNote),
-        RecommendedTvSlot("Afternoon", "English", english(1), ageNote),
-        RecommendedTvSlot("Early evening", "Türkçe", turkish(1), ageNote),
+        RecommendedTvSlot("08:00", "Morning", "English", english(0), ageNote),
+        RecommendedTvSlot("10:30", "Late morning / lunch", "Türkçe", turkish(0), ageNote),
+        RecommendedTvSlot("13:00", "Afternoon", "English", english(1), ageNote),
+        RecommendedTvSlot("15:30", "Early evening", "Türkçe", turkish(1), ageNote),
     )
 }
 
@@ -2125,6 +2223,7 @@ private fun RecommendedTvScheduleCard(ageMonths: Int, channels: List<TvChannel>)
                         )
                     }
                     Spacer(Modifier.width(10.dp))
+                    Text(slot.time, color = TextPrimary, fontWeight = FontWeight.Black, fontSize = 13.sp, modifier = Modifier.width(52.dp))
                     Column(Modifier.weight(1f)) {
                         Text("${slot.partOfDay} • ${slot.language}", color = TextSecondary, fontSize = 10.sp, fontWeight = FontWeight.SemiBold)
                         Text(slot.channel, color = TextPrimary, fontSize = 14.sp, fontWeight = FontWeight.Bold)
@@ -2390,58 +2489,72 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
         verticalArrangement = Arrangement.spacedBy(14.dp)
     ) {
         item {
-            Column(verticalArrangement = Arrangement.spacedBy(3.dp)) {
-                Text("Recommended TV Schedule", fontSize = 27.sp, fontWeight = FontWeight.Black)
-                Text("Balanced English + Türkçe exposure • Umay until 17:00", color = PinkSoft, fontWeight = FontWeight.SemiBold, fontSize = 12.sp)
-            }
+            AppHeroCard(
+                title = "Recommended TV Schedule",
+                subtitle = "Balanced English + Türkçe exposure for Umay until 17:00, then household TV time.",
+                icon = Icons.Rounded.CalendarMonth,
+                accent = Pink
+            )
         }
 
         item {
-            Card(
-                shape = RoundedCornerShape(28.dp),
-                colors = CardDefaults.cardColors(containerColor = Panel3),
+            Box(
+                Modifier.fillMaxWidth()
+                    .clip(RoundedCornerShape(30.dp))
+                    .background(Brush.linearGradient(listOf(Color(0xFF6176D9), Color(0xFFB17BC2), Color(0xFFE3A8C9))))
+                    .border(1.dp, Color.White.copy(alpha=.14f), RoundedCornerShape(30.dp))
             ) {
-                Column(Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                    Text("Umay's age", color = PinkSoft, fontWeight = FontWeight.Bold, fontSize = 13.sp)
-                    Text(if (age < 24) "$age months" else "${age / 12} years ${age % 12} months", fontSize = 30.sp, fontWeight = FontWeight.Black)
-                    Slider(value = age.toFloat(), onValueChange = { age = it.toInt() }, valueRange = 0f..60f, steps = 59)
-                    Text("We use this only to adjust age-suitability and language balance.", color = TextSecondary, fontSize = 11.sp)
+                Column(Modifier.padding(22.dp), verticalArrangement = Arrangement.spacedBy(11.dp)) {
+                    Text("Umay's age", color = Color.White.copy(alpha=.88f), fontWeight = FontWeight.Bold, fontSize = 13.sp)
+                    Text(if (age < 24) "$age months" else "${age / 12} years ${age % 12} months", color = Color.White, fontSize = 32.sp, fontWeight = FontWeight.Black)
+                    Slider(
+                        value = age.toFloat(), onValueChange = { age = it.toInt() }, valueRange = 0f..60f, steps = 59,
+                        colors = SliderDefaults.colors(thumbColor = Color.White, activeTrackColor = Pink, inactiveTrackColor = Color.White.copy(alpha=.28f))
+                    )
+                    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                        listOf("0", "6m", "12m", "18m", "2y", "3y+").forEach { Text(it, color = Color.White.copy(alpha=.78f), fontSize = 10.sp) }
+                    }
+                    Text("We’ll suggest age-appropriate programmes while keeping regular exposure to both English and Türkçe.", color = Color.White.copy(alpha=.88f), fontSize = 11.sp, lineHeight = 16.sp)
                 }
             }
         }
 
         item {
-            Card(shape = RoundedCornerShape(26.dp), colors = CardDefaults.cardColors(containerColor = Panel)) {
-                Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                    Text("Today's rhythm", fontSize = 19.sp, fontWeight = FontWeight.Black)
-                    Text("Suggestions only — nothing is enforced.", color = TextSecondary, fontSize = 11.sp)
-                    recommended.forEach { slot ->
-                        Surface(
-                            color = Panel2,
-                            shape = RoundedCornerShape(18.dp),
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            Row(Modifier.padding(13.dp), verticalAlignment = Alignment.CenterVertically) {
-                                Surface(color = if (slot.language == "Türkçe") Lavender.copy(alpha = .17f) else Pink.copy(alpha = .17f), shape = CircleShape) {
-                                    Text(if (slot.language == "Türkçe") "TR" else "EN", color = if (slot.language == "Türkçe") Lavender else PinkSoft, fontWeight = FontWeight.Black, fontSize = 10.sp, modifier = Modifier.padding(horizontal = 9.dp, vertical = 7.dp))
-                                }
-                                Spacer(Modifier.width(11.dp))
-                                Column(Modifier.weight(1f)) {
-                                    Text("${slot.partOfDay} • ${slot.language}", color = TextSecondary, fontSize = 10.sp, fontWeight = FontWeight.SemiBold)
-                                    Text(slot.channel, fontWeight = FontWeight.Bold, fontSize = 15.sp)
-                                    Text(slot.note, color = TextSecondary, fontSize = 10.sp, maxLines = 2)
-                                }
+            PolishedSection(
+                title = "Recommended TV Schedule",
+                subtitle = "Age-based suggestions with a mix of English and Türkçe. Suggestions only — nothing is enforced.",
+                accent = Pink
+            ) {
+                recommended.forEach { slot ->
+                    Surface(
+                        color = Midnight.copy(alpha=.55f),
+                        shape = RoundedCornerShape(20.dp),
+                        border = androidx.compose.foundation.BorderStroke(1.dp, Color.White.copy(alpha=.04f)),
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Row(Modifier.padding(13.dp), verticalAlignment = Alignment.CenterVertically) {
+                            Column(Modifier.width(60.dp)) {
+                                Text(slot.time, fontWeight = FontWeight.Black, fontSize = 15.sp)
+                                Text(slot.partOfDay, color = TextSecondary, fontSize = 9.sp, maxLines = 1)
+                            }
+                            CompactPill(if (slot.language == "Türkçe") "TR" else "EN", if (slot.language == "Türkçe") Lavender else Pink)
+                            Spacer(Modifier.width(11.dp))
+                            Column(Modifier.weight(1f)) {
+                                Text(slot.channel, fontWeight = FontWeight.Black, fontSize = 15.sp)
+                                Text(slot.language, color = TextSecondary, fontSize = 10.sp)
+                                Text(slot.note, color = TextSecondary, fontSize = 10.sp, maxLines = 2)
                             }
                         }
                     }
-                    Surface(color = Cyan.copy(alpha = .12f), shape = RoundedCornerShape(18.dp)) {
-                        Row(Modifier.fillMaxWidth().padding(14.dp), verticalAlignment = Alignment.CenterVertically) {
-                            Icon(Icons.Rounded.Info, null, tint = Cyan)
-                            Spacer(Modifier.width(10.dp))
-                            Column {
-                                Text("After 17:00", color = Cyan, fontWeight = FontWeight.Black)
-                                Text("Umay suggestions stop and it becomes Matt & Sev TV time.", color = TextSecondary, fontSize = 11.sp)
-                            }
+                    Spacer(Modifier.height(8.dp))
+                }
+                Surface(color = Cyan.copy(alpha = .16f), shape = RoundedCornerShape(18.dp), modifier = Modifier.fillMaxWidth()) {
+                    Row(Modifier.fillMaxWidth().padding(14.dp), verticalAlignment = Alignment.CenterVertically) {
+                        Icon(Icons.Rounded.Info, null, tint = Cyan)
+                        Spacer(Modifier.width(10.dp))
+                        Column {
+                            Text("After 17:00", color = Cyan, fontWeight = FontWeight.Black)
+                            Text("It becomes Matt & Sev TV time. Umay recommendations stop for the day.", color = TextPrimary, fontSize = 11.sp)
                         }
                     }
                 }
@@ -2449,7 +2562,12 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
         }
 
         item {
-            Card(shape = RoundedCornerShape(26.dp), colors = CardDefaults.cardColors(containerColor = Pink.copy(alpha = .10f))) {
+            Box(
+                Modifier.fillMaxWidth()
+                    .clip(RoundedCornerShape(28.dp))
+                    .background(Brush.linearGradient(listOf(Color(0xFF53204F), Color(0xFF3C1A46), Panel2)))
+                    .border(1.dp, Pink.copy(alpha=.16f), RoundedCornerShape(28.dp))
+            ) {
                 Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Icon(Icons.Rounded.Home, null, tint = Pink)
@@ -2518,16 +2636,28 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
                         Card(
                             modifier = Modifier.width(190.dp).clickable { addProgramme(p) },
                             shape = RoundedCornerShape(22.dp),
-                            colors = CardDefaults.cardColors(containerColor = Panel2)
+                            colors = CardDefaults.cardColors(containerColor = Panel2),
+                            border = androidx.compose.foundation.BorderStroke(1.dp, Color.White.copy(alpha=.05f))
                         ) {
-                            Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(5.dp)) {
-                                Surface(color = if (lang == "Türkçe") Lavender.copy(alpha=.15f) else Pink.copy(alpha=.15f), shape = RoundedCornerShape(100.dp)) {
-                                    Text(if (lang == "Türkçe") "TR" else "EN", color = if (lang == "Türkçe") Lavender else PinkSoft, fontSize=9.sp, fontWeight=FontWeight.Black, modifier=Modifier.padding(horizontal=8.dp, vertical=5.dp))
+                            Column {
+                                Box(Modifier.fillMaxWidth().height(62.dp).background(Color.White.copy(alpha=.94f)), contentAlignment = Alignment.Center) {
+                                    val logo = ch?.icon
+                                    if (!logo.isNullOrBlank()) {
+                                        AsyncImage(logo, ch.name, Modifier.fillMaxSize().padding(9.dp), contentScale = ContentScale.Fit)
+                                    } else {
+                                        Text(ch?.name ?: p.channelId, color = Color(0xFF17213A), fontWeight = FontWeight.Black, fontSize = 13.sp)
+                                    }
                                 }
+                                Column(Modifier.padding(13.dp), verticalArrangement = Arrangement.spacedBy(5.dp)) {
+                                    Row(verticalAlignment = Alignment.CenterVertically) {
+                                        CompactPill(if (lang == "Türkçe") "TR" else "EN", if (lang == "Türkçe") Lavender else Pink)
+                                        Spacer(Modifier.weight(1f))
+                                        Text("＋ Add", color = PinkSoft, fontWeight = FontWeight.Bold, fontSize=11.sp)
+                                    }
                                 Text(p.title, fontWeight = FontWeight.Black, fontSize = 15.sp, maxLines = 2, overflow = TextOverflow.Ellipsis)
                                 Text(ch?.name ?: p.channelId, color = TextSecondary, fontSize = 11.sp, maxLines=1)
                                 Text("${p.start.toLocalTime().toString().take(5)}–${p.stop.toLocalTime().toString().take(5)}", color = TextSecondary, fontSize = 10.sp)
-                                Text("＋ Add", color = PinkSoft, fontWeight = FontWeight.Bold, fontSize=11.sp)
+                                }
                             }
                         }
                     }
@@ -2544,7 +2674,16 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
             }
         }
 
-        item { Text("Today's shared picks", fontWeight = FontWeight.Black, fontSize = 18.sp) }
+        item {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Box(Modifier.size(9.dp).background(Pink, CircleShape))
+                Spacer(Modifier.width(8.dp))
+                Column {
+                    Text("Today's shared picks", fontWeight = FontWeight.Black, fontSize = 19.sp)
+                    Text("Synced between the household phones", color = TextSecondary, fontSize = 10.sp)
+                }
+            }
+        }
         if (entries.isEmpty()) {
             item { Text("Nothing added yet.", color = TextSecondary) }
         } else {
@@ -2606,22 +2745,12 @@ onNowKidsProgrammes(guide, channels).isNotEmpty()
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         item {
-            Surface(
-                shape = RoundedCornerShape(24.dp),
-                color = Pink.copy(alpha = .09f),
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Row(Modifier.padding(17.dp), verticalAlignment = Alignment.CenterVertically) {
-                    Surface(shape = RoundedCornerShape(15.dp), color = Pink.copy(alpha = .18f)) {
-                        Icon(Icons.Rounded.Star, null, tint = PinkSoft, modifier = Modifier.padding(11.dp).size(23.dp))
-                    }
-                    Spacer(Modifier.width(12.dp))
-                    Column(Modifier.weight(1f)) {
-                        Text("Ask AI", fontSize = 24.sp, fontWeight = FontWeight.Black)
-                        Text("Channel Adviser • English + Türkçe", color = PinkSoft, fontWeight = FontWeight.Bold, fontSize = 12.sp)
-                    }
-                }
-            }
+            AppHeroCard(
+                title = "Ask AI",
+                subtitle = "Age-aware channel and programme advice using English + Türkçe and the Kids EPG that is on now.",
+                icon = Icons.Rounded.Star,
+                accent = Lavender
+            )
         }
 
         if (!kidsEpgAvailable) {
@@ -2953,25 +3082,12 @@ private fun SettingsView(
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         item {
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(26.dp),
-                colors = CardDefaults.cardColors(containerColor = Panel2)
-            ) {
-                Row(
-                    Modifier.fillMaxWidth().padding(horizontal = 18.dp, vertical = 16.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Surface(shape = CircleShape, color = Lavender.copy(alpha = .16f)) {
-                        Icon(Icons.Rounded.Settings, null, tint = Lavender, modifier = Modifier.padding(10.dp).size(24.dp))
-                    }
-                    Spacer(Modifier.width(12.dp))
-                    Column {
-                        Text("Settings", fontSize = 22.sp, fontWeight = FontWeight.Black)
-                        Text("Guide, reminders, channels and household preferences", color = TextSecondary, fontSize = 12.sp)
-                    }
-                }
-            }
+            AppHeroCard(
+                title = "Settings",
+                subtitle = "Guide, reminders, channels, updates and household preferences in one place.",
+                icon = Icons.Rounded.Settings,
+                accent = Lavender
+            )
         }
         item {
             SettingsCard("Default reminder for new favourites") {
@@ -3058,14 +3174,16 @@ private fun SettingsView(
 
 @Composable
 private fun SettingsCard(title: String, content: @Composable ColumnScope.() -> Unit) {
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(24.dp),
-        colors = CardDefaults.cardColors(containerColor = Panel2)
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(26.dp))
+            .background(Brush.verticalGradient(listOf(Panel2, Panel)))
+            .border(1.dp, Color.White.copy(alpha = .05f), RoundedCornerShape(26.dp))
     ) {
         Column(Modifier.fillMaxWidth().padding(18.dp)) {
-            Text(title, color = PinkSoft, fontWeight = FontWeight.Bold)
-            Spacer(Modifier.height(8.dp))
+            Text(title, color = PinkSoft, fontWeight = FontWeight.Black, fontSize = 16.sp)
+            Spacer(Modifier.height(10.dp))
             content()
         }
     }
