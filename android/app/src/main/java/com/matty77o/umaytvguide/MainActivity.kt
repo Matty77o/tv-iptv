@@ -122,6 +122,8 @@ private const val PREF_AUTO_REFRESH = "auto_refresh"
 private const val PREF_DEFAULT_SECTION = "default_section"
 private const val PREF_HOUSEHOLD_CODE = "household_pairing_code"
 private const val PREF_SCHEDULE_JSON = "shared_tv_schedule"
+private const val PREF_HOUSEHOLD_MEMBER = "household_member_name"
+private const val PREF_SCHEDULE_CHOOSE_NOW = "schedule_choose_now"
 
 data class ChannelConfig(
     val id: String,
@@ -218,11 +220,13 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             UmayTheme {
-                Surface(modifier = Modifier.fillMaxSize()) {
+                AppUpdateGate {
+                    Surface(modifier = Modifier.fillMaxSize()) {
                     GuideScreen(
                         reminderOpenRequest = reminderOpenRequest.value,
                         onReminderConsumed = { reminderOpenRequest.value = null },
                     )
+                    }
                 }
             }
         }
@@ -257,16 +261,17 @@ private fun isSamsungDevice(): Boolean =
     Build.MANUFACTURER.equals("samsung", ignoreCase = true) ||
         Build.BRAND.equals("samsung", ignoreCase = true)
 
-private val Midnight = Color(0xFF090B15)
-private val Panel = Color(0xFF111626)
-private val Panel2 = Color(0xFF171D30)
-private val Pink = Color(0xFFFF62A8)
-private val PinkSoft = Color(0xFFFFA7CF)
-private val Lavender = Color(0xFFBFA7FF)
-private val Cyan = Color(0xFF70D7FF)
-private val Mint = Color(0xFF72E5C2)
-private val TextPrimary = Color(0xFFF8F7FC)
-private val TextSecondary = Color(0xFFAAAEC0)
+private val Midnight = Color(0xFF07101F)
+private val Panel = Color(0xFF0F1A30)
+private val Panel2 = Color(0xFF15213B)
+private val Panel3 = Color(0xFF1B2948)
+private val Pink = Color(0xFFFF67B4)
+private val PinkSoft = Color(0xFFFFA8D2)
+private val Lavender = Color(0xFFB9A7FF)
+private val Cyan = Color(0xFF79D8FF)
+private val Mint = Color(0xFF67E5B5)
+private val TextPrimary = Color(0xFFF7F8FF)
+private val TextSecondary = Color(0xFFB4BED3)
 
 @Composable
 fun UmayTheme(content: @Composable () -> Unit) {
@@ -285,6 +290,13 @@ fun UmayTheme(content: @Composable () -> Unit) {
     MaterialTheme(
         colorScheme = scheme,
         typography = Typography(),
+        shapes = Shapes(
+            extraSmall = RoundedCornerShape(10.dp),
+            small = RoundedCornerShape(14.dp),
+            medium = RoundedCornerShape(20.dp),
+            large = RoundedCornerShape(26.dp),
+            extraLarge = RoundedCornerShape(32.dp),
+        ),
         content = content,
     )
 }
@@ -332,6 +344,13 @@ fun GuideScreen(
         )
     }
 
+    LaunchedEffect(Unit) {
+        if (prefs.getBoolean("open_schedule_once", false)) {
+            section = AppSection.SCHEDULE
+            prefs.edit().remove("open_schedule_once").apply()
+        }
+    }
+
     val notificationPermissionLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.RequestPermission()
     ) { }
@@ -356,6 +375,10 @@ fun GuideScreen(
 
     LaunchedEffect(autoRefresh) {
         BackgroundRefreshManager.configure(context, autoRefresh)
+    }
+
+    LaunchedEffect(Unit) {
+        HouseholdScheduleSyncManager.configure(context)
     }
 
     LaunchedEffect(selectedDay) {
@@ -420,7 +443,7 @@ fun GuideScreen(
                         Column {
                             Text(
                                 "Umay TV Guide",
-                                fontWeight = FontWeight.Bold,
+                                fontWeight = FontWeight.Black,
                                 style = when {
                                     isLandscape -> MaterialTheme.typography.titleLarge
                                     useSamsungOneUi -> MaterialTheme.typography.headlineMedium
@@ -430,8 +453,8 @@ fun GuideScreen(
                             if (!isLandscape) {
                                 lastUpdated?.let {
                                     Text(
-                                        "Updated ${formatTime(it, use24Hour)}",
-                                        color = TextSecondary,
+                                        "Happy viewing • Updated ${formatTime(it, use24Hour)}",
+                                        color = PinkSoft,
                                         fontSize = 11.sp
                                     )
                                 }
@@ -463,21 +486,21 @@ fun GuideScreen(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 22.dp, vertical = 8.dp),
+                        .padding(horizontal = 16.dp, vertical = 8.dp),
                     contentAlignment = Alignment.Center
                 ) {
                     Card(
                         modifier = Modifier.fillMaxWidth(),
-                        shape = RoundedCornerShape(30.dp),
+                        shape = RoundedCornerShape(28.dp),
                         colors = CardDefaults.cardColors(
-                            containerColor = Color(0xFF151A28)
+                            containerColor = Color(0xFF101B31)
                         ),
                         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
                     ) {
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(72.dp)
+                                .height(74.dp)
                                 .padding(horizontal = 6.dp, vertical = 5.dp),
                             horizontalArrangement = Arrangement.spacedBy(2.dp),
                             verticalAlignment = Alignment.CenterVertically
@@ -499,8 +522,8 @@ fun GuideScreen(
                                         section = item
                                         searchOpen = false
                                     },
-                                    shape = RoundedCornerShape(22.dp),
-                                    color = if (selected) Pink.copy(alpha = 0.18f) else Color.Transparent,
+                                    shape = RoundedCornerShape(18.dp),
+                                    color = if (selected) Pink.copy(alpha = 0.20f) else Color.Transparent,
                                     contentColor = if (selected) Pink else TextSecondary,
                                     modifier = Modifier
                                         .weight(1f)
@@ -1000,7 +1023,7 @@ private fun HomeView(
         if (startingSoon.isNotEmpty()) {
             item {
                 SectionHeader("Starting soon") { onOpenGuide("All") }
-                Card(colors = CardDefaults.cardColors(containerColor = Panel2)) {
+                Card(shape = RoundedCornerShape(22.dp), colors = CardDefaults.cardColors(containerColor = Panel2)) {
                     Column {
                         startingSoon.take(5).forEachIndexed { index, p ->
                             val channel = channels.firstOrNull { it.id == p.channelId }
@@ -1106,7 +1129,7 @@ private fun NowNextRow(
     onChannel: (TvChannel) -> Unit,
     onProgramme: (Programme) -> Unit,
 ) {
-    Card(colors = CardDefaults.cardColors(containerColor = Panel2)) {
+    Card(shape = RoundedCornerShape(22.dp), colors = CardDefaults.cardColors(containerColor = Panel2)) {
         Row(Modifier.fillMaxWidth().padding(10.dp), verticalAlignment = Alignment.CenterVertically) {
             Box(
                 Modifier.size(42.dp).clip(RoundedCornerShape(12.dp)).background(Panel),
@@ -1423,7 +1446,27 @@ private fun FavouritesView(
         contentPadding = PaddingValues(24.dp, 10.dp, 24.dp, 34.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        item { Text("My shows", fontSize = 24.sp, fontWeight = FontWeight.Black) }
+        item {
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(26.dp),
+                colors = CardDefaults.cardColors(containerColor = Panel2)
+            ) {
+                Row(
+                    Modifier.fillMaxWidth().padding(horizontal = 18.dp, vertical = 16.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Surface(shape = CircleShape, color = Pink.copy(alpha = .16f)) {
+                        Icon(Icons.Rounded.Favorite, null, tint = Pink, modifier = Modifier.padding(10.dp).size(24.dp))
+                    }
+                    Spacer(Modifier.width(12.dp))
+                    Column {
+                        Text("Favourites", fontSize = 22.sp, fontWeight = FontWeight.Black)
+                        Text("Saved shows and pinned channels for the household", color = TextSecondary, fontSize = 12.sp)
+                    }
+                }
+            }
+        }
         if (favouriteChannels.isNotEmpty()) {
             item {
                 Text("Pinned channels", fontWeight = FontWeight.Bold, color = PinkSoft)
@@ -1519,6 +1562,7 @@ private fun ProgrammeListRow(
 ) {
     Card(
         modifier = Modifier.fillMaxWidth().clickable { onProgramme(programme) },
+        shape = RoundedCornerShape(20.dp),
         colors = CardDefaults.cardColors(containerColor = Panel2)
     ) {
         Row(Modifier.padding(10.dp), verticalAlignment = Alignment.CenterVertically) {
@@ -2107,7 +2151,7 @@ private object AiSessionCache {
     var questionAnswer: AdviserQuestionAnswer? = null
 }
 
-data class SharedScheduleEntry(val time: String, val title: String, val channel: String, val language: String)
+data class SharedScheduleEntry(val time: String, val stop: String = "", val title: String, val channel: String, val language: String, val nextTitle: String = "", val nextStart: String = "", val nextStop: String = "")
 
 private fun scheduleSuggestionLanguage(entries: List<SharedScheduleEntry>): String? = when (entries.lastOrNull()?.language?.lowercase(Locale.ROOT)) {
     "turkish", "türkçe" -> "English"
@@ -2116,10 +2160,10 @@ private fun scheduleSuggestionLanguage(entries: List<SharedScheduleEntry>): Stri
 }
 
 private fun scheduleToJson(entries: List<SharedScheduleEntry>): JSONArray = JSONArray().apply {
-    entries.forEach { e -> put(JSONObject().apply { put("time",e.time); put("title",e.title); put("channel",e.channel); put("language",e.language) }) }
+    entries.forEach { e -> put(JSONObject().apply { put("time",e.time); put("stop",e.stop); put("title",e.title); put("channel",e.channel); put("language",e.language); put("nextTitle",e.nextTitle); put("nextStart",e.nextStart); put("nextStop",e.nextStop) }) }
 }
 private fun scheduleFromJson(raw: String): List<SharedScheduleEntry> = runCatching {
-    val a=JSONArray(raw); (0 until a.length()).mapNotNull { i -> a.optJSONObject(i)?.let { o -> SharedScheduleEntry(o.optString("time"),o.optString("title"),o.optString("channel"),o.optString("language")) } }
+    val a=JSONArray(raw); (0 until a.length()).mapNotNull { i -> a.optJSONObject(i)?.let { o -> SharedScheduleEntry(o.optString("time"),o.optString("stop"),o.optString("title"),o.optString("channel"),o.optString("language"),o.optString("nextTitle"),o.optString("nextStart"),o.optString("nextStop")) } }
 }.getOrDefault(emptyList())
 
 private suspend fun syncSchedule(code: String, entries: List<SharedScheduleEntry>?): List<SharedScheduleEntry> = withContext(Dispatchers.IO) {
@@ -2133,6 +2177,34 @@ private suspend fun syncSchedule(code: String, entries: List<SharedScheduleEntry
     val a=JSONObject(text).optJSONArray("entries")?:JSONArray(); scheduleFromJson(a.toString())
 }
 
+
+private fun scheduleSharedFollowUps(
+    context: Context,
+    household: String,
+    memberName: String,
+    entries: List<SharedScheduleEntry>,
+) {
+    if (household.trim().length < 6) return
+    val now = ZonedDateTime.now()
+    entries.forEach { entry ->
+        val stopTime = runCatching { LocalTime.parse(entry.stop) }.getOrNull() ?: return@forEach
+        val stop = now.with(stopTime).withSecond(0).withNano(0)
+        if (!stop.isAfter(now)) return@forEach
+        ScheduleFollowUpScheduler.schedule(
+            context = context,
+            household = household,
+            memberName = memberName.ifBlank { "Someone" },
+            title = entry.title,
+            channel = entry.channel,
+            language = entry.language,
+            stop = stop,
+            nextTitle = entry.nextTitle,
+            nextStart = entry.nextStart,
+            nextStop = entry.nextStop,
+        )
+    }
+}
+
 @Composable
 private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
     val context = LocalContext.current
@@ -2140,26 +2212,37 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
     val scope = rememberCoroutineScope()
     var age by rememberSaveable { mutableIntStateOf(7) }
     var pairing by rememberSaveable { mutableStateOf(prefs.getString(PREF_HOUSEHOLD_CODE, "") ?: "") }
+    var memberName by rememberSaveable { mutableStateOf(prefs.getString(PREF_HOUSEHOLD_MEMBER, "") ?: "") }
     var joinCode by rememberSaveable { mutableStateOf("") }
     var entries by remember { mutableStateOf(scheduleFromJson(prefs.getString(PREF_SCHEDULE_JSON, "[]") ?: "[]")) }
     var status by remember { mutableStateOf<String?>(null) }
     var busy by remember { mutableStateOf(false) }
     var confirmExit by remember { mutableStateOf(false) }
+    var chooseNowPrompt by remember { mutableStateOf(prefs.getBoolean(PREF_SCHEDULE_CHOOSE_NOW, false)) }
     val joined = pairing.trim().length >= 6
     val suggestion = scheduleSuggestionLanguage(entries)
     val nowKids = remember(guide, channels) { onNowKidsProgrammes(guide, channels) }
+    val recommended = remember(age, channels) { recommendedTvSchedule(age, channels) }
 
     fun saveLocal(newEntries: List<SharedScheduleEntry>) {
         entries = newEntries
         prefs.edit().putString(PREF_SCHEDULE_JSON, scheduleToJson(newEntries).toString()).apply()
     }
 
+    fun saveMember(name: String) {
+        memberName = name
+        prefs.edit().putString(PREF_HOUSEHOLD_MEMBER, name).apply()
+        if (joined) scheduleSharedFollowUps(context, pairing, name, entries)
+    }
+
+    fun syncRemote(newEntries: List<SharedScheduleEntry>) {
+        if (!joined) return
+        scope.launch { runCatching { syncSchedule(pairing, newEntries) } }
+    }
+
     fun joinHousehold(code: String) {
         val clean = code.trim().uppercase(Locale.ROOT).filter { it.isLetterOrDigit() }.take(12)
-        if (clean.length < 6) {
-            status = "Enter a valid household code"
-            return
-        }
+        if (clean.length < 6) { status = "Enter a valid household code"; return }
         busy = true
         status = "Joining household…"
         scope.launch {
@@ -2168,6 +2251,7 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
                     pairing = clean
                     prefs.edit().putString(PREF_HOUSEHOLD_CODE, clean).apply()
                     saveLocal(it)
+                    scheduleSharedFollowUps(context, clean, memberName, it)
                     joinCode = ""
                     status = "Household joined"
                 }
@@ -2185,6 +2269,7 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
                 .onSuccess {
                     pairing = code
                     prefs.edit().putString(PREF_HOUSEHOLD_CODE, code).apply()
+                    scheduleSharedFollowUps(context, code, memberName, entries)
                     status = "Household created"
                 }
                 .onFailure { status = it.message ?: "Could not create household" }
@@ -2192,27 +2277,105 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
         }
     }
 
+    fun addProgramme(p: Programme) {
+        val ch = channels.firstOrNull { channelKey(it.id) == channelKey(p.channelId) || channelKey(it.name) == channelKey(p.channelId) }
+        val channelName = ch?.name ?: p.channelId
+        val lang = if (channelName in listOf("TRT Çocuk", "Minika Çocuk")) "Türkçe" else "English"
+        val next = guide.programmes
+            .asSequence()
+            .filter { channelKey(it.channelId) == channelKey(p.channelId) && !it.start.isBefore(p.stop.minusMinutes(1)) }
+            .minByOrNull { it.start }
+        val entry = SharedScheduleEntry(
+            time = p.start.toLocalTime().toString().take(5),
+            stop = p.stop.toLocalTime().toString().take(5),
+            title = p.title,
+            channel = channelName,
+            language = lang,
+            nextTitle = next?.title.orEmpty(),
+            nextStart = next?.start?.toLocalTime()?.toString()?.take(5).orEmpty(),
+            nextStop = next?.stop?.toLocalTime()?.toString()?.take(5).orEmpty(),
+        )
+        val newEntries = entries + entry
+        saveLocal(newEntries)
+        syncRemote(newEntries)
+        ScheduleFollowUpScheduler.schedule(
+            context = context,
+            household = pairing,
+            memberName = memberName.ifBlank { "Someone" },
+            title = p.title,
+            channel = channelName,
+            language = lang,
+            stop = p.stop,
+            nextTitle = next?.title.orEmpty(),
+            nextStart = next?.start?.toLocalTime()?.toString()?.take(5).orEmpty(),
+            nextStop = next?.stop?.toLocalTime()?.toString()?.take(5).orEmpty(),
+        )
+        status = "Added ${p.title}"
+    }
+
     LaunchedEffect(pairing) {
         if (pairing.trim().length >= 6) {
             runCatching { syncSchedule(pairing, null) }
-                .onSuccess { saveLocal(it) }
+                .onSuccess {
+                    saveLocal(it)
+                    scheduleSharedFollowUps(context, pairing, memberName, it)
+                }
         }
+    }
+
+    if (chooseNowPrompt) {
+        AlertDialog(
+            onDismissRequest = {
+                chooseNowPrompt = false
+                prefs.edit().remove(PREF_SCHEDULE_CHOOSE_NOW).apply()
+            },
+            title = { Text("What's playing now?") },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(9.dp)) {
+                    Text("You said the channel changed. Pick what is currently playing now and we'll update the shared schedule.", color = TextSecondary, fontSize = 12.sp)
+                    if (nowKids.isEmpty()) {
+                        Text("No current Kids programmes were found in the EPG yet.", color = PinkSoft, fontWeight = FontWeight.SemiBold)
+                    } else {
+                        LazyColumn(Modifier.heightIn(max = 360.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                            items(nowKids.take(12)) { p ->
+                                val ch = channels.firstOrNull { channelKey(it.id) == channelKey(p.channelId) || channelKey(it.name) == channelKey(p.channelId) }
+                                Surface(
+                                    modifier = Modifier.fillMaxWidth().clickable {
+                                        addProgramme(p)
+                                        chooseNowPrompt = false
+                                        prefs.edit().remove(PREF_SCHEDULE_CHOOSE_NOW).apply()
+                                    },
+                                    color = Panel2,
+                                    shape = RoundedCornerShape(16.dp),
+                                ) {
+                                    Column(Modifier.padding(12.dp)) {
+                                        Text(p.title, fontWeight = FontWeight.Bold)
+                                        Text(ch?.name ?: p.channelId, color = TextSecondary, fontSize = 11.sp)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = {
+                    chooseNowPrompt = false
+                    prefs.edit().remove(PREF_SCHEDULE_CHOOSE_NOW).apply()
+                }) { Text("Not now") }
+            },
+        )
     }
 
     if (confirmExit) {
         AlertDialog(
             onDismissRequest = { confirmExit = false },
             title = { Text("Exit household?") },
-            text = { Text("This removes the household code and its cached schedule from this phone. It does not delete the shared household from Sev's phone or Cloudflare.") },
+            text = { Text("This removes the household code and cached schedule from this phone only. The shared household remains available to the other phone.") },
             confirmButton = {
                 TextButton(onClick = {
-                    pairing = ""
-                    joinCode = ""
-                    entries = emptyList()
-                    prefs.edit()
-                        .remove(PREF_HOUSEHOLD_CODE)
-                        .remove(PREF_SCHEDULE_JSON)
-                        .apply()
+                    pairing = ""; joinCode = ""; entries = emptyList()
+                    prefs.edit().remove(PREF_HOUSEHOLD_CODE).remove(PREF_SCHEDULE_JSON).apply()
                     status = "You have left the household"
                     confirmExit = false
                 }) { Text("Exit household") }
@@ -2223,126 +2386,182 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
 
     LazyColumn(
         Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(24.dp, 12.dp, 24.dp, 36.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
+        contentPadding = PaddingValues(18.dp, 10.dp, 18.dp, 34.dp),
+        verticalArrangement = Arrangement.spacedBy(14.dp)
     ) {
         item {
-            Text("Recommended TV Schedule", fontSize = 25.sp, fontWeight = FontWeight.Black)
-            Text("Umay until 17:00 • Matt & Sev after 17:00", color = PinkSoft, fontWeight = FontWeight.Bold, fontSize = 12.sp)
+            Column(verticalArrangement = Arrangement.spacedBy(3.dp)) {
+                Text("Recommended TV Schedule", fontSize = 27.sp, fontWeight = FontWeight.Black)
+                Text("Balanced English + Türkçe exposure • Umay until 17:00", color = PinkSoft, fontWeight = FontWeight.SemiBold, fontSize = 12.sp)
+            }
         }
+
         item {
-            Card(colors = CardDefaults.cardColors(containerColor = Panel2)) {
-                Column(Modifier.padding(16.dp)) {
-                    Text("Age to advise for", color = PinkSoft, fontWeight = FontWeight.Bold)
-                    Text(if (age < 24) "$age months" else "${age / 12} years ${age % 12} months", fontSize = 20.sp, fontWeight = FontWeight.Black)
+            Card(
+                shape = RoundedCornerShape(28.dp),
+                colors = CardDefaults.cardColors(containerColor = Panel3),
+            ) {
+                Column(Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    Text("Umay's age", color = PinkSoft, fontWeight = FontWeight.Bold, fontSize = 13.sp)
+                    Text(if (age < 24) "$age months" else "${age / 12} years ${age % 12} months", fontSize = 30.sp, fontWeight = FontWeight.Black)
                     Slider(value = age.toFloat(), onValueChange = { age = it.toInt() }, valueRange = 0f..60f, steps = 59)
-                    RecommendedTvScheduleCard(age, channels)
+                    Text("We use this only to adjust age-suitability and language balance.", color = TextSecondary, fontSize = 11.sp)
                 }
             }
         }
+
         item {
-            Card(colors = CardDefaults.cardColors(containerColor = Panel2)) {
-                Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Text("Shared household", fontWeight = FontWeight.Bold, fontSize = 18.sp)
-                    if (joined) {
-                        Text("✓ You have joined this household", color = PinkSoft, fontWeight = FontWeight.Bold)
-                        Text("Household code", color = TextSecondary, fontSize = 11.sp)
+            Card(shape = RoundedCornerShape(26.dp), colors = CardDefaults.cardColors(containerColor = Panel)) {
+                Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    Text("Today's rhythm", fontSize = 19.sp, fontWeight = FontWeight.Black)
+                    Text("Suggestions only — nothing is enforced.", color = TextSecondary, fontSize = 11.sp)
+                    recommended.forEach { slot ->
                         Surface(
-                            color = Midnight.copy(alpha = 0.65f),
-                            shape = RoundedCornerShape(16.dp),
+                            color = Panel2,
+                            shape = RoundedCornerShape(18.dp),
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            Text(
-                                pairing,
-                                modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
-                                fontSize = 20.sp,
-                                fontWeight = FontWeight.Black,
-                                letterSpacing = 2.sp
-                            )
+                            Row(Modifier.padding(13.dp), verticalAlignment = Alignment.CenterVertically) {
+                                Surface(color = if (slot.language == "Türkçe") Lavender.copy(alpha = .17f) else Pink.copy(alpha = .17f), shape = CircleShape) {
+                                    Text(if (slot.language == "Türkçe") "TR" else "EN", color = if (slot.language == "Türkçe") Lavender else PinkSoft, fontWeight = FontWeight.Black, fontSize = 10.sp, modifier = Modifier.padding(horizontal = 9.dp, vertical = 7.dp))
+                                }
+                                Spacer(Modifier.width(11.dp))
+                                Column(Modifier.weight(1f)) {
+                                    Text("${slot.partOfDay} • ${slot.language}", color = TextSecondary, fontSize = 10.sp, fontWeight = FontWeight.SemiBold)
+                                    Text(slot.channel, fontWeight = FontWeight.Bold, fontSize = 15.sp)
+                                    Text(slot.note, color = TextSecondary, fontSize = 10.sp, maxLines = 2)
+                                }
+                            }
                         }
-                        Text("This code is saved on this phone. Use it to join the same household on another phone.", color = TextSecondary, fontSize = 11.sp)
+                    }
+                    Surface(color = Cyan.copy(alpha = .12f), shape = RoundedCornerShape(18.dp)) {
+                        Row(Modifier.fillMaxWidth().padding(14.dp), verticalAlignment = Alignment.CenterVertically) {
+                            Icon(Icons.Rounded.Info, null, tint = Cyan)
+                            Spacer(Modifier.width(10.dp))
+                            Column {
+                                Text("After 17:00", color = Cyan, fontWeight = FontWeight.Black)
+                                Text("Umay suggestions stop and it becomes Matt & Sev TV time.", color = TextSecondary, fontSize = 11.sp)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        item {
+            Card(shape = RoundedCornerShape(26.dp), colors = CardDefaults.cardColors(containerColor = Pink.copy(alpha = .10f))) {
+                Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(Icons.Rounded.Home, null, tint = Pink)
+                        Spacer(Modifier.width(9.dp))
+                        Text("Shared household", fontWeight = FontWeight.Black, fontSize = 19.sp)
+                        Spacer(Modifier.weight(1f))
+                        if (joined) Surface(color = Mint.copy(alpha=.16f), shape = RoundedCornerShape(100.dp)) { Text("Connected", color = Mint, fontSize = 10.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(horizontal=10.dp, vertical=6.dp)) }
+                    }
+                    if (joined) {
+                        Text("✓ You have joined this household", color = PinkSoft, fontWeight = FontWeight.Bold, fontSize = 12.sp)
+                        Surface(color = Midnight.copy(alpha = .58f), shape = RoundedCornerShape(18.dp), modifier = Modifier.fillMaxWidth()) {
+                            Row(Modifier.padding(14.dp), verticalAlignment = Alignment.CenterVertically) {
+                                Column(Modifier.weight(1f)) {
+                                    Text("Household code", color = TextSecondary, fontSize = 10.sp)
+                                    Text(pairing, fontSize = 22.sp, fontWeight = FontWeight.Black, letterSpacing = 2.sp)
+                                }
+                            }
+                        }
+                        Text("This phone belongs to", color = TextSecondary, fontSize = 10.sp)
+                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            listOf("Matt", "Sev").forEach { name ->
+                                FilterChip(selected = memberName == name, onClick = { saveMember(name) }, label = { Text(name) })
+                            }
+                        }
                         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                             Button(
                                 onClick = {
-                                    busy = true
-                                    status = "Syncing…"
+                                    busy = true; status = "Syncing…"
                                     scope.launch {
                                         runCatching { syncSchedule(pairing, null) }
-                                            .onSuccess { saveLocal(it); status = "Synced" }
+                                            .onSuccess { saveLocal(it); scheduleSharedFollowUps(context, pairing, memberName, it); status = "Synced" }
                                             .onFailure { status = it.message }
                                         busy = false
                                     }
-                                },
-                                enabled = !busy
+                                }, enabled = !busy
                             ) { Text("Sync now") }
-                            TextButton(onClick = { confirmExit = true }, enabled = !busy) { Text("Exit household") }
+                            OutlinedButton(onClick = { confirmExit = true }, enabled = !busy) { Text("Exit") }
                         }
                     } else {
-                        Text("Create a household on one phone, then enter the same code on the other.", color = TextSecondary, fontSize = 12.sp)
-                        OutlinedTextField(
-                            value = joinCode,
-                            onValueChange = { joinCode = it.uppercase(Locale.ROOT).filter { ch -> ch.isLetterOrDigit() }.take(12) },
-                            label = { Text("Household code") },
-                            singleLine = true,
-                            modifier = Modifier.fillMaxWidth()
-                        )
+                        Text("Create once on either phone, then join with the same code on the other.", color = TextSecondary, fontSize = 11.sp)
+                        OutlinedTextField(value = joinCode, onValueChange = { joinCode = it.uppercase(Locale.ROOT).filter { ch -> ch.isLetterOrDigit() }.take(12) }, label = { Text("Household code") }, singleLine = true, modifier = Modifier.fillMaxWidth())
                         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                            Button(onClick = { joinHousehold(joinCode) }, enabled = !busy && joinCode.length >= 6) { Text("Join household") }
+                            Button(onClick = { joinHousehold(joinCode) }, enabled = !busy && joinCode.length >= 6) { Text("Join") }
                             OutlinedButton(onClick = { createHousehold() }, enabled = !busy) { Text("Create new") }
                         }
                     }
-                    status?.let { Text(it, color = TextSecondary, fontSize = 11.sp) }
+                    status?.let { Text(it, color = TextSecondary, fontSize = 10.sp) }
                 }
             }
         }
+
         if (LocalTime.now().isBefore(LocalTime.of(17, 0))) {
             item {
-                Text("On now • tap to add", fontWeight = FontWeight.Bold)
-                suggestion?.let { Text("Next suggestion: prefer $it for language balance — optional, not enforced.", color = PinkSoft, fontSize = 11.sp) }
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Box(Modifier.size(9.dp).background(Mint, CircleShape))
+                    Spacer(Modifier.width(8.dp))
+                    Text("On now • tap to add", fontWeight = FontWeight.Black, fontSize = 18.sp)
+                }
+                suggestion?.let { Text("Next suggestion: prefer $it for language balance — optional.", color = PinkSoft, fontSize = 11.sp) }
             }
-            items(nowKids) { p ->
-                val ch = channels.firstOrNull { channelKey(it.id) == channelKey(p.channelId) }
-                val lang = if (ch?.name in listOf("TRT Çocuk", "Minika Çocuk")) "Türkçe" else "English"
-                Card(
-                    modifier = Modifier.fillMaxWidth().clickable {
-                        val n = entries + SharedScheduleEntry(p.start.toLocalTime().toString().take(5), p.title, ch?.name ?: p.channelId, lang)
-                        saveLocal(n)
-                        if (joined) scope.launch { runCatching { syncSchedule(pairing, n) } }
-                    },
-                    colors = CardDefaults.cardColors(containerColor = Panel2)
-                ) {
-                    Column(Modifier.padding(14.dp)) {
-                        Text(p.title, fontWeight = FontWeight.Bold)
-                        Text("${ch?.name ?: p.channelId} • $lang", color = TextSecondary, fontSize = 11.sp)
+            item {
+                LazyRow(horizontalArrangement = Arrangement.spacedBy(10.dp), contentPadding = PaddingValues(end = 4.dp)) {
+                    items(nowKids) { p ->
+                        val ch = channels.firstOrNull { channelKey(it.id) == channelKey(p.channelId) || channelKey(it.name) == channelKey(p.channelId) }
+                        val lang = if (ch?.name in listOf("TRT Çocuk", "Minika Çocuk")) "Türkçe" else "English"
+                        Card(
+                            modifier = Modifier.width(190.dp).clickable { addProgramme(p) },
+                            shape = RoundedCornerShape(22.dp),
+                            colors = CardDefaults.cardColors(containerColor = Panel2)
+                        ) {
+                            Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(5.dp)) {
+                                Surface(color = if (lang == "Türkçe") Lavender.copy(alpha=.15f) else Pink.copy(alpha=.15f), shape = RoundedCornerShape(100.dp)) {
+                                    Text(if (lang == "Türkçe") "TR" else "EN", color = if (lang == "Türkçe") Lavender else PinkSoft, fontSize=9.sp, fontWeight=FontWeight.Black, modifier=Modifier.padding(horizontal=8.dp, vertical=5.dp))
+                                }
+                                Text(p.title, fontWeight = FontWeight.Black, fontSize = 15.sp, maxLines = 2, overflow = TextOverflow.Ellipsis)
+                                Text(ch?.name ?: p.channelId, color = TextSecondary, fontSize = 11.sp, maxLines=1)
+                                Text("${p.start.toLocalTime().toString().take(5)}–${p.stop.toLocalTime().toString().take(5)}", color = TextSecondary, fontSize = 10.sp)
+                                Text("＋ Add", color = PinkSoft, fontWeight = FontWeight.Bold, fontSize=11.sp)
+                            }
+                        }
                     }
                 }
             }
         } else {
             item {
-                Card(colors = CardDefaults.cardColors(containerColor = Pink.copy(alpha = .10f))) {
-                    Column(Modifier.padding(16.dp)) {
-                        Text("Matt & Sev TV time", fontWeight = FontWeight.Black, fontSize = 18.sp)
-                        Text("Umay recommendations stop at 17:00. The evening is yours.", color = TextSecondary)
+                Card(shape=RoundedCornerShape(24.dp), colors = CardDefaults.cardColors(containerColor = Cyan.copy(alpha = .10f))) {
+                    Column(Modifier.padding(18.dp)) {
+                        Text("Matt & Sev TV time", fontWeight = FontWeight.Black, fontSize = 20.sp)
+                        Text("Umay recommendations are finished for today.", color = TextSecondary)
                     }
                 }
             }
         }
-        item { Text("Today's shared picks", fontWeight = FontWeight.Bold) }
+
+        item { Text("Today's shared picks", fontWeight = FontWeight.Black, fontSize = 18.sp) }
         if (entries.isEmpty()) {
             item { Text("Nothing added yet.", color = TextSecondary) }
         } else {
             itemsIndexed(entries) { i, e ->
-                Card(colors = CardDefaults.cardColors(containerColor = Panel2)) {
+                Card(shape = RoundedCornerShape(20.dp), colors = CardDefaults.cardColors(containerColor = Panel2)) {
                     Row(Modifier.fillMaxWidth().padding(14.dp), verticalAlignment = Alignment.CenterVertically) {
+                        Surface(color = Pink.copy(alpha=.13f), shape=RoundedCornerShape(12.dp)) {
+                            Text(e.time, color=PinkSoft, fontWeight=FontWeight.Black, modifier=Modifier.padding(horizontal=9.dp, vertical=7.dp), fontSize=11.sp)
+                        }
+                        Spacer(Modifier.width(11.dp))
                         Column(Modifier.weight(1f)) {
-                            Text("${e.time} • ${e.language}", color = PinkSoft, fontSize = 11.sp, fontWeight = FontWeight.Bold)
-                            Text(e.title, fontWeight = FontWeight.Bold)
-                            Text(e.channel, color = TextSecondary, fontSize = 11.sp)
+                            Text(e.title, fontWeight = FontWeight.Black)
+                            Text("${e.channel} • ${e.language}${if (e.stop.isNotBlank()) " • until ${e.stop}" else ""}", color = TextSecondary, fontSize = 10.sp)
                         }
                         IconButton(onClick = {
                             val n = entries.toMutableList().also { it.removeAt(i) }
-                            saveLocal(n)
-                            if (joined) scope.launch { runCatching { syncSchedule(pairing, n) } }
+                            saveLocal(n); syncRemote(n)
                         }) { Icon(Icons.Rounded.Close, "Remove") }
                     }
                 }
@@ -2733,7 +2952,27 @@ private fun SettingsView(
         contentPadding = PaddingValues(24.dp, 10.dp, 24.dp, 34.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        item { Text("Settings", fontSize = 24.sp, fontWeight = FontWeight.Black) }
+        item {
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(26.dp),
+                colors = CardDefaults.cardColors(containerColor = Panel2)
+            ) {
+                Row(
+                    Modifier.fillMaxWidth().padding(horizontal = 18.dp, vertical = 16.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Surface(shape = CircleShape, color = Lavender.copy(alpha = .16f)) {
+                        Icon(Icons.Rounded.Settings, null, tint = Lavender, modifier = Modifier.padding(10.dp).size(24.dp))
+                    }
+                    Spacer(Modifier.width(12.dp))
+                    Column {
+                        Text("Settings", fontSize = 22.sp, fontWeight = FontWeight.Black)
+                        Text("Guide, reminders, channels and household preferences", color = TextSecondary, fontSize = 12.sp)
+                    }
+                }
+            }
+        }
         item {
             SettingsCard("Default reminder for new favourites") {
                 ReminderMode.entries.forEach { mode ->
@@ -2819,8 +3058,12 @@ private fun SettingsView(
 
 @Composable
 private fun SettingsCard(title: String, content: @Composable ColumnScope.() -> Unit) {
-    Card(colors = CardDefaults.cardColors(containerColor = Panel2)) {
-        Column(Modifier.fillMaxWidth().padding(14.dp)) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(24.dp),
+        colors = CardDefaults.cardColors(containerColor = Panel2)
+    ) {
+        Column(Modifier.fillMaxWidth().padding(18.dp)) {
             Text(title, color = PinkSoft, fontWeight = FontWeight.Bold)
             Spacer(Modifier.height(8.dp))
             content()
@@ -3051,7 +3294,7 @@ private fun LoadingView() {
 @Composable
 private fun ErrorView(message: String, retry: () -> Unit) {
     Box(Modifier.fillMaxSize().padding(24.dp), contentAlignment = Alignment.Center) {
-        Card(colors = CardDefaults.cardColors(containerColor = Panel2)) {
+        Card(shape = RoundedCornerShape(22.dp), colors = CardDefaults.cardColors(containerColor = Panel2)) {
             Column(
                 Modifier.padding(22.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
