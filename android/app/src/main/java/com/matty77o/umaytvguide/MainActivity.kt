@@ -2218,27 +2218,36 @@ private fun RecommendedTvScheduleCard(ageMonths: Int, channels: List<TvChannel>)
 
 @Composable
 private fun AgeSliderLabels() {
+    // Material 3's slider track starts/ends underneath the centre of the thumb,
+    // roughly 10dp in from each side. Use the same inset here so every label is
+    // directly underneath the actual month represented by the thumb.
     val labels = listOf(
-        0 to "0",
+        0 to "0m",
         6 to "6m",
-        12 to "12m",
+        12 to "1y",
         18 to "18m",
         24 to "2y",
+        36 to "3y",
+        48 to "4y",
         60 to "5y",
     )
-    BoxWithConstraints(Modifier.fillMaxWidth().padding(horizontal = 10.dp)) {
+    BoxWithConstraints(
+        Modifier
+            .fillMaxWidth()
+            .height(18.dp)
+            .padding(horizontal = 10.dp)
+    ) {
         labels.forEach { (month, label) ->
             val labelWidth = 30.dp
-            val x = when (month) {
-                0 -> 0.dp
-                60 -> maxWidth - labelWidth
-                else -> (maxWidth * (month / 60f)) - (labelWidth / 2)
-            }
+            val centre = maxWidth * (month / 60f)
+            val x = (centre - (labelWidth / 2)).coerceIn(0.dp, maxWidth - labelWidth)
             Text(
                 text = label,
                 color = TextSecondary,
                 fontSize = 9.sp,
+                lineHeight = 10.sp,
                 textAlign = TextAlign.Center,
+                maxLines = 1,
                 modifier = Modifier.width(labelWidth).offset(x = x),
             )
         }
@@ -2519,8 +2528,16 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
                             contentAlignment=Alignment.Center
                         ) {
                             Column(horizontalAlignment=Alignment.CenterHorizontally) {
-                                Text(age.toString(), color=TextPrimary, fontSize=29.sp, fontWeight=FontWeight.Black, lineHeight=30.sp)
-                                Text("MONTHS", color=TextSecondary, fontSize=7.sp, fontWeight=FontWeight.Black, letterSpacing=.7.sp)
+                                Text(
+                                    formatAge(age),
+                                    color=TextPrimary,
+                                    fontSize=if (age < 12) 15.sp else 12.sp,
+                                    fontWeight=FontWeight.Black,
+                                    lineHeight=14.sp,
+                                    textAlign=TextAlign.Center,
+                                    maxLines=2,
+                                )
+                                Text("AGE", color=TextSecondary, fontSize=7.sp, fontWeight=FontWeight.Black, letterSpacing=.7.sp)
                             }
                         }
                         Spacer(Modifier.width(14.dp))
