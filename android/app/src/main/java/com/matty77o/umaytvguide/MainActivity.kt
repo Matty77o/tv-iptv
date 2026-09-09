@@ -112,6 +112,26 @@ private fun resolvedChannelIcon(channel: TvChannel, config: ChannelConfig?): Str
     config?.icon?.takeIf { it.isNotBlank() }
         ?: if (channelKey(channel.id) == "ducktv") DUCKTV_LOGO_URL else channel.icon
 
+
+private val AGE_SLIDER_MILESTONES = intArrayOf(0, 6, 12, 18, 24, 60)
+
+private fun ageToSliderPosition(ageMonths: Int): Float {
+    val age = ageMonths.coerceIn(0, 60)
+    val i = AGE_SLIDER_MILESTONES.indexOfLast { it <= age }.coerceAtMost(AGE_SLIDER_MILESTONES.lastIndex - 1)
+    val lo = AGE_SLIDER_MILESTONES[i]
+    val hi = AGE_SLIDER_MILESTONES[i + 1]
+    return i + (age - lo).toFloat() / (hi - lo).toFloat()
+}
+
+private fun sliderPositionToAge(position: Float): Int {
+    val p = position.coerceIn(0f, 5f)
+    val i = p.toInt().coerceAtMost(AGE_SLIDER_MILESTONES.lastIndex - 1)
+    val fraction = p - i
+    val lo = AGE_SLIDER_MILESTONES[i]
+    val hi = AGE_SLIDER_MILESTONES[i + 1]
+    return (lo + (hi - lo) * fraction).toInt().coerceIn(0, 60)
+}
+
 private const val PREFS_NAME = "umay_tv_guide"
 private const val PREF_FAVOURITES = "favourite_show_titles"
 private const val PREF_FAVOURITE_CHANNELS = "favourite_channels"
@@ -2499,7 +2519,10 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
                     Text("Umay's age", color = Color.White.copy(alpha=.88f), fontWeight = FontWeight.Bold, fontSize = 13.sp)
                     Text(if (age < 24) "$age months" else "${age / 12} years ${age % 12} months", color = Color.White, fontSize = 28.sp, fontWeight = FontWeight.Black)
                     Slider(
-                        value = age.toFloat(), onValueChange = { age = it.toInt() }, valueRange = 0f..60f, steps = 59,
+                        value = ageToSliderPosition(age),
+                        onValueChange = { age = sliderPositionToAge(it) },
+                        valueRange = 0f..5f,
+                        steps = 4,
                         colors = SliderDefaults.colors(thumbColor = Color.White, activeTrackColor = Pink, inactiveTrackColor = Color.White.copy(alpha=.28f))
                     )
                     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
@@ -2517,20 +2540,24 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
                 accent = Pink
             ) {
                 recommended.forEach { slot ->
+                    val slotChannel = channels.firstOrNull { channelKey(it.name) == channelKey(slot.channel) || channelKey(it.id) == channelKey(slot.channel) }
+                    val currentOnSlot = nowKids.firstOrNull { p ->
+                        channelKey(p.channelId) == channelKey(slotChannel?.id ?: slot.channel) ||
+                            channelKey(p.channelId) == channelKey(slotChannel?.name ?: slot.channel)
+                    }
                     Surface(
-                        color = Midnight.copy(alpha=.55f),
-                        shape = RoundedCornerShape(20.dp),
+                        color = Midnight.copy(alpha=.52f),
+                        shape = RoundedCornerShape(16.dp),
                         border = androidx.compose.foundation.BorderStroke(1.dp, Color.White.copy(alpha=.04f)),
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        Row(Modifier.padding(13.dp), verticalAlignment = Alignment.CenterVertically) {
-                            Column(Modifier.width(60.dp)) {
+                        Row(Modifier.padding(horizontal = 10.dp, vertical = 9.dp), verticalAlignment = Alignment.CenterVertically) {
+                            Column(Modifier.width(58.dp)) {
                                 Text(slot.time, fontWeight = FontWeight.Black, fontSize = 15.sp)
-                                Text(slot.partOfDay, color = TextSecondary, fontSize = 9.sp, maxLines = 1)
+                                Text(slot.partOfDay, color = TextSecondary, fontSize = 8.sp, maxLines = 1)
                             }
-                            val slotChannel = channels.firstOrNull { channelKey(it.name) == channelKey(slot.channel) || channelKey(it.id) == channelKey(slot.channel) }
                             Box(
-                                Modifier.size(42.dp).clip(RoundedCornerShape(11.dp)).background(Color.White.copy(alpha = .96f)),
+                                Modifier.size(46.dp).clip(RoundedCornerShape(10.dp)).background(Color.White.copy(alpha = .96f)),
                                 contentAlignment = Alignment.Center
                             ) {
                                 if (!slotChannel?.icon.isNullOrBlank()) {
@@ -2541,17 +2568,28 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
                             }
                             Spacer(Modifier.width(10.dp))
                             Column(Modifier.weight(1f)) {
-                                Text(slot.channel, fontWeight = FontWeight.Black, fontSize = 14.sp)
-                                Row(verticalAlignment = Alignment.CenterVertically) {
-                                    CompactPill(if (slot.language == "Türkçe") "TR" else "EN", if (slot.language == "Türkçe") Lavender else Pink)
-                                    Spacer(Modifier.width(6.dp))
-                                    Text(slot.language, color = TextSecondary, fontSize = 10.sp)
-                                }
-                                Text(slot.note, color = TextSecondary, fontSize = 10.sp, maxLines = 2)
+                                Text(slot.channel, fontWeight = FontWeight.Black, fontSize = 14.sp, maxLines = 1)
+                                Text(slot.language, color = TextPrimary, fontSize = 10.sp)
+                                Text(slot.note, color = TextSecondary, fontSize = 9.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                            }
+                            Spacer(Modifier.width(6.dp))
+                            Surface(
+                                color = if (slot.language == "Türkçe") Lavender.copy(alpha=.18f) else Pink.copy(alpha=.18f),
+                                shape = CircleShape
+                            ) {
+                                Text(if (slot.language == "Türkçe") "TR" else "EN", color = if (slot.language == "Türkçe") Lavender else PinkSoft, fontWeight = FontWeight.Bold, fontSize = 9.sp, modifier = Modifier.padding(horizontal=8.dp, vertical=7.dp))
+                            }
+                            if (currentOnSlot != null) {
+                                Spacer(Modifier.width(6.dp))
+                                FilledTonalIconButton(
+                                    onClick = { addProgramme(currentOnSlot) },
+                                    modifier = Modifier.size(34.dp),
+                                    colors = IconButtonDefaults.filledTonalIconButtonColors(containerColor = Pink)
+                                ) { Text("+", color = Midnight, fontWeight = FontWeight.Black, fontSize = 18.sp) }
                             }
                         }
                     }
-                    Spacer(Modifier.height(8.dp))
+                    Spacer(Modifier.height(7.dp))
                 }
                 Surface(color = Cyan.copy(alpha = .16f), shape = RoundedCornerShape(18.dp), modifier = Modifier.fillMaxWidth()) {
                     Row(Modifier.fillMaxWidth().padding(14.dp), verticalAlignment = Alignment.CenterVertically) {
