@@ -281,7 +281,8 @@ fun ManualUpdateControl() {
                         if (fallback != null) {
                             update = fallback.first
                             apk = fallback.second
-                            status = "Update ${fallback.first.versionName} is ready to install."
+                            status = signatureMismatchMessage(context, fallback.second)
+                                ?: "Update ${fallback.first.versionName} is ready to install."
                         } else {
                             status = "You're up to date — v${BuildConfig.VERSION_NAME}."
                         }
@@ -379,7 +380,9 @@ fun AppUpdateGate(content: @Composable () -> Unit) {
         checking = false
     }
 
-    LaunchedEffect(Unit) { triggerCheck() }
+    // LaunchedEffect(checkGeneration) already runs on first composition. The
+    // lifecycle observer increments it on every resume, so a second Unit effect
+    // would perform a duplicate startup request/download.
     content()
 
     val info = update

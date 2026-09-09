@@ -47,6 +47,7 @@ import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material.icons.rounded.Tv
+import androidx.compose.material.icons.rounded.WifiOff
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material.icons.rounded.StarBorder
 import androidx.compose.material.icons.rounded.PlayArrow
@@ -282,19 +283,24 @@ private fun isSamsungDevice(): Boolean =
     Build.MANUFACTURER.equals("samsung", ignoreCase = true) ||
         Build.BRAND.equals("samsung", ignoreCase = true)
 
-private val Midnight = Color(0xFF030611)
-private val Panel = Color(0xFF08101F)
-private val Panel2 = Color(0xFF0D172A)
-private val Panel3 = Color(0xFF142039)
-private val Pink = Color(0xFFFF4F9A)
-private val PinkSoft = Color(0xFFFFA6CF)
-private val Lavender = Color(0xFF9A8CFF)
-private val Cyan = Color(0xFF67D9FF)
+private val Midnight = Color(0xFF040711)
+private val Canvas = Color(0xFF060B16)
+private val Panel = Color(0xFF09111F)
+private val Panel2 = Color(0xFF0D182B)
+private val Panel3 = Color(0xFF14233C)
+private val SurfaceHigh = Color(0xFF111D33)
+private val SurfaceSoft = Color(0xFF0A1425)
+private val Pink = Color(0xFFFF4FA3)
+private val PinkSoft = Color(0xFFFF9CCB)
+private val Lavender = Color(0xFFA58CFF)
+private val Cyan = Color(0xFF62D9FF)
 private val Mint = Color(0xFF6CE6B7)
-private val Amber = Color(0xFFFFC857)
+private val Amber = Color(0xFFFFC766)
 private val TextPrimary = Color(0xFFF8FAFF)
-private val TextSecondary = Color(0xFFA7B1C8)
-private val Hairline = Color.White.copy(alpha = .08f)
+private val TextSecondary = Color(0xFFAAB5CB)
+private val TextTertiary = Color(0xFF73809B)
+private val Hairline = Color.White.copy(alpha = .075f)
+private val StrongHairline = Color.White.copy(alpha = .115f)
 
 @Composable
 fun UmayTheme(content: @Composable () -> Unit) {
@@ -305,7 +311,7 @@ fun UmayTheme(content: @Composable () -> Unit) {
         background = Midnight,
         surface = Panel,
         surfaceVariant = Panel2,
-        onPrimary = Color(0xFF21000F),
+        onPrimary = Color(0xFF25000F),
         onBackground = TextPrimary,
         onSurface = TextPrimary,
         onSurfaceVariant = TextSecondary,
@@ -318,7 +324,7 @@ fun UmayTheme(content: @Composable () -> Unit) {
             small = RoundedCornerShape(14.dp),
             medium = RoundedCornerShape(20.dp),
             large = RoundedCornerShape(28.dp),
-            extraLarge = RoundedCornerShape(36.dp),
+            extraLarge = RoundedCornerShape(34.dp),
         ),
         content = content,
     )
@@ -342,10 +348,10 @@ private fun PremiumIconButton(
 ) {
     Box(
         modifier = Modifier
-            .size(42.dp)
-            .clip(CircleShape)
-            .background(Color.White.copy(alpha = .055f))
-            .border(1.dp, Color.White.copy(alpha = .075f), CircleShape)
+            .size(44.dp)
+            .clip(RoundedCornerShape(16.dp))
+            .background(Brush.linearGradient(listOf(Color.White.copy(alpha = .065f), Color.White.copy(alpha = .025f))))
+            .border(1.dp, StrongHairline, RoundedCornerShape(16.dp))
             .clickable(onClick = onClick),
         contentAlignment = Alignment.Center,
     ) {
@@ -368,55 +374,47 @@ private fun PremiumTopBar(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .background(
-                Brush.verticalGradient(
-                    listOf(Color(0xFF050A16), Color(0xF5030611))
-                )
-            )
+            .background(Brush.verticalGradient(listOf(Color(0xFF050914), Midnight)))
             .windowInsetsPadding(WindowInsets.statusBars)
-            .padding(horizontal = 18.dp, vertical = if (isLandscape) 8.dp else 10.dp)
     ) {
         if (searchOpen) {
             OutlinedTextField(
                 value = searchQuery,
                 onValueChange = onSearchQuery,
                 singleLine = true,
-                placeholder = { Text("Search programmes or channels") },
+                placeholder = { Text("Search programmes or channels", color = TextTertiary) },
                 leadingIcon = { Icon(Icons.Rounded.Search, null, tint = TextSecondary) },
-                trailingIcon = {
-                    IconButton(onClick = onCloseSearch) { Icon(Icons.Rounded.Close, "Close search") }
-                },
-                shape = RoundedCornerShape(22.dp),
+                trailingIcon = { IconButton(onClick = onCloseSearch) { Icon(Icons.Rounded.Close, "Close search") } },
+                shape = RoundedCornerShape(20.dp),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedContainerColor = Panel2.copy(alpha = .88f),
-                    unfocusedContainerColor = Panel2.copy(alpha = .88f),
-                    focusedBorderColor = Pink.copy(alpha = .55f),
-                    unfocusedBorderColor = Hairline,
+                    focusedContainerColor = SurfaceHigh.copy(alpha = .94f),
+                    unfocusedContainerColor = SurfaceHigh.copy(alpha = .94f),
+                    focusedBorderColor = Pink.copy(alpha = .48f),
+                    unfocusedBorderColor = StrongHairline,
                 ),
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 9.dp),
             )
         } else {
-            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+            Row(
+                Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = if (isLandscape) 7.dp else 9.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
                 Column(Modifier.weight(1f)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        Text(
-                            "Umay TV",
-                            color = TextPrimary,
-                            fontSize = if (isLandscape) 20.sp else 26.sp,
-                            fontWeight = FontWeight.Black,
-                            letterSpacing = (-.8).sp,
-                        )
-                        Spacer(Modifier.width(8.dp))
+                        Text("Umay", color = TextPrimary, fontSize = if (isLandscape) 20.sp else 25.sp, fontWeight = FontWeight.Black, letterSpacing = (-.8).sp)
+                        Text(" TV", color = PinkSoft, fontSize = if (isLandscape) 20.sp else 25.sp, fontWeight = FontWeight.Black, letterSpacing = (-.8).sp)
+                        Spacer(Modifier.width(9.dp))
                         Surface(
-                            color = Pink.copy(alpha = .13f),
+                            color = Pink.copy(alpha = .11f),
                             shape = RoundedCornerShape(100.dp),
-                            border = androidx.compose.foundation.BorderStroke(1.dp, Pink.copy(alpha = .18f)),
+                            border = androidx.compose.foundation.BorderStroke(1.dp, Pink.copy(alpha = .22f)),
                         ) {
-                            Text("GUIDE", color = PinkSoft, fontWeight = FontWeight.Black, fontSize = 8.sp,
+                            Text("GUIDE", color = PinkSoft, fontWeight = FontWeight.Black, fontSize = 8.sp, letterSpacing = .7.sp,
                                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp))
                         }
                     }
                     if (!isLandscape) {
+                        Spacer(Modifier.height(2.dp))
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Box(Modifier.size(6.dp).background(Mint, CircleShape))
                             Spacer(Modifier.width(6.dp))
@@ -429,19 +427,20 @@ private fun PremiumTopBar(
                     }
                 }
                 PremiumIconButton(Icons.Rounded.Search, "Search", onClick = onSearch)
-                Spacer(Modifier.width(8.dp))
+                Spacer(Modifier.width(7.dp))
                 PremiumIconButton(Icons.Rounded.Refresh, "Refresh", accent = Cyan, onClick = onRefresh)
-                Spacer(Modifier.width(8.dp))
+                Spacer(Modifier.width(7.dp))
                 Box(
-                    modifier = Modifier.size(42.dp).clip(CircleShape)
-                        .background(Brush.linearGradient(listOf(Pink.copy(alpha=.22f), Lavender.copy(alpha=.18f))))
-                        .border(1.dp, Pink.copy(alpha=.35f), CircleShape),
+                    modifier = Modifier.size(44.dp).clip(RoundedCornerShape(16.dp))
+                        .background(Brush.linearGradient(listOf(Pink.copy(alpha=.25f), Lavender.copy(alpha=.15f))))
+                        .border(1.dp, Pink.copy(alpha=.33f), RoundedCornerShape(16.dp)),
                     contentAlignment = Alignment.Center
                 ) {
-                    Image(painterResource(R.drawable.umay_logo), "Umay TV", Modifier.size(30.dp), contentScale = ContentScale.Fit)
+                    Image(painterResource(R.drawable.umay_logo), "Umay TV", Modifier.size(31.dp), contentScale = ContentScale.Fit)
                 }
             }
         }
+        Box(Modifier.align(Alignment.BottomCenter).fillMaxWidth().height(1.dp).background(Hairline))
     }
 }
 
@@ -453,17 +452,17 @@ private fun PremiumBottomDock(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Brush.verticalGradient(listOf(Color.Transparent, Midnight.copy(alpha=.98f))))
-            .padding(horizontal = 12.dp, vertical = 8.dp),
+            .background(Brush.verticalGradient(listOf(Color.Transparent, Midnight.copy(alpha=.995f))))
+            .padding(start = 10.dp, end = 10.dp, top = 6.dp, bottom = 8.dp),
         contentAlignment = Alignment.Center,
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(30.dp))
-                .background(Brush.linearGradient(listOf(Color(0xF20A1223), Color(0xF5121B31))))
-                .border(1.dp, Color.White.copy(alpha=.085f), RoundedCornerShape(30.dp))
-                .padding(horizontal = 5.dp, vertical = 6.dp),
+                .clip(RoundedCornerShape(27.dp))
+                .background(Brush.linearGradient(listOf(Color(0xF20A1222), Color(0xF50E1830))))
+                .border(1.dp, StrongHairline, RoundedCornerShape(27.dp))
+                .padding(horizontal = 5.dp, vertical = 5.dp),
             horizontalArrangement = Arrangement.spacedBy(2.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
@@ -472,32 +471,22 @@ private fun PremiumBottomDock(
                 Box(
                     modifier = Modifier
                         .weight(1f)
-                        .height(58.dp)
-                        .clip(RoundedCornerShape(21.dp))
+                        .height(54.dp)
+                        .clip(RoundedCornerShape(19.dp))
                         .background(
-                            if (active) Brush.linearGradient(listOf(Pink.copy(alpha=.28f), Lavender.copy(alpha=.17f)))
+                            if (active) Brush.linearGradient(listOf(Pink.copy(alpha=.25f), Lavender.copy(alpha=.14f)))
                             else Brush.linearGradient(listOf(Color.Transparent, Color.Transparent))
                         )
-                        .border(
-                            if (active) 1.dp else 0.dp,
-                            if (active) Pink.copy(alpha=.18f) else Color.Transparent,
-                            RoundedCornerShape(21.dp),
-                        )
+                        .border(if (active) 1.dp else 0.dp, if (active) Pink.copy(alpha=.22f) else Color.Transparent, RoundedCornerShape(19.dp))
                         .clickable { onSelected(item) },
                     contentAlignment = Alignment.Center,
                 ) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
                         Icon(sectionIcon(item), item.label, tint = if (active) PinkSoft else TextSecondary,
-                            modifier = Modifier.size(if (active) 23.dp else 21.dp))
+                            modifier = Modifier.size(if (active) 22.dp else 20.dp))
                         Spacer(Modifier.height(2.dp))
-                        Text(
-                            item.navLabel(),
-                            color = if (active) TextPrimary else TextSecondary,
-                            fontSize = 9.sp,
-                            lineHeight = 10.sp,
-                            fontWeight = if (active) FontWeight.Bold else FontWeight.Medium,
-                            maxLines = 1,
-                        )
+                        Text(item.navLabel(), color = if (active) TextPrimary else TextSecondary,
+                            fontSize = 9.sp, lineHeight = 10.sp, fontWeight = if (active) FontWeight.Bold else FontWeight.Medium, maxLines = 1)
                     }
                 }
             }
@@ -652,7 +641,7 @@ fun GuideScreen(
         Row(Modifier.fillMaxSize().padding(padding)) {
             if (isLandscape) {
                 NavigationRail(
-                    containerColor = if (useSamsungOneUi) Color(0xFF151A28) else Panel,
+                    containerColor = if (useSamsungOneUi) SurfaceHigh else Panel,
                     modifier = Modifier
                         .fillMaxHeight()
                         .width(76.dp)
@@ -704,7 +693,7 @@ fun GuideScreen(
                 Modifier
                     .weight(1f)
                     .fillMaxHeight()
-                    .background(Brush.verticalGradient(listOf(Color(0xFF050914), Color(0xFF081327), Color(0xFF050914))))
+                    .background(Brush.verticalGradient(listOf(Midnight, Canvas, Midnight)))
                     .animateContentSize()
             ) {
                 when {
@@ -753,6 +742,7 @@ fun GuideScreen(
                             favouriteChannels = favouriteChannels,
                             onProgramme = { selectedProgramme = it },
                             onChannel = { selectedChannel = it },
+                            onExplore = { selectedGroup = "All"; section = AppSection.GUIDE },
                             use24Hour = use24Hour,
                         )
                         AppSection.SCHEDULE -> SharedScheduleView(
@@ -820,8 +810,12 @@ fun GuideScreen(
         val currentGuide = guide
         ModalBottomSheet(
             onDismissRequest = { selectedProgramme = null },
-            containerColor = Panel,
+            containerColor = SurfaceSoft,
             contentColor = TextPrimary,
+            shape = RoundedCornerShape(topStart = 30.dp, topEnd = 30.dp),
+            dragHandle = {
+                Box(Modifier.padding(top = 10.dp, bottom = 6.dp).size(width = 42.dp, height = 4.dp).clip(RoundedCornerShape(99.dp)).background(TextTertiary.copy(alpha = .55f)))
+            },
         ) {
             val isFavourite = favouriteShows.any { sameShowTitle(it, programme.title) }
             val effectiveReminderMode = showReminderModes[normaliseShowTitle(programme.title)] ?: reminderMode
@@ -901,8 +895,12 @@ fun GuideScreen(
     selectedChannel?.let { channel ->
         ModalBottomSheet(
             onDismissRequest = { selectedChannel = null },
-            containerColor = Panel,
+            containerColor = SurfaceSoft,
             contentColor = TextPrimary,
+            shape = RoundedCornerShape(topStart = 30.dp, topEnd = 30.dp),
+            dragHandle = {
+                Box(Modifier.padding(top = 10.dp, bottom = 6.dp).size(width = 42.dp, height = 4.dp).clip(RoundedCornerShape(99.dp)).background(TextTertiary.copy(alpha = .55f)))
+            },
         ) {
             ChannelScheduleSheet(
                 channel = channel,
@@ -935,7 +933,7 @@ private fun AppHeroCard(
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(24.dp))
-            .background(Brush.linearGradient(listOf(Color(0xFF10192B), Color(0xFF08101F))))
+            .background(Brush.linearGradient(listOf(SurfaceHigh, SurfaceSoft)))
             .border(1.dp, Color.White.copy(alpha=.07f), RoundedCornerShape(24.dp))
             .padding(horizontal = 16.dp, vertical = 14.dp),
         verticalAlignment = Alignment.CenterVertically,
@@ -971,7 +969,7 @@ private fun PolishedSection(
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(24.dp))
-            .background(Brush.linearGradient(listOf(Color(0xFF0D172A), Color(0xFF08101F))))
+            .background(Brush.linearGradient(listOf(SurfaceHigh, SurfaceSoft)))
             .border(1.dp, Color.White.copy(alpha=.065f), RoundedCornerShape(24.dp))
             .padding(16.dp)
     ) {
@@ -1013,13 +1011,15 @@ private fun PremiumSectionHeader(
     action: String? = null,
     onAction: (() -> Unit)? = null,
 ) {
-    Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.Bottom) {
+    Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+        Box(Modifier.width(4.dp).height(30.dp).clip(RoundedCornerShape(99.dp)).background(Brush.verticalGradient(listOf(Pink, Lavender))))
+        Spacer(Modifier.width(10.dp))
         Column(Modifier.weight(1f)) {
-            eyebrow?.let { Text(it.uppercase(Locale.ROOT), color = PinkSoft, fontSize = 9.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp) }
-            Text(title, color = TextPrimary, fontSize = 20.sp, fontWeight = FontWeight.Black, letterSpacing = (-.4).sp)
+            eyebrow?.let { Text(it.uppercase(Locale.ROOT), color = TextSecondary, fontSize = 8.sp, fontWeight = FontWeight.Black, letterSpacing = 1.15.sp) }
+            Text(title, color = TextPrimary, fontSize = 20.sp, fontWeight = FontWeight.Black, letterSpacing = (-.45).sp)
         }
         if (action != null && onAction != null) {
-            TextButton(onClick = onAction, contentPadding = PaddingValues(horizontal = 8.dp, vertical = 2.dp)) {
+            TextButton(onClick = onAction, contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp)) {
                 Text(action, color = PinkSoft, fontSize = 11.sp, fontWeight = FontWeight.Bold)
                 Spacer(Modifier.width(2.dp)); Icon(Icons.Rounded.KeyboardArrowRight, null, tint = PinkSoft, modifier = Modifier.size(17.dp))
             }
@@ -1037,15 +1037,16 @@ private fun PremiumChoiceChip(
 ) {
     Row(
         modifier = Modifier
-            .clip(RoundedCornerShape(16.dp))
+            .heightIn(min = 38.dp)
+            .clip(RoundedCornerShape(100.dp))
             .background(if (selected) accent.copy(alpha=.16f) else Color.White.copy(alpha=.035f))
-            .border(1.dp, if (selected) accent.copy(alpha=.28f) else Hairline, RoundedCornerShape(16.dp))
+            .border(1.dp, if (selected) accent.copy(alpha=.30f) else Hairline, RoundedCornerShape(100.dp))
             .clickable(onClick = onClick)
-            .padding(horizontal=12.dp, vertical=9.dp),
+            .padding(horizontal=12.dp, vertical=8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        leading?.let { Icon(it, null, tint = if (selected) accent else TextSecondary, modifier = Modifier.size(16.dp)); Spacer(Modifier.width(6.dp)) }
-        Text(text, color = if (selected) TextPrimary else TextSecondary, fontSize = 11.sp, fontWeight = if (selected) FontWeight.Bold else FontWeight.Medium)
+        leading?.let { Icon(it, null, tint = if (selected) accent else TextSecondary, modifier = Modifier.size(15.dp)); Spacer(Modifier.width(6.dp)) }
+        Text(text, color = if (selected) TextPrimary else TextSecondary, fontSize = 10.sp, fontWeight = if (selected) FontWeight.Bold else FontWeight.Medium)
     }
 }
 
@@ -1079,80 +1080,99 @@ private fun HomeView(
 
     LazyColumn(
         Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(16.dp, 8.dp, 16.dp, 30.dp),
-        verticalArrangement = Arrangement.spacedBy(18.dp),
+        contentPadding = PaddingValues(16.dp, 10.dp, 16.dp, 34.dp),
+        verticalArrangement = Arrangement.spacedBy(20.dp),
     ) {
         item {
-            Box(
-                Modifier.fillMaxWidth().clip(RoundedCornerShape(30.dp))
-                    .background(Brush.linearGradient(listOf(Color(0xFF111A31), Color(0xFF081323), Color(0xFF08101D))))
-                    .border(1.dp, Color.White.copy(alpha=.085f), RoundedCornerShape(30.dp))
-            ) {
+            Column(verticalArrangement = Arrangement.spacedBy(11.dp)) {
                 Box(
-                    Modifier.align(Alignment.TopEnd).size(170.dp)
-                        .background(Brush.radialGradient(listOf(Pink.copy(alpha=.18f), Color.Transparent)))
-                )
-                Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Surface(color = Mint.copy(alpha=.12f), shape = RoundedCornerShape(100.dp), border = androidx.compose.foundation.BorderStroke(1.dp, Mint.copy(alpha=.18f))) {
-                            Row(Modifier.padding(horizontal=9.dp, vertical=5.dp), verticalAlignment = Alignment.CenterVertically) {
-                                Box(Modifier.size(6.dp).background(Mint, CircleShape)); Spacer(Modifier.width(6.dp))
-                                Text("LIVE NOW", color = Mint, fontSize = 9.sp, fontWeight = FontWeight.Black, letterSpacing = .7.sp)
-                            }
-                        }
-                        Spacer(Modifier.weight(1f))
-                        Text("TODAY", color = TextSecondary, fontSize = 9.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp)
-                    }
-                    if (heroProgramme != null) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Box(
-                                Modifier.size(64.dp).clip(RoundedCornerShape(18.dp)).background(Panel2.copy(alpha=.88f)).border(1.dp, Hairline, RoundedCornerShape(18.dp)),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                val artwork = heroProgramme.icon ?: heroChannel?.icon
-                                if (!artwork.isNullOrBlank()) AsyncImage(artwork, heroProgramme.title, Modifier.fillMaxSize().padding(7.dp), contentScale = ContentScale.Fit)
-                                else LogoFallback(heroChannel?.name ?: heroProgramme.channelId)
-                            }
-                            Spacer(Modifier.width(14.dp))
-                            Column(Modifier.weight(1f)) {
-                                Text(heroProgramme.title, fontSize = 24.sp, lineHeight = 27.sp, fontWeight = FontWeight.Black, letterSpacing = (-.6).sp, maxLines = 2, overflow = TextOverflow.Ellipsis)
-                                Text(heroChannel?.name ?: heroProgramme.channelId, color = PinkSoft, fontSize = 12.sp, fontWeight = FontWeight.Bold)
-                            }
-                        }
-                        val total = Duration.between(heroProgramme.start, heroProgramme.stop).toMinutes().coerceAtLeast(1)
-                        val elapsed = Duration.between(heroProgramme.start, now).toMinutes().coerceIn(0, total)
-                        LinearProgressIndicator(
-                            progress = { elapsed.toFloat() / total.toFloat() },
-                            modifier = Modifier.fillMaxWidth().height(5.dp).clip(RoundedCornerShape(100.dp)),
-                            color = Pink,
-                            trackColor = Color.White.copy(alpha=.08f),
+                    Modifier.fillMaxWidth().height(230.dp).clip(RoundedCornerShape(30.dp))
+                        .background(Brush.linearGradient(listOf(Color(0xFF13213A), Color(0xFF0B1427), Color(0xFF08101D))))
+                        .border(1.dp, StrongHairline, RoundedCornerShape(30.dp))
+                        .clickable(enabled = heroProgramme != null) { heroProgramme?.let(onProgramme) }
+                ) {
+                    if (heroProgramme?.icon?.isNotBlank() == true) {
+                        AsyncImage(
+                            model = heroProgramme.icon,
+                            contentDescription = heroProgramme.title,
+                            modifier = Modifier.align(Alignment.CenterEnd).fillMaxHeight().fillMaxWidth(.64f),
+                            contentScale = ContentScale.Crop,
                         )
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text("${(total - elapsed).coerceAtLeast(0)} min left", color = TextSecondary, fontSize = 10.sp)
-                            Spacer(Modifier.weight(1f))
-                            TextButton(onClick = { onProgramme(heroProgramme) }, contentPadding = PaddingValues(horizontal=8.dp, vertical=0.dp)) {
-                                Text("Open details", color = TextPrimary, fontSize = 11.sp, fontWeight = FontWeight.Bold)
-                                Icon(Icons.Rounded.KeyboardArrowRight, null, tint = PinkSoft, modifier = Modifier.size(17.dp))
-                            }
-                        }
+                        Box(Modifier.fillMaxSize().background(Brush.horizontalGradient(listOf(Color(0xF20A1220), Color(0xB80A1220), Color(0x300A1220)))))
+                        Box(Modifier.fillMaxSize().background(Brush.verticalGradient(listOf(Color.Transparent, Color(0xB8050912)))))
                     } else {
-                        Text("Nothing is live in the guide right now", color = TextPrimary, fontSize = 20.sp, fontWeight = FontWeight.Black)
-                        Text("The next programme will appear here automatically.", color = TextSecondary, fontSize = 11.sp)
+                        Box(Modifier.align(Alignment.TopEnd).size(220.dp).background(Brush.radialGradient(listOf(Pink.copy(alpha=.20f), Color.Transparent))))
+                        Box(Modifier.align(Alignment.BottomStart).size(170.dp).background(Brush.radialGradient(listOf(Cyan.copy(alpha=.10f), Color.Transparent))))
                     }
-                    Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                        listOf(
-                            Triple("ON NOW", onNow.size.toString(), Cyan),
-                            Triple("NEXT 30M", startingSoon.size.toString(), Pink),
-                            Triple("FAVES", favouriteUpcoming.size.toString(), Lavender),
-                        ).forEach { (label, value, accent) ->
-                            Box(
-                                Modifier.weight(1f).clip(RoundedCornerShape(16.dp)).background(Color.White.copy(alpha=.035f))
-                                    .border(1.dp, Color.White.copy(alpha=.055f), RoundedCornerShape(16.dp)).padding(10.dp)
-                            ) {
-                                Column {
-                                    Text(value, color = TextPrimary, fontWeight = FontWeight.Black, fontSize = 18.sp)
-                                    Text(label, color = accent, fontWeight = FontWeight.Black, fontSize = 8.sp, letterSpacing = .5.sp)
+
+                    Column(Modifier.fillMaxWidth().padding(18.dp), verticalArrangement = Arrangement.spacedBy(13.dp)) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Surface(color = Mint.copy(alpha=.14f), shape = RoundedCornerShape(100.dp), border = androidx.compose.foundation.BorderStroke(1.dp, Mint.copy(alpha=.22f))) {
+                                Row(Modifier.padding(horizontal=10.dp, vertical=6.dp), verticalAlignment = Alignment.CenterVertically) {
+                                    Box(Modifier.size(6.dp).background(Mint, CircleShape)); Spacer(Modifier.width(6.dp))
+                                    Text("LIVE NOW", color = Mint, fontSize = 9.sp, fontWeight = FontWeight.Black, letterSpacing = .8.sp)
                                 }
+                            }
+                            Spacer(Modifier.weight(1f))
+                            CompactPill("TODAY", Lavender)
+                        }
+
+                        Spacer(Modifier.weight(1f))
+                        if (heroProgramme != null) {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Box(
+                                    Modifier.size(54.dp).clip(RoundedCornerShape(16.dp)).background(Panel2.copy(alpha=.88f)).border(1.dp, StrongHairline, RoundedCornerShape(16.dp)),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    val channelLogo = heroChannel?.icon
+                                    if (!channelLogo.isNullOrBlank()) AsyncImage(channelLogo, heroChannel.name, Modifier.fillMaxSize().padding(6.dp), contentScale = ContentScale.Fit)
+                                    else LogoFallback(heroChannel?.name ?: heroProgramme.channelId)
+                                }
+                                Spacer(Modifier.width(12.dp))
+                                Column(Modifier.weight(1f)) {
+                                    Text(heroProgramme.title, fontSize = 24.sp, lineHeight = 26.sp, fontWeight = FontWeight.Black, letterSpacing = (-.65).sp, maxLines = 2, overflow = TextOverflow.Ellipsis)
+                                    Spacer(Modifier.height(2.dp))
+                                    Text(heroChannel?.name ?: heroProgramme.channelId, color = PinkSoft, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                                }
+                            }
+                            val total = Duration.between(heroProgramme.start, heroProgramme.stop).toMinutes().coerceAtLeast(1)
+                            val elapsed = Duration.between(heroProgramme.start, now).toMinutes().coerceIn(0, total)
+                            LinearProgressIndicator(
+                                progress = { elapsed.toFloat() / total.toFloat() },
+                                modifier = Modifier.fillMaxWidth().height(5.dp).clip(RoundedCornerShape(100.dp)),
+                                color = Pink, trackColor = Color.White.copy(alpha=.10f),
+                            )
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Text(formatTime(heroProgramme.start.toLocalTime(), use24Hour), color = TextSecondary, fontSize = 10.sp)
+                                Spacer(Modifier.width(8.dp)); Box(Modifier.size(3.dp).background(TextTertiary, CircleShape)); Spacer(Modifier.width(8.dp))
+                                Text("${(total - elapsed).coerceAtLeast(0)} min left", color = TextSecondary, fontSize = 10.sp)
+                                Spacer(Modifier.weight(1f))
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Text("Open details", color = TextPrimary, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                                    Icon(Icons.Rounded.KeyboardArrowRight, null, tint = PinkSoft, modifier = Modifier.size(18.dp))
+                                }
+                            }
+                        } else {
+                            Text("Nothing is live right now", color = TextPrimary, fontSize = 22.sp, fontWeight = FontWeight.Black)
+                            Text("The next programme will appear here automatically when the guide catches up.", color = TextSecondary, fontSize = 11.sp, lineHeight = 16.sp)
+                        }
+                    }
+                }
+
+                Row(horizontalArrangement = Arrangement.spacedBy(9.dp)) {
+                    listOf(
+                        Triple("ON NOW", onNow.size.toString(), Cyan),
+                        Triple("NEXT 30M", startingSoon.size.toString(), Pink),
+                        Triple("FAVES", favouriteUpcoming.size.toString(), Lavender),
+                    ).forEach { (label, value, accent) ->
+                        Box(
+                            Modifier.weight(1f).clip(RoundedCornerShape(18.dp))
+                                .background(Brush.linearGradient(listOf(accent.copy(alpha=.08f), SurfaceHigh.copy(alpha=.82f))))
+                                .border(1.dp, accent.copy(alpha=.12f), RoundedCornerShape(18.dp)).padding(horizontal=12.dp, vertical=11.dp)
+                        ) {
+                            Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                                Text(value, color = TextPrimary, fontWeight = FontWeight.Black, fontSize = 20.sp, lineHeight = 21.sp)
+                                Text(label, color = accent, fontWeight = FontWeight.Black, fontSize = 8.sp, letterSpacing = .65.sp)
                             }
                         }
                     }
@@ -1164,7 +1184,7 @@ private fun HomeView(
             item {
                 PremiumSectionHeader(eyebrow = "LIVE", title = "On now", action = "See guide") { onOpenGuide("All") }
                 Spacer(Modifier.height(10.dp))
-                LazyRow(horizontalArrangement = Arrangement.spacedBy(11.dp)) {
+                LazyRow(horizontalArrangement = Arrangement.spacedBy(11.dp), contentPadding = PaddingValues(end = 2.dp)) {
                     items(onNow) { p ->
                         ProgrammePosterCard(p, channels.firstOrNull { channelKey(it.id) == channelKey(p.channelId) }, use24Hour) { onProgramme(p) }
                     }
@@ -1177,27 +1197,32 @@ private fun HomeView(
                 PremiumSectionHeader(eyebrow = "NEXT", title = "Starting soon", action = "See all") { onOpenGuide("All") }
                 Spacer(Modifier.height(10.dp))
                 Column(
-                    Modifier.fillMaxWidth().clip(RoundedCornerShape(24.dp)).background(Panel2.copy(alpha=.72f))
-                        .border(1.dp, Hairline, RoundedCornerShape(24.dp))
+                    Modifier.fillMaxWidth().clip(RoundedCornerShape(24.dp)).background(SurfaceSoft.copy(alpha=.92f))
+                        .border(1.dp, Hairline, RoundedCornerShape(24.dp)).padding(vertical = 3.dp)
                 ) {
                     startingSoon.take(5).forEachIndexed { index, p ->
                         val channel = channels.firstOrNull { channelKey(it.id) == channelKey(p.channelId) }
                         Row(
-                            Modifier.fillMaxWidth().clickable { onProgramme(p) }.padding(horizontal=14.dp, vertical=12.dp),
+                            Modifier.fillMaxWidth().clip(RoundedCornerShape(18.dp)).clickable { onProgramme(p) }.padding(horizontal=11.dp, vertical=10.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Surface(color = Pink.copy(alpha=.12f), shape = RoundedCornerShape(12.dp)) {
-                                Text(formatTime(p.start.toLocalTime(), use24Hour), color = PinkSoft, fontWeight = FontWeight.Black, fontSize = 11.sp,
-                                    modifier = Modifier.padding(horizontal=9.dp, vertical=7.dp))
+                            Surface(color = Pink.copy(alpha=.12f), shape = RoundedCornerShape(12.dp), border = androidx.compose.foundation.BorderStroke(1.dp, Pink.copy(alpha=.12f))) {
+                                Text(formatTime(p.start.toLocalTime(), use24Hour), color = PinkSoft, fontWeight = FontWeight.Black, fontSize = 10.sp,
+                                    modifier = Modifier.padding(horizontal=8.dp, vertical=7.dp))
                             }
-                            Spacer(Modifier.width(11.dp))
+                            Spacer(Modifier.width(10.dp))
+                            Box(Modifier.size(36.dp).clip(RoundedCornerShape(11.dp)).background(Panel2).border(1.dp, Hairline, RoundedCornerShape(11.dp)), contentAlignment = Alignment.Center) {
+                                if (!channel?.icon.isNullOrBlank()) AsyncImage(channel?.icon, channel?.name, Modifier.fillMaxSize().padding(4.dp), contentScale = ContentScale.Fit)
+                                else LogoFallback(channel?.name ?: p.channelId)
+                            }
+                            Spacer(Modifier.width(10.dp))
                             Column(Modifier.weight(1f)) {
-                                Text(p.title, fontWeight = FontWeight.Bold, maxLines = 1, overflow = TextOverflow.Ellipsis)
-                                Text(channel?.name ?: p.channelId, color = TextSecondary, fontSize = 10.sp)
+                                Text(p.title, fontWeight = FontWeight.Bold, maxLines = 1, overflow = TextOverflow.Ellipsis, fontSize = 13.sp)
+                                Text(channel?.name ?: p.channelId, color = TextSecondary, fontSize = 9.sp)
                             }
-                            Icon(Icons.Rounded.KeyboardArrowRight, null, tint = TextSecondary, modifier = Modifier.size(20.dp))
+                            Icon(Icons.Rounded.KeyboardArrowRight, null, tint = TextTertiary, modifier = Modifier.size(19.dp))
                         }
-                        if (index < minOf(4, startingSoon.lastIndex)) HorizontalDivider(color = Hairline)
+                        if (index < minOf(4, startingSoon.lastIndex)) HorizontalDivider(color = Hairline, modifier = Modifier.padding(horizontal = 12.dp))
                     }
                 }
             }
@@ -1234,7 +1259,7 @@ private fun SectionHeader(title: String, onSeeAll: () -> Unit) {
 private fun ChannelTile(channel: TvChannel, onClick: () -> Unit) {
     Box(
         modifier = Modifier.width(118.dp).clip(RoundedCornerShape(22.dp))
-            .background(Brush.verticalGradient(listOf(Color(0xFF101B31), Color(0xFF0A1222))))
+            .background(Brush.verticalGradient(listOf(SurfaceHigh, SurfaceSoft)))
             .border(1.dp, Hairline, RoundedCornerShape(22.dp)).clickable(onClick = onClick)
             .padding(10.dp)
     ) {
@@ -1313,49 +1338,54 @@ private fun ProgrammePosterCard(
     val now = ZonedDateTime.now()
     val isLive = !now.isBefore(programme.start) && now.isBefore(programme.stop)
     Box(
-        modifier = Modifier.width(196.dp).clip(RoundedCornerShape(24.dp))
-            .background(Brush.verticalGradient(listOf(Color(0xFF121D34), Color(0xFF0A1222))))
-            .border(1.dp, if (isLive) Pink.copy(alpha=.26f) else Hairline, RoundedCornerShape(24.dp))
+        modifier = Modifier.width(210.dp).clip(RoundedCornerShape(24.dp))
+            .background(Brush.verticalGradient(listOf(SurfaceHigh, SurfaceSoft)))
+            .border(1.dp, if (isLive) Pink.copy(alpha=.28f) else Hairline, RoundedCornerShape(24.dp))
             .clickable(onClick = onClick)
     ) {
         Column {
-            Box(Modifier.fillMaxWidth().height(108.dp).background(Color(0xFF0A101D))) {
+            Box(Modifier.fillMaxWidth().height(118.dp).background(Panel)) {
+                val hasArtwork = !programme.icon.isNullOrBlank()
                 val image = programme.icon ?: channel?.icon
                 if (!image.isNullOrBlank()) {
-                    AsyncImage(image, programme.title, Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
-                    Box(Modifier.fillMaxSize().background(Brush.verticalGradient(listOf(Color.Transparent, Color(0xAA07101D)))))
+                    AsyncImage(
+                        image,
+                        programme.title,
+                        Modifier.fillMaxSize().padding(if (hasArtwork) 0.dp else 16.dp),
+                        contentScale = if (hasArtwork) ContentScale.Crop else ContentScale.Fit,
+                    )
+                    if (hasArtwork) Box(Modifier.fillMaxSize().background(Brush.verticalGradient(listOf(Color.Transparent, Color(0xB8080D18)))))
                 } else {
                     Box(Modifier.fillMaxSize().background(Brush.linearGradient(listOf(Panel3, Panel))))
                     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) { LogoFallback(channel?.name ?: programme.channelId) }
                 }
                 if (isLive) {
-                    Surface(
-                        modifier = Modifier.align(Alignment.TopStart).padding(9.dp),
-                        color = Pink.copy(alpha=.92f), shape = RoundedCornerShape(100.dp)
-                    ) { Text("LIVE", color = Color(0xFF21000F), fontWeight = FontWeight.Black, fontSize = 8.sp, letterSpacing=.7.sp,
-                        modifier = Modifier.padding(horizontal=8.dp, vertical=4.dp)) }
+                    Surface(modifier = Modifier.align(Alignment.TopStart).padding(9.dp), color = Pink, shape = RoundedCornerShape(100.dp)) {
+                        Row(Modifier.padding(horizontal=8.dp, vertical=4.dp), verticalAlignment = Alignment.CenterVertically) {
+                            Box(Modifier.size(5.dp).background(Color(0xFF25000F), CircleShape)); Spacer(Modifier.width(5.dp))
+                            Text("LIVE", color = Color(0xFF25000F), fontWeight = FontWeight.Black, fontSize = 8.sp, letterSpacing=.7.sp)
+                        }
+                    }
+                    val total = Duration.between(programme.start, programme.stop).toMinutes().coerceAtLeast(1)
+                    val elapsed = Duration.between(programme.start, now).toMinutes().coerceIn(0, total)
+                    Surface(modifier = Modifier.align(Alignment.TopEnd).padding(9.dp), color = Color(0xC90A1220), shape = RoundedCornerShape(100.dp)) {
+                        Text("${(total-elapsed).coerceAtLeast(0)} min left", color = TextPrimary, fontSize = 8.sp, fontWeight = FontWeight.Bold,
+                            modifier = Modifier.padding(horizontal=8.dp, vertical=4.dp))
+                    }
                 }
             }
             Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(5.dp)) {
-                Text(programme.title, fontWeight = FontWeight.Black, fontSize = 15.sp, lineHeight = 18.sp, maxLines = 2, overflow = TextOverflow.Ellipsis)
-                Text(channel?.name ?: programme.channelId, color = PinkSoft, fontSize = 10.sp, fontWeight = FontWeight.Bold, maxLines=1)
+                Text(programme.title, fontWeight = FontWeight.Black, fontSize = 14.sp, lineHeight = 17.sp, maxLines = 2, overflow = TextOverflow.Ellipsis)
+                Text(channel?.name ?: programme.channelId, color = PinkSoft, fontSize = 9.sp, fontWeight = FontWeight.Bold, maxLines=1)
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(formatTime(programme.start.toLocalTime(), use24Hour), color = TextSecondary, fontSize = 10.sp)
-                    Spacer(Modifier.weight(1f))
-                    if (isLive) {
-                        val total = Duration.between(programme.start, programme.stop).toMinutes().coerceAtLeast(1)
-                        val elapsed = Duration.between(programme.start, now).toMinutes().coerceIn(0, total)
-                        Text("${(total-elapsed).coerceAtLeast(0)}m left", color = TextSecondary, fontSize = 9.sp)
-                    }
+                    Text(formatTime(programme.start.toLocalTime(), use24Hour), color = TextSecondary, fontSize = 9.sp)
+                    Text(" – ", color = TextTertiary, fontSize = 9.sp)
+                    Text(formatTime(programme.stop.toLocalTime(), use24Hour), color = TextSecondary, fontSize = 9.sp)
                 }
                 if (isLive) {
                     val total = Duration.between(programme.start, programme.stop).toMinutes().coerceAtLeast(1)
                     val elapsed = Duration.between(programme.start, now).toMinutes().coerceIn(0, total)
-                    LinearProgressIndicator(
-                        progress = { elapsed.toFloat()/total.toFloat() },
-                        modifier = Modifier.fillMaxWidth().height(4.dp).clip(RoundedCornerShape(100.dp)),
-                        color = Pink, trackColor = Color.White.copy(alpha=.07f)
-                    )
+                    LinearProgressIndicator(progress = { elapsed.toFloat()/total.toFloat() }, modifier = Modifier.fillMaxWidth().height(4.dp).clip(RoundedCornerShape(100.dp)), color = Pink, trackColor = Color.White.copy(alpha=.08f))
                 }
             }
         }
@@ -1473,8 +1503,12 @@ private fun DynamicGuideContent(
             }
         } else {
             Column(
-                Modifier.fillMaxWidth().padding(horizontal=14.dp, vertical=6.dp),
-                verticalArrangement = Arrangement.spacedBy(10.dp)
+                Modifier.fillMaxWidth().padding(horizontal=12.dp, vertical=7.dp)
+                    .clip(RoundedCornerShape(22.dp))
+                    .background(SurfaceSoft.copy(alpha=.72f))
+                    .border(1.dp, Hairline, RoundedCornerShape(22.dp))
+                    .padding(horizontal=12.dp, vertical=11.dp),
+                verticalArrangement = Arrangement.spacedBy(9.dp)
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Column(Modifier.weight(1f)) {
@@ -1579,6 +1613,7 @@ private fun FavouritesView(
     favouriteChannels: Set<String>,
     onProgramme: (Programme) -> Unit,
     onChannel: (TvChannel) -> Unit,
+    onExplore: () -> Unit,
     use24Hour: Boolean,
 ) {
     val now = ZonedDateTime.now()
@@ -1589,37 +1624,37 @@ private fun FavouritesView(
 
     LazyColumn(
         Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(16.dp, 8.dp, 16.dp, 30.dp),
+        contentPadding = PaddingValues(16.dp, 10.dp, 16.dp, 34.dp),
         verticalArrangement = Arrangement.spacedBy(18.dp),
     ) {
         item {
-            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                Box(
-                    Modifier.weight(1.55f).height(116.dp).clip(RoundedCornerShape(28.dp))
-                        .background(Brush.linearGradient(listOf(Pink.copy(alpha=.22f), Color(0xFF111A31), Color(0xFF09111F))))
-                        .border(1.dp, Pink.copy(alpha=.12f), RoundedCornerShape(28.dp)).padding(16.dp)
-                ) {
-                    Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.SpaceBetween) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Icon(Icons.Rounded.Favorite, null, tint = PinkSoft, modifier = Modifier.size(22.dp)); Spacer(Modifier.width(8.dp))
-                            Text("FAVOURITES", color = PinkSoft, fontWeight = FontWeight.Black, fontSize = 9.sp, letterSpacing = 1.sp)
+            Box(
+                Modifier.fillMaxWidth().clip(RoundedCornerShape(30.dp))
+                    .background(Brush.linearGradient(listOf(Pink.copy(alpha=.16f), SurfaceHigh, SurfaceSoft)))
+                    .border(1.dp, Pink.copy(alpha=.14f), RoundedCornerShape(30.dp)).padding(18.dp)
+            ) {
+                Box(Modifier.align(Alignment.TopEnd).size(150.dp).background(Brush.radialGradient(listOf(Pink.copy(alpha=.16f), Color.Transparent))))
+                Column(verticalArrangement = Arrangement.spacedBy(14.dp)) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Box(Modifier.size(44.dp).clip(RoundedCornerShape(15.dp)).background(Pink.copy(alpha=.13f)), contentAlignment=Alignment.Center) {
+                            Icon(Icons.Rounded.Favorite, null, tint = PinkSoft, modifier = Modifier.size(22.dp))
                         }
-                        Column {
-                            Text("Your household picks", color = TextPrimary, fontSize = 20.sp, fontWeight = FontWeight.Black, letterSpacing=(-.4).sp)
-                            Text("Everything you’ve saved, without hunting through the guide.", color = TextSecondary, fontSize = 10.sp, lineHeight=14.sp, maxLines=2)
+                        Spacer(Modifier.width(11.dp))
+                        Column(Modifier.weight(1f)) {
+                            Text("YOUR LIBRARY", color = PinkSoft, fontWeight = FontWeight.Black, fontSize = 9.sp, letterSpacing = 1.sp)
+                            Text("Household favourites", color = TextPrimary, fontSize = 21.sp, fontWeight = FontWeight.Black, letterSpacing=(-.45).sp)
                         }
                     }
-                }
-                Column(Modifier.weight(.9f), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                    listOf(
-                        Triple("TODAY", todayCount.toString(), Pink),
-                        Triple("CHANNELS", favouriteChannels.size.toString(), Lavender),
-                    ).forEach { (label,value,accent) ->
-                        Box(
-                            Modifier.fillMaxWidth().height(58.dp).clip(RoundedCornerShape(20.dp)).background(Panel2.copy(alpha=.78f))
-                                .border(1.dp, Hairline, RoundedCornerShape(20.dp)).padding(horizontal=12.dp, vertical=7.dp)
-                        ) {
-                            Column(verticalArrangement = Arrangement.spacedBy(1.dp)) { Text(value, color=TextPrimary, fontWeight=FontWeight.Black, fontSize=17.sp, lineHeight=19.sp); Text(label, color=accent, fontWeight=FontWeight.Black, fontSize=8.sp, lineHeight=10.sp, letterSpacing=.7.sp) }
+                    Text("Saved shows and pinned channels stay together here, with the next useful airing surfaced first.", color = TextSecondary, fontSize = 10.sp, lineHeight = 15.sp)
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        listOf(
+                            Triple("TODAY", todayCount.toString(), Pink),
+                            Triple("SHOWS", favouriteShows.size.toString(), Cyan),
+                            Triple("CHANNELS", favouriteChannels.size.toString(), Lavender),
+                        ).forEach { (label, value, accent) ->
+                            Box(Modifier.weight(1f).clip(RoundedCornerShape(16.dp)).background(Color.White.copy(alpha=.035f)).border(1.dp, Hairline, RoundedCornerShape(16.dp)).padding(10.dp)) {
+                                Column { Text(value, fontWeight=FontWeight.Black, fontSize=18.sp); Text(label, color=accent, fontSize=8.sp, fontWeight=FontWeight.Black, letterSpacing=.6.sp) }
+                            }
                         }
                     }
                 }
@@ -1639,17 +1674,28 @@ private fun FavouritesView(
         if (upcoming.isEmpty()) {
             item {
                 Box(
-                    Modifier.fillMaxWidth().clip(RoundedCornerShape(28.dp)).background(Brush.linearGradient(listOf(Color(0xFF111A31), Color(0xFF09111F))))
-                        .border(1.dp, Hairline, RoundedCornerShape(28.dp)).padding(22.dp)
+                    Modifier.fillMaxWidth().clip(RoundedCornerShape(28.dp))
+                        .background(Brush.linearGradient(listOf(SurfaceHigh, SurfaceSoft)))
+                        .border(1.dp, Hairline, RoundedCornerShape(28.dp)).padding(20.dp)
                 ) {
-                    Row(verticalAlignment=Alignment.CenterVertically) {
-                        Box(Modifier.size(52.dp).clip(RoundedCornerShape(18.dp)).background(Pink.copy(alpha=.13f)), contentAlignment=Alignment.Center) {
-                            Icon(Icons.Rounded.FavoriteBorder, null, tint=PinkSoft, modifier=Modifier.size(26.dp))
+                    Column(verticalArrangement = Arrangement.spacedBy(14.dp)) {
+                        Row(verticalAlignment=Alignment.CenterVertically) {
+                            Box(Modifier.size(52.dp).clip(RoundedCornerShape(18.dp)).background(Pink.copy(alpha=.12f)), contentAlignment=Alignment.Center) {
+                                Icon(Icons.Rounded.FavoriteBorder, null, tint=PinkSoft, modifier=Modifier.size(26.dp))
+                            }
+                            Spacer(Modifier.width(13.dp))
+                            Column(Modifier.weight(1f)) {
+                                Text("No saved shows yet", fontWeight=FontWeight.Black, fontSize=18.sp)
+                                Text("Heart a programme once and future airings will appear here automatically.", color=TextSecondary, fontSize=10.sp, lineHeight=15.sp)
+                            }
                         }
-                        Spacer(Modifier.width(14.dp))
-                        Column {
-                            Text("No saved shows yet", fontWeight=FontWeight.Black, fontSize=18.sp)
-                            Text("Tap the heart on any programme and future airings will land here automatically.", color=TextSecondary, fontSize=11.sp, lineHeight=16.sp)
+                        Button(
+                            onClick = onExplore,
+                            modifier = Modifier.fillMaxWidth().height(46.dp),
+                            shape = RoundedCornerShape(16.dp),
+                            colors = ButtonDefaults.buttonColors(containerColor = Pink, contentColor = Color(0xFF25000F)),
+                        ) {
+                            Icon(Icons.Rounded.Tv, null, Modifier.size(17.dp)); Spacer(Modifier.width(7.dp)); Text("Browse the guide", fontWeight=FontWeight.Black)
                         }
                     }
                 }
@@ -1670,30 +1716,33 @@ private fun ProgrammeListRow(
     onProgramme: (Programme) -> Unit,
 ) {
     Row(
-        modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(22.dp)).background(Panel2.copy(alpha=.72f))
-            .border(1.dp, Hairline, RoundedCornerShape(22.dp)).clickable { onProgramme(programme) }
-            .padding(11.dp),
+        modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(20.dp))
+            .background(Brush.linearGradient(listOf(SurfaceHigh.copy(alpha=.88f), SurfaceSoft)))
+            .border(1.dp, Hairline, RoundedCornerShape(20.dp)).clickable { onProgramme(programme) }
+            .padding(10.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
+        val hasArtwork = !programme.icon.isNullOrBlank()
         val image = programme.icon ?: channel?.icon
-        Box(Modifier.size(64.dp).clip(RoundedCornerShape(17.dp)).background(Panel2.copy(alpha=.88f)).border(1.dp, Hairline, RoundedCornerShape(17.dp)), contentAlignment = Alignment.Center) {
-            if (!image.isNullOrBlank()) AsyncImage(image, programme.title, Modifier.fillMaxSize().padding(if (programme.icon == null) 6.dp else 0.dp), contentScale = if (programme.icon == null) ContentScale.Fit else ContentScale.Crop)
+        Box(Modifier.size(62.dp).clip(RoundedCornerShape(16.dp)).background(Panel).border(1.dp, Hairline, RoundedCornerShape(16.dp)), contentAlignment = Alignment.Center) {
+            if (!image.isNullOrBlank()) AsyncImage(image, programme.title, Modifier.fillMaxSize().padding(if (hasArtwork) 0.dp else 7.dp), contentScale = if (hasArtwork) ContentScale.Crop else ContentScale.Fit)
             else LogoFallback(channel?.name ?: programme.channelId)
         }
-        Spacer(Modifier.width(12.dp))
+        Spacer(Modifier.width(11.dp))
         Column(Modifier.weight(1f)) {
             Row(verticalAlignment=Alignment.CenterVertically) {
-                Text(programme.title, modifier=Modifier.weight(1f), fontWeight=FontWeight.Black, maxLines=2, overflow=TextOverflow.Ellipsis, fontSize=14.sp)
-                if (favourite) { Spacer(Modifier.width(6.dp)); Icon(Icons.Rounded.Favorite, null, tint=PinkSoft, modifier=Modifier.size(16.dp)) }
+                Text(programme.title, modifier=Modifier.weight(1f), fontWeight=FontWeight.Black, maxLines=2, overflow=TextOverflow.Ellipsis, fontSize=13.sp, lineHeight=16.sp)
+                if (favourite) { Spacer(Modifier.width(5.dp)); Icon(Icons.Rounded.Favorite, null, tint=PinkSoft, modifier=Modifier.size(15.dp)) }
             }
-            Text(channel?.name ?: programme.channelId, color=PinkSoft, fontSize=10.sp, fontWeight=FontWeight.Bold)
+            Spacer(Modifier.height(2.dp))
+            Text(channel?.name ?: programme.channelId, color=PinkSoft, fontSize=9.sp, fontWeight=FontWeight.Bold)
             Row(verticalAlignment=Alignment.CenterVertically) {
                 Text(programme.start.format(DateTimeFormatter.ofPattern("EEE d MMM", Locale.UK)), color=TextSecondary, fontSize=9.sp)
-                Spacer(Modifier.width(7.dp)); Box(Modifier.size(3.dp).background(TextSecondary.copy(alpha=.5f), CircleShape)); Spacer(Modifier.width(7.dp))
+                Spacer(Modifier.width(6.dp)); Box(Modifier.size(3.dp).background(TextTertiary, CircleShape)); Spacer(Modifier.width(6.dp))
                 Text(formatTime(programme.start.toLocalTime(), use24Hour), color=TextSecondary, fontSize=9.sp)
             }
         }
-        Icon(Icons.Rounded.KeyboardArrowRight, null, tint=TextSecondary, modifier=Modifier.size(20.dp))
+        Icon(Icons.Rounded.KeyboardArrowRight, null, tint=TextTertiary, modifier=Modifier.size(19.dp))
     }
 }
 
@@ -2090,7 +2139,7 @@ private fun AdviserChannelRow(recommendation: AdviserRecommendation) {
     val accent = if (recommendation.kind == "later") Amber else if (recommendation.kind == "keep") Mint else Lavender
     Row(
         modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(22.dp))
-            .background(Brush.linearGradient(listOf(accent.copy(alpha=.08f), Color(0xFF101A2F), Color(0xFF08101F))))
+            .background(Brush.linearGradient(listOf(accent.copy(alpha=.08f), SurfaceHigh, SurfaceSoft)))
             .border(1.dp, accent.copy(alpha=.11f), RoundedCornerShape(22.dp)).padding(13.dp),
         verticalAlignment = Alignment.Top,
     ) {
@@ -2114,7 +2163,7 @@ private fun AdviserAddResult(recommendation: AdviserRecommendation) {
     val accent = if(emptyState) Mint else Lavender
     Row(
         modifier=Modifier.fillMaxWidth().clip(RoundedCornerShape(22.dp))
-            .background(Brush.linearGradient(listOf(accent.copy(alpha=.08f),Color(0xFF101A2F),Color(0xFF08101F))))
+            .background(Brush.linearGradient(listOf(accent.copy(alpha=.08f),SurfaceHigh,SurfaceSoft)))
             .border(1.dp,accent.copy(alpha=.11f),RoundedCornerShape(22.dp)).padding(14.dp),
         verticalAlignment=Alignment.Top
     ) {
@@ -2218,38 +2267,39 @@ private fun RecommendedTvScheduleCard(ageMonths: Int, channels: List<TvChannel>)
 
 @Composable
 private fun AgeSliderLabels() {
-    // Material 3's slider track starts/ends underneath the centre of the thumb,
-    // roughly 10dp in from each side. Use the same inset here so every label is
-    // directly underneath the actual month represented by the thumb.
-    val labels = listOf(
+    // Keep the visual ruler deliberately uncluttered. The Slider itself is 0..60
+    // months in one-month steps; these labels are anchors, not additional steps.
+    // Material 3 draws the track between thumb centres (about 10dp in), so the
+    // ruler uses that same inset. Minor six-month ticks remain visible without
+    // cramming labels together at the baby end of the scale.
+    val majorLabels = listOf(
         0 to "0m",
         6 to "6m",
         12 to "1y",
-        18 to "18m",
         24 to "2y",
         36 to "3y",
         48 to "4y",
         60 to "5y",
     )
-    BoxWithConstraints(
-        Modifier
-            .fillMaxWidth()
-            .height(18.dp)
-            .padding(horizontal = 10.dp)
-    ) {
-        labels.forEach { (month, label) ->
-            val labelWidth = 30.dp
-            val centre = maxWidth * (month / 60f)
-            val x = (centre - (labelWidth / 2)).coerceIn(0.dp, maxWidth - labelWidth)
-            Text(
-                text = label,
-                color = TextSecondary,
-                fontSize = 9.sp,
-                lineHeight = 10.sp,
-                textAlign = TextAlign.Center,
-                maxLines = 1,
-                modifier = Modifier.width(labelWidth).offset(x = x),
-            )
+    Column(Modifier.fillMaxWidth()) {
+        BoxWithConstraints(Modifier.fillMaxWidth().height(10.dp).padding(horizontal = 10.dp)) {
+            (0..60 step 6).forEach { month ->
+                val dotSize = if (month % 12 == 0) 5.dp else 3.dp
+                val x = (maxWidth - dotSize) * (month / 60f)
+                Box(
+                    Modifier.offset(x = x).size(dotSize).clip(CircleShape)
+                        .background(if (month % 12 == 0) PinkSoft.copy(alpha=.72f) else TextTertiary.copy(alpha=.62f))
+                )
+            }
+        }
+        BoxWithConstraints(Modifier.fillMaxWidth().height(18.dp).padding(horizontal = 10.dp)) {
+            majorLabels.forEach { (month, label) ->
+                val labelWidth = 26.dp
+                val centre = maxWidth * (month / 60f)
+                val x = (centre - labelWidth / 2).coerceIn(0.dp, maxWidth - labelWidth)
+                Text(label, color = TextSecondary, fontSize = 8.sp, lineHeight = 10.sp, textAlign = TextAlign.Center,
+                    maxLines = 1, modifier = Modifier.width(labelWidth).offset(x = x))
+            }
         }
     }
 }
@@ -2515,47 +2565,37 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
         item {
             Box(
                 Modifier.fillMaxWidth().clip(RoundedCornerShape(30.dp))
-                    .background(Brush.linearGradient(listOf(Color(0xFF14172D), Color(0xFF0D172A), Color(0xFF07101F))))
-                    .border(1.dp, Lavender.copy(alpha=.15f), RoundedCornerShape(30.dp))
+                    .background(Brush.linearGradient(listOf(Lavender.copy(alpha=.12f), SurfaceHigh, SurfaceSoft)))
+                    .border(1.dp, Lavender.copy(alpha=.15f), RoundedCornerShape(30.dp)).padding(18.dp)
             ) {
-                Box(Modifier.align(Alignment.TopEnd).size(190.dp).background(Brush.radialGradient(listOf(Lavender.copy(alpha=.20f), Color.Transparent))))
-                Column(Modifier.padding(18.dp), verticalArrangement=Arrangement.spacedBy(12.dp)) {
+                Box(Modifier.align(Alignment.TopEnd).size(170.dp).background(Brush.radialGradient(listOf(Lavender.copy(alpha=.15f), Color.Transparent))))
+                Column(verticalArrangement=Arrangement.spacedBy(11.dp)) {
                     Row(verticalAlignment=Alignment.CenterVertically) {
-                        Box(
-                            Modifier.size(70.dp).clip(RoundedCornerShape(24.dp))
-                                .background(Brush.linearGradient(listOf(Pink.copy(alpha=.30f), Lavender.copy(alpha=.22f))))
-                                .border(1.dp, Color.White.copy(alpha=.10f), RoundedCornerShape(24.dp)),
-                            contentAlignment=Alignment.Center
-                        ) {
-                            Column(horizontalAlignment=Alignment.CenterHorizontally) {
-                                Text(
-                                    formatAge(age),
-                                    color=TextPrimary,
-                                    fontSize=if (age < 12) 15.sp else 12.sp,
-                                    fontWeight=FontWeight.Black,
-                                    lineHeight=14.sp,
-                                    textAlign=TextAlign.Center,
-                                    maxLines=2,
-                                )
-                                Text("AGE", color=TextSecondary, fontSize=7.sp, fontWeight=FontWeight.Black, letterSpacing=.7.sp)
-                            }
+                        Box(Modifier.size(46.dp).clip(RoundedCornerShape(16.dp)).background(Brush.linearGradient(listOf(Pink.copy(alpha=.22f), Lavender.copy(alpha=.17f)))), contentAlignment=Alignment.Center) {
+                            Icon(Icons.Rounded.Schedule, null, tint=PinkSoft, modifier=Modifier.size(23.dp))
                         }
-                        Spacer(Modifier.width(14.dp))
+                        Spacer(Modifier.width(12.dp))
                         Column(Modifier.weight(1f)) {
-                            Text("UMAY’S VIEWING PROFILE", color=Lavender, fontSize=9.sp, fontWeight=FontWeight.Black, letterSpacing=1.sp)
-                            Text("Age-aware, bilingual picks", fontSize=20.sp, fontWeight=FontWeight.Black, letterSpacing=(-.45).sp)
-                            Spacer(Modifier.height(5.dp))
-                            Row(horizontalArrangement=Arrangement.spacedBy(6.dp)) {
-                                CompactPill("ENGLISH", Pink); CompactPill("TÜRKÇE", Lavender)
-                            }
+                            Text("UMAY’S VIEWING PROFILE", color=Lavender, fontSize=8.sp, fontWeight=FontWeight.Black, letterSpacing=1.sp)
+                            Text("Age-aware, bilingual rhythm", fontSize=20.sp, fontWeight=FontWeight.Black, letterSpacing=(-.45).sp)
                         }
+                        CompactPill(formatAge(age), Pink)
+                    }
+                    Row(horizontalArrangement=Arrangement.spacedBy(6.dp)) {
+                        CompactPill("ENGLISH", Pink)
+                        CompactPill("TÜRKÇE", Lavender)
+                        Spacer(Modifier.weight(1f))
+                        Text("1 month per step", color=TextTertiary, fontSize=8.sp, modifier=Modifier.align(Alignment.CenterVertically))
                     }
                     Slider(
-                        value=ageToSliderPosition(age), onValueChange={ age=sliderPositionToAge(it) }, valueRange=0f..60f, steps=59,
-                        colors=SliderDefaults.colors(thumbColor=TextPrimary,activeTrackColor=Pink,inactiveTrackColor=Color.White.copy(alpha=.08f))
+                        value=ageToSliderPosition(age),
+                        onValueChange={ age=sliderPositionToAge(it) },
+                        valueRange=0f..60f,
+                        steps=59,
+                        colors=SliderDefaults.colors(thumbColor=TextPrimary, activeTrackColor=Pink, inactiveTrackColor=Color.White.copy(alpha=.08f))
                     )
                     AgeSliderLabels()
-                    Text("Recommendations change with age while keeping regular exposure to both languages. Nothing here is enforced.",color=TextSecondary,fontSize=10.sp,lineHeight=15.sp)
+                    Text("Move the age one month at a time. Recommendations adapt immediately while keeping regular English and Türkçe exposure.", color=TextSecondary, fontSize=10.sp, lineHeight=15.sp)
                 }
             }
         }
@@ -2572,39 +2612,46 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
                 channelKey(p.channelId)==channelKey(slotChannel?.id ?: slot.channel) || channelKey(p.channelId)==channelKey(slotChannel?.name ?: slot.channel)
             }
             val accent = if(slot.language=="Türkçe") Lavender else Pink
-            Row(Modifier.fillMaxWidth(), verticalAlignment=Alignment.Top) {
-                Column(Modifier.width(42.dp), horizontalAlignment=Alignment.CenterHorizontally) {
-                    Box(Modifier.size(12.dp).background(accent,CircleShape).border(3.dp,Midnight,CircleShape))
-                    if(index != recommended.lastIndex) Box(Modifier.width(2.dp).height(74.dp).background(Color.White.copy(alpha=.08f)))
-                }
-                Box(
-                    Modifier.weight(1f).clip(RoundedCornerShape(24.dp))
-                        .background(Brush.linearGradient(listOf(accent.copy(alpha=.10f), Color(0xFF101A2F), Color(0xFF08101F))))
-                        .border(1.dp,accent.copy(alpha=.13f),RoundedCornerShape(24.dp)).padding(13.dp)
-                ) {
-                    Row(verticalAlignment=Alignment.CenterVertically) {
-                        Column(Modifier.width(54.dp)) {
-                            Text(slot.time,fontSize=15.sp,fontWeight=FontWeight.Black)
-                            Text(slot.partOfDay,color=TextSecondary,fontSize=8.sp,maxLines=2,lineHeight=10.sp)
+            Box(
+                Modifier.fillMaxWidth().clip(RoundedCornerShape(24.dp))
+                    .background(Brush.linearGradient(listOf(accent.copy(alpha=.10f), SurfaceHigh, SurfaceSoft)))
+                    .border(1.dp, accent.copy(alpha=.14f), RoundedCornerShape(24.dp)).padding(14.dp)
+            ) {
+                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Column(Modifier.width(82.dp)) {
+                            Text(slot.time, fontSize=17.sp, fontWeight=FontWeight.Black, letterSpacing=(-.3).sp)
+                            Text(slot.partOfDay, color=TextSecondary, fontSize=9.sp, lineHeight=12.sp)
                         }
-                        Box(Modifier.size(48.dp).clip(RoundedCornerShape(15.dp)).background(Panel2.copy(alpha=.88f)).border(1.dp, Hairline, RoundedCornerShape(15.dp)),contentAlignment=Alignment.Center) {
-                            if(!slotChannel?.icon.isNullOrBlank()) AsyncImage(slotChannel?.icon,slot.channel,Modifier.fillMaxSize().padding(5.dp),contentScale=ContentScale.Fit)
-                            else Text(slot.channel.take(2).uppercase(Locale.ROOT),color=TextPrimary,fontWeight=FontWeight.Black,fontSize=10.sp)
+                        Box(Modifier.size(48.dp).clip(RoundedCornerShape(15.dp)).background(Panel2).border(1.dp, Hairline, RoundedCornerShape(15.dp)), contentAlignment=Alignment.Center) {
+                            if(!slotChannel?.icon.isNullOrBlank()) AsyncImage(slotChannel?.icon, slot.channel, Modifier.fillMaxSize().padding(5.dp), contentScale=ContentScale.Fit)
+                            else Text(slot.channel.take(2).uppercase(Locale.ROOT), color=TextPrimary, fontWeight=FontWeight.Black, fontSize=10.sp)
                         }
                         Spacer(Modifier.width(10.dp))
                         Column(Modifier.weight(1f)) {
                             Row(verticalAlignment=Alignment.CenterVertically) {
-                                Text(slot.channel,fontWeight=FontWeight.Black,fontSize=14.sp,maxLines=1,overflow=TextOverflow.Ellipsis,modifier=Modifier.weight(1f))
-                                CompactPill(if(slot.language=="Türkçe") "TR" else "EN",accent)
+                                Text(slot.channel, fontWeight=FontWeight.Black, fontSize=14.sp, maxLines=1, overflow=TextOverflow.Ellipsis, modifier=Modifier.weight(1f))
+                                Spacer(Modifier.width(6.dp)); CompactPill(if(slot.language=="Türkçe") "TR" else "EN", accent)
                             }
-                            Text(slot.note,color=TextSecondary,fontSize=9.sp,lineHeight=13.sp,maxLines=2,overflow=TextOverflow.Ellipsis)
+                            Text(slot.note, color=TextSecondary, fontSize=9.sp, lineHeight=13.sp, maxLines=2, overflow=TextOverflow.Ellipsis)
                         }
                         if(currentOnSlot!=null) {
                             Spacer(Modifier.width(8.dp))
                             Box(
-                                Modifier.size(36.dp).clip(CircleShape).background(accent).clickable { addProgramme(currentOnSlot) },
+                                Modifier.size(40.dp).clip(RoundedCornerShape(14.dp)).background(accent).clickable { addProgramme(currentOnSlot) },
                                 contentAlignment=Alignment.Center
-                            ) { Text("+",color=Color(0xFF170514),fontWeight=FontWeight.Black,fontSize=20.sp) }
+                            ) { Text("+", color=Color(0xFF170514), fontWeight=FontWeight.Black, fontSize=21.sp) }
+                        }
+                    }
+                    if (currentOnSlot != null) {
+                        Row(
+                            Modifier.fillMaxWidth().clip(RoundedCornerShape(14.dp)).background(Color.White.copy(alpha=.035f)).padding(horizontal=10.dp, vertical=8.dp),
+                            verticalAlignment=Alignment.CenterVertically
+                        ) {
+                            Box(Modifier.size(6.dp).background(Mint, CircleShape)); Spacer(Modifier.width(7.dp))
+                            Text("On now", color=Mint, fontSize=8.sp, fontWeight=FontWeight.Black, letterSpacing=.6.sp)
+                            Spacer(Modifier.width(7.dp))
+                            Text(currentOnSlot.title, color=TextPrimary, fontSize=10.sp, fontWeight=FontWeight.SemiBold, maxLines=1, overflow=TextOverflow.Ellipsis, modifier=Modifier.weight(1f))
                         }
                     }
                 }
@@ -2736,7 +2783,22 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
 
         item { PremiumSectionHeader(eyebrow="HOUSEHOLD", title="Today’s shared picks", action=if(joined) "Synced" else "Local") {} }
         if (entries.isEmpty()) {
-            item { Text("Nothing added yet.", color = TextSecondary) }
+            item {
+                Row(
+                    Modifier.fillMaxWidth().clip(RoundedCornerShape(22.dp)).background(SurfaceSoft.copy(alpha=.9f))
+                        .border(1.dp, Hairline, RoundedCornerShape(22.dp)).padding(15.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Box(Modifier.size(42.dp).clip(RoundedCornerShape(14.dp)).background(Pink.copy(alpha=.12f)), contentAlignment=Alignment.Center) {
+                        Icon(Icons.Rounded.Schedule, null, tint=PinkSoft, modifier=Modifier.size(21.dp))
+                    }
+                    Spacer(Modifier.width(11.dp))
+                    Column(Modifier.weight(1f)) {
+                        Text("Nothing scheduled yet", fontWeight=FontWeight.Black, fontSize=14.sp)
+                        Text("Add something from the live picks above and both phones will see it here.", color=TextSecondary, fontSize=9.sp, lineHeight=13.sp)
+                    }
+                }
+            }
         } else {
             itemsIndexed(entries) { i, e ->
                 Box(Modifier.fillMaxWidth().clip(RoundedCornerShape(22.dp)).background(Panel2.copy(alpha=.74f)).border(1.dp,Hairline,RoundedCornerShape(22.dp))) {
@@ -2791,26 +2853,23 @@ private fun ChannelAdviserView(
         item {
             Box(
                 Modifier.fillMaxWidth().clip(RoundedCornerShape(30.dp))
-                    .background(Brush.linearGradient(listOf(Color(0xFF17152D), Color(0xFF101A31), Color(0xFF08101F))))
-                    .border(1.dp, Lavender.copy(alpha=.15f), RoundedCornerShape(30.dp))
+                    .background(Brush.linearGradient(listOf(Lavender.copy(alpha=.15f), SurfaceHigh, SurfaceSoft)))
+                    .border(1.dp, Lavender.copy(alpha=.16f), RoundedCornerShape(30.dp)).padding(18.dp)
             ) {
-                Box(Modifier.align(Alignment.TopEnd).size(170.dp).background(Brush.radialGradient(listOf(Lavender.copy(alpha=.20f), Color.Transparent))))
-                Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                Box(Modifier.align(Alignment.TopEnd).size(170.dp).background(Brush.radialGradient(listOf(Lavender.copy(alpha=.16f), Color.Transparent))))
+                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        Box(Modifier.size(44.dp).clip(RoundedCornerShape(16.dp)).background(Lavender.copy(alpha=.14f)), contentAlignment=Alignment.Center) {
+                        Box(Modifier.size(46.dp).clip(RoundedCornerShape(16.dp)).background(Lavender.copy(alpha=.14f)), contentAlignment=Alignment.Center) {
                             Icon(Icons.Rounded.Star, null, tint=Lavender, modifier=Modifier.size(23.dp))
                         }
                         Spacer(Modifier.width(12.dp))
                         Column(Modifier.weight(1f)) {
-                            Text("HOUSEHOLD AI", color=Lavender, fontSize=9.sp, fontWeight=FontWeight.Black, letterSpacing=1.1.sp)
-                            Text("What should Umay watch?", fontSize=21.sp, fontWeight=FontWeight.Black, letterSpacing=(-.45).sp)
+                            Text("UMAY AI", color=Lavender, fontSize=9.sp, fontWeight=FontWeight.Black, letterSpacing=1.1.sp)
+                            Text("Smarter viewing picks", fontSize=22.sp, fontWeight=FontWeight.Black, letterSpacing=(-.5).sp)
                         }
-                        Surface(color = if (kidsEpgAvailable) Mint.copy(alpha=.12f) else Amber.copy(alpha=.12f), shape=RoundedCornerShape(100.dp)) {
-                            Text(if (kidsEpgAvailable) "LIVE EPG" else "NO EPG", color=if(kidsEpgAvailable) Mint else Amber, fontWeight=FontWeight.Black, fontSize=8.sp,
-                                modifier=Modifier.padding(horizontal=9.dp, vertical=6.dp))
-                        }
+                        CompactPill(if (kidsEpgAvailable) "LIVE EPG" else "OFFLINE", if (kidsEpgAvailable) Mint else Amber)
                     }
-                    Text("Age-aware recommendations using the channels you actually have, with English + Türkçe balance built in.", color=TextSecondary, fontSize=11.sp, lineHeight=16.sp)
+                    Text("Uses Umay’s selected age, your actual channel lineup and what is airing now to give practical English + Türkçe suggestions.", color=TextSecondary, fontSize=10.sp, lineHeight=15.sp)
                 }
             }
         }
@@ -2818,36 +2877,43 @@ private fun ChannelAdviserView(
         item {
             Box(
                 Modifier.fillMaxWidth().clip(RoundedCornerShape(28.dp))
-                    .background(Brush.linearGradient(listOf(Color(0xFF121D34), Color(0xFF0A1222))))
+                    .background(Brush.linearGradient(listOf(SurfaceHigh, SurfaceSoft)))
                     .border(1.dp, Hairline, RoundedCornerShape(28.dp)).padding(18.dp)
             ) {
                 Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                    Row(verticalAlignment = Alignment.Bottom) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
                         Column(Modifier.weight(1f)) {
-                            Text("AGE TO ADVISE FOR", color=PinkSoft, fontWeight=FontWeight.Black, fontSize=9.sp, letterSpacing=.9.sp)
-                            Text(formatAge(ageMonths), fontSize=28.sp, fontWeight=FontWeight.Black, letterSpacing=(-.7).sp)
+                            Text("AGE TO ADVISE FOR", color=PinkSoft, fontWeight=FontWeight.Black, fontSize=8.sp, letterSpacing=.9.sp)
+                            Text(formatAge(ageMonths), fontSize=26.sp, fontWeight=FontWeight.Black, letterSpacing=(-.65).sp)
                         }
-                        CompactPill(if (aiRecommendations != null) "AI READY" else "PREVIEW", if (aiRecommendations != null) Mint else Lavender)
+                        Column(horizontalAlignment = Alignment.End) {
+                            CompactPill(if (aiRecommendations != null) "AI READY" else "PREVIEW", if (aiRecommendations != null) Mint else Lavender)
+                            Spacer(Modifier.height(5.dp))
+                            Text("1 month per step", color=TextTertiary, fontSize=8.sp)
+                        }
                     }
                     Slider(
                         value = ageToSliderPosition(ageMonths),
                         onValueChange = {
                             val newAge = sliderPositionToAge(it)
                             if (newAge != ageMonths) {
-                                ageMonths = newAge; AiSessionCache.ageMonths = newAge
-                                aiRecommendations = null; AiSessionCache.recommendations = null
+                                ageMonths = newAge
+                                AiSessionCache.ageMonths = newAge
+                                aiRecommendations = null
+                                AiSessionCache.recommendations = null
                             }
                             aiError = null
                         },
                         valueRange = 0f..60f,
                         steps = 59,
-                        colors = SliderDefaults.colors(thumbColor=PinkSoft, activeTrackColor=Pink, inactiveTrackColor=Color.White.copy(alpha=.08f)),
+                        colors = SliderDefaults.colors(thumbColor=TextPrimary, activeTrackColor=Pink, inactiveTrackColor=Color.White.copy(alpha=.08f)),
                     )
                     AgeSliderLabels()
                     Button(
                         onClick = {
                             if (isThinking) return@Button
-                            isThinking = true; aiError = null
+                            isThinking = true
+                            aiError = null
                             scope.launch {
                                 runCatching { fetchCloudflareAdviserRecommendations(ageMonths, guide, channels) }
                                     .onSuccess { aiRecommendations = it; AiSessionCache.recommendations = it }
@@ -2860,13 +2926,18 @@ private fun ChannelAdviserView(
                         },
                         enabled=!isThinking,
                         modifier=Modifier.fillMaxWidth().height(50.dp),
-                        shape=RoundedCornerShape(18.dp),
-                        colors=ButtonDefaults.buttonColors(containerColor=Pink, contentColor=Color(0xFF21000F)),
+                        shape=RoundedCornerShape(17.dp),
+                        colors=ButtonDefaults.buttonColors(containerColor=Pink, contentColor=Color(0xFF25000F)),
                     ) {
-                        if (isThinking) { CircularProgressIndicator(Modifier.size(17.dp), strokeWidth=2.dp, color=Color(0xFF21000F)); Spacer(Modifier.width(8.dp)); Text("Thinking…", fontWeight=FontWeight.Black) }
-                        else { Icon(Icons.Rounded.Star, null, Modifier.size(18.dp)); Spacer(Modifier.width(8.dp)); Text(if(aiRecommendations==null) "Ask AI" else "Refresh advice", fontWeight=FontWeight.Black) }
+                        if (isThinking) {
+                            CircularProgressIndicator(Modifier.size(17.dp), strokeWidth=2.dp, color=Color(0xFF25000F))
+                            Spacer(Modifier.width(8.dp)); Text("Thinking…", fontWeight=FontWeight.Black)
+                        } else {
+                            Icon(Icons.Rounded.Star, null, Modifier.size(18.dp)); Spacer(Modifier.width(8.dp))
+                            Text(if(aiRecommendations==null) "Ask AI" else "Refresh advice", fontWeight=FontWeight.Black)
+                        }
                     }
-                    aiError?.let { Text(it, color=TextSecondary, fontSize=10.sp) }
+                    aiError?.let { Text(it, color=TextSecondary, fontSize=10.sp, lineHeight=14.sp) }
                 }
             }
         }
@@ -2994,25 +3065,35 @@ private fun SettingsView(
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         item {
-            Row(horizontalArrangement=Arrangement.spacedBy(10.dp)) {
-                Box(
-                    Modifier.weight(1.45f).height(110.dp).clip(RoundedCornerShape(28.dp))
-                        .background(Brush.linearGradient(listOf(Lavender.copy(alpha=.16f), Color(0xFF111A31), Color(0xFF09111F))))
-                        .border(1.dp,Lavender.copy(alpha=.12f),RoundedCornerShape(28.dp)).padding(16.dp)
-                ) {
-                    Column(Modifier.fillMaxSize(), verticalArrangement=Arrangement.SpaceBetween) {
-                        Row(verticalAlignment=Alignment.CenterVertically) { Icon(Icons.Rounded.Settings,null,tint=Lavender,modifier=Modifier.size(20.dp)); Spacer(Modifier.width(7.dp)); Text("CONTROL CENTRE",color=Lavender,fontSize=9.sp,fontWeight=FontWeight.Black,letterSpacing=1.sp) }
-                        Column { Text("Settings",fontSize=22.sp,fontWeight=FontWeight.Black); Text("Guide, reminders, updates and household preferences.",color=TextSecondary,fontSize=10.sp,lineHeight=14.sp,maxLines=2) }
+            Box(
+                Modifier.fillMaxWidth().clip(RoundedCornerShape(30.dp))
+                    .background(Brush.linearGradient(listOf(Lavender.copy(alpha=.13f), SurfaceHigh, SurfaceSoft)))
+                    .border(1.dp, Lavender.copy(alpha=.15f), RoundedCornerShape(30.dp)).padding(18.dp)
+            ) {
+                Box(Modifier.align(Alignment.TopEnd).size(170.dp).background(Brush.radialGradient(listOf(Lavender.copy(alpha=.15f), Color.Transparent))))
+                Column(verticalArrangement = Arrangement.spacedBy(14.dp)) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Box(Modifier.size(46.dp).clip(RoundedCornerShape(16.dp)).background(Lavender.copy(alpha=.14f)), contentAlignment=Alignment.Center) {
+                            Icon(Icons.Rounded.Settings, null, tint=Lavender, modifier=Modifier.size(23.dp))
+                        }
+                        Spacer(Modifier.width(12.dp))
+                        Column(Modifier.weight(1f)) {
+                            Text("CONTROL CENTRE", color=Lavender, fontSize=8.sp, fontWeight=FontWeight.Black, letterSpacing=1.sp)
+                            Text("Settings", fontSize=23.sp, fontWeight=FontWeight.Black, letterSpacing=(-.55).sp)
+                        }
+                        CompactPill("v${BuildConfig.VERSION_NAME}", Pink)
                     }
-                }
-                Box(
-                    Modifier.weight(.85f).height(110.dp).clip(RoundedCornerShape(28.dp)).background(Panel2.copy(alpha=.78f))
-                        .border(1.dp,Hairline,RoundedCornerShape(28.dp)).padding(14.dp)
-                ) {
-                    Column(Modifier.fillMaxSize(), verticalArrangement=Arrangement.SpaceBetween) {
-                        Text("APP",color=PinkSoft,fontSize=9.sp,fontWeight=FontWeight.Black,letterSpacing=.9.sp)
-                        Text("v${BuildConfig.VERSION_NAME}",fontWeight=FontWeight.Black,fontSize=18.sp)
-                        Text("Auto-update ready",color=Mint,fontSize=9.sp,fontWeight=FontWeight.Bold)
+                    Text("Guide behaviour, reminders, updates, channels and what opens first — all in one place.", color=TextSecondary, fontSize=10.sp, lineHeight=15.sp)
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Box(Modifier.weight(1f).clip(RoundedCornerShape(16.dp)).background(Color.White.copy(alpha=.035f)).border(1.dp, Hairline, RoundedCornerShape(16.dp)).padding(10.dp)) {
+                            Column { Text(if(autoRefresh) "ON" else "OFF", fontWeight=FontWeight.Black, fontSize=15.sp); Text("AUTO REFRESH", color=Cyan, fontSize=7.sp, fontWeight=FontWeight.Black, letterSpacing=.6.sp) }
+                        }
+                        Box(Modifier.weight(1f).clip(RoundedCornerShape(16.dp)).background(Color.White.copy(alpha=.035f)).border(1.dp, Hairline, RoundedCornerShape(16.dp)).padding(10.dp)) {
+                            Column { Text(if(use24Hour) "24H" else "12H", fontWeight=FontWeight.Black, fontSize=15.sp); Text("CLOCK", color=PinkSoft, fontSize=7.sp, fontWeight=FontWeight.Black, letterSpacing=.6.sp) }
+                        }
+                        Box(Modifier.weight(1f).clip(RoundedCornerShape(16.dp)).background(Color.White.copy(alpha=.035f)).border(1.dp, Hairline, RoundedCornerShape(16.dp)).padding(10.dp)) {
+                            Column { Text(channelConfig.size.toString(), fontWeight=FontWeight.Black, fontSize=15.sp); Text("CHANNELS", color=Mint, fontSize=7.sp, fontWeight=FontWeight.Black, letterSpacing=.6.sp) }
+                        }
                     }
                 }
             }
@@ -3066,7 +3147,7 @@ private fun SettingsView(
             SettingsCard("App updates", Icons.Rounded.Refresh, Mint) {
                 Text("Installed v${BuildConfig.VERSION_NAME}", fontWeight=FontWeight.Black, fontSize=15.sp)
                 Spacer(Modifier.height(4.dp))
-                Text("Checks the latest GitHub release and downloads the APK directly when a newer build exists.", color=TextSecondary, fontSize=10.sp, lineHeight=14.sp)
+                Text("New builds are pre-downloaded in the background. If an update has been published for 24 hours, the app requires that version before continuing.", color=TextSecondary, fontSize=10.sp, lineHeight=14.sp)
                 Spacer(Modifier.height(12.dp))
                 ManualUpdateControl()
             }
@@ -3110,7 +3191,7 @@ private fun SettingsCard(
 ) {
     Column(
         modifier=Modifier.fillMaxWidth().clip(RoundedCornerShape(26.dp))
-            .background(Brush.linearGradient(listOf(Color(0xFF101A2F),Color(0xFF08101F))))
+            .background(Brush.linearGradient(listOf(SurfaceHigh,SurfaceSoft)))
             .border(1.dp,Hairline,RoundedCornerShape(26.dp)).padding(16.dp)
     ) {
         Row(verticalAlignment=Alignment.CenterVertically) {
@@ -3146,7 +3227,7 @@ private fun ChannelScheduleSheet(
     Column(Modifier.fillMaxWidth().padding(horizontal=16.dp).padding(bottom=28.dp)) {
         Row(
             Modifier.fillMaxWidth().clip(RoundedCornerShape(26.dp))
-                .background(Brush.linearGradient(listOf(Color(0xFF121D34),Color(0xFF08101F))))
+                .background(Brush.linearGradient(listOf(SurfaceHigh,SurfaceSoft)))
                 .border(1.dp,Hairline,RoundedCornerShape(26.dp)).padding(14.dp),
             verticalAlignment=Alignment.CenterVertically
         ) {
@@ -3205,18 +3286,33 @@ private fun ProgrammeSheetV2(
         verticalArrangement=Arrangement.spacedBy(14.dp)
     ) {
         item {
-            Box(Modifier.fillMaxWidth().height(220.dp).background(Color(0xFF07101B))) {
-                val image=programme.icon ?: channel?.icon
-                if(!image.isNullOrBlank()) AsyncImage(image,programme.title,Modifier.fillMaxSize(),contentScale=ContentScale.Crop)
-                else Box(Modifier.fillMaxSize().background(Brush.linearGradient(listOf(Panel3,Panel))),contentAlignment=Alignment.Center){ LogoFallback(channel?.name ?: programme.channelId) }
-                Box(Modifier.fillMaxSize().background(Brush.verticalGradient(listOf(Color(0x22000000),Color.Transparent,Color(0xE6050914)))))
+            Box(Modifier.fillMaxWidth().height(232.dp).background(SurfaceSoft)) {
+                val hasArtwork = !programme.icon.isNullOrBlank()
+                val image = programme.icon ?: channel?.icon
+                if(!image.isNullOrBlank()) {
+                    if (hasArtwork) {
+                        AsyncImage(image, programme.title, Modifier.fillMaxSize(), contentScale=ContentScale.Crop)
+                    } else {
+                        Box(Modifier.fillMaxSize().background(Brush.linearGradient(listOf(Panel3, Panel))))
+                        AsyncImage(image, channel?.name ?: programme.channelId, Modifier.align(Alignment.Center).size(120.dp).padding(12.dp), contentScale=ContentScale.Fit)
+                    }
+                } else {
+                    Box(Modifier.fillMaxSize().background(Brush.linearGradient(listOf(Panel3,Panel))),contentAlignment=Alignment.Center){ LogoFallback(channel?.name ?: programme.channelId) }
+                }
+                Box(Modifier.fillMaxSize().background(Brush.verticalGradient(listOf(Color(0x18000000),Color.Transparent,Color(0xEC050912)))))
                 Row(Modifier.fillMaxWidth().padding(14.dp),verticalAlignment=Alignment.CenterVertically) {
-                    if(live) Surface(color=Pink,shape=RoundedCornerShape(100.dp)) { Text("LIVE",color=Color(0xFF21000F),fontWeight=FontWeight.Black,fontSize=8.sp,letterSpacing=.8.sp,modifier=Modifier.padding(horizontal=9.dp,vertical=5.dp)) }
+                    if(live) Surface(color=Pink,shape=RoundedCornerShape(100.dp)) {
+                        Row(Modifier.padding(horizontal=9.dp,vertical=5.dp), verticalAlignment=Alignment.CenterVertically) {
+                            Box(Modifier.size(5.dp).background(Color(0xFF25000F), CircleShape)); Spacer(Modifier.width(5.dp))
+                            Text("LIVE",color=Color(0xFF25000F),fontWeight=FontWeight.Black,fontSize=8.sp,letterSpacing=.8.sp)
+                        }
+                    }
                     Spacer(Modifier.weight(1f)); PremiumIconButton(Icons.Rounded.Close,"Close",onClick=onClose)
                 }
-                Column(Modifier.align(Alignment.BottomStart).padding(16.dp)) {
-                    Text(channel?.name ?: programme.channelId,color=PinkSoft,fontSize=10.sp,fontWeight=FontWeight.Black,letterSpacing=.4.sp)
-                    Text(programme.title,color=TextPrimary,fontSize=26.sp,lineHeight=29.sp,fontWeight=FontWeight.Black,letterSpacing=(-.7).sp,maxLines=2,overflow=TextOverflow.Ellipsis)
+                Column(Modifier.align(Alignment.BottomStart).padding(17.dp)) {
+                    Text(channel?.name ?: programme.channelId,color=PinkSoft,fontSize=9.sp,fontWeight=FontWeight.Black,letterSpacing=.5.sp)
+                    Spacer(Modifier.height(3.dp))
+                    Text(programme.title,color=TextPrimary,fontSize=25.sp,lineHeight=28.sp,fontWeight=FontWeight.Black,letterSpacing=(-.7).sp,maxLines=2,overflow=TextOverflow.Ellipsis)
                 }
             }
         }
@@ -3299,49 +3395,59 @@ private fun formatTime(time: LocalTime, use24Hour: Boolean): String =
 
 @Composable
 private fun LoadingView() {
-    Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Surface(
-                modifier = Modifier.size(96.dp),
-                shape = RoundedCornerShape(28.dp),
-                color = Panel2,
-                tonalElevation = 6.dp
-            ) {
-                AsyncImage(
-                    model = "android.resource://com.matty77o.umaytvguide/drawable/umay_logo",
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop
-                )
+    Box(Modifier.fillMaxSize().background(Brush.verticalGradient(listOf(Midnight, Canvas))), contentAlignment = Alignment.Center) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(14.dp)) {
+            Box(Modifier.size(64.dp).clip(RoundedCornerShape(22.dp)).background(Brush.linearGradient(listOf(Pink.copy(alpha=.18f), Lavender.copy(alpha=.12f)))).border(1.dp, Hairline, RoundedCornerShape(22.dp)), contentAlignment = Alignment.Center) {
+                Image(painterResource(R.drawable.umay_logo), "Umay TV", Modifier.size(42.dp), contentScale = ContentScale.Fit)
             }
-            Spacer(Modifier.height(22.dp))
-            Text("Loading Umay's guide…", color = TextPrimary, fontWeight = FontWeight.SemiBold)
-            Spacer(Modifier.height(14.dp))
-            LinearProgressIndicator(
-                modifier = Modifier.width(190.dp).clip(RoundedCornerShape(99.dp)),
-                color = Pink,
-                trackColor = Panel2
-            )
+            CircularProgressIndicator(color = Pink, strokeWidth = 3.dp, modifier = Modifier.size(30.dp))
+            Text("Refreshing your guide", color = TextPrimary, fontWeight = FontWeight.Black, fontSize = 15.sp)
+            Text("Live listings, favourites and schedules are being prepared.", color = TextSecondary, fontSize = 10.sp)
         }
     }
 }
 
 @Composable
 private fun ErrorView(message: String, retry: () -> Unit) {
-    Box(Modifier.fillMaxSize().padding(24.dp), contentAlignment = Alignment.Center) {
-        Card(shape = RoundedCornerShape(22.dp), colors = CardDefaults.cardColors(containerColor = Panel2)) {
-            Column(
-                Modifier.padding(22.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
+    Box(
+        Modifier.fillMaxSize().background(Brush.verticalGradient(listOf(Midnight, Canvas))).padding(24.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(
+            Modifier.fillMaxWidth().clip(RoundedCornerShape(30.dp))
+                .background(Brush.linearGradient(listOf(SurfaceHigh, SurfaceSoft)))
+                .border(1.dp, StrongHairline, RoundedCornerShape(30.dp))
+                .padding(horizontal = 22.dp, vertical = 26.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Box(
+                Modifier.size(56.dp).clip(RoundedCornerShape(20.dp))
+                    .background(Pink.copy(alpha = .12f))
+                    .border(1.dp, Pink.copy(alpha = .16f), RoundedCornerShape(20.dp)),
+                contentAlignment = Alignment.Center
             ) {
-                Text("Couldn't load the guide", fontWeight = FontWeight.Bold, fontSize = 20.sp)
-                Spacer(Modifier.height(8.dp))
-                Text(message, color = TextSecondary)
-                Spacer(Modifier.height(16.dp))
-                Button(onClick = retry) {
-                    Icon(Icons.Rounded.Refresh, null)
-                    Spacer(Modifier.width(8.dp))
-                    Text("Try again")
-                }
+                Icon(Icons.Rounded.WifiOff, null, tint = PinkSoft, modifier = Modifier.size(28.dp))
+            }
+            Spacer(Modifier.height(16.dp))
+            Text("Guide unavailable", fontWeight = FontWeight.Black, fontSize = 22.sp, letterSpacing = (-.5).sp)
+            Spacer(Modifier.height(6.dp))
+            Text(
+                message,
+                color = TextSecondary,
+                fontSize = 11.sp,
+                lineHeight = 16.sp,
+                textAlign = TextAlign.Center
+            )
+            Spacer(Modifier.height(18.dp))
+            Button(
+                onClick = retry,
+                shape = RoundedCornerShape(18.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = Pink),
+                contentPadding = PaddingValues(horizontal = 20.dp, vertical = 12.dp)
+            ) {
+                Icon(Icons.Rounded.Refresh, null, modifier = Modifier.size(18.dp))
+                Spacer(Modifier.width(8.dp))
+                Text("Try again", fontWeight = FontWeight.Black)
             }
         }
     }
@@ -3463,8 +3569,8 @@ private fun FilterPicker(filter: GuideFilter, onFilter: (GuideFilter) -> Unit) {
     Spacer(Modifier.height(4.dp))
 }
 
-private val ChannelWidth = 132.dp
-private val HalfHourWidth = 132.dp
+private val ChannelWidth = 122.dp
+private val HalfHourWidth = 124.dp
 private const val WindowHours = 6L
 
 @Composable
@@ -3563,42 +3669,18 @@ private fun TimelineHeader(
     windowHours: Long,
 ) {
     Row(
-        Modifier
-            .fillMaxWidth()
-            .height(44.dp)
-            .background(Color(0xFF07101E))
+        Modifier.fillMaxWidth().height(42.dp).background(SurfaceSoft).border(width = 1.dp, color = Hairline)
     ) {
-        Box(
-            Modifier
-                .width(ChannelWidth)
-                .fillMaxHeight()
-                .padding(start = 14.dp),
-            contentAlignment = Alignment.CenterStart
-        ) {
-            Text("Channels", color = TextSecondary, fontSize = 12.sp, fontWeight = FontWeight.Medium)
+        Box(Modifier.width(ChannelWidth).fillMaxHeight().padding(start = 12.dp), contentAlignment = Alignment.CenterStart) {
+            Text("Channels", color = TextSecondary, fontSize = 10.sp, fontWeight = FontWeight.Bold)
         }
-
-        Box(
-            Modifier
-                .weight(1f)
-                .fillMaxHeight()
-                .horizontalScroll(scroll)
-        ) {
+        Box(Modifier.weight(1f).fillMaxHeight().horizontalScroll(scroll)) {
             Row(Modifier.width(totalWidth).fillMaxHeight()) {
                 repeat((windowHours * 2).toInt()) { index ->
                     val time = guideStart.plusMinutes(index * 30L)
-                    Box(
-                        Modifier
-                            .width(halfHourWidth)
-                            .fillMaxHeight(),
-                        contentAlignment = Alignment.CenterStart
-                    ) {
-                        Text(
-                            time.format(DateTimeFormatter.ofPattern("HH:mm")),
-                            color = TextSecondary,
-                            fontSize = 12.sp,
-                            modifier = Modifier.padding(start = 8.dp)
-                        )
+                    Box(Modifier.width(halfHourWidth).fillMaxHeight(), contentAlignment = Alignment.CenterStart) {
+                        Text(time.format(DateTimeFormatter.ofPattern("HH:mm")), color = TextSecondary, fontSize = 10.sp,
+                            fontWeight = if (index % 2 == 0) FontWeight.Bold else FontWeight.Medium, modifier = Modifier.padding(start = 8.dp))
                     }
                 }
             }
@@ -3619,42 +3701,18 @@ private fun GuideRow(
     favouriteShows: Set<String>,
     onProgramme: (Programme) -> Unit,
 ) {
+    val landscape = LocalConfiguration.current.screenWidthDp > LocalConfiguration.current.screenHeightDp
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(
-                if (LocalConfiguration.current.screenWidthDp > LocalConfiguration.current.screenHeightDp) 72.dp else 84.dp
-            )
-            .background(Color(0xFF050A14))
+        modifier = Modifier.fillMaxWidth().height(if (landscape) 74.dp else 86.dp).background(Canvas)
     ) {
         ChannelCell(channel)
-
-        Box(
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxHeight()
-                .horizontalScroll(scroll)
-        ) {
-            Box(
-                Modifier
-                    .width(totalWidth)
-                    .fillMaxHeight()
-            ) {
+        Box(modifier = Modifier.weight(1f).fillMaxHeight().horizontalScroll(scroll)) {
+            Box(Modifier.width(totalWidth).fillMaxHeight()) {
                 if (programmes.isEmpty()) {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(start = 14.dp),
-                        contentAlignment = Alignment.CenterStart
-                    ) {
-                        Text(
-                            "No listings available yet",
-                            color = TextSecondary,
-                            fontSize = 12.sp
-                        )
+                    Box(Modifier.fillMaxSize().padding(start = 12.dp), contentAlignment = Alignment.CenterStart) {
+                        Text("No listings yet", color = TextTertiary, fontSize = 10.sp)
                     }
                 }
-
                 programmes.forEach { p ->
                     val visibleStart = if (p.start.isBefore(guideStart)) guideStart else p.start
                     val visibleStop = if (p.stop.isAfter(guideEnd)) guideEnd else p.stop
@@ -3662,32 +3720,19 @@ private fun GuideRow(
                     val durationMinutes = Duration.between(visibleStart, visibleStop).toMinutes().coerceAtLeast(5)
                     val x = (offsetMinutes * pixelsPerMinute).dp
                     val width = max(56f, durationMinutes * pixelsPerMinute).dp
-
                     ProgrammeCard(
                         programme = p,
                         isFavourite = favouriteShows.any { sameShowTitle(it, p.title) },
                         isKidsChannel = channel.group.equals("Kids", ignoreCase = true),
-                        modifier = Modifier
-                            .offset(x = x, y = 7.dp)
-                            .width(width - 3.dp)
-                            .height(
-                                if (LocalConfiguration.current.screenWidthDp > LocalConfiguration.current.screenHeightDp) 60.dp else 70.dp
-                            ),
+                        modifier = Modifier.offset(x = x, y = 7.dp).width(width - 3.dp).height(if (landscape) 60.dp else 72.dp),
                         onClick = { onProgramme(p) }
                     )
                 }
-
-                if (now.toLocalDate() == guideStart.toLocalDate() &&
-                    !now.isBefore(guideStart) && now.isBefore(guideEnd)
-                ) {
+                if (now.toLocalDate() == guideStart.toLocalDate() && !now.isBefore(guideStart) && now.isBefore(guideEnd)) {
                     val nowMinutes = Duration.between(guideStart, now).toMinutes()
-                    Box(
-                        Modifier
-                            .offset(x = (nowMinutes * pixelsPerMinute).dp)
-                            .width(3.dp)
-                            .fillMaxHeight()
-                            .background(PinkSoft)
-                    )
+                    val x = (nowMinutes * pixelsPerMinute).dp
+                    Box(Modifier.offset(x = x).width(2.dp).fillMaxHeight().background(PinkSoft))
+                    Box(Modifier.offset(x = x - 4.dp, y = 2.dp).size(10.dp).background(PinkSoft, CircleShape).border(2.dp, Canvas, CircleShape))
                 }
             }
         }
@@ -3696,75 +3741,29 @@ private fun GuideRow(
 
 @Composable
 private fun ChannelCell(channel: TvChannel) {
-
     Row(
-        modifier = Modifier
-            .width(ChannelWidth)
-            .fillMaxHeight()
-            .padding(horizontal = 8.dp, vertical = 10.dp),
+        modifier = Modifier.width(ChannelWidth).fillMaxHeight().background(SurfaceSoft.copy(alpha=.88f)).padding(horizontal = 8.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-
         Box(
-            modifier = Modifier
-                .size(46.dp)
-                .clip(RoundedCornerShape(13.dp))
-                .background(Panel2.copy(alpha = .58f))
-                .border(
-                    1.dp,
-                    Hairline,
-                    RoundedCornerShape(13.dp)
-                ),
+            modifier = Modifier.size(42.dp).clip(RoundedCornerShape(13.dp)).background(Panel2.copy(alpha = .92f))
+                .border(1.dp, Hairline, RoundedCornerShape(13.dp)),
             contentAlignment = Alignment.Center
         ) {
-
             if (!channel.icon.isNullOrBlank()) {
-
-                SubcomposeAsyncImage(
-                    model = channel.icon,
-                    contentDescription = channel.name,
-                    contentScale = ContentScale.Fit,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(5.dp)
-                ) {
-
+                SubcomposeAsyncImage(model = channel.icon, contentDescription = channel.name, contentScale = ContentScale.Fit,
+                    modifier = Modifier.fillMaxSize().padding(5.dp)) {
                     when (painter.state) {
-
-                        is AsyncImagePainter.State.Success -> {
-                            SubcomposeAsyncImageContent()
-                        }
-
-                        is AsyncImagePainter.State.Loading -> {
-                            CircularProgressIndicator(
-                                modifier = Modifier.size(18.dp),
-                                strokeWidth = 2.dp,
-                                color = Pink
-                            )
-                        }
-
-                        else -> {
-                            LogoFallback(channel.name)
-                        }
+                        is AsyncImagePainter.State.Success -> SubcomposeAsyncImageContent()
+                        is AsyncImagePainter.State.Loading -> CircularProgressIndicator(modifier = Modifier.size(16.dp), strokeWidth = 2.dp, color = Pink)
+                        else -> LogoFallback(channel.name)
                     }
                 }
-
-            } else {
-                LogoFallback(channel.name)
-            }
+            } else LogoFallback(channel.name)
         }
-
-        Spacer(Modifier.width(10.dp))
-
-        Text(
-            text = channel.name,
-            color = TextPrimary,
-            fontSize = 12.sp,
-            lineHeight = 14.sp,
-            fontWeight = FontWeight.SemiBold,
-            maxLines = 2,
-            overflow = TextOverflow.Ellipsis
-        )
+        Spacer(Modifier.width(8.dp))
+        Text(channel.name, color = TextPrimary, fontSize = 10.sp, lineHeight = 12.sp, fontWeight = FontWeight.Bold,
+            maxLines = 2, overflow = TextOverflow.Ellipsis)
     }
 }
 
@@ -4166,63 +4165,35 @@ private fun ProgrammeCard(
 ) {
     val now = ZonedDateTime.now()
     val live = !now.isBefore(programme.start) && now.isBefore(programme.stop)
-    val cardBrush = if (live) {
-        Brush.linearGradient(listOf(Color(0xFF5A1C4A), Color(0xFF3B244F), Color(0xFF151B31)))
-    } else {
-        Brush.linearGradient(listOf(Color(0xFF142039), Color(0xFF0E192C)))
-    }
+    val cardBrush = if (live) Brush.linearGradient(listOf(Pink.copy(alpha=.26f), Lavender.copy(alpha=.17f), SurfaceHigh))
+        else Brush.linearGradient(listOf(Panel3.copy(alpha=.92f), SurfaceHigh))
 
-    Box(
-        modifier = modifier
-            .clip(RoundedCornerShape(14.dp))
-            .background(cardBrush)
-            .border(
-                width = 1.dp,
-                color = if (live) Pink.copy(alpha = .42f) else Color(0xFF2B3650),
-                shape = RoundedCornerShape(14.dp)
-            )
-            .clickable(onClick = onClick)
-            .padding(horizontal = 10.dp, vertical = 8.dp)
+    BoxWithConstraints(
+        modifier = modifier.clip(RoundedCornerShape(14.dp)).background(cardBrush)
+            .border(1.dp, if (live) Pink.copy(alpha = .38f) else StrongHairline, RoundedCornerShape(14.dp))
+            .clickable(onClick = onClick).padding(horizontal = 9.dp, vertical = 7.dp)
     ) {
+        val roomy = maxWidth >= 96.dp
         Column {
-            Text(
-                programme.title,
-                color = TextPrimary,
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 12.sp,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis,
-                lineHeight = 14.sp
-            )
+            Row(verticalAlignment = Alignment.Top) {
+                Text(programme.title, color = TextPrimary, fontWeight = FontWeight.Bold, fontSize = if (roomy) 11.sp else 10.sp,
+                    maxLines = if (roomy) 2 else 1, overflow = TextOverflow.Ellipsis, lineHeight = 13.sp, modifier = Modifier.weight(1f))
+                if (isFavourite) { Spacer(Modifier.width(3.dp)); Text("♥", color = PinkSoft, fontSize = 10.sp, fontWeight = FontWeight.Black) }
+            }
             Spacer(Modifier.weight(1f))
             Row(verticalAlignment = Alignment.CenterVertically) {
                 if (live) {
-                    Text(
-                        "NOW",
-                        color = PinkSoft,
-                        fontSize = 9.sp,
-                        fontWeight = FontWeight.Black
-                    )
-                    Spacer(Modifier.width(5.dp))
+                    Surface(color = Pink.copy(alpha=.16f), shape = RoundedCornerShape(100.dp)) {
+                        Text("NOW", color = PinkSoft, fontSize = 7.sp, fontWeight = FontWeight.Black, modifier = Modifier.padding(horizontal=5.dp, vertical=2.dp))
+                    }
+                    Spacer(Modifier.width(4.dp))
                 }
-                Text(
-                    programme.start.format(DateTimeFormatter.ofPattern("HH:mm")),
-                    color = TextSecondary,
-                    fontSize = 10.sp
-                )
-                Spacer(Modifier.width(5.dp))
-                AgeGuidanceBadge(programmeAgeGuidance(programme, isKidsChannel), compact = true)
+                Text(programme.start.format(DateTimeFormatter.ofPattern("HH:mm")), color = TextSecondary, fontSize = 8.sp)
+                if (roomy) {
+                    Spacer(Modifier.width(4.dp))
+                    AgeGuidanceBadge(programmeAgeGuidance(programme, isKidsChannel), compact = true)
+                }
             }
-        }
-
-        if (isFavourite) {
-            Text(
-                "♥",
-                color = PinkSoft,
-                fontSize = 11.sp,
-                fontWeight = FontWeight.Black,
-                modifier = Modifier.align(Alignment.TopEnd)
-            )
         }
     }
 }
