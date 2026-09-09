@@ -67,7 +67,9 @@ class ScheduleFollowUpReceiver : BroadcastReceiver() {
         if (Build.VERSION.SDK_INT >= 33 && ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) return
         when (intent.action) {
             ACTION_PROMPT -> showPrompt(context, intent)
-            ACTION_YES, ACTION_NO -> handleAnswer(context, intent, intent.action == ACTION_YES)
+            ACTION_YES -> handleAnswer(context, intent, FollowUpAnswer.CHANGED)
+            ACTION_NO -> handleAnswer(context, intent, FollowUpAnswer.STILL_WATCHING)
+            ACTION_TV_OFF -> handleAnswer(context, intent, FollowUpAnswer.TV_OFF)
             ACTION_RECONCILE -> reconcilePrompt(context, intent)
         }
     }
@@ -89,16 +91,17 @@ class ScheduleFollowUpReceiver : BroadcastReceiver() {
             return PendingIntent.getBroadcast(context, (promptId + action).hashCode(), i, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
         }
 
-        val body = if (channel.isBlank()) "Did you change what is playing?" else "$title has finished on $channel. Did you change channel?"
+        val body = if (channel.isBlank()) "What is the TV doing now?" else "$title has finished on $channel. Are you still watching $channel, did you change channel, or is the TV off?"
         val notification = Notification.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_notification)
-            .setContentTitle("Have you changed channel?")
+            .setContentTitle("What happened after the programme?")
             .setContentText(body)
             .setStyle(Notification.BigTextStyle().bigText(body))
             .setCategory(Notification.CATEGORY_REMINDER)
             .setOngoing(false)
-            .addAction(Notification.Action.Builder(null, "Yes", actionIntent(ACTION_YES)).build())
-            .addAction(Notification.Action.Builder(null, "No", actionIntent(ACTION_NO)).build())
+            .addAction(Notification.Action.Builder(null, "Changed channel", actionIntent(ACTION_YES)).build())
+            .addAction(Notification.Action.Builder(null, "Still watching", actionIntent(ACTION_NO)).build())
+            .addAction(Notification.Action.Builder(null, "TV is off", actionIntent(ACTION_TV_OFF)).build())
             .build()
         manager.notify(promptId.hashCode(), notification)
         scheduleReconcile(context, source, 1)
@@ -141,7 +144,7 @@ class ScheduleFollowUpReceiver : BroadcastReceiver() {
                     return@thread
                 }
                 val status = state.optString("status")
-                if (status == "yes" || status == "no") {
+                if (status == "yes" || status == "no" || status == "off") {
                     val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
                     manager.cancel(promptId.hashCode())
                     val by = state.optString("by", "the other phone")
@@ -157,7 +160,9 @@ class ScheduleFollowUpReceiver : BroadcastReceiver() {
         }
     }
 
-    private fun handleAnswer(context: Context, source: Intent, yes: Boolean) {
+    private enum class FollowUpAnswer { CHANGED, STILL_WATCHING, TV_OFF }
+
+    private fun handleAnswer(context: Context, source: Intent, answer: FollowUpAnswer) {
         val pendingResult = goAsync()
         thread(name = "UmayScheduleFollowUp") {
             try {
@@ -167,7 +172,12 @@ class ScheduleFollowUpReceiver : BroadcastReceiver() {
                 val title = source.getStringExtra(EXTRA_TITLE).orEmpty()
                 val channel = source.getStringExtra(EXTRA_CHANNEL).orEmpty()
                 val result = if (household.length >= 6) runCatching {
-                    sendFollowUpState(household, promptId, if (yes) "yes" else "no", member, title, channel)
+                    val status = when (answer) {
+                        FollowUpAnswer.CHANGED -> "yes"
+                        FollowUpAnswer.STILL_WATCHING -> "no"
+                        FollowUpAnswer.TV_OFF -> "off"
+                    }
+                    sendFollowUpState(household, promptId, status, member, title, channel)
                 }.getOrNull() else null
 
                 val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -179,7 +189,7 @@ class ScheduleFollowUpReceiver : BroadcastReceiver() {
                     return@thread
                 }
 
-                if (yes) {
+                if (answer == FollowUpAnswer.CHANGED) {
                     context.getSharedPreferences("umay_tv_guide", Context.MODE_PRIVATE).edit()
                         .putBoolean("open_schedule_once", true)
                         .putBoolean("schedule_choose_now", true).apply()
@@ -201,7 +211,7 @@ class ScheduleFollowUpReceiver : BroadcastReceiver() {
                             .setAutoCancel(true)
                             .build()
                     )
-                } else {
+                } else if (answer == FollowUpAnswer.STILL_WATCHING) {
                     val nextTitle = source.getStringExtra(EXTRA_NEXT_TITLE).orEmpty()
                     if (nextTitle.isNotBlank()) {
                         appendNextProgramme(
@@ -215,8 +225,10 @@ class ScheduleFollowUpReceiver : BroadcastReceiver() {
                         )
                         showInfo(context, "Schedule updated", "$nextTitle was added next on $channel.")
                     } else {
-                        showInfo(context, "Kept the same channel", "No next programme data was available, so nothing extra was added.")
+                        showInfo(context, "Still watching $channel", "No next programme data was available, so nothing extra was added.")
                     }
+                } else {
+                    showInfo(context, "TV marked as off", "Nothing else was added to the schedule after $title.")
                 }
             } finally { pendingResult.finish() }
         }
@@ -281,6 +293,7 @@ class ScheduleFollowUpReceiver : BroadcastReceiver() {
         const val ACTION_PROMPT = "com.matty77o.umaytvguide.SCHEDULE_PROMPT"
         const val ACTION_YES = "com.matty77o.umaytvguide.SCHEDULE_YES"
         const val ACTION_NO = "com.matty77o.umaytvguide.SCHEDULE_NO"
+        const val ACTION_TV_OFF = "com.matty77o.umaytvguide.SCHEDULE_TV_OFF"
         const val ACTION_RECONCILE = "com.matty77o.umaytvguide.SCHEDULE_RECONCILE"
         const val EXTRA_HOUSEHOLD = "household"
         const val EXTRA_MEMBER = "member"

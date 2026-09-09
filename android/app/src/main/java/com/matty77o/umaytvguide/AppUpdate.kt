@@ -30,6 +30,7 @@ import org.json.JSONObject
 import java.io.File
 import java.net.HttpURLConnection
 import java.net.URL
+import java.time.Instant
 
 private const val UPDATE_MANIFEST_URL =
     "https://github.com/Matty77o/tv-iptv/releases/latest/download/app-update.json"
@@ -65,7 +66,10 @@ private suspend fun downloadLatestReleaseIfNewer(context: Context): Pair<AppUpda
         }
         if (apkUrl.isBlank()) return@runCatching null
 
-        val info = AppUpdateInfo(Int.MAX_VALUE, "latest", apkUrl, "A newer Umay TV Guide build is ready.")
+        val publishedAtMillis = runCatching {
+            Instant.parse(release.optString("published_at")).toEpochMilli()
+        }.getOrDefault(0L)
+        val info = AppUpdateInfo(Int.MAX_VALUE, "latest", apkUrl, "A newer Umay TV Guide build is ready.", publishedAtMillis)
         val apk = downloadUpdate(context, info)
         val archiveInfo = if (Build.VERSION.SDK_INT >= 33) {
             context.packageManager.getPackageArchiveInfo(apk.absolutePath, PackageManager.PackageInfoFlags.of(0))
@@ -82,7 +86,7 @@ private suspend fun downloadLatestReleaseIfNewer(context: Context): Pair<AppUpda
             return@runCatching null
         }
         val remoteName = archiveInfo.versionName ?: remoteCode.toString()
-        AppUpdateInfo(remoteCode.toInt(), remoteName, apkUrl, "Umay TV Guide $remoteName is ready.") to apk
+        AppUpdateInfo(remoteCode.toInt(), remoteName, apkUrl, "Umay TV Guide $remoteName is ready.", publishedAtMillis) to apk
     }.getOrNull()
 }
 
@@ -91,7 +95,26 @@ data class AppUpdateInfo(
     val versionName: String,
     val apkUrl: String,
     val notes: String,
+    val publishedAtMillis: Long = 0L,
 )
+
+private const val MANDATORY_UPDATE_AFTER_MS = 24L * 60L * 60L * 1000L
+
+private fun updateFirstSeenAt(context: Context, info: AppUpdateInfo): Long {
+    val prefs = context.getSharedPreferences("umay_tv_guide", Context.MODE_PRIVATE)
+    val key = "update_first_seen_${info.versionCode}"
+    val existing = prefs.getLong(key, 0L)
+    if (existing > 0L) return existing
+    val now = System.currentTimeMillis()
+    prefs.edit().putLong(key, now).apply()
+    return now
+}
+
+private fun isMandatoryUpdate(context: Context, info: AppUpdateInfo): Boolean {
+    val firstSeen = updateFirstSeenAt(context, info)
+    val base = if (info.publishedAtMillis > 0L) minOf(info.publishedAtMillis, firstSeen) else firstSeen
+    return System.currentTimeMillis() - base >= MANDATORY_UPDATE_AFTER_MS
+}
 
 suspend fun checkForAppUpdate(): AppUpdateInfo? = withContext(Dispatchers.IO) {
     runCatching {
@@ -117,6 +140,10 @@ suspend fun checkForAppUpdate(): AppUpdateInfo? = withContext(Dispatchers.IO) {
             versionName = o.optString("versionName", remoteCode.toString()),
             apkUrl = url,
             notes = o.optString("notes", "A newer Umay TV Guide build is available."),
+            publishedAtMillis = runCatching {
+                val raw = o.optString("publishedAt", o.optString("published_at", ""))
+                if (raw.isBlank()) 0L else Instant.parse(raw).toEpochMilli()
+            }.getOrDefault(0L),
         )
     }.getOrNull()
 }
@@ -306,6 +333,7 @@ fun AppUpdateGate(content: @Composable () -> Unit) {
     var checking by remember { mutableStateOf(false) }
     var downloading by remember { mutableStateOf(false) }
     var error by remember { mutableStateOf<String?>(null) }
+    var mandatory by remember { mutableStateOf(false) }
     var checkGeneration by remember { mutableIntStateOf(0) }
 
     fun triggerCheck() { checkGeneration++ }
@@ -323,8 +351,9 @@ fun AppUpdateGate(content: @Composable () -> Unit) {
         if (checking || downloading) return@LaunchedEffect
         checking = true
         val found = checkForAppUpdate()
-        if (found != null && found.versionCode != update?.versionCode) {
+        if (found != null && (found.versionCode != update?.versionCode || downloadedApk == null)) {
             update = found
+            mandatory = isMandatoryUpdate(context, found)
             error = null
             downloading = true
             runCatching { downloadUpdate(context, found) }
@@ -341,6 +370,7 @@ fun AppUpdateGate(content: @Composable () -> Unit) {
             val fallback = downloadLatestReleaseIfNewer(context)
             if (fallback != null) {
                 update = fallback.first
+                mandatory = isMandatoryUpdate(context, fallback.first)
                 downloadedApk = fallback.second
                 error = signatureMismatchMessage(context, fallback.second)
             }
@@ -355,11 +385,25 @@ fun AppUpdateGate(content: @Composable () -> Unit) {
     val info = update
     if (info != null && (downloadedApk != null || error != null)) {
         AlertDialog(
-            onDismissRequest = { update = null; downloadedApk = null; error = null },
-            title = { Text("Umay TV Guide ${info.versionName} is ready") },
+            onDismissRequest = {
+                if (!mandatory) {
+                    update = null
+                    downloadedApk = null
+                    error = null
+                }
+            },
+            title = {
+                Text(if (mandatory) "Update required" else "Umay TV Guide ${info.versionName} is ready")
+            },
             text = {
                 Column {
-                    Text(error ?: info.notes)
+                    if (mandatory) {
+                        Text(
+                            error ?: "A new update has been published and has been available for more than 24 hours. Please download and install Umay TV Guide ${info.versionName} to continue using the app."
+                        )
+                    } else {
+                        Text(error ?: info.notes)
+                    }
                     if (downloading) {
                         Spacer(Modifier.height(12.dp))
                         LinearProgressIndicator()
@@ -368,8 +412,13 @@ fun AppUpdateGate(content: @Composable () -> Unit) {
             },
             confirmButton = {
                 Button(
-                    enabled = downloadedApk != null && !downloading && error == null,
+                    enabled = !downloading && (downloadedApk != null || error != null),
                     onClick = {
+                        if (error != null && downloadedApk == null) {
+                            error = null
+                            triggerCheck()
+                            return@Button
+                        }
                         val apk = downloadedApk ?: return@Button
                         val mismatch = signatureMismatchMessage(context, apk)
                         if (mismatch != null) {
@@ -381,10 +430,20 @@ fun AppUpdateGate(content: @Composable () -> Unit) {
                             error = "Allow Umay TV Guide to install unknown apps, then return here and tap Install update again."
                         }
                     }
-                ) { Text(if (error == null) "Install update" else "Reinstall required") }
+                ) {
+                    Text(
+                        when {
+                            downloading -> "Downloading…"
+                            error != null && downloadedApk == null -> "Retry"
+                            else -> "Install update"
+                        }
+                    )
+                }
             },
             dismissButton = {
-                TextButton(onClick = { update = null; downloadedApk = null; error = null }) { Text("Later") }
+                if (!mandatory) {
+                    TextButton(onClick = { update = null; downloadedApk = null; error = null }) { Text("Later") }
+                }
             }
         )
     }
