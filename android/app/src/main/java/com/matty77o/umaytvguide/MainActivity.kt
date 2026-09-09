@@ -1685,13 +1685,12 @@ private suspend fun fetchCloudflareAdviserRecommendations(
         "HappyKids Junior",
         "Ketchup TV",
         "Kartoon Channel",
+        "Baby Einstein",
     )))
 
-    // Keep the AI request small and reliable: send only the EPG window that is
-    // immediately useful for the Kids lineup. Every Kids channel is considered,
-    // including a programme already in progress, from now through the next 3 hours.
+    // Keep Ask AI fast: send only programmes that are ON NOW on Kids channels.
+    // This gives the AI live programme-level context without sending the wider EPG.
     val now = ZonedDateTime.now()
-    val windowEnd = now.plusHours(3)
     val kidsChannelKeys = kidsChannels.flatMap { channel ->
         listOf(channelKey(channel.id), channelKey(channel.name))
     }.toSet()
@@ -1699,7 +1698,7 @@ private suspend fun fetchCloudflareAdviserRecommendations(
     guide.programmes.asSequence()
         .filter { programme ->
             channelKey(programme.channelId) in kidsChannelKeys &&
-                programme.start.isBefore(windowEnd) && programme.stop.isAfter(now)
+                !programme.start.isAfter(now) && programme.stop.isAfter(now)
         }
         .sortedWith(compareBy<Programme>({ channelKey(it.channelId) }, { it.start }))
         .forEach { programme ->
@@ -1708,13 +1707,14 @@ private suspend fun fetchCloudflareAdviserRecommendations(
                 put("title", programme.title)
                 put("description", programme.description.orEmpty().replace("\n", " ").replace("\r", " ").trim().take(220))
                 put("category", programme.category.orEmpty())
+                put("language", if (channelKey(programme.channelId) in setOf(channelKey("TRT Çocuk"), channelKey("Minika Çocuk"))) "Turkish" else "English")
                 put("start", programme.start.toLocalTime().toString().take(5))
                 put("stop", programme.stop.toLocalTime().toString().take(5))
             })
         }
     requestBody.put("epgDate", now.toLocalDate().toString())
     requestBody.put("epgWindowStart", now.toLocalTime().toString().take(5))
-    requestBody.put("epgWindowHours", 3)
+    requestBody.put("epgWindowHours", 0)
     requestBody.put("epgAvailable", programmes.length() > 0)
     requestBody.put("programmes", programmes)
 
@@ -1822,13 +1822,12 @@ private suspend fun fetchCloudflareAdviserAnswer(
         "HappyKids Junior",
         "Ketchup TV",
         "Kartoon Channel",
+        "Baby Einstein",
     )))
 
-    // Keep the AI request small and reliable: send only the EPG window that is
-    // immediately useful for the Kids lineup. Every Kids channel is considered,
-    // including a programme already in progress, from now through the next 3 hours.
+    // Keep Ask AI fast: send only programmes that are ON NOW on Kids channels.
+    // This gives the AI live programme-level context without sending the wider EPG.
     val now = ZonedDateTime.now()
-    val windowEnd = now.plusHours(3)
     val kidsChannelKeys = kidsChannels.flatMap { channel ->
         listOf(channelKey(channel.id), channelKey(channel.name))
     }.toSet()
@@ -1836,7 +1835,7 @@ private suspend fun fetchCloudflareAdviserAnswer(
     guide.programmes.asSequence()
         .filter { programme ->
             channelKey(programme.channelId) in kidsChannelKeys &&
-                programme.start.isBefore(windowEnd) && programme.stop.isAfter(now)
+                !programme.start.isAfter(now) && programme.stop.isAfter(now)
         }
         .sortedWith(compareBy<Programme>({ channelKey(it.channelId) }, { it.start }))
         .forEach { programme ->
@@ -1845,13 +1844,14 @@ private suspend fun fetchCloudflareAdviserAnswer(
                 put("title", programme.title)
                 put("description", programme.description.orEmpty().replace("\n", " ").replace("\r", " ").trim().take(220))
                 put("category", programme.category.orEmpty())
+                put("language", if (channelKey(programme.channelId) in setOf(channelKey("TRT Çocuk"), channelKey("Minika Çocuk"))) "Turkish" else "English")
                 put("start", programme.start.toLocalTime().toString().take(5))
                 put("stop", programme.stop.toLocalTime().toString().take(5))
             })
         }
     requestBody.put("epgDate", now.toLocalDate().toString())
     requestBody.put("epgWindowStart", now.toLocalTime().toString().take(5))
-    requestBody.put("epgWindowHours", 3)
+    requestBody.put("epgWindowHours", 0)
     requestBody.put("epgAvailable", programmes.length() > 0)
     requestBody.put("programmes", programmes)
 
@@ -1997,6 +1997,91 @@ private fun AdviserAddResult(recommendation: AdviserRecommendation) {
     }
 }
 
+private data class RecommendedTvSlot(
+    val partOfDay: String,
+    val language: String,
+    val channel: String,
+    val note: String,
+)
+
+private fun recommendedTvSchedule(ageMonths: Int, channels: List<TvChannel>): List<RecommendedTvSlot> {
+    val kids = channels.filter { it.group.equals("Kids", ignoreCase = true) }
+    fun find(vararg names: String): String? = names.firstNotNullOfOrNull { wanted ->
+        kids.firstOrNull { channelKey(it.id) == channelKey(wanted) || channelKey(it.name) == channelKey(wanted) }?.name
+    }
+
+    val englishPrimary = if (ageMonths < 18) {
+        listOfNotNull(find("BabyFirst"), find("Duck TV"), find("CBeebies"), find("Kidoodle TV"))
+    } else {
+        listOfNotNull(find("CBeebies"), find("Kidoodle TV"), find("PBS KIDS"), find("Moonbug Kids"), find("Duck TV"), find("BabyFirst"))
+    }.distinct()
+    val turkishPrimary = listOfNotNull(find("TRT Çocuk"), find("Minika Çocuk")).distinct()
+
+    if (englishPrimary.isEmpty() && turkishPrimary.isEmpty()) return emptyList()
+    fun english(index: Int) = englishPrimary.getOrNull(index % maxOf(englishPrimary.size, 1)) ?: turkishPrimary.first()
+    fun turkish(index: Int) = turkishPrimary.getOrNull(index % maxOf(turkishPrimary.size, 1)) ?: englishPrimary.first()
+
+    val ageNote = when {
+        ageMonths < 12 -> "Keep it calm and choose a simple, age-suitable programme."
+        ageMonths < 24 -> "Prefer simple songs, words, repetition and easy-to-follow programmes."
+        ageMonths < 36 -> "Good for simple vocabulary, songs, stories and repetition."
+        else -> "Choose programmes with clear speech, stories and age-appropriate learning."
+    }
+
+    return listOf(
+        RecommendedTvSlot("Morning", "English", english(0), ageNote),
+        RecommendedTvSlot("Late morning / lunch", "Türkçe", turkish(0), ageNote),
+        RecommendedTvSlot("Afternoon", "English", english(1), ageNote),
+        RecommendedTvSlot("Early evening", "Türkçe", turkish(1), ageNote),
+    )
+}
+
+@Composable
+private fun RecommendedTvScheduleCard(ageMonths: Int, channels: List<TvChannel>) {
+    val schedule = remember(ageMonths, channels) { recommendedTvSchedule(ageMonths, channels) }
+    if (schedule.isEmpty()) return
+
+    Card(shape = RoundedCornerShape(20.dp), colors = CardDefaults.cardColors(containerColor = Panel2)) {
+        Column(Modifier.fillMaxWidth().padding(16.dp)) {
+            Text("Recommended TV Schedule", color = PinkSoft, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+            Text(
+                "Age-based English + Türkçe rotation • choose an age-suitable programme on the suggested channel",
+                color = TextSecondary,
+                fontSize = 11.sp,
+                lineHeight = 15.sp
+            )
+            Spacer(Modifier.height(12.dp))
+            schedule.forEachIndexed { index, slot ->
+                Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.Top) {
+                    Surface(shape = RoundedCornerShape(10.dp), color = Pink.copy(alpha = .11f)) {
+                        Text(
+                            if (slot.language == "Türkçe") "TR" else "EN",
+                            color = PinkSoft,
+                            fontWeight = FontWeight.Black,
+                            fontSize = 10.sp,
+                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 6.dp)
+                        )
+                    }
+                    Spacer(Modifier.width(10.dp))
+                    Column(Modifier.weight(1f)) {
+                        Text("${slot.partOfDay} • ${slot.language}", color = TextSecondary, fontSize = 10.sp, fontWeight = FontWeight.SemiBold)
+                        Text(slot.channel, color = TextPrimary, fontSize = 14.sp, fontWeight = FontWeight.Bold)
+                        Text(slot.note, color = TextSecondary, fontSize = 10.sp, lineHeight = 14.sp)
+                    }
+                }
+                if (index != schedule.lastIndex) Spacer(Modifier.height(11.dp))
+            }
+            Spacer(Modifier.height(10.dp))
+            Text(
+                "The aim is regular exposure to both languages, not equal screen time. Talking, singing and reading together in English and Turkish still matter more than the TV schedule.",
+                color = TextSecondary,
+                fontSize = 10.sp,
+                lineHeight = 14.sp
+            )
+        }
+    }
+}
+
 @Composable
 private fun ChannelAdviserView(
     guide: GuideData,
@@ -2025,13 +2110,12 @@ private fun ChannelAdviserView(
     val additions = recommendations.filter { it.kind == "add" }
     val kidsEpgAvailable = remember(guide, channels) {
         val now = ZonedDateTime.now()
-        val windowEnd = now.plusHours(3)
         val kidsChannelKeys = channels.filter { it.group.equals("Kids", ignoreCase = true) }
             .flatMap { listOf(channelKey(it.id), channelKey(it.name)) }
             .toSet()
         guide.programmes.any { programme ->
             channelKey(programme.channelId) in kidsChannelKeys &&
-                programme.start.isBefore(windowEnd) && programme.stop.isAfter(now)
+                !programme.start.isAfter(now) && programme.stop.isAfter(now)
         }
     }
 
@@ -2151,6 +2235,10 @@ private fun ChannelAdviserView(
                     }
                 }
             }
+        }
+
+        item {
+            RecommendedTvScheduleCard(ageMonths, channels)
         }
 
         if (summaryRecommendation != null) {
@@ -2351,7 +2439,7 @@ private fun ChannelAdviserView(
 
         item {
             Text(
-                "AI uses the selected age, channel names and up to 3 hours of Kids EPG when available. If EPG is unavailable, AI still works from the age and channel lineup. No child's name, date of birth or profile is sent. Suggestions never edit channels.json automatically.",
+                "AI uses the selected age, channel names and the programmes currently on across Kids channels when EPG is available. If EPG is unavailable, AI still works from the age and channel lineup. No child's name, date of birth or profile is sent. Suggestions never edit channels.json automatically.",
                 color = TextSecondary,
                 fontSize = 10.sp,
                 lineHeight = 15.sp,
