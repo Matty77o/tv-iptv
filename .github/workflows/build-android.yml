@@ -15,6 +15,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # ------------------------------------------------------------
+      # SOURCE / TOOLING
+      # ------------------------------------------------------------
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -29,136 +33,266 @@ jobs:
         with:
           gradle-version: "8.10.2"
 
-      - name: Require stable Android signing key
+      # ------------------------------------------------------------
+      # PERMANENT SIGNING KEY
+      # ------------------------------------------------------------
+
+      - name: Require permanent Android signing key
         env:
           UMAY_DEBUG_KEYSTORE_BASE64: ${{ secrets.UMAY_DEBUG_KEYSTORE_BASE64 }}
         run: |
           if [ -z "$UMAY_DEBUG_KEYSTORE_BASE64" ]; then
-            echo "ERROR: UMAY_DEBUG_KEYSTORE_BASE64 secret is missing"
+            echo "ERROR: UMAY_DEBUG_KEYSTORE_BASE64 secret is missing."
             exit 1
           fi
 
-      - name: Restore stable Android signing key
+      - name: Restore permanent Android signing key
         env:
           UMAY_DEBUG_KEYSTORE_BASE64: ${{ secrets.UMAY_DEBUG_KEYSTORE_BASE64 }}
         run: |
           mkdir -p "$HOME/.android"
 
-          echo "$UMAY_DEBUG_KEYSTORE_BASE64" \
+          printf '%s' "$UMAY_DEBUG_KEYSTORE_BASE64" \
             | base64 --decode \
-            > "$HOME/.android/debug.keystore"
+            > "$HOME/.android/umay-tv-guide.keystore"
 
-          chmod 600 "$HOME/.android/debug.keystore"
+          chmod 600 "$HOME/.android/umay-tv-guide.keystore"
 
-          if [ ! -s "$HOME/.android/debug.keystore" ]; then
-            echo "ERROR: Restored keystore is empty"
+          if [ ! -s "$HOME/.android/umay-tv-guide.keystore" ]; then
+            echo "ERROR: Restored keystore is empty."
             exit 1
           fi
 
-      - name: Show signing certificate fingerprint
+      - name: Verify permanent signing keystore
         run: |
+          EXPECTED_SHA256="8638752900fc85d518b99fdb236f535131060fc3407b9471373f0a88a777c943"
+
+          echo "Permanent keystore certificate:"
           keytool -list -v \
-            -keystore "$HOME/.android/debug.keystore" \
+            -keystore "$HOME/.android/umay-tv-guide.keystore" \
             -alias androiddebugkey \
             -storepass android \
             -keypass android \
-            | grep -E 'SHA256:|Alias name:|Valid from:|Owner:'
+            | grep -E 'Owner:|Alias name:|Valid from:|SHA256:'
 
-      - name: Verify expected permanent certificate
-        run: |
           CERT_SHA256=$(keytool -list -v \
-            -keystore "$HOME/.android/debug.keystore" \
+            -keystore "$HOME/.android/umay-tv-guide.keystore" \
             -alias androiddebugkey \
             -storepass android \
             -keypass android \
             | grep "SHA256:" \
+            | head -1 \
             | sed 's/.*SHA256: //' \
             | tr -d ':' \
             | tr '[:upper:]' '[:lower:]')
 
-          EXPECTED_SHA256="8638752900fc85d518b99fdb236f535131060fc3407b9471373f0a88a777c943"
-
-          echo "Keystore SHA256: $CERT_SHA256"
+          echo
+          echo "Expected certificate: $EXPECTED_SHA256"
+          echo "Actual certificate:   $CERT_SHA256"
 
           if [ "$CERT_SHA256" != "$EXPECTED_SHA256" ]; then
-            echo "ERROR: Wrong signing keystore"
-            echo "Expected: $EXPECTED_SHA256"
-            echo "Actual:   $CERT_SHA256"
+            echo "ERROR: Repository secret contains the wrong signing key."
             exit 1
           fi
 
-      - name: Compile Kotlin with full errors
-        working-directory: android
-        run: |
-          gradle :app:compileDebugKotlin \
-            --info \
-            --console=plain \
-            --no-build-cache
+          echo "Permanent signing keystore is correct."
+
+      # ------------------------------------------------------------
+      # CLEAN BUILD
+      #
+      # IMPORTANT:
+      # We deliberately build RELEASE instead of DEBUG.
+      #
+      # Gradle produces an unsigned release APK.
+      # We then sign it ourselves below.
+      #
+      # This means Gradle's random/default debug certificate CANNOT
+      # become the certificate of the published APK.
+      # ------------------------------------------------------------
 
       - name: Clean project
         working-directory: android
         run: |
           gradle clean \
+            --no-build-cache \
             --console=plain
 
-      - name: Build signed debug APK
+      - name: Compile release Kotlin
         working-directory: android
         run: |
-          gradle :app:assembleDebug \
+          gradle :app:compileReleaseKotlin \
+            --no-build-cache \
+            --info \
+            --console=plain
+
+      - name: Build unsigned release APK
+        working-directory: android
+        run: |
+          gradle :app:assembleRelease \
             --no-build-cache \
             --stacktrace \
             --console=plain
 
+      # ------------------------------------------------------------
+      # FIND ANDROID BUILD TOOLS
+      # ------------------------------------------------------------
+
+      - name: Locate Android signing tools
+        run: |
+          BUILD_TOOLS_DIR=$(find "$ANDROID_HOME/build-tools" \
+            -mindepth 1 \
+            -maxdepth 1 \
+            -type d \
+            | sort -V \
+            | tail -1)
+
+          if [ -z "$BUILD_TOOLS_DIR" ]; then
+            echo "ERROR: Android build tools could not be found."
+            exit 1
+          fi
+
+          if [ ! -x "$BUILD_TOOLS_DIR/apksigner" ]; then
+            echo "ERROR: apksigner could not be found."
+            exit 1
+          fi
+
+          if [ ! -x "$BUILD_TOOLS_DIR/zipalign" ]; then
+            echo "ERROR: zipalign could not be found."
+            exit 1
+          fi
+
+          echo "BUILD_TOOLS_DIR=$BUILD_TOOLS_DIR" >> "$GITHUB_ENV"
+
+          echo "Using Android build tools:"
+          echo "$BUILD_TOOLS_DIR"
+
+      # ------------------------------------------------------------
+      # FIND THE UNSIGNED APK
+      # ------------------------------------------------------------
+
+      - name: Locate unsigned release APK
+        run: |
+          UNSIGNED_APK=$(find android/app/build/outputs/apk/release \
+            -type f \
+            -name '*unsigned*.apk' \
+            | head -1)
+
+          if [ -z "$UNSIGNED_APK" ]; then
+            echo "ERROR: Unsigned release APK was not produced."
+            echo
+            echo "APK files that were produced:"
+            find android/app/build/outputs/apk -type f -name '*.apk' -print || true
+            exit 1
+          fi
+
+          echo "UNSIGNED_APK=$UNSIGNED_APK" >> "$GITHUB_ENV"
+
+          echo "Unsigned APK:"
+          echo "$UNSIGNED_APK"
+
+      # ------------------------------------------------------------
+      # ALIGN APK
+      # ------------------------------------------------------------
+
+      - name: Zipalign APK
+        run: |
+          "$BUILD_TOOLS_DIR/zipalign" \
+            -f \
+            -p \
+            4 \
+            "$UNSIGNED_APK" \
+            Umay-TV-Guide-aligned.apk
+
+          "$BUILD_TOOLS_DIR/zipalign" \
+            -c \
+            -v \
+            4 \
+            Umay-TV-Guide-aligned.apk
+
+      # ------------------------------------------------------------
+      # EXPLICITLY SIGN THE APK
+      #
+      # THIS is now the only signing operation that matters.
+      # ------------------------------------------------------------
+
+      - name: Sign APK with permanent certificate
+        run: |
+          "$BUILD_TOOLS_DIR/apksigner" sign \
+            --ks "$HOME/.android/umay-tv-guide.keystore" \
+            --ks-key-alias androiddebugkey \
+            --ks-pass pass:android \
+            --key-pass pass:android \
+            --out Umay-TV-Guide.apk \
+            Umay-TV-Guide-aligned.apk
+
+      # ------------------------------------------------------------
+      # VERIFY FINAL APK
+      # ------------------------------------------------------------
+
       - name: Verify APK signature
         run: |
-          APKSIGNER=$(find "$ANDROID_HOME/build-tools" \
-            -name apksigner \
-            -type f \
-            | sort -V \
-            | tail -1)
-
-          echo "Using apksigner: $APKSIGNER"
-
-          "$APKSIGNER" verify \
+          "$BUILD_TOOLS_DIR/apksigner" verify \
             --verbose \
             --print-certs \
-            android/app/build/outputs/apk/debug/app-debug.apk
+            Umay-TV-Guide.apk
 
-      - name: Confirm APK uses permanent signing certificate
+      - name: Confirm final APK uses permanent certificate
         run: |
-          APKSIGNER=$(find "$ANDROID_HOME/build-tools" \
-            -name apksigner \
-            -type f \
-            | sort -V \
-            | tail -1)
+          EXPECTED_SHA256="8638752900fc85d518b99fdb236f535131060fc3407b9471373f0a88a777c943"
 
-          APK_SHA256=$("$APKSIGNER" verify \
+          APK_SHA256=$("$BUILD_TOOLS_DIR/apksigner" verify \
             --print-certs \
-            android/app/build/outputs/apk/debug/app-debug.apk \
+            Umay-TV-Guide.apk \
             | grep "certificate SHA-256 digest:" \
             | head -1 \
             | sed 's/.*digest: //' \
             | tr -d ':' \
             | tr '[:upper:]' '[:lower:]')
 
-          EXPECTED_SHA256="8638752900fc85d518b99fdb236f535131060fc3407b9471373f0a88a777c943"
-
-          echo "APK certificate SHA256: $APK_SHA256"
+          echo
+          echo "Expected APK certificate:"
+          echo "$EXPECTED_SHA256"
+          echo
+          echo "Actual APK certificate:"
+          echo "$APK_SHA256"
+          echo
 
           if [ "$APK_SHA256" != "$EXPECTED_SHA256" ]; then
-            echo "ERROR: APK was signed with the wrong certificate"
-            echo "Expected: $EXPECTED_SHA256"
-            echo "Actual:   $APK_SHA256"
+            echo "============================================================"
+            echo "ERROR: FINAL APK HAS THE WRONG SIGNING CERTIFICATE."
+            echo "THE APK WILL NOT BE PUBLISHED."
+            echo "============================================================"
             exit 1
           fi
 
-          echo "APK signing certificate is correct."
+          echo "============================================================"
+          echo "APK SIGNING CERTIFICATE IS CORRECT."
+          echo "============================================================"
 
-      - name: Prepare release APK
+      # ------------------------------------------------------------
+      # VERIFY PACKAGE INFORMATION
+      # ------------------------------------------------------------
+
+      - name: Show final APK information
         run: |
-          cp \
-            android/app/build/outputs/apk/debug/app-debug.apk \
-            Umay-TV-Guide.apk
+          AAPT=$(find "$ANDROID_HOME/build-tools" \
+            -name aapt \
+            -type f \
+            | sort -V \
+            | tail -1)
+
+          if [ -n "$AAPT" ]; then
+            "$AAPT" dump badging Umay-TV-Guide.apk \
+              | grep -E "^package:|^application-label:" \
+              || true
+          fi
+
+          echo
+          ls -lh Umay-TV-Guide.apk
+
+      # ------------------------------------------------------------
+      # GITHUB ACTIONS ARTIFACT
+      # ------------------------------------------------------------
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
@@ -166,6 +300,10 @@ jobs:
           name: Umay-TV-Guide-APK
           path: Umay-TV-Guide.apk
           if-no-files-found: error
+
+      # ------------------------------------------------------------
+      # ONLY REPLACE THE LIVE RELEASE AFTER EVERY CHECK HAS PASSED
+      # ------------------------------------------------------------
 
       - name: Remove previous latest release
         env:
@@ -184,5 +322,5 @@ jobs:
             Umay-TV-Guide.apk \
             --repo "${{ github.repository }}" \
             --title "Umay TV Guide - Latest" \
-            --notes "Automatically built from commit ${{ github.sha }}." \
+            --notes "Automatically built and signed with the permanent Umay TV Guide signing certificate from commit ${{ github.sha }}." \
             --latest
