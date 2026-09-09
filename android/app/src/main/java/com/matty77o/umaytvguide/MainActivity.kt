@@ -115,23 +115,21 @@ private fun resolvedChannelIcon(channel: TvChannel, config: ChannelConfig?): Str
         ?: if (channelKey(channel.id) == "ducktv") DUCKTV_LOGO_URL else channel.icon
 
 
-private val AGE_SLIDER_MILESTONES = intArrayOf(0, 6, 12, 18, 24, 60)
+private fun ageToSliderPosition(ageMonths: Int): Float = ageMonths.coerceIn(0, 60).toFloat()
 
-private fun ageToSliderPosition(ageMonths: Int): Float {
-    val age = ageMonths.coerceIn(0, 60)
-    val i = AGE_SLIDER_MILESTONES.indexOfLast { it <= age }.coerceAtMost(AGE_SLIDER_MILESTONES.lastIndex - 1)
-    val lo = AGE_SLIDER_MILESTONES[i]
-    val hi = AGE_SLIDER_MILESTONES[i + 1]
-    return i + (age - lo).toFloat() / (hi - lo).toFloat()
-}
+private fun sliderPositionToAge(position: Float): Int =
+    kotlin.math.round(position.coerceIn(0f, 60f)).toInt()
 
-private fun sliderPositionToAge(position: Float): Int {
-    val p = position.coerceIn(0f, 5f)
-    val i = p.toInt().coerceAtMost(AGE_SLIDER_MILESTONES.lastIndex - 1)
-    val fraction = p - i
-    val lo = AGE_SLIDER_MILESTONES[i]
-    val hi = AGE_SLIDER_MILESTONES[i + 1]
-    return (lo + (hi - lo) * fraction).toInt().coerceIn(0, 60)
+private fun formatAge(ageMonths: Int): String {
+    val months = ageMonths.coerceIn(0, 60)
+    if (months < 12) return if (months == 1) "1 month" else "$months months"
+    val years = months / 12
+    val remainder = months % 12
+    return when {
+        remainder == 0 -> if (years == 1) "1 year" else "$years years"
+        years == 1 -> "1 year $remainder ${if (remainder == 1) "month" else "months"}"
+        else -> "$years years $remainder ${if (remainder == 1) "month" else "months"}"
+    }
 }
 
 private const val PREFS_NAME = "umay_tv_guide"
@@ -1617,10 +1615,10 @@ private fun FavouritesView(
                         Triple("CHANNELS", favouriteChannels.size.toString(), Lavender),
                     ).forEach { (label,value,accent) ->
                         Box(
-                            Modifier.fillMaxWidth().height(53.dp).clip(RoundedCornerShape(20.dp)).background(Panel2.copy(alpha=.78f))
-                                .border(1.dp, Hairline, RoundedCornerShape(20.dp)).padding(horizontal=12.dp, vertical=8.dp)
+                            Modifier.fillMaxWidth().height(58.dp).clip(RoundedCornerShape(20.dp)).background(Panel2.copy(alpha=.78f))
+                                .border(1.dp, Hairline, RoundedCornerShape(20.dp)).padding(horizontal=12.dp, vertical=7.dp)
                         ) {
-                            Column { Text(value, color=TextPrimary, fontWeight=FontWeight.Black, fontSize=17.sp); Text(label, color=accent, fontWeight=FontWeight.Black, fontSize=8.sp, letterSpacing=.7.sp) }
+                            Column(verticalArrangement = Arrangement.spacedBy(1.dp)) { Text(value, color=TextPrimary, fontWeight=FontWeight.Black, fontSize=17.sp, lineHeight=19.sp); Text(label, color=accent, fontWeight=FontWeight.Black, fontSize=8.sp, lineHeight=10.sp, letterSpacing=.7.sp) }
                         }
                     }
                 }
@@ -1777,7 +1775,7 @@ private fun channelAdviserRecommendations(
     val result = mutableListOf<AdviserRecommendation>()
     result += AdviserRecommendation(
         "Offline fallback",
-        "At ${if (ageMonths < 24) "$ageMonths months" else "${ageMonths / 12} years"}, prioritise $stage.",
+        "At ${formatAge(ageMonths)}, prioritise $stage.",
         "focus"
     )
     if (best.isNotEmpty()) result += AdviserRecommendation(
@@ -2483,7 +2481,7 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
                         }
                         Spacer(Modifier.width(14.dp))
                         Column(Modifier.weight(1f)) {
-                            Text("UMA Y’S VIEWING PROFILE", color=Lavender, fontSize=9.sp, fontWeight=FontWeight.Black, letterSpacing=1.sp)
+                            Text("UMAY’S VIEWING PROFILE", color=Lavender, fontSize=9.sp, fontWeight=FontWeight.Black, letterSpacing=1.sp)
                             Text("Age-aware, bilingual picks", fontSize=20.sp, fontWeight=FontWeight.Black, letterSpacing=(-.45).sp)
                             Spacer(Modifier.height(5.dp))
                             Row(horizontalArrangement=Arrangement.spacedBy(6.dp)) {
@@ -2492,7 +2490,7 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
                         }
                     }
                     Slider(
-                        value=ageToSliderPosition(age), onValueChange={ age=sliderPositionToAge(it) }, valueRange=0f..5f, steps=4,
+                        value=ageToSliderPosition(age), onValueChange={ age=sliderPositionToAge(it) }, valueRange=0f..60f, steps=59,
                         colors=SliderDefaults.colors(thumbColor=TextPrimary,activeTrackColor=Pink,inactiveTrackColor=Color.White.copy(alpha=.08f))
                     )
                     Row(Modifier.fillMaxWidth(), horizontalArrangement=Arrangement.SpaceBetween) {
@@ -2768,7 +2766,7 @@ private fun ChannelAdviserView(
                     Row(verticalAlignment = Alignment.Bottom) {
                         Column(Modifier.weight(1f)) {
                             Text("AGE TO ADVISE FOR", color=PinkSoft, fontWeight=FontWeight.Black, fontSize=9.sp, letterSpacing=.9.sp)
-                            Text(if (ageMonths < 24) "$ageMonths months" else "${ageMonths/12} years ${ageMonths%12} months", fontSize=28.sp, fontWeight=FontWeight.Black, letterSpacing=(-.7).sp)
+                            Text(formatAge(ageMonths), fontSize=28.sp, fontWeight=FontWeight.Black, letterSpacing=(-.7).sp)
                         }
                         CompactPill(if (aiRecommendations != null) "AI READY" else "PREVIEW", if (aiRecommendations != null) Mint else Lavender)
                     }
@@ -2782,8 +2780,8 @@ private fun ChannelAdviserView(
                             }
                             aiError = null
                         },
-                        valueRange = 0f..5f,
-                        steps = 4,
+                        valueRange = 0f..60f,
+                        steps = 59,
                         colors = SliderDefaults.colors(thumbColor=PinkSoft, activeTrackColor=Pink, inactiveTrackColor=Color.White.copy(alpha=.08f)),
                     )
                     Row(Modifier.fillMaxWidth(), horizontalArrangement=Arrangement.SpaceBetween) {

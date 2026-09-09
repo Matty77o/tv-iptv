@@ -8,27 +8,12 @@ android {
     namespace = "com.matty77o.umaytvguide"
     compileSdk = 35
 
-    signingConfigs {
-        getByName("debug") {
-            storeFile = file(System.getProperty("user.home") + "/.android/debug.keystore")
-            storePassword = "android"
-            keyAlias = "androiddebugkey"
-            keyPassword = "android"
-        }
-    }
-
     defaultConfig {
         applicationId = "com.matty77o.umaytvguide"
         minSdk = 26
         targetSdk = 35
-        versionCode = 67
-        versionName = "4.0.5"
-    }
-
-    buildTypes {
-        getByName("debug") {
-            signingConfig = signingConfigs.getByName("debug")
-        }
+        versionCode = 68
+        versionName = "4.0.6"
     }
 
     compileOptions {

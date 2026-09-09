@@ -192,8 +192,12 @@ private fun signatureMismatchMessage(context: Context, apk: File): String? {
     val installed = installedSigningDigests(context)
     val incoming = archiveSigningDigests(context, apk)
     if (installed.isEmpty() || incoming.isEmpty() || installed.intersect(incoming).isNotEmpty()) return null
-    return "Android will not install this build over the current copy because the two APKs are signed with different keys. " +
-        "This phone still has an older signing-key build. A one-time uninstall/reinstall of the stable-key APK is required; after that, future in-app updates can install normally."
+
+    val installedShort = installed.first().take(12)
+    val incomingShort = incoming.first().take(12)
+    return "Signing check worked, but Android cannot update this installed copy because its signing key is different from the new permanent key. " +
+        "Installed: $installedShort…  Update: $incomingShort…  " +
+        "This cannot be bypassed by the updater. Install the permanent-key build once after uninstalling this old-key copy; every later build signed with the same GitHub key can then update normally."
 }
 
 private fun launchInstaller(context: Context, apk: File): Boolean {
