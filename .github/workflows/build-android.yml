@@ -8,7 +8,7 @@ on:
       - ".github/workflows/build-android.yml"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -37,9 +37,37 @@ jobs:
         working-directory: android
         run: gradle :app:assembleDebug --stacktrace --console=plain
 
-      - name: Upload APK
+      - name: Prepare release APK
+        run: |
+          cp android/app/build/outputs/apk/debug/app-debug.apk \
+             Umay-TV-Guide.apk
+
+      # Keep an Actions artifact too, useful if something goes wrong
+      - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: Umay-TV-Guide-APK
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          path: Umay-TV-Guide.apk
           if-no-files-found: error
+
+      # Remove the previous rolling "latest" release/tag
+      - name: Remove previous latest release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete latest \
+            --repo "${{ github.repository }}" \
+            --cleanup-tag \
+            --yes || true
+
+      # Create a fresh rolling release and attach the APK
+      - name: Publish latest APK
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create latest \
+            Umay-TV-Guide.apk \
+            --repo "${{ github.repository }}" \
+            --title "Umay TV Guide - Latest" \
+            --notes "Automatically built from commit ${{ github.sha }}." \
+            --latest
