@@ -1107,7 +1107,7 @@ private fun HomeView(
                     if (heroProgramme != null) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Box(
-                                Modifier.size(64.dp).clip(RoundedCornerShape(18.dp)).background(Color.White.copy(alpha=.96f)),
+                                Modifier.size(64.dp).clip(RoundedCornerShape(18.dp)).background(Panel2.copy(alpha=.88f)).border(1.dp, Hairline, RoundedCornerShape(18.dp)),
                                 contentAlignment = Alignment.Center
                             ) {
                                 val artwork = heroProgramme.icon ?: heroChannel?.icon
@@ -1241,7 +1241,7 @@ private fun ChannelTile(channel: TvChannel, onClick: () -> Unit) {
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Box(
-                Modifier.size(64.dp).clip(RoundedCornerShape(18.dp)).background(Color.White.copy(alpha=.96f)),
+                Modifier.size(64.dp).clip(RoundedCornerShape(18.dp)).background(Panel2.copy(alpha=.88f)).border(1.dp, Hairline, RoundedCornerShape(18.dp)),
                 contentAlignment = Alignment.Center
             ) {
                 if (!channel.icon.isNullOrBlank()) {
@@ -1677,7 +1677,7 @@ private fun ProgrammeListRow(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         val image = programme.icon ?: channel?.icon
-        Box(Modifier.size(64.dp).clip(RoundedCornerShape(17.dp)).background(Color.White.copy(alpha=.94f)), contentAlignment = Alignment.Center) {
+        Box(Modifier.size(64.dp).clip(RoundedCornerShape(17.dp)).background(Panel2.copy(alpha=.88f)).border(1.dp, Hairline, RoundedCornerShape(17.dp)), contentAlignment = Alignment.Center) {
             if (!image.isNullOrBlank()) AsyncImage(image, programme.title, Modifier.fillMaxSize().padding(if (programme.icon == null) 6.dp else 0.dp), contentScale = if (programme.icon == null) ContentScale.Fit else ContentScale.Crop)
             else LogoFallback(channel?.name ?: programme.channelId)
         }
@@ -2530,9 +2530,9 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
                             Text(slot.time,fontSize=15.sp,fontWeight=FontWeight.Black)
                             Text(slot.partOfDay,color=TextSecondary,fontSize=8.sp,maxLines=2,lineHeight=10.sp)
                         }
-                        Box(Modifier.size(48.dp).clip(RoundedCornerShape(15.dp)).background(Color.White.copy(alpha=.96f)),contentAlignment=Alignment.Center) {
+                        Box(Modifier.size(48.dp).clip(RoundedCornerShape(15.dp)).background(Panel2.copy(alpha=.88f)).border(1.dp, Hairline, RoundedCornerShape(15.dp)),contentAlignment=Alignment.Center) {
                             if(!slotChannel?.icon.isNullOrBlank()) AsyncImage(slotChannel?.icon,slot.channel,Modifier.fillMaxSize().padding(5.dp),contentScale=ContentScale.Fit)
-                            else Text(slot.channel.take(2).uppercase(Locale.ROOT),color=Color(0xFF17213A),fontWeight=FontWeight.Black,fontSize=10.sp)
+                            else Text(slot.channel.take(2).uppercase(Locale.ROOT),color=TextPrimary,fontWeight=FontWeight.Black,fontSize=10.sp)
                         }
                         Spacer(Modifier.width(10.dp))
                         Column(Modifier.weight(1f)) {
@@ -2643,10 +2643,10 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
                                 .border(1.dp,accent.copy(alpha=.13f),RoundedCornerShape(24.dp)).clickable { addProgramme(p) }
                         ) {
                             Column {
-                                Box(Modifier.fillMaxWidth().height(72.dp).background(Color.White.copy(alpha=.95f)),contentAlignment=Alignment.Center) {
+                                Box(Modifier.fillMaxWidth().height(72.dp).background(Panel2.copy(alpha=.88f)),contentAlignment=Alignment.Center) {
                                     val logo=ch?.icon
                                     if(!logo.isNullOrBlank()) AsyncImage(logo,ch.name,Modifier.fillMaxSize().padding(9.dp),contentScale=ContentScale.Fit)
-                                    else Text(ch?.name ?: p.channelId,color=Color(0xFF17213A),fontWeight=FontWeight.Black,fontSize=13.sp)
+                                    else Text(ch?.name ?: p.channelId,color=TextPrimary,fontWeight=FontWeight.Black,fontSize=13.sp)
                                 }
                                 Column(Modifier.padding(13.dp),verticalArrangement=Arrangement.spacedBy(6.dp)) {
                                     Row(verticalAlignment=Alignment.CenterVertically) {
@@ -3095,7 +3095,7 @@ private fun ChannelScheduleSheet(
                 .border(1.dp,Hairline,RoundedCornerShape(26.dp)).padding(14.dp),
             verticalAlignment=Alignment.CenterVertically
         ) {
-            Box(Modifier.size(56.dp).clip(RoundedCornerShape(17.dp)).background(Color.White.copy(alpha=.96f)),contentAlignment=Alignment.Center) {
+            Box(Modifier.size(56.dp).clip(RoundedCornerShape(17.dp)).background(Panel2.copy(alpha=.88f)).border(1.dp, Hairline, RoundedCornerShape(17.dp)),contentAlignment=Alignment.Center) {
                 if(!channel.icon.isNullOrBlank()) AsyncImage(channel.icon,channel.name,Modifier.fillMaxSize().padding(6.dp),contentScale=ContentScale.Fit) else LogoFallback(channel.name)
             }
             Spacer(Modifier.width(12.dp)); Column(Modifier.weight(1f)) {
