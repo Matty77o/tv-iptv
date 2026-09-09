@@ -64,6 +64,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -2215,6 +2216,35 @@ private fun RecommendedTvScheduleCard(ageMonths: Int, channels: List<TvChannel>)
 }
 
 
+@Composable
+private fun AgeSliderLabels() {
+    val labels = listOf(
+        0 to "0",
+        6 to "6m",
+        12 to "12m",
+        18 to "18m",
+        24 to "2y",
+        60 to "5y",
+    )
+    BoxWithConstraints(Modifier.fillMaxWidth().padding(horizontal = 10.dp)) {
+        labels.forEach { (month, label) ->
+            val labelWidth = 30.dp
+            val x = when (month) {
+                0 -> 0.dp
+                60 -> maxWidth - labelWidth
+                else -> (maxWidth * (month / 60f)) - (labelWidth / 2)
+            }
+            Text(
+                text = label,
+                color = TextSecondary,
+                fontSize = 9.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.width(labelWidth).offset(x = x),
+            )
+        }
+    }
+}
+
 private object AiSessionCache {
     var ageMonths: Int = 7
     var recommendations: List<AdviserRecommendation>? = null
@@ -2399,15 +2429,15 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
                 chooseNowPrompt = false
                 prefs.edit().remove(PREF_SCHEDULE_CHOOSE_NOW).apply()
             },
-            title = { Text("What's playing now?") },
+            title = { Text("Which kids channel did you change to?") },
             text = {
                 Column(verticalArrangement = Arrangement.spacedBy(9.dp)) {
-                    Text("You said the channel changed. Pick what is currently playing now and we'll update the shared schedule.", color = TextSecondary, fontSize = 12.sp)
+                    Text("Choose the kids channel now on the TV. The list shows what is currently playing on each channel.", color = TextSecondary, fontSize = 12.sp)
                     if (nowKids.isEmpty()) {
-                        Text("No current Kids programmes were found in the EPG yet.", color = PinkSoft, fontWeight = FontWeight.SemiBold)
+                        Text("No kids channels currently have a live programme in the EPG.", color = PinkSoft, fontWeight = FontWeight.SemiBold)
                     } else {
                         LazyColumn(Modifier.heightIn(max = 360.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                            items(nowKids.take(12)) { p ->
+                            items(nowKids.sortedBy { p -> channels.firstOrNull { channelKey(it.id) == channelKey(p.channelId) || channelKey(it.name) == channelKey(p.channelId) }?.name ?: p.channelId }) { p ->
                                 val ch = channels.firstOrNull { channelKey(it.id) == channelKey(p.channelId) || channelKey(it.name) == channelKey(p.channelId) }
                                 Surface(
                                     modifier = Modifier.fillMaxWidth().clickable {
@@ -2418,9 +2448,23 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
                                     color = Panel2,
                                     shape = RoundedCornerShape(16.dp),
                                 ) {
-                                    Column(Modifier.padding(12.dp)) {
-                                        Text(p.title, fontWeight = FontWeight.Bold)
-                                        Text(ch?.name ?: p.channelId, color = TextSecondary, fontSize = 11.sp)
+                                    Row(Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
+                                        val logo = ch?.icon
+                                        Box(
+                                            Modifier.size(44.dp).clip(RoundedCornerShape(14.dp))
+                                                .background(Panel2.copy(alpha = .88f))
+                                                .border(1.dp, Hairline, RoundedCornerShape(14.dp)),
+                                            contentAlignment = Alignment.Center,
+                                        ) {
+                                            if (!logo.isNullOrBlank()) AsyncImage(logo, ch?.name ?: p.channelId, Modifier.fillMaxSize().padding(5.dp), contentScale = ContentScale.Fit)
+                                            else Text((ch?.name ?: p.channelId).take(2).uppercase(Locale.ROOT), color = TextPrimary, fontWeight = FontWeight.Black, fontSize = 10.sp)
+                                        }
+                                        Spacer(Modifier.width(10.dp))
+                                        Column(Modifier.weight(1f)) {
+                                            Text(ch?.name ?: p.channelId, fontWeight = FontWeight.Black, fontSize = 14.sp)
+                                            Text(p.title, color = TextPrimary, fontWeight = FontWeight.SemiBold, fontSize = 12.sp, maxLines = 2, overflow = TextOverflow.Ellipsis)
+                                            Text("${p.start.toLocalTime().toString().take(5)}–${p.stop.toLocalTime().toString().take(5)}", color = TextSecondary, fontSize = 10.sp)
+                                        }
                                     }
                                 }
                             }
@@ -2493,9 +2537,7 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
                         value=ageToSliderPosition(age), onValueChange={ age=sliderPositionToAge(it) }, valueRange=0f..60f, steps=59,
                         colors=SliderDefaults.colors(thumbColor=TextPrimary,activeTrackColor=Pink,inactiveTrackColor=Color.White.copy(alpha=.08f))
                     )
-                    Row(Modifier.fillMaxWidth(), horizontalArrangement=Arrangement.SpaceBetween) {
-                        listOf("0","6m","12m","18m","2y","5y").forEach { Text(it,color=TextSecondary,fontSize=9.sp) }
-                    }
+                    AgeSliderLabels()
                     Text("Recommendations change with age while keeping regular exposure to both languages. Nothing here is enforced.",color=TextSecondary,fontSize=10.sp,lineHeight=15.sp)
                 }
             }
@@ -2784,9 +2826,7 @@ private fun ChannelAdviserView(
                         steps = 59,
                         colors = SliderDefaults.colors(thumbColor=PinkSoft, activeTrackColor=Pink, inactiveTrackColor=Color.White.copy(alpha=.08f)),
                     )
-                    Row(Modifier.fillMaxWidth(), horizontalArrangement=Arrangement.SpaceBetween) {
-                        listOf("0","6m","12m","18m","2y","5y").forEach { Text(it, color=TextSecondary, fontSize=9.sp) }
-                    }
+                    AgeSliderLabels()
                     Button(
                         onClick = {
                             if (isThinking) return@Button

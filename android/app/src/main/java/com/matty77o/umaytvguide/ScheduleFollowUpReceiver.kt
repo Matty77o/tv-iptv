@@ -17,6 +17,7 @@ import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
 import java.time.ZonedDateTime
+import java.time.LocalTime
 import kotlin.concurrent.thread
 
 object ScheduleFollowUpScheduler {
@@ -228,9 +229,46 @@ class ScheduleFollowUpReceiver : BroadcastReceiver() {
                         showInfo(context, "Still watching $channel", "No next programme data was available, so nothing extra was added.")
                     }
                 } else {
-                    showInfo(context, "TV marked as off", "Nothing else was added to the schedule after $title.")
+                    appendTvOffEntry(
+                        context = context,
+                        household = household,
+                        time = LocalTime.now().withSecond(0).withNano(0).toString().take(5),
+                    )
+                    showInfo(context, "TV switched off", "TV switched off was added to the shared schedule.")
                 }
             } finally { pendingResult.finish() }
+        }
+    }
+
+    private fun appendTvOffEntry(context: Context, household: String, time: String) {
+        val prefs = context.getSharedPreferences("umay_tv_guide", Context.MODE_PRIVATE)
+        val arr = runCatching { JSONArray(prefs.getString("shared_tv_schedule", "[]") ?: "[]") }.getOrDefault(JSONArray())
+        val duplicate = (0 until arr.length()).any { i ->
+            arr.optJSONObject(i)?.let { it.optString("title") == "TV switched off" && it.optString("time") == time } == true
+        }
+        if (!duplicate) arr.put(JSONObject().apply {
+            put("time", time)
+            put("stop", "")
+            put("title", "TV switched off")
+            put("channel", "TV")
+            put("language", "")
+            put("nextTitle", "")
+            put("nextStart", "")
+            put("nextStop", "")
+        })
+        prefs.edit().putString("shared_tv_schedule", arr.toString()).apply()
+        if (household.length >= 6) runCatching {
+            val c = (URL("https://umay-tv-ai.matthewwood406.workers.dev/api/schedule?household=$household").openConnection() as HttpURLConnection).apply {
+                requestMethod = "PUT"
+                doOutput = true
+                connectTimeout = 10_000
+                readTimeout = 15_000
+                setRequestProperty("Content-Type", "application/json")
+            }
+            val body = JSONObject().put("entries", arr).toString().toByteArray()
+            c.outputStream.use { it.write(body) }
+            c.inputStream.close()
+            c.disconnect()
         }
     }
 
