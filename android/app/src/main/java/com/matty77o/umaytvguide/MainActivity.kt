@@ -120,6 +120,8 @@ private const val PREF_SHOW_REMINDER_MODES = "show_reminder_modes"
 private const val PREF_TIME_24 = "time_24_hour"
 private const val PREF_AUTO_REFRESH = "auto_refresh"
 private const val PREF_DEFAULT_SECTION = "default_section"
+private const val PREF_HOUSEHOLD_CODE = "household_pairing_code"
+private const val PREF_SCHEDULE_JSON = "shared_tv_schedule"
 
 data class ChannelConfig(
     val id: String,
@@ -137,7 +139,7 @@ private val DefaultChannelConfig = listOf(
     ChannelConfig("Moonbug Kids", "Kids", 40),
     ChannelConfig("Baby Shark TV", "Kids", 50),
     ChannelConfig("Duck TV", "Kids", 60, icon = DUCKTV_LOGO_URL),
-    ChannelConfig("Baby Einstein", "Kids", 65),
+    ChannelConfig("Kidoodle TV", "Kids", 65),
     ChannelConfig("TRT Çocuk", "Kids", 70),
     ChannelConfig("Minika Çocuk", "Kids", 80),
     ChannelConfig("TRT 1", "Turkish TV", 90),
@@ -190,7 +192,7 @@ enum class GuideFilter(val label: String) {
 enum class GuideJumpTarget { NOW, TONIGHT, TOMORROW }
 
 enum class AppSection(val label: String) {
-    HOME("Home"), GUIDE("Guide"), FAVOURITES("Favourites"), AI("Ask AI"), SETTINGS("Settings")
+    HOME("Home"), GUIDE("Guide"), FAVOURITES("Favourites"), SCHEDULE("Schedule"), AI("Ask AI"), SETTINGS("Settings")
 }
 
 enum class ReminderMode(val label: String) {
@@ -480,6 +482,7 @@ fun GuideScreen(
                                     AppSection.HOME -> Icons.Rounded.Home
                                     AppSection.GUIDE -> Icons.Rounded.Tv
                                     AppSection.FAVOURITES -> Icons.Rounded.Favorite
+                                    AppSection.SCHEDULE -> Icons.Rounded.CalendarMonth
                                     AppSection.AI -> Icons.Rounded.Star
                                     AppSection.SETTINGS -> Icons.Rounded.Settings
                                 }
@@ -534,6 +537,7 @@ fun GuideScreen(
                             AppSection.HOME -> Icons.Rounded.Home
                             AppSection.GUIDE -> Icons.Rounded.Tv
                             AppSection.FAVOURITES -> Icons.Rounded.Favorite
+                            AppSection.SCHEDULE -> Icons.Rounded.CalendarMonth
                             AppSection.AI -> Icons.Rounded.Star
                             AppSection.SETTINGS -> Icons.Rounded.Settings
                         }
@@ -571,6 +575,7 @@ fun GuideScreen(
                             AppSection.HOME -> Icons.Rounded.Home
                             AppSection.GUIDE -> Icons.Rounded.Tv
                             AppSection.FAVOURITES -> Icons.Rounded.Favorite
+                            AppSection.SCHEDULE -> Icons.Rounded.CalendarMonth
                             AppSection.AI -> Icons.Rounded.Star
                             AppSection.SETTINGS -> Icons.Rounded.Settings
                         }
@@ -660,6 +665,10 @@ fun GuideScreen(
                             onProgramme = { selectedProgramme = it },
                             onChannel = { selectedChannel = it },
                             use24Hour = use24Hour,
+                        )
+                        AppSection.SCHEDULE -> SharedScheduleView(
+                            guide = currentGuide,
+                            channels = visibleChannels,
                         )
                         AppSection.AI -> ChannelAdviserView(
                             guide = currentGuide,
@@ -1662,6 +1671,21 @@ private fun channelAdviserRecommendations(
     return result
 }
 
+private fun onNowKidsProgrammes(guide: GuideData, channels: List<TvChannel>): List<Programme> {
+    val now = ZonedDateTime.now()
+    val kids = channels.filter { it.group.equals("Kids", ignoreCase = true) }
+    val kidsKeys = kids.flatMap { listOf(channelKey(it.id), channelKey(it.name)) }.toSet()
+    val guideKidsIds = guide.channels.filter { guideChannel ->
+        channelKey(guideChannel.id) in kidsKeys || channelKey(guideChannel.name) in kidsKeys ||
+            guideChannel.group.equals("Kids", ignoreCase = true)
+    }.flatMap { listOf(channelKey(it.id), channelKey(it.name)) }.toSet()
+    val allKidsKeys = kidsKeys + guideKidsIds
+    return guide.programmes.filter { p ->
+        val pKey = channelKey(p.channelId)
+        pKey in allKidsKeys && !p.start.isAfter(now) && p.stop.isAfter(now)
+    }.sortedWith(compareBy<Programme>({ channelKey(it.channelId) }, { it.start }))
+}
+
 private suspend fun fetchCloudflareAdviserRecommendations(
     ageMonths: Int,
     guide: GuideData,
@@ -1695,13 +1719,7 @@ private suspend fun fetchCloudflareAdviserRecommendations(
         listOf(channelKey(channel.id), channelKey(channel.name))
     }.toSet()
     val programmes = JSONArray()
-    guide.programmes.asSequence()
-        .filter { programme ->
-            channelKey(programme.channelId) in kidsChannelKeys &&
-                !programme.start.isAfter(now) && programme.stop.isAfter(now)
-        }
-        .sortedWith(compareBy<Programme>({ channelKey(it.channelId) }, { it.start }))
-        .forEach { programme ->
+    onNowKidsProgrammes(guide, channels).forEach { programme ->
             programmes.put(JSONObject().apply {
                 put("channel", programme.channelId)
                 put("title", programme.title)
@@ -1832,13 +1850,7 @@ private suspend fun fetchCloudflareAdviserAnswer(
         listOf(channelKey(channel.id), channelKey(channel.name))
     }.toSet()
     val programmes = JSONArray()
-    guide.programmes.asSequence()
-        .filter { programme ->
-            channelKey(programme.channelId) in kidsChannelKeys &&
-                !programme.start.isAfter(now) && programme.stop.isAfter(now)
-        }
-        .sortedWith(compareBy<Programme>({ channelKey(it.channelId) }, { it.start }))
-        .forEach { programme ->
+    onNowKidsProgrammes(guide, channels).forEach { programme ->
             programmes.put(JSONObject().apply {
                 put("channel", programme.channelId)
                 put("title", programme.title)
@@ -2082,17 +2094,72 @@ private fun RecommendedTvScheduleCard(ageMonths: Int, channels: List<TvChannel>)
     }
 }
 
+
+private object AiSessionCache {
+    var ageMonths: Int = 7
+    var recommendations: List<AdviserRecommendation>? = null
+    var questionAnswer: AdviserQuestionAnswer? = null
+}
+
+data class SharedScheduleEntry(val time: String, val title: String, val channel: String, val language: String)
+
+private fun scheduleSuggestionLanguage(entries: List<SharedScheduleEntry>): String? = when (entries.lastOrNull()?.language?.lowercase(Locale.ROOT)) {
+    "turkish", "türkçe" -> "English"
+    "english" -> "Türkçe"
+    else -> null
+}
+
+private fun scheduleToJson(entries: List<SharedScheduleEntry>): JSONArray = JSONArray().apply {
+    entries.forEach { e -> put(JSONObject().apply { put("time",e.time); put("title",e.title); put("channel",e.channel); put("language",e.language) }) }
+}
+private fun scheduleFromJson(raw: String): List<SharedScheduleEntry> = runCatching {
+    val a=JSONArray(raw); (0 until a.length()).mapNotNull { i -> a.optJSONObject(i)?.let { o -> SharedScheduleEntry(o.optString("time"),o.optString("title"),o.optString("channel"),o.optString("language")) } }
+}.getOrDefault(emptyList())
+
+private suspend fun syncSchedule(code: String, entries: List<SharedScheduleEntry>?): List<SharedScheduleEntry> = withContext(Dispatchers.IO) {
+    val clean=code.trim().uppercase(Locale.ROOT).filter { it.isLetterOrDigit() }.take(12)
+    require(clean.length >= 6) { "Pairing code must be at least 6 characters" }
+    val url=URL("https://umay-tv-ai.matthewwood406.workers.dev/api/schedule?household=$clean")
+    val c=(url.openConnection() as HttpURLConnection).apply { requestMethod=if(entries==null) "GET" else "PUT"; connectTimeout=12000; readTimeout=20000; setRequestProperty("Accept","application/json") }
+    if(entries!=null){ c.doOutput=true; c.setRequestProperty("Content-Type","application/json; charset=utf-8"); val body=JSONObject().put("entries",scheduleToJson(entries)); c.outputStream.use{it.write(body.toString().toByteArray())} }
+    val codeHttp=c.responseCode; val text=(if(codeHttp in 200..299)c.inputStream else c.errorStream)?.bufferedReader()?.use{it.readText()}.orEmpty(); c.disconnect()
+    if(codeHttp !in 200..299) error("Schedule sync returned HTTP $codeHttp")
+    val a=JSONObject(text).optJSONArray("entries")?:JSONArray(); scheduleFromJson(a.toString())
+}
+
+@Composable
+private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
+    val context=LocalContext.current; val prefs=context.getSharedPreferences(PREFS_NAME,Context.MODE_PRIVATE); val scope=rememberCoroutineScope()
+    var age by rememberSaveable { mutableIntStateOf(7) }
+    var pairing by rememberSaveable { mutableStateOf(prefs.getString(PREF_HOUSEHOLD_CODE,"") ?: "") }
+    var entries by remember { mutableStateOf(scheduleFromJson(prefs.getString(PREF_SCHEDULE_JSON,"[]") ?: "[]")) }
+    var status by remember { mutableStateOf<String?>(null) }; var busy by remember { mutableStateOf(false) }
+    val suggestion=scheduleSuggestionLanguage(entries)
+    val nowKids=remember(guide,channels){ onNowKidsProgrammes(guide,channels) }
+    fun saveLocal(newEntries:List<SharedScheduleEntry>){ entries=newEntries; prefs.edit().putString(PREF_SCHEDULE_JSON,scheduleToJson(newEntries).toString()).apply() }
+    LazyColumn(Modifier.fillMaxSize(),contentPadding=PaddingValues(24.dp,12.dp,24.dp,36.dp),verticalArrangement=Arrangement.spacedBy(12.dp)){
+        item { Text("Recommended TV Schedule",fontSize=25.sp,fontWeight=FontWeight.Black); Text("Umay until 17:00 • Matt & Sev after 17:00",color=PinkSoft,fontWeight=FontWeight.Bold,fontSize=12.sp) }
+        item { Card(colors=CardDefaults.cardColors(containerColor=Panel2)){ Column(Modifier.padding(16.dp)){ Text("Age to advise for",color=PinkSoft,fontWeight=FontWeight.Bold); Text(if(age<24) "$age months" else "${age/12} years ${age%12} months",fontSize=20.sp,fontWeight=FontWeight.Black); Slider(value=age.toFloat(),onValueChange={age=it.toInt()},valueRange=0f..60f,steps=59); RecommendedTvScheduleCard(age,channels) } } }
+        item { Card(colors=CardDefaults.cardColors(containerColor=Panel2)){ Column(Modifier.padding(16.dp)){ Text("Shared household schedule",fontWeight=FontWeight.Bold,fontSize=18.sp); OutlinedTextField(pairing,{pairing=it.uppercase(Locale.ROOT)},label={Text("Pairing code")},singleLine=true,modifier=Modifier.fillMaxWidth()); Spacer(Modifier.height(8.dp)); Row(horizontalArrangement=Arrangement.spacedBy(8.dp)){ Button(onClick={ prefs.edit().putString(PREF_HOUSEHOLD_CODE,pairing).apply(); busy=true; scope.launch{runCatching{syncSchedule(pairing,null)}.onSuccess{saveLocal(it);status="Synced"}.onFailure{status=it.message};busy=false}},enabled=!busy){Text("Sync")}; OutlinedButton(onClick={val code=(1..8).map{"ABCDEFGHJKLMNPQRSTUVWXYZ23456789".random()}.joinToString(""); pairing=code; prefs.edit().putString(PREF_HOUSEHOLD_CODE,code).apply();status="Use $code on Sev's phone"}){Text("New code")} }; status?.let{Text(it,color=TextSecondary,fontSize=11.sp,modifier=Modifier.padding(top=6.dp))} } } }
+        if(LocalTime.now().isBefore(LocalTime.of(17,0))){ item { Text("On now • tap to add",fontWeight=FontWeight.Bold); suggestion?.let{Text("Next suggestion: prefer $it for language balance — optional, not enforced.",color=PinkSoft,fontSize=11.sp)} }
+            items(nowKids){ p -> val ch=channels.firstOrNull{channelKey(it.id)==channelKey(p.channelId)}; val lang=if(ch?.name in listOf("TRT Çocuk","Minika Çocuk")) "Türkçe" else "English"; Card(modifier=Modifier.fillMaxWidth().clickable{ val n=entries+SharedScheduleEntry(p.start.toLocalTime().toString().take(5),p.title,ch?.name?:p.channelId,lang); saveLocal(n); if(pairing.length>=6) scope.launch{runCatching{syncSchedule(pairing,n)}} },colors=CardDefaults.cardColors(containerColor=Panel2)){Column(Modifier.padding(14.dp)){Text(p.title,fontWeight=FontWeight.Bold);Text("${ch?.name?:p.channelId} • $lang",color=TextSecondary,fontSize=11.sp)}} }
+        } else { item { Card(colors=CardDefaults.cardColors(containerColor=Pink.copy(alpha=.10f))){Column(Modifier.padding(16.dp)){Text("Matt & Sev TV time",fontWeight=FontWeight.Black,fontSize=18.sp);Text("Umay recommendations stop at 17:00. The evening is yours.",color=TextSecondary)}} } }
+        item { Text("Today's shared picks",fontWeight=FontWeight.Bold) }
+        if(entries.isEmpty()) item { Text("Nothing added yet.",color=TextSecondary) } else itemsIndexed(entries){i,e->Card(colors=CardDefaults.cardColors(containerColor=Panel2)){Row(Modifier.fillMaxWidth().padding(14.dp),verticalAlignment=Alignment.CenterVertically){Column(Modifier.weight(1f)){Text("${e.time} • ${e.language}",color=PinkSoft,fontSize=11.sp,fontWeight=FontWeight.Bold);Text(e.title,fontWeight=FontWeight.Bold);Text(e.channel,color=TextSecondary,fontSize=11.sp)}; IconButton(onClick={val n=entries.toMutableList().also{it.removeAt(i)};saveLocal(n);if(pairing.length>=6)scope.launch{runCatching{syncSchedule(pairing,n)}}}){Icon(Icons.Rounded.Close,"Remove")}}} }
+    }
+}
+
 @Composable
 private fun ChannelAdviserView(
     guide: GuideData,
     channels: List<TvChannel>,
 ) {
-    var ageMonths by rememberSaveable { mutableIntStateOf(7) }
-    var aiRecommendations by remember { mutableStateOf<List<AdviserRecommendation>?>(null) }
+    var ageMonths by rememberSaveable { mutableIntStateOf(AiSessionCache.ageMonths) }
+    var aiRecommendations by remember { mutableStateOf<List<AdviserRecommendation>?>(AiSessionCache.recommendations) }
     var isThinking by remember { mutableStateOf(false) }
     var aiError by remember { mutableStateOf<String?>(null) }
     var question by rememberSaveable { mutableStateOf("") }
-    var questionAnswer by remember { mutableStateOf<AdviserQuestionAnswer?>(null) }
+    var questionAnswer by remember { mutableStateOf<AdviserQuestionAnswer?>(AiSessionCache.questionAnswer) }
     var isAnsweringQuestion by remember { mutableStateOf(false) }
     var questionError by remember { mutableStateOf<String?>(null) }
     val scope = rememberCoroutineScope()
@@ -2109,14 +2176,7 @@ private fun ChannelAdviserView(
     }
     val additions = recommendations.filter { it.kind == "add" }
     val kidsEpgAvailable = remember(guide, channels) {
-        val now = ZonedDateTime.now()
-        val kidsChannelKeys = channels.filter { it.group.equals("Kids", ignoreCase = true) }
-            .flatMap { listOf(channelKey(it.id), channelKey(it.name)) }
-            .toSet()
-        guide.programmes.any { programme ->
-            channelKey(programme.channelId) in kidsChannelKeys &&
-                !programme.start.isAfter(now) && programme.stop.isAfter(now)
-        }
+onNowKidsProgrammes(guide, channels).isNotEmpty()
     }
 
     LazyColumn(
@@ -2184,8 +2244,13 @@ private fun ChannelAdviserView(
                     Slider(
                         value = ageMonths.toFloat(),
                         onValueChange = {
-                            ageMonths = it.toInt().coerceIn(0, 60)
-                            aiRecommendations = null
+                            val newAge = it.toInt().coerceIn(0, 60)
+                            if (newAge != ageMonths) {
+                                ageMonths = newAge
+                                AiSessionCache.ageMonths = newAge
+                                aiRecommendations = null
+                                AiSessionCache.recommendations = null
+                            }
                             aiError = null
                         },
                         valueRange = 0f..60f,
@@ -2204,7 +2269,7 @@ private fun ChannelAdviserView(
                             aiError = null
                             scope.launch {
                                 runCatching { fetchCloudflareAdviserRecommendations(ageMonths, guide, channels) }
-                                    .onSuccess { aiRecommendations = it }
+                                    .onSuccess { aiRecommendations = it; AiSessionCache.recommendations = it }
                                     .onFailure { error ->
                                         Log.e("UmayTVGuide-AI", "Dashboard adviser failed", error)
                                         aiError = if (aiRecommendations != null) {
@@ -2235,10 +2300,6 @@ private fun ChannelAdviserView(
                     }
                 }
             }
-        }
-
-        item {
-            RecommendedTvScheduleCard(ageMonths, channels)
         }
 
         if (summaryRecommendation != null) {
@@ -2329,7 +2390,7 @@ private fun ChannelAdviserView(
                             questionError = null
                             scope.launch {
                                 runCatching { fetchCloudflareAdviserAnswer(ageMonths, question, guide, channels) }
-                                    .onSuccess { questionAnswer = it }
+                                    .onSuccess { questionAnswer = it; AiSessionCache.questionAnswer = it }
                                     .onFailure { error ->
                                         Log.e("UmayTVGuide-AI", "Question adviser failed", error)
                                         questionError = "Couldn't get an AI answer just now. Please try again in a moment."
