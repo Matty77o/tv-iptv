@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Build
 import android.provider.Settings
 import android.content.pm.PackageManager
+import java.security.MessageDigest
 import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -146,6 +147,55 @@ private suspend fun downloadUpdate(context: Context, info: AppUpdateInfo): File 
     target
 }
 
+private fun sha256(bytes: ByteArray): String =
+    MessageDigest.getInstance("SHA-256")
+        .digest(bytes)
+        .joinToString("") { "%02X".format(it) }
+
+private fun installedSigningDigests(context: Context): Set<String> = runCatching {
+    val pm = context.packageManager
+    val info = if (Build.VERSION.SDK_INT >= 33) {
+        pm.getPackageInfo(context.packageName, PackageManager.PackageInfoFlags.of(PackageManager.GET_SIGNING_CERTIFICATES.toLong()))
+    } else {
+        @Suppress("DEPRECATION")
+        pm.getPackageInfo(context.packageName, PackageManager.GET_SIGNING_CERTIFICATES)
+    }
+    val signatures = if (Build.VERSION.SDK_INT >= 28) {
+        val si = info.signingInfo
+        if (si?.hasMultipleSigners() == true) si.apkContentsSigners else si?.signingCertificateHistory
+    } else {
+        @Suppress("DEPRECATION")
+        info.signatures
+    }.orEmpty()
+    signatures.map { sha256(it.toByteArray()) }.toSet()
+}.getOrDefault(emptySet())
+
+private fun archiveSigningDigests(context: Context, apk: File): Set<String> = runCatching {
+    val pm = context.packageManager
+    val info = if (Build.VERSION.SDK_INT >= 33) {
+        pm.getPackageArchiveInfo(apk.absolutePath, PackageManager.PackageInfoFlags.of(PackageManager.GET_SIGNING_CERTIFICATES.toLong()))
+    } else {
+        @Suppress("DEPRECATION")
+        pm.getPackageArchiveInfo(apk.absolutePath, PackageManager.GET_SIGNING_CERTIFICATES)
+    } ?: return@runCatching emptySet()
+    val signatures = if (Build.VERSION.SDK_INT >= 28) {
+        val si = info.signingInfo
+        if (si?.hasMultipleSigners() == true) si.apkContentsSigners else si?.signingCertificateHistory
+    } else {
+        @Suppress("DEPRECATION")
+        info.signatures
+    }.orEmpty()
+    signatures.map { sha256(it.toByteArray()) }.toSet()
+}.getOrDefault(emptySet())
+
+private fun signatureMismatchMessage(context: Context, apk: File): String? {
+    val installed = installedSigningDigests(context)
+    val incoming = archiveSigningDigests(context, apk)
+    if (installed.isEmpty() || incoming.isEmpty() || installed.intersect(incoming).isNotEmpty()) return null
+    return "Android will not install this build over the current copy because the two APKs are signed with different keys. " +
+        "This phone still has an older signing-key build. A one-time uninstall/reinstall of the stable-key APK is required; after that, future in-app updates can install normally."
+}
+
 private fun launchInstaller(context: Context, apk: File): Boolean {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !context.packageManager.canRequestPackageInstalls()) {
         context.startActivity(Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES).apply {
@@ -188,7 +238,11 @@ fun ManualUpdateControl() {
                         update = manifestUpdate
                         status = "Update ${manifestUpdate.versionName} found — downloading…"
                         runCatching { downloadUpdate(context, manifestUpdate) }
-                            .onSuccess { apk = it; status = "Update ${manifestUpdate.versionName} is ready to install." }
+                            .onSuccess {
+                                apk = it
+                                status = signatureMismatchMessage(context, it)
+                                    ?: "Update ${manifestUpdate.versionName} is ready to install."
+                            }
                             .onFailure { status = "Update found, but download failed: ${it.message ?: "unknown error"}" }
                     } else {
                         status = "Checking the latest GitHub release…"
@@ -218,6 +272,11 @@ fun ManualUpdateControl() {
             Spacer(Modifier.height(10.dp))
             Button(onClick = {
                 val file = apk ?: return@Button
+                val mismatch = signatureMismatchMessage(context, file)
+                if (mismatch != null) {
+                    status = mismatch
+                    return@Button
+                }
                 if (!launchInstaller(context, file)) {
                     status = "Allow Umay TV Guide to install unknown apps, then return here and tap Install update."
                 }
@@ -265,7 +324,10 @@ fun AppUpdateGate(content: @Composable () -> Unit) {
             error = null
             downloading = true
             runCatching { downloadUpdate(context, found) }
-                .onSuccess { downloadedApk = it }
+                .onSuccess {
+                    downloadedApk = it
+                    error = signatureMismatchMessage(context, it)
+                }
                 .onFailure { error = it.message ?: "Could not download update" }
             downloading = false
         } else if (found == null) {
@@ -276,7 +338,7 @@ fun AppUpdateGate(content: @Composable () -> Unit) {
             if (fallback != null) {
                 update = fallback.first
                 downloadedApk = fallback.second
-                error = null
+                error = signatureMismatchMessage(context, fallback.second)
             }
             downloading = false
         }
@@ -302,15 +364,20 @@ fun AppUpdateGate(content: @Composable () -> Unit) {
             },
             confirmButton = {
                 Button(
-                    enabled = downloadedApk != null && !downloading,
+                    enabled = downloadedApk != null && !downloading && error == null,
                     onClick = {
                         val apk = downloadedApk ?: return@Button
+                        val mismatch = signatureMismatchMessage(context, apk)
+                        if (mismatch != null) {
+                            error = mismatch
+                            return@Button
+                        }
                         val launched = launchInstaller(context, apk)
                         if (!launched) {
                             error = "Allow Umay TV Guide to install unknown apps, then return here and tap Install update again."
                         }
                     }
-                ) { Text(if (error == null) "Install update" else "Try install again") }
+                ) { Text(if (error == null) "Install update" else "Reinstall required") }
             },
             dismissButton = {
                 TextButton(onClick = { update = null; downloadedApk = null; error = null }) { Text("Later") }

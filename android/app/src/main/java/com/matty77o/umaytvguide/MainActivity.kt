@@ -3654,10 +3654,10 @@ private fun ChannelCell(channel: TvChannel) {
             modifier = Modifier
                 .size(46.dp)
                 .clip(RoundedCornerShape(13.dp))
-                .background(Color.White.copy(alpha = .96f))
+                .background(Panel2.copy(alpha = .58f))
                 .border(
                     1.dp,
-                    Color.White.copy(alpha=.08f),
+                    Hairline,
                     RoundedCornerShape(13.dp)
                 ),
             contentAlignment = Alignment.Center
