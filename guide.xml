@@ -17941,6 +17941,10 @@
     <display-name>Baby Shark TV</display-name>
     <icon src="https://provider-static.plex.tv/epg/cms/production/c0d601b3-28bc-4b6f-9e8b-0748d2026f65/Plex_Vertical-Default-Art_-_2000x3000.jpg" />
   </channel>
+  <channel id="Kidoodle TV">
+    <display-name>Kidoodle TV</display-name>
+    <icon src="https://provider-static.plex.tv/epg/cms/production/2dc3f128-bd64-48b7-bedd-d7545660de8f/Kidoodle.TV_Poster_Image__2000x3000___1_.jpg" />
+  </channel>
   <programme start="20260909000000 +0000" stop="20260909001900 +0000" channel="Baby Shark TV">
     <title lang="en">Pinkfong Songs for Children</title>
     <sub-title lang="en">Around the World with Baby Shark</sub-title>
@@ -20083,6 +20087,1760 @@
     <episode-num system="onscreen">S1 E1</episode-num>
     <rating system="US">
       <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20260909003400 +0000" stop="20260909010400 +0000" channel="Kidoodle TV">
+    <title lang="en">Gaby Time</title>
+    <desc lang="en">Join Miss Gaby in her interactive play-along adventures. Play along while learning about things like going to school and catching the school bus from a real teacher, Miss Gaby! This fun, educational, and interactive videos feature Miss Gaby helping children and families learn about going to school in a way your kids will LOVE! Parents can trust that Miss Gaby’s preschool and school learning videos are backed by experience and created by professionals!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/b2b1cf42527af6f2/f7e243b7-d54d-4c5c-bd20-a4591b842379.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909010400 +0000" stop="20260909013600 +0000" channel="Kidoodle TV">
+    <title lang="en">Rainbow High</title>
+    <desc lang="en">Welcome to Rainbow High, the most elite fashion and fine arts school in the world! Here, the walls are bursting with energy and talent, as students learn how to let their true colors shine with Grit, Love, Action and Moxie (yep, we call it GLAM). The series takes us inside this one-of-a-kind school through the eyes of eight first-year students, teamed for their very first exam: a full-stop, make-or-break high-tech fashion runway show, with the added stakes of being kicked out if they can’t perform. These girls will start out strangers, but as they’re forced to come together or fail, they’ll have to find the best in each other, and themselves to make their visions come to life, and eventually, BFFs.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/422fd2603db770b4/66da3b40-7830-429d-bda5-8e2d554c040d.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909013600 +0000" stop="20260909020300 +0000" channel="Kidoodle TV">
+    <title lang="en">Paw Patrol: Pup Tales!</title>
+    <desc lang="en">PAW Patrol pups to the rescue! When trouble strikes in Adventure Bay, PAW Patrol is there to save the day! Why? Because no job is too big, no pup is too small! Watch as PAW Patrol works together to keep Adventure Bay safe – whether it’s a cat in a tree, a chicken running free, or a train off the tracks, they always find a way to help those in need! New and exciting PAW Patrol rescue episodes are on their way! Don’t miss the Pups in action! Whether Chase is on the case, Rubble’s on the double, or Skye’s gotta fly, you won’t want to miss all the exciting action in Adventure Bay!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/Images/c8fdbdf0-abf2-47ad-ad40-d0c8f61e64df.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909020300 +0000" stop="20260909023000 +0000" channel="Kidoodle TV">
+    <title lang="en">American Girl - Ready, Set, Prep!</title>
+    <desc lang="en">Get ready with American Girl! Whatever adventure they face these girls are READY! Watch as they pack, prep, and practice all while gaining confidence, having fun, and making new friends along the way in an all-new stop motion series!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/e1a7a8b72034606f/75e0ba04-dae2-4f04-8715-4bc4366640a8.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909023000 +0000" stop="20260909025900 +0000" channel="Kidoodle TV">
+    <title lang="en">Bratz</title>
+    <sub-title lang="en">Just Dance - Camp Starshine</sub-title>
+    <desc lang="en">When the Bratz are invited to an exclusive fashion rock camp, they are soon disappointed to meet a snotty ballet instructor and find the fat twin girls who bully them are also invited.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/3b737bbbe7fa1ae4/Bratz-84980-1.jpg" />
+    <episode-num system="onscreen">S2 E11</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909025900 +0000" stop="20260909034100 +0000" channel="Kidoodle TV">
+    <title lang="en">Angelina Ballerina</title>
+    <sub-title lang="en">Angelina and the Big News - Angelina’s Secret Valentine</sub-title>
+    <desc lang="en">When Angelina, Viki, and Marco mistakenly think Ms. Mimi is getting married after overhearing her talking on the phone, they learn about wedding marches and organ music in order to make her wedding day special. Angelina receives a Valentine card from ...</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/8d33bff533d51066/AngelinaBallerina-Series-1939-1.jpg" />
+    <episode-num system="onscreen">S4 E408</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909034100 +0000" stop="20260909040600 +0000" channel="Kidoodle TV">
+    <title lang="en">Genevieve's Playhouse</title>
+    <desc lang="en">Genevieve's Playhouse is a vibrant, family-friendly YouTube channel designed to engage and educate young children through fun, imaginative play. Featuring colorful toys, interactive stories, and creative adventures, each episode fosters early learning in a playful environment. From counting and colors to problem-solving, "Genevieve's Playhouse" offers a delightful mix of entertainment and education for curious little minds.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/66d9e947e462034a/b53f069c-db7a-48cc-94a8-b0fc0aa3a4ff.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909040600 +0000" stop="20260909045100 +0000" channel="Kidoodle TV">
+    <title lang="en">KidCity</title>
+    <desc lang="en">Follow Becket, Ava, MomCity and DadCity through their legendary laughter, adventure, and family fun!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/f8956d180e0e9c67/e27a4eb9-d462-4f51-ae90-16fbefb8ca17.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909045100 +0000" stop="20260909053700 +0000" channel="Kidoodle TV">
+    <title lang="en">SPLASH AND BUBBLES</title>
+    <desc lang="en">Splash and Bubbles is an animated preschool comedy inspiring kids to connect with and care about the ocean. Splash, Bubbles, and their Reeftown friends share amazing adventures, meet new creatures, and explore the diversity and wonder of life in the ocean.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/af7ad0e9d82227b6/bb32cb8c-7ef3-4520-a726-4d521077368e.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909053700 +0000" stop="20260909060800 +0000" channel="Kidoodle TV">
+    <title lang="en">Rainbow High</title>
+    <desc lang="en">Welcome to Rainbow High, the most elite fashion and fine arts school in the world! Here, the walls are bursting with energy and talent, as students learn how to let their true colors shine with Grit, Love, Action and Moxie (yep, we call it GLAM). The series takes us inside this one-of-a-kind school through the eyes of eight first-year students, teamed for their very first exam: a full-stop, make-or-break high-tech fashion runway show, with the added stakes of being kicked out if they can’t perform. These girls will start out strangers, but as they’re forced to come together or fail, they’ll have to find the best in each other, and themselves to make their visions come to life, and eventually, BFFs.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/422fd2603db770b4/66da3b40-7830-429d-bda5-8e2d554c040d.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909060800 +0000" stop="20260909063300 +0000" channel="Kidoodle TV">
+    <title lang="en">Little Angel</title>
+    <desc lang="en">It's Little Angel! Where baby John, his brother, Jack, and sister, Jill inspire kids and families to have fun and to grow and learn through play. Come sing along!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/93faaa1ded706244/442a23f8-7843-45a7-9f93-2bdf34f5179f.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909063300 +0000" stop="20260909070300 +0000" channel="Kidoodle TV">
+    <title lang="en">Finny the Shark!</title>
+    <desc lang="en">Follow Finny and friends as they explore stories of friendship, family, and everyday life through the (fish-eye) lens of a preschooler. Whether it's traversing the first day of school, a trip to the dentist, or trying to be brave at a first sleepover, Finny's wild imagination turns everyday experiences into over the top adventures!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/8ea416c07e276b3c/46efbba7-3a2a-462e-988b-26c194231568.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909070300 +0000" stop="20260909073200 +0000" channel="Kidoodle TV">
+    <title lang="en">Bratz</title>
+    <sub-title lang="en">Just Dance - Camp Starshine</sub-title>
+    <desc lang="en">When the Bratz are invited to an exclusive fashion rock camp, they are soon disappointed to meet a snotty ballet instructor and find the fat twin girls who bully them are also invited.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/3b737bbbe7fa1ae4/Bratz-84980-1.jpg" />
+    <episode-num system="onscreen">S2 E11</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909073200 +0000" stop="20260909081100 +0000" channel="Kidoodle TV">
+    <title lang="en">Magic Mixies: Mixlings</title>
+    <desc lang="en">When Sienna finds a prism that unlocks a glittering pathway to a new magical land it becomes the start of a whole new adventure! Join her as she encounters a whole new realm FILLED with magic creatures. Magicus Mixus! - Mixies Challenge: Can you find all 7 magical ingredients for the mystery spell hidden in the episode?</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/2cc3d4ac7f831af7/f9f36a13-2c2c-4d78-876b-cb51dd744b39.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909081100 +0000" stop="20260909083900 +0000" channel="Kidoodle TV">
+    <title lang="en">Sesame Street: Abby Cadabby</title>
+    <desc lang="en">Zippity-zap! Join Sesame Street's favorite fairy-in-training, Abby Cadabby in this magical collection of favorite moments.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/05eb495a0bcaa847/bc7f4682-faf7-489c-809e-c8c945074e93.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909083900 +0000" stop="20260909091400 +0000" channel="Kidoodle TV">
+    <title lang="en">Dude Perfect Trick Shots</title>
+    <desc lang="en">Get ready for some INSANE trick shots! The Dudes put their skills on display for some ridiculously awesome trick shots that will blow your mind!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/f520f67e3c26ec95/5d925d5a-daf1-4ec1-bb7d-9af44c2cefa5.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909091400 +0000" stop="20260909094200 +0000" channel="Kidoodle TV">
+    <title lang="en">Paw Patrol: Pup Tales!</title>
+    <desc lang="en">PAW Patrol pups to the rescue! When trouble strikes in Adventure Bay, PAW Patrol is there to save the day! Why? Because no job is too big, no pup is too small! Watch as PAW Patrol works together to keep Adventure Bay safe – whether it’s a cat in a tree, a chicken running free, or a train off the tracks, they always find a way to help those in need! New and exciting PAW Patrol rescue episodes are on their way! Don’t miss the Pups in action! Whether Chase is on the case, Rubble’s on the double, or Skye’s gotta fly, you won’t want to miss all the exciting action in Adventure Bay!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/Images/c8fdbdf0-abf2-47ad-ad40-d0c8f61e64df.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909094200 +0000" stop="20260909101100 +0000" channel="Kidoodle TV">
+    <title lang="en">MOLANG: SUMMER</title>
+    <desc lang="en">From deep-sea diving and discovering underwater wonders, to meeting new friends and travelling in an RV, our two friends will live a summer bursting with fun, surprises and friendship.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/b6fe72a7286fcad9/7d633b12-b841-4038-9587-e331e5d3f4dd.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909101100 +0000" stop="20260909105000 +0000" channel="Kidoodle TV">
+    <title lang="en">American Girl: Travel Twins</title>
+    <desc lang="en">Michael and Makayla go on a journey traveling around the world!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/0fca44c53458640f/7e2afa09-3a50-425d-bfcf-245ed8c20664.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909105000 +0000" stop="20260909112100 +0000" channel="Kidoodle TV">
+    <title lang="en">Gaby Time</title>
+    <desc lang="en">Join Miss Gaby in her interactive play-along adventures. Play along while learning about things like going to school and catching the school bus from a real teacher, Miss Gaby! This fun, educational, and interactive videos feature Miss Gaby helping children and families learn about going to school in a way your kids will LOVE! Parents can trust that Miss Gaby’s preschool and school learning videos are backed by experience and created by professionals!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/b2b1cf42527af6f2/f7e243b7-d54d-4c5c-bd20-a4591b842379.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909112100 +0000" stop="20260909114700 +0000" channel="Kidoodle TV">
+    <title lang="en">AFV KIDS!</title>
+    <desc lang="en">Welcome to AFV Kids! The show featuring clips with kids just like YOU being hilarious. You never know what’s going to happen but you can bet that every clip is going to be cooler, crazier, and funnier than the last!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/1999291412e13c39/3e8896e1-adcd-400b-a515-3bd480e4aa1b.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909114700 +0000" stop="20260909121600 +0000" channel="Kidoodle TV">
+    <title lang="en">AFV Kids</title>
+    <desc lang="en">Welcome to AFV Kids! The show featuring clips with kids just like YOU being hilarious. You never know what’s going to happen but you can bet that every clip is going to be cooler, crazier, and funnier than the last!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/0d358f82e28bedbd/951e7a32-8f1c-4e12-828f-74ecd5b01d60.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909121600 +0000" stop="20260909125400 +0000" channel="Kidoodle TV">
+    <title lang="en">Sesame Street - Nature</title>
+    <desc lang="en">It’s a beautiful day today, so let’s explore the great outdoors with Elmo, Abby, Grover, and more. Experience nature by taking a walk in the park, meeting a butterfly, or even plant a garden!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/881fbe05cf00dc30/92012501-0d9b-47d6-b5f3-84be142bbcf3.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909125400 +0000" stop="20260909132600 +0000" channel="Kidoodle TV">
+    <title lang="en">Sesame Street: Abby Cadabby</title>
+    <desc lang="en">Zippity-zap! Join Sesame Street's favorite fairy-in-training, Abby Cadabby in this magical collection of favorite moments.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/05eb495a0bcaa847/bc7f4682-faf7-489c-809e-c8c945074e93.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909132600 +0000" stop="20260909140100 +0000" channel="Kidoodle TV">
+    <title lang="en">SolarBalls</title>
+    <sub-title lang="en">Planets in Love</sub-title>
+    <desc lang="en">Thea and Proto finally confess their feelings, convinced their bond could unlock life itself.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/0bc7615227527637/SolarBalls-Series-3667-1.jpg" />
+    <episode-num system="onscreen">S1 E4</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909140100 +0000" stop="20260909144300 +0000" channel="Kidoodle TV">
+    <title lang="en">Angry Birds!</title>
+    <desc lang="en">Red, Chuck, Bomb, Matilda, Terence, and The Blues need to keep the eggs safe from the pigs that will snatch them at any cost.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/19a9b1fc37f08e13/be14b860-c0bf-4161-b4fe-995ddbce2498.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909144300 +0000" stop="20260909151100 +0000" channel="Kidoodle TV">
+    <title lang="en">Om Nom Stories</title>
+    <desc lang="en">When Om Nom suddenly appears on a boy’s doorstep, life gets a lot more interesting! He jumps through time, ends up in strange worlds, tries out new jobs, and even becomes a vlogger. With Om Nelle, he battles villains, raises baby Nibble Nom, and somehow still runs a café without burning it down!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/6be43c552c093b50/41ddbdc9-0c6b-4d3f-890d-68f375cfef33.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909151100 +0000" stop="20260909160000 +0000" channel="Kidoodle TV">
+    <title lang="en">SUNNY BUNNIES</title>
+    <desc lang="en">Sunny Bunnies are fantastic creatures, who live on the Sun. They can fly through a secret door into the Earth with the help of sun rays. Before they leave their hot climate, they put on colourful warm coats made of sunny fur to keep them warm. The Bunnies can appear everywhere where there is a light, and if the dark falls, anything from the moonlight to the light of the stars to even a candle light is enough to bring them to life.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/52d569a130dbe82e/9af2a036-aa00-4691-a73f-a2412bb75d3e.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909160000 +0000" stop="20260909163100 +0000" channel="Kidoodle TV">
+    <title lang="en">Shaun the Sheep</title>
+    <desc lang="en">It's countryside chaos as Shaun The Sheep returns to the small screen with his very own series. Peace in the valley turns to mayhem in the meadow as Shaun leads his flock into all sorts of scrapes and scraps, running rings around sheepdog Bitzer when the Farmer's back is turned.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/1b2e7c5ec4e4bfb8/52bce7f5-b2b8-42f1-8714-0a8ae491521d.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909163100 +0000" stop="20260909165000 +0000" channel="Kidoodle TV">
+    <title lang="en">5-Minute Crafts</title>
+    <desc lang="en">5-minute Crafts provides helpful ideas for craft projects that empower families to solve everyday problems with creative, simple solutions.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/c493f2398a213351/e4a827c5-bc64-4cf5-b71e-60a0c62a6f74.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909165000 +0000" stop="20260909173200 +0000" channel="Kidoodle TV">
+    <title lang="en">Akedo: Ultimate Arcade Warriors</title>
+    <desc lang="en">In the not-too-distant future, the biggest game in the world is a massive, multiplayer virtual reality called AKEDO. To become an Akedo Champion, players collect and battle with a range of powerful and quirky AKEDO WARRIORS in the ultimate fighting game mashup.  In the Akedo Arena a stealthy ninja can fight a wise-crackin’ roller derby skater, a stoic space commander can go head-to-head with a ridiculous big baby, and a clown with a rubber chicken can absolutely demolish a hardened gladiator. A cartoon for kid gamers with epic battles, cyberpunk technology and quirky anime humour. GAME ON!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/b4cc78111fc7f660/be806afd-804a-4bab-b646-7a94edd7c924.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909173200 +0000" stop="20260909180700 +0000" channel="Kidoodle TV">
+    <title lang="en">Dude Perfect: OVERTIME</title>
+    <desc lang="en">Get ready to laugh out loud when watching Overtime! With segments like Not Top 10, Wheel Unfortunate, and Games with Consequences…OT is a must-watch!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/a7a0eb667bdbfd41/1fe8f841-c633-4595-b8fc-dd24e7960b1b.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909180700 +0000" stop="20260909185100 +0000" channel="Kidoodle TV">
+    <title lang="en">PAW Patrol: Pup Tales</title>
+    <desc lang="en">PAW Patrol pups to the rescue! When trouble strikes in Adventure Bay, PAW Patrol is there to save the day! Why? Because no job is too big, no pup is too small!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/Images/c8fdbdf0-abf2-47ad-ad40-d0c8f61e64df.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909185100 +0000" stop="20260909194900 +0000" channel="Kidoodle TV">
+    <title lang="en">Sesame Street - Families</title>
+    <desc lang="en">Every family is different and part of who we are! That’s something to be proud of. Celebrate the people in your family with Elmo as he learns about babies, grandparents, siblings, and how each member of a family is important. Love makes a family!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/436b56f991d9f872/7f824503-0bda-4e70-aab0-c0be3f047709.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909194900 +0000" stop="20260909201100 +0000" channel="Kidoodle TV">
+    <title lang="en">Sesame Street: Abby Cadabby</title>
+    <desc lang="en">Zippity-zap! Join Sesame Street's favorite fairy-in-training, Abby Cadabby in this magical collection of favorite moments.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/88169e52cbebd405/bc7f4682-faf7-489c-809e-c8c945074e93.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909201100 +0000" stop="20260909204200 +0000" channel="Kidoodle TV">
+    <title lang="en">Super Wings</title>
+    <desc lang="en">“Super Wings” is an action-packed preschool series about an adorable jet plane named Jett who travels the world delivering packages to children. When challenges arise, Jett calls for help from one of five amazing airplane friends who bring a team with special skill sets to overcome obstacles and save the day!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/99d1a59da02647af/07172e72-bb9f-432b-a491-74515f9220e6.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909204200 +0000" stop="20260909211200 +0000" channel="Kidoodle TV">
+    <title lang="en">Super Wings</title>
+    <desc lang="en">“Super Wings” is an action-packed preschool series about an adorable jet plane named Jett who travels the world delivering packages to children. When challenges arise, Jett calls for help from one of five amazing airplane friends who bring a team with special skill sets to overcome obstacles and save the day!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/74c6258f4b943eeb/07172e72-bb9f-432b-a491-74515f9220e6.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909211200 +0000" stop="20260909214300 +0000" channel="Kidoodle TV">
+    <title lang="en">Gaby Time</title>
+    <desc lang="en">Join Miss Gaby in her interactive play-along adventures. Play along while learning about things like going to school and catching the school bus from a real teacher, Miss Gaby! This fun, educational, and interactive videos feature Miss Gaby helping children and families learn about going to school in a way your kids will LOVE! Parents can trust that Miss Gaby’s preschool and school learning videos are backed by experience and created by professionals!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/b2b1cf42527af6f2/f7e243b7-d54d-4c5c-bd20-a4591b842379.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909214300 +0000" stop="20260909221000 +0000" channel="Kidoodle TV">
+    <title lang="en">Hip Hop Harry</title>
+    <sub-title lang="en">Never Give Up</sub-title>
+    <desc lang="en">Ryan is having a hard time in basketball practice, but Hip Hop Harry urges him to never give up and to keep practicing. The kids learn how fish breathe underwater.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/a75485fa2b7b81ca/HipHopHarry-Series-2990-1.jpg" />
+    <episode-num system="onscreen">S1 E13</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909221000 +0000" stop="20260909223900 +0000" channel="Kidoodle TV">
+    <title lang="en">Paw Patrol: Pup Tales!</title>
+    <desc lang="en">PAW Patrol pups to the rescue! When trouble strikes in Adventure Bay, PAW Patrol is there to save the day! Why? Because no job is too big, no pup is too small! Watch as PAW Patrol works together to keep Adventure Bay safe – whether it’s a cat in a tree, a chicken running free, or a train off the tracks, they always find a way to help those in need! New and exciting PAW Patrol rescue episodes are on their way! Don’t miss the Pups in action! Whether Chase is on the case, Rubble’s on the double, or Skye’s gotta fly, you won’t want to miss all the exciting action in Adventure Bay!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/Images/c8fdbdf0-abf2-47ad-ad40-d0c8f61e64df.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260909223900 +0000" stop="20260909230300 +0000" channel="Kidoodle TV">
+    <title lang="en">Sesame Street: Cookie Monster</title>
+    <desc lang="en">Om nom nom! In this Cookie Monster Collection, kids will play and sing along with everyone's favorite cookie-loving monster, as he teaches the letter and number of the day, take lots of snack breaks, and has fun with all his Sesame Street friends!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/6b28be2c45f67016/ee56ccf7-8836-4edf-8bb0-17d4548b4d8d.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-PG</value>
+    </rating>
+  </programme>
+  <programme start="20260909230300 +0000" stop="20260910000300 +0000" channel="Kidoodle TV">
+    <title lang="en">POCOYO</title>
+    <desc lang="en">Pocoyo is a spontaneous, brave, inquisitive little boy, discovering the world around him and his friends.  - Pocoyo is a pre-school series comprising educational, fun episodes that depict a range of situations in a world of gestures, colors, shapes, and music and featuring high-impact visual language.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/a7801fb1c2ea4911/7f76da28-1ed3-4046-86f0-3d3f8c82b5c3.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910000300 +0000" stop="20260910003200 +0000" channel="Kidoodle TV">
+    <title lang="en">Bratz</title>
+    <sub-title lang="en">Just Dance - Just Dance</sub-title>
+    <desc lang="en">When the Bratz are invited to an exclusive fashion rock camp, they are soon disappointed to meet a snotty ballet instructor and find the fat twin girls who bully them are also invited.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/3b737bbbe7fa1ae4/Bratz-84980-1.jpg" />
+    <episode-num system="onscreen">S2 E13</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910003200 +0000" stop="20260910010300 +0000" channel="Kidoodle TV">
+    <title lang="en">Bratz</title>
+    <sub-title lang="en">Camping</sub-title>
+    <desc lang="en">The Bratz become reluctant overnight campers when they get lost on their way to the Wilderness Spa. The Tweevils, hoping to get some embarrassing pictures of the girls without make-up, follow behind.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/3b737bbbe7fa1ae4/Bratz-84980-1.jpg" />
+    <episode-num system="onscreen">S1 E14</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910010300 +0000" stop="20260910014100 +0000" channel="Kidoodle TV">
+    <title lang="en">Gaby Time</title>
+    <desc lang="en">Join Miss Gaby in her interactive play-along adventures. Play along while learning about things like going to school and catching the school bus from a real teacher, Miss Gaby! This fun, educational, and interactive videos feature Miss Gaby helping children and families learn about going to school in a way your kids will LOVE! Parents can trust that Miss Gaby’s preschool and school learning videos are backed by experience and created by professionals!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/48f574b13e03f9cf/f7e243b7-d54d-4c5c-bd20-a4591b842379.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910014100 +0000" stop="20260910020900 +0000" channel="Kidoodle TV">
+    <title lang="en">Hip Hop Harry</title>
+    <sub-title lang="en">Never Give Up</sub-title>
+    <desc lang="en">Ryan is having a hard time in basketball practice, but Hip Hop Harry urges him to never give up and to keep practicing. The kids learn how fish breathe underwater.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/a75485fa2b7b81ca/HipHopHarry-Series-2990-1.jpg" />
+    <episode-num system="onscreen">S1 E13</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910020900 +0000" stop="20260910022800 +0000" channel="Kidoodle TV">
+    <title lang="en">PupTales</title>
+    <desc lang="en">PAW Patrol pups to the rescue! When trouble strikes in Adventure Bay, PAW Patrol is there to save the day! Why? Because no job is too big, no pup is too small! Watch as PAW Patrol works together to keep Adventure Bay safe – whether it’s a cat in a tree, a chicken running free, or a train off the tracks, they always find a way to help those in need! New and exciting PAW Patrol rescue episodes are on their way! Don’t miss the Pups in action! Whether Chase is on the case, Rubble’s on the double, or Skye’s gotta fly, you won’t want to miss all the exciting action in Adventure Bay!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/Images/c8fdbdf0-abf2-47ad-ad40-d0c8f61e64df.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910022800 +0000" stop="20260910030200 +0000" channel="Kidoodle TV">
+    <title lang="en">TuTiTu: Animals</title>
+    <desc lang="en">TuTiTu Animals is a 3D animated video series for toddlers. Each episode features a new animal toy, stimulating the child's imagination and creativity through building the toy and introducing the viewers to the animal and its habitat. Watch TuTiTu transform different colourful shapes into a new and exciting animal toy!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/c12040b8d8075d42/1428b08e-cbf9-4ec8-966e-4031c97c9e8d.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910030200 +0000" stop="20260910032900 +0000" channel="Kidoodle TV">
+    <title lang="en">Om Nom Stories</title>
+    <desc lang="en">When Om Nom suddenly appears on a boy’s doorstep, life gets a lot more interesting! He jumps through time, ends up in strange worlds, tries out new jobs, and even becomes a vlogger. With Om Nelle, he battles villains, raises baby Nibble Nom, and somehow still runs a café without burning it down!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/6be43c552c093b50/41ddbdc9-0c6b-4d3f-890d-68f375cfef33.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910032900 +0000" stop="20260910041200 +0000" channel="Kidoodle TV">
+    <title lang="en">SUNNY BUNNIES</title>
+    <desc lang="en">Sunny Bunnies are fantastic creatures, who live on the Sun. They can fly through a secret door into the Earth with the help of sun rays. Before they leave their hot climate, they put on colourful warm coats made of sunny fur to keep them warm. The Bunnies can appear everywhere where there is a light, and if the dark falls, anything from the moonlight to the light of the stars to even a candle light is enough to bring them to life.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/52d569a130dbe82e/9af2a036-aa00-4691-a73f-a2412bb75d3e.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910041200 +0000" stop="20260910044200 +0000" channel="Kidoodle TV">
+    <title lang="en">Shaun the Sheep</title>
+    <desc lang="en">It's countryside chaos as Shaun The Sheep returns to the small screen with his very own series. Peace in the valley turns to mayhem in the meadow as Shaun leads his flock into all sorts of scrapes and scraps, running rings around sheepdog Bitzer when the Farmer's back is turned.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/1b2e7c5ec4e4bfb8/52bce7f5-b2b8-42f1-8714-0a8ae491521d.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910044200 +0000" stop="20260910051900 +0000" channel="Kidoodle TV">
+    <title lang="en">Ocean Explorers</title>
+    <sub-title lang="en">Let's Explore: Patterns with Shells, Coral Colors, I Spy and Octopus and Opposites with Baby Sea Turtles</sub-title>
+    <desc lang="en">Explore what one can find ashore! Tinker discovers sea shells,coral, octopus and opposites with baby sea turtle.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/ca41b625fc64e7b5/OceanExplorers-Series-3703-1.jpg" />
+    <episode-num system="onscreen">S1 E2</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910051900 +0000" stop="20260910055500 +0000" channel="Kidoodle TV">
+    <title lang="en">Ocean Explorers</title>
+    <sub-title lang="en">Let's Explore- Blue Footed Boobies, Tuna, Box Fish and the Coral Reef</sub-title>
+    <desc lang="en">Join the Ocean Explorers crew and learn about Blue Footed Boobies, Tuna, Box Fish and the Coral Reef! Discover different STEAM concepts through narration, repetition and real life footage.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/ca41b625fc64e7b5/OceanExplorers-Series-3703-1.jpg" />
+    <episode-num system="onscreen">S2 E3</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910055500 +0000" stop="20260910061900 +0000" channel="Kidoodle TV">
+    <title lang="en">Sesame Street: Cookie Monster</title>
+    <desc lang="en">Om nom nom! In this Cookie Monster Collection, kids will play and sing along with everyone's favorite cookie-loving monster, as he teaches the letter and number of the day, take lots of snack breaks, and has fun with all his Sesame Street friends!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/6b28be2c45f67016/ee56ccf7-8836-4edf-8bb0-17d4548b4d8d.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-PG</value>
+    </rating>
+  </programme>
+  <programme start="20260910061900 +0000" stop="20260910064700 +0000" channel="Kidoodle TV">
+    <title lang="en">Hip Hop Harry</title>
+    <sub-title lang="en">Never Give Up</sub-title>
+    <desc lang="en">Ryan is having a hard time in basketball practice, but Hip Hop Harry urges him to never give up and to keep practicing. The kids learn how fish breathe underwater.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/a75485fa2b7b81ca/HipHopHarry-Series-2990-1.jpg" />
+    <episode-num system="onscreen">S1 E13</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910064700 +0000" stop="20260910071900 +0000" channel="Kidoodle TV">
+    <title lang="en">Super Wings</title>
+    <desc lang="en">“Super Wings” is an action-packed preschool series about an adorable jet plane named Jett who travels the world delivering packages to children. When challenges arise, Jett calls for help from one of five amazing airplane friends who bring a team with special skill sets to overcome obstacles and save the day!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/99d1a59da02647af/07172e72-bb9f-432b-a491-74515f9220e6.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910071900 +0000" stop="20260910073900 +0000" channel="Kidoodle TV">
+    <title lang="en">POCOYO</title>
+    <desc lang="en">Pocoyo is a spontaneous, brave, inquisitive little boy, discovering the world around him and his friends.  - Pocoyo is a pre-school series comprising educational, fun episodes that depict a range of situations in a world of gestures, colors, shapes, and music and featuring high-impact visual language.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/38bd1f16519eab92/7f76da28-1ed3-4046-86f0-3d3f8c82b5c3.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910073900 +0000" stop="20260910081300 +0000" channel="Kidoodle TV">
+    <title lang="en">TuTiTu: Animals</title>
+    <desc lang="en">TuTiTu Animals is a 3D animated video series for toddlers. Each episode features a new animal toy, stimulating the child's imagination and creativity through building the toy and introducing the viewers to the animal and its habitat. Watch TuTiTu transform different colourful shapes into a new and exciting animal toy!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/c12040b8d8075d42/1428b08e-cbf9-4ec8-966e-4031c97c9e8d.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910081300 +0000" stop="20260910084300 +0000" channel="Kidoodle TV">
+    <title lang="en">Heroes of Goo Jit Zu</title>
+    <desc lang="en">After a meteor crash, zoo animals transform into squishy, gooey and stretchy superheroes with special powers and soon take on evildoers.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/30f3961bb3b931d9/caa78db4-e52d-4a3c-bec3-caac0bd5fd85.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910084300 +0000" stop="20260910090400 +0000" channel="Kidoodle TV">
+    <title lang="en">Sesame Street: Abby Cadabby</title>
+    <desc lang="en">Zippity-zap! Join Sesame Street's favorite fairy-in-training, Abby Cadabby in this magical collection of favorite moments.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/88169e52cbebd405/bc7f4682-faf7-489c-809e-c8c945074e93.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910090400 +0000" stop="20260910093800 +0000" channel="Kidoodle TV">
+    <title lang="en">Dude Perfect: OVERTIME</title>
+    <desc lang="en">Get ready to laugh out loud when watching Overtime! With segments like Not Top 10, Wheel Unfortunate, and Games with Consequences…OT is a must-watch!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/a7a0eb667bdbfd41/1fe8f841-c633-4595-b8fc-dd24e7960b1b.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910093800 +0000" stop="20260910101800 +0000" channel="Kidoodle TV">
+    <title lang="en">PAW Patrol: Pup Tales</title>
+    <desc lang="en">PAW Patrol pups to the rescue! When trouble strikes in Adventure Bay, PAW Patrol is there to save the day! Why? Because no job is too big, no pup is too small!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/Images/c8fdbdf0-abf2-47ad-ad40-d0c8f61e64df.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910101800 +0000" stop="20260910110600 +0000" channel="Kidoodle TV">
+    <title lang="en">Enchantimals: Glam Party</title>
+    <desc lang="en">It’s time for the Enchantimals to strut their stuff in a fabulous fashion competition filled with new friends, new challenges, and a whole lotta fierceness!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/3bb8c0ca1aee73cc/17fdbc19-4a23-476e-a73f-2a954872c2cc.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910110600 +0000" stop="20260910114400 +0000" channel="Kidoodle TV">
+    <title lang="en">Gaby Time</title>
+    <desc lang="en">Join Miss Gaby in her interactive play-along adventures. Play along while learning about things like going to school and catching the school bus from a real teacher, Miss Gaby! This fun, educational, and interactive videos feature Miss Gaby helping children and families learn about going to school in a way your kids will LOVE! Parents can trust that Miss Gaby’s preschool and school learning videos are backed by experience and created by professionals!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/48f574b13e03f9cf/f7e243b7-d54d-4c5c-bd20-a4591b842379.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910114400 +0000" stop="20260910122900 +0000" channel="Kidoodle TV">
+    <title lang="en">KidCity</title>
+    <desc lang="en">Follow Becket, Ava, MomCity and DadCity through their legendary laughter, adventure, and family fun!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/f8956d180e0e9c67/e27a4eb9-d462-4f51-ae90-16fbefb8ca17.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910122900 +0000" stop="20260910125300 +0000" channel="Kidoodle TV">
+    <title lang="en">Bob Zoom</title>
+    <desc lang="en">Bob Zoom is a charming blue ant who sings and entertains kids with nursery rhymes.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/4d0e89423daa9360/2ba83f97-3cfb-435f-a841-f2dfb3e6af94.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910125300 +0000" stop="20260910133100 +0000" channel="Kidoodle TV">
+    <title lang="en">Rabbids Invasion</title>
+    <desc lang="en">We don't know where they came from. We don't know how they got here. But we do know this: they're here to play! Rabbids are curious little creatures that have invaded earth, and they're on a mission…to have fun and leave a giant path of destruction wherever they go. - Whether they're stealing bananas from the mall, playing with plungers, or climbing cows, these little Rabbids are fury friends of very few words, and love fighting with each other on all of their crazy adventures. There’s only one thing they all agree on... elevators are super confusing.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/35f57cbf2f343170/a02660d4-29a1-402a-99a6-081294050579.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910133100 +0000" stop="20260910135900 +0000" channel="Kidoodle TV">
+    <title lang="en">Elemon</title>
+    <sub-title lang="en">DIY Project Mayhem!</sub-title>
+    <desc lang="en">Get ready for some DIY mayhem as Ryan and Com check out some of Professor World's most chaotic homemade projects!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/448dbf353b357099/Elemon-Series-2898-1.jpg" />
+    <episode-num system="onscreen">S1 E36</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910135900 +0000" stop="20260910142900 +0000" channel="Kidoodle TV">
+    <title lang="en">Game Toons</title>
+    <sub-title lang="en">The Creeper</sub-title>
+    <desc lang="en">The Creeper, Minecrafts most iconic villain may have more to their history than you might think. Perhaps their hissing, exploding exterior is a front for something deeper?</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/38b0fd38bad41eed/GameToons-Series-2547-2.jpg" />
+    <episode-num system="onscreen">S1 E8</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910142900 +0000" stop="20260910150100 +0000" channel="Kidoodle TV">
+    <title lang="en">Yu-Gi-Oh! ZEXAL</title>
+    <sub-title lang="en">The Shark Hunter</sub-title>
+    <desc lang="en">Shark tries to stop Kite from stealing Yuma's Golden Key by challenging him to a duel! Can Shark sink his teeth into Kite's life points and save Yuma's prized possession, or will Kite's cunning skills sink any chance Shark has of winning?</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/88a1c85a34bfc681/YuGiOhZEXAL-Series-2673-1.jpg" />
+    <episode-num system="onscreen">S1 E22</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910150100 +0000" stop="20260910152800 +0000" channel="Kidoodle TV">
+    <title lang="en">American Girl - Ready, Set, Prep!</title>
+    <desc lang="en">Get ready with American Girl! Whatever adventure they face these girls are READY! Watch as they pack, prep, and practice all while gaining confidence, having fun, and making new friends along the way in an all-new stop motion series!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/e1a7a8b72034606f/75e0ba04-dae2-4f04-8715-4bc4366640a8.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910152800 +0000" stop="20260910155600 +0000" channel="Kidoodle TV">
+    <title lang="en">Bratz</title>
+    <sub-title lang="en">Just Dance - Camp Starshine</sub-title>
+    <desc lang="en">When the Bratz are invited to an exclusive fashion rock camp, they are soon disappointed to meet a snotty ballet instructor and find the fat twin girls who bully them are also invited.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/3b737bbbe7fa1ae4/Bratz-84980-1.jpg" />
+    <episode-num system="onscreen">S2 E11</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910155600 +0000" stop="20260910163600 +0000" channel="Kidoodle TV">
+    <title lang="en">Angelina Ballerina</title>
+    <sub-title lang="en">Angelina and the Big News - Angelina’s Secret Valentine</sub-title>
+    <desc lang="en">When Angelina, Viki, and Marco mistakenly think Ms. Mimi is getting married after overhearing her talking on the phone, they learn about wedding marches and organ music in order to make her wedding day special. Angelina receives a Valentine card from ...</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/8d33bff533d51066/AngelinaBallerina-Series-1939-1.jpg" />
+    <episode-num system="onscreen">S4 E408</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910163600 +0000" stop="20260910170000 +0000" channel="Kidoodle TV">
+    <title lang="en">Genevieve's Playhouse</title>
+    <desc lang="en">Genevieve's Playhouse is a vibrant, family-friendly YouTube channel designed to engage and educate young children through fun, imaginative play. Featuring colorful toys, interactive stories, and creative adventures, each episode fosters early learning in a playful environment. From counting and colors to problem-solving, "Genevieve's Playhouse" offers a delightful mix of entertainment and education for curious little minds.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/66d9e947e462034a/b53f069c-db7a-48cc-94a8-b0fc0aa3a4ff.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910170000 +0000" stop="20260910173200 +0000" channel="Kidoodle TV">
+    <title lang="en">Akedo: Ultimate Arcade Warriors</title>
+    <desc lang="en">In the not-too-distant future, the biggest game in the world is a massive, multiplayer virtual reality called AKEDO. To become an Akedo Champion, players collect and battle with a range of powerful and quirky AKEDO WARRIORS in the ultimate fighting game mashup.  In the Akedo Arena a stealthy ninja can fight a wise-crackin’ roller derby skater, a stoic space commander can go head-to-head with a ridiculous big baby, and a clown with a rubber chicken can absolutely demolish a hardened gladiator. A cartoon for kid gamers with epic battles, cyberpunk technology and quirky anime humour. GAME ON!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/c34ed3502bcad0f0/be806afd-804a-4bab-b646-7a94edd7c924.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910173200 +0000" stop="20260910180500 +0000" channel="Kidoodle TV">
+    <title lang="en">Dude Perfect Trick Shots</title>
+    <desc lang="en">Get ready for some INSANE trick shots! The Dudes put their skills on display for some ridiculously awesome trick shots that will blow your mind!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/776b883b33bc9af7/5d925d5a-daf1-4ec1-bb7d-9af44c2cefa5.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910180500 +0000" stop="20260910191200 +0000" channel="Kidoodle TV">
+    <title lang="en">PAW Patrol: Pup Tales</title>
+    <desc lang="en">PAW Patrol pups to the rescue! When trouble strikes in Adventure Bay, PAW Patrol is there to save the day! Why? Because no job is too big, no pup is too small!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/Images/c8fdbdf0-abf2-47ad-ad40-d0c8f61e64df.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910191200 +0000" stop="20260910194800 +0000" channel="Kidoodle TV">
+    <title lang="en">Sesame Street - Nature</title>
+    <desc lang="en">It’s a beautiful day today, so let’s explore the great outdoors with Elmo, Abby, Grover, and more. Experience nature by taking a walk in the park, meeting a butterfly, or even plant a garden!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/881fbe05cf00dc30/92012501-0d9b-47d6-b5f3-84be142bbcf3.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910194800 +0000" stop="20260910201600 +0000" channel="Kidoodle TV">
+    <title lang="en">Sesame Street: Abby Cadabby</title>
+    <desc lang="en">Zippity-zap! Join Sesame Street's favorite fairy-in-training, Abby Cadabby in this magical collection of favorite moments.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/05eb495a0bcaa847/bc7f4682-faf7-489c-809e-c8c945074e93.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910201600 +0000" stop="20260910210200 +0000" channel="Kidoodle TV">
+    <title lang="en">SPLASH AND BUBBLES</title>
+    <desc lang="en">Splash and Bubbles is an animated preschool comedy inspiring kids to connect with and care about the ocean. Splash, Bubbles, and their Reeftown friends share amazing adventures, meet new creatures, and explore the diversity and wonder of life in the ocean.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/af7ad0e9d82227b6/bb32cb8c-7ef3-4520-a726-4d521077368e.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910210200 +0000" stop="20260910213200 +0000" channel="Kidoodle TV">
+    <title lang="en">Gaby Time</title>
+    <desc lang="en">Join Miss Gaby in her interactive play-along adventures. Play along while learning about things like going to school and catching the school bus from a real teacher, Miss Gaby! This fun, educational, and interactive videos feature Miss Gaby helping children and families learn about going to school in a way your kids will LOVE! Parents can trust that Miss Gaby’s preschool and school learning videos are backed by experience and created by professionals!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/b2b1cf42527af6f2/f7e243b7-d54d-4c5c-bd20-a4591b842379.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910213200 +0000" stop="20260910220300 +0000" channel="Kidoodle TV">
+    <title lang="en">Rainbow High</title>
+    <desc lang="en">Welcome to Rainbow High, the most elite fashion and fine arts school in the world! Here, the walls are bursting with energy and talent, as students learn how to let their true colors shine with Grit, Love, Action and Moxie (yep, we call it GLAM). The series takes us inside this one-of-a-kind school through the eyes of eight first-year students, teamed for their very first exam: a full-stop, make-or-break high-tech fashion runway show, with the added stakes of being kicked out if they can’t perform. These girls will start out strangers, but as they’re forced to come together or fail, they’ll have to find the best in each other, and themselves to make their visions come to life, and eventually, BFFs.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/422fd2603db770b4/66da3b40-7830-429d-bda5-8e2d554c040d.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910220300 +0000" stop="20260910223100 +0000" channel="Kidoodle TV">
+    <title lang="en">Paw Patrol: Pup Tales!</title>
+    <desc lang="en">PAW Patrol pups to the rescue! When trouble strikes in Adventure Bay, PAW Patrol is there to save the day! Why? Because no job is too big, no pup is too small! Watch as PAW Patrol works together to keep Adventure Bay safe – whether it’s a cat in a tree, a chicken running free, or a train off the tracks, they always find a way to help those in need! New and exciting PAW Patrol rescue episodes are on their way! Don’t miss the Pups in action! Whether Chase is on the case, Rubble’s on the double, or Skye’s gotta fly, you won’t want to miss all the exciting action in Adventure Bay!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/Images/c8fdbdf0-abf2-47ad-ad40-d0c8f61e64df.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260910223100 +0000" stop="20260910225400 +0000" channel="Kidoodle TV">
+    <title lang="en">Sesame Street: Cookie Monster</title>
+    <desc lang="en">Om nom nom! In this Cookie Monster Collection, kids will play and sing along with everyone's favorite cookie-loving monster, as he teaches the letter and number of the day, take lots of snack breaks, and has fun with all his Sesame Street friends!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/6b28be2c45f67016/ee56ccf7-8836-4edf-8bb0-17d4548b4d8d.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-PG</value>
+    </rating>
+  </programme>
+  <programme start="20260910225400 +0000" stop="20260911000500 +0000" channel="Kidoodle TV">
+    <title lang="en">Little Angel</title>
+    <desc lang="en">It's Little Angel! Where baby John, his brother, Jack, and sister, Jill inspire kids and families to have fun and to grow and learn through play. Come sing along!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/c4cd10eeefeb2fc9/442a23f8-7843-45a7-9f93-2bdf34f5179f.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911000500 +0000" stop="20260911010400 +0000" channel="Kidoodle TV">
+    <title lang="en">Finny the Shark!</title>
+    <desc lang="en">Follow Finny and friends as they explore stories of friendship, family, and everyday life through the (fish-eye) lens of a preschooler. Whether it's traversing the first day of school, a trip to the dentist, or trying to be brave at a first sleepover, Finny's wild imagination turns everyday experiences into over the top adventures!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/5e92d191dd7a33ba/46efbba7-3a2a-462e-988b-26c194231568.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911010400 +0000" stop="20260911013400 +0000" channel="Kidoodle TV">
+    <title lang="en">Gaby Time</title>
+    <desc lang="en">Join Miss Gaby in her interactive play-along adventures. Play along while learning about things like going to school and catching the school bus from a real teacher, Miss Gaby! This fun, educational, and interactive videos feature Miss Gaby helping children and families learn about going to school in a way your kids will LOVE! Parents can trust that Miss Gaby’s preschool and school learning videos are backed by experience and created by professionals!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/b2b1cf42527af6f2/f7e243b7-d54d-4c5c-bd20-a4591b842379.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911013400 +0000" stop="20260911020500 +0000" channel="Kidoodle TV">
+    <title lang="en">Rainbow High</title>
+    <desc lang="en">Welcome to Rainbow High, the most elite fashion and fine arts school in the world! Here, the walls are bursting with energy and talent, as students learn how to let their true colors shine with Grit, Love, Action and Moxie (yep, we call it GLAM). The series takes us inside this one-of-a-kind school through the eyes of eight first-year students, teamed for their very first exam: a full-stop, make-or-break high-tech fashion runway show, with the added stakes of being kicked out if they can’t perform. These girls will start out strangers, but as they’re forced to come together or fail, they’ll have to find the best in each other, and themselves to make their visions come to life, and eventually, BFFs.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/422fd2603db770b4/66da3b40-7830-429d-bda5-8e2d554c040d.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911020500 +0000" stop="20260911023300 +0000" channel="Kidoodle TV">
+    <title lang="en">Paw Patrol: Pup Tales!</title>
+    <desc lang="en">PAW Patrol pups to the rescue! When trouble strikes in Adventure Bay, PAW Patrol is there to save the day! Why? Because no job is too big, no pup is too small! Watch as PAW Patrol works together to keep Adventure Bay safe – whether it’s a cat in a tree, a chicken running free, or a train off the tracks, they always find a way to help those in need! New and exciting PAW Patrol rescue episodes are on their way! Don’t miss the Pups in action! Whether Chase is on the case, Rubble’s on the double, or Skye’s gotta fly, you won’t want to miss all the exciting action in Adventure Bay!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/Images/c8fdbdf0-abf2-47ad-ad40-d0c8f61e64df.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911023300 +0000" stop="20260911030000 +0000" channel="Kidoodle TV">
+    <title lang="en">American Girl - Ready, Set, Prep!</title>
+    <desc lang="en">Get ready with American Girl! Whatever adventure they face these girls are READY! Watch as they pack, prep, and practice all while gaining confidence, having fun, and making new friends along the way in an all-new stop motion series!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/e1a7a8b72034606f/75e0ba04-dae2-4f04-8715-4bc4366640a8.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911030000 +0000" stop="20260911032800 +0000" channel="Kidoodle TV">
+    <title lang="en">Bratz</title>
+    <sub-title lang="en">Just Dance - Camp Starshine</sub-title>
+    <desc lang="en">When the Bratz are invited to an exclusive fashion rock camp, they are soon disappointed to meet a snotty ballet instructor and find the fat twin girls who bully them are also invited.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/3b737bbbe7fa1ae4/Bratz-84980-1.jpg" />
+    <episode-num system="onscreen">S2 E11</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911032800 +0000" stop="20260911041100 +0000" channel="Kidoodle TV">
+    <title lang="en">Angelina Ballerina</title>
+    <sub-title lang="en">Angelina and the Big News - Angelina’s Secret Valentine</sub-title>
+    <desc lang="en">When Angelina, Viki, and Marco mistakenly think Ms. Mimi is getting married after overhearing her talking on the phone, they learn about wedding marches and organ music in order to make her wedding day special. Angelina receives a Valentine card from ...</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/8d33bff533d51066/AngelinaBallerina-Series-1939-1.jpg" />
+    <episode-num system="onscreen">S4 E408</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911041100 +0000" stop="20260911043600 +0000" channel="Kidoodle TV">
+    <title lang="en">Genevieve's Playhouse</title>
+    <desc lang="en">Genevieve's Playhouse is a vibrant, family-friendly YouTube channel designed to engage and educate young children through fun, imaginative play. Featuring colorful toys, interactive stories, and creative adventures, each episode fosters early learning in a playful environment. From counting and colors to problem-solving, "Genevieve's Playhouse" offers a delightful mix of entertainment and education for curious little minds.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/66d9e947e462034a/b53f069c-db7a-48cc-94a8-b0fc0aa3a4ff.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911043600 +0000" stop="20260911052000 +0000" channel="Kidoodle TV">
+    <title lang="en">KidCity</title>
+    <desc lang="en">Follow Becket, Ava, MomCity and DadCity through their legendary laughter, adventure, and family fun!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/f8956d180e0e9c67/e27a4eb9-d462-4f51-ae90-16fbefb8ca17.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911052000 +0000" stop="20260911060600 +0000" channel="Kidoodle TV">
+    <title lang="en">SPLASH AND BUBBLES</title>
+    <desc lang="en">Splash and Bubbles is an animated preschool comedy inspiring kids to connect with and care about the ocean. Splash, Bubbles, and their Reeftown friends share amazing adventures, meet new creatures, and explore the diversity and wonder of life in the ocean.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/af7ad0e9d82227b6/bb32cb8c-7ef3-4520-a726-4d521077368e.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911060600 +0000" stop="20260911063800 +0000" channel="Kidoodle TV">
+    <title lang="en">Rainbow High</title>
+    <desc lang="en">Welcome to Rainbow High, the most elite fashion and fine arts school in the world! Here, the walls are bursting with energy and talent, as students learn how to let their true colors shine with Grit, Love, Action and Moxie (yep, we call it GLAM). The series takes us inside this one-of-a-kind school through the eyes of eight first-year students, teamed for their very first exam: a full-stop, make-or-break high-tech fashion runway show, with the added stakes of being kicked out if they can’t perform. These girls will start out strangers, but as they’re forced to come together or fail, they’ll have to find the best in each other, and themselves to make their visions come to life, and eventually, BFFs.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/422fd2603db770b4/66da3b40-7830-429d-bda5-8e2d554c040d.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911063800 +0000" stop="20260911070300 +0000" channel="Kidoodle TV">
+    <title lang="en">Little Angel</title>
+    <desc lang="en">It's Little Angel! Where baby John, his brother, Jack, and sister, Jill inspire kids and families to have fun and to grow and learn through play. Come sing along!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/93faaa1ded706244/442a23f8-7843-45a7-9f93-2bdf34f5179f.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911070300 +0000" stop="20260911073300 +0000" channel="Kidoodle TV">
+    <title lang="en">Finny the Shark!</title>
+    <desc lang="en">Follow Finny and friends as they explore stories of friendship, family, and everyday life through the (fish-eye) lens of a preschooler. Whether it's traversing the first day of school, a trip to the dentist, or trying to be brave at a first sleepover, Finny's wild imagination turns everyday experiences into over the top adventures!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/8ea416c07e276b3c/46efbba7-3a2a-462e-988b-26c194231568.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911073300 +0000" stop="20260911080200 +0000" channel="Kidoodle TV">
+    <title lang="en">Bratz</title>
+    <sub-title lang="en">Just Dance - Camp Starshine</sub-title>
+    <desc lang="en">When the Bratz are invited to an exclusive fashion rock camp, they are soon disappointed to meet a snotty ballet instructor and find the fat twin girls who bully them are also invited.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/3b737bbbe7fa1ae4/Bratz-84980-1.jpg" />
+    <episode-num system="onscreen">S2 E11</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911080200 +0000" stop="20260911084100 +0000" channel="Kidoodle TV">
+    <title lang="en">Magic Mixies: Mixlings</title>
+    <desc lang="en">When Sienna finds a prism that unlocks a glittering pathway to a new magical land it becomes the start of a whole new adventure! Join her as she encounters a whole new realm FILLED with magic creatures. Magicus Mixus! - Mixies Challenge: Can you find all 7 magical ingredients for the mystery spell hidden in the episode?</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/2cc3d4ac7f831af7/f9f36a13-2c2c-4d78-876b-cb51dd744b39.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911084100 +0000" stop="20260911090900 +0000" channel="Kidoodle TV">
+    <title lang="en">Sesame Street: Abby Cadabby</title>
+    <desc lang="en">Zippity-zap! Join Sesame Street's favorite fairy-in-training, Abby Cadabby in this magical collection of favorite moments.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/05eb495a0bcaa847/bc7f4682-faf7-489c-809e-c8c945074e93.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911090900 +0000" stop="20260911094400 +0000" channel="Kidoodle TV">
+    <title lang="en">Dude Perfect Trick Shots</title>
+    <desc lang="en">Get ready for some INSANE trick shots! The Dudes put their skills on display for some ridiculously awesome trick shots that will blow your mind!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/f520f67e3c26ec95/5d925d5a-daf1-4ec1-bb7d-9af44c2cefa5.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911094400 +0000" stop="20260911101100 +0000" channel="Kidoodle TV">
+    <title lang="en">Paw Patrol: Pup Tales!</title>
+    <desc lang="en">PAW Patrol pups to the rescue! When trouble strikes in Adventure Bay, PAW Patrol is there to save the day! Why? Because no job is too big, no pup is too small! Watch as PAW Patrol works together to keep Adventure Bay safe – whether it’s a cat in a tree, a chicken running free, or a train off the tracks, they always find a way to help those in need! New and exciting PAW Patrol rescue episodes are on their way! Don’t miss the Pups in action! Whether Chase is on the case, Rubble’s on the double, or Skye’s gotta fly, you won’t want to miss all the exciting action in Adventure Bay!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/Images/c8fdbdf0-abf2-47ad-ad40-d0c8f61e64df.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911101100 +0000" stop="20260911104100 +0000" channel="Kidoodle TV">
+    <title lang="en">MOLANG: SUMMER</title>
+    <desc lang="en">From deep-sea diving and discovering underwater wonders, to meeting new friends and travelling in an RV, our two friends will live a summer bursting with fun, surprises and friendship.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/b6fe72a7286fcad9/7d633b12-b841-4038-9587-e331e5d3f4dd.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911104100 +0000" stop="20260911112000 +0000" channel="Kidoodle TV">
+    <title lang="en">American Girl: Travel Twins</title>
+    <desc lang="en">Michael and Makayla go on a journey traveling around the world!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/0fca44c53458640f/7e2afa09-3a50-425d-bfcf-245ed8c20664.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911112000 +0000" stop="20260911115000 +0000" channel="Kidoodle TV">
+    <title lang="en">Gaby Time</title>
+    <desc lang="en">Join Miss Gaby in her interactive play-along adventures. Play along while learning about things like going to school and catching the school bus from a real teacher, Miss Gaby! This fun, educational, and interactive videos feature Miss Gaby helping children and families learn about going to school in a way your kids will LOVE! Parents can trust that Miss Gaby’s preschool and school learning videos are backed by experience and created by professionals!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/b2b1cf42527af6f2/f7e243b7-d54d-4c5c-bd20-a4591b842379.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911115000 +0000" stop="20260911121700 +0000" channel="Kidoodle TV">
+    <title lang="en">AFV KIDS!</title>
+    <desc lang="en">Welcome to AFV Kids! The show featuring clips with kids just like YOU being hilarious. You never know what’s going to happen but you can bet that every clip is going to be cooler, crazier, and funnier than the last!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/1999291412e13c39/3e8896e1-adcd-400b-a515-3bd480e4aa1b.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911121700 +0000" stop="20260911124600 +0000" channel="Kidoodle TV">
+    <title lang="en">AFV Kids</title>
+    <desc lang="en">Welcome to AFV Kids! The show featuring clips with kids just like YOU being hilarious. You never know what’s going to happen but you can bet that every clip is going to be cooler, crazier, and funnier than the last!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/0d358f82e28bedbd/951e7a32-8f1c-4e12-828f-74ecd5b01d60.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911124600 +0000" stop="20260911132400 +0000" channel="Kidoodle TV">
+    <title lang="en">Sesame Street - Nature</title>
+    <desc lang="en">It’s a beautiful day today, so let’s explore the great outdoors with Elmo, Abby, Grover, and more. Experience nature by taking a walk in the park, meeting a butterfly, or even plant a garden!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/881fbe05cf00dc30/92012501-0d9b-47d6-b5f3-84be142bbcf3.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911132400 +0000" stop="20260911135500 +0000" channel="Kidoodle TV">
+    <title lang="en">Sesame Street: Abby Cadabby</title>
+    <desc lang="en">Zippity-zap! Join Sesame Street's favorite fairy-in-training, Abby Cadabby in this magical collection of favorite moments.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/05eb495a0bcaa847/bc7f4682-faf7-489c-809e-c8c945074e93.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911135500 +0000" stop="20260911142900 +0000" channel="Kidoodle TV">
+    <title lang="en">SolarBalls</title>
+    <sub-title lang="en">Planets in Love</sub-title>
+    <desc lang="en">Thea and Proto finally confess their feelings, convinced their bond could unlock life itself.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/0bc7615227527637/SolarBalls-Series-3667-1.jpg" />
+    <episode-num system="onscreen">S1 E4</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911142900 +0000" stop="20260911151100 +0000" channel="Kidoodle TV">
+    <title lang="en">Angry Birds!</title>
+    <desc lang="en">Red, Chuck, Bomb, Matilda, Terence, and The Blues need to keep the eggs safe from the pigs that will snatch them at any cost.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/19a9b1fc37f08e13/be14b860-c0bf-4161-b4fe-995ddbce2498.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911151100 +0000" stop="20260911153900 +0000" channel="Kidoodle TV">
+    <title lang="en">Om Nom Stories</title>
+    <desc lang="en">When Om Nom suddenly appears on a boy’s doorstep, life gets a lot more interesting! He jumps through time, ends up in strange worlds, tries out new jobs, and even becomes a vlogger. With Om Nelle, he battles villains, raises baby Nibble Nom, and somehow still runs a café without burning it down!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/6be43c552c093b50/41ddbdc9-0c6b-4d3f-890d-68f375cfef33.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911153900 +0000" stop="20260911162900 +0000" channel="Kidoodle TV">
+    <title lang="en">SUNNY BUNNIES</title>
+    <desc lang="en">Sunny Bunnies are fantastic creatures, who live on the Sun. They can fly through a secret door into the Earth with the help of sun rays. Before they leave their hot climate, they put on colourful warm coats made of sunny fur to keep them warm. The Bunnies can appear everywhere where there is a light, and if the dark falls, anything from the moonlight to the light of the stars to even a candle light is enough to bring them to life.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/52d569a130dbe82e/9af2a036-aa00-4691-a73f-a2412bb75d3e.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911162900 +0000" stop="20260911165900 +0000" channel="Kidoodle TV">
+    <title lang="en">Shaun the Sheep</title>
+    <desc lang="en">It's countryside chaos as Shaun The Sheep returns to the small screen with his very own series. Peace in the valley turns to mayhem in the meadow as Shaun leads his flock into all sorts of scrapes and scraps, running rings around sheepdog Bitzer when the Farmer's back is turned.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/1b2e7c5ec4e4bfb8/52bce7f5-b2b8-42f1-8714-0a8ae491521d.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911165900 +0000" stop="20260911171900 +0000" channel="Kidoodle TV">
+    <title lang="en">5-Minute Crafts</title>
+    <desc lang="en">5-minute Crafts provides helpful ideas for craft projects that empower families to solve everyday problems with creative, simple solutions.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/c493f2398a213351/e4a827c5-bc64-4cf5-b71e-60a0c62a6f74.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911171900 +0000" stop="20260911180000 +0000" channel="Kidoodle TV">
+    <title lang="en">Akedo: Ultimate Arcade Warriors</title>
+    <desc lang="en">In the not-too-distant future, the biggest game in the world is a massive, multiplayer virtual reality called AKEDO. To become an Akedo Champion, players collect and battle with a range of powerful and quirky AKEDO WARRIORS in the ultimate fighting game mashup.  In the Akedo Arena a stealthy ninja can fight a wise-crackin’ roller derby skater, a stoic space commander can go head-to-head with a ridiculous big baby, and a clown with a rubber chicken can absolutely demolish a hardened gladiator. A cartoon for kid gamers with epic battles, cyberpunk technology and quirky anime humour. GAME ON!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/b4cc78111fc7f660/be806afd-804a-4bab-b646-7a94edd7c924.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911180000 +0000" stop="20260911183500 +0000" channel="Kidoodle TV">
+    <title lang="en">Dude Perfect: OVERTIME</title>
+    <desc lang="en">Get ready to laugh out loud when watching Overtime! With segments like Not Top 10, Wheel Unfortunate, and Games with Consequences…OT is a must-watch!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/a7a0eb667bdbfd41/1fe8f841-c633-4595-b8fc-dd24e7960b1b.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911183500 +0000" stop="20260911191900 +0000" channel="Kidoodle TV">
+    <title lang="en">PAW Patrol: Pup Tales</title>
+    <desc lang="en">PAW Patrol pups to the rescue! When trouble strikes in Adventure Bay, PAW Patrol is there to save the day! Why? Because no job is too big, no pup is too small!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/Images/c8fdbdf0-abf2-47ad-ad40-d0c8f61e64df.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911191900 +0000" stop="20260911201700 +0000" channel="Kidoodle TV">
+    <title lang="en">Sesame Street - Families</title>
+    <desc lang="en">Every family is different and part of who we are! That’s something to be proud of. Celebrate the people in your family with Elmo as he learns about babies, grandparents, siblings, and how each member of a family is important. Love makes a family!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/436b56f991d9f872/7f824503-0bda-4e70-aab0-c0be3f047709.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911201700 +0000" stop="20260911203900 +0000" channel="Kidoodle TV">
+    <title lang="en">Sesame Street: Abby Cadabby</title>
+    <desc lang="en">Zippity-zap! Join Sesame Street's favorite fairy-in-training, Abby Cadabby in this magical collection of favorite moments.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/88169e52cbebd405/bc7f4682-faf7-489c-809e-c8c945074e93.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911203900 +0000" stop="20260911211000 +0000" channel="Kidoodle TV">
+    <title lang="en">Super Wings</title>
+    <desc lang="en">“Super Wings” is an action-packed preschool series about an adorable jet plane named Jett who travels the world delivering packages to children. When challenges arise, Jett calls for help from one of five amazing airplane friends who bring a team with special skill sets to overcome obstacles and save the day!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/99d1a59da02647af/07172e72-bb9f-432b-a491-74515f9220e6.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911211000 +0000" stop="20260911214000 +0000" channel="Kidoodle TV">
+    <title lang="en">Super Wings</title>
+    <desc lang="en">“Super Wings” is an action-packed preschool series about an adorable jet plane named Jett who travels the world delivering packages to children. When challenges arise, Jett calls for help from one of five amazing airplane friends who bring a team with special skill sets to overcome obstacles and save the day!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/74c6258f4b943eeb/07172e72-bb9f-432b-a491-74515f9220e6.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911214000 +0000" stop="20260911221100 +0000" channel="Kidoodle TV">
+    <title lang="en">Gaby Time</title>
+    <desc lang="en">Join Miss Gaby in her interactive play-along adventures. Play along while learning about things like going to school and catching the school bus from a real teacher, Miss Gaby! This fun, educational, and interactive videos feature Miss Gaby helping children and families learn about going to school in a way your kids will LOVE! Parents can trust that Miss Gaby’s preschool and school learning videos are backed by experience and created by professionals!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/b2b1cf42527af6f2/f7e243b7-d54d-4c5c-bd20-a4591b842379.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911221100 +0000" stop="20260911223800 +0000" channel="Kidoodle TV">
+    <title lang="en">Hip Hop Harry</title>
+    <sub-title lang="en">Never Give Up</sub-title>
+    <desc lang="en">Ryan is having a hard time in basketball practice, but Hip Hop Harry urges him to never give up and to keep practicing. The kids learn how fish breathe underwater.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/a75485fa2b7b81ca/HipHopHarry-Series-2990-1.jpg" />
+    <episode-num system="onscreen">S1 E13</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911223800 +0000" stop="20260911230700 +0000" channel="Kidoodle TV">
+    <title lang="en">Paw Patrol: Pup Tales!</title>
+    <desc lang="en">PAW Patrol pups to the rescue! When trouble strikes in Adventure Bay, PAW Patrol is there to save the day! Why? Because no job is too big, no pup is too small! Watch as PAW Patrol works together to keep Adventure Bay safe – whether it’s a cat in a tree, a chicken running free, or a train off the tracks, they always find a way to help those in need! New and exciting PAW Patrol rescue episodes are on their way! Don’t miss the Pups in action! Whether Chase is on the case, Rubble’s on the double, or Skye’s gotta fly, you won’t want to miss all the exciting action in Adventure Bay!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/Images/c8fdbdf0-abf2-47ad-ad40-d0c8f61e64df.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260911230700 +0000" stop="20260911233100 +0000" channel="Kidoodle TV">
+    <title lang="en">Sesame Street: Cookie Monster</title>
+    <desc lang="en">Om nom nom! In this Cookie Monster Collection, kids will play and sing along with everyone's favorite cookie-loving monster, as he teaches the letter and number of the day, take lots of snack breaks, and has fun with all his Sesame Street friends!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/6b28be2c45f67016/ee56ccf7-8836-4edf-8bb0-17d4548b4d8d.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-PG</value>
+    </rating>
+  </programme>
+  <programme start="20260911233100 +0000" stop="20260912003100 +0000" channel="Kidoodle TV">
+    <title lang="en">POCOYO</title>
+    <desc lang="en">Pocoyo is a spontaneous, brave, inquisitive little boy, discovering the world around him and his friends.  - Pocoyo is a pre-school series comprising educational, fun episodes that depict a range of situations in a world of gestures, colors, shapes, and music and featuring high-impact visual language.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/a7801fb1c2ea4911/7f76da28-1ed3-4046-86f0-3d3f8c82b5c3.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912003100 +0000" stop="20260912010000 +0000" channel="Kidoodle TV">
+    <title lang="en">Bratz</title>
+    <sub-title lang="en">Just Dance - Just Dance</sub-title>
+    <desc lang="en">When the Bratz are invited to an exclusive fashion rock camp, they are soon disappointed to meet a snotty ballet instructor and find the fat twin girls who bully them are also invited.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/3b737bbbe7fa1ae4/Bratz-84980-1.jpg" />
+    <episode-num system="onscreen">S2 E13</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912010000 +0000" stop="20260912013100 +0000" channel="Kidoodle TV">
+    <title lang="en">Bratz</title>
+    <sub-title lang="en">Camping</sub-title>
+    <desc lang="en">The Bratz become reluctant overnight campers when they get lost on their way to the Wilderness Spa. The Tweevils, hoping to get some embarrassing pictures of the girls without make-up, follow behind.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/3b737bbbe7fa1ae4/Bratz-84980-1.jpg" />
+    <episode-num system="onscreen">S1 E14</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912013100 +0000" stop="20260912020900 +0000" channel="Kidoodle TV">
+    <title lang="en">Gaby Time</title>
+    <desc lang="en">Join Miss Gaby in her interactive play-along adventures. Play along while learning about things like going to school and catching the school bus from a real teacher, Miss Gaby! This fun, educational, and interactive videos feature Miss Gaby helping children and families learn about going to school in a way your kids will LOVE! Parents can trust that Miss Gaby’s preschool and school learning videos are backed by experience and created by professionals!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/48f574b13e03f9cf/f7e243b7-d54d-4c5c-bd20-a4591b842379.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912020900 +0000" stop="20260912023700 +0000" channel="Kidoodle TV">
+    <title lang="en">Hip Hop Harry</title>
+    <sub-title lang="en">Never Give Up</sub-title>
+    <desc lang="en">Ryan is having a hard time in basketball practice, but Hip Hop Harry urges him to never give up and to keep practicing. The kids learn how fish breathe underwater.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/a75485fa2b7b81ca/HipHopHarry-Series-2990-1.jpg" />
+    <episode-num system="onscreen">S1 E13</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912023700 +0000" stop="20260912025600 +0000" channel="Kidoodle TV">
+    <title lang="en">PupTales</title>
+    <desc lang="en">PAW Patrol pups to the rescue! When trouble strikes in Adventure Bay, PAW Patrol is there to save the day! Why? Because no job is too big, no pup is too small! Watch as PAW Patrol works together to keep Adventure Bay safe – whether it’s a cat in a tree, a chicken running free, or a train off the tracks, they always find a way to help those in need! New and exciting PAW Patrol rescue episodes are on their way! Don’t miss the Pups in action! Whether Chase is on the case, Rubble’s on the double, or Skye’s gotta fly, you won’t want to miss all the exciting action in Adventure Bay!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/Images/c8fdbdf0-abf2-47ad-ad40-d0c8f61e64df.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912025600 +0000" stop="20260912033000 +0000" channel="Kidoodle TV">
+    <title lang="en">TuTiTu: Animals</title>
+    <desc lang="en">TuTiTu Animals is a 3D animated video series for toddlers. Each episode features a new animal toy, stimulating the child's imagination and creativity through building the toy and introducing the viewers to the animal and its habitat. Watch TuTiTu transform different colourful shapes into a new and exciting animal toy!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/c12040b8d8075d42/1428b08e-cbf9-4ec8-966e-4031c97c9e8d.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912033000 +0000" stop="20260912035700 +0000" channel="Kidoodle TV">
+    <title lang="en">Om Nom Stories</title>
+    <desc lang="en">When Om Nom suddenly appears on a boy’s doorstep, life gets a lot more interesting! He jumps through time, ends up in strange worlds, tries out new jobs, and even becomes a vlogger. With Om Nelle, he battles villains, raises baby Nibble Nom, and somehow still runs a café without burning it down!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/6be43c552c093b50/41ddbdc9-0c6b-4d3f-890d-68f375cfef33.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912035700 +0000" stop="20260912044600 +0000" channel="Kidoodle TV">
+    <title lang="en">SUNNY BUNNIES</title>
+    <desc lang="en">Sunny Bunnies are fantastic creatures, who live on the Sun. They can fly through a secret door into the Earth with the help of sun rays. Before they leave their hot climate, they put on colourful warm coats made of sunny fur to keep them warm. The Bunnies can appear everywhere where there is a light, and if the dark falls, anything from the moonlight to the light of the stars to even a candle light is enough to bring them to life.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/52d569a130dbe82e/9af2a036-aa00-4691-a73f-a2412bb75d3e.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912044600 +0000" stop="20260912051700 +0000" channel="Kidoodle TV">
+    <title lang="en">Shaun the Sheep</title>
+    <desc lang="en">It's countryside chaos as Shaun The Sheep returns to the small screen with his very own series. Peace in the valley turns to mayhem in the meadow as Shaun leads his flock into all sorts of scrapes and scraps, running rings around sheepdog Bitzer when the Farmer's back is turned.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/1b2e7c5ec4e4bfb8/52bce7f5-b2b8-42f1-8714-0a8ae491521d.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912051700 +0000" stop="20260912055300 +0000" channel="Kidoodle TV">
+    <title lang="en">Ocean Explorers</title>
+    <sub-title lang="en">Let's Explore: Patterns with Shells, Coral Colors, I Spy and Octopus and Opposites with Baby Sea Turtles</sub-title>
+    <desc lang="en">Explore what one can find ashore! Tinker discovers sea shells,coral, octopus and opposites with baby sea turtle.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/ca41b625fc64e7b5/OceanExplorers-Series-3703-1.jpg" />
+    <episode-num system="onscreen">S1 E2</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912055300 +0000" stop="20260912062800 +0000" channel="Kidoodle TV">
+    <title lang="en">Ocean Explorers</title>
+    <sub-title lang="en">Let's Explore- Blue Footed Boobies, Tuna, Box Fish and the Coral Reef</sub-title>
+    <desc lang="en">Join the Ocean Explorers crew and learn about Blue Footed Boobies, Tuna, Box Fish and the Coral Reef! Discover different STEAM concepts through narration, repetition and real life footage.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/ca41b625fc64e7b5/OceanExplorers-Series-3703-1.jpg" />
+    <episode-num system="onscreen">S2 E3</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912062800 +0000" stop="20260912065300 +0000" channel="Kidoodle TV">
+    <title lang="en">Sesame Street: Cookie Monster</title>
+    <desc lang="en">Om nom nom! In this Cookie Monster Collection, kids will play and sing along with everyone's favorite cookie-loving monster, as he teaches the letter and number of the day, take lots of snack breaks, and has fun with all his Sesame Street friends!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/6b28be2c45f67016/ee56ccf7-8836-4edf-8bb0-17d4548b4d8d.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-PG</value>
+    </rating>
+  </programme>
+  <programme start="20260912065300 +0000" stop="20260912072100 +0000" channel="Kidoodle TV">
+    <title lang="en">Hip Hop Harry</title>
+    <sub-title lang="en">Never Give Up</sub-title>
+    <desc lang="en">Ryan is having a hard time in basketball practice, but Hip Hop Harry urges him to never give up and to keep practicing. The kids learn how fish breathe underwater.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/a75485fa2b7b81ca/HipHopHarry-Series-2990-1.jpg" />
+    <episode-num system="onscreen">S1 E13</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912072100 +0000" stop="20260912075100 +0000" channel="Kidoodle TV">
+    <title lang="en">Super Wings</title>
+    <desc lang="en">“Super Wings” is an action-packed preschool series about an adorable jet plane named Jett who travels the world delivering packages to children. When challenges arise, Jett calls for help from one of five amazing airplane friends who bring a team with special skill sets to overcome obstacles and save the day!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/99d1a59da02647af/07172e72-bb9f-432b-a491-74515f9220e6.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912075100 +0000" stop="20260912081100 +0000" channel="Kidoodle TV">
+    <title lang="en">POCOYO</title>
+    <desc lang="en">Pocoyo is a spontaneous, brave, inquisitive little boy, discovering the world around him and his friends.  - Pocoyo is a pre-school series comprising educational, fun episodes that depict a range of situations in a world of gestures, colors, shapes, and music and featuring high-impact visual language.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/38bd1f16519eab92/7f76da28-1ed3-4046-86f0-3d3f8c82b5c3.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912081100 +0000" stop="20260912084700 +0000" channel="Kidoodle TV">
+    <title lang="en">TuTiTu: Animals</title>
+    <desc lang="en">TuTiTu Animals is a 3D animated video series for toddlers. Each episode features a new animal toy, stimulating the child's imagination and creativity through building the toy and introducing the viewers to the animal and its habitat. Watch TuTiTu transform different colourful shapes into a new and exciting animal toy!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/c12040b8d8075d42/1428b08e-cbf9-4ec8-966e-4031c97c9e8d.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912084700 +0000" stop="20260912091900 +0000" channel="Kidoodle TV">
+    <title lang="en">Heroes of Goo Jit Zu</title>
+    <desc lang="en">After a meteor crash, zoo animals transform into squishy, gooey and stretchy superheroes with special powers and soon take on evildoers.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/30f3961bb3b931d9/caa78db4-e52d-4a3c-bec3-caac0bd5fd85.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912091900 +0000" stop="20260912094100 +0000" channel="Kidoodle TV">
+    <title lang="en">Sesame Street: Abby Cadabby</title>
+    <desc lang="en">Zippity-zap! Join Sesame Street's favorite fairy-in-training, Abby Cadabby in this magical collection of favorite moments.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/88169e52cbebd405/bc7f4682-faf7-489c-809e-c8c945074e93.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912094100 +0000" stop="20260912101500 +0000" channel="Kidoodle TV">
+    <title lang="en">Dude Perfect: OVERTIME</title>
+    <desc lang="en">Get ready to laugh out loud when watching Overtime! With segments like Not Top 10, Wheel Unfortunate, and Games with Consequences…OT is a must-watch!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/a7a0eb667bdbfd41/1fe8f841-c633-4595-b8fc-dd24e7960b1b.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912101500 +0000" stop="20260912105900 +0000" channel="Kidoodle TV">
+    <title lang="en">PAW Patrol: Pup Tales</title>
+    <desc lang="en">PAW Patrol pups to the rescue! When trouble strikes in Adventure Bay, PAW Patrol is there to save the day! Why? Because no job is too big, no pup is too small!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/Images/c8fdbdf0-abf2-47ad-ad40-d0c8f61e64df.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912105900 +0000" stop="20260912115100 +0000" channel="Kidoodle TV">
+    <title lang="en">Enchantimals: Glam Party</title>
+    <desc lang="en">It’s time for the Enchantimals to strut their stuff in a fabulous fashion competition filled with new friends, new challenges, and a whole lotta fierceness!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/3bb8c0ca1aee73cc/17fdbc19-4a23-476e-a73f-2a954872c2cc.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912115100 +0000" stop="20260912123200 +0000" channel="Kidoodle TV">
+    <title lang="en">Gaby Time</title>
+    <desc lang="en">Join Miss Gaby in her interactive play-along adventures. Play along while learning about things like going to school and catching the school bus from a real teacher, Miss Gaby! This fun, educational, and interactive videos feature Miss Gaby helping children and families learn about going to school in a way your kids will LOVE! Parents can trust that Miss Gaby’s preschool and school learning videos are backed by experience and created by professionals!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/48f574b13e03f9cf/f7e243b7-d54d-4c5c-bd20-a4591b842379.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912123200 +0000" stop="20260912131800 +0000" channel="Kidoodle TV">
+    <title lang="en">KidCity</title>
+    <desc lang="en">Follow Becket, Ava, MomCity and DadCity through their legendary laughter, adventure, and family fun!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/f8956d180e0e9c67/e27a4eb9-d462-4f51-ae90-16fbefb8ca17.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912131800 +0000" stop="20260912134300 +0000" channel="Kidoodle TV">
+    <title lang="en">Bob Zoom</title>
+    <desc lang="en">Bob Zoom is a charming blue ant who sings and entertains kids with nursery rhymes.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/4d0e89423daa9360/2ba83f97-3cfb-435f-a841-f2dfb3e6af94.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912134300 +0000" stop="20260912142300 +0000" channel="Kidoodle TV">
+    <title lang="en">Rabbids Invasion</title>
+    <desc lang="en">We don't know where they came from. We don't know how they got here. But we do know this: they're here to play! Rabbids are curious little creatures that have invaded earth, and they're on a mission…to have fun and leave a giant path of destruction wherever they go. - Whether they're stealing bananas from the mall, playing with plungers, or climbing cows, these little Rabbids are fury friends of very few words, and love fighting with each other on all of their crazy adventures. There’s only one thing they all agree on... elevators are super confusing.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/35f57cbf2f343170/a02660d4-29a1-402a-99a6-081294050579.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912142300 +0000" stop="20260912145000 +0000" channel="Kidoodle TV">
+    <title lang="en">Elemon</title>
+    <sub-title lang="en">DIY Project Mayhem!</sub-title>
+    <desc lang="en">Get ready for some DIY mayhem as Ryan and Com check out some of Professor World's most chaotic homemade projects!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/448dbf353b357099/Elemon-Series-2898-1.jpg" />
+    <episode-num system="onscreen">S1 E36</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912145000 +0000" stop="20260912152200 +0000" channel="Kidoodle TV">
+    <title lang="en">Game Toons</title>
+    <sub-title lang="en">The Creeper</sub-title>
+    <desc lang="en">The Creeper, Minecrafts most iconic villain may have more to their history than you might think. Perhaps their hissing, exploding exterior is a front for something deeper?</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/38b0fd38bad41eed/GameToons-Series-2547-2.jpg" />
+    <episode-num system="onscreen">S1 E8</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912152200 +0000" stop="20260912155400 +0000" channel="Kidoodle TV">
+    <title lang="en">Yu-Gi-Oh! ZEXAL</title>
+    <sub-title lang="en">The Shark Hunter</sub-title>
+    <desc lang="en">Shark tries to stop Kite from stealing Yuma's Golden Key by challenging him to a duel! Can Shark sink his teeth into Kite's life points and save Yuma's prized possession, or will Kite's cunning skills sink any chance Shark has of winning?</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/88a1c85a34bfc681/YuGiOhZEXAL-Series-2673-1.jpg" />
+    <episode-num system="onscreen">S1 E22</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912155400 +0000" stop="20260912162800 +0000" channel="Kidoodle TV">
+    <title lang="en">The Wubbulous World of Dr. Seuss</title>
+    <sub-title lang="en">A Bird's Best Friend</sub-title>
+    <desc lang="en">In the Cat's Playhouse, Terrence is playing Hooble Ball by himself and won't share the game with the Cat, who tries to convince him that things are more fun when shared by two. In the Wubbulous World, Yertle the Turtle is selfish about his prized nut ...</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/f72bf3786da879b0/TheWubbulousWorldofDrSeuss-Series-1485-1.jpg" />
+    <episode-num system="onscreen">S2 E213</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912162800 +0000" stop="20260912170700 +0000" channel="Kidoodle TV">
+    <title lang="en">Wallace &amp; Gromit: Cracking Contraptions</title>
+    <desc lang="en">From the Soccamatic to the 535 Crackervac, Wallace’s inventions are truly imaginative if not always the most efficient! Cracking Contraptions is a showcase of 10 short films about Wallace’s wonderfully eccentric ideas, which include everything you might need to make life easier. - Having problems getting to sleep? Then try the Snoozatron – it plumps your pillows, plays you soothing music and deposits a teddy into your arms. Or how about taking the strain out of mealtimes with the help of the Autochef, a robot that will cook your eggs just how you like them. Or perhaps you might like to try the Christmas Cardomatic, an ingenious way to create a very unique greetings card!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/ff84224197bd490c/2bf62041-d1f2-4af9-b440-697958a6cb96.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912170700 +0000" stop="20260912173500 +0000" channel="Kidoodle TV">
+    <title lang="en">Mini Smiley</title>
+    <desc lang="en">Mini Smiley is an enchanting musical series following adorable Mini Smileys and their animal friends in the magical world of SmileyWorld. Each episode brings a new song to life, transforming everyday moments into magical adventures: from bubble baths with hippos to soaring races with toucans, birthday celebrations, and unicorn egg hunts. A joyful universe where music, friendship, and imagination reign supreme!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/66b7937e15883834/5aeebba1-708c-47bc-9e5f-1f5dff057c19.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912173500 +0000" stop="20260912180500 +0000" channel="Kidoodle TV">
+    <title lang="en">ABCmouse</title>
+    <desc lang="en">The ABCmouse Video Series brings learning to life through engaging, educational content designed for children ages 2–8. Packed with vibrant animations, memorable characters, and catchy songs, these videos cover fundamental topics that help build a strong foundation for early learners. - From letters, numbers, and shapes to science, art, and social-emotional learning, each video transforms key concepts into entertaining stories and sing-alongs that capture children's imaginations. Whether it’s exploring the alphabet with cheerful animal friends, understanding how plants grow, or practicing kindness and friendship, every episode is carefully crafted to make learning fun and interactive.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/57a758bf04d5bdc1/b86ce89e-46e0-400e-b69b-9122980e6fb1.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912180500 +0000" stop="20260912182700 +0000" channel="Kidoodle TV">
+    <title lang="en">Akedo: Ultimate Arcade Warriors</title>
+    <desc lang="en">In the not-too-distant future, the biggest game in the world is a massive, multiplayer virtual reality called AKEDO. To become an Akedo Champion, players collect and battle with a range of powerful and quirky AKEDO WARRIORS in the ultimate fighting game mashup.  In the Akedo Arena a stealthy ninja can fight a wise-crackin’ roller derby skater, a stoic space commander can go head-to-head with a ridiculous big baby, and a clown with a rubber chicken can absolutely demolish a hardened gladiator. A cartoon for kid gamers with epic battles, cyberpunk technology and quirky anime humour. GAME ON!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/2e98d83442d8f627/be806afd-804a-4bab-b646-7a94edd7c924.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912182700 +0000" stop="20260912190700 +0000" channel="Kidoodle TV">
+    <title lang="en">BUCKET LIST</title>
+    <sub-title lang="en">Going to Every Disney Park in 75 Hours</sub-title>
+    <desc lang="en">Can Garrett go AROUND THE WORLD in 75 hours?!? Can the dude perfect employees break world records as well?! Lets find out in the craziest world record video we've ever done!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/80d7fc2668535f0e/BucketList-3546-3.jpg" />
+    <episode-num system="onscreen">S1 E9</episode-num>
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912190700 +0000" stop="20260912195200 +0000" channel="Kidoodle TV">
+    <title lang="en">PAW Patrol: Pup Tales</title>
+    <desc lang="en">PAW Patrol pups to the rescue! When trouble strikes in Adventure Bay, PAW Patrol is there to save the day! Why? Because no job is too big, no pup is too small!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/Images/c8fdbdf0-abf2-47ad-ad40-d0c8f61e64df.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912195200 +0000" stop="20260912203400 +0000" channel="Kidoodle TV">
+    <title lang="en">Sesame Street Healthy Habits</title>
+    <desc lang="en">Get ready to to brush your teeth, comb your fur, and have a healthy breakfast with Elmo and your Sesame Street friends as you prepare for the day! This collection of videoshelps children learn about healthy habits, like morning and bedtime routines, conquering doctor visits, and trying new foods along side their favorite Sesame Street Friends!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/99cdd608b9ca011a/1d02eed1-4d57-4df6-b073-214a9095d6a7.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912203400 +0000" stop="20260912205900 +0000" channel="Kidoodle TV">
+    <title lang="en">Sesame Street: Cookie Monster</title>
+    <desc lang="en">Om nom nom! In this Cookie Monster Collection, kids will play and sing along with everyone's favorite cookie-loving monster, as he teaches the letter and number of the day, take lots of snack breaks, and has fun with all his Sesame Street friends!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/6b28be2c45f67016/ee56ccf7-8836-4edf-8bb0-17d4548b4d8d.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-PG</value>
+    </rating>
+  </programme>
+  <programme start="20260912205900 +0000" stop="20260912215200 +0000" channel="Kidoodle TV">
+    <title lang="en">PINKFONG BABY SHARK</title>
+    <desc lang="en">Friends, gather around! Join Pinkfong and Baby Shark in our collection of songs and stories.</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/d33a77f0c9d54cbd/4266dc7d-a8bf-4e2b-887c-87e1bfd68a0a.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912215200 +0000" stop="20260912224100 +0000" channel="Kidoodle TV">
+    <title lang="en">Gaby Time!</title>
+    <desc lang="en">Join Miss Gaby in her interactive play-along adventures. Play along while learning about things like going to school and catching the school bus from a real teacher, Miss Gaby! This fun, educational, and interactive videos feature Miss Gaby helping children and families learn about going to school in a way your kids will LOVE! Parents can trust that Miss Gaby’s preschool and school learning videos are backed by experience and created by professionals!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/de60d34673621f61/e9155a03-3e44-4644-9bb4-8e3c84789c0f.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912230800 +0000" stop="20260912235200 +0000" channel="Kidoodle TV">
+    <title lang="en">PAW Patrol: Pup Tales (2)</title>
+    <desc lang="en">PAW Patrol pups to the rescue! When trouble strikes in Adventure Bay, PAW Patrol is there to save the day! Why? Because no job is too big, no pup is too small!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/Images/c8fdbdf0-abf2-47ad-ad40-d0c8f61e64df.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20260912235200 +0000" stop="20260913001700 +0000" channel="Kidoodle TV">
+    <title lang="en">Sesame Street: Cookie Monster</title>
+    <desc lang="en">Om nom nom! In this Cookie Monster Collection, kids will play and sing along with everyone's favorite cookie-loving monster, as he teaches the letter and number of the day, take lots of snack breaks, and has fun with all his Sesame Street friends!</desc>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://d31l2nn7dlh4li.cloudfront.net/amg07653/asset_artifacts/image/fetch_media/6b28be2c45f67016/ee56ccf7-8836-4edf-8bb0-17d4548b4d8d.jpg" />
+    <premiere lang="en" />
+    <rating system="US">
+      <value>TV-PG</value>
     </rating>
   </programme>
   <channel id="Duck TV">
