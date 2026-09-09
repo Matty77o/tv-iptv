@@ -195,6 +195,12 @@ enum class AppSection(val label: String) {
     HOME("Home"), GUIDE("Guide"), FAVOURITES("Favourites"), SCHEDULE("Schedule"), AI("Ask AI"), SETTINGS("Settings")
 }
 
+private fun AppSection.navLabel(): String = when (this) {
+    AppSection.FAVOURITES -> "Faves"
+    AppSection.AI -> "AI"
+    else -> label
+}
+
 enum class ReminderMode(val label: String) {
     BOTH("10 min before + start"),
     TEN_MINUTES("10 min before only"),
@@ -471,9 +477,9 @@ fun GuideScreen(
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(68.dp)
-                                .padding(horizontal = 8.dp),
-                            horizontalArrangement = Arrangement.SpaceEvenly,
+                                .height(72.dp)
+                                .padding(horizontal = 6.dp, vertical = 5.dp),
+                            horizontalArrangement = Arrangement.spacedBy(2.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             AppSection.entries.forEach { item ->
@@ -493,34 +499,33 @@ fun GuideScreen(
                                         section = item
                                         searchOpen = false
                                     },
-                                    shape = RoundedCornerShape(if (isSamsungDevice()) 28.dp else 24.dp),
+                                    shape = RoundedCornerShape(22.dp),
                                     color = if (selected) Pink.copy(alpha = 0.18f) else Color.Transparent,
                                     contentColor = if (selected) Pink else TextSecondary,
-                                    modifier = Modifier.height(48.dp)
+                                    modifier = Modifier
+                                        .weight(1f)
+                                        .fillMaxHeight()
                                 ) {
-                                    Row(
-                                        modifier = Modifier.padding(
-                                            horizontal = if (selected) 15.dp else 12.dp,
-                                            vertical = 10.dp
-                                        ),
-                                        verticalAlignment = Alignment.CenterVertically,
-                                        horizontalArrangement = Arrangement.Center
+                                    Column(
+                                        modifier = Modifier.fillMaxSize().padding(vertical = 7.dp),
+                                        verticalArrangement = Arrangement.Center,
+                                        horizontalAlignment = Alignment.CenterHorizontally
                                     ) {
                                         Icon(
                                             imageVector = icon,
                                             contentDescription = item.label,
-                                            modifier = Modifier.size(25.dp)
+                                            modifier = Modifier.size(if (selected) 25.dp else 23.dp)
                                         )
-                                        if (selected) {
-                                            Spacer(Modifier.width(7.dp))
-                                            Text(
-                                                item.label,
-                                                color = TextPrimary,
-                                                fontSize = 12.sp,
-                                                fontWeight = FontWeight.Bold,
-                                                maxLines = 1
-                                            )
-                                        }
+                                        Spacer(Modifier.height(2.dp))
+                                        Text(
+                                            item.navLabel(),
+                                            color = if (selected) TextPrimary else TextSecondary,
+                                            fontSize = 9.sp,
+                                            lineHeight = 10.sp,
+                                            fontWeight = if (selected) FontWeight.Bold else FontWeight.Medium,
+                                            maxLines = 1,
+                                            overflow = TextOverflow.Clip
+                                        )
                                     }
                                 }
                             }
@@ -545,7 +550,8 @@ fun GuideScreen(
                             selected = section == item,
                             onClick = { section = item; searchOpen = false },
                             icon = { Icon(icon, contentDescription = item.label) },
-                            label = { Text(item.label) },
+                            label = { Text(item.navLabel(), fontSize = 9.sp, maxLines = 1) },
+                            alwaysShowLabel = false,
                             colors = NavigationBarItemDefaults.colors(
                                 selectedIconColor = Pink,
                                 selectedTextColor = TextPrimary,
@@ -2129,23 +2135,219 @@ private suspend fun syncSchedule(code: String, entries: List<SharedScheduleEntry
 
 @Composable
 private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
-    val context=LocalContext.current; val prefs=context.getSharedPreferences(PREFS_NAME,Context.MODE_PRIVATE); val scope=rememberCoroutineScope()
+    val context = LocalContext.current
+    val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+    val scope = rememberCoroutineScope()
     var age by rememberSaveable { mutableIntStateOf(7) }
-    var pairing by rememberSaveable { mutableStateOf(prefs.getString(PREF_HOUSEHOLD_CODE,"") ?: "") }
-    var entries by remember { mutableStateOf(scheduleFromJson(prefs.getString(PREF_SCHEDULE_JSON,"[]") ?: "[]")) }
-    var status by remember { mutableStateOf<String?>(null) }; var busy by remember { mutableStateOf(false) }
-    val suggestion=scheduleSuggestionLanguage(entries)
-    val nowKids=remember(guide,channels){ onNowKidsProgrammes(guide,channels) }
-    fun saveLocal(newEntries:List<SharedScheduleEntry>){ entries=newEntries; prefs.edit().putString(PREF_SCHEDULE_JSON,scheduleToJson(newEntries).toString()).apply() }
-    LazyColumn(Modifier.fillMaxSize(),contentPadding=PaddingValues(24.dp,12.dp,24.dp,36.dp),verticalArrangement=Arrangement.spacedBy(12.dp)){
-        item { Text("Recommended TV Schedule",fontSize=25.sp,fontWeight=FontWeight.Black); Text("Umay until 17:00 • Matt & Sev after 17:00",color=PinkSoft,fontWeight=FontWeight.Bold,fontSize=12.sp) }
-        item { Card(colors=CardDefaults.cardColors(containerColor=Panel2)){ Column(Modifier.padding(16.dp)){ Text("Age to advise for",color=PinkSoft,fontWeight=FontWeight.Bold); Text(if(age<24) "$age months" else "${age/12} years ${age%12} months",fontSize=20.sp,fontWeight=FontWeight.Black); Slider(value=age.toFloat(),onValueChange={age=it.toInt()},valueRange=0f..60f,steps=59); RecommendedTvScheduleCard(age,channels) } } }
-        item { Card(colors=CardDefaults.cardColors(containerColor=Panel2)){ Column(Modifier.padding(16.dp)){ Text("Shared household schedule",fontWeight=FontWeight.Bold,fontSize=18.sp); OutlinedTextField(pairing,{pairing=it.uppercase(Locale.ROOT)},label={Text("Pairing code")},singleLine=true,modifier=Modifier.fillMaxWidth()); Spacer(Modifier.height(8.dp)); Row(horizontalArrangement=Arrangement.spacedBy(8.dp)){ Button(onClick={ prefs.edit().putString(PREF_HOUSEHOLD_CODE,pairing).apply(); busy=true; scope.launch{runCatching{syncSchedule(pairing,null)}.onSuccess{saveLocal(it);status="Synced"}.onFailure{status=it.message};busy=false}},enabled=!busy){Text("Sync")}; OutlinedButton(onClick={val code=(1..8).map{"ABCDEFGHJKLMNPQRSTUVWXYZ23456789".random()}.joinToString(""); pairing=code; prefs.edit().putString(PREF_HOUSEHOLD_CODE,code).apply();status="Use $code on Sev's phone"}){Text("New code")} }; status?.let{Text(it,color=TextSecondary,fontSize=11.sp,modifier=Modifier.padding(top=6.dp))} } } }
-        if(LocalTime.now().isBefore(LocalTime.of(17,0))){ item { Text("On now • tap to add",fontWeight=FontWeight.Bold); suggestion?.let{Text("Next suggestion: prefer $it for language balance — optional, not enforced.",color=PinkSoft,fontSize=11.sp)} }
-            items(nowKids){ p -> val ch=channels.firstOrNull{channelKey(it.id)==channelKey(p.channelId)}; val lang=if(ch?.name in listOf("TRT Çocuk","Minika Çocuk")) "Türkçe" else "English"; Card(modifier=Modifier.fillMaxWidth().clickable{ val n=entries+SharedScheduleEntry(p.start.toLocalTime().toString().take(5),p.title,ch?.name?:p.channelId,lang); saveLocal(n); if(pairing.length>=6) scope.launch{runCatching{syncSchedule(pairing,n)}} },colors=CardDefaults.cardColors(containerColor=Panel2)){Column(Modifier.padding(14.dp)){Text(p.title,fontWeight=FontWeight.Bold);Text("${ch?.name?:p.channelId} • $lang",color=TextSecondary,fontSize=11.sp)}} }
-        } else { item { Card(colors=CardDefaults.cardColors(containerColor=Pink.copy(alpha=.10f))){Column(Modifier.padding(16.dp)){Text("Matt & Sev TV time",fontWeight=FontWeight.Black,fontSize=18.sp);Text("Umay recommendations stop at 17:00. The evening is yours.",color=TextSecondary)}} } }
-        item { Text("Today's shared picks",fontWeight=FontWeight.Bold) }
-        if(entries.isEmpty()) item { Text("Nothing added yet.",color=TextSecondary) } else itemsIndexed(entries){i,e->Card(colors=CardDefaults.cardColors(containerColor=Panel2)){Row(Modifier.fillMaxWidth().padding(14.dp),verticalAlignment=Alignment.CenterVertically){Column(Modifier.weight(1f)){Text("${e.time} • ${e.language}",color=PinkSoft,fontSize=11.sp,fontWeight=FontWeight.Bold);Text(e.title,fontWeight=FontWeight.Bold);Text(e.channel,color=TextSecondary,fontSize=11.sp)}; IconButton(onClick={val n=entries.toMutableList().also{it.removeAt(i)};saveLocal(n);if(pairing.length>=6)scope.launch{runCatching{syncSchedule(pairing,n)}}}){Icon(Icons.Rounded.Close,"Remove")}}} }
+    var pairing by rememberSaveable { mutableStateOf(prefs.getString(PREF_HOUSEHOLD_CODE, "") ?: "") }
+    var joinCode by rememberSaveable { mutableStateOf("") }
+    var entries by remember { mutableStateOf(scheduleFromJson(prefs.getString(PREF_SCHEDULE_JSON, "[]") ?: "[]")) }
+    var status by remember { mutableStateOf<String?>(null) }
+    var busy by remember { mutableStateOf(false) }
+    var confirmExit by remember { mutableStateOf(false) }
+    val joined = pairing.trim().length >= 6
+    val suggestion = scheduleSuggestionLanguage(entries)
+    val nowKids = remember(guide, channels) { onNowKidsProgrammes(guide, channels) }
+
+    fun saveLocal(newEntries: List<SharedScheduleEntry>) {
+        entries = newEntries
+        prefs.edit().putString(PREF_SCHEDULE_JSON, scheduleToJson(newEntries).toString()).apply()
+    }
+
+    fun joinHousehold(code: String) {
+        val clean = code.trim().uppercase(Locale.ROOT).filter { it.isLetterOrDigit() }.take(12)
+        if (clean.length < 6) {
+            status = "Enter a valid household code"
+            return
+        }
+        busy = true
+        status = "Joining household…"
+        scope.launch {
+            runCatching { syncSchedule(clean, null) }
+                .onSuccess {
+                    pairing = clean
+                    prefs.edit().putString(PREF_HOUSEHOLD_CODE, clean).apply()
+                    saveLocal(it)
+                    joinCode = ""
+                    status = "Household joined"
+                }
+                .onFailure { status = it.message ?: "Could not join household" }
+            busy = false
+        }
+    }
+
+    fun createHousehold() {
+        val code = (1..8).map { "ABCDEFGHJKLMNPQRSTUVWXYZ23456789".random() }.joinToString("")
+        busy = true
+        status = "Creating household…"
+        scope.launch {
+            runCatching { syncSchedule(code, entries) }
+                .onSuccess {
+                    pairing = code
+                    prefs.edit().putString(PREF_HOUSEHOLD_CODE, code).apply()
+                    status = "Household created"
+                }
+                .onFailure { status = it.message ?: "Could not create household" }
+            busy = false
+        }
+    }
+
+    LaunchedEffect(pairing) {
+        if (pairing.trim().length >= 6) {
+            runCatching { syncSchedule(pairing, null) }
+                .onSuccess { saveLocal(it) }
+        }
+    }
+
+    if (confirmExit) {
+        AlertDialog(
+            onDismissRequest = { confirmExit = false },
+            title = { Text("Exit household?") },
+            text = { Text("This removes the household code and its cached schedule from this phone. It does not delete the shared household from Sev's phone or Cloudflare.") },
+            confirmButton = {
+                TextButton(onClick = {
+                    pairing = ""
+                    joinCode = ""
+                    entries = emptyList()
+                    prefs.edit()
+                        .remove(PREF_HOUSEHOLD_CODE)
+                        .remove(PREF_SCHEDULE_JSON)
+                        .apply()
+                    status = "You have left the household"
+                    confirmExit = false
+                }) { Text("Exit household") }
+            },
+            dismissButton = { TextButton(onClick = { confirmExit = false }) { Text("Cancel") } }
+        )
+    }
+
+    LazyColumn(
+        Modifier.fillMaxSize(),
+        contentPadding = PaddingValues(24.dp, 12.dp, 24.dp, 36.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        item {
+            Text("Recommended TV Schedule", fontSize = 25.sp, fontWeight = FontWeight.Black)
+            Text("Umay until 17:00 • Matt & Sev after 17:00", color = PinkSoft, fontWeight = FontWeight.Bold, fontSize = 12.sp)
+        }
+        item {
+            Card(colors = CardDefaults.cardColors(containerColor = Panel2)) {
+                Column(Modifier.padding(16.dp)) {
+                    Text("Age to advise for", color = PinkSoft, fontWeight = FontWeight.Bold)
+                    Text(if (age < 24) "$age months" else "${age / 12} years ${age % 12} months", fontSize = 20.sp, fontWeight = FontWeight.Black)
+                    Slider(value = age.toFloat(), onValueChange = { age = it.toInt() }, valueRange = 0f..60f, steps = 59)
+                    RecommendedTvScheduleCard(age, channels)
+                }
+            }
+        }
+        item {
+            Card(colors = CardDefaults.cardColors(containerColor = Panel2)) {
+                Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Text("Shared household", fontWeight = FontWeight.Bold, fontSize = 18.sp)
+                    if (joined) {
+                        Text("✓ You have joined this household", color = PinkSoft, fontWeight = FontWeight.Bold)
+                        Text("Household code", color = TextSecondary, fontSize = 11.sp)
+                        Surface(
+                            color = Midnight.copy(alpha = 0.65f),
+                            shape = RoundedCornerShape(16.dp),
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Text(
+                                pairing,
+                                modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight.Black,
+                                letterSpacing = 2.sp
+                            )
+                        }
+                        Text("This code is saved on this phone. Use it to join the same household on another phone.", color = TextSecondary, fontSize = 11.sp)
+                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            Button(
+                                onClick = {
+                                    busy = true
+                                    status = "Syncing…"
+                                    scope.launch {
+                                        runCatching { syncSchedule(pairing, null) }
+                                            .onSuccess { saveLocal(it); status = "Synced" }
+                                            .onFailure { status = it.message }
+                                        busy = false
+                                    }
+                                },
+                                enabled = !busy
+                            ) { Text("Sync now") }
+                            TextButton(onClick = { confirmExit = true }, enabled = !busy) { Text("Exit household") }
+                        }
+                    } else {
+                        Text("Create a household on one phone, then enter the same code on the other.", color = TextSecondary, fontSize = 12.sp)
+                        OutlinedTextField(
+                            value = joinCode,
+                            onValueChange = { joinCode = it.uppercase(Locale.ROOT).filter { ch -> ch.isLetterOrDigit() }.take(12) },
+                            label = { Text("Household code") },
+                            singleLine = true,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            Button(onClick = { joinHousehold(joinCode) }, enabled = !busy && joinCode.length >= 6) { Text("Join household") }
+                            OutlinedButton(onClick = { createHousehold() }, enabled = !busy) { Text("Create new") }
+                        }
+                    }
+                    status?.let { Text(it, color = TextSecondary, fontSize = 11.sp) }
+                }
+            }
+        }
+        if (LocalTime.now().isBefore(LocalTime.of(17, 0))) {
+            item {
+                Text("On now • tap to add", fontWeight = FontWeight.Bold)
+                suggestion?.let { Text("Next suggestion: prefer $it for language balance — optional, not enforced.", color = PinkSoft, fontSize = 11.sp) }
+            }
+            items(nowKids) { p ->
+                val ch = channels.firstOrNull { channelKey(it.id) == channelKey(p.channelId) }
+                val lang = if (ch?.name in listOf("TRT Çocuk", "Minika Çocuk")) "Türkçe" else "English"
+                Card(
+                    modifier = Modifier.fillMaxWidth().clickable {
+                        val n = entries + SharedScheduleEntry(p.start.toLocalTime().toString().take(5), p.title, ch?.name ?: p.channelId, lang)
+                        saveLocal(n)
+                        if (joined) scope.launch { runCatching { syncSchedule(pairing, n) } }
+                    },
+                    colors = CardDefaults.cardColors(containerColor = Panel2)
+                ) {
+                    Column(Modifier.padding(14.dp)) {
+                        Text(p.title, fontWeight = FontWeight.Bold)
+                        Text("${ch?.name ?: p.channelId} • $lang", color = TextSecondary, fontSize = 11.sp)
+                    }
+                }
+            }
+        } else {
+            item {
+                Card(colors = CardDefaults.cardColors(containerColor = Pink.copy(alpha = .10f))) {
+                    Column(Modifier.padding(16.dp)) {
+                        Text("Matt & Sev TV time", fontWeight = FontWeight.Black, fontSize = 18.sp)
+                        Text("Umay recommendations stop at 17:00. The evening is yours.", color = TextSecondary)
+                    }
+                }
+            }
+        }
+        item { Text("Today's shared picks", fontWeight = FontWeight.Bold) }
+        if (entries.isEmpty()) {
+            item { Text("Nothing added yet.", color = TextSecondary) }
+        } else {
+            itemsIndexed(entries) { i, e ->
+                Card(colors = CardDefaults.cardColors(containerColor = Panel2)) {
+                    Row(Modifier.fillMaxWidth().padding(14.dp), verticalAlignment = Alignment.CenterVertically) {
+                        Column(Modifier.weight(1f)) {
+                            Text("${e.time} • ${e.language}", color = PinkSoft, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                            Text(e.title, fontWeight = FontWeight.Bold)
+                            Text(e.channel, color = TextSecondary, fontSize = 11.sp)
+                        }
+                        IconButton(onClick = {
+                            val n = entries.toMutableList().also { it.removeAt(i) }
+                            saveLocal(n)
+                            if (joined) scope.launch { runCatching { syncSchedule(pairing, n) } }
+                        }) { Icon(Icons.Rounded.Close, "Remove") }
+                    }
+                }
+            }
+        }
     }
 }
 
