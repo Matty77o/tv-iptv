@@ -2,6 +2,7 @@ package com.matty77o.umaytvguide
 
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.Crossfade
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import android.Manifest
@@ -712,15 +713,14 @@ fun GuideScreen(
                             onProgramme = { selectedProgramme = it },
                             use24Hour = use24Hour,
                         )
-                    } else when (section) {
+                    } else {
+                        Crossfade(targetState = section, label = "mainSection") { activeSection ->
+                            when (activeSection) {
                         AppSection.HOME -> HomeView(
                             guide = currentGuide,
                             channels = visibleChannels,
-                            channelConfig = channelConfig,
                             favouriteShows = favouriteShows,
-                            favouriteChannels = favouriteChannels,
                             onProgramme = { selectedProgramme = it },
-                            onChannel = { selectedChannel = it },
                             onOpenGuide = { group -> selectedGroup = group; section = AppSection.GUIDE },
                             use24Hour = use24Hour,
                         )
@@ -780,6 +780,8 @@ fun GuideScreen(
                             lastUpdated = lastUpdated,
                             use24HourForLabel = use24Hour,
                         )
+                            }
+                        }
                     }
 
                     if (loading) {
@@ -1054,11 +1056,8 @@ private fun PremiumChoiceChip(
 private fun HomeView(
     guide: GuideData,
     channels: List<TvChannel>,
-    channelConfig: List<ChannelConfig>,
     favouriteShows: Set<String>,
-    favouriteChannels: Set<String>,
     onProgramme: (Programme) -> Unit,
-    onChannel: (TvChannel) -> Unit,
     onOpenGuide: (String) -> Unit,
     use24Hour: Boolean,
 ) {
@@ -1074,7 +1073,6 @@ private fun HomeView(
     val favouriteUpcoming = guide.programmes
         .filter { it.start.isAfter(now) && favouriteShows.any { fav -> sameShowTitle(fav, it.title) } }
         .sortedBy { it.start }.take(8)
-    val forUsToday = favouriteUpcoming.filter { it.start.toLocalDate() == now.toLocalDate() }.take(5)
     val heroProgramme = onNow.firstOrNull()
     val heroChannel = heroProgramme?.let { p -> channels.firstOrNull { channelKey(it.id) == channelKey(p.channelId) || channelKey(it.name) == channelKey(p.channelId) } }
 
@@ -1200,7 +1198,7 @@ private fun HomeView(
                     Modifier.fillMaxWidth().clip(RoundedCornerShape(24.dp)).background(SurfaceSoft.copy(alpha=.92f))
                         .border(1.dp, Hairline, RoundedCornerShape(24.dp)).padding(vertical = 3.dp)
                 ) {
-                    startingSoon.take(5).forEachIndexed { index, p ->
+                    startingSoon.take(3).forEachIndexed { index, p ->
                         val channel = channels.firstOrNull { channelKey(it.id) == channelKey(p.channelId) }
                         Row(
                             Modifier.fillMaxWidth().clip(RoundedCornerShape(18.dp)).clickable { onProgramme(p) }.padding(horizontal=11.dp, vertical=10.dp),
@@ -1222,31 +1220,12 @@ private fun HomeView(
                             }
                             Icon(Icons.Rounded.KeyboardArrowRight, null, tint = TextTertiary, modifier = Modifier.size(19.dp))
                         }
-                        if (index < minOf(4, startingSoon.lastIndex)) HorizontalDivider(color = Hairline, modifier = Modifier.padding(horizontal = 12.dp))
+                        if (index < minOf(2, startingSoon.lastIndex)) HorizontalDivider(color = Hairline, modifier = Modifier.padding(horizontal = 12.dp))
                     }
                 }
             }
         }
 
-        if (forUsToday.isNotEmpty()) {
-            item {
-                PremiumSectionHeader(eyebrow = "HOUSEHOLD", title = "For us today")
-                Spacer(Modifier.height(10.dp))
-                LazyRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                    items(forUsToday) { p -> ProgrammePosterCard(p, channels.firstOrNull { channelKey(it.id) == channelKey(p.channelId) }, use24Hour) { onProgramme(p) } }
-                }
-            }
-        }
-
-        if (favouriteChannels.isNotEmpty()) {
-            item {
-                PremiumSectionHeader(eyebrow = "QUICK ACCESS", title = "Pinned channels")
-                Spacer(Modifier.height(10.dp))
-                LazyRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                    items(channels.filter { favouriteChannels.contains(it.id) }) { ch -> ChannelTile(ch) { onChannel(ch) } }
-                }
-            }
-        }
     }
 }
 
@@ -1422,6 +1401,7 @@ private fun DynamicGuideContent(
     val guideConfig = LocalConfiguration.current
     val guideLandscape = guideConfig.screenWidthDp > guideConfig.screenHeightDp
     var landscapeFiltersExpanded by rememberSaveable { mutableStateOf(false) }
+    var portraitFiltersExpanded by rememberSaveable { mutableStateOf(false) }
 
     Column(Modifier.fillMaxSize()) {
         if (guideLandscape) {
@@ -1533,14 +1513,20 @@ private fun DynamicGuideContent(
                     PremiumChoiceChip("Tonight", jumpTarget == GuideJumpTarget.TONIGHT, Lavender, Icons.Rounded.Schedule) {
                         onSelectedDay(LocalDate.now()); jumpTarget = GuideJumpTarget.TONIGHT
                     }
-                    PremiumChoiceChip("Tomorrow", jumpTarget == GuideJumpTarget.TOMORROW, Cyan, Icons.Rounded.CalendarMonth) {
-                        onSelectedDay(LocalDate.now().plusDays(1)); jumpTarget = GuideJumpTarget.TOMORROW
-                    }
+                    PremiumChoiceChip(
+                        if (selectedGroup == "All") "Channels" else selectedGroup,
+                        portraitFiltersExpanded || selectedGroup != "All",
+                        Cyan,
+                        Icons.Rounded.Tv
+                    ) { portraitFiltersExpanded = !portraitFiltersExpanded }
                 }
-                LazyRow(horizontalArrangement = Arrangement.spacedBy(7.dp)) {
-                    items(groups.distinct()) { group ->
-                        PremiumChoiceChip(group, selectedGroup == group, if (group == "Kids") Pink else if (group == "Turkish TV") Lavender else Cyan) {
-                            onGroup(group)
+                AnimatedVisibility(visible = portraitFiltersExpanded) {
+                    LazyRow(horizontalArrangement = Arrangement.spacedBy(7.dp)) {
+                        items(groups.distinct()) { group ->
+                            PremiumChoiceChip(group, selectedGroup == group, if (group == "Kids") Pink else if (group == "Turkish TV") Lavender else Cyan) {
+                                onGroup(group)
+                                portraitFiltersExpanded = false
+                            }
                         }
                     }
                 }
@@ -1621,6 +1607,7 @@ private fun FavouritesView(
         .filter { it.stop.isAfter(now) && favouriteShows.any { f -> sameShowTitle(f, it.title) } }
         .sortedBy { it.start }
     val todayCount = upcoming.count { it.start.toLocalDate() == now.toLocalDate() }
+    var showAllUpcoming by rememberSaveable { mutableStateOf(false) }
 
     LazyColumn(
         Modifier.fillMaxSize(),
@@ -1701,8 +1688,16 @@ private fun FavouritesView(
                 }
             }
         } else {
-            item { PremiumSectionHeader(eyebrow="UP NEXT", title="Coming up") }
-            items(upcoming.take(100)) { p -> ProgrammeListRow(p, channels.firstOrNull { channelKey(it.id) == channelKey(p.channelId) }, true, use24Hour, onProgramme) }
+            item {
+                PremiumSectionHeader(
+                    eyebrow="UP NEXT",
+                    title="Coming up",
+                    action=if (upcoming.size > 10) { if (showAllUpcoming) "Show less" else "Show all" } else null
+                ) { showAllUpcoming = !showAllUpcoming }
+            }
+            items(if (showAllUpcoming) upcoming else upcoming.take(10)) { p ->
+                ProgrammeListRow(p, channels.firstOrNull { channelKey(it.id) == channelKey(p.channelId) }, true, use24Hour, onProgramme)
+            }
         }
     }
 }
@@ -2378,6 +2373,9 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
     var busy by remember { mutableStateOf(false) }
     var confirmExit by remember { mutableStateOf(false) }
     var chooseNowPrompt by remember { mutableStateOf(prefs.getBoolean(PREF_SCHEDULE_CHOOSE_NOW, false)) }
+    var showAllRecommendations by rememberSaveable { mutableStateOf(false) }
+    var householdExpanded by rememberSaveable { mutableStateOf(false) }
+    var livePicksExpanded by rememberSaveable { mutableStateOf(false) }
     val joined = pairing.trim().length >= 6
     val suggestion = scheduleSuggestionLanguage(entries)
     val nowKids = remember(guide, channels) { onNowKidsProgrammes(guide, channels) }
@@ -2581,12 +2579,6 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
                         }
                         CompactPill(formatAge(age), Pink)
                     }
-                    Row(horizontalArrangement=Arrangement.spacedBy(6.dp)) {
-                        CompactPill("ENGLISH", Pink)
-                        CompactPill("TÜRKÇE", Lavender)
-                        Spacer(Modifier.weight(1f))
-                        Text("1 month per step", color=TextTertiary, fontSize=8.sp, modifier=Modifier.align(Alignment.CenterVertically))
-                    }
                     Slider(
                         value=ageToSliderPosition(age),
                         onValueChange={ age=sliderPositionToAge(it) },
@@ -2595,18 +2587,22 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
                         colors=SliderDefaults.colors(thumbColor=TextPrimary, activeTrackColor=Pink, inactiveTrackColor=Color.White.copy(alpha=.08f))
                     )
                     AgeSliderLabels()
-                    Text("Move the age one month at a time. Recommendations adapt immediately while keeping regular English and Türkçe exposure.", color=TextSecondary, fontSize=10.sp, lineHeight=15.sp)
+                    Text("1 month per step • English + Türkçe", color=TextTertiary, fontSize=9.sp)
                 }
             }
         }
 
         item {
-            PremiumSectionHeader(eyebrow="TODAY’S RHYTHM", title="Recommended schedule")
+            PremiumSectionHeader(
+                eyebrow="TODAY’S RHYTHM",
+                title="Recommended schedule",
+                action=if (recommended.size > 3) { if (showAllRecommendations) "Show less" else "Show all" } else null
+            ) { showAllRecommendations = !showAllRecommendations }
             Spacer(Modifier.height(4.dp))
             Text("A light guide for what to put on — not a rigid timetable.", color=TextSecondary, fontSize=10.sp)
         }
 
-        itemsIndexed(recommended) { index, slot ->
+        itemsIndexed(if (showAllRecommendations) recommended else recommended.take(3)) { index, slot ->
             val slotChannel = channels.firstOrNull { channelKey(it.name)==channelKey(slot.channel) || channelKey(it.id)==channelKey(slot.channel) }
             val currentOnSlot = nowKids.firstOrNull { p ->
                 channelKey(p.channelId)==channelKey(slotChannel?.id ?: slot.channel) || channelKey(p.channelId)==channelKey(slotChannel?.name ?: slot.channel)
@@ -2658,24 +2654,19 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
             }
         }
 
-        item {
-            Row(
-                Modifier.fillMaxWidth().clip(RoundedCornerShape(22.dp))
-                    .background(Brush.linearGradient(listOf(Cyan.copy(alpha=.13f),Color(0xFF0C1728))))
-                    .border(1.dp,Cyan.copy(alpha=.12f),RoundedCornerShape(22.dp)).padding(14.dp),
-                verticalAlignment=Alignment.CenterVertically
-            ) {
-                Box(Modifier.size(38.dp).clip(RoundedCornerShape(14.dp)).background(Cyan.copy(alpha=.12f)),contentAlignment=Alignment.Center) { Icon(Icons.Rounded.Info,null,tint=Cyan,modifier=Modifier.size(20.dp)) }
-                Spacer(Modifier.width(11.dp)); Column { Text("17:00 handover",color=Cyan,fontWeight=FontWeight.Black,fontSize=12.sp); Text("Umay recommendations end and it becomes Matt & Sev TV time.",color=TextSecondary,fontSize=10.sp) }
-            }
-        }
 
         item {
-            Box(
-                Modifier.fillMaxWidth().clip(RoundedCornerShape(30.dp))
-                    .background(Brush.linearGradient(listOf(Color(0xFF161429), Color(0xFF10182A), Color(0xFF08101F))))
-                    .border(1.dp, Pink.copy(alpha=.14f), RoundedCornerShape(30.dp))
-            ) {
+            PremiumSectionHeader(
+                eyebrow="HOUSEHOLD",
+                title=if (joined) "Matt + Sev connected" else "Connect both phones",
+                action=if (householdExpanded) "Close" else "Manage"
+            ) { householdExpanded = !householdExpanded }
+            AnimatedVisibility(visible = householdExpanded) {
+                Box(
+                    Modifier.fillMaxWidth().padding(top = 10.dp).clip(RoundedCornerShape(30.dp))
+                        .background(Brush.linearGradient(listOf(Color(0xFF161429), Color(0xFF10182A), Color(0xFF08101F))))
+                        .border(1.dp, Pink.copy(alpha=.14f), RoundedCornerShape(30.dp))
+                ) {
                 Box(Modifier.align(Alignment.TopEnd).size(150.dp).background(Brush.radialGradient(listOf(Pink.copy(alpha=.16f),Color.Transparent))))
                 Column(Modifier.padding(18.dp), verticalArrangement=Arrangement.spacedBy(12.dp)) {
                     Row(verticalAlignment=Alignment.CenterVertically) {
@@ -2726,17 +2717,22 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
                         }
                     }
                     status?.let { Text(it,color=TextSecondary,fontSize=9.sp) }
+                    }
                 }
             }
         }
 
         if (LocalTime.now().isBefore(LocalTime.of(17, 0))) {
             item {
-                PremiumSectionHeader(eyebrow="LIVE PICKS", title="On now", action="Tap to add") {}
-                suggestion?.let { Text("Language balance suggestion: $it next — optional.", color=PinkSoft, fontSize=10.sp, modifier=Modifier.padding(top=4.dp)) }
-            }
-            item {
-                LazyRow(horizontalArrangement=Arrangement.spacedBy(10.dp), contentPadding=PaddingValues(end=4.dp)) {
+                PremiumSectionHeader(
+                    eyebrow="LIVE PICKS",
+                    title="Add something on now",
+                    action=if (livePicksExpanded) "Close" else "Browse"
+                ) { livePicksExpanded = !livePicksExpanded }
+                AnimatedVisibility(visible = livePicksExpanded) {
+                    Column(Modifier.padding(top = 8.dp)) {
+                        suggestion?.let { Text("Language balance suggestion: $it next — optional.", color=PinkSoft, fontSize=10.sp, modifier=Modifier.padding(bottom=8.dp)) }
+                        LazyRow(horizontalArrangement=Arrangement.spacedBy(10.dp), contentPadding=PaddingValues(end=4.dp)) {
                     items(nowKids) { p ->
                         val ch=channels.firstOrNull { channelKey(it.id)==channelKey(p.channelId) || channelKey(it.name)==channelKey(p.channelId) }
                         val lang=if(ch?.name in listOf("TRT Çocuk","Minika Çocuk")) "Türkçe" else "English"
@@ -2763,6 +2759,8 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
                                     Text("${p.start.toLocalTime().toString().take(5)}–${p.stop.toLocalTime().toString().take(5)}",color=TextSecondary,fontSize=9.sp)
                                 }
                             }
+                        }
+                    }
                         }
                     }
                 }
@@ -2835,6 +2833,8 @@ private fun ChannelAdviserView(
     var questionAnswer by remember { mutableStateOf<AdviserQuestionAnswer?>(AiSessionCache.questionAnswer) }
     var isAnsweringQuestion by remember { mutableStateOf(false) }
     var questionError by remember { mutableStateOf<String?>(null) }
+    var showAllChannelFit by rememberSaveable { mutableStateOf(false) }
+    var askExpanded by rememberSaveable { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
     val offlineFallback = remember(ageMonths, guide, channels) { channelAdviserRecommendations(ageMonths, guide, channels) }
     val recommendations = aiRecommendations ?: offlineFallback
@@ -2852,35 +2852,23 @@ private fun ChannelAdviserView(
     ) {
         item {
             Box(
-                Modifier.fillMaxWidth().clip(RoundedCornerShape(30.dp))
-                    .background(Brush.linearGradient(listOf(Lavender.copy(alpha=.15f), SurfaceHigh, SurfaceSoft)))
-                    .border(1.dp, Lavender.copy(alpha=.16f), RoundedCornerShape(30.dp)).padding(18.dp)
-            ) {
-                Box(Modifier.align(Alignment.TopEnd).size(170.dp).background(Brush.radialGradient(listOf(Lavender.copy(alpha=.16f), Color.Transparent))))
-                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Box(Modifier.size(46.dp).clip(RoundedCornerShape(16.dp)).background(Lavender.copy(alpha=.14f)), contentAlignment=Alignment.Center) {
-                            Icon(Icons.Rounded.Star, null, tint=Lavender, modifier=Modifier.size(23.dp))
-                        }
-                        Spacer(Modifier.width(12.dp))
-                        Column(Modifier.weight(1f)) {
-                            Text("UMAY AI", color=Lavender, fontSize=9.sp, fontWeight=FontWeight.Black, letterSpacing=1.1.sp)
-                            Text("Smarter viewing picks", fontSize=22.sp, fontWeight=FontWeight.Black, letterSpacing=(-.5).sp)
-                        }
-                        CompactPill(if (kidsEpgAvailable) "LIVE EPG" else "OFFLINE", if (kidsEpgAvailable) Mint else Amber)
-                    }
-                    Text("Uses Umay’s selected age, your actual channel lineup and what is airing now to give practical English + Türkçe suggestions.", color=TextSecondary, fontSize=10.sp, lineHeight=15.sp)
-                }
-            }
-        }
-
-        item {
-            Box(
                 Modifier.fillMaxWidth().clip(RoundedCornerShape(28.dp))
                     .background(Brush.linearGradient(listOf(SurfaceHigh, SurfaceSoft)))
                     .border(1.dp, Hairline, RoundedCornerShape(28.dp)).padding(18.dp)
             ) {
                 Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Box(Modifier.size(38.dp).clip(RoundedCornerShape(13.dp)).background(Lavender.copy(alpha=.14f)), contentAlignment=Alignment.Center) {
+                            Icon(Icons.Rounded.Star, null, tint=Lavender, modifier=Modifier.size(20.dp))
+                        }
+                        Spacer(Modifier.width(10.dp))
+                        Column(Modifier.weight(1f)) {
+                            Text("UMAY AI", color=Lavender, fontSize=8.sp, fontWeight=FontWeight.Black, letterSpacing=1.sp)
+                            Text("Smarter viewing picks", fontSize=18.sp, fontWeight=FontWeight.Black, letterSpacing=(-.35).sp)
+                        }
+                        CompactPill(if (kidsEpgAvailable) "LIVE" else "OFFLINE", if (kidsEpgAvailable) Mint else Amber)
+                    }
+                    HorizontalDivider(color=Hairline)
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Column(Modifier.weight(1f)) {
                             Text("AGE TO ADVISE FOR", color=PinkSoft, fontWeight=FontWeight.Black, fontSize=8.sp, letterSpacing=.9.sp)
@@ -2967,12 +2955,25 @@ private fun ChannelAdviserView(
         }
 
         if (currentChannelRecommendations.isNotEmpty()) {
-            item { PremiumSectionHeader(eyebrow="CURRENT LINEUP", title="Channel fit", action="${currentChannelRecommendations.size} assessed") {} }
-            items(currentChannelRecommendations) { AdviserChannelRow(it) }
+            item {
+                PremiumSectionHeader(
+                    eyebrow="CURRENT LINEUP",
+                    title="Channel fit",
+                    action=if (currentChannelRecommendations.size > 3) { if (showAllChannelFit) "Show less" else "Show all" } else null
+                ) { showAllChannelFit = !showAllChannelFit }
+            }
+            items(if (showAllChannelFit) currentChannelRecommendations else currentChannelRecommendations.take(3)) { AdviserChannelRow(it) }
         }
 
         item {
-            PolishedSection(title="Ask a question", subtitle="Channels, programmes or a future age", accent=Lavender) {
+            PremiumSectionHeader(
+                eyebrow="ASK UMAY AI",
+                title="Ask a question",
+                action=if (askExpanded) "Close" else "Open"
+            ) { askExpanded = !askExpanded }
+            AnimatedVisibility(visible = askExpanded) {
+                Column(Modifier.padding(top = 10.dp)) {
+                    PolishedSection(title="Ask a question", subtitle="Channels, programmes or a future age", accent=Lavender) {
                 OutlinedTextField(
                     value=question,
                     onValueChange={ question=it.take(500); questionError=null },
@@ -3022,12 +3023,14 @@ private fun ChannelAdviserView(
                     }
                 }
                 questionError?.let { Text(it, color=TextSecondary, fontSize=10.sp, modifier=Modifier.padding(top=7.dp)) }
+                    }
+                }
             }
         }
 
         if (additions.isNotEmpty()) {
             item { PremiumSectionHeader(eyebrow="DISCOVER", title="Possible additions") }
-            items(additions) { AdviserAddResult(it) }
+            items(additions.take(3)) { AdviserAddResult(it) }
         }
 
         item {
@@ -3055,6 +3058,7 @@ private fun SettingsView(
     use24HourForLabel: Boolean,
 ) {
     var default by remember(defaultSection) { mutableStateOf(defaultSection) }
+    var settingsPage by rememberSaveable { mutableStateOf("General") }
     val channelIdsWithListings = guide.programmes.map { it.channelId }.toSet()
     val missing = guide.channels.filterNot { channelIdsWithListings.contains(it.id) }
     val newest = guide.programmes.maxByOrNull { it.stop }?.stop
@@ -3100,6 +3104,18 @@ private fun SettingsView(
         }
 
         item {
+            Row(
+                Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                PremiumChoiceChip("General", settingsPage == "General", Pink, Icons.Rounded.Settings) { settingsPage = "General" }
+                PremiumChoiceChip("Updates", settingsPage == "Updates", Mint, Icons.Rounded.Refresh) { settingsPage = "Updates" }
+                PremiumChoiceChip("Diagnostics", settingsPage == "Diagnostics", Cyan, Icons.Rounded.Info) { settingsPage = "Diagnostics" }
+            }
+        }
+
+        if (settingsPage == "General") {
+        item {
             SettingsCard("Reminders", Icons.Rounded.Notifications, Pink) {
                 Text("Default for new favourites", color=TextSecondary, fontSize=10.sp)
                 Spacer(Modifier.height(9.dp))
@@ -3143,6 +3159,9 @@ private fun SettingsView(
             }
         }
 
+        }
+
+        if (settingsPage == "Updates") {
         item {
             SettingsCard("App updates", Icons.Rounded.Refresh, Mint) {
                 Text("Installed v${BuildConfig.VERSION_NAME}", fontWeight=FontWeight.Black, fontSize=15.sp)
@@ -3163,6 +3182,9 @@ private fun SettingsView(
             }
         }
 
+        }
+
+        if (settingsPage == "Diagnostics") {
         item {
             SettingsCard("EPG health", Icons.Rounded.Schedule, if(missing.isEmpty()) Mint else Amber) {
                 Row(verticalAlignment=Alignment.Bottom) {
@@ -3178,6 +3200,7 @@ private fun SettingsView(
                 if(newest!=null && newest.isBefore(ZonedDateTime.now().plusHours(6))) Text("Guide data may be running out soon.",color=Amber,fontSize=10.sp,fontWeight=FontWeight.Bold)
                 if(missing.isNotEmpty()) { Spacer(Modifier.height(7.dp)); Text("Missing: ${missing.joinToString { it.name }}",color=PinkSoft,fontSize=10.sp) }
             }
+        }
         }
     }
 }
@@ -3719,7 +3742,7 @@ private fun GuideRow(
                     val offsetMinutes = Duration.between(guideStart, visibleStart).toMinutes().coerceAtLeast(0)
                     val durationMinutes = Duration.between(visibleStart, visibleStop).toMinutes().coerceAtLeast(5)
                     val x = (offsetMinutes * pixelsPerMinute).dp
-                    val width = max(56f, durationMinutes * pixelsPerMinute).dp
+                    val width = max(20f, durationMinutes * pixelsPerMinute).dp
                     ProgrammeCard(
                         programme = p,
                         isFavourite = favouriteShows.any { sameShowTitle(it, p.title) },
@@ -4169,29 +4192,56 @@ private fun ProgrammeCard(
         else Brush.linearGradient(listOf(Panel3.copy(alpha=.92f), SurfaceHigh))
 
     BoxWithConstraints(
-        modifier = modifier.clip(RoundedCornerShape(14.dp)).background(cardBrush)
-            .border(1.dp, if (live) Pink.copy(alpha = .38f) else StrongHairline, RoundedCornerShape(14.dp))
-            .clickable(onClick = onClick).padding(horizontal = 9.dp, vertical = 7.dp)
+        modifier = modifier.clip(RoundedCornerShape(12.dp)).background(cardBrush)
+            .border(1.dp, if (live) Pink.copy(alpha = .38f) else StrongHairline, RoundedCornerShape(12.dp))
+            .clickable(onClick = onClick)
     ) {
-        val roomy = maxWidth >= 96.dp
-        Column {
-            Row(verticalAlignment = Alignment.Top) {
-                Text(programme.title, color = TextPrimary, fontWeight = FontWeight.Bold, fontSize = if (roomy) 11.sp else 10.sp,
-                    maxLines = if (roomy) 2 else 1, overflow = TextOverflow.Ellipsis, lineHeight = 13.sp, modifier = Modifier.weight(1f))
-                if (isFavourite) { Spacer(Modifier.width(3.dp)); Text("♥", color = PinkSoft, fontSize = 10.sp, fontWeight = FontWeight.Black) }
+        val micro = maxWidth < 42.dp
+        val tiny = maxWidth < 68.dp
+        val compact = maxWidth < 118.dp
+        if (micro) {
+            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                Box(
+                    Modifier.width(4.dp).fillMaxHeight(.58f).clip(RoundedCornerShape(99.dp))
+                        .background(if (live) PinkSoft else Lavender.copy(alpha=.72f))
+                )
             }
-            Spacer(Modifier.weight(1f))
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                if (live) {
-                    Surface(color = Pink.copy(alpha=.16f), shape = RoundedCornerShape(100.dp)) {
-                        Text("NOW", color = PinkSoft, fontSize = 7.sp, fontWeight = FontWeight.Black, modifier = Modifier.padding(horizontal=5.dp, vertical=2.dp))
-                    }
-                    Spacer(Modifier.width(4.dp))
+        } else Column(
+            Modifier.fillMaxSize().padding(
+                horizontal = if (tiny) 4.dp else 8.dp,
+                vertical = if (tiny) 5.dp else 7.dp
+            )
+        ) {
+            Row(verticalAlignment = Alignment.Top) {
+                Text(
+                    programme.title,
+                    color = TextPrimary,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = if (tiny) 8.sp else if (compact) 9.sp else 11.sp,
+                    maxLines = if (tiny) 2 else if (compact) 1 else 2,
+                    overflow = TextOverflow.Ellipsis,
+                    lineHeight = if (tiny) 9.sp else 12.sp,
+                    modifier = Modifier.weight(1f)
+                )
+                if (isFavourite && !tiny) {
+                    Spacer(Modifier.width(3.dp))
+                    Text("♥", color = PinkSoft, fontSize = 9.sp, fontWeight = FontWeight.Black)
                 }
-                Text(programme.start.format(DateTimeFormatter.ofPattern("HH:mm")), color = TextSecondary, fontSize = 8.sp)
-                if (roomy) {
-                    Spacer(Modifier.width(4.dp))
-                    AgeGuidanceBadge(programmeAgeGuidance(programme, isKidsChannel), compact = true)
+            }
+            if (!tiny) {
+                Spacer(Modifier.weight(1f))
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    if (live && !compact) {
+                        Surface(color = Pink.copy(alpha=.16f), shape = RoundedCornerShape(100.dp)) {
+                            Text("NOW", color = PinkSoft, fontSize = 7.sp, fontWeight = FontWeight.Black, modifier = Modifier.padding(horizontal=5.dp, vertical=2.dp))
+                        }
+                        Spacer(Modifier.width(4.dp))
+                    }
+                    Text(programme.start.format(DateTimeFormatter.ofPattern("HH:mm")), color = TextSecondary, fontSize = 8.sp)
+                    if (!compact) {
+                        Spacer(Modifier.width(4.dp))
+                        AgeGuidanceBadge(programmeAgeGuidance(programme, isKidsChannel), compact = true)
+                    }
                 }
             }
         }
