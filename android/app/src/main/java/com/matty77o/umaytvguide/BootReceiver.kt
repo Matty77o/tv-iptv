@@ -13,6 +13,8 @@ class BootReceiver : BroadcastReceiver() {
 
         val prefs = context.getSharedPreferences("umay_tv_guide", Context.MODE_PRIVATE)
         BackgroundRefreshManager.configure(context, prefs.getBoolean("auto_refresh", true))
+        HouseholdScheduleSyncManager.configure(context)
+        ScheduleDayScheduler.schedule(context)
 
         val pending = goAsync()
         thread {

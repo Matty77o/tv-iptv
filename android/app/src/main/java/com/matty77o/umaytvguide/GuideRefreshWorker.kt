@@ -90,8 +90,29 @@ class HouseholdScheduleSyncWorker(
             connection.setRequestProperty("Accept", "application/json")
             val text = connection.inputStream.bufferedReader().use { it.readText() }
             connection.disconnect()
-            val entries = org.json.JSONObject(text).optJSONArray("entries") ?: org.json.JSONArray()
-            prefs.edit().putString("shared_tv_schedule", entries.toString()).apply()
+            val response = org.json.JSONObject(text)
+            var entries = response.optJSONArray("entries") ?: org.json.JSONArray()
+            val updatedAt = response.optString("updatedAt")
+            val remoteDate = runCatching { java.time.Instant.parse(updatedAt).atZone(java.time.ZoneId.systemDefault()).toLocalDate() }.getOrNull()
+            val remoteToday = java.time.LocalDate.now(java.time.ZoneId.systemDefault())
+            if (entries.length() > 0 && remoteDate != null && remoteDate != remoteToday) {
+                entries = org.json.JSONArray()
+                val clear = java.net.URL("https://umay-tv-ai.matthewwood406.workers.dev/api/schedule?household=$household")
+                    .openConnection() as java.net.HttpURLConnection
+                clear.requestMethod = "PUT"
+                clear.doOutput = true
+                clear.connectTimeout = 10_000
+                clear.readTimeout = 15_000
+                clear.setRequestProperty("Content-Type", "application/json")
+                clear.outputStream.use { it.write(org.json.JSONObject().put("entries", entries).toString().toByteArray()) }
+                (if (clear.responseCode in 200..299) clear.inputStream else clear.errorStream)?.close()
+                clear.disconnect()
+            }
+            prefs.edit()
+                .putString("shared_tv_schedule", entries.toString())
+                .putString(SchedulePolicy.PREF_DATE, SchedulePolicy.todayKey())
+                .apply()
+            ScheduleDayScheduler.schedule(applicationContext)
 
             val member = prefs.getString("household_member_name", "Someone").orEmpty().ifBlank { "Someone" }
             val zone = java.time.ZoneId.systemDefault()
@@ -99,9 +120,12 @@ class HouseholdScheduleSyncWorker(
             val now = java.time.ZonedDateTime.now(zone)
             for (i in 0 until entries.length()) {
                 val e = entries.optJSONObject(i) ?: continue
+                if (e.optString("title") == "TV switched off") continue
                 val stopText = e.optString("stop")
                 if (!Regex("\\d{2}:\\d{2}").matches(stopText)) continue
-                val stop = java.time.ZonedDateTime.of(today, java.time.LocalTime.parse(stopText), zone)
+                val parsedStop = runCatching { java.time.LocalTime.parse(stopText) }.getOrNull() ?: continue
+                if (!parsedStop.isBefore(SchedulePolicy.endTime(applicationContext))) continue
+                val stop = java.time.ZonedDateTime.of(today, parsedStop, zone)
                 if (!stop.isAfter(now)) continue
                 ScheduleFollowUpScheduler.schedule(
                     context = applicationContext,

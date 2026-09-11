@@ -33,7 +33,12 @@ object ScheduleFollowUpScheduler {
         nextStart: String,
         nextStop: String,
     ) {
-        if (!stop.isAfter(ZonedDateTime.now())) return
+        val now = ZonedDateTime.now()
+        if (!stop.isAfter(now)) return
+        if (!SchedulePolicy.isScheduleForToday(context)) return
+        if (title == "TV switched off") return
+        val endTime = SchedulePolicy.endTime(context)
+        if (!stop.toLocalTime().isBefore(endTime)) return
         val promptId = "${stop.toInstant().toEpochMilli()}:${channel}:${title}".take(120)
         val intent = Intent(context, ScheduleFollowUpReceiver::class.java).apply {
             action = ScheduleFollowUpReceiver.ACTION_PROMPT
@@ -43,6 +48,7 @@ object ScheduleFollowUpScheduler {
             putExtra(ScheduleFollowUpReceiver.EXTRA_TITLE, title)
             putExtra(ScheduleFollowUpReceiver.EXTRA_CHANNEL, channel)
             putExtra(ScheduleFollowUpReceiver.EXTRA_LANGUAGE, language)
+            putExtra(ScheduleFollowUpReceiver.EXTRA_STOP, stop.toLocalTime().toString().take(5))
             putExtra(ScheduleFollowUpReceiver.EXTRA_NEXT_TITLE, nextTitle)
             putExtra(ScheduleFollowUpReceiver.EXTRA_NEXT_START, nextStart)
             putExtra(ScheduleFollowUpReceiver.EXTRA_NEXT_STOP, nextStop)
@@ -65,6 +71,9 @@ object ScheduleFollowUpScheduler {
 
 class ScheduleFollowUpReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
+        // Schedule maintenance must work even if notification permission is disabled.
+        if (intent.action == ACTION_AUTO_TV_OFF) { autoTvOff(context); return }
+        if (intent.action == ACTION_CLEAR_NEW_DAY) { clearForNewDay(context); return }
         if (Build.VERSION.SDK_INT >= 33 && ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) return
         when (intent.action) {
             ACTION_PROMPT -> showPrompt(context, intent)
@@ -76,6 +85,7 @@ class ScheduleFollowUpReceiver : BroadcastReceiver() {
     }
 
     private fun showPrompt(context: Context, source: Intent) {
+        if (!isPromptStillRelevant(context, source)) return
         val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         ensureChannel(manager)
         val title = source.getStringExtra(EXTRA_TITLE).orEmpty()
@@ -156,6 +166,64 @@ class ScheduleFollowUpReceiver : BroadcastReceiver() {
                     scheduleReconcile(context, source, attempt + 1)
                 }
             } finally {
+                pendingResult.finish()
+            }
+        }
+    }
+
+    private fun isPromptStillRelevant(context: Context, source: Intent): Boolean {
+        if (!SchedulePolicy.isScheduleForToday(context)) return false
+        if (!LocalTime.now().isBefore(SchedulePolicy.endTime(context))) return false
+        val title = source.getStringExtra(EXTRA_TITLE).orEmpty()
+        val channel = source.getStringExtra(EXTRA_CHANNEL).orEmpty()
+        val stop = source.getStringExtra(EXTRA_STOP).orEmpty()
+        val prefs = context.getSharedPreferences("umay_tv_guide", Context.MODE_PRIVATE)
+        val arr = runCatching { JSONArray(prefs.getString("shared_tv_schedule", "[]") ?: "[]") }.getOrDefault(JSONArray())
+        return (0 until arr.length()).any { i ->
+            arr.optJSONObject(i)?.let { e ->
+                e.optString("title") == title &&
+                    e.optString("channel") == channel &&
+                    (stop.isBlank() || e.optString("stop") == stop)
+            } == true
+        }
+    }
+
+    private fun autoTvOff(context: Context) {
+        val pendingResult = goAsync()
+        thread(name = "UmayAutoTvOff") {
+            try {
+                val prefs = context.getSharedPreferences("umay_tv_guide", Context.MODE_PRIVATE)
+                if (!SchedulePolicy.isScheduleForToday(context)) return@thread
+                val arr = runCatching { JSONArray(prefs.getString("shared_tv_schedule", "[]") ?: "[]") }.getOrDefault(JSONArray())
+                val hasProgramme = (0 until arr.length()).any { i ->
+                    arr.optJSONObject(i)?.optString("title").orEmpty().let { it.isNotBlank() && it != "TV switched off" }
+                }
+                if (!hasProgramme) return@thread
+                val household = prefs.getString("household_pairing_code", "").orEmpty()
+                appendTvOffEntry(context, household, SchedulePolicy.endTimeText(context))
+            } finally {
+                ScheduleDayScheduler.scheduleEndTime(context)
+                pendingResult.finish()
+            }
+        }
+    }
+
+    private fun clearForNewDay(context: Context) {
+        val pendingResult = goAsync()
+        thread(name = "UmayScheduleDayReset") {
+            try {
+                val prefs = context.getSharedPreferences("umay_tv_guide", Context.MODE_PRIVATE)
+                prefs.edit()
+                    .putString("shared_tv_schedule", "[]")
+                    .putString(SchedulePolicy.PREF_DATE, SchedulePolicy.todayKey())
+                    .remove("schedule_choose_now")
+                    .remove("open_schedule_once")
+                    .apply()
+                val household = prefs.getString("household_pairing_code", "").orEmpty()
+                if (household.length >= 6) runCatching { putSchedule(household, JSONArray()) }
+            } finally {
+                ScheduleDayScheduler.scheduleNewDay(context)
+                ScheduleDayScheduler.scheduleEndTime(context)
                 pendingResult.finish()
             }
         }
@@ -244,7 +312,7 @@ class ScheduleFollowUpReceiver : BroadcastReceiver() {
         val prefs = context.getSharedPreferences("umay_tv_guide", Context.MODE_PRIVATE)
         val arr = runCatching { JSONArray(prefs.getString("shared_tv_schedule", "[]") ?: "[]") }.getOrDefault(JSONArray())
         val duplicate = (0 until arr.length()).any { i ->
-            arr.optJSONObject(i)?.let { it.optString("title") == "TV switched off" && it.optString("time") == time } == true
+            arr.optJSONObject(i)?.let { it.optString("title") == "TV switched off" } == true
         }
         if (!duplicate) arr.put(JSONObject().apply {
             put("time", time)
@@ -256,7 +324,7 @@ class ScheduleFollowUpReceiver : BroadcastReceiver() {
             put("nextStart", "")
             put("nextStop", "")
         })
-        prefs.edit().putString("shared_tv_schedule", arr.toString()).apply()
+        prefs.edit().putString("shared_tv_schedule", arr.toString()).putString(SchedulePolicy.PREF_DATE, SchedulePolicy.todayKey()).apply()
         if (household.length >= 6) runCatching {
             val c = (URL("https://umay-tv-ai.matthewwood406.workers.dev/api/schedule?household=$household").openConnection() as HttpURLConnection).apply {
                 requestMethod = "PUT"
@@ -279,7 +347,7 @@ class ScheduleFollowUpReceiver : BroadcastReceiver() {
         if (!duplicate) arr.put(JSONObject().apply {
             put("time", time); put("stop", stop); put("title", title); put("channel", channel); put("language", language)
         })
-        prefs.edit().putString("shared_tv_schedule", arr.toString()).apply()
+        prefs.edit().putString("shared_tv_schedule", arr.toString()).putString(SchedulePolicy.PREF_DATE, SchedulePolicy.todayKey()).apply()
         if (household.length >= 6) runCatching {
             val c = (URL("https://umay-tv-ai.matthewwood406.workers.dev/api/schedule?household=$household").openConnection() as HttpURLConnection).apply {
                 requestMethod = "PUT"; doOutput = true; connectTimeout = 10_000; readTimeout = 15_000; setRequestProperty("Content-Type", "application/json")
@@ -288,6 +356,20 @@ class ScheduleFollowUpReceiver : BroadcastReceiver() {
             c.outputStream.use { it.write(body) }
             c.inputStream.close(); c.disconnect()
         }
+    }
+
+    private fun putSchedule(household: String, entries: JSONArray) {
+        val c = (URL("https://umay-tv-ai.matthewwood406.workers.dev/api/schedule?household=$household").openConnection() as HttpURLConnection).apply {
+            requestMethod = "PUT"
+            doOutput = true
+            connectTimeout = 10_000
+            readTimeout = 15_000
+            setRequestProperty("Content-Type", "application/json")
+        }
+        val body = JSONObject().put("entries", entries).toString().toByteArray()
+        c.outputStream.use { it.write(body) }
+        (if (c.responseCode in 200..299) c.inputStream else c.errorStream)?.close()
+        c.disconnect()
     }
 
     private fun getFollowUpState(household: String, promptId: String): JSONObject {
@@ -333,12 +415,15 @@ class ScheduleFollowUpReceiver : BroadcastReceiver() {
         const val ACTION_NO = "com.matty77o.umaytvguide.SCHEDULE_NO"
         const val ACTION_TV_OFF = "com.matty77o.umaytvguide.SCHEDULE_TV_OFF"
         const val ACTION_RECONCILE = "com.matty77o.umaytvguide.SCHEDULE_RECONCILE"
+        const val ACTION_AUTO_TV_OFF = "com.matty77o.umaytvguide.SCHEDULE_AUTO_TV_OFF"
+        const val ACTION_CLEAR_NEW_DAY = "com.matty77o.umaytvguide.SCHEDULE_CLEAR_NEW_DAY"
         const val EXTRA_HOUSEHOLD = "household"
         const val EXTRA_MEMBER = "member"
         const val EXTRA_PROMPT_ID = "prompt_id"
         const val EXTRA_TITLE = "schedule_title"
         const val EXTRA_CHANNEL = "schedule_channel"
         const val EXTRA_LANGUAGE = "schedule_language"
+        const val EXTRA_STOP = "schedule_stop"
         const val EXTRA_NEXT_TITLE = "next_title"
         const val EXTRA_NEXT_START = "next_start"
         const val EXTRA_NEXT_STOP = "next_stop"

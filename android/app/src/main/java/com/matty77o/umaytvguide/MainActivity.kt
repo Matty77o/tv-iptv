@@ -573,6 +573,7 @@ fun GuideScreen(
 
     LaunchedEffect(Unit) {
         HouseholdScheduleSyncManager.configure(context)
+        ScheduleDayScheduler.schedule(context)
     }
 
     LaunchedEffect(selectedDay) {
@@ -2328,7 +2329,16 @@ private suspend fun syncSchedule(code: String, entries: List<SharedScheduleEntry
     if(entries!=null){ c.doOutput=true; c.setRequestProperty("Content-Type","application/json; charset=utf-8"); val body=JSONObject().put("entries",scheduleToJson(entries)); c.outputStream.use{it.write(body.toString().toByteArray())} }
     val codeHttp=c.responseCode; val text=(if(codeHttp in 200..299)c.inputStream else c.errorStream)?.bufferedReader()?.use{it.readText()}.orEmpty(); c.disconnect()
     if(codeHttp !in 200..299) error("Schedule sync returned HTTP $codeHttp")
-    val a=JSONObject(text).optJSONArray("entries")?:JSONArray(); scheduleFromJson(a.toString())
+    val response = JSONObject(text)
+    val a=response.optJSONArray("entries")?:JSONArray()
+    if (entries == null && a.length() > 0) {
+        val updatedAt = response.optString("updatedAt")
+        val remoteDate = runCatching { java.time.Instant.parse(updatedAt).atZone(java.time.ZoneId.systemDefault()).toLocalDate() }.getOrNull()
+        if (remoteDate != null && remoteDate != LocalDate.now()) {
+            return@withContext syncSchedule(clean, emptyList())
+        }
+    }
+    scheduleFromJson(a.toString())
 }
 
 
@@ -2339,9 +2349,13 @@ private fun scheduleSharedFollowUps(
     entries: List<SharedScheduleEntry>,
 ) {
     if (household.trim().length < 6) return
+    if (!SchedulePolicy.isScheduleForToday(context)) return
     val now = ZonedDateTime.now()
+    val endTime = SchedulePolicy.endTime(context)
     entries.forEach { entry ->
+        if (entry.title == "TV switched off") return@forEach
         val stopTime = runCatching { LocalTime.parse(entry.stop) }.getOrNull() ?: return@forEach
+        if (!stopTime.isBefore(endTime)) return@forEach
         val stop = now.with(stopTime).withSecond(0).withNano(0)
         if (!stop.isAfter(now)) return@forEach
         ScheduleFollowUpScheduler.schedule(
@@ -2368,7 +2382,9 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
     var pairing by rememberSaveable { mutableStateOf(prefs.getString(PREF_HOUSEHOLD_CODE, "") ?: "") }
     var memberName by rememberSaveable { mutableStateOf(prefs.getString(PREF_HOUSEHOLD_MEMBER, "") ?: "") }
     var joinCode by rememberSaveable { mutableStateOf("") }
-    var entries by remember { mutableStateOf(scheduleFromJson(prefs.getString(PREF_SCHEDULE_JSON, "[]") ?: "[]")) }
+    val initialScheduleIsToday = prefs.getString(SchedulePolicy.PREF_DATE, null) == SchedulePolicy.todayKey()
+    var entries by remember { mutableStateOf(if (initialScheduleIsToday) scheduleFromJson(prefs.getString(PREF_SCHEDULE_JSON, "[]") ?: "[]") else emptyList()) }
+    var scheduleEndTime by rememberSaveable { mutableStateOf(prefs.getString(SchedulePolicy.PREF_END_TIME, SchedulePolicy.DEFAULT_END_TIME) ?: SchedulePolicy.DEFAULT_END_TIME) }
     var status by remember { mutableStateOf<String?>(null) }
     var busy by remember { mutableStateOf(false) }
     var confirmExit by remember { mutableStateOf(false) }
@@ -2383,13 +2399,34 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
 
     fun saveLocal(newEntries: List<SharedScheduleEntry>) {
         entries = newEntries
-        prefs.edit().putString(PREF_SCHEDULE_JSON, scheduleToJson(newEntries).toString()).apply()
+        prefs.edit().putString(PREF_SCHEDULE_JSON, scheduleToJson(newEntries).toString()).putString(SchedulePolicy.PREF_DATE, SchedulePolicy.todayKey()).apply()
     }
 
     fun saveMember(name: String) {
         memberName = name
         prefs.edit().putString(PREF_HOUSEHOLD_MEMBER, name).apply()
         if (joined) scheduleSharedFollowUps(context, pairing, name, entries)
+    }
+
+    fun chooseEndTime() {
+        val current = runCatching { LocalTime.parse(scheduleEndTime) }.getOrDefault(LocalTime.of(17, 0))
+        android.app.TimePickerDialog(
+            context,
+            { _, hour, minute ->
+                val chosen = LocalTime.of(hour, minute).toString().take(5)
+                scheduleEndTime = chosen
+                prefs.edit().putString(SchedulePolicy.PREF_END_TIME, chosen).apply()
+                if (!LocalTime.now().isBefore(LocalTime.of(hour, minute)) && entries.any { it.title != "TV switched off" }) {
+                    context.sendBroadcast(Intent(context, ScheduleFollowUpReceiver::class.java).apply { action = ScheduleFollowUpReceiver.ACTION_AUTO_TV_OFF })
+                }
+                ScheduleDayScheduler.schedule(context)
+                scheduleSharedFollowUps(context, pairing, memberName, entries)
+                status = "Viewing end time set to $chosen"
+            },
+            current.hour,
+            current.minute,
+            true,
+        ).show()
     }
 
     fun syncRemote(newEntries: List<SharedScheduleEntry>) {
@@ -2471,6 +2508,12 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
     }
 
     LaunchedEffect(pairing) {
+        ScheduleDayScheduler.schedule(context)
+        if (!initialScheduleIsToday) {
+            // Clear the stale local day immediately, but never overwrite a household
+            // schedule until we have checked whether the other phone already has today's data.
+            saveLocal(emptyList())
+        }
         if (pairing.trim().length >= 6) {
             runCatching { syncSchedule(pairing, null) }
                 .onSuccess {
@@ -2589,6 +2632,27 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
                     AgeSliderLabels()
                     Text("1 month per step • English + Türkçe", color=TextTertiary, fontSize=9.sp)
                 }
+            }
+        }
+
+        item {
+            Row(
+                Modifier.fillMaxWidth().clip(RoundedCornerShape(22.dp))
+                    .background(SurfaceSoft.copy(alpha=.88f))
+                    .border(1.dp, Hairline, RoundedCornerShape(22.dp))
+                    .clickable { chooseEndTime() }
+                    .padding(15.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Box(Modifier.size(42.dp).clip(RoundedCornerShape(14.dp)).background(Cyan.copy(alpha=.11f)), contentAlignment=Alignment.Center) {
+                    Icon(Icons.Rounded.Schedule, null, tint=Cyan, modifier=Modifier.size(21.dp))
+                }
+                Spacer(Modifier.width(11.dp))
+                Column(Modifier.weight(1f)) {
+                    Text("Viewing ends at $scheduleEndTime", fontWeight=FontWeight.Black, fontSize=14.sp)
+                    Text("At this time TV switched off is added automatically. Tap to change it.", color=TextSecondary, fontSize=9.sp, lineHeight=13.sp)
+                }
+                Icon(Icons.Rounded.KeyboardArrowRight, null, tint=TextSecondary)
             }
         }
 
@@ -2722,7 +2786,7 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
             }
         }
 
-        if (LocalTime.now().isBefore(LocalTime.of(17, 0))) {
+        if (LocalTime.now().isBefore(runCatching { LocalTime.parse(scheduleEndTime) }.getOrDefault(LocalTime.of(17, 0)))) {
             item {
                 PremiumSectionHeader(
                     eyebrow="LIVE PICKS",
@@ -2774,7 +2838,7 @@ private fun SharedScheduleView(guide: GuideData, channels: List<TvChannel>) {
                     verticalAlignment=Alignment.CenterVertically
                 ) {
                     Box(Modifier.size(42.dp).clip(RoundedCornerShape(15.dp)).background(Cyan.copy(alpha=.12f)),contentAlignment=Alignment.Center) { Icon(Icons.Rounded.Tv,null,tint=Cyan,modifier=Modifier.size(22.dp)) }
-                    Spacer(Modifier.width(11.dp)); Column { Text("Matt & Sev TV time",fontWeight=FontWeight.Black,fontSize=17.sp); Text("Umay recommendations are finished for today.",color=TextSecondary,fontSize=10.sp) }
+                    Spacer(Modifier.width(11.dp)); Column { Text("Matt & Sev TV time",fontWeight=FontWeight.Black,fontSize=17.sp); Text("Umay recommendations are finished for today • viewing ended at $scheduleEndTime.",color=TextSecondary,fontSize=10.sp) }
                 }
             }
         }
