@@ -10,7 +10,6 @@ SOURCES = {
 }
 
 DUCKTV_SOURCE = "https://epg.pw/api/epg.xml?channel_id=465350"
-
 # Exact source EPG IDs -> the IDs you want TiviMate to use
 CHANNELS = {
     # English / Kids
@@ -33,24 +32,22 @@ CHANNELS = {
     "ATV.HD.tr": "ATV",
     "SHOW.TV.HD.tr": "Show TV",
     "TRT1.HD.tr": "TRT 1",
+    "KANAL.D.HD.tr": "Kanal D",
 }
+
 
 def download(url):
     print(f"Downloading: {url}")
-
     req = urllib.request.Request(
         url,
         headers={"User-Agent": "Mozilla/5.0"}
     )
-
     with urllib.request.urlopen(req, timeout=120) as response:
         data = response.read()
-
     try:
         data = gzip.decompress(data)
     except gzip.BadGzipFile:
         pass
-
     return ET.fromstring(data)
 
 
@@ -62,7 +59,6 @@ output = ET.Element(
 added_channels = set()
 matched_source_ids = set()
 programme_count = 0
-
 
 for source_name, source_url in SOURCES.items():
     try:
@@ -76,141 +72,76 @@ for source_name, source_url in SOURCES.items():
     # Add channel definitions
     for channel in root.findall("channel"):
         source_id = channel.get("id")
-
         if source_id not in CHANNELS:
             continue
 
         output_id = CHANNELS[source_id]
         matched_source_ids.add(source_id)
-
         if output_id in added_channels:
             continue
 
-        new_channel = ET.Element(
-            "channel",
-            {"id": output_id}
-        )
-
+        new_channel = ET.Element("channel", {"id": output_id})
         display = ET.SubElement(new_channel, "display-name")
         display.text = output_id
-
         icon = channel.find("icon")
         if icon is not None and icon.get("src"):
-            ET.SubElement(
-                new_channel,
-                "icon",
-                {"src": icon.get("src")}
-            )
+            ET.SubElement(new_channel, "icon", {"src": icon.get("src")})
 
         output.append(new_channel)
         added_channels.add(output_id)
-
         print(f"MATCHED CHANNEL: {source_id} -> {output_id}")
 
     # Add programmes
     for programme in root.findall("programme"):
         source_id = programme.get("channel")
-
         if source_id not in CHANNELS:
             continue
 
         output_id = CHANNELS[source_id]
-
-        new_programme = ET.Element(
-            "programme",
-            dict(programme.attrib)
-        )
-
+        new_programme = ET.Element("programme", dict(programme.attrib))
         new_programme.set("channel", output_id)
-
         for child in programme:
             new_programme.append(child)
-
         output.append(new_programme)
         programme_count += 1
 
 # Add English Duck TV EPG
 try:
     root = download(DUCKTV_SOURCE)
-
     duck_channel_ids = {
         channel.get("id")
         for channel in root.findall("channel")
         if channel.get("id")
     }
-
     print(f"Duck TV: {len(duck_channel_ids)} channel IDs loaded")
 
     # Add Duck TV channel
     if duck_channel_ids and "Duck TV" not in added_channels:
-        new_channel = ET.Element(
-            "channel",
-            {"id": "Duck TV"}
-        )
-
-        # Channel name
-        display = ET.SubElement(
-            new_channel,
-            "display-name",
-            {"lang": "en"}
-        )
+        new_channel = ET.Element("channel", {"id": "Duck TV"})
+        display = ET.SubElement(new_channel, "display-name", {"lang": "en"})
         display.text = "Duck TV"
-
-        # Force the same Duck TV logo used by the Android app
-        ET.SubElement(
-            new_channel,
-            "icon",
-            {
-                "src": "https://epg.ovh/logo/Duck+TV.png"
-            }
-        )
-
+        ET.SubElement(new_channel, "icon", {"src": "https://epg.ovh/logo/Duck+TV.png"})
         output.append(new_channel)
         added_channels.add("Duck TV")
-
         print("MATCHED CHANNEL: English Duck TV -> Duck TV")
 
     # Add Duck TV programmes
     duck_programmes = 0
-
     for programme in root.findall("programme"):
         source_id = programme.get("channel")
-
         if source_id not in duck_channel_ids:
             continue
 
-        new_programme = ET.Element(
-            "programme",
-            dict(programme.attrib)
-        )
-
-        # Force programme channel ID to match our playlist/config
+        new_programme = ET.Element("programme", dict(programme.attrib))
         new_programme.set("channel", "Duck TV")
-
         for child in programme:
-            # EPG.PW's English Duck TV feed can incorrectly mark
-            # English metadata as another language, so normalise
-            # text metadata to English.
-            new_child = ET.Element(
-                child.tag,
-                dict(child.attrib)
-            )
-
+            new_child = ET.Element(child.tag, dict(child.attrib))
             new_child.text = child.text
             new_child.tail = child.tail
-
-            if child.tag in {
-                "title",
-                "sub-title",
-                "desc",
-                "category"
-            }:
+            if child.tag in {"title", "sub-title", "desc", "category"}:
                 new_child.set("lang", "en")
-
-            # Preserve nested XML if the element has children
             for nested_child in child:
                 new_child.append(nested_child)
-
             new_programme.append(new_child)
 
         output.append(new_programme)
@@ -218,13 +149,10 @@ try:
         duck_programmes += 1
 
     print(f"Duck TV programmes added: {duck_programmes}")
-
 except Exception as e:
     print(f"FAILED Duck TV: {e}")
 
-
 ET.indent(output, space="  ")
-
 ET.ElementTree(output).write(
     "guide.xml",
     encoding="utf-8",
@@ -234,7 +162,6 @@ ET.ElementTree(output).write(
 print()
 print("Generated guide.xml")
 print(f"Programmes added: {programme_count}")
-
 print()
 print("Channels generated:")
 for channel in sorted(added_channels):
@@ -254,11 +181,11 @@ wanted_output = {
     "Baby Shark TV",
     "Duck TV",
     "Kidoodle TV",
-    "TRT 1"
+    "TRT 1",
+    "Kanal D",
 }
 
 missing = wanted_output - added_channels
-
 if missing:
     print()
     print("MISSING:")
