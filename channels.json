@@ -12,5 +12,6 @@
   {"id":"Star TV","group":"Turkish TV","order":100},
   {"id":"NOW","group":"Turkish TV","order":110},
   {"id":"ATV","group":"Turkish TV","order":120},
-  {"id":"Show TV","group":"Turkish TV","order":130}
+  {"id":"Show TV","group":"Turkish TV","order":130},
+  {"id":"Kanal D","group":"Turkish TV","order":140}
 ]
