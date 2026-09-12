@@ -22179,4 +22179,8 @@
       <value>TV-G</value>
     </rating>
   </programme>
+  <channel id="Duck TV">
+    <display-name lang="en">Duck TV</display-name>
+    <icon src="https://epg.ovh/logo/Duck+TV.png" />
+  </channel>
 </tv>
