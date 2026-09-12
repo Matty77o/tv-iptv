@@ -106,30 +106,40 @@ for source_name, source_url in SOURCES.items():
         programme_count += 1
 
 # Add English Duck TV EPG
+# Keep the Duck TV channel definition in guide.xml even if the external
+# Duck TV feed temporarily omits <channel> metadata or fails to download.
+# This prevents Duck TV disappearing from the generated guide entirely.
+if "Duck TV" not in added_channels:
+    new_channel = ET.Element("channel", {"id": "Duck TV"})
+    display = ET.SubElement(new_channel, "display-name", {"lang": "en"})
+    display.text = "Duck TV"
+    ET.SubElement(new_channel, "icon", {"src": "https://epg.ovh/logo/Duck+TV.png"})
+    output.append(new_channel)
+    added_channels.add("Duck TV")
+    print("ADDED CHANNEL: Duck TV")
+
 try:
     root = download(DUCKTV_SOURCE)
+
+    # epg.pw can occasionally return XML where programme entries are present
+    # but the <channel> block is missing. Accept channel IDs from either place.
     duck_channel_ids = {
         channel.get("id")
         for channel in root.findall("channel")
         if channel.get("id")
     }
-    print(f"Duck TV: {len(duck_channel_ids)} channel IDs loaded")
-
-    # Add Duck TV channel
-    if duck_channel_ids and "Duck TV" not in added_channels:
-        new_channel = ET.Element("channel", {"id": "Duck TV"})
-        display = ET.SubElement(new_channel, "display-name", {"lang": "en"})
-        display.text = "Duck TV"
-        ET.SubElement(new_channel, "icon", {"src": "https://epg.ovh/logo/Duck+TV.png"})
-        output.append(new_channel)
-        added_channels.add("Duck TV")
-        print("MATCHED CHANNEL: English Duck TV -> Duck TV")
+    duck_channel_ids.update(
+        programme.get("channel")
+        for programme in root.findall("programme")
+        if programme.get("channel")
+    )
+    print(f"Duck TV: {len(duck_channel_ids)} source channel IDs detected")
 
     # Add Duck TV programmes
     duck_programmes = 0
     for programme in root.findall("programme"):
         source_id = programme.get("channel")
-        if source_id not in duck_channel_ids:
+        if not source_id or source_id not in duck_channel_ids:
             continue
 
         new_programme = ET.Element("programme", dict(programme.attrib))
@@ -149,8 +159,11 @@ try:
         duck_programmes += 1
 
     print(f"Duck TV programmes added: {duck_programmes}")
+    if duck_programmes == 0:
+        print("WARNING: Duck TV channel kept, but the external EPG returned no programmes")
 except Exception as e:
-    print(f"FAILED Duck TV: {e}")
+    print(f"FAILED Duck TV EPG download: {e}")
+    print("Duck TV channel kept in guide.xml without programme data")
 
 ET.indent(output, space="  ")
 ET.ElementTree(output).write(
