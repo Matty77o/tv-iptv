@@ -23378,2226 +23378,6 @@
     <display-name lang="en">Duck TV</display-name>
     <icon src="https://epg.ovh/logo/Duck+TV.png" />
   </channel>
-  <programme start="20260916000100 +0300" stop="20260916000300 +0300" channel="Duck TV">
-    <title lang="en">Monica &amp; Rudy</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916000300 +0300" stop="20260916000500 +0300" channel="Duck TV">
-    <title lang="en">My Pet Family</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916000500 +0300" stop="20260916000800 +0300" channel="Duck TV">
-    <title lang="en">Colorwheel</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916000800 +0300" stop="20260916001000 +0300" channel="Duck TV">
-    <title lang="en">In the Museum</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916001000 +0300" stop="20260916001300 +0300" channel="Duck TV">
-    <title lang="en">Groups</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916001300 +0300" stop="20260916001600 +0300" channel="Duck TV">
-    <title lang="en">Miyu and Litto</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916001600 +0300" stop="20260916001900 +0300" channel="Duck TV">
-    <title lang="en">Enchanting Sights</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916001900 +0300" stop="20260916002200 +0300" channel="Duck TV">
-    <title lang="en">Monica and Rudy 2</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916002200 +0300" stop="20260916002600 +0300" channel="Duck TV">
-    <title lang="en">Albert Explains</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916002600 +0300" stop="20260916002900 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916002900 +0300" stop="20260916003400 +0300" channel="Duck TV">
-    <title lang="en">Albert Explains</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916003400 +0300" stop="20260916003700 +0300" channel="Duck TV">
-    <title lang="en">Colorwheel</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916003700 +0300" stop="20260916004000 +0300" channel="Duck TV">
-    <title lang="en">Color Magic</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916004000 +0300" stop="20260916004200 +0300" channel="Duck TV">
-    <title lang="en">In the Museum</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916004200 +0300" stop="20260916004500 +0300" channel="Duck TV">
-    <title lang="en">Panni and Fanni</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916004500 +0300" stop="20260916004800 +0300" channel="Duck TV">
-    <title lang="en">Enlightment Corner</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916004800 +0300" stop="20260916005100 +0300" channel="Duck TV">
-    <title lang="en">Ding Dang Dong</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916005100 +0300" stop="20260916005400 +0300" channel="Duck TV">
-    <title lang="en">Sport, Sport, Sport</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916005400 +0300" stop="20260916005700 +0300" channel="Duck TV">
-    <title lang="en">Dance</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916005700 +0300" stop="20260916010000 +0300" channel="Duck TV">
-    <title lang="en">Sport, Sport, Sport</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916010000 +0300" stop="20260916010300 +0300" channel="Duck TV">
-    <title lang="en">Elf World</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916010300 +0300" stop="20260916010500 +0300" channel="Duck TV">
-    <title lang="en">We Are Playing Now</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916010500 +0300" stop="20260916010800 +0300" channel="Duck TV">
-    <title lang="en">Partners in Fun</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916010800 +0300" stop="20260916011100 +0300" channel="Duck TV">
-    <title lang="en">Sunville</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916011100 +0300" stop="20260916011400 +0300" channel="Duck TV">
-    <title lang="en">Color Magic</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916011400 +0300" stop="20260916011600 +0300" channel="Duck TV">
-    <title lang="en">Partners in Fun</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916011600 +0300" stop="20260916011900 +0300" channel="Duck TV">
-    <title lang="en">Holiday</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916011900 +0300" stop="20260916012200 +0300" channel="Duck TV">
-    <title lang="en">Get Up!</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916012200 +0300" stop="20260916012400 +0300" channel="Duck TV">
-    <title lang="en">Elf World</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916012400 +0300" stop="20260916012600 +0300" channel="Duck TV">
-    <title lang="en">Vege-tales</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916012600 +0300" stop="20260916012900 +0300" channel="Duck TV">
-    <title lang="en">Animals</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916012900 +0300" stop="20260916013200 +0300" channel="Duck TV">
-    <title lang="en">Waterworld</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916013200 +0300" stop="20260916013500 +0300" channel="Duck TV">
-    <title lang="en">Sunville</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916013500 +0300" stop="20260916013700 +0300" channel="Duck TV">
-    <title lang="en">Colorwheel</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916013700 +0300" stop="20260916014000 +0300" channel="Duck TV">
-    <title lang="en">What's Your Job?</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916014000 +0300" stop="20260916014300 +0300" channel="Duck TV">
-    <title lang="en">Partners in Fun</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916014300 +0300" stop="20260916014500 +0300" channel="Duck TV">
-    <title lang="en">Waterworld</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916014500 +0300" stop="20260916014900 +0300" channel="Duck TV">
-    <title lang="en">Partners in Fun</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916014900 +0300" stop="20260916015200 +0300" channel="Duck TV">
-    <title lang="en">Sunville</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916015200 +0300" stop="20260916015400 +0300" channel="Duck TV">
-    <title lang="en">What's Your Job?</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916015400 +0300" stop="20260916015600 +0300" channel="Duck TV">
-    <title lang="en">We Are Playing Now</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916015600 +0300" stop="20260916020000 +0300" channel="Duck TV">
-    <title lang="en">Partners in Fun</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916020000 +0300" stop="20260916020300 +0300" channel="Duck TV">
-    <title lang="en">Holiday</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916020300 +0300" stop="20260916020500 +0300" channel="Duck TV">
-    <title lang="en">We Are Playing Now</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916020500 +0300" stop="20260916020800 +0300" channel="Duck TV">
-    <title lang="en">Puffy and Tubby</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916020800 +0300" stop="20260916021100 +0300" channel="Duck TV">
-    <title lang="en">Enchanting Sights</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916021100 +0300" stop="20260916021300 +0300" channel="Duck TV">
-    <title lang="en">Sea Adventure</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916021300 +0300" stop="20260916021600 +0300" channel="Duck TV">
-    <title lang="en">City Life</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916021600 +0300" stop="20260916021800 +0300" channel="Duck TV">
-    <title lang="en">Mini Fairy Tales</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916021800 +0300" stop="20260916022100 +0300" channel="Duck TV">
-    <title lang="en">Space Adventures</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916022100 +0300" stop="20260916022400 +0300" channel="Duck TV">
-    <title lang="en">Elf World</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916022400 +0300" stop="20260916022700 +0300" channel="Duck TV">
-    <title lang="en">The Way We Travel</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916022700 +0300" stop="20260916022900 +0300" channel="Duck TV">
-    <title lang="en">Vege-tales</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916022900 +0300" stop="20260916023300 +0300" channel="Duck TV">
-    <title lang="en">Partners in Fun</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916023300 +0300" stop="20260916023500 +0300" channel="Duck TV">
-    <title lang="en">We Are Playing Now</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916023500 +0300" stop="20260916024100 +0300" channel="Duck TV">
-    <title lang="en">Mini Fairy Tales</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916024100 +0300" stop="20260916024300 +0300" channel="Duck TV">
-    <title lang="en">Galaxy Tourists</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916024300 +0300" stop="20260916024600 +0300" channel="Duck TV">
-    <title lang="en">Sea Adventure</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916024600 +0300" stop="20260916024800 +0300" channel="Duck TV">
-    <title lang="en">Space Adventures</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916024800 +0300" stop="20260916025200 +0300" channel="Duck TV">
-    <title lang="en">Puffy and Tubby</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916025200 +0300" stop="20260916025500 +0300" channel="Duck TV">
-    <title lang="en">The Way We Travel</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916025500 +0300" stop="20260916025800 +0300" channel="Duck TV">
-    <title lang="en">India</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916025800 +0300" stop="20260916030100 +0300" channel="Duck TV">
-    <title lang="en">Vehicles</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916030100 +0300" stop="20260916030400 +0300" channel="Duck TV">
-    <title lang="en">Sea Adventure</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916030400 +0300" stop="20260916030700 +0300" channel="Duck TV">
-    <title lang="en">My Toys - My Friends</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916030700 +0300" stop="20260916031000 +0300" channel="Duck TV">
-    <title lang="en">Colorwheel</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916031000 +0300" stop="20260916031200 +0300" channel="Duck TV">
-    <title lang="en">Groups</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916031200 +0300" stop="20260916031500 +0300" channel="Duck TV">
-    <title lang="en">Vege-tales</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916031500 +0300" stop="20260916031800 +0300" channel="Duck TV">
-    <title lang="en">Safari</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916031800 +0300" stop="20260916032000 +0300" channel="Duck TV">
-    <title lang="en">Miyu and Litto</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916032000 +0300" stop="20260916032200 +0300" channel="Duck TV">
-    <title lang="en">Listen to This</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916032200 +0300" stop="20260916032500 +0300" channel="Duck TV">
-    <title lang="en">Sunville</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916032500 +0300" stop="20260916032800 +0300" channel="Duck TV">
-    <title lang="en">City Life</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916032800 +0300" stop="20260916033000 +0300" channel="Duck TV">
-    <title lang="en">Enchanting Sights</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916033000 +0300" stop="20260916033300 +0300" channel="Duck TV">
-    <title lang="en">In the Museum</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916033300 +0300" stop="20260916033700 +0300" channel="Duck TV">
-    <title lang="en">Puffy and Tubby</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916033700 +0300" stop="20260916034000 +0300" channel="Duck TV">
-    <title lang="en">What's Your Job?</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916034000 +0300" stop="20260916034200 +0300" channel="Duck TV">
-    <title lang="en">Vege-tales</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916034200 +0300" stop="20260916034600 +0300" channel="Duck TV">
-    <title lang="en">Puffy and Tubby</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916034600 +0300" stop="20260916034900 +0300" channel="Duck TV">
-    <title lang="en">Space Adventures</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916034900 +0300" stop="20260916035100 +0300" channel="Duck TV">
-    <title lang="en">Colorwheel</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916035100 +0300" stop="20260916035400 +0300" channel="Duck TV">
-    <title lang="en">Groups</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916035400 +0300" stop="20260916035700 +0300" channel="Duck TV">
-    <title lang="en">Listen to This</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916035700 +0300" stop="20260916035900 +0300" channel="Duck TV">
-    <title lang="en">Miyu and Litto</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916035900 +0300" stop="20260916040200 +0300" channel="Duck TV">
-    <title lang="en">Oli - The Cycles of Nature</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916040200 +0300" stop="20260916040500 +0300" channel="Duck TV">
-    <title lang="en">Colorwheel</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916040500 +0300" stop="20260916040800 +0300" channel="Duck TV">
-    <title lang="en">Sunville</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916040800 +0300" stop="20260916041100 +0300" channel="Duck TV">
-    <title lang="en">Elf World</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916041100 +0300" stop="20260916041400 +0300" channel="Duck TV">
-    <title lang="en">Beaver Family</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916041400 +0300" stop="20260916041700 +0300" channel="Duck TV">
-    <title lang="en">Dance</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916041700 +0300" stop="20260916041900 +0300" channel="Duck TV">
-    <title lang="en">We Are Playing Now</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916041900 +0300" stop="20260916042200 +0300" channel="Duck TV">
-    <title lang="en">Sport, Sport, Sport</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916042200 +0300" stop="20260916042400 +0300" channel="Duck TV">
-    <title lang="en">We Are Playing Now</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916042400 +0300" stop="20260916042700 +0300" channel="Duck TV">
-    <title lang="en">The Way We Travel</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916042700 +0300" stop="20260916043000 +0300" channel="Duck TV">
-    <title lang="en">Sport, Sport, Sport</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916043000 +0300" stop="20260916043200 +0300" channel="Duck TV">
-    <title lang="en">The World of Animals</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916043200 +0300" stop="20260916043500 +0300" channel="Duck TV">
-    <title lang="en">Enchanting Sights</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916043500 +0300" stop="20260916043700 +0300" channel="Duck TV">
-    <title lang="en">The World of Animals</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916043700 +0300" stop="20260916043900 +0300" channel="Duck TV">
-    <title lang="en">Mini Fairy Tales</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916043900 +0300" stop="20260916044300 +0300" channel="Duck TV">
-    <title lang="en">Space Adventures</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916044300 +0300" stop="20260916044600 +0300" channel="Duck TV">
-    <title lang="en">Sport, Sport, Sport</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916044600 +0300" stop="20260916044900 +0300" channel="Duck TV">
-    <title lang="en">Enchanting Sights</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916044900 +0300" stop="20260916045200 +0300" channel="Duck TV">
-    <title lang="en">Dance</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916045200 +0300" stop="20260916045500 +0300" channel="Duck TV">
-    <title lang="en">Sport, Sport, Sport</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916045500 +0300" stop="20260916045700 +0300" channel="Duck TV">
-    <title lang="en">Listen to This</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916045700 +0300" stop="20260916045900 +0300" channel="Duck TV">
-    <title lang="en">Dance</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916045900 +0300" stop="20260916050200 +0300" channel="Duck TV">
-    <title lang="en">Ding Dang Dong</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916050200 +0300" stop="20260916050500 +0300" channel="Duck TV">
-    <title lang="en">Get Up!</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916050500 +0300" stop="20260916050800 +0300" channel="Duck TV">
-    <title lang="en">Dance</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916050800 +0300" stop="20260916051200 +0300" channel="Duck TV">
-    <title lang="en">Ding Dang Dong</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916051200 +0300" stop="20260916051400 +0300" channel="Duck TV">
-    <title lang="en">Vege-tales</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916051400 +0300" stop="20260916051800 +0300" channel="Duck TV">
-    <title lang="en">Waterworld</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916051800 +0300" stop="20260916052100 +0300" channel="Duck TV">
-    <title lang="en">Holiday</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916052100 +0300" stop="20260916052200 +0300" channel="Duck TV">
-    <title lang="en">Waterworld</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916052200 +0300" stop="20260916052500 +0300" channel="Duck TV">
-    <title lang="en">We Are Playing Now</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916052500 +0300" stop="20260916052800 +0300" channel="Duck TV">
-    <title lang="en">Holiday</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916052800 +0300" stop="20260916053000 +0300" channel="Duck TV">
-    <title lang="en">Waterworld</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916053000 +0300" stop="20260916053300 +0300" channel="Duck TV">
-    <title lang="en">Vege-tales</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916053300 +0300" stop="20260916053600 +0300" channel="Duck TV">
-    <title lang="en">Waterworld</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916053600 +0300" stop="20260916053800 +0300" channel="Duck TV">
-    <title lang="en">Vege-tales</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916053800 +0300" stop="20260916054100 +0300" channel="Duck TV">
-    <title lang="en">Holiday</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916054100 +0300" stop="20260916054300 +0300" channel="Duck TV">
-    <title lang="en">Vege-tales</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916054300 +0300" stop="20260916054500 +0300" channel="Duck TV">
-    <title lang="en">Vege-tales</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916054500 +0300" stop="20260916054700 +0300" channel="Duck TV">
-    <title lang="en">Holiday</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916054700 +0300" stop="20260916055000 +0300" channel="Duck TV">
-    <title lang="en">Colorwheel</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916055000 +0300" stop="20260916055300 +0300" channel="Duck TV">
-    <title lang="en">Vege-tales</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916055300 +0300" stop="20260916055600 +0300" channel="Duck TV">
-    <title lang="en">Colorwheel</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916055600 +0300" stop="20260916055800 +0300" channel="Duck TV">
-    <title lang="en">Holiday</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916055800 +0300" stop="20260916060100 +0300" channel="Duck TV">
-    <title lang="en">Colorwheel</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916060100 +0300" stop="20260916060300 +0300" channel="Duck TV">
-    <title lang="en">Vege-tales</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916060300 +0300" stop="20260916060600 +0300" channel="Duck TV">
-    <title lang="en">Holiday</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916060600 +0300" stop="20260916060900 +0300" channel="Duck TV">
-    <title lang="en">Vege-tales</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916060900 +0300" stop="20260916061100 +0300" channel="Duck TV">
-    <title lang="en">Colorwheel</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916061100 +0300" stop="20260916061500 +0300" channel="Duck TV">
-    <title lang="en">Holiday</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916061500 +0300" stop="20260916061700 +0300" channel="Duck TV">
-    <title lang="en">Groups</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916061700 +0300" stop="20260916062000 +0300" channel="Duck TV">
-    <title lang="en">Colorwheel</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916062000 +0300" stop="20260916062200 +0300" channel="Duck TV">
-    <title lang="en">Enlightment Corner</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916062200 +0300" stop="20260916062500 +0300" channel="Duck TV">
-    <title lang="en">Enchanting Sights</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916062500 +0300" stop="20260916062800 +0300" channel="Duck TV">
-    <title lang="en">Colorwheel</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916062800 +0300" stop="20260916063200 +0300" channel="Duck TV">
-    <title lang="en">Enlightment Corner</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916063200 +0300" stop="20260916063400 +0300" channel="Duck TV">
-    <title lang="en">Enchanting Sights</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916063400 +0300" stop="20260916063800 +0300" channel="Duck TV">
-    <title lang="en">Puffy and Tubby</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916063800 +0300" stop="20260916064100 +0300" channel="Duck TV">
-    <title lang="en">What's Your Job?</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916064100 +0300" stop="20260916064300 +0300" channel="Duck TV">
-    <title lang="en">Groups</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916064300 +0300" stop="20260916064600 +0300" channel="Duck TV">
-    <title lang="en">Color Magic</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916064600 +0300" stop="20260916064900 +0300" channel="Duck TV">
-    <title lang="en">Safari</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916064900 +0300" stop="20260916065100 +0300" channel="Duck TV">
-    <title lang="en">Enchanting Sights</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916065100 +0300" stop="20260916065400 +0300" channel="Duck TV">
-    <title lang="en">Color Magic</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916065400 +0300" stop="20260916065600 +0300" channel="Duck TV">
-    <title lang="en">In the Museum</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916065600 +0300" stop="20260916065900 +0300" channel="Duck TV">
-    <title lang="en">Color Magic</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916065900 +0300" stop="20260916070200 +0300" channel="Duck TV">
-    <title lang="en">In the Museum</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916070200 +0300" stop="20260916070500 +0300" channel="Duck TV">
-    <title lang="en">Enlightment Corner</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916070500 +0300" stop="20260916070700 +0300" channel="Duck TV">
-    <title lang="en">Listen to This</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916070700 +0300" stop="20260916071000 +0300" channel="Duck TV">
-    <title lang="en">In the Museum</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916071000 +0300" stop="20260916071300 +0300" channel="Duck TV">
-    <title lang="en">Enchanting Sights</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916071300 +0300" stop="20260916071400 +0300" channel="Duck TV">
-    <title lang="en">Enlightment Corner</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916071400 +0300" stop="20260916071800 +0300" channel="Duck TV">
-    <title lang="en">Groups</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916071800 +0300" stop="20260916072000 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916072000 +0300" stop="20260916072300 +0300" channel="Duck TV">
-    <title lang="en">Didy Baby</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916072300 +0300" stop="20260916072500 +0300" channel="Duck TV">
-    <title lang="en">Leon-ART</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916072500 +0300" stop="20260916072900 +0300" channel="Duck TV">
-    <title lang="en">Hubbi Will Take Care of It</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916072900 +0300" stop="20260916073200 +0300" channel="Duck TV">
-    <title lang="en">Happy Kingdom</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916073200 +0300" stop="20260916073400 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916073400 +0300" stop="20260916073700 +0300" channel="Duck TV">
-    <title lang="en">Elf World</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916073700 +0300" stop="20260916074000 +0300" channel="Duck TV">
-    <title lang="en">My Toys - My Friends</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916074000 +0300" stop="20260916074400 +0300" channel="Duck TV">
-    <title lang="en">Waterworld</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916074400 +0300" stop="20260916074600 +0300" channel="Duck TV">
-    <title lang="en">Space Adventures</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916074600 +0300" stop="20260916075000 +0300" channel="Duck TV">
-    <title lang="en">India</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916075000 +0300" stop="20260916075300 +0300" channel="Duck TV">
-    <title lang="en">Dinoland</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916075300 +0300" stop="20260916075500 +0300" channel="Duck TV">
-    <title lang="en">Mimo's World</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916075500 +0300" stop="20260916075700 +0300" channel="Duck TV">
-    <title lang="en">Fireteam</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916075700 +0300" stop="20260916080000 +0300" channel="Duck TV">
-    <title lang="en">Small - But Hardworking</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916080000 +0300" stop="20260916080300 +0300" channel="Duck TV">
-    <title lang="en">Mimo &amp; Bobo</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916080300 +0300" stop="20260916080600 +0300" channel="Duck TV">
-    <title lang="en">Partners in Fun</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916080600 +0300" stop="20260916081000 +0300" channel="Duck TV">
-    <title lang="en">Sunville</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916081000 +0300" stop="20260916081200 +0300" channel="Duck TV">
-    <title lang="en">Vehicles</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916081200 +0300" stop="20260916081500 +0300" channel="Duck TV">
-    <title lang="en">My Toys - My Friends</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916081500 +0300" stop="20260916081800 +0300" channel="Duck TV">
-    <title lang="en">Vege-tales</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916081800 +0300" stop="20260916082000 +0300" channel="Duck TV">
-    <title lang="en">Mimo's World</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916082000 +0300" stop="20260916082300 +0300" channel="Duck TV">
-    <title lang="en">Albert Explains</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916082300 +0300" stop="20260916082500 +0300" channel="Duck TV">
-    <title lang="en">Ducky and Friends</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916082500 +0300" stop="20260916082800 +0300" channel="Duck TV">
-    <title lang="en">Sippi Sappi</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916082800 +0300" stop="20260916083000 +0300" channel="Duck TV">
-    <title lang="en">Sounds Around Us</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916083000 +0300" stop="20260916083200 +0300" channel="Duck TV">
-    <title lang="en">Hop-hop</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916083200 +0300" stop="20260916083400 +0300" channel="Duck TV">
-    <title lang="en">Sippi Sappi</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916083400 +0300" stop="20260916083600 +0300" channel="Duck TV">
-    <title lang="en">Tempo Giusto</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916083600 +0300" stop="20260916083900 +0300" channel="Duck TV">
-    <title lang="en">Mini Fairy Tales</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916083900 +0300" stop="20260916084100 +0300" channel="Duck TV">
-    <title lang="en">Enchanting Sights</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916084100 +0300" stop="20260916084400 +0300" channel="Duck TV">
-    <title lang="en">We Are Playing Now</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916084400 +0300" stop="20260916084700 +0300" channel="Duck TV">
-    <title lang="en">Ding Dang Dong</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916084700 +0300" stop="20260916084900 +0300" channel="Duck TV">
-    <title lang="en">Sport, Sport, Sport</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916084900 +0300" stop="20260916085200 +0300" channel="Duck TV">
-    <title lang="en">What's Your Job?</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916085200 +0300" stop="20260916085400 +0300" channel="Duck TV">
-    <title lang="en">Ducky and Friends</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916085400 +0300" stop="20260916085700 +0300" channel="Duck TV">
-    <title lang="en">Mimo &amp; Bobo</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916085700 +0300" stop="20260916085900 +0300" channel="Duck TV">
-    <title lang="en">Hubbi Will Take Care of It</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916085900 +0300" stop="20260916090300 +0300" channel="Duck TV">
-    <title lang="en">Mimo's World</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916090300 +0300" stop="20260916090600 +0300" channel="Duck TV">
-    <title lang="en">Raul</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916090600 +0300" stop="20260916090900 +0300" channel="Duck TV">
-    <title lang="en">Sport, Sport, Sport</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916090900 +0300" stop="20260916091100 +0300" channel="Duck TV">
-    <title lang="en">What's Your Job?</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916091100 +0300" stop="20260916091400 +0300" channel="Duck TV">
-    <title lang="en">Enchanting Sights</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916091400 +0300" stop="20260916091600 +0300" channel="Duck TV">
-    <title lang="en">Get Up!</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916091600 +0300" stop="20260916092000 +0300" channel="Duck TV">
-    <title lang="en">Enchanting Sights</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916092000 +0300" stop="20260916092200 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916092200 +0300" stop="20260916092400 +0300" channel="Duck TV">
-    <title lang="en">Hubbi and Friends</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916092400 +0300" stop="20260916092600 +0300" channel="Duck TV">
-    <title lang="en">Sippi Sappi</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916092600 +0300" stop="20260916092800 +0300" channel="Duck TV">
-    <title lang="en">Ducky and Friends</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916092800 +0300" stop="20260916093000 +0300" channel="Duck TV">
-    <title lang="en">Nature Dudes</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916093000 +0300" stop="20260916093300 +0300" channel="Duck TV">
-    <title lang="en">ABC - duckBC</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916093300 +0300" stop="20260916093400 +0300" channel="Duck TV">
-    <title lang="en">Nature Dudes</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916093400 +0300" stop="20260916093600 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916093600 +0300" stop="20260916093900 +0300" channel="Duck TV">
-    <title lang="en">Happy Meadow</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916093900 +0300" stop="20260916094200 +0300" channel="Duck TV">
-    <title lang="en">Colorwheel</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916094200 +0300" stop="20260916094500 +0300" channel="Duck TV">
-    <title lang="en">Panni and Fanni</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916094500 +0300" stop="20260916094700 +0300" channel="Duck TV">
-    <title lang="en">Groups</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916094700 +0300" stop="20260916095000 +0300" channel="Duck TV">
-    <title lang="en">Miyu and Litto</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916095000 +0300" stop="20260916095300 +0300" channel="Duck TV">
-    <title lang="en">What's Your Job?</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916095300 +0300" stop="20260916095500 +0300" channel="Duck TV">
-    <title lang="en">DuckSchool</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916095500 +0300" stop="20260916095700 +0300" channel="Duck TV">
-    <title lang="en">Dinoland</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916095700 +0300" stop="20260916095900 +0300" channel="Duck TV">
-    <title lang="en">Sounds Around Us</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916095900 +0300" stop="20260916100200 +0300" channel="Duck TV">
-    <title lang="en">Finn and Fianna</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916100200 +0300" stop="20260916100500 +0300" channel="Duck TV">
-    <title lang="en">Happy Meadow</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916100500 +0300" stop="20260916100800 +0300" channel="Duck TV">
-    <title lang="en">Henry's Stories</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916100800 +0300" stop="20260916101000 +0300" channel="Duck TV">
-    <title lang="en">Panni and Fanni</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916101000 +0300" stop="20260916101300 +0300" channel="Duck TV">
-    <title lang="en">What's Your Job?</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916101300 +0300" stop="20260916101500 +0300" channel="Duck TV">
-    <title lang="en">Colorwheel</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916101500 +0300" stop="20260916101800 +0300" channel="Duck TV">
-    <title lang="en">Panni and Fanni</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916101800 +0300" stop="20260916102000 +0300" channel="Duck TV">
-    <title lang="en">Miyu and Litto</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916102000 +0300" stop="20260916102300 +0300" channel="Duck TV">
-    <title lang="en">Groups</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916102300 +0300" stop="20260916102500 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916102500 +0300" stop="20260916102800 +0300" channel="Duck TV">
-    <title lang="en">Happy Kingdom</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916102800 +0300" stop="20260916103100 +0300" channel="Duck TV">
-    <title lang="en">Monica and Rudy 2</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916103100 +0300" stop="20260916103300 +0300" channel="Duck TV">
-    <title lang="en">Ducky Adventures</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916103300 +0300" stop="20260916103500 +0300" channel="Duck TV">
-    <title lang="en">Tempo Giusto</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916103500 +0300" stop="20260916103800 +0300" channel="Duck TV">
-    <title lang="en">Happy Meadow</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916103800 +0300" stop="20260916103900 +0300" channel="Duck TV">
-    <title lang="en">Pixie 2</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916103900 +0300" stop="20260916104300 +0300" channel="Duck TV">
-    <title lang="en">ABC - duckBC</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916104300 +0300" stop="20260916104600 +0300" channel="Duck TV">
-    <title lang="en">Finn and Fianna</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916104600 +0300" stop="20260916104800 +0300" channel="Duck TV">
-    <title lang="en">Cucu, I'm here!</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916104800 +0300" stop="20260916105100 +0300" channel="Duck TV">
-    <title lang="en">Higher the Better</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916105100 +0300" stop="20260916105300 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916105300 +0300" stop="20260916105400 +0300" channel="Duck TV">
-    <title lang="en">Pixie 2</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916105400 +0300" stop="20260916105600 +0300" channel="Duck TV">
-    <title lang="en">Africa</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916105600 +0300" stop="20260916105800 +0300" channel="Duck TV">
-    <title lang="en">Happy Garden</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916105800 +0300" stop="20260916110100 +0300" channel="Duck TV">
-    <title lang="en">ABC - duckBC</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916110100 +0300" stop="20260916110400 +0300" channel="Duck TV">
-    <title lang="en">Cucu, I'm here!</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916110400 +0300" stop="20260916110700 +0300" channel="Duck TV">
-    <title lang="en">Finn and Fianna</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916110700 +0300" stop="20260916111000 +0300" channel="Duck TV">
-    <title lang="en">Monica &amp; Rudy</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916111000 +0300" stop="20260916111300 +0300" channel="Duck TV">
-    <title lang="en">Zack &amp; Ziggy</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916111300 +0300" stop="20260916111500 +0300" channel="Duck TV">
-    <title lang="en">Mimo &amp; Bobo</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916111500 +0300" stop="20260916111800 +0300" channel="Duck TV">
-    <title lang="en">Shaping Up</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916111800 +0300" stop="20260916112000 +0300" channel="Duck TV">
-    <title lang="en">Little Melodies</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916112000 +0300" stop="20260916112200 +0300" channel="Duck TV">
-    <title lang="en">My Pet Family</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916112200 +0300" stop="20260916112500 +0300" channel="Duck TV">
-    <title lang="en">Cucu, I'm here!</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916112500 +0300" stop="20260916112700 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916112700 +0300" stop="20260916112900 +0300" channel="Duck TV">
-    <title lang="en">Hipp-hopp Cactus</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916112900 +0300" stop="20260916113200 +0300" channel="Duck TV">
-    <title lang="en">Finn and Fianna</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916113200 +0300" stop="20260916113500 +0300" channel="Duck TV">
-    <title lang="en">Cubie</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916113500 +0300" stop="20260916113800 +0300" channel="Duck TV">
-    <title lang="en">Risto Gusto</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916113800 +0300" stop="20260916114100 +0300" channel="Duck TV">
-    <title lang="en">Mimo &amp; Bobo</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916114100 +0300" stop="20260916114300 +0300" channel="Duck TV">
-    <title lang="en">DuckSchool</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916114300 +0300" stop="20260916114500 +0300" channel="Duck TV">
-    <title lang="en">Sounds Around Us</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916114500 +0300" stop="20260916114800 +0300" channel="Duck TV">
-    <title lang="en">Dotty, the Kitty</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916114800 +0300" stop="20260916115100 +0300" channel="Duck TV">
-    <title lang="en">Raul</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916115100 +0300" stop="20260916115200 +0300" channel="Duck TV">
-    <title lang="en">Happy Garden</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916115200 +0300" stop="20260916115500 +0300" channel="Duck TV">
-    <title lang="en">Higher the Better</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916115500 +0300" stop="20260916115800 +0300" channel="Duck TV">
-    <title lang="en">Ristorante</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916115800 +0300" stop="20260916120100 +0300" channel="Duck TV">
-    <title lang="en">Raul</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916120100 +0300" stop="20260916120400 +0300" channel="Duck TV">
-    <title lang="en">Zack &amp; Ziggy</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916120400 +0300" stop="20260916120500 +0300" channel="Duck TV">
-    <title lang="en">Nature Dudes</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916120500 +0300" stop="20260916120800 +0300" channel="Duck TV">
-    <title lang="en">Mimo &amp; Bobo</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916120800 +0300" stop="20260916121100 +0300" channel="Duck TV">
-    <title lang="en">Ristorante</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916121100 +0300" stop="20260916121300 +0300" channel="Duck TV">
-    <title lang="en">Africa</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916121300 +0300" stop="20260916121600 +0300" channel="Duck TV">
-    <title lang="en">ABC - duckBC</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916121600 +0300" stop="20260916121900 +0300" channel="Duck TV">
-    <title lang="en">Toby McFly</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916121900 +0300" stop="20260916122200 +0300" channel="Duck TV">
-    <title lang="en">Sunville - Sportsville</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916122200 +0300" stop="20260916122400 +0300" channel="Duck TV">
-    <title lang="en">Color Clara</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916122400 +0300" stop="20260916122700 +0300" channel="Duck TV">
-    <title lang="en">Tempo Giusto</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916122700 +0300" stop="20260916122900 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916122900 +0300" stop="20260916123400 +0300" channel="Duck TV">
-    <title lang="en">World of Toys</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916123400 +0300" stop="20260916123700 +0300" channel="Duck TV">
-    <title lang="en">Fireteam in Action</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916123700 +0300" stop="20260916123900 +0300" channel="Duck TV">
-    <title lang="en">Dinoland</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916123900 +0300" stop="20260916124100 +0300" channel="Duck TV">
-    <title lang="en">Hipp-hopp Cactus</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916124100 +0300" stop="20260916124500 +0300" channel="Duck TV">
-    <title lang="en">Mimo &amp; Bobo</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916124500 +0300" stop="20260916124700 +0300" channel="Duck TV">
-    <title lang="en">Ducky and Fluffy</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916124700 +0300" stop="20260916124900 +0300" channel="Duck TV">
-    <title lang="en">Shaping Up</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916124900 +0300" stop="20260916125200 +0300" channel="Duck TV">
-    <title lang="en">Mimo &amp; Bobo</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916125200 +0300" stop="20260916125400 +0300" channel="Duck TV">
-    <title lang="en">Hipp-hopp Cactus</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916125400 +0300" stop="20260916125700 +0300" channel="Duck TV">
-    <title lang="en">Dinoland</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916125700 +0300" stop="20260916130000 +0300" channel="Duck TV">
-    <title lang="en">Fireteam in Action</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916130000 +0300" stop="20260916130200 +0300" channel="Duck TV">
-    <title lang="en">Shaping Up</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916130200 +0300" stop="20260916130500 +0300" channel="Duck TV">
-    <title lang="en">Africa</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916130500 +0300" stop="20260916130700 +0300" channel="Duck TV">
-    <title lang="en">Train</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916130700 +0300" stop="20260916131000 +0300" channel="Duck TV">
-    <title lang="en">Small - But Hardworking</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916131000 +0300" stop="20260916131200 +0300" channel="Duck TV">
-    <title lang="en">Didy Baby</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916131200 +0300" stop="20260916131500 +0300" channel="Duck TV">
-    <title lang="en">Fireteam in Action</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916131500 +0300" stop="20260916131800 +0300" channel="Duck TV">
-    <title lang="en">Happy Meadow</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916131800 +0300" stop="20260916132000 +0300" channel="Duck TV">
-    <title lang="en">Mimo &amp; Bobo</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916132000 +0300" stop="20260916132300 +0300" channel="Duck TV">
-    <title lang="en">Africa</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916132300 +0300" stop="20260916132600 +0300" channel="Duck TV">
-    <title lang="en">Toby McFly</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916132600 +0300" stop="20260916132900 +0300" channel="Duck TV">
-    <title lang="en">Ducky and Fluffy</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916132900 +0300" stop="20260916133100 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916133100 +0300" stop="20260916133400 +0300" channel="Duck TV">
-    <title lang="en">Finn and Fianna</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916133400 +0300" stop="20260916133600 +0300" channel="Duck TV">
-    <title lang="en">Ducky and Fluffy</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916133600 +0300" stop="20260916133800 +0300" channel="Duck TV">
-    <title lang="en">Zoo</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916133800 +0300" stop="20260916134100 +0300" channel="Duck TV">
-    <title lang="en">Dinoland</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916134100 +0300" stop="20260916134400 +0300" channel="Duck TV">
-    <title lang="en">Mimo's World</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916134400 +0300" stop="20260916134700 +0300" channel="Duck TV">
-    <title lang="en">Happy Kingdom</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916134700 +0300" stop="20260916135100 +0300" channel="Duck TV">
-    <title lang="en">Planet Jumpers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916135100 +0300" stop="20260916135500 +0300" channel="Duck TV">
-    <title lang="en">Mimo and Bobo PLUS</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916135500 +0300" stop="20260916135700 +0300" channel="Duck TV">
-    <title lang="en">Fireteam</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916135700 +0300" stop="20260916140000 +0300" channel="Duck TV">
-    <title lang="en">World of Toys</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916140000 +0300" stop="20260916140300 +0300" channel="Duck TV">
-    <title lang="en">Hubbi and Friends</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916140300 +0300" stop="20260916140700 +0300" channel="Duck TV">
-    <title lang="en">Milo Dino</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916140700 +0300" stop="20260916141000 +0300" channel="Duck TV">
-    <title lang="en">Doll Team to the Rescue</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916141000 +0300" stop="20260916141200 +0300" channel="Duck TV">
-    <title lang="en">Ducky Adventures</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916141200 +0300" stop="20260916141500 +0300" channel="Duck TV">
-    <title lang="en">Ducky and Friends</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916141500 +0300" stop="20260916141700 +0300" channel="Duck TV">
-    <title lang="en">Hop-hop</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916141700 +0300" stop="20260916142100 +0300" channel="Duck TV">
-    <title lang="en">Mimo's World</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916142100 +0300" stop="20260916142300 +0300" channel="Duck TV">
-    <title lang="en">Ducky and Fluffy</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916142300 +0300" stop="20260916142600 +0300" channel="Duck TV">
-    <title lang="en">Risto Gusto</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916142600 +0300" stop="20260916142800 +0300" channel="Duck TV">
-    <title lang="en">Doll Team</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916142800 +0300" stop="20260916143200 +0300" channel="Duck TV">
-    <title lang="en">Doll Team to the Rescue</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916143200 +0300" stop="20260916143400 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916143400 +0300" stop="20260916143500 +0300" channel="Duck TV">
-    <title lang="en">Home Sweet Home</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916143500 +0300" stop="20260916143700 +0300" channel="Duck TV">
-    <title lang="en">Little Melodies</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916143700 +0300" stop="20260916144000 +0300" channel="Duck TV">
-    <title lang="en">ABC - duckBC</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916144000 +0300" stop="20260916144400 +0300" channel="Duck TV">
-    <title lang="en">Happy Meadow</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916144400 +0300" stop="20260916144600 +0300" channel="Duck TV">
-    <title lang="en">Ducky and Friends</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916144600 +0300" stop="20260916144800 +0300" channel="Duck TV">
-    <title lang="en">Ducky Adventures</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916144800 +0300" stop="20260916145200 +0300" channel="Duck TV">
-    <title lang="en">Finn and Fianna</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916145200 +0300" stop="20260916145600 +0300" channel="Duck TV">
-    <title lang="en">Dotty, the Kitty</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916145600 +0300" stop="20260916145800 +0300" channel="Duck TV">
-    <title lang="en">Color Clara</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916145800 +0300" stop="20260916150000 +0300" channel="Duck TV">
-    <title lang="en">DuckSchool</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916150000 +0300" stop="20260916150200 +0300" channel="Duck TV">
-    <title lang="en">Henry's Stories</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916150200 +0300" stop="20260916150400 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916150400 +0300" stop="20260916150500 +0300" channel="Duck TV">
-    <title lang="en">The Shapies</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916150500 +0300" stop="20260916150700 +0300" channel="Duck TV">
-    <title lang="en">Mimo &amp; Bobo</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916150700 +0300" stop="20260916150900 +0300" channel="Duck TV">
-    <title lang="en">Tempo Giusto</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916150900 +0300" stop="20260916151100 +0300" channel="Duck TV">
-    <title lang="en">Color Clara</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916151100 +0300" stop="20260916151400 +0300" channel="Duck TV">
-    <title lang="en">Happy Meadow</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916151400 +0300" stop="20260916151600 +0300" channel="Duck TV">
-    <title lang="en">Little Melodies</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916151600 +0300" stop="20260916151900 +0300" channel="Duck TV">
-    <title lang="en">Shaping Up</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916151900 +0300" stop="20260916152200 +0300" channel="Duck TV">
-    <title lang="en">Monica &amp; Rudy</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916152200 +0300" stop="20260916152500 +0300" channel="Duck TV">
-    <title lang="en">Dotty, the Kitty</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916152500 +0300" stop="20260916152700 +0300" channel="Duck TV">
-    <title lang="en">My Pet Family</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916152700 +0300" stop="20260916152800 +0300" channel="Duck TV">
-    <title lang="en">Pixie 2</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916152800 +0300" stop="20260916153100 +0300" channel="Duck TV">
-    <title lang="en">My Pet Family</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916153100 +0300" stop="20260916153300 +0300" channel="Duck TV">
-    <title lang="en">Tempo Giusto</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916153300 +0300" stop="20260916153700 +0300" channel="Duck TV">
-    <title lang="en">Mimo and Bobo PLUS</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916153700 +0300" stop="20260916154000 +0300" channel="Duck TV">
-    <title lang="en">Risto Gusto</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916154000 +0300" stop="20260916154300 +0300" channel="Duck TV">
-    <title lang="en">Cucu, I'm here!</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916154300 +0300" stop="20260916154400 +0300" channel="Duck TV">
-    <title lang="en">Nature Dudes</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916154400 +0300" stop="20260916154600 +0300" channel="Duck TV">
-    <title lang="en">Cucu, I'm here!</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916154600 +0300" stop="20260916154900 +0300" channel="Duck TV">
-    <title lang="en">Hop-hop</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916154900 +0300" stop="20260916155200 +0300" channel="Duck TV">
-    <title lang="en">Zack &amp; Ziggy</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916155200 +0300" stop="20260916155400 +0300" channel="Duck TV">
-    <title lang="en">Ducky Adventures</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916155400 +0300" stop="20260916155700 +0300" channel="Duck TV">
-    <title lang="en">Sippi Sappi</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916155700 +0300" stop="20260916155900 +0300" channel="Duck TV">
-    <title lang="en">Hop-hop</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916155900 +0300" stop="20260916160200 +0300" channel="Duck TV">
-    <title lang="en">Margo &amp; Felix</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916160200 +0300" stop="20260916160500 +0300" channel="Duck TV">
-    <title lang="en">Zack &amp; Ziggy</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916160500 +0300" stop="20260916160800 +0300" channel="Duck TV">
-    <title lang="en">Africa</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916160800 +0300" stop="20260916161000 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916161000 +0300" stop="20260916161200 +0300" channel="Duck TV">
-    <title lang="en">Didy Baby</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916161200 +0300" stop="20260916161600 +0300" channel="Duck TV">
-    <title lang="en">Mimo and Bobo PLUS</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916161600 +0300" stop="20260916161900 +0300" channel="Duck TV">
-    <title lang="en">Africa</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916161900 +0300" stop="20260916162200 +0300" channel="Duck TV">
-    <title lang="en">Raul</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916162200 +0300" stop="20260916162400 +0300" channel="Duck TV">
-    <title lang="en">Hubbi and Friends</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916162400 +0300" stop="20260916162600 +0300" channel="Duck TV">
-    <title lang="en">Didy Baby</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916162600 +0300" stop="20260916162900 +0300" channel="Duck TV">
-    <title lang="en">DuckSchool</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916162900 +0300" stop="20260916163100 +0300" channel="Duck TV">
-    <title lang="en">Cucu, I'm here!</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916163100 +0300" stop="20260916163400 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916163400 +0300" stop="20260916163600 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916163600 +0300" stop="20260916163700 +0300" channel="Duck TV">
-    <title lang="en">Happy Garden</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916163700 +0300" stop="20260916163900 +0300" channel="Duck TV">
-    <title lang="en">Henry's Stories</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916163900 +0300" stop="20260916164200 +0300" channel="Duck TV">
-    <title lang="en">Toby McFly</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916164200 +0300" stop="20260916164500 +0300" channel="Duck TV">
-    <title lang="en">Raul</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916164500 +0300" stop="20260916164700 +0300" channel="Duck TV">
-    <title lang="en">Shaping Up</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916164700 +0300" stop="20260916165000 +0300" channel="Duck TV">
-    <title lang="en">Doll Team</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916165000 +0300" stop="20260916165100 +0300" channel="Duck TV">
-    <title lang="en">Nature Dudes</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916165100 +0300" stop="20260916165400 +0300" channel="Duck TV">
-    <title lang="en">Raul</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916165400 +0300" stop="20260916165700 +0300" channel="Duck TV">
-    <title lang="en">Margo &amp; Felix</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916165700 +0300" stop="20260916170000 +0300" channel="Duck TV">
-    <title lang="en">Didy Baby</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916170000 +0300" stop="20260916170300 +0300" channel="Duck TV">
-    <title lang="en">Cucu, I'm here!</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916170300 +0300" stop="20260916170400 +0300" channel="Duck TV">
-    <title lang="en">Nature Dudes</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916170400 +0300" stop="20260916170700 +0300" channel="Duck TV">
-    <title lang="en">Mimo's World</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916170700 +0300" stop="20260916170900 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916170900 +0300" stop="20260916171100 +0300" channel="Duck TV">
-    <title lang="en">Doll Team</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916171100 +0300" stop="20260916171400 +0300" channel="Duck TV">
-    <title lang="en">Finn and Fianna</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916171400 +0300" stop="20260916171600 +0300" channel="Duck TV">
-    <title lang="en">Didy Baby</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916171600 +0300" stop="20260916171900 +0300" channel="Duck TV">
-    <title lang="en">Mimo &amp; Bobo</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916171900 +0300" stop="20260916172200 +0300" channel="Duck TV">
-    <title lang="en">Didy Baby</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916172200 +0300" stop="20260916172500 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916172500 +0300" stop="20260916172700 +0300" channel="Duck TV">
-    <title lang="en">Ducky Adventures</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916172700 +0300" stop="20260916172900 +0300" channel="Duck TV">
-    <title lang="en">Cubie</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916172900 +0300" stop="20260916173100 +0300" channel="Duck TV">
-    <title lang="en">Hipp-hopp Cactus</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916173100 +0300" stop="20260916173300 +0300" channel="Duck TV">
-    <title lang="en">Cucu, I'm here!</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916173300 +0300" stop="20260916173600 +0300" channel="Duck TV">
-    <title lang="en">Sippi Sappi</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916173600 +0300" stop="20260916173800 +0300" channel="Duck TV">
-    <title lang="en">Nature Dudes</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916173800 +0300" stop="20260916174000 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916174000 +0300" stop="20260916174200 +0300" channel="Duck TV">
-    <title lang="en">Raul</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916174200 +0300" stop="20260916174500 +0300" channel="Duck TV">
-    <title lang="en">Margo &amp; Felix</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916174500 +0300" stop="20260916174800 +0300" channel="Duck TV">
-    <title lang="en">Raul</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916174800 +0300" stop="20260916175100 +0300" channel="Duck TV">
-    <title lang="en">Mimo &amp; Bobo</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916175100 +0300" stop="20260916175500 +0300" channel="Duck TV">
-    <title lang="en">Mimo and Bobo PLUS</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916175500 +0300" stop="20260916175700 +0300" channel="Duck TV">
-    <title lang="en">Get Up!</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916175700 +0300" stop="20260916175900 +0300" channel="Duck TV">
-    <title lang="en">Mimo &amp; Bobo</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916175900 +0300" stop="20260916180100 +0300" channel="Duck TV">
-    <title lang="en">Henry's Stories</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916180100 +0300" stop="20260916180300 +0300" channel="Duck TV">
-    <title lang="en">Nature Dudes</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916180300 +0300" stop="20260916180500 +0300" channel="Duck TV">
-    <title lang="en">Hop-hop</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916180500 +0300" stop="20260916180800 +0300" channel="Duck TV">
-    <title lang="en">Higher the Better</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916180800 +0300" stop="20260916181100 +0300" channel="Duck TV">
-    <title lang="en">Raul</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916181100 +0300" stop="20260916181300 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916181300 +0300" stop="20260916181600 +0300" channel="Duck TV">
-    <title lang="en">Cucu, I'm here!</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916181600 +0300" stop="20260916181800 +0300" channel="Duck TV">
-    <title lang="en">Raul</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916181800 +0300" stop="20260916182100 +0300" channel="Duck TV">
-    <title lang="en">Mimo &amp; Bobo</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916182100 +0300" stop="20260916182300 +0300" channel="Duck TV">
-    <title lang="en">Get Up!</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916182300 +0300" stop="20260916182600 +0300" channel="Duck TV">
-    <title lang="en">Mimo &amp; Bobo</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916182600 +0300" stop="20260916182800 +0300" channel="Duck TV">
-    <title lang="en">Get Up!</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916182800 +0300" stop="20260916183100 +0300" channel="Duck TV">
-    <title lang="en">Higher the Better</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916183100 +0300" stop="20260916183300 +0300" channel="Duck TV">
-    <title lang="en">Mimo &amp; Bobo</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916183300 +0300" stop="20260916183600 +0300" channel="Duck TV">
-    <title lang="en">Get Up!</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916183600 +0300" stop="20260916183800 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916183800 +0300" stop="20260916183900 +0300" channel="Duck TV">
-    <title lang="en">Pixie 2</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916183900 +0300" stop="20260916184200 +0300" channel="Duck TV">
-    <title lang="en">Finn and Fianna</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916184200 +0300" stop="20260916184400 +0300" channel="Duck TV">
-    <title lang="en">My Pet Family</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916184400 +0300" stop="20260916184700 +0300" channel="Duck TV">
-    <title lang="en">Mimo &amp; Bobo</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916184700 +0300" stop="20260916185000 +0300" channel="Duck TV">
-    <title lang="en">Sippi Sappi</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916185000 +0300" stop="20260916185100 +0300" channel="Duck TV">
-    <title lang="en">The Shapies</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916185100 +0300" stop="20260916185400 +0300" channel="Duck TV">
-    <title lang="en">Higher the Better</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916185400 +0300" stop="20260916185600 +0300" channel="Duck TV">
-    <title lang="en">Home Sweet Home</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916185600 +0300" stop="20260916185900 +0300" channel="Duck TV">
-    <title lang="en">Zack &amp; Ziggy</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916185900 +0300" stop="20260916190000 +0300" channel="Duck TV">
-    <title lang="en">Home Sweet Home</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916190000 +0300" stop="20260916190100 +0300" channel="Duck TV">
-    <title lang="en">The Shapies</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916190100 +0300" stop="20260916190300 +0300" channel="Duck TV">
-    <title lang="en">DuckSchool</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916190300 +0300" stop="20260916190600 +0300" channel="Duck TV">
-    <title lang="en">Shaping Up</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916190600 +0300" stop="20260916190700 +0300" channel="Duck TV">
-    <title lang="en">Pixie 2</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916190700 +0300" stop="20260916190800 +0300" channel="Duck TV">
-    <title lang="en">Happy Garden</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916190800 +0300" stop="20260916191000 +0300" channel="Duck TV">
-    <title lang="en">Color Clara</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916191000 +0300" stop="20260916191300 +0300" channel="Duck TV">
-    <title lang="en">Albert Explains</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916191300 +0300" stop="20260916191500 +0300" channel="Duck TV">
-    <title lang="en">Sounds Around Us</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916191500 +0300" stop="20260916191700 +0300" channel="Duck TV">
-    <title lang="en">Shaping Up</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916191700 +0300" stop="20260916191800 +0300" channel="Duck TV">
-    <title lang="en">Pixie 2</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916191800 +0300" stop="20260916192100 +0300" channel="Duck TV">
-    <title lang="en">DuckSchool</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916192100 +0300" stop="20260916192500 +0300" channel="Duck TV">
-    <title lang="en">Monica &amp; Rudy</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916192500 +0300" stop="20260916192700 +0300" channel="Duck TV">
-    <title lang="en">Albert Explains</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916192700 +0300" stop="20260916192800 +0300" channel="Duck TV">
-    <title lang="en">Pixie 2</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916192800 +0300" stop="20260916193000 +0300" channel="Duck TV">
-    <title lang="en">Shaping Up</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916193000 +0300" stop="20260916193200 +0300" channel="Duck TV">
-    <title lang="en">Happy Garden</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916193200 +0300" stop="20260916193400 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916193400 +0300" stop="20260916193500 +0300" channel="Duck TV">
-    <title lang="en">Pixie 2</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916193500 +0300" stop="20260916193600 +0300" channel="Duck TV">
-    <title lang="en">Home Sweet Home</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916193600 +0300" stop="20260916194000 +0300" channel="Duck TV">
-    <title lang="en">DuckSchool</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916194000 +0300" stop="20260916194200 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916194200 +0300" stop="20260916194400 +0300" channel="Duck TV">
-    <title lang="en">Sounds Around Us</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916194400 +0300" stop="20260916194600 +0300" channel="Duck TV">
-    <title lang="en">Good Night!</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916194600 +0300" stop="20260916194800 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916194800 +0300" stop="20260916195000 +0300" channel="Duck TV">
-    <title lang="en">Hubbi and Friends</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916195000 +0300" stop="20260916195200 +0300" channel="Duck TV">
-    <title lang="en">Doll Team</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916195200 +0300" stop="20260916195500 +0300" channel="Duck TV">
-    <title lang="en">Small - But Hardworking</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916195500 +0300" stop="20260916195700 +0300" channel="Duck TV">
-    <title lang="en">Dinoland</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916195700 +0300" stop="20260916195900 +0300" channel="Duck TV">
-    <title lang="en">Train</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916195900 +0300" stop="20260916200000 +0300" channel="Duck TV">
-    <title lang="en">Nature Dudes</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916200000 +0300" stop="20260916200400 +0300" channel="Duck TV">
-    <title lang="en">Ristorante</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916200400 +0300" stop="20260916200600 +0300" channel="Duck TV">
-    <title lang="en">Dinoland</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916200600 +0300" stop="20260916200900 +0300" channel="Duck TV">
-    <title lang="en">ABC - duckBC</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916200900 +0300" stop="20260916201100 +0300" channel="Duck TV">
-    <title lang="en">Cucu, I'm here!</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916201100 +0300" stop="20260916201300 +0300" channel="Duck TV">
-    <title lang="en">Didy Baby</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916201300 +0300" stop="20260916201500 +0300" channel="Duck TV">
-    <title lang="en">Train</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916201500 +0300" stop="20260916201700 +0300" channel="Duck TV">
-    <title lang="en">Mimo &amp; Bobo</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916201700 +0300" stop="20260916202000 +0300" channel="Duck TV">
-    <title lang="en">Zoo</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916202000 +0300" stop="20260916202200 +0300" channel="Duck TV">
-    <title lang="en">Cubie</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916202200 +0300" stop="20260916202600 +0300" channel="Duck TV">
-    <title lang="en">Ristorante</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916202600 +0300" stop="20260916202900 +0300" channel="Duck TV">
-    <title lang="en">Hipp-hopp Cactus</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916202900 +0300" stop="20260916203200 +0300" channel="Duck TV">
-    <title lang="en">Cucu, I'm here!</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916203200 +0300" stop="20260916203400 +0300" channel="Duck TV">
-    <title lang="en">Raul</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916203400 +0300" stop="20260916203800 +0300" channel="Duck TV">
-    <title lang="en">Dotty, the Kitty</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916203800 +0300" stop="20260916204100 +0300" channel="Duck TV">
-    <title lang="en">Cubie</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916204100 +0300" stop="20260916204500 +0300" channel="Duck TV">
-    <title lang="en">Monica &amp; Rudy</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916204500 +0300" stop="20260916204600 +0300" channel="Duck TV">
-    <title lang="en">Nature Dudes</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916204600 +0300" stop="20260916204800 +0300" channel="Duck TV">
-    <title lang="en">Henry's Stories</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916204800 +0300" stop="20260916205100 +0300" channel="Duck TV">
-    <title lang="en">Ristorante</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916205100 +0300" stop="20260916205300 +0300" channel="Duck TV">
-    <title lang="en">Forms Are Yours!</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916205300 +0300" stop="20260916205700 +0300" channel="Duck TV">
-    <title lang="en">Hipp-hopp Cactus</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916205700 +0300" stop="20260916210000 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916210000 +0300" stop="20260916210200 +0300" channel="Duck TV">
-    <title lang="en">Ducky Adventures</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916210200 +0300" stop="20260916210500 +0300" channel="Duck TV">
-    <title lang="en">Small - But Hardworking</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916210500 +0300" stop="20260916210700 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916210700 +0300" stop="20260916210900 +0300" channel="Duck TV">
-    <title lang="en">Mimo &amp; Bobo</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916210900 +0300" stop="20260916211200 +0300" channel="Duck TV">
-    <title lang="en">Hipp-hopp Cactus</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916211200 +0300" stop="20260916211600 +0300" channel="Duck TV">
-    <title lang="en">Doll Team</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916211600 +0300" stop="20260916211800 +0300" channel="Duck TV">
-    <title lang="en">Doll Team to the Rescue</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916211800 +0300" stop="20260916212100 +0300" channel="Duck TV">
-    <title lang="en">Higher the Better</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916212100 +0300" stop="20260916212300 +0300" channel="Duck TV">
-    <title lang="en">Doll Team to the Rescue</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916212300 +0300" stop="20260916212500 +0300" channel="Duck TV">
-    <title lang="en">Sounds Around Us</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916212500 +0300" stop="20260916212800 +0300" channel="Duck TV">
-    <title lang="en">Toby McFly</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916212800 +0300" stop="20260916213100 +0300" channel="Duck TV">
-    <title lang="en">Cucu, I'm here!</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916213100 +0300" stop="20260916213500 +0300" channel="Duck TV">
-    <title lang="en">Didy Baby</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916213500 +0300" stop="20260916213700 +0300" channel="Duck TV">
-    <title lang="en">Forms Are Yours!</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916213700 +0300" stop="20260916213900 +0300" channel="Duck TV">
-    <title lang="en">Zoo</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916213900 +0300" stop="20260916214300 +0300" channel="Duck TV">
-    <title lang="en">Hubbi and Friends</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916214300 +0300" stop="20260916214600 +0300" channel="Duck TV">
-    <title lang="en">Shaping Up</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916214600 +0300" stop="20260916214800 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916214800 +0300" stop="20260916215100 +0300" channel="Duck TV">
-    <title lang="en">Fireteam</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916215100 +0300" stop="20260916215300 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916215300 +0300" stop="20260916215500 +0300" channel="Duck TV">
-    <title lang="en">Ducky and Friends</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916215500 +0300" stop="20260916215800 +0300" channel="Duck TV">
-    <title lang="en">Mimo &amp; Bobo</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916215800 +0300" stop="20260916220000 +0300" channel="Duck TV">
-    <title lang="en">Ducky Adventures</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916220000 +0300" stop="20260916220200 +0300" channel="Duck TV">
-    <title lang="en">Ducky and Friends</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916220200 +0300" stop="20260916220400 +0300" channel="Duck TV">
-    <title lang="en">Vege-tales</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916220400 +0300" stop="20260916220700 +0300" channel="Duck TV">
-    <title lang="en">Holiday</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916220700 +0300" stop="20260916220900 +0300" channel="Duck TV">
-    <title lang="en">Colorwheel</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916220900 +0300" stop="20260916221200 +0300" channel="Duck TV">
-    <title lang="en">Holiday</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916221200 +0300" stop="20260916221500 +0300" channel="Duck TV">
-    <title lang="en">Colorwheel</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916221500 +0300" stop="20260916221700 +0300" channel="Duck TV">
-    <title lang="en">Holiday</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916221700 +0300" stop="20260916222000 +0300" channel="Duck TV">
-    <title lang="en">Hipp-hopp Cactus</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916222000 +0300" stop="20260916222200 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916222200 +0300" stop="20260916222400 +0300" channel="Duck TV">
-    <title lang="en">Fireteam</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916222400 +0300" stop="20260916222700 +0300" channel="Duck TV">
-    <title lang="en">Mimo's World</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916222700 +0300" stop="20260916222900 +0300" channel="Duck TV">
-    <title lang="en">Ducky and Friends</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916222900 +0300" stop="20260916223200 +0300" channel="Duck TV">
-    <title lang="en">Africa</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916223200 +0300" stop="20260916223500 +0300" channel="Duck TV">
-    <title lang="en">Colorwheel</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916223500 +0300" stop="20260916223800 +0300" channel="Duck TV">
-    <title lang="en">Holiday</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916223800 +0300" stop="20260916224000 +0300" channel="Duck TV">
-    <title lang="en">Colorwheel</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916224000 +0300" stop="20260916224200 +0300" channel="Duck TV">
-    <title lang="en">Holiday</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916224200 +0300" stop="20260916224600 +0300" channel="Duck TV">
-    <title lang="en">Colorwheel</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916224600 +0300" stop="20260916224800 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916224800 +0300" stop="20260916225000 +0300" channel="Duck TV">
-    <title lang="en">Doll Team to the Rescue</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916225000 +0300" stop="20260916225200 +0300" channel="Duck TV">
-    <title lang="en">Leon-ART</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916225200 +0300" stop="20260916225500 +0300" channel="Duck TV">
-    <title lang="en">Sippi Sappi</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916225500 +0300" stop="20260916225800 +0300" channel="Duck TV">
-    <title lang="en">Sunville - Sportsville</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916225800 +0300" stop="20260916230000 +0300" channel="Duck TV">
-    <title lang="en">Mimo's World</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916230000 +0300" stop="20260916230200 +0300" channel="Duck TV">
-    <title lang="en">Doll Team to the Rescue</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916230200 +0300" stop="20260916230400 +0300" channel="Duck TV">
-    <title lang="en">Small - But Hardworking</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916230400 +0300" stop="20260916230600 +0300" channel="Duck TV">
-    <title lang="en">The World of Animals</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916230600 +0300" stop="20260916230900 +0300" channel="Duck TV">
-    <title lang="en">Animals</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916230900 +0300" stop="20260916231200 +0300" channel="Duck TV">
-    <title lang="en">My Toys - My Friends</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916231200 +0300" stop="20260916231400 +0300" channel="Duck TV">
-    <title lang="en">Sea Adventure</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916231400 +0300" stop="20260916231800 +0300" channel="Duck TV">
-    <title lang="en">Elf World</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916231800 +0300" stop="20260916232000 +0300" channel="Duck TV">
-    <title lang="en">Animals</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916232000 +0300" stop="20260916232300 +0300" channel="Duck TV">
-    <title lang="en">Mimo &amp; Bobo</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916232300 +0300" stop="20260916232700 +0300" channel="Duck TV">
-    <title lang="en">Planet Jumpers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916232700 +0300" stop="20260916233100 +0300" channel="Duck TV">
-    <title lang="en">Dotty, the Kitty</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916233100 +0300" stop="20260916233300 +0300" channel="Duck TV">
-    <title lang="en">Didy Baby</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916233300 +0300" stop="20260916233500 +0300" channel="Duck TV">
-    <title lang="en">Listen to This</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916233500 +0300" stop="20260916233800 +0300" channel="Duck TV">
-    <title lang="en">Partners in Fun</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916233800 +0300" stop="20260916234100 +0300" channel="Duck TV">
-    <title lang="en">We Are Playing Now</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916234100 +0300" stop="20260916234300 +0300" channel="Duck TV">
-    <title lang="en">Space Adventures</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916234300 +0300" stop="20260916234500 +0300" channel="Duck TV">
-    <title lang="en">Waterworld</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916234500 +0300" stop="20260916234800 +0300" channel="Duck TV">
-    <title lang="en">Enchanting Sights</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916234800 +0300" stop="20260916235000 +0300" channel="Duck TV">
-    <title lang="en">Lola and the Numbers</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916235000 +0300" stop="20260916235300 +0300" channel="Duck TV">
-    <title lang="en">Monica &amp; Rudy</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916235300 +0300" stop="20260916235400 +0300" channel="Duck TV">
-    <title lang="en">The Shapies</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916235400 +0300" stop="20260916235600 +0300" channel="Duck TV">
-    <title lang="en">DuckSchool</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916235600 +0300" stop="20260916235800 +0300" channel="Duck TV">
-    <title lang="en">Color Clara</title>
-    <category lang="en">Kids</category>
-  </programme>
-  <programme start="20260916235800 +0300" stop="20260917000100 +0300" channel="Duck TV">
-    <title lang="en">Mimo &amp; Bobo</title>
-    <category lang="en">Kids</category>
-  </programme>
   <programme start="20260917000100 +0300" stop="20260917000300 +0300" channel="Duck TV">
     <title lang="en">Color Clara</title>
     <category lang="en">Kids</category>
@@ -25856,6 +23636,1926 @@
   </programme>
   <programme start="20260917025600 +0300" stop="20260917030100 +0300" channel="Duck TV">
     <title lang="en">Mini Fairy Tales</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917030100 +0300" stop="20260917030400 +0300" channel="Duck TV">
+    <title lang="en">Sea Adventure</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917030400 +0300" stop="20260917030700 +0300" channel="Duck TV">
+    <title lang="en">My Toys - My Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917030700 +0300" stop="20260917031000 +0300" channel="Duck TV">
+    <title lang="en">Sea Adventure</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917031000 +0300" stop="20260917031300 +0300" channel="Duck TV">
+    <title lang="en">Enchanting Sights</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917031300 +0300" stop="20260917031500 +0300" channel="Duck TV">
+    <title lang="en">Miyu and Litto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917031500 +0300" stop="20260917031800 +0300" channel="Duck TV">
+    <title lang="en">Color Magic</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917031800 +0300" stop="20260917032000 +0300" channel="Duck TV">
+    <title lang="en">Groups</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917032000 +0300" stop="20260917032200 +0300" channel="Duck TV">
+    <title lang="en">Enlightment Corner</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917032200 +0300" stop="20260917032500 +0300" channel="Duck TV">
+    <title lang="en">City Life</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917032500 +0300" stop="20260917032900 +0300" channel="Duck TV">
+    <title lang="en">Listen to This</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917032900 +0300" stop="20260917033400 +0300" channel="Duck TV">
+    <title lang="en">Enlightment Corner</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917033400 +0300" stop="20260917033600 +0300" channel="Duck TV">
+    <title lang="en">Sunville</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917033600 +0300" stop="20260917033900 +0300" channel="Duck TV">
+    <title lang="en">Color Magic</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917033900 +0300" stop="20260917034200 +0300" channel="Duck TV">
+    <title lang="en">Safari</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917034200 +0300" stop="20260917034500 +0300" channel="Duck TV">
+    <title lang="en">Listen to This</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917034500 +0300" stop="20260917034700 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917034700 +0300" stop="20260917035000 +0300" channel="Duck TV">
+    <title lang="en">Listen to This</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917035000 +0300" stop="20260917035300 +0300" channel="Duck TV">
+    <title lang="en">Groups</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917035300 +0300" stop="20260917035500 +0300" channel="Duck TV">
+    <title lang="en">Safari</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917035500 +0300" stop="20260917035800 +0300" channel="Duck TV">
+    <title lang="en">Groups</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917035800 +0300" stop="20260917040100 +0300" channel="Duck TV">
+    <title lang="en">Groups</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917040100 +0300" stop="20260917040300 +0300" channel="Duck TV">
+    <title lang="en">What's Your Job?</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917040300 +0300" stop="20260917040600 +0300" channel="Duck TV">
+    <title lang="en">Color Magic</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917040600 +0300" stop="20260917040800 +0300" channel="Duck TV">
+    <title lang="en">Enchanting Sights</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917040800 +0300" stop="20260917041300 +0300" channel="Duck TV">
+    <title lang="en">Puffy and Tubby</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917041300 +0300" stop="20260917041700 +0300" channel="Duck TV">
+    <title lang="en">Ding Dang Dong</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917041700 +0300" stop="20260917042000 +0300" channel="Duck TV">
+    <title lang="en">Enchanting Sights</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917042000 +0300" stop="20260917042200 +0300" channel="Duck TV">
+    <title lang="en">Dance</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917042200 +0300" stop="20260917042400 +0300" channel="Duck TV">
+    <title lang="en">We Are Playing Now</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917042400 +0300" stop="20260917042700 +0300" channel="Duck TV">
+    <title lang="en">Elf World</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917042700 +0300" stop="20260917043100 +0300" channel="Duck TV">
+    <title lang="en">Enchanting Sights</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917043100 +0300" stop="20260917043400 +0300" channel="Duck TV">
+    <title lang="en">Ding Dang Dong</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917043400 +0300" stop="20260917043700 +0300" channel="Duck TV">
+    <title lang="en">Beaver Family</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917043700 +0300" stop="20260917044000 +0300" channel="Duck TV">
+    <title lang="en">Enchanting Sights</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917044000 +0300" stop="20260917044300 +0300" channel="Duck TV">
+    <title lang="en">Dance</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917044300 +0300" stop="20260917044500 +0300" channel="Duck TV">
+    <title lang="en">Listen to This</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917044500 +0300" stop="20260917044900 +0300" channel="Duck TV">
+    <title lang="en">Space Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917044900 +0300" stop="20260917045200 +0300" channel="Duck TV">
+    <title lang="en">Mini Fairy Tales</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917045200 +0300" stop="20260917045500 +0300" channel="Duck TV">
+    <title lang="en">Ding Dang Dong</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917045500 +0300" stop="20260917045700 +0300" channel="Duck TV">
+    <title lang="en">Dance</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917045700 +0300" stop="20260917050000 +0300" channel="Duck TV">
+    <title lang="en">Sport, Sport, Sport</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917050000 +0300" stop="20260917050300 +0300" channel="Duck TV">
+    <title lang="en">The World of Animals</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917050300 +0300" stop="20260917050600 +0300" channel="Duck TV">
+    <title lang="en">The Way We Travel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917050600 +0300" stop="20260917050900 +0300" channel="Duck TV">
+    <title lang="en">Ding Dang Dong</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917050900 +0300" stop="20260917051100 +0300" channel="Duck TV">
+    <title lang="en">Get Up!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917051100 +0300" stop="20260917051500 +0300" channel="Duck TV">
+    <title lang="en">Dance</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917051500 +0300" stop="20260917051700 +0300" channel="Duck TV">
+    <title lang="en">Get Up!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917051700 +0300" stop="20260917052000 +0300" channel="Duck TV">
+    <title lang="en">Holiday</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917052000 +0300" stop="20260917052300 +0300" channel="Duck TV">
+    <title lang="en">What's Your Job?</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917052300 +0300" stop="20260917052600 +0300" channel="Duck TV">
+    <title lang="en">Holiday</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917052600 +0300" stop="20260917052800 +0300" channel="Duck TV">
+    <title lang="en">Vege-tales</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917052800 +0300" stop="20260917053000 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917053000 +0300" stop="20260917053300 +0300" channel="Duck TV">
+    <title lang="en">Partners in Fun</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917053300 +0300" stop="20260917053600 +0300" channel="Duck TV">
+    <title lang="en">Holiday</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917053600 +0300" stop="20260917053800 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917053800 +0300" stop="20260917054100 +0300" channel="Duck TV">
+    <title lang="en">Holiday</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917054100 +0300" stop="20260917054400 +0300" channel="Duck TV">
+    <title lang="en">Vege-tales</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917054400 +0300" stop="20260917054600 +0300" channel="Duck TV">
+    <title lang="en">Holiday</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917054600 +0300" stop="20260917054900 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917054900 +0300" stop="20260917055200 +0300" channel="Duck TV">
+    <title lang="en">Waterworld</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917055200 +0300" stop="20260917055400 +0300" channel="Duck TV">
+    <title lang="en">Holiday</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917055400 +0300" stop="20260917055600 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917055600 +0300" stop="20260917055900 +0300" channel="Duck TV">
+    <title lang="en">Waterworld</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917055900 +0300" stop="20260917060200 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917060200 +0300" stop="20260917060400 +0300" channel="Duck TV">
+    <title lang="en">Vege-tales</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917060400 +0300" stop="20260917060700 +0300" channel="Duck TV">
+    <title lang="en">Holiday</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917060700 +0300" stop="20260917061000 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917061000 +0300" stop="20260917061200 +0300" channel="Duck TV">
+    <title lang="en">Vege-tales</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917061200 +0300" stop="20260917061500 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917061500 +0300" stop="20260917061800 +0300" channel="Duck TV">
+    <title lang="en">Vege-tales</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917061800 +0300" stop="20260917062100 +0300" channel="Duck TV">
+    <title lang="en">Enlightment Corner</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917062100 +0300" stop="20260917062300 +0300" channel="Duck TV">
+    <title lang="en">Listen to This</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917062300 +0300" stop="20260917062800 +0300" channel="Duck TV">
+    <title lang="en">Puffy and Tubby</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917062800 +0300" stop="20260917063000 +0300" channel="Duck TV">
+    <title lang="en">In the Museum</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917063000 +0300" stop="20260917063300 +0300" channel="Duck TV">
+    <title lang="en">Color Magic</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917063300 +0300" stop="20260917063600 +0300" channel="Duck TV">
+    <title lang="en">Groups</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917063600 +0300" stop="20260917063900 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917063900 +0300" stop="20260917064100 +0300" channel="Duck TV">
+    <title lang="en">Groups</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917064100 +0300" stop="20260917064600 +0300" channel="Duck TV">
+    <title lang="en">Puffy and Tubby</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917064600 +0300" stop="20260917064900 +0300" channel="Duck TV">
+    <title lang="en">Listen to This</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917064900 +0300" stop="20260917065200 +0300" channel="Duck TV">
+    <title lang="en">Vege-tales</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917065200 +0300" stop="20260917065400 +0300" channel="Duck TV">
+    <title lang="en">Vege-tales</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917065400 +0300" stop="20260917065700 +0300" channel="Duck TV">
+    <title lang="en">Color Magic</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917065700 +0300" stop="20260917070000 +0300" channel="Duck TV">
+    <title lang="en">Oli - The Cycles of Nature</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917070000 +0300" stop="20260917070300 +0300" channel="Duck TV">
+    <title lang="en">In the Museum</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917070300 +0300" stop="20260917070600 +0300" channel="Duck TV">
+    <title lang="en">Panni and Fanni</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917070600 +0300" stop="20260917070900 +0300" channel="Duck TV">
+    <title lang="en">In the Museum</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917070900 +0300" stop="20260917071100 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917071100 +0300" stop="20260917071400 +0300" channel="Duck TV">
+    <title lang="en">Enchanting Sights</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917071400 +0300" stop="20260917071700 +0300" channel="Duck TV">
+    <title lang="en">Panni and Fanni</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917071700 +0300" stop="20260917072000 +0300" channel="Duck TV">
+    <title lang="en">Space Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917072000 +0300" stop="20260917072200 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917072200 +0300" stop="20260917072400 +0300" channel="Duck TV">
+    <title lang="en">Ducky Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917072400 +0300" stop="20260917072700 +0300" channel="Duck TV">
+    <title lang="en">Dinoland</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917072700 +0300" stop="20260917072900 +0300" channel="Duck TV">
+    <title lang="en">Hubbi and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917072900 +0300" stop="20260917073200 +0300" channel="Duck TV">
+    <title lang="en">Fireteam in Action</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917073200 +0300" stop="20260917073400 +0300" channel="Duck TV">
+    <title lang="en">Dinoland</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917073400 +0300" stop="20260917073700 +0300" channel="Duck TV">
+    <title lang="en">Hubbi Will Take Care of It</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917073700 +0300" stop="20260917074000 +0300" channel="Duck TV">
+    <title lang="en">Toby McFly</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917074000 +0300" stop="20260917074400 +0300" channel="Duck TV">
+    <title lang="en">Sunville</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917074400 +0300" stop="20260917074600 +0300" channel="Duck TV">
+    <title lang="en">We Are Playing Now</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917074600 +0300" stop="20260917074800 +0300" channel="Duck TV">
+    <title lang="en">City Life</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917074800 +0300" stop="20260917075100 +0300" channel="Duck TV">
+    <title lang="en">Elf World</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917075100 +0300" stop="20260917075400 +0300" channel="Duck TV">
+    <title lang="en">Animals</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917075400 +0300" stop="20260917075800 +0300" channel="Duck TV">
+    <title lang="en">Mimo and Bobo PLUS</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917075800 +0300" stop="20260917080100 +0300" channel="Duck TV">
+    <title lang="en">Finn and Fianna</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917080100 +0300" stop="20260917080400 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917080400 +0300" stop="20260917080600 +0300" channel="Duck TV">
+    <title lang="en">Train</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917080600 +0300" stop="20260917081000 +0300" channel="Duck TV">
+    <title lang="en">Ristorante</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917081000 +0300" stop="20260917081400 +0300" channel="Duck TV">
+    <title lang="en">Beaver Family</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917081400 +0300" stop="20260917081600 +0300" channel="Duck TV">
+    <title lang="en">Sea Adventure</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917081600 +0300" stop="20260917081900 +0300" channel="Duck TV">
+    <title lang="en">My Toys - My Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917081900 +0300" stop="20260917082200 +0300" channel="Duck TV">
+    <title lang="en">Listen to This</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917082200 +0300" stop="20260917082400 +0300" channel="Duck TV">
+    <title lang="en">Hubbi and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917082400 +0300" stop="20260917082600 +0300" channel="Duck TV">
+    <title lang="en">Sounds Around Us</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917082600 +0300" stop="20260917082900 +0300" channel="Duck TV">
+    <title lang="en">Margo &amp; Felix</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917082900 +0300" stop="20260917083200 +0300" channel="Duck TV">
+    <title lang="en">Sippi Sappi</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917083200 +0300" stop="20260917083600 +0300" channel="Duck TV">
+    <title lang="en">Mimo and Bobo PLUS</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917083600 +0300" stop="20260917083900 +0300" channel="Duck TV">
+    <title lang="en">Higher the Better</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917083900 +0300" stop="20260917084200 +0300" channel="Duck TV">
+    <title lang="en">Zack &amp; Ziggy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917084200 +0300" stop="20260917084500 +0300" channel="Duck TV">
+    <title lang="en">Get Up!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917084500 +0300" stop="20260917084700 +0300" channel="Duck TV">
+    <title lang="en">The World of Animals</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917084700 +0300" stop="20260917085000 +0300" channel="Duck TV">
+    <title lang="en">Ding Dang Dong</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917085000 +0300" stop="20260917085300 +0300" channel="Duck TV">
+    <title lang="en">Dance</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917085300 +0300" stop="20260917085500 +0300" channel="Duck TV">
+    <title lang="en">Enchanting Sights</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917085500 +0300" stop="20260917085800 +0300" channel="Duck TV">
+    <title lang="en">Mimo's World</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917085800 +0300" stop="20260917090100 +0300" channel="Duck TV">
+    <title lang="en">Raul</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917090100 +0300" stop="20260917090500 +0300" channel="Duck TV">
+    <title lang="en">Mimo and Bobo PLUS</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917090500 +0300" stop="20260917090800 +0300" channel="Duck TV">
+    <title lang="en">DuckSchool</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917090800 +0300" stop="20260917091000 +0300" channel="Duck TV">
+    <title lang="en">Get Up!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917091000 +0300" stop="20260917091300 +0300" channel="Duck TV">
+    <title lang="en">We Are Playing Now</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917091300 +0300" stop="20260917091500 +0300" channel="Duck TV">
+    <title lang="en">Get Up!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917091500 +0300" stop="20260917091800 +0300" channel="Duck TV">
+    <title lang="en">Ding Dang Dong</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917091800 +0300" stop="20260917092100 +0300" channel="Duck TV">
+    <title lang="en">Enchanting Sights</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917092100 +0300" stop="20260917092500 +0300" channel="Duck TV">
+    <title lang="en">Ding Dang Dong</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917092500 +0300" stop="20260917092700 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917092700 +0300" stop="20260917093100 +0300" channel="Duck TV">
+    <title lang="en">Albert Explains</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917093100 +0300" stop="20260917093300 +0300" channel="Duck TV">
+    <title lang="en">Ducky and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917093300 +0300" stop="20260917093600 +0300" channel="Duck TV">
+    <title lang="en">Dinoland</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917093600 +0300" stop="20260917093800 +0300" channel="Duck TV">
+    <title lang="en">Sippi Sappi</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917093800 +0300" stop="20260917094000 +0300" channel="Duck TV">
+    <title lang="en">Happy Garden</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917094000 +0300" stop="20260917094200 +0300" channel="Duck TV">
+    <title lang="en">My Pet Family</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917094200 +0300" stop="20260917094400 +0300" channel="Duck TV">
+    <title lang="en">Sounds Around Us</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917094400 +0300" stop="20260917094600 +0300" channel="Duck TV">
+    <title lang="en">Panni and Fanni</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917094600 +0300" stop="20260917094800 +0300" channel="Duck TV">
+    <title lang="en">Groups</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917094800 +0300" stop="20260917095100 +0300" channel="Duck TV">
+    <title lang="en">Enchanting Sights</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917095100 +0300" stop="20260917095400 +0300" channel="Duck TV">
+    <title lang="en">Groups</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917095400 +0300" stop="20260917095600 +0300" channel="Duck TV">
+    <title lang="en">Panni and Fanni</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917095600 +0300" stop="20260917095800 +0300" channel="Duck TV">
+    <title lang="en">Miyu and Litto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917095800 +0300" stop="20260917095900 +0300" channel="Duck TV">
+    <title lang="en">Pixie 2</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917095900 +0300" stop="20260917100200 +0300" channel="Duck TV">
+    <title lang="en">Albert Explains</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917100200 +0300" stop="20260917100300 +0300" channel="Duck TV">
+    <title lang="en">Pixie 2</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917100300 +0300" stop="20260917100600 +0300" channel="Duck TV">
+    <title lang="en">Monica and Rudy 2</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917100600 +0300" stop="20260917100900 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917100900 +0300" stop="20260917101200 +0300" channel="Duck TV">
+    <title lang="en">Sippi Sappi</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917101200 +0300" stop="20260917101500 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917101500 +0300" stop="20260917101800 +0300" channel="Duck TV">
+    <title lang="en">Miyu and Litto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917101800 +0300" stop="20260917102100 +0300" channel="Duck TV">
+    <title lang="en">Groups</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917102100 +0300" stop="20260917102300 +0300" channel="Duck TV">
+    <title lang="en">Panni and Fanni</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917102300 +0300" stop="20260917102600 +0300" channel="Duck TV">
+    <title lang="en">Enchanting Sights</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917102600 +0300" stop="20260917102800 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917102800 +0300" stop="20260917103000 +0300" channel="Duck TV">
+    <title lang="en">Color Clara</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917103000 +0300" stop="20260917103300 +0300" channel="Duck TV">
+    <title lang="en">Sippi Sappi</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917103300 +0300" stop="20260917103500 +0300" channel="Duck TV">
+    <title lang="en">Tempo Giusto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917103500 +0300" stop="20260917103700 +0300" channel="Duck TV">
+    <title lang="en">Sounds Around Us</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917103700 +0300" stop="20260917104000 +0300" channel="Duck TV">
+    <title lang="en">Monica and Rudy 2</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917104000 +0300" stop="20260917104200 +0300" channel="Duck TV">
+    <title lang="en">Albert Explains</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917104200 +0300" stop="20260917104400 +0300" channel="Duck TV">
+    <title lang="en">My Pet Family</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917104400 +0300" stop="20260917104700 +0300" channel="Duck TV">
+    <title lang="en">Higher the Better</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917104700 +0300" stop="20260917105000 +0300" channel="Duck TV">
+    <title lang="en">Shaping Up</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917105000 +0300" stop="20260917105400 +0300" channel="Duck TV">
+    <title lang="en">Albert Explains</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917105400 +0300" stop="20260917105700 +0300" channel="Duck TV">
+    <title lang="en">Zack &amp; Ziggy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917105700 +0300" stop="20260917110000 +0300" channel="Duck TV">
+    <title lang="en">Africa</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917110000 +0300" stop="20260917110200 +0300" channel="Duck TV">
+    <title lang="en">My Pet Family</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917110200 +0300" stop="20260917110500 +0300" channel="Duck TV">
+    <title lang="en">Shaping Up</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917110500 +0300" stop="20260917110800 +0300" channel="Duck TV">
+    <title lang="en">DuckSchool</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917110800 +0300" stop="20260917111100 +0300" channel="Duck TV">
+    <title lang="en">Finn and Fianna</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917111100 +0300" stop="20260917111200 +0300" channel="Duck TV">
+    <title lang="en">Happy Garden</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917111200 +0300" stop="20260917111500 +0300" channel="Duck TV">
+    <title lang="en">Dotty, the Kitty</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917111500 +0300" stop="20260917111700 +0300" channel="Duck TV">
+    <title lang="en">Henry's Stories</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917111700 +0300" stop="20260917111900 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917111900 +0300" stop="20260917112200 +0300" channel="Duck TV">
+    <title lang="en">Higher the Better</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917112200 +0300" stop="20260917112400 +0300" channel="Duck TV">
+    <title lang="en">Little Melodies</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917112400 +0300" stop="20260917112600 +0300" channel="Duck TV">
+    <title lang="en">Ducky and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917112600 +0300" stop="20260917113100 +0300" channel="Duck TV">
+    <title lang="en">Dotty, the Kitty</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917113100 +0300" stop="20260917113300 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917113300 +0300" stop="20260917113500 +0300" channel="Duck TV">
+    <title lang="en">Cubie</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917113500 +0300" stop="20260917113800 +0300" channel="Duck TV">
+    <title lang="en">Zack &amp; Ziggy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917113800 +0300" stop="20260917114100 +0300" channel="Duck TV">
+    <title lang="en">Risto Gusto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917114100 +0300" stop="20260917114300 +0300" channel="Duck TV">
+    <title lang="en">Fireteam</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917114300 +0300" stop="20260917114500 +0300" channel="Duck TV">
+    <title lang="en">Ducky Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917114500 +0300" stop="20260917114800 +0300" channel="Duck TV">
+    <title lang="en">Cubie</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917114800 +0300" stop="20260917115000 +0300" channel="Duck TV">
+    <title lang="en">Didy Baby</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917115000 +0300" stop="20260917115200 +0300" channel="Duck TV">
+    <title lang="en">Sippi Sappi</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917115200 +0300" stop="20260917115500 +0300" channel="Duck TV">
+    <title lang="en">Ristorante</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917115500 +0300" stop="20260917115900 +0300" channel="Duck TV">
+    <title lang="en">Margo &amp; Felix</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917115900 +0300" stop="20260917120100 +0300" channel="Duck TV">
+    <title lang="en">Tempo Giusto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917120100 +0300" stop="20260917120300 +0300" channel="Duck TV">
+    <title lang="en">DuckSchool</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917120300 +0300" stop="20260917120500 +0300" channel="Duck TV">
+    <title lang="en">Sounds Around Us</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917120500 +0300" stop="20260917120700 +0300" channel="Duck TV">
+    <title lang="en">Doll Team</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917120700 +0300" stop="20260917121100 +0300" channel="Duck TV">
+    <title lang="en">Dotty, the Kitty</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917121100 +0300" stop="20260917121400 +0300" channel="Duck TV">
+    <title lang="en">Sunville - Sportsville</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917121400 +0300" stop="20260917121600 +0300" channel="Duck TV">
+    <title lang="en">Ducky Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917121600 +0300" stop="20260917121900 +0300" channel="Duck TV">
+    <title lang="en">Shaping Up</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917121900 +0300" stop="20260917122000 +0300" channel="Duck TV">
+    <title lang="en">Nature Dudes</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917122000 +0300" stop="20260917122300 +0300" channel="Duck TV">
+    <title lang="en">Higher the Better</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917122300 +0300" stop="20260917122600 +0300" channel="Duck TV">
+    <title lang="en">Cucu, I'm here!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917122600 +0300" stop="20260917122800 +0300" channel="Duck TV">
+    <title lang="en">Hipp-hopp Cactus</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917122800 +0300" stop="20260917123200 +0300" channel="Duck TV">
+    <title lang="en">Finn and Fianna</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917123200 +0300" stop="20260917123400 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917123400 +0300" stop="20260917123600 +0300" channel="Duck TV">
+    <title lang="en">Risto Gusto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917123600 +0300" stop="20260917123900 +0300" channel="Duck TV">
+    <title lang="en">Hubbi and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917123900 +0300" stop="20260917124100 +0300" channel="Duck TV">
+    <title lang="en">Zoo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917124100 +0300" stop="20260917124300 +0300" channel="Duck TV">
+    <title lang="en">Ducky and Fluffy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917124300 +0300" stop="20260917124500 +0300" channel="Duck TV">
+    <title lang="en">Ducky and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917124500 +0300" stop="20260917124800 +0300" channel="Duck TV">
+    <title lang="en">Hop-hop</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917124800 +0300" stop="20260917125100 +0300" channel="Duck TV">
+    <title lang="en">Happy Meadow</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917125100 +0300" stop="20260917125300 +0300" channel="Duck TV">
+    <title lang="en">Fireteam in Action</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917125300 +0300" stop="20260917125600 +0300" channel="Duck TV">
+    <title lang="en">Connected World</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917125600 +0300" stop="20260917125900 +0300" channel="Duck TV">
+    <title lang="en">Risto Gusto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917125900 +0300" stop="20260917130200 +0300" channel="Duck TV">
+    <title lang="en">Hubbi Will Take Care of It</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917130200 +0300" stop="20260917130500 +0300" channel="Duck TV">
+    <title lang="en">Zoo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917130500 +0300" stop="20260917130700 +0300" channel="Duck TV">
+    <title lang="en">Mimo's World</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917130700 +0300" stop="20260917130900 +0300" channel="Duck TV">
+    <title lang="en">Ducky and Fluffy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917130900 +0300" stop="20260917131200 +0300" channel="Duck TV">
+    <title lang="en">Fireteam in Action</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917131200 +0300" stop="20260917131500 +0300" channel="Duck TV">
+    <title lang="en">Dinoland</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917131500 +0300" stop="20260917131800 +0300" channel="Duck TV">
+    <title lang="en">Risto Gusto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917131800 +0300" stop="20260917132200 +0300" channel="Duck TV">
+    <title lang="en">Doll Team to the Rescue</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917132200 +0300" stop="20260917132400 +0300" channel="Duck TV">
+    <title lang="en">Dinoland</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917132400 +0300" stop="20260917132700 +0300" channel="Duck TV">
+    <title lang="en">Happy Meadow</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917132700 +0300" stop="20260917133000 +0300" channel="Duck TV">
+    <title lang="en">Dinoland</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917133000 +0300" stop="20260917133400 +0300" channel="Duck TV">
+    <title lang="en">Milo Dino</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917133400 +0300" stop="20260917133600 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917133600 +0300" stop="20260917133900 +0300" channel="Duck TV">
+    <title lang="en">Zoo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917133900 +0300" stop="20260917134200 +0300" channel="Duck TV">
+    <title lang="en">Sunville - Sportsville</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917134200 +0300" stop="20260917134400 +0300" channel="Duck TV">
+    <title lang="en">Happy Meadow</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917134400 +0300" stop="20260917134700 +0300" channel="Duck TV">
+    <title lang="en">Shaping Up</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917134700 +0300" stop="20260917134900 +0300" channel="Duck TV">
+    <title lang="en">Leon-ART</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917134900 +0300" stop="20260917135200 +0300" channel="Duck TV">
+    <title lang="en">Zoo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917135200 +0300" stop="20260917135600 +0300" channel="Duck TV">
+    <title lang="en">Hipp-hopp Cactus</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917135600 +0300" stop="20260917135900 +0300" channel="Duck TV">
+    <title lang="en">Leon-ART</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917135900 +0300" stop="20260917140100 +0300" channel="Duck TV">
+    <title lang="en">Small - But Hardworking</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917140100 +0300" stop="20260917140400 +0300" channel="Duck TV">
+    <title lang="en">Leon-ART</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917140400 +0300" stop="20260917140600 +0300" channel="Duck TV">
+    <title lang="en">Mimo's World</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917140600 +0300" stop="20260917140800 +0300" channel="Duck TV">
+    <title lang="en">Ducky Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917140800 +0300" stop="20260917141100 +0300" channel="Duck TV">
+    <title lang="en">Small - But Hardworking</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917141100 +0300" stop="20260917141500 +0300" channel="Duck TV">
+    <title lang="en">Mimo and Bobo PLUS</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917141500 +0300" stop="20260917141700 +0300" channel="Duck TV">
+    <title lang="en">Hubbi Will Take Care of It</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917141700 +0300" stop="20260917142100 +0300" channel="Duck TV">
+    <title lang="en">Happy Kingdom</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917142100 +0300" stop="20260917142500 +0300" channel="Duck TV">
+    <title lang="en">Milo Dino</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917142500 +0300" stop="20260917142900 +0300" channel="Duck TV">
+    <title lang="en">Dotty, the Kitty</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917142900 +0300" stop="20260917143100 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917143100 +0300" stop="20260917143400 +0300" channel="Duck TV">
+    <title lang="en">Train</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917143400 +0300" stop="20260917143600 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917143600 +0300" stop="20260917143800 +0300" channel="Duck TV">
+    <title lang="en">Shaping Up</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917143800 +0300" stop="20260917144000 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917144000 +0300" stop="20260917144300 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917144300 +0300" stop="20260917144600 +0300" channel="Duck TV">
+    <title lang="en">Margo &amp; Felix</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917144600 +0300" stop="20260917144800 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917144800 +0300" stop="20260917145100 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917145100 +0300" stop="20260917145300 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917145300 +0300" stop="20260917145600 +0300" channel="Duck TV">
+    <title lang="en">Cucu, I'm here!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917145600 +0300" stop="20260917150000 +0300" channel="Duck TV">
+    <title lang="en">Albert Explains</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917150000 +0300" stop="20260917150300 +0300" channel="Duck TV">
+    <title lang="en">Finn and Fianna</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917150300 +0300" stop="20260917150600 +0300" channel="Duck TV">
+    <title lang="en">Margo &amp; Felix</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917150600 +0300" stop="20260917150800 +0300" channel="Duck TV">
+    <title lang="en">Happy Garden</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917150800 +0300" stop="20260917150900 +0300" channel="Duck TV">
+    <title lang="en">Home Sweet Home</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917150900 +0300" stop="20260917151100 +0300" channel="Duck TV">
+    <title lang="en">Ducky Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917151100 +0300" stop="20260917151200 +0300" channel="Duck TV">
+    <title lang="en">Nature Dudes</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917151200 +0300" stop="20260917151400 +0300" channel="Duck TV">
+    <title lang="en">Albert Explains</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917151400 +0300" stop="20260917151600 +0300" channel="Duck TV">
+    <title lang="en">Color Clara</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917151600 +0300" stop="20260917151900 +0300" channel="Duck TV">
+    <title lang="en">Hubbi and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917151900 +0300" stop="20260917152000 +0300" channel="Duck TV">
+    <title lang="en">Nature Dudes</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917152000 +0300" stop="20260917152300 +0300" channel="Duck TV">
+    <title lang="en">Monica and Rudy 2</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917152300 +0300" stop="20260917152500 +0300" channel="Duck TV">
+    <title lang="en">Little Melodies</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917152500 +0300" stop="20260917152700 +0300" channel="Duck TV">
+    <title lang="en">DuckSchool</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917152700 +0300" stop="20260917153000 +0300" channel="Duck TV">
+    <title lang="en">ABC - duckBC</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917153000 +0300" stop="20260917153200 +0300" channel="Duck TV">
+    <title lang="en">My Pet Family</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917153200 +0300" stop="20260917153600 +0300" channel="Duck TV">
+    <title lang="en">Finn and Fianna</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917153600 +0300" stop="20260917153800 +0300" channel="Duck TV">
+    <title lang="en">Ducky Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917153800 +0300" stop="20260917154100 +0300" channel="Duck TV">
+    <title lang="en">Albert Explains</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917154100 +0300" stop="20260917154400 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917154400 +0300" stop="20260917154600 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917154600 +0300" stop="20260917154900 +0300" channel="Duck TV">
+    <title lang="en">Margo &amp; Felix</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917154900 +0300" stop="20260917155000 +0300" channel="Duck TV">
+    <title lang="en">Nature Dudes</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917155000 +0300" stop="20260917155200 +0300" channel="Duck TV">
+    <title lang="en">Hop-hop</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917155200 +0300" stop="20260917155400 +0300" channel="Duck TV">
+    <title lang="en">Get Up!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917155400 +0300" stop="20260917155700 +0300" channel="Duck TV">
+    <title lang="en">Risto Gusto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917155700 +0300" stop="20260917155900 +0300" channel="Duck TV">
+    <title lang="en">Nature Dudes</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917155900 +0300" stop="20260917160100 +0300" channel="Duck TV">
+    <title lang="en">Hop-hop</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917160100 +0300" stop="20260917160300 +0300" channel="Duck TV">
+    <title lang="en">Tempo Giusto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917160300 +0300" stop="20260917160500 +0300" channel="Duck TV">
+    <title lang="en">Sippi Sappi</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917160500 +0300" stop="20260917160800 +0300" channel="Duck TV">
+    <title lang="en">Hubbi Will Take Care of It</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917160800 +0300" stop="20260917161100 +0300" channel="Duck TV">
+    <title lang="en">DuckSchool</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917161100 +0300" stop="20260917161300 +0300" channel="Duck TV">
+    <title lang="en">Get Up!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917161300 +0300" stop="20260917161600 +0300" channel="Duck TV">
+    <title lang="en">Raul</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917161600 +0300" stop="20260917161700 +0300" channel="Duck TV">
+    <title lang="en">Nature Dudes</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917161700 +0300" stop="20260917162000 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917162000 +0300" stop="20260917162200 +0300" channel="Duck TV">
+    <title lang="en">Ducky and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917162200 +0300" stop="20260917162400 +0300" channel="Duck TV">
+    <title lang="en">Sippi Sappi</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917162400 +0300" stop="20260917162600 +0300" channel="Duck TV">
+    <title lang="en">Henry's Stories</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917162600 +0300" stop="20260917162900 +0300" channel="Duck TV">
+    <title lang="en">Cucu, I'm here!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917162900 +0300" stop="20260917163200 +0300" channel="Duck TV">
+    <title lang="en">Africa</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917163200 +0300" stop="20260917163400 +0300" channel="Duck TV">
+    <title lang="en">Tempo Giusto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917163400 +0300" stop="20260917163700 +0300" channel="Duck TV">
+    <title lang="en">Raul</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917163700 +0300" stop="20260917163900 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917163900 +0300" stop="20260917164100 +0300" channel="Duck TV">
+    <title lang="en">Cucu, I'm here!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917164100 +0300" stop="20260917164300 +0300" channel="Duck TV">
+    <title lang="en">Henry's Stories</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917164300 +0300" stop="20260917164600 +0300" channel="Duck TV">
+    <title lang="en">Fireteam</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917164600 +0300" stop="20260917164700 +0300" channel="Duck TV">
+    <title lang="en">Nature Dudes</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917164700 +0300" stop="20260917164800 +0300" channel="Duck TV">
+    <title lang="en">Happy Garden</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917164800 +0300" stop="20260917165100 +0300" channel="Duck TV">
+    <title lang="en">Fireteam</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917165100 +0300" stop="20260917165300 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917165300 +0300" stop="20260917165600 +0300" channel="Duck TV">
+    <title lang="en">Toby McFly</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917165600 +0300" stop="20260917165900 +0300" channel="Duck TV">
+    <title lang="en">Happy Kingdom</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917165900 +0300" stop="20260917170200 +0300" channel="Duck TV">
+    <title lang="en">Mimo's World</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917170200 +0300" stop="20260917170400 +0300" channel="Duck TV">
+    <title lang="en">Ducky and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917170400 +0300" stop="20260917170600 +0300" channel="Duck TV">
+    <title lang="en">Hop-hop</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917170600 +0300" stop="20260917170900 +0300" channel="Duck TV">
+    <title lang="en">Ristorante</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917170900 +0300" stop="20260917171100 +0300" channel="Duck TV">
+    <title lang="en">Ducky and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917171100 +0300" stop="20260917171300 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917171300 +0300" stop="20260917171600 +0300" channel="Duck TV">
+    <title lang="en">Raul</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917171600 +0300" stop="20260917171800 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917171800 +0300" stop="20260917172000 +0300" channel="Duck TV">
+    <title lang="en">Color Clara</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917172000 +0300" stop="20260917172200 +0300" channel="Duck TV">
+    <title lang="en">Didy Baby</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917172200 +0300" stop="20260917172500 +0300" channel="Duck TV">
+    <title lang="en">Africa</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917172500 +0300" stop="20260917172800 +0300" channel="Duck TV">
+    <title lang="en">Finn and Fianna</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917172800 +0300" stop="20260917173000 +0300" channel="Duck TV">
+    <title lang="en">Hipp-hopp Cactus</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917173000 +0300" stop="20260917173300 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917173300 +0300" stop="20260917173500 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917173500 +0300" stop="20260917173800 +0300" channel="Duck TV">
+    <title lang="en">Doll Team</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917173800 +0300" stop="20260917174000 +0300" channel="Duck TV">
+    <title lang="en">Hipp-hopp Cactus</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917174000 +0300" stop="20260917174300 +0300" channel="Duck TV">
+    <title lang="en">Hop-hop</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917174300 +0300" stop="20260917174600 +0300" channel="Duck TV">
+    <title lang="en">Zack &amp; Ziggy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917174600 +0300" stop="20260917174800 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917174800 +0300" stop="20260917175000 +0300" channel="Duck TV">
+    <title lang="en">Ducky and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917175000 +0300" stop="20260917175200 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917175200 +0300" stop="20260917175400 +0300" channel="Duck TV">
+    <title lang="en">Get Up!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917175400 +0300" stop="20260917175600 +0300" channel="Duck TV">
+    <title lang="en">Raul</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917175600 +0300" stop="20260917175900 +0300" channel="Duck TV">
+    <title lang="en">Hop-hop</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917175900 +0300" stop="20260917180200 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917180200 +0300" stop="20260917180500 +0300" channel="Duck TV">
+    <title lang="en">Mimo's World</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917180500 +0300" stop="20260917180700 +0300" channel="Duck TV">
+    <title lang="en">Africa</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917180700 +0300" stop="20260917180900 +0300" channel="Duck TV">
+    <title lang="en">Get Up!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917180900 +0300" stop="20260917181200 +0300" channel="Duck TV">
+    <title lang="en">Didy Baby</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917181200 +0300" stop="20260917181600 +0300" channel="Duck TV">
+    <title lang="en">Mimo and Bobo PLUS</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917181600 +0300" stop="20260917181800 +0300" channel="Duck TV">
+    <title lang="en">Didy Baby</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917181800 +0300" stop="20260917182000 +0300" channel="Duck TV">
+    <title lang="en">Cucu, I'm here!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917182000 +0300" stop="20260917182200 +0300" channel="Duck TV">
+    <title lang="en">Get Up!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917182200 +0300" stop="20260917182400 +0300" channel="Duck TV">
+    <title lang="en">Africa</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917182400 +0300" stop="20260917182700 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917182700 +0300" stop="20260917183000 +0300" channel="Duck TV">
+    <title lang="en">Raul</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917183000 +0300" stop="20260917183300 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917183300 +0300" stop="20260917183500 +0300" channel="Duck TV">
+    <title lang="en">Get Up!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917183500 +0300" stop="20260917183800 +0300" channel="Duck TV">
+    <title lang="en">Higher the Better</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917183800 +0300" stop="20260917184000 +0300" channel="Duck TV">
+    <title lang="en">Africa</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917184000 +0300" stop="20260917184300 +0300" channel="Duck TV">
+    <title lang="en">Raul</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917184300 +0300" stop="20260917184500 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917184500 +0300" stop="20260917184800 +0300" channel="Duck TV">
+    <title lang="en">ABC - duckBC</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917184800 +0300" stop="20260917185000 +0300" channel="Duck TV">
+    <title lang="en">Sippi Sappi</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917185000 +0300" stop="20260917185300 +0300" channel="Duck TV">
+    <title lang="en">Shaping Up</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917185300 +0300" stop="20260917185400 +0300" channel="Duck TV">
+    <title lang="en">Pixie 2</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917185400 +0300" stop="20260917185700 +0300" channel="Duck TV">
+    <title lang="en">Shaping Up</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917185700 +0300" stop="20260917190000 +0300" channel="Duck TV">
+    <title lang="en">Happy Meadow</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917190000 +0300" stop="20260917190100 +0300" channel="Duck TV">
+    <title lang="en">Happy Garden</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917190100 +0300" stop="20260917190400 +0300" channel="Duck TV">
+    <title lang="en">Monica &amp; Rudy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917190400 +0300" stop="20260917190700 +0300" channel="Duck TV">
+    <title lang="en">Shaping Up</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917190700 +0300" stop="20260917190900 +0300" channel="Duck TV">
+    <title lang="en">Little Melodies</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917190900 +0300" stop="20260917191100 +0300" channel="Duck TV">
+    <title lang="en">Ducky Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917191100 +0300" stop="20260917191300 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917191300 +0300" stop="20260917191600 +0300" channel="Duck TV">
+    <title lang="en">Cucu, I'm here!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917191600 +0300" stop="20260917192000 +0300" channel="Duck TV">
+    <title lang="en">Happy Meadow</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917192000 +0300" stop="20260917192200 +0300" channel="Duck TV">
+    <title lang="en">Sippi Sappi</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917192200 +0300" stop="20260917192400 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917192400 +0300" stop="20260917192600 +0300" channel="Duck TV">
+    <title lang="en">The Shapies</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917192600 +0300" stop="20260917193000 +0300" channel="Duck TV">
+    <title lang="en">Dotty, the Kitty</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917193000 +0300" stop="20260917193300 +0300" channel="Duck TV">
+    <title lang="en">Dotty, the Kitty</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917193300 +0300" stop="20260917193600 +0300" channel="Duck TV">
+    <title lang="en">Zack &amp; Ziggy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917193600 +0300" stop="20260917193700 +0300" channel="Duck TV">
+    <title lang="en">Happy Garden</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917193700 +0300" stop="20260917193900 +0300" channel="Duck TV">
+    <title lang="en">Color Clara</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917193900 +0300" stop="20260917194100 +0300" channel="Duck TV">
+    <title lang="en">DuckSchool</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917194100 +0300" stop="20260917194200 +0300" channel="Duck TV">
+    <title lang="en">Home Sweet Home</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917194200 +0300" stop="20260917194500 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917194500 +0300" stop="20260917194700 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917194700 +0300" stop="20260917194900 +0300" channel="Duck TV">
+    <title lang="en">Sounds Around Us</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917194900 +0300" stop="20260917195200 +0300" channel="Duck TV">
+    <title lang="en">ABC - duckBC</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917195200 +0300" stop="20260917195600 +0300" channel="Duck TV">
+    <title lang="en">Ristorante</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917195600 +0300" stop="20260917195800 +0300" channel="Duck TV">
+    <title lang="en">Hipp-hopp Cactus</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917195800 +0300" stop="20260917200000 +0300" channel="Duck TV">
+    <title lang="en">Ducky Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917200000 +0300" stop="20260917200400 +0300" channel="Duck TV">
+    <title lang="en">Higher the Better</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917200400 +0300" stop="20260917200600 +0300" channel="Duck TV">
+    <title lang="en">Tempo Giusto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917200600 +0300" stop="20260917200800 +0300" channel="Duck TV">
+    <title lang="en">Hipp-hopp Cactus</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917200800 +0300" stop="20260917201000 +0300" channel="Duck TV">
+    <title lang="en">Cucu, I'm here!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917201000 +0300" stop="20260917201300 +0300" channel="Duck TV">
+    <title lang="en">Finn and Fianna</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917201300 +0300" stop="20260917201500 +0300" channel="Duck TV">
+    <title lang="en">Doll Team</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917201500 +0300" stop="20260917201900 +0300" channel="Duck TV">
+    <title lang="en">DuckSchool</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917201900 +0300" stop="20260917202100 +0300" channel="Duck TV">
+    <title lang="en">Ducky Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917202100 +0300" stop="20260917202400 +0300" channel="Duck TV">
+    <title lang="en">Dotty, the Kitty</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917202400 +0300" stop="20260917202600 +0300" channel="Duck TV">
+    <title lang="en">Africa</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917202600 +0300" stop="20260917202900 +0300" channel="Duck TV">
+    <title lang="en">Raul</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917202900 +0300" stop="20260917203100 +0300" channel="Duck TV">
+    <title lang="en">Hubbi and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917203100 +0300" stop="20260917203400 +0300" channel="Duck TV">
+    <title lang="en">Monica &amp; Rudy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917203400 +0300" stop="20260917203600 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917203600 +0300" stop="20260917203800 +0300" channel="Duck TV">
+    <title lang="en">Ducky and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917203800 +0300" stop="20260917204100 +0300" channel="Duck TV">
+    <title lang="en">Shaping Up</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917204100 +0300" stop="20260917204300 +0300" channel="Duck TV">
+    <title lang="en">Dinoland</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917204300 +0300" stop="20260917204600 +0300" channel="Duck TV">
+    <title lang="en">Ducky and Fluffy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917204600 +0300" stop="20260917204900 +0300" channel="Duck TV">
+    <title lang="en">Small - But Hardworking</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917204900 +0300" stop="20260917205100 +0300" channel="Duck TV">
+    <title lang="en">Hop-hop</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917205100 +0300" stop="20260917205400 +0300" channel="Duck TV">
+    <title lang="en">Sippi Sappi</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917205400 +0300" stop="20260917205700 +0300" channel="Duck TV">
+    <title lang="en">Train</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917205700 +0300" stop="20260917210000 +0300" channel="Duck TV">
+    <title lang="en">Cucu, I'm here!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917210000 +0300" stop="20260917210300 +0300" channel="Duck TV">
+    <title lang="en">Shaping Up</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917210300 +0300" stop="20260917210600 +0300" channel="Duck TV">
+    <title lang="en">Margo &amp; Felix</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917210600 +0300" stop="20260917210900 +0300" channel="Duck TV">
+    <title lang="en">Ristorante</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917210900 +0300" stop="20260917211200 +0300" channel="Duck TV">
+    <title lang="en">Higher the Better</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917211200 +0300" stop="20260917211500 +0300" channel="Duck TV">
+    <title lang="en">Toby McFly</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917211500 +0300" stop="20260917211800 +0300" channel="Duck TV">
+    <title lang="en">Hubbi and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917211800 +0300" stop="20260917212000 +0300" channel="Duck TV">
+    <title lang="en">Ducky and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917212000 +0300" stop="20260917212400 +0300" channel="Duck TV">
+    <title lang="en">Shaping Up</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917212400 +0300" stop="20260917212700 +0300" channel="Duck TV">
+    <title lang="en">Monica &amp; Rudy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917212700 +0300" stop="20260917213100 +0300" channel="Duck TV">
+    <title lang="en">Doll Team</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917213100 +0300" stop="20260917213300 +0300" channel="Duck TV">
+    <title lang="en">Forms Are Yours!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917213300 +0300" stop="20260917213500 +0300" channel="Duck TV">
+    <title lang="en">Doll Team to the Rescue</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917213500 +0300" stop="20260917213700 +0300" channel="Duck TV">
+    <title lang="en">Sounds Around Us</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917213700 +0300" stop="20260917214000 +0300" channel="Duck TV">
+    <title lang="en">Africa</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917214000 +0300" stop="20260917214300 +0300" channel="Duck TV">
+    <title lang="en">Fireteam</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917214300 +0300" stop="20260917214600 +0300" channel="Duck TV">
+    <title lang="en">Africa</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917214600 +0300" stop="20260917214900 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917214900 +0300" stop="20260917215100 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917215100 +0300" stop="20260917215300 +0300" channel="Duck TV">
+    <title lang="en">Mimo's World</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917215300 +0300" stop="20260917215600 +0300" channel="Duck TV">
+    <title lang="en">Toby McFly</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917215600 +0300" stop="20260917215800 +0300" channel="Duck TV">
+    <title lang="en">Ducky and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917215800 +0300" stop="20260917220100 +0300" channel="Duck TV">
+    <title lang="en">Raul</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917220100 +0300" stop="20260917220300 +0300" channel="Duck TV">
+    <title lang="en">Didy Baby</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917220300 +0300" stop="20260917220400 +0300" channel="Duck TV">
+    <title lang="en">Nature Dudes</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917220400 +0300" stop="20260917220700 +0300" channel="Duck TV">
+    <title lang="en">ABC - duckBC</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917220700 +0300" stop="20260917221000 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917221000 +0300" stop="20260917221300 +0300" channel="Duck TV">
+    <title lang="en">Vege-tales</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917221300 +0300" stop="20260917221500 +0300" channel="Duck TV">
+    <title lang="en">Holiday</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917221500 +0300" stop="20260917221700 +0300" channel="Duck TV">
+    <title lang="en">Waterworld</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917221700 +0300" stop="20260917222000 +0300" channel="Duck TV">
+    <title lang="en">Vege-tales</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917222000 +0300" stop="20260917222200 +0300" channel="Duck TV">
+    <title lang="en">Holiday</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917222200 +0300" stop="20260917222400 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917222400 +0300" stop="20260917222700 +0300" channel="Duck TV">
+    <title lang="en">Raul</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917222700 +0300" stop="20260917223000 +0300" channel="Duck TV">
+    <title lang="en">Fireteam</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917223000 +0300" stop="20260917223300 +0300" channel="Duck TV">
+    <title lang="en">Africa</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917223300 +0300" stop="20260917223600 +0300" channel="Duck TV">
+    <title lang="en">Mimo's World</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917223600 +0300" stop="20260917223900 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917223900 +0300" stop="20260917224100 +0300" channel="Duck TV">
+    <title lang="en">Holiday</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917224100 +0300" stop="20260917224400 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917224400 +0300" stop="20260917224700 +0300" channel="Duck TV">
+    <title lang="en">Holiday</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917224700 +0300" stop="20260917224900 +0300" channel="Duck TV">
+    <title lang="en">Holiday</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917224900 +0300" stop="20260917225200 +0300" channel="Duck TV">
+    <title lang="en">Holiday</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917225200 +0300" stop="20260917225400 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917225400 +0300" stop="20260917225600 +0300" channel="Duck TV">
+    <title lang="en">Ducky Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917225600 +0300" stop="20260917225900 +0300" channel="Duck TV">
+    <title lang="en">Raul</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917225900 +0300" stop="20260917230100 +0300" channel="Duck TV">
+    <title lang="en">Sippi Sappi</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917230100 +0300" stop="20260917230300 +0300" channel="Duck TV">
+    <title lang="en">Africa</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917230300 +0300" stop="20260917230600 +0300" channel="Duck TV">
+    <title lang="en">Sunville - Sportsville</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917230600 +0300" stop="20260917230900 +0300" channel="Duck TV">
+    <title lang="en">Hubbi and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917230900 +0300" stop="20260917231300 +0300" channel="Duck TV">
+    <title lang="en">We Are Playing Now</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917231300 +0300" stop="20260917231600 +0300" channel="Duck TV">
+    <title lang="en">Sunville</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917231600 +0300" stop="20260917231900 +0300" channel="Duck TV">
+    <title lang="en">My Toys - My Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917231900 +0300" stop="20260917232200 +0300" channel="Duck TV">
+    <title lang="en">The World of Animals</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917232200 +0300" stop="20260917232500 +0300" channel="Duck TV">
+    <title lang="en">India</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917232500 +0300" stop="20260917232900 +0300" channel="Duck TV">
+    <title lang="en">Doll Team to the Rescue</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917232900 +0300" stop="20260917233200 +0300" channel="Duck TV">
+    <title lang="en">Small - But Hardworking</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917233200 +0300" stop="20260917233400 +0300" channel="Duck TV">
+    <title lang="en">Ducky and Fluffy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917233400 +0300" stop="20260917233600 +0300" channel="Duck TV">
+    <title lang="en">Train</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917233600 +0300" stop="20260917233900 +0300" channel="Duck TV">
+    <title lang="en">Ducky Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917233900 +0300" stop="20260917234100 +0300" channel="Duck TV">
+    <title lang="en">Sea Adventure</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917234100 +0300" stop="20260917234500 +0300" channel="Duck TV">
+    <title lang="en">The Way We Travel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917234500 +0300" stop="20260917234600 +0300" channel="Duck TV">
+    <title lang="en">We Are Playing Now</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917234600 +0300" stop="20260917234900 +0300" channel="Duck TV">
+    <title lang="en">Enchanting Sights</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917234900 +0300" stop="20260917235300 +0300" channel="Duck TV">
+    <title lang="en">Elf World</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917235300 +0300" stop="20260917235500 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917235500 +0300" stop="20260917235800 +0300" channel="Duck TV">
+    <title lang="en">Finn and Fianna</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917235800 +0300" stop="20260917235900 +0300" channel="Duck TV">
+    <title lang="en">The Shapies</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20260917235900 +0300" stop="20260918000100 +0300" channel="Duck TV">
+    <title lang="en">Tempo Giusto</title>
     <category lang="en">Kids</category>
   </programme>
   <programme start="20260918000100 +0300" stop="20260918000400 +0300" channel="Duck TV">
