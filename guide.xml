@@ -19888,541 +19888,6 @@
     <display-name>Kidoodle TV</display-name>
     <icon src="https://provider-static.plex.tv/epg/cms/production/2dc3f128-bd64-48b7-bedd-d7545660de8f/Kidoodle.TV_Poster_Image__2000x3000___1_.jpg" />
   </channel>
-  <programme start="20261008000000 +0000" stop="20261008002300 +0000" channel="Baby Shark TV">
-    <title lang="en">Bebefinn</title>
-    <desc lang="en">Baby Finn Learns Something New Everyday with the Funn Family! Here comes another beautiful precious day of Finn, a Baby Shark lover just as our children, and his Family. Enjoy the daily life of the Bebefinn Family filled with joyful songs.</desc>
-    <date>2025</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428156-default_v1.jpg" />
-    <episode-num system="onscreen">S4 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008002300 +0000" stop="20261008004400 +0000" channel="Baby Shark TV">
-    <title lang="en">Bebefinn</title>
-    <desc lang="en">Baby Finn Learns Something New Everyday with the Funn Family! Here comes another beautiful precious day of Finn, a Baby Shark lover just as our children, and his Family. Enjoy the daily life of the Bebefinn Family filled with joyful songs.</desc>
-    <date>2025</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428156-default_v1.jpg" />
-    <episode-num system="onscreen">S4 E3</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008004400 +0000" stop="20261008010900 +0000" channel="Baby Shark TV">
-    <title lang="en">Let’s Cook with Baby Shark</title>
-    <desc lang="en">Cooking fun with Baby Shark Brooklyn Have fun cooking and happy snack time!</desc>
-    <date>2025</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/20474-22522/41932412-default_v1.jpg" />
-    <episode-num system="onscreen">S2 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008010900 +0000" stop="20261008012900 +0000" channel="Baby Shark TV">
-    <title lang="en">Baby Shark Fire and Rescue Play</title>
-    <desc lang="en">Baby Shark Fire Rescue Team, Go! Brave Baby Shark rushes to help friends in danger—anytime, anywhere! Join exciting rescue missions and become a hero firefighter!</desc>
-    <date>2025</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27725-29773/56782394-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008012900 +0000" stop="20261008021300 +0000" channel="Baby Shark TV">
-    <title lang="en">Dance Adventure</title>
-    <desc lang="en">Arrr-! Are you ready for a fun adventure? Come and let's sing and dance together! Arrr-!</desc>
-    <date>2022</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428157-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008021300 +0000" stop="20261008031900 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Songs for Children</title>
-    <sub-title lang="en">Junglebell</sub-title>
-    <desc lang="en">Merry Jungle Christmas from Pinkfong to you!</desc>
-    <date>2020</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
-    <episode-num system="onscreen">S1 E39</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008031900 +0000" stop="20261008035100 +0000" channel="Baby Shark TV">
-    <title lang="en">Farm Animals Songs</title>
-    <desc lang="en">We invite you to Pinkfong Farm full of farm animals! From a fun color game to a number game! Everything is double the fun with farm animals!</desc>
-    <date>2022</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/7263-9311/14874952-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008035100 +0000" stop="20261008042600 +0000" channel="Baby Shark TV">
-    <title lang="en">Bebefinn BEST Songs of The Year</title>
-    <desc lang="en">Mommy, thank you for being there, loving me, putting up with me, listening, your patience, and everything!</desc>
-    <date>2023</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/18125-20173/37120460-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008042600 +0000" stop="20261008044300 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Songs for Children</title>
-    <sub-title lang="en">Pinkfong Play Songs</sub-title>
-    <desc lang="en">Let's sing and dance together with Pinkfong, Hogi and Friends!</desc>
-    <date>2021</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008044300 +0000" stop="20261008051400 +0000" channel="Baby Shark TV">
-    <title lang="en">Baby shark's Transformation</title>
-    <desc lang="en">Let's learn colors and shapes with Baby Shark! You're watching "Baby Shark's Transformation", a super fun story for kids to learn colors.</desc>
-    <date>2022</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428158-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008051400 +0000" stop="20261008060000 +0000" channel="Baby Shark TV">
-    <title lang="en">Dance Adventure</title>
-    <desc lang="en">Arrr-! Are you ready for a fun adventure? Come and let's sing and dance together! Arrr-!</desc>
-    <date>2022</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428157-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008060000 +0000" stop="20261008062400 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Baby Shark Storybook</title>
-    <desc lang="en">Follow the fun-filled story of Shark Family and pick up numbers, colors, and cool ocean facts along the way! Are you ready? Let’s dive into the underwater adventure together!</desc>
-    <date>2025</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27728-29776/56787291-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008062400 +0000" stop="20261008064900 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Baby Shark Storybook</title>
-    <desc lang="en">Follow the fun-filled story of Shark Family and pick up numbers, colors, and cool ocean facts along the way! Are you ready? Let’s dive into the underwater adventure together!</desc>
-    <date>2025</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27728-29776/56787291-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008064900 +0000" stop="20261008072500 +0000" channel="Baby Shark TV">
-    <title lang="en">Bebefinn Animal Yoga</title>
-    <desc lang="en">Yoga class with Bebefinn’s mom! Learn various animal yoga poses and try to imitate these amazing animals!</desc>
-    <date>2023</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27725-29773/56782397-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008072500 +0000" stop="20261008080500 +0000" channel="Baby Shark TV">
-    <title lang="en">Welcome to the Coral Reef</title>
-    <desc lang="en">Welcome to the Coral Reef! Make new friends and enjoy fun rides together. But remember—when playing with others, always follow the important playground rules!</desc>
-    <date>2021</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27725-29773/56782398-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008080500 +0000" stop="20261008083100 +0000" channel="Baby Shark TV">
-    <title lang="en">Here We Dance</title>
-    <desc lang="en">Cheerful dances to best kid’s songs will make you healthy. Work-out and stay healthy!</desc>
-    <date>2022</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/5304-7352/10864086-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E3</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008083100 +0000" stop="20261008085100 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Super Rescue Team</title>
-    <desc lang="en">We Are The Pinkfong's Super Rescue Team! We solve all the problems in the town! Meet Roger the Police Car, Ready the Fire Truck, Forrest the Ambulance, Cloudia the Helicopter. Vroom Vroom, I am the Fire Truck Ready, dreaming of becoming a super-fire car! You're watching "Ready, the Fire Truck's Day", an educational and interactive Super Rescue Team series prepared to you by Pinkfong!</desc>
-    <date>2022</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/13218-15266/27072506-default_v3.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008085100 +0000" stop="20261008090800 +0000" channel="Baby Shark TV">
-    <title lang="en">Shark Family Songs</title>
-    <sub-title lang="en">Shark Family Songs Ep1</sub-title>
-    <desc lang="en">Get ready for excitement! Sing along with the Shark Family and dive into a world of colorful playtime fun. Turn kids' favorite games into catchy musical adventures! What fun game will we play with the Shark Family today?</desc>
-    <date>2026</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27755-29803/56842306-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008090800 +0000" stop="20261008093400 +0000" channel="Baby Shark TV">
-    <title lang="en">Ninimo Latin Pop Songs</title>
-    <desc lang="en">Sing and dance along with Ninimo to the upbeat rhythms of Latin pop! ¡Vamos!</desc>
-    <date>2026</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27755-29803/56842316-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008093400 +0000" stop="20261008095900 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Wonderstar</title>
-    <desc lang="en">Codi decides to make a Bumbleberry Pie for sad Rachel. But...what is Bumbleberry? What does it look like? We heard that it's amazingly delicious…   Coco's poetry went missing! With the help of Wonderstar, Coco finds the whereabouts of the disappeared manuscripts. Wait...is that Pat the goat, who is eating paper...? Would Pat be the culprit?</desc>
-    <date>2020</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/5304-7352/10864085-default_v3.jpg" />
-    <episode-num system="onscreen">S1 E5</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008095900 +0000" stop="20261008102500 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Wonderstar</title>
-    <desc lang="en">Pinkfong and Hogi are invited to a dance party. Pinkfong is super excited but Hogi is so nervous.The night has come and a suspicious sound comes out from Wonderstar's house! Catch the thief! What? It's Hogi practicing dance!   Wonderville is in danger! Pinkfong and Hogi figure out that there was something wrong with Poki's pancake machine. Stop it before the whole village is covered with pancakes!</desc>
-    <date>2020</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/5304-7352/10864085-default_v3.jpg" />
-    <episode-num system="onscreen">S1 E6</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008102500 +0000" stop="20261008104700 +0000" channel="Baby Shark TV">
-    <title lang="en">Hogi's Hospital Play</title>
-    <desc lang="en">Wonder Star friends are sick! Join Hogi and Forest as they become doctors and heal their friends!</desc>
-    <date>2026</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27113-29161/55527617-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E3</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008104700 +0000" stop="20261008111800 +0000" channel="Baby Shark TV">
-    <title lang="en">Sing Along with the Dinolings 2</title>
-    <desc lang="en">Let's sing along to the nursery rhymes from ! Pinkfong Dinolings is back for Season 2 with a brand-new friend, Anca! A colorful new adventure begins as our rainbow-themed little dinos welcome their new buddy. Get ready for a wild and wacky ride as they try to put a bell on the fierce Carnotaurus’s horn and chase after a runaway dino egg! What exciting fun awaits the Dinolings tomorrow? Let’s find out!</desc>
-    <date>2025</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27755-29803/56842318-default_v1.jpg" />
-    <episode-num system="onscreen">S2 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008111800 +0000" stop="20261008115200 +0000" channel="Baby Shark TV">
-    <title lang="en">Sing Along with the Dinolings 2</title>
-    <desc lang="en">Let's sing along to the nursery rhymes from ! Pinkfong Dinolings is back for Season 2 with a brand-new friend, Anca! A colorful new adventure begins as our rainbow-themed little dinos welcome their new buddy. Get ready for a wild and wacky ride as they try to put a bell on the fierce Carnotaurus’s horn and chase after a runaway dino egg! What exciting fun awaits the Dinolings tomorrow? Let’s find out!</desc>
-    <date>2026</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27755-29803/56842318-default_v1.jpg" />
-    <episode-num system="onscreen">S2 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008115200 +0000" stop="20261008121300 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Dinolings</title>
-    <desc lang="en">Pinkfong Dinolings is back for Season 2 with a brand-new friend, Anca! A colorful new adventure begins as our rainbow-themed little dinos welcome their new buddy. Get ready for a wild and wacky ride as they try to put a bell on the fierce Carnotaurus’s horn and chase after a runaway dino egg! What exciting fun awaits the Dinolings tomorrow? Let’s find out!</desc>
-    <date>2026</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27750-29798/56832692-default_v1.jpg" />
-    <episode-num system="onscreen">S2 E1</episode-num>
-    <rating system="US">
-      <value>TV-G</value>
-    </rating>
-  </programme>
-  <programme start="20261008121300 +0000" stop="20261008123400 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Dinolings</title>
-    <desc lang="en">Pinkfong Dinolings is back for Season 2 with a brand-new friend, Anca! A colorful new adventure begins as our rainbow-themed little dinos welcome their new buddy. Get ready for a wild and wacky ride as they try to put a bell on the fierce Carnotaurus’s horn and chase after a runaway dino egg! What exciting fun awaits the Dinolings tomorrow? Let’s find out!</desc>
-    <date>2026</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27750-29798/56832692-default_v1.jpg" />
-    <episode-num system="onscreen">S2 E2</episode-num>
-    <rating system="US">
-      <value>TV-G</value>
-    </rating>
-  </programme>
-  <programme start="20261008123400 +0000" stop="20261008132000 +0000" channel="Baby Shark TV">
-    <title lang="en">Ambulance Rescue Special</title>
-    <desc lang="en">We Are The Pinkfong's Super Rescue Team! We solve all the problems in the town!</desc>
-    <date>2021</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/19166-21214/39251976-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008132000 +0000" stop="20261008135000 +0000" channel="Baby Shark TV">
-    <title lang="en">Dance with Pinkfong</title>
-    <desc lang="en">You are watching "Dance with Pinkfong!", a super fun nursery rhyme created by Pinkfong. Everybody! Let's sing with Pinkfong.</desc>
-    <date>2019</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/2300-4348/Dance-with-Pinkfong-default_v1.png" />
-    <episode-num system="onscreen">S1 E3</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008135000 +0000" stop="20261008140800 +0000" channel="Baby Shark TV">
-    <title lang="en">Super Safeguard Sammy</title>
-    <desc lang="en">Help me, Sammy!' Our hero Sammy is here to rescue friends in need! Explore safety tips through lively rhymes and engaging games. Let’s get started!</desc>
-    <date>2025</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27714-29762/56760039-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008140800 +0000" stop="20261008143900 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Halloween Songs</title>
-    <desc lang="en">Boo hoo! Let's celebrate Halloween! From zombies, ghosts, mummies, your favorite monsters are ALL HERE.</desc>
-    <date>2025</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/19897-21945/40749081-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E4</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008143900 +0000" stop="20261008150300 +0000" channel="Baby Shark TV">
-    <title lang="en">Baby Shark Stole My Heart Again!</title>
-    <desc lang="en">Baby Shark, the sparkling superstar of the universe! Thanks for loving us for 10 years—are you ready for even more songs and dances?</desc>
-    <date>2025</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27735-29783/56801377-default_v1.jpg" />
-    <episode-num system="onscreen">S0 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008150300 +0000" stop="20261008160700 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Songs for Children</title>
-    <sub-title lang="en">Let's Sing with Pinkfong</sub-title>
-    <desc lang="en">Everybody! Let's sing and dance with us!</desc>
-    <date>2020</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
-    <episode-num system="onscreen">S1 E20</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008160700 +0000" stop="20261008164200 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong's DIY Guide</title>
-    <sub-title lang="en">Pinkfong Clay Animals</sub-title>
-    <desc lang="en">An easy guide to make animal friends with squishy clay.</desc>
-    <date>2019</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1689-3737/Pinkfong-s-DIY-Guide-default_v2.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008164200 +0000" stop="20261008171500 +0000" channel="Baby Shark TV">
-    <title lang="en">Have You Seen My Siren</title>
-    <desc lang="en">The siren is gone! Have you seen the police car's siren? Where did it go?</desc>
-    <date>2021</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/17957-20005/36777092-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008171500 +0000" stop="20261008173500 +0000" channel="Baby Shark TV">
-    <title lang="en">Bebefinn</title>
-    <desc lang="en">Baby Finn Learns Something New Everyday with the Funn Family! Here comes another beautiful precious day of Finn, a Baby Shark lover just as our children, and his Family. Enjoy the daily life of the Bebefinn Family filled with joyful songs.</desc>
-    <date>2023</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428156-default_v1.jpg" />
-    <episode-num system="onscreen">S2 E9</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008173500 +0000" stop="20261008175800 +0000" channel="Baby Shark TV">
-    <title lang="en">Bebefinn</title>
-    <sub-title lang="en">Epsiode 10</sub-title>
-    <desc lang="en">Baby Finn Learns Something New Everyday with the Funn Family! Here comes another beautiful precious day of Finn, a Baby Shark lover just as our children, and his Family. Enjoy the daily life of the Bebefinn Family filled with joyful songs.</desc>
-    <date>2023</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428156-default_v1.jpg" />
-    <episode-num system="onscreen">S2 E10</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008175800 +0000" stop="20261008183600 +0000" channel="Baby Shark TV">
-    <title lang="en">Doctor Baby Shark The Great Pearl Emergency!</title>
-    <desc lang="en">Doctor Baby Shark is on the way! Wee-woo, wee-woo—no emergency is too big for Doctor Baby Shark to handle! With our favorite doctor on duty, the town is safe and sound once again.</desc>
-    <date>2026</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27755-29803/56842317-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008183600 +0000" stop="20261008190700 +0000" channel="Baby Shark TV">
-    <title lang="en">Doctor Baby Shark The Great Pearl Emergency!</title>
-    <desc lang="en">Doctor Baby Shark is on the way! Wee-woo, wee-woo—no emergency is too big for Doctor Baby Shark to handle! With our favorite doctor on duty, the town is safe and sound once again.</desc>
-    <date>2026</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27755-29803/56842317-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008190700 +0000" stop="20261008193200 +0000" channel="Baby Shark TV">
-    <title lang="en">Baby Shark Brooklyn</title>
-    <desc lang="en">Baby Shark Brooklyn's adventure under the sea! 1. Our New Home Sweet Home! 2. Scrub-a-dub-dub Bath Time.</desc>
-    <date>2020</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1421-3469/Baby-Shark-Brooklyn-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008193200 +0000" stop="20261008195600 +0000" channel="Baby Shark TV">
-    <title lang="en">Baby Shark Brooklyn</title>
-    <desc lang="en">Baby Shark Brooklyn's adventure under the sea! 3. Shipwreck Scare! 4. The Marvelous Milo!</desc>
-    <date>2020</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1421-3469/Baby-Shark-Brooklyn-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008195600 +0000" stop="20261008202500 +0000" channel="Baby Shark TV">
-    <title lang="en">I Want to Play with Baby Shark</title>
-    <desc lang="en">It's time to play with Baby Shark! What kind of games do you want to play?</desc>
-    <date>2021</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27721-29769/56774111-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008202500 +0000" stop="20261008205200 +0000" channel="Baby Shark TV">
-    <title lang="en">I Want to Play with Baby Shark</title>
-    <desc lang="en">It's time to play with Baby Shark! What kind of games do you want to play?</desc>
-    <date>2025</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27721-29769/56774111-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008205200 +0000" stop="20261008211100 +0000" channel="Baby Shark TV">
-    <title lang="en">Bebefinn</title>
-    <desc lang="en">Baby Finn Learns Something New Everyday with the Funn Family! Here comes another beautiful precious day of Finn, a Baby Shark lover just as our children, and his Family. Enjoy the daily life of the Bebefinn Family filled with joyful songs.</desc>
-    <date>2022</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428156-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E9</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008211100 +0000" stop="20261008213000 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Songs for Children</title>
-    <sub-title lang="en">Everyday Items Songs</sub-title>
-    <desc lang="en">Shall we learn how to apply and use life tools safely with Pinkfong? Fashionable pencil master, marching mask, elegant ballet teacher, reliable medicine ranger, stylish scissors butler, and even cute spoons and forks! With tools friends, anyone can learn in a fun and easy way!</desc>
-    <date>2022</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
-    <episode-num system="onscreen">S1 E36</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008213000 +0000" stop="20261008223600 +0000" channel="Baby Shark TV">
-    <title lang="en">Police Car Song and more</title>
-    <desc lang="en">Watch brave Police Car saving the day! You're watching "Police Car Rescue Team Special", a fun and exciting Police Car Songs &amp; Story compilation presented by Pinkfong!</desc>
-    <date>2020</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/17152-19200/35127674-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008223600 +0000" stop="20261008225300 +0000" channel="Baby Shark TV">
-    <title lang="en">Let's Dance Along together!</title>
-    <desc lang="en">I’ve got the rhythm in my elbows. Elbows! I’ve got the rhythm in my knees. Knees! I’ve got the rhythm in my feet. Stomp, stomp! Feet! I’ve got the rhythm in my eyes!</desc>
-    <date>2021</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/17945-19993/36752263-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008225300 +0000" stop="20261008231200 +0000" channel="Baby Shark TV">
-    <title lang="en">The Way Bebefinn Learns</title>
-    <desc lang="en">Bebefinn~ Wake up! It's morning! What should we do when we wake up in the morning? Let's learn with Bebefinn!</desc>
-    <date>2022</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27723-29771/56776970-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261008231200 +0000" stop="20261009000000 +0000" channel="Baby Shark TV">
-    <title lang="en">Bebefinn Let's Have Fun Bubble Bath</title>
-    <desc lang="en">Let's have a fun bath time together Wash, wash, wash your hair. Shampoo, shampoo. Rub, rub, rub your head. Use your fingers. Rinse away, squeaky clean. Look at my new hairstyle! Let's rub your hair clean.</desc>
-    <date>2022</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/23599-25647/48331669-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
   <programme start="20261009000000 +0000" stop="20261009002100 +0000" channel="Baby Shark TV">
     <title lang="en">Pinkfong Classical Music with Danny</title>
     <desc lang="en">Pinkfong and Baby Shark learns classical music with Danny Koo, a renowned violinist.</desc>
@@ -21880,6 +21345,17 @@
       <value>TV-Y</value>
     </rating>
   </programme>
+  <programme start="20261011225100 +0000" stop="20261011234000 +0000" channel="Baby Shark TV">
+    <title lang="en">Stay Safe and Healthy with Pinkfong</title>
+    <desc lang="en">Stay safe &amp; healthy with Pinkfong Safety Rangers!</desc>
+    <date>2020</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/17142-19190/35108086-default_v2.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
   <programme start="20261011234000 +0000" stop="20261012000000 +0000" channel="Baby Shark TV">
     <title lang="en">Baby Shark Toy Car Project</title>
     <desc lang="en">Welcome to Baby Shark Car Mechanic! You're watching "How to Make Baby Shark Car? ", an educational and interactive series prepared for you by Pinkfong!</desc>
@@ -21887,6 +21363,530 @@
     <category lang="en">Kids + Family</category>
     <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/20474-22522/41932414-default_v1.jpg" />
     <episode-num system="onscreen">S1 E4</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012000000 +0000" stop="20261012002300 +0000" channel="Baby Shark TV">
+    <title lang="en">Bebefinn</title>
+    <desc lang="en">Baby Finn Learns Something New Everyday with the Funn Family! Here comes another beautiful precious day of Finn, a Baby Shark lover just as our children, and his Family. Enjoy the daily life of the Bebefinn Family filled with joyful songs.</desc>
+    <date>2025</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428156-default_v1.jpg" />
+    <episode-num system="onscreen">S4 E2</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012002300 +0000" stop="20261012004400 +0000" channel="Baby Shark TV">
+    <title lang="en">Bebefinn</title>
+    <desc lang="en">Baby Finn Learns Something New Everyday with the Funn Family! Here comes another beautiful precious day of Finn, a Baby Shark lover just as our children, and his Family. Enjoy the daily life of the Bebefinn Family filled with joyful songs.</desc>
+    <date>2025</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428156-default_v1.jpg" />
+    <episode-num system="onscreen">S4 E3</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012004400 +0000" stop="20261012010900 +0000" channel="Baby Shark TV">
+    <title lang="en">Let’s Cook with Baby Shark</title>
+    <desc lang="en">Cooking fun with Baby Shark Brooklyn Have fun cooking and happy snack time!</desc>
+    <date>2025</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/20474-22522/41932412-default_v1.jpg" />
+    <episode-num system="onscreen">S2 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012010900 +0000" stop="20261012012900 +0000" channel="Baby Shark TV">
+    <title lang="en">Baby Shark Fire and Rescue Play</title>
+    <desc lang="en">Baby Shark Fire Rescue Team, Go! Brave Baby Shark rushes to help friends in danger—anytime, anywhere! Join exciting rescue missions and become a hero firefighter!</desc>
+    <date>2025</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27725-29773/56782394-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E2</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012012900 +0000" stop="20261012021300 +0000" channel="Baby Shark TV">
+    <title lang="en">Dance Adventure</title>
+    <desc lang="en">Arrr-! Are you ready for a fun adventure? Come and let's sing and dance together! Arrr-!</desc>
+    <date>2022</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428157-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012021300 +0000" stop="20261012031900 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Songs for Children</title>
+    <sub-title lang="en">Junglebell</sub-title>
+    <desc lang="en">Merry Jungle Christmas from Pinkfong to you!</desc>
+    <date>2020</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
+    <episode-num system="onscreen">S1 E39</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012031900 +0000" stop="20261012035100 +0000" channel="Baby Shark TV">
+    <title lang="en">Farm Animals Songs</title>
+    <desc lang="en">We invite you to Pinkfong Farm full of farm animals! From a fun color game to a number game! Everything is double the fun with farm animals!</desc>
+    <date>2022</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/7263-9311/14874952-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012035100 +0000" stop="20261012042600 +0000" channel="Baby Shark TV">
+    <title lang="en">Bebefinn BEST Songs of The Year</title>
+    <desc lang="en">Mommy, thank you for being there, loving me, putting up with me, listening, your patience, and everything!</desc>
+    <date>2023</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/18125-20173/37120460-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012042600 +0000" stop="20261012044300 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Songs for Children</title>
+    <sub-title lang="en">Pinkfong Play Songs</sub-title>
+    <desc lang="en">Let's sing and dance together with Pinkfong, Hogi and Friends!</desc>
+    <date>2021</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012044300 +0000" stop="20261012051400 +0000" channel="Baby Shark TV">
+    <title lang="en">Baby shark's Transformation</title>
+    <desc lang="en">Let's learn colors and shapes with Baby Shark! You're watching "Baby Shark's Transformation", a super fun story for kids to learn colors.</desc>
+    <date>2022</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428158-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E2</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012051400 +0000" stop="20261012060000 +0000" channel="Baby Shark TV">
+    <title lang="en">Dance Adventure</title>
+    <desc lang="en">Arrr-! Are you ready for a fun adventure? Come and let's sing and dance together! Arrr-!</desc>
+    <date>2022</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428157-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E2</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012060000 +0000" stop="20261012062400 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Baby Shark Storybook</title>
+    <desc lang="en">Follow the fun-filled story of Shark Family and pick up numbers, colors, and cool ocean facts along the way! Are you ready? Let’s dive into the underwater adventure together!</desc>
+    <date>2025</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27728-29776/56787291-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012062400 +0000" stop="20261012064900 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Baby Shark Storybook</title>
+    <desc lang="en">Follow the fun-filled story of Shark Family and pick up numbers, colors, and cool ocean facts along the way! Are you ready? Let’s dive into the underwater adventure together!</desc>
+    <date>2025</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27728-29776/56787291-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E2</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012064900 +0000" stop="20261012072500 +0000" channel="Baby Shark TV">
+    <title lang="en">Bebefinn Animal Yoga</title>
+    <desc lang="en">Yoga class with Bebefinn’s mom! Learn various animal yoga poses and try to imitate these amazing animals!</desc>
+    <date>2023</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27725-29773/56782397-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012072500 +0000" stop="20261012080500 +0000" channel="Baby Shark TV">
+    <title lang="en">Welcome to the Coral Reef</title>
+    <desc lang="en">Welcome to the Coral Reef! Make new friends and enjoy fun rides together. But remember—when playing with others, always follow the important playground rules!</desc>
+    <date>2021</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27725-29773/56782398-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012080500 +0000" stop="20261012083100 +0000" channel="Baby Shark TV">
+    <title lang="en">Here We Dance</title>
+    <desc lang="en">Cheerful dances to best kid’s songs will make you healthy. Work-out and stay healthy!</desc>
+    <date>2022</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/5304-7352/10864086-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E3</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012083100 +0000" stop="20261012085100 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Super Rescue Team</title>
+    <desc lang="en">We Are The Pinkfong's Super Rescue Team! We solve all the problems in the town! Meet Roger the Police Car, Ready the Fire Truck, Forrest the Ambulance, Cloudia the Helicopter. Vroom Vroom, I am the Fire Truck Ready, dreaming of becoming a super-fire car! You're watching "Ready, the Fire Truck's Day", an educational and interactive Super Rescue Team series prepared to you by Pinkfong!</desc>
+    <date>2022</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/13218-15266/27072506-default_v3.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012085100 +0000" stop="20261012090800 +0000" channel="Baby Shark TV">
+    <title lang="en">Shark Family Songs</title>
+    <sub-title lang="en">Shark Family Songs Ep1</sub-title>
+    <desc lang="en">Get ready for excitement! Sing along with the Shark Family and dive into a world of colorful playtime fun. Turn kids' favorite games into catchy musical adventures! What fun game will we play with the Shark Family today?</desc>
+    <date>2026</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27755-29803/56842306-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012090800 +0000" stop="20261012093400 +0000" channel="Baby Shark TV">
+    <title lang="en">Ninimo Latin Pop Songs</title>
+    <desc lang="en">Sing and dance along with Ninimo to the upbeat rhythms of Latin pop! ¡Vamos!</desc>
+    <date>2026</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27755-29803/56842316-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012093400 +0000" stop="20261012095900 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Wonderstar</title>
+    <desc lang="en">Codi decides to make a Bumbleberry Pie for sad Rachel. But...what is Bumbleberry? What does it look like? We heard that it's amazingly delicious…   Coco's poetry went missing! With the help of Wonderstar, Coco finds the whereabouts of the disappeared manuscripts. Wait...is that Pat the goat, who is eating paper...? Would Pat be the culprit?</desc>
+    <date>2020</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/5304-7352/10864085-default_v3.jpg" />
+    <episode-num system="onscreen">S1 E5</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012095900 +0000" stop="20261012102500 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Wonderstar</title>
+    <desc lang="en">Pinkfong and Hogi are invited to a dance party. Pinkfong is super excited but Hogi is so nervous.The night has come and a suspicious sound comes out from Wonderstar's house! Catch the thief! What? It's Hogi practicing dance!   Wonderville is in danger! Pinkfong and Hogi figure out that there was something wrong with Poki's pancake machine. Stop it before the whole village is covered with pancakes!</desc>
+    <date>2020</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/5304-7352/10864085-default_v3.jpg" />
+    <episode-num system="onscreen">S1 E6</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012102500 +0000" stop="20261012104700 +0000" channel="Baby Shark TV">
+    <title lang="en">Hogi's Hospital Play</title>
+    <desc lang="en">Wonder Star friends are sick! Join Hogi and Forest as they become doctors and heal their friends!</desc>
+    <date>2026</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27113-29161/55527617-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E3</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012104700 +0000" stop="20261012111800 +0000" channel="Baby Shark TV">
+    <title lang="en">Sing Along with the Dinolings 2</title>
+    <desc lang="en">Let's sing along to the nursery rhymes from ! Pinkfong Dinolings is back for Season 2 with a brand-new friend, Anca! A colorful new adventure begins as our rainbow-themed little dinos welcome their new buddy. Get ready for a wild and wacky ride as they try to put a bell on the fierce Carnotaurus’s horn and chase after a runaway dino egg! What exciting fun awaits the Dinolings tomorrow? Let’s find out!</desc>
+    <date>2025</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27755-29803/56842318-default_v1.jpg" />
+    <episode-num system="onscreen">S2 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012111800 +0000" stop="20261012115200 +0000" channel="Baby Shark TV">
+    <title lang="en">Sing Along with the Dinolings 2</title>
+    <desc lang="en">Let's sing along to the nursery rhymes from ! Pinkfong Dinolings is back for Season 2 with a brand-new friend, Anca! A colorful new adventure begins as our rainbow-themed little dinos welcome their new buddy. Get ready for a wild and wacky ride as they try to put a bell on the fierce Carnotaurus’s horn and chase after a runaway dino egg! What exciting fun awaits the Dinolings tomorrow? Let’s find out!</desc>
+    <date>2026</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27755-29803/56842318-default_v1.jpg" />
+    <episode-num system="onscreen">S2 E2</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012115200 +0000" stop="20261012121300 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Dinolings</title>
+    <desc lang="en">Pinkfong Dinolings is back for Season 2 with a brand-new friend, Anca! A colorful new adventure begins as our rainbow-themed little dinos welcome their new buddy. Get ready for a wild and wacky ride as they try to put a bell on the fierce Carnotaurus’s horn and chase after a runaway dino egg! What exciting fun awaits the Dinolings tomorrow? Let’s find out!</desc>
+    <date>2026</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27750-29798/56832692-default_v1.jpg" />
+    <episode-num system="onscreen">S2 E1</episode-num>
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20261012121300 +0000" stop="20261012123400 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Dinolings</title>
+    <desc lang="en">Pinkfong Dinolings is back for Season 2 with a brand-new friend, Anca! A colorful new adventure begins as our rainbow-themed little dinos welcome their new buddy. Get ready for a wild and wacky ride as they try to put a bell on the fierce Carnotaurus’s horn and chase after a runaway dino egg! What exciting fun awaits the Dinolings tomorrow? Let’s find out!</desc>
+    <date>2026</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27750-29798/56832692-default_v1.jpg" />
+    <episode-num system="onscreen">S2 E2</episode-num>
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20261012123400 +0000" stop="20261012132000 +0000" channel="Baby Shark TV">
+    <title lang="en">Ambulance Rescue Special</title>
+    <desc lang="en">We Are The Pinkfong's Super Rescue Team! We solve all the problems in the town!</desc>
+    <date>2021</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/19166-21214/39251976-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012132000 +0000" stop="20261012135000 +0000" channel="Baby Shark TV">
+    <title lang="en">Dance with Pinkfong</title>
+    <desc lang="en">You are watching "Dance with Pinkfong!", a super fun nursery rhyme created by Pinkfong. Everybody! Let's sing with Pinkfong.</desc>
+    <date>2019</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/2300-4348/Dance-with-Pinkfong-default_v1.png" />
+    <episode-num system="onscreen">S1 E3</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012135000 +0000" stop="20261012140800 +0000" channel="Baby Shark TV">
+    <title lang="en">Super Safeguard Sammy</title>
+    <desc lang="en">Help me, Sammy!' Our hero Sammy is here to rescue friends in need! Explore safety tips through lively rhymes and engaging games. Let’s get started!</desc>
+    <date>2025</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27714-29762/56760039-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E2</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012140800 +0000" stop="20261012143900 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Halloween Songs</title>
+    <desc lang="en">Boo hoo! Let's celebrate Halloween! From zombies, ghosts, mummies, your favorite monsters are ALL HERE.</desc>
+    <date>2025</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/19897-21945/40749081-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E4</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012143900 +0000" stop="20261012150300 +0000" channel="Baby Shark TV">
+    <title lang="en">Baby Shark Stole My Heart Again!</title>
+    <desc lang="en">Baby Shark, the sparkling superstar of the universe! Thanks for loving us for 10 years—are you ready for even more songs and dances?</desc>
+    <date>2025</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27735-29783/56801377-default_v1.jpg" />
+    <episode-num system="onscreen">S0 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012150300 +0000" stop="20261012160700 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Songs for Children</title>
+    <sub-title lang="en">Let's Sing with Pinkfong</sub-title>
+    <desc lang="en">Everybody! Let's sing and dance with us!</desc>
+    <date>2020</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
+    <episode-num system="onscreen">S1 E20</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012160700 +0000" stop="20261012164200 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong's DIY Guide</title>
+    <sub-title lang="en">Pinkfong Clay Animals</sub-title>
+    <desc lang="en">An easy guide to make animal friends with squishy clay.</desc>
+    <date>2019</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1689-3737/Pinkfong-s-DIY-Guide-default_v2.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012164200 +0000" stop="20261012171500 +0000" channel="Baby Shark TV">
+    <title lang="en">Have You Seen My Siren</title>
+    <desc lang="en">The siren is gone! Have you seen the police car's siren? Where did it go?</desc>
+    <date>2021</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/17957-20005/36777092-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012171500 +0000" stop="20261012173500 +0000" channel="Baby Shark TV">
+    <title lang="en">Bebefinn</title>
+    <desc lang="en">Baby Finn Learns Something New Everyday with the Funn Family! Here comes another beautiful precious day of Finn, a Baby Shark lover just as our children, and his Family. Enjoy the daily life of the Bebefinn Family filled with joyful songs.</desc>
+    <date>2023</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428156-default_v1.jpg" />
+    <episode-num system="onscreen">S2 E9</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012173500 +0000" stop="20261012175800 +0000" channel="Baby Shark TV">
+    <title lang="en">Bebefinn</title>
+    <sub-title lang="en">Epsiode 10</sub-title>
+    <desc lang="en">Baby Finn Learns Something New Everyday with the Funn Family! Here comes another beautiful precious day of Finn, a Baby Shark lover just as our children, and his Family. Enjoy the daily life of the Bebefinn Family filled with joyful songs.</desc>
+    <date>2023</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428156-default_v1.jpg" />
+    <episode-num system="onscreen">S2 E10</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012175800 +0000" stop="20261012183600 +0000" channel="Baby Shark TV">
+    <title lang="en">Doctor Baby Shark The Great Pearl Emergency!</title>
+    <desc lang="en">Doctor Baby Shark is on the way! Wee-woo, wee-woo—no emergency is too big for Doctor Baby Shark to handle! With our favorite doctor on duty, the town is safe and sound once again.</desc>
+    <date>2026</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27755-29803/56842317-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012183600 +0000" stop="20261012190700 +0000" channel="Baby Shark TV">
+    <title lang="en">Doctor Baby Shark The Great Pearl Emergency!</title>
+    <desc lang="en">Doctor Baby Shark is on the way! Wee-woo, wee-woo—no emergency is too big for Doctor Baby Shark to handle! With our favorite doctor on duty, the town is safe and sound once again.</desc>
+    <date>2026</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27755-29803/56842317-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E2</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012190700 +0000" stop="20261012193200 +0000" channel="Baby Shark TV">
+    <title lang="en">Baby Shark Brooklyn</title>
+    <desc lang="en">Baby Shark Brooklyn's adventure under the sea! 1. Our New Home Sweet Home! 2. Scrub-a-dub-dub Bath Time.</desc>
+    <date>2020</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1421-3469/Baby-Shark-Brooklyn-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012193200 +0000" stop="20261012195600 +0000" channel="Baby Shark TV">
+    <title lang="en">Baby Shark Brooklyn</title>
+    <desc lang="en">Baby Shark Brooklyn's adventure under the sea! 3. Shipwreck Scare! 4. The Marvelous Milo!</desc>
+    <date>2020</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1421-3469/Baby-Shark-Brooklyn-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E2</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012195600 +0000" stop="20261012202500 +0000" channel="Baby Shark TV">
+    <title lang="en">I Want to Play with Baby Shark</title>
+    <desc lang="en">It's time to play with Baby Shark! What kind of games do you want to play?</desc>
+    <date>2021</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27721-29769/56774111-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012202500 +0000" stop="20261012205200 +0000" channel="Baby Shark TV">
+    <title lang="en">I Want to Play with Baby Shark</title>
+    <desc lang="en">It's time to play with Baby Shark! What kind of games do you want to play?</desc>
+    <date>2025</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27721-29769/56774111-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E2</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012205200 +0000" stop="20261012211100 +0000" channel="Baby Shark TV">
+    <title lang="en">Bebefinn</title>
+    <desc lang="en">Baby Finn Learns Something New Everyday with the Funn Family! Here comes another beautiful precious day of Finn, a Baby Shark lover just as our children, and his Family. Enjoy the daily life of the Bebefinn Family filled with joyful songs.</desc>
+    <date>2022</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428156-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E9</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012211100 +0000" stop="20261012213000 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Songs for Children</title>
+    <sub-title lang="en">Everyday Items Songs</sub-title>
+    <desc lang="en">Shall we learn how to apply and use life tools safely with Pinkfong? Fashionable pencil master, marching mask, elegant ballet teacher, reliable medicine ranger, stylish scissors butler, and even cute spoons and forks! With tools friends, anyone can learn in a fun and easy way!</desc>
+    <date>2022</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
+    <episode-num system="onscreen">S1 E36</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012213000 +0000" stop="20261012223600 +0000" channel="Baby Shark TV">
+    <title lang="en">Police Car Song and more</title>
+    <desc lang="en">Watch brave Police Car saving the day! You're watching "Police Car Rescue Team Special", a fun and exciting Police Car Songs &amp; Story compilation presented by Pinkfong!</desc>
+    <date>2020</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/17152-19200/35127674-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012223600 +0000" stop="20261012225300 +0000" channel="Baby Shark TV">
+    <title lang="en">Let's Dance Along together!</title>
+    <desc lang="en">I’ve got the rhythm in my elbows. Elbows! I’ve got the rhythm in my knees. Knees! I’ve got the rhythm in my feet. Stomp, stomp! Feet! I’ve got the rhythm in my eyes!</desc>
+    <date>2021</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/17945-19993/36752263-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261012225300 +0000" stop="20261012231200 +0000" channel="Baby Shark TV">
+    <title lang="en">The Way Bebefinn Learns</title>
+    <desc lang="en">Bebefinn~ Wake up! It's morning! What should we do when we wake up in the morning? Let's learn with Bebefinn!</desc>
+    <date>2022</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27723-29771/56776970-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
     <rating system="US">
       <value>TV-Y</value>
     </rating>
