@@ -4,601 +4,6 @@
     <display-name>CBeebies</display-name>
     <icon src="https://d2n0069hmnqmmx.cloudfront.net/epgdata/1.0/newchanlogos/80/35/skychb2088.png" />
   </channel>
-  <programme channel="CBeebies" start="20261010043000 +0000" stop="20261010050000 +0000">
-    <title lang="en">This Is CBeebies</title>
-    <desc lang="en">This Is CBeebies. Programmes start at 6.00am.</desc>
-  </programme>
-  <programme channel="CBeebies" start="20261010050000 +0000" stop="20261010051000 +0000">
-    <title lang="en">Baby Jake</title>
-    <sub-title lang="en">Baby Jake Loves Tummy Sliding</sub-title>
-    <desc lang="en">The adventures of magical Baby Jake and friends. Baby Jake and Pengy Quin go on a snowy adventure and play tummy sliding.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/aa355fb7-34db-4cc7-af3f-2f872fe42602/16-9" />
-    <episode-num system="xmltv_ns">0.2.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010051000 +0000" stop="20261010052000 +0000">
-    <title lang="en">Bing</title>
-    <sub-title lang="en">Here I Go</sub-title>
-    <desc lang="en">Children's animation series. Bing and Pando discover a new climbing frame at the playground. But when Bing gets to the top of the slide, it's too scary for him to go down.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/c3cb5535-6962-4d79-8ae9-80ec597957cd/16-9" />
-    <episode-num system="xmltv_ns">0.11.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010052000 +0000" stop="20261010052500 +0000">
-    <title lang="en">Tralala</title>
-    <sub-title lang="en">Bedtime Story</sub-title>
-    <desc lang="en">Tralala wants someone to read her to sleep, but everyone keeps nodding off.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/3efc86f6-be07-4f68-9983-a64dc528d7b7/16-9" />
-    <episode-num system="xmltv_ns">0.0.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010052500 +0000" stop="20261010053000 +0000">
-    <title lang="en">Small Potatoes</title>
-    <sub-title lang="en">Chip's Theme</sub-title>
-    <desc lang="en">Animated series about a group of singing potatoes. Chip sings a heartfelt song about being a potato. Though he can't do many physical things, he is proud of who he is.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/34c2edd6-3075-44cf-bb7e-6cd51f93ba0e/16-9" />
-    <episode-num system="xmltv_ns">0.1.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010053000 +0000" stop="20261010054500 +0000">
-    <title lang="en">Piggy Builders</title>
-    <sub-title lang="en">Prodigious Pumpkin</sub-title>
-    <desc lang="en">The Piggies help Fiona move her giant pumpkin.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/64e0cd31-2306-4825-b7a8-a3fb08613314/16-9" />
-    <episode-num system="xmltv_ns">0.6.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010054500 +0000" stop="20261010055000 +0000">
-    <title lang="en">Roots and Fruits</title>
-    <sub-title lang="en">Raspberry</sub-title>
-    <desc lang="en">Live from the Roots and Fruits theatre, it's Raspberry performing It's Cool to Be Kind.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/7da2dd1d-e4c6-4e2b-8314-40bed1606080/16-9" />
-    <episode-num system="xmltv_ns">0.12.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010055000 +0000" stop="20261010060000 +0000">
-    <title lang="en">Mojo Swoptops</title>
-    <sub-title lang="en">Got Your Goat</sub-title>
-    <desc lang="en">How hard can it be to pick one plant at the top of a mountain with Mojo's chopper top? Pretty hard when there's a hungry goat who wants that plant even more than they do.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/4e5f3dcf-0b4f-304c-9616-bae270a8177c/16-9" />
-    <episode-num system="xmltv_ns">0.2.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010060000 +0000" stop="20261010061000 +0000">
-    <title lang="en">Chuggington</title>
-    <sub-title lang="en">Odd Train Out</sub-title>
-    <desc lang="en">Zephie, Wilson and Brewster compete to be Koko's partner in a relay race.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/f31498ac-8578-4875-802e-b2785560994a/16-9" />
-    <episode-num system="xmltv_ns">5.18.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010061000 +0000" stop="20261010062000 +0000">
-    <title lang="en">Supertato</title>
-    <sub-title lang="en">Corn's Mutiny</sub-title>
-    <desc lang="en">When Evil Pea gets frozen in ice, Corn decides to take over and become Evil Corn.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/c520f7a4-77de-4ab0-9c43-1a629e4df777/16-9" />
-    <episode-num system="xmltv_ns">3.20.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010062000 +0000" stop="20261010062500 +0000">
-    <title lang="en">Bing</title>
-    <sub-title lang="en">Musical Statues</sub-title>
-    <desc lang="en">Children's animation series. Bing gets to choose the game at Amma's creche, so he picks musical statues. He thinks this means that he will win for sure.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/334d138a-ee59-496a-921a-29c454925871/16-9" />
-    <episode-num system="xmltv_ns">0.9.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010062500 +0000" stop="20261010063500 +0000">
-    <title lang="en">Bing</title>
-    <sub-title lang="en">Fire Engine</sub-title>
-    <desc lang="en">Bing doesn't get to sit in the fire engine but later gets to help out when Arlo is stuck.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/d1c90cc3-1f5b-43d7-b114-2b59c4d5bee3/16-9" />
-    <episode-num system="xmltv_ns">1.5.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010063500 +0000" stop="20261010064500 +0000">
-    <title lang="en">Hey Duggee</title>
-    <sub-title lang="en">The Teamwork Badge</sub-title>
-    <desc lang="en">Animated preschool series. A big box is delivered to the Clubhouse, and the Squirrels are very excited. What could be inside.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/cd13d10a-7014-4c87-ad46-5d49ed62cb4c/16-9" />
-    <episode-num system="xmltv_ns">1.11.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010064500 +0000" stop="20261010065000 +0000">
-    <title lang="en">Hey Duggee</title>
-    <sub-title lang="en">The Dancing Bug Badge</sub-title>
-    <desc lang="en">Animated preschool series. When a dancing bug lands on Duggee's head, he can't stop bopping. The Squirrels see that it's a tiny hillbilly bug with a fiddle.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/dbccead4-2e33-3f55-b85b-3787f66fcc24/16-9" />
-    <episode-num system="xmltv_ns">1.12.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010065000 +0000" stop="20261010065500 +0000">
-    <title lang="en">Bluey Minisodes</title>
-    <sub-title lang="en">Browny Bear</sub-title>
-    <desc lang="en">Someone keeps tapping people on the shoulder and vanishing.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/068e7e59-5874-39bc-8fd7-a69ac1937b1d/16-9" />
-    <episode-num system="xmltv_ns">1.5.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010065500 +0000" stop="20261010070500 +0000">
-    <title lang="en">Go Jetters</title>
-    <sub-title lang="en">The Forbidden City, China</sub-title>
-    <desc lang="en">Animated adventure comedy series. Some runaway Chinese drums roll towards the Forbidden City. Can the Go Jetters stop them.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/41bed886-a88b-4f45-8963-5c8ff62802fb/16-9" />
-    <episode-num system="xmltv_ns">0.20.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010070500 +0000" stop="20261010072000 +0000">
-    <title lang="en">Peter Rabbit</title>
-    <desc lang="en">The Tale of Peter's Great Escape. Animated series. When the rabbits find themselves surrounded, Peter is forced to create a brand new ingenious escape route.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/1cf3e553-f359-427d-bf07-a2d8d476f88a/16-9" />
-    <episode-num system="xmltv_ns">2.35.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010072000 +0000" stop="20261010073000 +0000">
-    <title lang="en">Octonauts</title>
-    <sub-title lang="en">Pelicans</sub-title>
-    <desc lang="en">Animated deep sea adventures with Captain Barnacles and his explorers. A floating garbage patch endangers a flock of pelicans and other sea creatures.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/131b5ec1-ac90-4c5e-b7ac-83e13e5af659/16-9" />
-    <episode-num system="xmltv_ns">2.5.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010073000 +0000" stop="20261010074500 +0000">
-    <title lang="en">Vida the Vet</title>
-    <sub-title lang="en">Popcorn's X-Ray Bad Day</sub-title>
-    <desc lang="en">Popcorn breaks the x-ray machine and does everything he can to fix it before Vida finds out.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/d8e079d0-469d-3241-a450-d0a6cfab44dc/16-9" />
-    <episode-num system="xmltv_ns">0.8.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010074500 +0000" stop="20261010075500 +0000">
-    <title lang="en">Mojo Swoptops</title>
-    <sub-title lang="en">Mojo Draws the Line</sub-title>
-    <desc lang="en">Mojo and Bo were supposed to paint fresh lines on the street. But when they get into a race with Tao, the paint goes in every direction, causing wild traffic chaos.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/39ea4452-c3d9-4eb4-ab0e-fa4416f910d5/16-9" />
-    <episode-num system="xmltv_ns">0.25.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010075500 +0000" stop="20261010080000 +0000">
-    <title lang="en">Activate with Joe Wicks</title>
-    <sub-title lang="en">Mountain</sub-title>
-    <desc lang="en">Reach new heights in my soaring Mountain Challenge! Climb your way through lunges, climbers and knee smashers, followed by the Activate.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/69c3589a-5f1b-48d4-b38a-e0a52b80db81/16-9" />
-    <episode-num system="xmltv_ns">0.6.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010080000 +0000" stop="20261010082500 +0000">
-    <title lang="en">Something Special: We're All Friends</title>
-    <sub-title lang="en">Animal Antics</sub-title>
-    <desc lang="en">Justin and his friend meet some amazing reptiles and make a snake sock puppet. Mr Tumble has his own animal fun when five speckled frogs come to visit.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/4c5083c8-a452-4057-bacf-6055d8bc9930/16-9" />
-    <episode-num system="xmltv_ns">11.9.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010082500 +0000" stop="20261010083000 +0000">
-    <title lang="en">Bluey</title>
-    <sub-title lang="en">BBQ</sub-title>
-    <desc lang="en">It's lunchtime on Bluey's back deck.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/14602bdf-14d6-4b32-bb62-0c137b588826/16-9" />
-    <episode-num system="xmltv_ns">0.6.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010083000 +0000" stop="20261010084000 +0000">
-    <title lang="en">Bluey</title>
-    <sub-title lang="en">Ragdoll</sub-title>
-    <desc lang="en">Dad agrees to take Bluey and Bingo to buy an ice cream if they can get him into the car.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/2b5cd813-4e1c-47a4-b438-ff13e530eb2b/16-9" />
-    <episode-num system="xmltv_ns">2.24.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010084000 +0000" stop="20261010085000 +0000">
-    <title lang="en">Hey Duggee</title>
-    <sub-title lang="en">The Snowman Badge</sub-title>
-    <desc lang="en">Animated preschool series. The Squirrels play outside in the snow and decide to build a jolly-looking snowman, but the punky penguins poke fun at it.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/cc25ec9e-4a66-456a-bea9-6fc0d033d6fa/16-9" />
-    <episode-num system="xmltv_ns">0.29.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010085000 +0000" stop="20261010085500 +0000">
-    <title lang="en">Hey Duggee</title>
-    <sub-title lang="en">The Decorating Badge</sub-title>
-    <desc lang="en">Animated preschool series. Duggee is painting the clubhouse. The Squirrels ask if they can help too, but they have some different colours in mind.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/234c24ee-7c14-45b2-bf31-214447bc395e/16-9" />
-    <episode-num system="xmltv_ns">0.30.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010085500 +0000" stop="20261010090500 +0000">
-    <title lang="en">Zog</title>
-    <sub-title lang="en">Second Opinion</sub-title>
-    <desc lang="en">Mara visits the clinic with an unusually curly fin, but the doctors don't agree on the diagnosis. Can Zog reunite Pearl and Gadabout so that they work together on the cure.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/aae2c879-d60f-4172-bff3-00334c606084/16-9" />
-    <episode-num system="xmltv_ns">0.24.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010090500 +0000" stop="20261010092000 +0000">
-    <title lang="en">Piripenguins</title>
-    <sub-title lang="en">Piri-O-UFO</sub-title>
-    <desc lang="en">Nugget adopts a lost mini alien as a pet until the gang convince her to let it go home.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/fd2f1e1e-b060-4eb8-866e-1962328148c5/16-9" />
-    <episode-num system="xmltv_ns">0.50.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010092000 +0000" stop="20261010092500 +0000">
-    <title lang="en">Rafi the Wishing Wizard</title>
-    <sub-title lang="en">The Superhero Wish</sub-title>
-    <desc lang="en">Rafi turns herself, Ruby and Finn into real superheroes, but when things go wrong, they learn that teamwork, not powers, is what saves the day.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/3ead0e40-3868-4cbc-82f8-b5567824a7c7/16-9" />
-    <episode-num system="xmltv_ns">.46.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010092500 +0000" stop="20261010093500 +0000">
-    <title lang="en">The Weasy Family</title>
-    <sub-title lang="en">Mission Sharing</sub-title>
-    <desc lang="en">The ducklings and Weasy battle for the last piece of popcorn, but it ends up getting thrown out the window.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/bd80dc7f-cc64-46c6-8ae3-82fcebc8b255/16-9" />
-    <episode-num system="xmltv_ns">0.2.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010093500 +0000" stop="20261010095500 +0000">
-    <title lang="en">Spidey and His Amazing Friends</title>
-    <desc lang="en">Dinosaurs on the Loose/WEB-STER's Big Bad Bug. The villains turn into dinos. WEB-STER turns evil.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/ee2b943f-ad8d-4ea9-82bf-9296f8af42e9/16-9" />
-    <episode-num system="xmltv_ns">2.16.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010095500 +0000" stop="20261010101000 +0000">
-    <title lang="en">Octonauts: Above &amp; Beyond</title>
-    <sub-title lang="en">Hurricane Hunter Adventure</sub-title>
-    <desc lang="en">Dashi survives a crash in the Octoray just as a hurricane nears the Florida Everglades.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/d6bcfb07-596c-3734-841f-9385522e2be6/16-9" />
-    <episode-num system="xmltv_ns">.13.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010101000 +0000" stop="20261010102000 +0000">
-    <title lang="en">Knee High Spies</title>
-    <sub-title lang="en">Mission</sub-title>
-    <desc lang="en">Dino in Danger. Pranksy traps Deena in her box, so Jeremy and Squash crash a birthday party to save her.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/ccf77d11-c37c-4738-9574-e24057c37d76/16-9" />
-    <episode-num system="xmltv_ns">0.6.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010102000 +0000" stop="20261010102500 +0000">
-    <title lang="en">Vegesaurs</title>
-    <sub-title lang="en">Fossil</sub-title>
-    <desc lang="en">Ginger and her friends must use all their clever thinking to open fossilised honeysuckle.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/6e904489-4083-49f5-a5de-9c1c2f756836/16-9" />
-    <episode-num system="xmltv_ns">0.16.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010102500 +0000" stop="20261010103500 +0000">
-    <title lang="en">Supertato</title>
-    <sub-title lang="en">Cheese Moon</sub-title>
-    <desc lang="en">It's a space race as Supertato helps Carrot fly her baguette rocket to become the first Veggie on the cheese moon, but halfway there Evil Pea makes them crash land.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/efc061ce-efe0-4807-8147-9f25d27c0f91/16-9" />
-    <episode-num system="xmltv_ns">0.2.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010103500 +0000" stop="20261010105000 +0000">
-    <title lang="en">Gigglebiz</title>
-    <sub-title lang="en">Episode 3</sub-title>
-    <desc lang="en">Comedy sketch show for younger viewers. Things don't go quite to plan when clumsy antiques expert Ann Teak lends a hand to a vase restorer.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/9fe95411-6ed1-49d3-83d9-81c6858f1788/16-9" />
-    <episode-num system="xmltv_ns">3.2.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010105000 +0000" stop="20261010110000 +0000">
-    <title lang="en">Dodge's Pup School</title>
-    <sub-title lang="en">The Den</sub-title>
-    <desc lang="en">Dodge creates a den club for all the pups. They need many rules to keep everything and everyone in order.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/4658b2ac-f23f-4ba7-a7e9-61649ce131d0/16-9" />
-    <episode-num system="xmltv_ns">1.17.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010110000 +0000" stop="20261010111500 +0000">
-    <title lang="en">My World Kitchen</title>
-    <sub-title lang="en">Aniyah's Brazilian Feijoada</sub-title>
-    <desc lang="en">Aniyah serves feijoada - a Brazilian stew containing black beans.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/a7ff1ee1-054f-4d8f-afb8-6fbdc8333496/16-9" />
-    <episode-num system="xmltv_ns">2.2.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010111500 +0000" stop="20261010112500 +0000">
-    <title lang="en">I Can Grow It</title>
-    <sub-title lang="en">Sounds of the Garden</sub-title>
-    <desc lang="en">Novah, Nelly and Aaron enjoy the amazing sounds of the city garden.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/3199531f-8ae6-41ca-8d5c-a9cc8e9f72ec/16-9" />
-    <episode-num system="xmltv_ns">0.1.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010112500 +0000" stop="20261010113500 +0000">
-    <title lang="en">Waffle's After School Club</title>
-    <sub-title lang="en">Ping Pong Waffle</sub-title>
-    <desc lang="en">Ping pong is off-limits to Waffle until the after schoolers invent Waffle Pong. Meanwhile, Mrs Hobbs reveals her table tennis tricks.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/d7b1d78e-585e-4e35-bdb7-757fbc024603/16-9" />
-    <episode-num system="xmltv_ns">1.1.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010113500 +0000" stop="20261010115000 +0000">
-    <title lang="en">Balamory</title>
-    <sub-title lang="en">Storytime</sub-title>
-    <desc lang="en">When Dr Ollie discovers the Story Bus is delayed, he vows to save the day by inventing a new story to tell Miss Hoolie and the children.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/28329a93-82de-4c1b-b862-b58480ba8f14/16-9" />
-    <episode-num system="xmltv_ns">0.1.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010115000 +0000" stop="20261010120000 +0000">
-    <title lang="en">Hey Duggee</title>
-    <sub-title lang="en">The Water Badge</sub-title>
-    <desc lang="en">Animated preschool series. Happy lets a tap drip, wasting water. The Squirrels think water is limitless, and they explain where they think it comes from.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/e89e3c94-c307-45db-ab7f-94c3ddbc6106/16-9" />
-    <episode-num system="xmltv_ns">1.35.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010120000 +0000" stop="20261010121500 +0000">
-    <title lang="en">Octonauts</title>
-    <sub-title lang="en">Feeding Frenzy</sub-title>
-    <desc lang="en">When Shellington and Dashi accidentally trigger a shark feeding frenzy, Barnacles and Tweak must devise a way to rescue them before they become lunch.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/eb338b41-341c-424d-be71-d27f555d3175/16-9" />
-    <episode-num system="xmltv_ns">4.4.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010121500 +0000" stop="20261010122500 +0000">
-    <title lang="en">Vida the Vet</title>
-    <sub-title lang="en">Fergie's Favourite Things</sub-title>
-    <desc lang="en">Fergie is sad and disappointed when a sudden apple allergy means that she can't eat her favourite food or do her favourite activity - apple picking.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/46b63e7c-ce58-3d32-a383-cd79c7abe73b/16-9" />
-    <episode-num system="xmltv_ns">0.34.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010122500 +0000" stop="20261010123500 +0000">
-    <title lang="en">Go Jetters</title>
-    <sub-title lang="en">Solar Race, Australia</sub-title>
-    <desc lang="en">Kyan and Glitch race into the Australian Outback, but when the Glitchster's solar battery dies the pair are left stranded with no water.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/37e3dc05-e7fb-4872-81bd-4d3f3455ab3b/16-9" />
-    <episode-num system="xmltv_ns">2.8.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010123500 +0000" stop="20261010124500 +0000">
-    <title lang="en">Big Lizard</title>
-    <sub-title lang="en">Dad's Drone</sub-title>
-    <desc lang="en">Big Lizard wants to fly Dad's new drone but first has to prove he can go a whole day without breaking a thing.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/2f3b29b7-c2bb-4e3f-b5a3-ee9fef5cb7c4/16-9" />
-    <episode-num system="xmltv_ns">0.29.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010124500 +0000" stop="20261010125500 +0000">
-    <title lang="en">Yukee</title>
-    <sub-title lang="en">A Game of Crickets</sub-title>
-    <desc lang="en">Yukee and TapTap try to track down the source of a strange chirping noise in the garden.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/6b4afa7a-401c-3c1d-beb0-dc936dee5ba6/16-9" />
-    <episode-num system="xmltv_ns">0.33.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010125500 +0000" stop="20261010130000 +0000">
-    <title lang="en">Froglets</title>
-    <sub-title lang="en">Obstacle Course</sub-title>
-    <desc lang="en">The Froglets tackle a tricky obstacle course, but can they climb a mountain of cushions.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/6cc63d09-c9a6-458a-a841-f23f1ecededa/16-9" />
-    <episode-num system="xmltv_ns">0.14.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010130000 +0000" stop="20261010132000 +0000">
-    <title lang="en">Something Special: We're All Friends</title>
-    <sub-title lang="en">Colours</sub-title>
-    <desc lang="en">Educational series using Makaton sign language. Mr Tumble accidentally paints a rainbow, while Justin and his friends put on a colourful show at a theatre.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/de373578-9b9d-412e-add6-b1e9067f55b0/16-9" />
-    <episode-num system="xmltv_ns">9.8.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010132000 +0000" stop="20261010133000 +0000">
-    <title lang="en">I Can Grow It</title>
-    <sub-title lang="en">Water</sub-title>
-    <desc lang="en">Aaron, Joda, Nelly and Noah find out some of the clever ways water helps the garden, from being used to clean paths to giving birds somewhere to bathe.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/e51b8b45-5282-49eb-a1ca-2faa6a324967/16-9" />
-    <episode-num system="xmltv_ns">0.16.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010133000 +0000" stop="20261010134000 +0000">
-    <title lang="en">Dodge's Pup School</title>
-    <sub-title lang="en">After-School Jitters</sub-title>
-    <desc lang="en">Dodge must go to the After School Club for the very first time, and he's feeling nervous.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/103fd1a2-c718-4751-8ae6-1ebaf4908248/16-9" />
-    <episode-num system="xmltv_ns">1.23.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010134000 +0000" stop="20261010135000 +0000">
-    <title lang="en">Waffle's After School Club</title>
-    <sub-title lang="en">Waffle's Talent Hunt</sub-title>
-    <desc lang="en">It's After School Club's first talent show, but Waffle must save the day.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/f76e4a76-34e9-4abb-b616-a4dcd05b484a/16-9" />
-    <episode-num system="xmltv_ns">1.5.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010135000 +0000" stop="20261010140000 +0000">
-    <title lang="en">Bluey</title>
-    <sub-title lang="en">Hammerbarn</sub-title>
-    <desc lang="en">On a trip to Hammerbarn, Bluey and Bingo create their own mini-homes side-by-side in the trolley. But Bluey quickly gets jealous of her neighbour Bingo.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/feee6dbd-e9fe-4f9e-b6a8-646b97630ccc/16-9" />
-    <episode-num system="xmltv_ns">1.1.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010140000 +0000" stop="20261010141000 +0000">
-    <title lang="en">Nikhil &amp; Jay</title>
-    <desc lang="en">Nikhil and Jay and the Missing Appalams . Nikhil and Jay are detectives today. When the homemade appalams go missing under their watch, they need to solve the case and save lunch.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/2ad1fcb3-b3ce-323d-91bb-5d88d3ebe12e/16-9" />
-    <episode-num system="xmltv_ns">0.8.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010141000 +0000" stop="20261010141500 +0000">
-    <title lang="en">Tish Tash</title>
-    <sub-title lang="en">Play with Us</sub-title>
-    <desc lang="en">Tish says she will be Dad for the day while Tash is Tish and Bobby is... Bobby.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/e688f173-bf6a-4c97-9280-1607eb89f16f/16-9" />
-    <episode-num system="xmltv_ns">0.20.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010141500 +0000" stop="20261010142500 +0000">
-    <title lang="en">Piggy Builders</title>
-    <sub-title lang="en">Prodigious Pumpkin</sub-title>
-    <desc lang="en">The Piggies help Fiona move her giant pumpkin.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/64e0cd31-2306-4825-b7a8-a3fb08613314/16-9" />
-    <episode-num system="xmltv_ns">0.6.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010142500 +0000" stop="20261010143000 +0000">
-    <title lang="en">Numberblocks: The Rise of Infinaughty</title>
-    <desc lang="en">The Day the Blocks Turned Pink. An epic adventure begins as Infinaughty turns every single block pink - now who's who.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/b1b04f98-be78-4171-a6da-8173f5f97d27/16-9" />
-    <episode-num system="xmltv_ns">8.0.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010143000 +0000" stop="20261010144000 +0000">
-    <title lang="en">Love Monster</title>
-    <sub-title lang="en">Taking Turns Day</sub-title>
-    <desc lang="en">Love Monster has to pass the time in a queue as he waits for his turn to play a cool game.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/b371ba39-02ce-491b-863b-fa0338ff3cab/16-9" />
-    <episode-num system="xmltv_ns">0.25.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010144000 +0000" stop="20261010145000 +0000">
-    <title lang="en">Knee High Spies</title>
-    <sub-title lang="en">Mission</sub-title>
-    <desc lang="en">Rocket Rescue. Silver Paw tries to fly to the moon as Jeremy and Squash take to the skies.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/e7f834ec-f26a-4cff-9c8c-5b584f84eec3/16-9" />
-    <episode-num system="xmltv_ns">0.10.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010145000 +0000" stop="20261010150000 +0000">
-    <title lang="en">Dylan's Playtime Adventures</title>
-    <sub-title lang="en">Magician</sub-title>
-    <desc lang="en">Dylan the magician wants to do the biggest magic trick ever, but when he makes everyone disappear, he has to figure out how to bring them all back.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/97c82805-0aa1-4663-9e18-be22ab62280d/16-9" />
-    <episode-num system="xmltv_ns">0.5.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010150000 +0000" stop="20261010151500 +0000">
-    <title lang="en">Vida the Vet</title>
-    <sub-title lang="en">Banjo's Stomach Ache</sub-title>
-    <desc lang="en">Banjo gets a worry tummy when he paints a mural for everyone in Sweetwood.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/a6cc3db9-5e6b-48f5-9075-9af85531c928/16-9" />
-    <episode-num system="xmltv_ns">1.36.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010151500 +0000" stop="20261010152000 +0000">
-    <title lang="en">Wonderblocks</title>
-    <sub-title lang="en">Dancefloor Delight</sub-title>
-    <desc lang="en">Can Arty light up all four squares on the dancefloor before the time runs out? With some help from the Moving Crew, Arty manages to get the disco going.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/ce0d79f9-ee74-4706-a8ad-ea41eec16b6e/16-9" />
-    <episode-num system="xmltv_ns">0.9.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010152000 +0000" stop="20261010152500 +0000">
-    <title lang="en">Yukee</title>
-    <sub-title lang="en">The Fly Past</sub-title>
-    <desc lang="en">On migration day, the gang try to find the right sound to get a response from the geese.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/640dac31-5232-3c34-a860-a0a11371d2d3/16-9" />
-    <episode-num system="xmltv_ns">0.28.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010152500 +0000" stop="20261010153500 +0000">
-    <title lang="en">Magic Hands</title>
-    <sub-title lang="en">Lean on Me</sub-title>
-    <desc lang="en">Tianah and Chris are in Notting Hill, where a lot of people from the Caribbean settled.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/3fe0fee2-20d6-4f2e-afd0-6a5fd059169b/16-9" />
-    <episode-num system="xmltv_ns">3.2.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010153500 +0000" stop="20261010154500 +0000">
-    <title lang="en">Piripenguins</title>
-    <sub-title lang="en">The Slide</sub-title>
-    <desc lang="en">Nugget agrees to take on a scary new ice slide but loses her nerve, so Pancake comes up with a face-saving plan. But when disaster strikes, they decide to come clean.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/42ebca76-4847-4b18-98e6-4a298df9f68d/16-9" />
-    <episode-num system="xmltv_ns">0.28.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010154500 +0000" stop="20261010160000 +0000">
-    <title lang="en">Zog</title>
-    <sub-title lang="en">Gadabout Blabbermouth</sub-title>
-    <desc lang="en">Winton doesn't want anyone to know about his tummy troubles, but Gadabout struggles to keep the news to himself.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/2a9f7675-8002-4748-a830-933f4350b7f5/16-9" />
-    <episode-num system="xmltv_ns">0.25.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010160000 +0000" stop="20261010160500 +0000">
-    <title lang="en">Rafi the Wishing Wizard</title>
-    <sub-title lang="en">The Talk to Animals Wish</sub-title>
-    <desc lang="en">Rafi's wish to talk to animals causes confusion. She realises real magic is listening when she helps a sparrow find its family.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/079cf22d-cbce-4f31-87e7-85b8b1bd3891/16-9" />
-    <episode-num system="xmltv_ns">.13.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010160500 +0000" stop="20261010161500 +0000">
-    <title lang="en">Bluey</title>
-    <sub-title lang="en">Stumpfest</sub-title>
-    <desc lang="en">Dad and his mates hit the backyard ready to rip up some tree stumps.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/2d9baf21-f4a6-4255-a006-88878a73426b/16-9" />
-    <episode-num system="xmltv_ns">1.5.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010161500 +0000" stop="20261010162500 +0000">
-    <title lang="en">JoJo &amp; Gran Gran</title>
-    <desc lang="en">It's Time to Go to the Airport. JoJo, Gran Gran, Mummy and Daddy are at the airport waiting to take a flight to see a special someone - Great-Gran Gran.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/43711770-782e-41c9-b800-7207e0cb521e/16-9" />
-  </programme>
-  <programme channel="CBeebies" start="20261010162500 +0000" stop="20261010163500 +0000">
-    <title lang="en">Puffin Rock</title>
-    <sub-title lang="en">Spiky Sitting</sub-title>
-    <desc lang="en">When double act Phoenix and Mossy find Spiky far away from his burrows, they decide to take him home. Poor wee fella, he's so small and helpless... or is he.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/19157131-7e6c-4f66-a8a2-f2c92777fcda/16-9" />
-    <episode-num system="xmltv_ns">2.10.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010163500 +0000" stop="20261010164500 +0000">
-    <title lang="en">Charlie and Lola</title>
-    <desc lang="en">We Do Promise Honestly That We Can Look After Your Dog. Children's animation with the brother and sister. Lola and Lotta are pleased when Marv lets them look after his dog Sizzles.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/0ae7753b-b29a-40e2-873c-b25988e2ac7c/16-9" />
-    <episode-num system="xmltv_ns">0.5.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010164500 +0000" stop="20261010171000 +0000">
-    <title lang="en">Moon and Me</title>
-    <sub-title lang="en">The Picnic</sub-title>
-    <desc lang="en">Mr Onion discovers a picnic basket in the curiosity box. It is already packed with food and a tablecloth. In Storyland, everybody climbs to the top of the hill to share a picnic.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/f67f21b6-ad24-4f15-89eb-6550702c0e3b/16-9" />
-    <episode-num system="xmltv_ns">0.24.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010171000 +0000" stop="20261010172000 +0000">
-    <title lang="en">BeddyByes</title>
-    <sub-title lang="en">Tutu</sub-title>
-    <desc lang="en">MeMo and BaBa play dress up. BaBa is sad when a pretty tutu doesn't fit - but it fits MeMo perfectly. MeMo sees that BaBa is sad and finds a way for them to both play with the tutu.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/dcd84c74-1eb7-41b4-96af-dc0a7c0e1375/16-9" />
-    <episode-num system="xmltv_ns">0.36.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010172000 +0000" stop="20261010175000 +0000">
-    <title lang="en">In the Night Garden</title>
-    <sub-title lang="en">The Ball</sub-title>
-    <desc lang="en">The ball bounces around the garden visiting one character after another. They all enjoy playing with it until it reaches Makka Pakka and his uff-uff blows it right away.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/5d1763a0-ee4f-429e-9ac3-1f0e86132330/16-9" />
-    <episode-num system="xmltv_ns">0.23.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010175000 +0000" stop="20261010175800 +0000">
-    <title lang="en">CBeebies Bedtime Stories</title>
-    <sub-title lang="en">Ellie Goulding</sub-title>
-    <desc lang="en">What if, Pig? Ellie Goulding shares the story of a rather wonderful pig who is also a bit of a worrier.</desc>
-    <category lang="en">Children</category>
-    <icon src="https://images.metadata.sky.com/pd-image/2792e841-0263-4419-ada1-5d38df7cc2cd/16-9" />
-    <episode-num system="xmltv_ns">.817.</episode-num>
-  </programme>
-  <programme channel="CBeebies" start="20261010175800 +0000" stop="20261010235800 +0000">
-    <title lang="en">..programmes start at 6.00am</title>
-  </programme>
-  <programme channel="CBeebies" start="20261010235800 +0000" stop="20261011043000 +0000">
-    <title lang="en">..programmes start at 6.00am</title>
-  </programme>
   <programme channel="CBeebies" start="20261011043000 +0000" stop="20261011050000 +0000">
     <title lang="en">This Is CBeebies</title>
     <desc lang="en">This Is CBeebies. Programmes start at 6.00am.</desc>
@@ -2294,6 +1699,587 @@
     <episode-num system="xmltv_ns">.16.</episode-num>
   </programme>
   <programme channel="CBeebies" start="20261013175800 +0000" stop="20261013235800 +0000">
+    <title lang="en">..programmes start at 6.00am</title>
+  </programme>
+  <programme channel="CBeebies" start="20261013235800 +0000" stop="20261014043000 +0000">
+    <title lang="en">..programmes start at 6.00am</title>
+  </programme>
+  <programme channel="CBeebies" start="20261014043000 +0000" stop="20261014050000 +0000">
+    <title lang="en">This Is CBeebies</title>
+    <desc lang="en">This Is CBeebies. Programmes start at 6.00am.</desc>
+  </programme>
+  <programme channel="CBeebies" start="20261014050000 +0000" stop="20261014050500 +0000">
+    <title lang="en">Roots and Fruits</title>
+    <sub-title lang="en">Runner Beans</sub-title>
+    <desc lang="en">Live from the Roots and Fruits theatre, it's the speedy dancing Runner Beans, who won't stand still for even one minute.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/afef2773-187b-4d4a-9fd3-b8e23a737ce1/16-9" />
+    <episode-num system="xmltv_ns">0.0.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014050500 +0000" stop="20261014051500 +0000">
+    <title lang="en">Bing</title>
+    <sub-title lang="en">Frog</sub-title>
+    <desc lang="en">Children's animation series. Bing finds a frog in the garden and wants to keep it, so he and Sula make the frog a 'house' in a bucket.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/5b9f5dda-d271-4333-a87b-2a70ad166ad0/16-9" />
+    <episode-num system="xmltv_ns">0.6.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014051500 +0000" stop="20261014053000 +0000">
+    <title lang="en">Teletubbies</title>
+    <sub-title lang="en">Crazy Golf</sub-title>
+    <desc lang="en">Preschool series. In Teletubbyland Dipsy is King. Tinky Winky delivers Tubby Custard and Tubby Toast to King Dipsy - whatever he wants.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/44fb4ac6-7c28-4b60-ade1-680e5fa618a2/16-9" />
+    <episode-num system="xmltv_ns">1.53.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014053000 +0000" stop="20261014053500 +0000">
+    <title lang="en">Tee and Mo</title>
+    <sub-title lang="en">Mo for a Morning</sub-title>
+    <desc lang="en">Preschool animation about a baby monkey and his mother. When Mo wakes up with a cold, Tee takes over mum duties.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/696a051b-353b-4dac-b514-26a60f832fce/16-9" />
+    <episode-num system="xmltv_ns">0.18.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014053500 +0000" stop="20261014054500 +0000">
+    <title lang="en">Colourblocks</title>
+    <sub-title lang="en">Lime</sub-title>
+    <desc lang="en">It's time for Lime! She's in between Yellow and Green, fresh and full of zing! Followed by Bluey Minisodes.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/7a83a59d-f6f5-3705-9965-9c38aaf0f1e7/16-9" />
+    <episode-num system="xmltv_ns">1.8.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014054500 +0000" stop="20261014055500 +0000">
+    <title lang="en">Bing</title>
+    <sub-title lang="en">Hose Pipe</sub-title>
+    <desc lang="en">Bing turns the garden hose on too fast, converting it into a big out-of-control snake.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/98649422-8609-4c60-9c6c-1bb3b8c344db/16-9" />
+    <episode-num system="xmltv_ns">1.8.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014055500 +0000" stop="20261014060500 +0000">
+    <title lang="en">Mojo Swoptops</title>
+    <sub-title lang="en">Rock-a-Bye Bo</sub-title>
+    <desc lang="en">Bo is tired and falls asleep in the middle of hunting for Fabio's lost inflatable fruit. It's up to Mojo to finish the job - without waking up poor, exhausted Bo.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/f2b2ebf9-e52f-41d3-8318-f1ba6f804d63/16-9" />
+    <episode-num system="xmltv_ns">0.48.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014060500 +0000" stop="20261014061500 +0000">
+    <title lang="en">Hey Duggee</title>
+    <sub-title lang="en">The Babysitting Badge</sub-title>
+    <desc lang="en">Duggee has a job to do outside the Clubhouse, but who will look after the Squirrels? King Tiger, of course, since he has his babysitting badge.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/de4989b5-2761-4a15-97e2-5bd17b3ba7a2/16-9" />
+    <episode-num system="xmltv_ns">2.32.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014061500 +0000" stop="20261014062000 +0000">
+    <title lang="en">Hey Duggee</title>
+    <sub-title lang="en">The Comic Badge</sub-title>
+    <desc lang="en">Duggee is reading the Squirrels one of his favourite comics. They are eager to know the ending, but the comic was discontinued.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/c168b91d-8996-4d21-bf7a-65c9ab5f48c3/16-9" />
+    <episode-num system="xmltv_ns">2.33.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014062000 +0000" stop="20261014063000 +0000">
+    <title lang="en">Bluey</title>
+    <sub-title lang="en">Onesies</sub-title>
+    <desc lang="en">When Mum's sister Brandy comes over for a visit, she brings Bluey and Bingo onesies.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/df42c0f0-4d29-3cf8-9403-f87a600ed890/16-9" />
+    <episode-num system="xmltv_ns">2.30.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014063000 +0000" stop="20261014064000 +0000">
+    <title lang="en">Bluey</title>
+    <sub-title lang="en">Rug Island</sub-title>
+    <desc lang="en">Dad will need to embrace his inner kid if he wants to make Rug Island his home.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/0f173cf8-783b-4c74-b125-8f3cd9aea856/16-9" />
+    <episode-num system="xmltv_ns">1.9.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014064000 +0000" stop="20261014065000 +0000">
+    <title lang="en">Go Jetters</title>
+    <sub-title lang="en">Svalbard Global Seed Vault, Norway</sub-title>
+    <desc lang="en">When Ubercorn gets trapped inside an icy mountain, Glitch has to save his old teammate.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/28169bd5-c5a4-41b6-ae0d-e031dd858442/16-9" />
+    <episode-num system="xmltv_ns">2.19.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014065000 +0000" stop="20261014070500 +0000">
+    <title lang="en">Peter Rabbit</title>
+    <desc lang="en">The Tale of the Cat and the Rat. Animated series. When Jemima and the ducklings are driven from their coop, Peter must enlist the unwitting help of Mr McGregor's cat.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/1c70ab71-e463-4d87-87e9-15e407aef596/16-9" />
+    <episode-num system="xmltv_ns">0.20.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014070500 +0000" stop="20261014071500 +0000">
+    <title lang="en">Octonauts: Above &amp; Beyond</title>
+    <sub-title lang="en">Barnacle Geese</sub-title>
+    <desc lang="en">Paani saves a newborn goose, then seeks the Octonauts' help to decipher its behaviour.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/76caeda0-11ca-33d1-8f66-08139ee1eb41/16-9" />
+    <episode-num system="xmltv_ns">1.12.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014071500 +0000" stop="20261014072000 +0000">
+    <title lang="en">Numberblocks</title>
+    <sub-title lang="en">All-star Line-up</sub-title>
+    <desc lang="en">It's showtime with the Family of Five's All-star Line-up.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/e5b2f485-220e-3ea0-ba69-6d858fba0221/16-9" />
+    <episode-num system="xmltv_ns">6.2.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014072000 +0000" stop="20261014072500 +0000">
+    <title lang="en">Wonderblocks</title>
+    <sub-title lang="en">Bouncy Castle</sub-title>
+    <desc lang="en">Again asks Arty to create some stripy patterns for his bouncy castle, but the colour splatting doesn't go to plan.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/7c8e6fc7-fe91-40fd-9feb-a943f6a35360/16-9" />
+    <episode-num system="xmltv_ns">0.27.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014072500 +0000" stop="20261014073500 +0000">
+    <title lang="en">Love Monster</title>
+    <sub-title lang="en">Harvest Day</sub-title>
+    <desc lang="en">Love Monster has to judge the Harvest Day talent contest, but there is only one prize and three teams, and he can't decide which of his friends deserves to win.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/4a2571e6-5acd-45f4-ac05-1f86c928e47b/16-9" />
+    <episode-num system="xmltv_ns">1.1.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014073500 +0000" stop="20261014080000 +0000">
+    <title lang="en">Justin's House</title>
+    <sub-title lang="en">Just Us</sub-title>
+    <desc lang="en">Justin Fletcher entertains a live audience of children with singing, dancing and comedy. Justin, Robert and Little Monster are excited to spend the day with their friends.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/c54e2b7e-52de-4d68-954f-01e9bde001c8/16-9" />
+    <episode-num system="xmltv_ns">3.9.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014080000 +0000" stop="20261014081000 +0000">
+    <title lang="en">Bing</title>
+    <sub-title lang="en">Bubbles</sub-title>
+    <desc lang="en">Children's animation. Bing and Pando learn to blow bubbles. Bing struggles to get the hang of it, and when he finally blows a big bubble he's outraged because Pando pops it.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/5ba479a9-9f07-42ae-b510-09656b7f5edb/16-9" />
+    <episode-num system="xmltv_ns">0.29.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014081000 +0000" stop="20261014081500 +0000">
+    <title lang="en">Yakka Dee!</title>
+    <sub-title lang="en">Ball</sub-title>
+    <desc lang="en">Preschool series about words. Dee encourages a friend to say 'ball', and we go on a whirlwind word adventure, looking at many different kinds of balls.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/d2f96d70-1def-414d-aef8-2e3714a1d48c/16-9" />
+    <episode-num system="xmltv_ns">0.15.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014081500 +0000" stop="20261014082000 +0000">
+    <title lang="en">Tralala</title>
+    <sub-title lang="en">Potion Commotion</sub-title>
+    <desc lang="en">Tralala and Batty's messy backyard potions turn out to be more magical than expected.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/b78ea451-a40b-419d-82ae-0e8fbc428ad1/16-9" />
+    <episode-num system="xmltv_ns">0.7.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014082000 +0000" stop="20261014083500 +0000">
+    <title lang="en">Piggy Builders</title>
+    <sub-title lang="en">Biggy Boulder</sub-title>
+    <desc lang="en">The full moon makes Wilf howl so loudly that a rockslide blocks Brian's door. The Piggies must help Brian escape and find a way to stop Wilf from howling.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/283a9bd5-4a8b-4a36-a818-117d94e63cac/16-9" />
+    <episode-num system="xmltv_ns">0.10.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014083500 +0000" stop="20261014084500 +0000">
+    <title lang="en">Twirlywoos</title>
+    <sub-title lang="en">Going Over</sub-title>
+    <desc lang="en">Stop-motion preschool programme about the adventures of four inquisitive Twirlywoos. The Twirlywoos watch a horse going over a jump and try to have a go themselves.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/9459e36d-fda7-4f40-9fbc-4473c24994f9/16-9" />
+    <episode-num system="xmltv_ns">1.4.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014084500 +0000" stop="20261014091000 +0000">
+    <title lang="en">Something Special</title>
+    <sub-title lang="en">Dressing Up</sub-title>
+    <desc lang="en">Ben meets two friends for some dressing-up fun, while Mr Tumble finds some silly costumes in his fancy dress box.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/42f7f3f8-f88e-4802-8d35-ad291fda6b57/16-9" />
+    <episode-num system="xmltv_ns">13.20.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014091000 +0000" stop="20261014092500 +0000">
+    <title lang="en">Teletubbies</title>
+    <sub-title lang="en">Sliding Down</sub-title>
+    <desc lang="en">Preschool series. The Tubby Car takes the Teletubbies to the Hidey Hup where they discover the Tubby Slidey and have great fun sliding down again and again.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/c271bad0-dfd6-4e35-bbbb-fcdf61de651b/16-9" />
+    <episode-num system="xmltv_ns">1.14.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014092500 +0000" stop="20261014094000 +0000">
+    <title lang="en">The Baby Club</title>
+    <sub-title lang="en">Leaves</sub-title>
+    <desc lang="en">Nigel and Baby Bear invite babies and their grown-ups to explore leaves through discovery, play, song and story.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/3662d1a2-9ac4-4ef1-b4a6-d1c58b5acce4/16-9" />
+    <episode-num system="xmltv_ns">0.9.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014094000 +0000" stop="20261014094500 +0000">
+    <title lang="en">I Spy, You Spy</title>
+    <sub-title lang="en">Train Station</sub-title>
+    <desc lang="en">Elsee meets her new friend Amara at the train station and plays a game of I-spy.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/4dc502a7-7290-4c31-b66c-776a7a747078/16-9" />
+    <episode-num system="xmltv_ns">0.1.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014094500 +0000" stop="20261014095500 +0000">
+    <title lang="en">What's in Your Plant Pot?</title>
+    <sub-title lang="en">Sunflower</sub-title>
+    <desc lang="en">Artist Ingrid shows the Fact Pack sunflowers and explains why they inspire her artwork. They then have fun painting them just like history's most famous artists.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/04ed4a92-c802-4ae3-a223-bb6dc309e466/16-9" />
+    <episode-num system="xmltv_ns">0.22.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014095500 +0000" stop="20261014101000 +0000">
+    <title lang="en">Monster Makes</title>
+    <sub-title lang="en">Time Machine</sub-title>
+    <desc lang="en">Rebecca and Murphi are planning to go on a travelling adventure, so they use straws to make a sailboat. They also create a paper plate dinosaur to keep them company.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/d24e8861-df12-4688-8bbd-f794dcd344bd/16-9" />
+    <episode-num system="xmltv_ns">0.7.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014101000 +0000" stop="20261014101500 +0000">
+    <title lang="en">Kiri and Lou</title>
+    <sub-title lang="en">Ordinary Day</sub-title>
+    <desc lang="en">Kiri is having an ordinary kind of day and doesn't feel like doing much. But Pania's extraordinary passing of wind makes the day amazing.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/176ad500-99a6-4f26-bc52-7bbc543cf2e6/16-9" />
+    <episode-num system="xmltv_ns">0.10.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014101500 +0000" stop="20261014102500 +0000">
+    <title lang="en">Bluey</title>
+    <sub-title lang="en">Bike</sub-title>
+    <desc lang="en">At the park, Bluey is struggling to learn how to ride her bike. But as she and Dad watch her friends determination with their own tasks, Bluey is inspired to give it another try.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/1b1493bf-5a3c-42bb-98d2-4cb47206ba0d/16-9" />
+    <episode-num system="xmltv_ns">0.10.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014102500 +0000" stop="20261014103000 +0000">
+    <title lang="en">Hey Duggee</title>
+    <sub-title lang="en">The Big Day Out Badge</sub-title>
+    <desc lang="en">Duggee takes the Squirrels and their parents on an exciting mystery trip.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/79052370-8b50-4c3b-bbeb-dfd3b04d72f4/16-9" />
+    <episode-num system="xmltv_ns">2.7.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014103000 +0000" stop="20261014104500 +0000">
+    <title lang="en">Chantelle and Rory's Teeny Tiny Creatures</title>
+    <sub-title lang="en">Millipedes</sub-title>
+    <desc lang="en">Chantelle meets a red-legged millipede. Rory, Sandy and Zoe recycle like millipedes.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/ae588908-6937-323f-aca4-9cd32498a8f3/16-9" />
+    <episode-num system="xmltv_ns">1.1.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014104500 +0000" stop="20261014110000 +0000">
+    <title lang="en">Our Family</title>
+    <sub-title lang="en">Eden and Ava Go Training</sub-title>
+    <desc lang="en">Eden and Ava do a workout with Dad and go dog training with cute puppy Sky.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/9421bd31-af55-45bb-8d80-fb7b7ae87b7c/16-9" />
+    <episode-num system="xmltv_ns">5.1.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014110000 +0000" stop="20261014112000 +0000">
+    <title lang="en">Big Cook Little Cook</title>
+    <sub-title lang="en">The Pipe-Playing Piper</sub-title>
+    <desc lang="en">Children's cookery series. Small has a new recorder but is having trouble learning how to play it. Jen and Small cook the Pied Piper something tasty and tuneful.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/3a42f296-367b-487f-b4ff-49793882f240/16-9" />
+    <episode-num system="xmltv_ns">0.22.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014112000 +0000" stop="20261014113000 +0000">
+    <title lang="en">Dog Squad</title>
+    <sub-title lang="en">Mission</sub-title>
+    <desc lang="en">Catwalk. Tinks uses her super fetch skills and big dog energy to help Charli model some upcycled outfits at WUFS - the Woofton Upcycled Fashion Show.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/a211870b-3810-3b50-bf5e-f38ee117c7b9/16-9" />
+    <episode-num system="xmltv_ns">1.17.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014113000 +0000" stop="20261014113500 +0000">
+    <title lang="en">Aneeshwar and Lizzie Go Wild</title>
+    <desc lang="en">Pygmy Marmoset and Orb Weaver Spider. Aneeshwar and Lizzie meet two amazing animals and reveal a surprising connection between them. This time, it's the pygmy marmoset and orb weaver spider.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/3f07b4e1-a6e6-4cce-ba49-7c72ec1edb4f/16-9" />
+    <episode-num system="xmltv_ns">1.7.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014113500 +0000" stop="20261014114000 +0000">
+    <title lang="en">What's on Your Head?</title>
+    <sub-title lang="en">Racing Driver</sub-title>
+    <desc lang="en">Jamie Chadwick, one of the world's best female racing drivers, tells us how her helmet helps her to drive faster than everyone else.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/ed02ea7c-b406-46d4-bf3e-ac1dde9eb21e/16-9" />
+    <episode-num system="xmltv_ns">0.7.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014114000 +0000" stop="20261014120000 +0000">
+    <title lang="en">Waffle the Wonder Dog</title>
+    <sub-title lang="en">PE Waffle</sub-title>
+    <desc lang="en">Evie forgets her reading book, so Waffle takes it to her at school. As Waffle reaches the playground, he sees Evie's PE class and is desperate to join in.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/e6df0d1c-cc70-4317-8c9c-3d07bc0d4b73/16-9" />
+    <episode-num system="xmltv_ns">2.8.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014120000 +0000" stop="20261014120500 +0000">
+    <title lang="en">Puffin Rock</title>
+    <sub-title lang="en">The Perfect Spot</sub-title>
+    <desc lang="en">Mama and Papa are taking Oona and Baba on a family outing to experience something special, but to see the big surprise, they need to find the perfect spot.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/7bf37308-43da-4041-b5f4-a3527ae51dcf/16-9" />
+    <episode-num system="xmltv_ns">2.9.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014120500 +0000" stop="20261014121500 +0000">
+    <title lang="en">Yukee</title>
+    <sub-title lang="en">Fortune Cookies</sub-title>
+    <desc lang="en">Yukee's garden pals think the fortune cookie messages she has given them are true.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/12397e00-f386-39fd-ba01-ba13bf1285c7/16-9" />
+    <episode-num system="xmltv_ns">0.11.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014121500 +0000" stop="20261014122000 +0000">
+    <title lang="en">Lu &amp; the Bally Bunch</title>
+    <sub-title lang="en">Home Toy</sub-title>
+    <desc lang="en">Lu gets upset when she loses Declan's special toy.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/5fb00296-0a10-31ff-b589-5b8dedad940a/16-9" />
+    <episode-num system="xmltv_ns">0.7.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014122000 +0000" stop="20261014123500 +0000">
+    <title lang="en">Piggy Builders</title>
+    <sub-title lang="en">The Pig Chill</sub-title>
+    <desc lang="en">It's the hottest day of the year in Fine Forest. The Piggies build an ice machine for cold drinks. Wilf wants it all to himself - and accidentally causes a blizzard.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/88ec5096-987b-43a8-96bc-dd9499b7ba8a/16-9" />
+    <episode-num system="xmltv_ns">0.20.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014123500 +0000" stop="20261014124000 +0000">
+    <title lang="en">Numberblocks</title>
+    <sub-title lang="en">Three Little Pigs</sub-title>
+    <desc lang="en">Children's animated adventures. The Numberblocks present their very own, very numbery version of the classic tale The Three Little Pigs and the Big Bad Square.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/348f909c-1325-4f68-a605-51e2ac51b90b/16-9" />
+    <episode-num system="xmltv_ns">0.7.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014124000 +0000" stop="20261014124500 +0000">
+    <title lang="en">Alphablocks</title>
+    <sub-title lang="en">Snail</sub-title>
+    <desc lang="en">A SNAIL starts to CHOMP through the Alphablocks' vegetable garden. In a FLASH, it becomes large and fast. They follow its TRAIL and figure out that it needs its own GREEN patch.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/fd459ef7-0c0a-4c37-a25f-3f2c756be2a4/16-9" />
+    <episode-num system="xmltv_ns">5.9.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014124500 +0000" stop="20261014130500 +0000">
+    <title lang="en">Something Special</title>
+    <sub-title lang="en">Outdoor Adventure</sub-title>
+    <desc lang="en">Justin and his friend have fun outdoors riding a forest rollercoaster and bouncing high up in the trees. Meanwhile, Mr Tumble builds his own ride in his bedroom.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/0c79fbf7-b722-4dab-9a5d-399a3500a547/16-9" />
+    <episode-num system="xmltv_ns">12.3.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014130500 +0000" stop="20261014132000 +0000">
+    <title lang="en">Teletubbies</title>
+    <sub-title lang="en">Stuck</sub-title>
+    <desc lang="en">Preschool series. All the Teletubbies are stuck. Tinky Winky's hand is stuck in his bag, Dipsy's hat is stuck, Laa-Laa's ball is stuck and Po is stuck on the Tubby Slidey.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/5e8b7dfc-9315-45bd-ad04-698f33339111/16-9" />
+    <episode-num system="xmltv_ns">1.21.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014132000 +0000" stop="20261014133500 +0000">
+    <title lang="en">Hamza Loves Animals: Africa</title>
+    <sub-title lang="en">Twiggy the Giraffe's Alone Time</sub-title>
+    <desc lang="en">Giraffe Twiggy enjoys alone time, Hamza sees black rhinos and Ruka has a check-up.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/602ed5ef-2a4b-49a9-b980-ce0d513c3a20/16-9" />
+    <episode-num system="xmltv_ns">0.2.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014133500 +0000" stop="20261014135000 +0000">
+    <title lang="en">Maddie's Do You Know?</title>
+    <sub-title lang="en">Water Park and Ice Cream</sub-title>
+    <desc lang="en">Maddie goes for a fun day out. She visits an indoor water park and uses a special waterproof camera and animation to show how a water slide works.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/9fc6eac5-231d-411e-91a4-3d31ff2cfe37/16-9" />
+    <episode-num system="xmltv_ns">0.9.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014135000 +0000" stop="20261014140500 +0000">
+    <title lang="en">Grace's Amazing Machines</title>
+    <sub-title lang="en">Suspended Machines</sub-title>
+    <desc lang="en">Series for young children that celebrates lots of different amazing machines. In this episode, Grace shows off three amazing suspended machines.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/75daa941-84cb-4b82-b341-52198853a10c/16-9" />
+    <episode-num system="xmltv_ns">2.15.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014140500 +0000" stop="20261014141500 +0000">
+    <title lang="en">Time for School</title>
+    <sub-title lang="en">Solomon's Exciting Day</sub-title>
+    <desc lang="en">Solomon and his friends are practising letters with Miss Gerrard. Later, they have a go on the climbing wall - who will be able to make it across.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/2e3d3dbc-1d73-3ab3-ae09-13f4970251a1/16-9" />
+    <episode-num system="xmltv_ns">3.7.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014141500 +0000" stop="20261014142000 +0000">
+    <title lang="en">Our Family Fun Shorts</title>
+    <desc lang="en">Kyra and Khloe Make Fruit Juice. Kyra and Khloe get busy squeezing fruit to make some tangy tropical juice.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/5eacea54-8c09-39a6-bac2-b5974640dbbc/16-9" />
+    <episode-num system="xmltv_ns">6.7.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014142000 +0000" stop="20261014142500 +0000">
+    <title lang="en">Vegesaurs</title>
+    <sub-title lang="en">Mammoth Problem</sub-title>
+    <desc lang="en">Ginger and the Peas help a furry friend learn a new skill.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/f1a175b8-d882-4c4a-be7b-8dde19593d1e/16-9" />
+    <episode-num system="xmltv_ns">3.15.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014142500 +0000" stop="20261014143500 +0000">
+    <title lang="en">Octonauts</title>
+    <sub-title lang="en">The Eel Ordeal</sub-title>
+    <desc lang="en">Animated deep sea adventures with Captain Barnacles and his explorers. The Octonauts travel up a treacherous river to help a young migrating eel.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/d4a9a3e7-8b39-4a3a-a0ce-650b7df9956c/16-9" />
+    <episode-num system="xmltv_ns">0.41.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014143500 +0000" stop="20261014145000 +0000">
+    <title lang="en">Peter Rabbit</title>
+    <desc lang="en">The Tale of the Racing Rabbit. Animated series. When the rabbits volunteer to deliver Mrs Tiggy-Winkle's laundry by go-kart, a routine delivery turns into a high-speed adventure.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/7489ae0e-07a5-418a-a25a-5702d53d4551/16-9" />
+    <episode-num system="xmltv_ns">2.25.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014145000 +0000" stop="20261014145500 +0000">
+    <title lang="en">Hey Duggee</title>
+    <sub-title lang="en">The Traffic Badge</sub-title>
+    <desc lang="en">Animated preschool series. Duggee is taking the Squirrels to the lake, but lots of people have had the same idea and there's a traffic jam.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/a5160579-9099-430f-b2a9-c5fbe8e0575c/16-9" />
+    <episode-num system="xmltv_ns">1.36.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014145500 +0000" stop="20261014151000 +0000">
+    <title lang="en">Piripenguins</title>
+    <sub-title lang="en">Baking Mad</sub-title>
+    <desc lang="en">Flutter helps Brinicle with his brioche baking for an exam, but the dough expands to a colossal size.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/1c6dbe84-75cc-4fa6-be17-eaf3803272b8/16-9" />
+    <episode-num system="xmltv_ns">0.6.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014151000 +0000" stop="20261014151500 +0000">
+    <title lang="en">Supertato</title>
+    <sub-title lang="en">Evil Pea Takes a Break</sub-title>
+    <desc lang="en">Evil Pea's spa break is ruined when the Cobs try to trick Supertato while she's gone.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/8744e8b9-a10d-401c-8fa4-5e93953cbaec/16-9" />
+    <episode-num system="xmltv_ns">0.13.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014151500 +0000" stop="20261014152500 +0000">
+    <title lang="en">The Weasy Family</title>
+    <sub-title lang="en">Mission Party Time</sub-title>
+    <desc lang="en">The ducklings throw a 'no adults' party, so Weasy parties solo but makes a huge mess.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/fe5e28c4-ee91-495a-a5b7-f32595c12717/16-9" />
+    <episode-num system="xmltv_ns">0.47.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014152500 +0000" stop="20261014153500 +0000">
+    <title lang="en">Mojo Swoptops</title>
+    <sub-title lang="en">Wingsuit Yourself</sub-title>
+    <desc lang="en">Tao needs help learning to fly his new wingsuit for a big town event, and Mojo and Bo are the experts. Can they help him find his inner bird before it's too late.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/8c1081f8-c074-47b9-8c02-24cbb9529cc1/16-9" />
+    <episode-num system="xmltv_ns">0.22.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014153500 +0000" stop="20261014154500 +0000">
+    <title lang="en">Bluey</title>
+    <sub-title lang="en">Onesies</sub-title>
+    <desc lang="en">When Mum's sister Brandy comes over for a visit, she brings Bluey and Bingo onesies.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/df42c0f0-4d29-3cf8-9403-f87a600ed890/16-9" />
+    <episode-num system="xmltv_ns">2.30.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014154500 +0000" stop="20261014155500 +0000">
+    <title lang="en">Bluey</title>
+    <sub-title lang="en">Rug Island</sub-title>
+    <desc lang="en">Dad will need to embrace his inner kid if he wants to make Rug Island his home.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/0f173cf8-783b-4c74-b125-8f3cd9aea856/16-9" />
+    <episode-num system="xmltv_ns">1.9.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014155500 +0000" stop="20261014160500 +0000">
+    <title lang="en">Zog</title>
+    <sub-title lang="en">Watch Out, Madam Dragon</sub-title>
+    <desc lang="en">There's an outbreak of firewarts among the little dragons. Zog tries his best to keep Madam Dragon out of harm's way.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/db4c59a4-5b1b-4708-99a3-298506f771f3/16-9" />
+    <episode-num system="xmltv_ns">0.32.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014160500 +0000" stop="20261014162000 +0000">
+    <title lang="en">Balamory</title>
+    <sub-title lang="en">The Balamory Games</sub-title>
+    <desc lang="en">With the games in peril, Ava seeks a new chieftain - unaware she is perfect for the role.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/6663a90f-b09b-488d-b830-70218b61cc23/16-9" />
+    <episode-num system="xmltv_ns">1.2.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014162000 +0000" stop="20261014163000 +0000">
+    <title lang="en">Waffle's After School Club</title>
+    <sub-title lang="en">Waffle and George Celebration</sub-title>
+    <desc lang="en">Daisy and Cole bring everyone together to learn their special Cats and Dogs song. Waffle and George join in with woofs and miaows.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/8263cf86-e59b-4eb2-9203-9946d543fe6b/16-9" />
+    <episode-num system="xmltv_ns">1.8.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014163000 +0000" stop="20261014164000 +0000">
+    <title lang="en">Rafi the Wishing Wizard</title>
+    <sub-title lang="en">The Flying Wish</sub-title>
+    <desc lang="en">Rafi's flying wish sends the friends swooping high above the park, racing toward the clouds. When the wish begins to run out, Rafi must speak up and lead them safely down.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/092d500b-aaca-49ae-846d-256d1df184b3/16-9" />
+    <episode-num system="xmltv_ns">.34.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014164000 +0000" stop="20261014165000 +0000">
+    <title lang="en">JoJo &amp; Gran Gran</title>
+    <desc lang="en">It's Time to Visit the Dentist. JoJo has a check-up at the dentist and is hoping to earn a special sticker for looking after her teeth and keeping them clean and fresh.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/81efaba3-e8fc-466e-aab9-ffafcaa89114/16-9" />
+    <episode-num system="xmltv_ns">0.29.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014165000 +0000" stop="20261014170000 +0000">
+    <title lang="en">Sarah &amp; Duck</title>
+    <sub-title lang="en">Ribbon Alvida</sub-title>
+    <desc lang="en">Animation for preschool children. An excited Sarah and Duck take the Shallots to see the Ribbon Sisters perform with their family circus.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/7fdd496c-8879-4e79-a097-6d2e0bcd8ab5/16-9" />
+    <episode-num system="xmltv_ns">2.39.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014170000 +0000" stop="20261014171000 +0000">
+    <title lang="en">Clangers</title>
+    <sub-title lang="en">The Chicken Waltz</sub-title>
+    <desc lang="en">Stop-motion animation. When the Iron Chicken finds Tiny's new tune too difficult to dance to, Tiny and Small come up with another rhythm just for her.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/efc55963-fd1f-4d09-a016-6d39a6dedf23/16-9" />
+    <episode-num system="xmltv_ns">0.38.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014171000 +0000" stop="20261014172000 +0000">
+    <title lang="en">BeddyByes</title>
+    <sub-title lang="en">Rainbows</sub-title>
+    <desc lang="en">MeMo and BaBa notice a rainbow in the sky after the rain stops, but where does it end? They embark on a journey to find more rainbows all over Planet BeddyByes.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/783ab279-43ef-4fad-b1b0-cc2b16681b46/16-9" />
+    <episode-num system="xmltv_ns">0.24.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014172000 +0000" stop="20261014175000 +0000">
+    <title lang="en">In the Night Garden</title>
+    <sub-title lang="en">Runaway Og-Pog</sub-title>
+    <desc lang="en">Show for young children. Makka Pakka is busy cleaning stones in the garden when his Og-Pog runs away by itself. Makka Pakka and everyone in the garden give chase.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/b5075f22-fa4d-49a4-88ab-4489f6ffe7ca/16-9" />
+    <episode-num system="xmltv_ns">0.27.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014175000 +0000" stop="20261014175800 +0000">
+    <title lang="en">CBeebies Bedtime Stories</title>
+    <sub-title lang="en">Gregory Porter</sub-title>
+    <desc lang="en">Singing in the Rain. Gregory Porter sings a special Bedtime Story about how glorious it is to sing in the rain.</desc>
+    <category lang="en">Children</category>
+    <icon src="https://images.metadata.sky.com/pd-image/1a2406da-d153-4d6d-90c9-fccdcfa0f01b/16-9" />
+    <episode-num system="xmltv_ns">.834.</episode-num>
+  </programme>
+  <programme channel="CBeebies" start="20261014175800 +0000" stop="20261014235800 +0000">
     <title lang="en">..programmes start at 6.00am</title>
   </programme>
   <channel id="TRT 1">
@@ -10361,13 +10347,13 @@
     <icon src="https://izmottvsc24.tvplus.com.tr:33207/CPS/images/universal/film/program/202610/20261009/20/220442005020e8800bd0.jpg" />
     <episode-num system="onscreen">S1 E6</episode-num>
   </programme>
-  <channel id="BabyFirst">
-    <display-name>BabyFirst</display-name>
-    <icon src="http://dtil.tmsimg.com/assets/s50338_ll_h15_ab.png?w=360&amp;h=270" />
-  </channel>
   <channel id="PBS KIDS">
     <display-name>PBS KIDS</display-name>
     <icon src="http://dtil.tmsimg.com/assets/s125394_ll_h15_ab.png?w=360&amp;h=270" />
+  </channel>
+  <channel id="BabyFirst">
+    <display-name>BabyFirst</display-name>
+    <icon src="http://dtil.tmsimg.com/assets/s50338_ll_h15_ab.png?w=360&amp;h=270" />
   </channel>
   <programme channel="PBS KIDS" start="20261011050000 +0000" stop="20261011053000 +0000">
     <title lang="en">Arthur</title>
@@ -18757,462 +18743,6 @@
     <display-name>Kidoodle TV</display-name>
     <icon src="https://provider-static.plex.tv/epg/cms/production/2dc3f128-bd64-48b7-bedd-d7545660de8f/Kidoodle.TV_Poster_Image__2000x3000___1_.jpg" />
   </channel>
-  <programme start="20261011000000 +0000" stop="20261011012100 +0000" channel="Baby Shark TV">
-    <title lang="en">Reading Stories with Pinkfong</title>
-    <sub-title lang="en">Pinkfong Aesop's Fables Collection</sub-title>
-    <desc lang="en">A compilation of Aesop's Fables for children.</desc>
-    <date>2015</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1688-3736/Reading-Stories-with-Pinkfong-default_v2.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011012100 +0000" stop="20261011014300 +0000" channel="Baby Shark TV">
-    <title lang="en">Baby Shark's Halloween</title>
-    <desc lang="en">Happy halloween season! How well can you follow the Halloween Sharks dance?</desc>
-    <date>2022</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/19897-21945/40749083-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011014300 +0000" stop="20261011020100 +0000" channel="Baby Shark TV">
-    <title lang="en">Hogi's Story Theater</title>
-    <desc lang="en">You're watching Hogi's Story Theater compilation, an educational and interactive series prepared to you by Pinkfong &amp; Hogi!</desc>
-    <date>2022</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/10657-12705/21827339-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011020100 +0000" stop="20261011023700 +0000" channel="Baby Shark TV">
-    <title lang="en">Hogi's Story Theater</title>
-    <desc lang="en">You're watching Hogi's Story Theater compilation, an educational and interactive series prepared to you by Pinkfong &amp; Hogi!</desc>
-    <date>2022</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/10657-12705/21827339-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011023700 +0000" stop="20261011033400 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Healthy Habits Songs</title>
-    <desc lang="en">Stay healthy and happy every one! Kick-start your day with Pinkfong healthy habits song.</desc>
-    <date>2015</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/3683-5731/7543330-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011033400 +0000" stop="20261011040300 +0000" channel="Baby Shark TV">
-    <title lang="en">Baby Shark Halloween Fun</title>
-    <desc lang="en">Spooky Halloween monsters are waiting for you! Baby Shark’s Halloween content is packed with even more addictive songs and fun play concepts! Get your heart pumping and let's go go go!</desc>
-    <date>2024</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27701-29749/56731872-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011040300 +0000" stop="20261011043400 +0000" channel="Baby Shark TV">
-    <title lang="en">Baby Shark Special Song</title>
-    <desc lang="en">Doo doo doo doo doo doo! For all fans who love our Baby Shark songs, here we are with baby shark songs compilation. Everybody, Let's go and have some fun.</desc>
-    <date>2020</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/4199-6247/8600605-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011043400 +0000" stop="20261011050900 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong's DIY Guide</title>
-    <sub-title lang="en">Pinkfong Clay Animals</sub-title>
-    <desc lang="en">An easy guide to make animal friends with squishy clay.</desc>
-    <date>2019</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1689-3737/Pinkfong-s-DIY-Guide-default_v2.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011050900 +0000" stop="20261011055100 +0000" channel="Baby Shark TV">
-    <title lang="en">Hide 'n Seek with Pinkfong</title>
-    <desc lang="en">Rhinoceros, Giraffe, Cheetah Lion, Kangaroo, Ostrich Buffalo, Hippo, Swan Alligator, Turtle, etc.</desc>
-    <date>2021</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/2789-4837/5711957-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E3</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011055100 +0000" stop="20261011061400 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Super Rescue Team</title>
-    <desc lang="en">"We Are The Pinkfong's Super Rescue Team! We solve all the problems in the town! Meet Roger the Police Car, Ready the Fire Truck, Forrest the Ambulance, Cloudia the Helicopter. Vroom Vroom, I am the Fire Truck Ready, dreaming of becoming a super-fire car! You're watching ""Ready, the Fire Truck's Day"", an educational and interactive Super Rescue Team series prepared to you by Pinkfong!".</desc>
-    <date>2022</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/13218-15266/27072506-default_v3.jpg" />
-    <episode-num system="onscreen">S1 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011061400 +0000" stop="20261011064500 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Songs for Children</title>
-    <sub-title lang="en">Fun Rhyming Songs</sub-title>
-    <desc lang="en">Sing, Dance and Learn Rhymes and Words with Pinkfong and Friends!</desc>
-    <date>2020</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
-    <episode-num system="onscreen">S1 E30</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011064500 +0000" stop="20261011071800 +0000" channel="Baby Shark TV">
-    <title lang="en">Baby Shark Safety Songs</title>
-    <desc lang="en">Learn all about safety with Baby Shark Safety Rangers with fun and educational Safety Songs Compilation.</desc>
-    <date>2022</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/11430-13478/23409355-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011071800 +0000" stop="20261011083100 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong &amp; Baby Shark’s Space Adventure</title>
-    <desc lang="en">Pinkfong &amp; Baby Shark are going to space!!! Follow Pinkfong &amp; Baby Shark’s space journey as they visit exciting new planets to help find the special star for Pinkfong! Join their adventure now!</desc>
-    <date>2019</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/4567-6615/9353512-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011083100 +0000" stop="20261011085300 +0000" channel="Baby Shark TV">
-    <title lang="en">Hogi's Hospital Play</title>
-    <desc lang="en">Wonder Star friends are sick! Join Hogi and Forest as they become doctors and heal their friends!</desc>
-    <date>2026</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27113-29161/55527617-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E3</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011085300 +0000" stop="20261011092400 +0000" channel="Baby Shark TV">
-    <title lang="en">Sing Along with the Dinolings 2</title>
-    <desc lang="en">Let's sing along to the nursery rhymes from ! Pinkfong Dinolings is back for Season 2 with a brand-new friend, Anca! A colorful new adventure begins as our rainbow-themed little dinos welcome their new buddy. Get ready for a wild and wacky ride as they try to put a bell on the fierce Carnotaurus’s horn and chase after a runaway dino egg! What exciting fun awaits the Dinolings tomorrow? Let’s find out!</desc>
-    <date>2025</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27755-29803/56842318-default_v1.jpg" />
-    <episode-num system="onscreen">S2 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011092400 +0000" stop="20261011095800 +0000" channel="Baby Shark TV">
-    <title lang="en">Sing Along with the Dinolings 2</title>
-    <desc lang="en">Let's sing along to the nursery rhymes from ! Pinkfong Dinolings is back for Season 2 with a brand-new friend, Anca! A colorful new adventure begins as our rainbow-themed little dinos welcome their new buddy. Get ready for a wild and wacky ride as they try to put a bell on the fierce Carnotaurus’s horn and chase after a runaway dino egg! What exciting fun awaits the Dinolings tomorrow? Let’s find out!</desc>
-    <date>2026</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27755-29803/56842318-default_v1.jpg" />
-    <episode-num system="onscreen">S2 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011095800 +0000" stop="20261011105100 +0000" channel="Baby Shark TV">
-    <title lang="en">Dance Adventure</title>
-    <desc lang="en">Arrr-! Are you ready for a fun adventure? Come and let's sing and dance together! Arrr-!</desc>
-    <date>2023</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428157-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E3</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011105100 +0000" stop="20261011111600 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Wonderstar</title>
-    <desc lang="en">That shiny crown should be mine...! Billi wants Pinkfong's crown and creates a fake detective test to lure Wonderstar. If Wonderstar wins, they will receive a golden badge but if not, the crown will be gone. The test now begins!   Wonder... star? Can you help me dance again? After the record player is broken, Frido can only go hippity hippity hop! Don’t worry Frido, Wonderstar will get your hops to hop!</desc>
-    <date>2020</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/5304-7352/10864085-default_v3.jpg" />
-    <episode-num system="onscreen">S1 E3</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011111600 +0000" stop="20261011114100 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Wonderstar</title>
-    <desc lang="en">Llia, can you finish your painting this time? There is always one concern for Lyra who is always positive. Something always stops Lila from finishing the pantings. Let's find out what it is with Wonderstar!   Billi challenges Jeni, the fastest runner in Wonderville! Jeni VS Billi, who would be the final winner of the running competition?</desc>
-    <date>2020</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/5304-7352/10864085-default_v3.jpg" />
-    <episode-num system="onscreen">S1 E4</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011114100 +0000" stop="20261011121600 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong's Snack Time</title>
-    <desc lang="en">Friends sent a secret recipe to Little Chef Pinkfong! You can make any snack delicious Shall we learn how to make snacks with exciting songs and rhythms?</desc>
-    <date>2022</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/16014-18062/32796873-default_v2.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011121600 +0000" stop="20261011123800 +0000" channel="Baby Shark TV">
-    <title lang="en">Baby Shark Monthly</title>
-    <desc lang="en">All your favorite baby sharks.</desc>
-    <date>2021</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/4886-6934/10006777-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011123800 +0000" stop="20261011125500 +0000" channel="Baby Shark TV">
-    <title lang="en">Hoi's Playground</title>
-    <desc lang="en">Pinkfong and Baby Shark's awesome friend, Hoi, is back! With him, you'll find lots of fun songs and games! Let's have some fun with Hoi!</desc>
-    <date>2024</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/5304-7352/10864087-default_v1.jpg" />
-    <episode-num system="onscreen">S2 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011125500 +0000" stop="20261011132100 +0000" channel="Baby Shark TV">
-    <title lang="en">Learn Shapes with Squid &amp; Baby Shark</title>
-    <desc lang="en">Learning and drawing shapes become easy with Pinkfong Shape Songs.</desc>
-    <date>2020</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/17152-19200/35127675-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011132100 +0000" stop="20261011135200 +0000" channel="Baby Shark TV">
-    <title lang="en">Baby Shark Surprise Box</title>
-    <desc lang="en">Racing Car Excavator Taxi Bulldozer Dump truck Remicon Scooter Bicycle airplane Fire Truck Limousine.</desc>
-    <date>2020</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/2961-5009/6064812-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E3</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011135200 +0000" stop="20261011155000 +0000" channel="Baby Shark TV">
-    <title lang="en">Spooky Shadow Monsters</title>
-    <desc lang="en">HAPPY HALLOWEEN! Let's sing and dance with Baby Shark!</desc>
-    <date>2025</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://cdn88-accio.its-newid.net/asset/009f347c20e85e2b205e37bf07b9b057501d2a68/img/thumbnail/1918acc6/1920x1080.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011155000 +0000" stop="20261011162000 +0000" channel="Baby Shark TV">
-    <title lang="en">Hide 'n Seek with Shark Family</title>
-    <desc lang="en">Oh? Where did Baby Shark and Shark Family go? Help Pinkfong to find all the Shark Family!</desc>
-    <date>2021</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/2680-4728/5489363-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011162000 +0000" stop="20261011165300 +0000" channel="Baby Shark TV">
-    <title lang="en">Baby Shark Surprise Box</title>
-    <desc lang="en">Cake, Candy, Chocolate, Cookie, Cupcake, Doughnut, Ice Cream, Lollipop, Macaron, Pancake, Pie, Book.</desc>
-    <date>2020</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/2961-5009/6064812-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011165300 +0000" stop="20261011171100 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Songs for Children</title>
-    <sub-title lang="en">Happy Birthday</sub-title>
-    <desc lang="en">Celebrate Birthdays with Pinkfong's Birthday Party Compilation.</desc>
-    <date>2022</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
-    <episode-num system="onscreen">S1 E43</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011171100 +0000" stop="20261011174600 +0000" channel="Baby Shark TV">
-    <title lang="en">Baby shark's Transformation</title>
-    <desc lang="en">Let's learn colors and shapes with Baby Shark! You're watching "Baby Shark's Transformation", a super fun story for kids to learn colors.</desc>
-    <date>2022</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428158-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011174600 +0000" stop="20261011180700 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Super Rescue Team</title>
-    <desc lang="en">We Are The Pinkfong's Super Rescue Team! We solve all the problems in the town! Meet Roger the Police Car, Ready the Fire Truck, Forrest the Ambulance, Cloudia the Helicopter. Vroom Vroom, I am the Fire Truck Ready, dreaming of becoming a super-fire car! You're watching "Ready, the Fire Truck's Day", an educational and interactive Super Rescue Team series prepared to you by Pinkfong!</desc>
-    <date>2022</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/13218-15266/27072506-default_v3.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011180700 +0000" stop="20261011185600 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Healthy Habits Songs</title>
-    <desc lang="en">Learn all about healthy habits with Baby Shark and Pinkfong!</desc>
-    <date>2021</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/3683-5731/7543330-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011185600 +0000" stop="20261011192800 +0000" channel="Baby Shark TV">
-    <title lang="en">Super Hero Baby Shark</title>
-    <desc lang="en">Become a superhero and help Baby Shark and Daddy Shark defend the sea village! Use a variety of job tools to fight against the village villain, Thief Baby Shark. Will they be able to keep the peace in Sea Village?</desc>
-    <date>2024</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27710-29758/56750351-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011192800 +0000" stop="20261011200000 +0000" channel="Baby Shark TV">
-    <title lang="en">Farm Animals Songs</title>
-    <desc lang="en">We invite you to Pinkfong Farm full of farm animals! From a fun color game to a number game! Everything is double the fun with farm animals!</desc>
-    <date>2022</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/7263-9311/14874952-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011200000 +0000" stop="20261011201700 +0000" channel="Baby Shark TV">
-    <title lang="en">Shark Family Songs</title>
-    <sub-title lang="en">Shark Family Songs Ep1</sub-title>
-    <desc lang="en">Get ready for excitement! Sing along with the Shark Family and dive into a world of colorful playtime fun. Turn kids' favorite games into catchy musical adventures! What fun game will we play with the Shark Family today?</desc>
-    <date>2026</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27755-29803/56842306-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011201700 +0000" stop="20261011204300 +0000" channel="Baby Shark TV">
-    <title lang="en">Ninimo Latin Pop Songs</title>
-    <desc lang="en">Sing and dance along with Ninimo to the upbeat rhythms of Latin pop! ¡Vamos!</desc>
-    <date>2026</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27755-29803/56842316-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011204300 +0000" stop="20261011212100 +0000" channel="Baby Shark TV">
-    <title lang="en">Doctor Baby Shark The Great Pearl Emergency!</title>
-    <desc lang="en">Doctor Baby Shark is on the way! Wee-woo, wee-woo—no emergency is too big for Doctor Baby Shark to handle! With our favorite doctor on duty, the town is safe and sound once again.</desc>
-    <date>2026</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27755-29803/56842317-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011212100 +0000" stop="20261011215200 +0000" channel="Baby Shark TV">
-    <title lang="en">Doctor Baby Shark The Great Pearl Emergency!</title>
-    <desc lang="en">Doctor Baby Shark is on the way! Wee-woo, wee-woo—no emergency is too big for Doctor Baby Shark to handle! With our favorite doctor on duty, the town is safe and sound once again.</desc>
-    <date>2026</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27755-29803/56842317-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011215200 +0000" stop="20261011222500 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong's Farm Animals</title>
-    <desc lang="en">Welcome to Pinkfong’s farm! You're watching "Pinkfong’s Farm", fun and educational Animal Songs presented by Pinkfong! Learn all about different farm animals with all-new Pinkfong's Animal Songs!</desc>
-    <date>2021</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/14167-16215/29014905-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011222500 +0000" stop="20261011225100 +0000" channel="Baby Shark TV">
-    <title lang="en">Vampire Wedding with Hogi</title>
-    <desc lang="en">Come, and join Jeni and Billi's wedding ceremony!</desc>
-    <date>2021</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/3430-5478/7026637-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011225100 +0000" stop="20261011234000 +0000" channel="Baby Shark TV">
-    <title lang="en">Stay Safe and Healthy with Pinkfong</title>
-    <desc lang="en">Stay safe &amp; healthy with Pinkfong Safety Rangers!</desc>
-    <date>2020</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/17142-19190/35108086-default_v2.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261011234000 +0000" stop="20261012000000 +0000" channel="Baby Shark TV">
-    <title lang="en">Baby Shark Toy Car Project</title>
-    <desc lang="en">Welcome to Baby Shark Car Mechanic! You're watching "How to Make Baby Shark Car? ", an educational and interactive series prepared for you by Pinkfong!</desc>
-    <date>2023</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/20474-22522/41932414-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E4</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
   <programme start="20261012000000 +0000" stop="20261012002300 +0000" channel="Baby Shark TV">
     <title lang="en">Bebefinn</title>
     <desc lang="en">Baby Finn Learns Something New Everyday with the Funn Family! Here comes another beautiful precious day of Finn, a Baby Shark lover just as our children, and his Family. Enjoy the daily life of the Bebefinn Family filled with joyful songs.</desc>
@@ -20460,6 +19990,17 @@
       <value>TV-Y</value>
     </rating>
   </programme>
+  <programme start="20261014124900 +0000" stop="20261014132100 +0000" channel="Baby Shark TV">
+    <title lang="en">Storytime with Pinkfong and Animal Friends</title>
+    <desc lang="en">Shall we go out to meet our fun animal friends in the woods? Fun animal friends are waiting for us, including a pig with a cute twisty tail, a detective squirrel looking for acorns, and a rhinoceros jumping around! Let's all start together!</desc>
+    <date>2023</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/16577-18625/33951034-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
   <programme start="20261014132100 +0000" stop="20261014134800 +0000" channel="Baby Shark TV">
     <title lang="en">Bebefinn</title>
     <desc lang="en">Baby Finn Learns Something New Everyday with the Funn Family! Here comes another beautiful precious day of Finn, a Baby Shark lover just as our children, and his Family. Enjoy the daily life of the Bebefinn Family filled with joyful songs.</desc>
@@ -20666,6 +20207,532 @@
     <category lang="en">Kids + Family</category>
     <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
     <episode-num system="onscreen">S1 E13</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015000000 +0000" stop="20261015001800 +0000" channel="Baby Shark TV">
+    <title lang="en">Jungle Music Festival</title>
+    <desc lang="en">You can hear the sound of music in the jungle. Who could be playing? Enjoy an exciting music festival with jungle friends!</desc>
+    <date>2020</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/26317-28365/53898030-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E2</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015001800 +0000" stop="20261015003900 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Songs for Children</title>
+    <sub-title lang="en">Pinkfong Outer Space Adventure Songs</sub-title>
+    <desc lang="en">Let's explore together from the deep deep oceans to infinite galaxy!</desc>
+    <date>2017</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
+    <episode-num system="onscreen">S1 E10</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015003900 +0000" stop="20261015005800 +0000" channel="Baby Shark TV">
+    <title lang="en">Hide 'n Seek with Shark Family</title>
+    <desc lang="en">Oh? Where did Baby Shark and Shark Family go? Help Pinkfong to find all the Shark Family!</desc>
+    <date>2021</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/2680-4728/5489363-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015005800 +0000" stop="20261015011600 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Halloween Songs</title>
+    <desc lang="en">Boo hoo! Let's celebrate Halloween! From zombies, ghosts, mummies, your favorite monsters are ALL HERE.</desc>
+    <date>2023</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/19897-21945/40749081-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E2</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015011600 +0000" stop="20261015020200 +0000" channel="Baby Shark TV">
+    <title lang="en">Dance Adventure</title>
+    <desc lang="en">Arrr-! Are you ready for a fun adventure? Come and let's sing and dance together! Arrr-!</desc>
+    <date>2022</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428157-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E2</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015020200 +0000" stop="20261015022100 +0000" channel="Baby Shark TV">
+    <title lang="en">The Way Bebefinn Learns</title>
+    <desc lang="en">Bebefinn~ Wake up! It's morning! What should we do when we wake up in the morning? Let's learn with Bebefinn!</desc>
+    <date>2022</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27723-29771/56776970-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015022100 +0000" stop="20261015025400 +0000" channel="Baby Shark TV">
+    <title lang="en">No No Shark, Yes Yes Shark</title>
+    <desc lang="en">Baby Shark and Thief Baby Shark, who avoided tasks like going to kindergarten, brushing teeth, or eating vegetables, suddenly changed their minds! What caused the change?</desc>
+    <date>2024</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27723-29771/56776971-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015025400 +0000" stop="20261015031500 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Super Rescue Team</title>
+    <desc lang="en">We Are The Pinkfong's Super Rescue Team! We solve all the problems in the town! Meet Roger the Police Car, Ready the Fire Truck, Forrest the Ambulance, Cloudia the Helicopter. Vroom Vroom, I am the Fire Truck Ready, dreaming of becoming a super-fire car! You're watching "Ready, the Fire Truck's Day", an educational and interactive Super Rescue Team series prepared to you by Pinkfong!</desc>
+    <date>2022</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/13218-15266/27072506-default_v3.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015031500 +0000" stop="20261015034800 +0000" channel="Baby Shark TV">
+    <title lang="en">Halloween Dance with Baby Shark</title>
+    <desc lang="en">HALLOWEEN SHARK DANCE! How well can you follow the Halloween Sharks dance?</desc>
+    <date>2021</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/3430-5478/7026636-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015034800 +0000" stop="20261015041900 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Police Game</title>
+    <desc lang="en">Join Police Officer Pinkfong and Ninimo to catch the naughty thief!</desc>
+    <date>2024</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27713-29761/56757095-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015041900 +0000" stop="20261015043900 +0000" channel="Baby Shark TV">
+    <title lang="en">Bebefinn</title>
+    <desc lang="en">Baby Finn Learns Something New Everyday with the Funn Family! Here comes another beautiful precious day of Finn, a Baby Shark lover just as our children, and his Family. Enjoy the daily life of the Bebefinn Family filled with joyful songs.</desc>
+    <date>2024</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428156-default_v1.jpg" />
+    <episode-num system="onscreen">S3 E3</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015043900 +0000" stop="20261015050200 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Chart Show</title>
+    <sub-title lang="en">Zoom zoom Super Speed Kings</sub-title>
+    <desc lang="en">Wow! All the friends who want to meet the speed king friends, gather! What is the fastest animal in the world? What is the fastest planet? Meet the friends who run fast with Pinkfong!</desc>
+    <date>2021</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1424-3472/Pinkfong-Chart-Show-default_v1.jpg" />
+    <episode-num system="onscreen">S2 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015050200 +0000" stop="20261015054000 +0000" channel="Baby Shark TV">
+    <title lang="en">Dance with Pinkfong</title>
+    <desc lang="en">You are watching "Dance with Pinkfong!", a super fun nursery rhyme created by Pinkfong. Everybody! Let's sing with Pinkfong.</desc>
+    <date>2019</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/2300-4348/Dance-with-Pinkfong-default_v1.png" />
+    <episode-num system="onscreen">S1 E2</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015054000 +0000" stop="20261015061200 +0000" channel="Baby Shark TV">
+    <title lang="en">Storytime with Pinkfong and Animal Friends</title>
+    <desc lang="en">Shall we go out to meet our fun animal friends in the woods? Fun animal friends are waiting for us, including a pig with a cute twisty tail, a detective squirrel looking for acorns, and a rhinoceros jumping around! Let's all start together!</desc>
+    <date>2023</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/16577-18625/33951034-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015061200 +0000" stop="20261015063800 +0000" channel="Baby Shark TV">
+    <title lang="en">Bebefinn</title>
+    <desc lang="en">Baby Finn Learns Something New Everyday with the Funn Family! Here comes another beautiful precious day of Finn, a Baby Shark lover just as our children, and his Family. Enjoy the daily life of the Bebefinn Family filled with joyful songs.</desc>
+    <date>2024</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428156-default_v1.jpg" />
+    <episode-num system="onscreen">S3 E8</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015063800 +0000" stop="20261015065900 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Dinolings</title>
+    <desc lang="en">Pinkfong Dinolings is back for Season 2 with a brand-new friend, Anca! A colorful new adventure begins as our rainbow-themed little dinos welcome their new buddy. Get ready for a wild and wacky ride as they try to put a bell on the fierce Carnotaurus’s horn and chase after a runaway dino egg! What exciting fun awaits the Dinolings tomorrow? Let’s find out!</desc>
+    <date>2026</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27750-29798/56832692-default_v1.jpg" />
+    <episode-num system="onscreen">S2 E3</episode-num>
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20261015065900 +0000" stop="20261015071900 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Dinolings</title>
+    <desc lang="en">Pinkfong Dinolings is back for Season 2 with a brand-new friend, Anca! A colorful new adventure begins as our rainbow-themed little dinos welcome their new buddy. Get ready for a wild and wacky ride as they try to put a bell on the fierce Carnotaurus’s horn and chase after a runaway dino egg! What exciting fun awaits the Dinolings tomorrow? Let’s find out!</desc>
+    <date>2026</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27750-29798/56832692-default_v1.jpg" />
+    <episode-num system="onscreen">S2 E4</episode-num>
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20261015071900 +0000" stop="20261015074100 +0000" channel="Baby Shark TV">
+    <title lang="en">Baby Shark Hospital Play</title>
+    <desc lang="en">Welcome to Baby Shark Hospital, where Dr. Baby Shark will take care of you!</desc>
+    <date>2026</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/13218-15266/27072508-default_v1.jpg" />
+    <episode-num system="onscreen">S3 E4</episode-num>
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20261015074100 +0000" stop="20261015080200 +0000" channel="Baby Shark TV">
+    <title lang="en">Baby Shark's Job Adventures</title>
+    <desc lang="en">Baby Shark is trying on all kinds of cool jobs! But watch out—the mischievous Dr. Octopus is trying to ruin the fun, bringing tons of wild and chaotic trouble! Can Baby Shark bravely solve the puzzles, save the day, and protect his friends and town? Dive into a thrilling career adventure full of excitement. Ready, set, let's go!</desc>
+    <date>2025</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27750-29798/56832761-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20261015080200 +0000" stop="20261015081900 +0000" channel="Baby Shark TV">
+    <title lang="en">Vroom Vroom, Baby shark's Toy Car Town</title>
+    <desc lang="en">Vroom, vroom! Gather around, friends! Welcome to Baby Shark Toy Car Town! Follow Baby Shark and race into a super fun, high-speed world of toy cars. Let’s hit the road!</desc>
+    <date>2026</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27750-29798/56832774-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20261015081900 +0000" stop="20261015084000 +0000" channel="Baby Shark TV">
+    <title lang="en">Hide 'n Seek with Shark Family</title>
+    <desc lang="en">Oh? Where did Baby Shark and Shark Family go? Help Pinkfong to find all the Shark Family!</desc>
+    <date>2026</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/2680-4728/5489363-default_v1.jpg" />
+    <episode-num system="onscreen">S6 E1</episode-num>
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20261015084000 +0000" stop="20261015091500 +0000" channel="Baby Shark TV">
+    <title lang="en">Bebefinn Good Morning Song</title>
+    <desc lang="en">Wake up, Bebefinn! It’s morning time! What should we do when we first wake up? First, let’s do a big morning stretch—reach, reach, reach! Next, it's time to make the bed—pat, pat, pat! What comes after that? Let’s learn the perfect morning routine together with Bebefinn!</desc>
+    <date>2023</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27750-29798/56832782-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20261015091500 +0000" stop="20261015101200 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Healthy Habits Songs</title>
+    <desc lang="en">Stay healthy and happy every one! Kick-start your day with Pinkfong healthy habits song.</desc>
+    <date>2015</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/3683-5731/7543330-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015101200 +0000" stop="20261015103400 +0000" channel="Baby Shark TV">
+    <title lang="en">Back to School Pinkfong Songs</title>
+    <sub-title lang="en">Epsiode 1</sub-title>
+    <desc lang="en">It's a Back to School season Start your day with our songs and have a great time at school!</desc>
+    <date>2020</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/19166-21214/39251977-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015103400 +0000" stop="20261015114100 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Songs for Children</title>
+    <sub-title lang="en">Happy Baby Shark Month</sub-title>
+    <desc lang="en">Happy Baby Shark Month! Put your fins up and Doo Doo Doo with Baby Shark.</desc>
+    <date>2020</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
+    <episode-num system="onscreen">S1 E40</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015114100 +0000" stop="20261015115800 +0000" channel="Baby Shark TV">
+    <title lang="en">Bebefinn</title>
+    <desc lang="en">"Baby Finn Learns Something New Everyday with the Funn Family! Here comes another beautiful precious day of Finn, a Baby Shark lover just as our children, and his Family. Enjoy the daily life of the Bebefinn Family filled with joyful songs.".</desc>
+    <date>2022</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428156-default_v1.jpg" />
+    <episode-num system="onscreen">S2 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015115800 +0000" stop="20261015121700 +0000" channel="Baby Shark TV">
+    <title lang="en">Bebefinn</title>
+    <desc lang="en">"Baby Finn Learns Something New Everyday with the Funn Family! Here comes another beautiful precious day of Finn, a Baby Shark lover just as our children, and his Family. Enjoy the daily life of the Bebefinn Family filled with joyful songs.".</desc>
+    <date>2022</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428156-default_v1.jpg" />
+    <episode-num system="onscreen">S2 E2</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015121700 +0000" stop="20261015124300 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Chart Show</title>
+    <sub-title lang="en">Wizard's Gift</sub-title>
+    <desc lang="en">Dear my friend, tell us about you. We are all ears. You want to change into a robot?</desc>
+    <date>2018</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1424-3472/Pinkfong-Chart-Show-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E10</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015124300 +0000" stop="20261015131700 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong's Halloween Story</title>
+    <desc lang="en">Halloween is almost here! You're watching Happy halloween!</desc>
+    <date>2021</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/10657-12705/21827338-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015131700 +0000" stop="20261015135600 +0000" channel="Baby Shark TV">
+    <title lang="en">Vampire Wedding with Hogi</title>
+    <desc lang="en">Come, and join Jeni and Billi's wedding ceremony!</desc>
+    <date>2021</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/3430-5478/7026637-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015135600 +0000" stop="20261015144900 +0000" channel="Baby Shark TV">
+    <title lang="en">Dance Adventure</title>
+    <desc lang="en">Arrr-! Are you ready for a fun adventure? Come and let's sing and dance together! Arrr-!</desc>
+    <date>2023</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428157-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E3</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015144900 +0000" stop="20261015151300 +0000" channel="Baby Shark TV">
+    <title lang="en">The Wheels on the Halloween Bus</title>
+    <desc lang="en">Wheels on the Halloween Bus! Happy halloween season!</desc>
+    <date>2020</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/3430-5478/7026639-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E2</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015151300 +0000" stop="20261015155600 +0000" channel="Baby Shark TV">
+    <title lang="en">Baby Shark's Halloween Freeze Dance</title>
+    <desc lang="en">Shake it, shake it, shake it! Baby sharks and Halloween monsters are having a fun cave dance party! Dance along and have fun!</desc>
+    <date>2021</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27705-29753/56740299-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015155600 +0000" stop="20261015163000 +0000" channel="Baby Shark TV">
+    <title lang="en">Bebefinn BEST Songs of The Year</title>
+    <desc lang="en">Mommy, thank you for being there, loving me, putting up with me, listening, your patience, and everything!</desc>
+    <date>2023</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/18125-20173/37120460-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015163000 +0000" stop="20261015170800 +0000" channel="Baby Shark TV">
+    <title lang="en">Baby Shark is Trick-or-Treating</title>
+    <desc lang="en">Halloween is almost here! You're watching "Baby Shark Brooklyn is Trick-or-Treating! ", a super catchy Halloween songs presented by Baby Shark Official!</desc>
+    <date>2021</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/3430-5478/7026634-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E2</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015170800 +0000" stop="20261015181400 +0000" channel="Baby Shark TV">
+    <title lang="en">Best Dinosaur Songs</title>
+    <desc lang="en">There's Tyrannosaurus-Rex, the best hunter and Pachycephalosaurus.</desc>
+    <date>2023</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/19897-21945/40749084-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015181400 +0000" stop="20261015184800 +0000" channel="Baby Shark TV">
+    <title lang="en">Baby Shark is Trick-or-Treating</title>
+    <desc lang="en">Halloween is almost here! You're watching "Baby Shark Brooklyn is Trick-or-Treating! ", a super catchy Halloween songs presented by Baby Shark Official!</desc>
+    <date>2021</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/3430-5478/7026634-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E4</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015184800 +0000" stop="20261015191000 +0000" channel="Baby Shark TV">
+    <title lang="en">Learn Colors with Hogi</title>
+    <desc lang="en">Learn Colors with Hogi.</desc>
+    <date>2023</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/3683-5731/7543363-default_v2.jpg" />
+    <episode-num system="onscreen">S1 E5</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015191000 +0000" stop="20261015193300 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Chart Show</title>
+    <sub-title lang="en">The Very Spooky Castle</sub-title>
+    <desc lang="en">Gana Dapong has been captured in the creepy castle of horror! Can Pinkfong go past the skeleton and vampire and save Ganadafong? Solve the thrilling quiz with Pink Fong to save Gana Dapong!</desc>
+    <date>2021</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1424-3472/Pinkfong-Chart-Show-default_v1.jpg" />
+    <episode-num system="onscreen">S2 E6</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015193300 +0000" stop="20261015203900 +0000" channel="Baby Shark TV">
+    <title lang="en">Police Car Song and more</title>
+    <desc lang="en">Watch brave Police Car saving the day! You're watching "Police Car Rescue Team Special", a fun and exciting Police Car Songs &amp; Story compilation presented by Pinkfong!</desc>
+    <date>2020</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/17152-19200/35127674-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015203900 +0000" stop="20261015205900 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong and Hogi Dance Dance</title>
+    <desc lang="en">Everyday is dance party day with Pinkfong and Hogi.</desc>
+    <date>2018</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1409-3457/Pinkfong-and-Hogi-Dance-Dance-default_v2.png" />
+    <episode-num system="onscreen">S1 E4</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015205900 +0000" stop="20261015211800 +0000" channel="Baby Shark TV">
+    <title lang="en">Super Solver Sammy</title>
+    <desc lang="en">There is always Sammy next to Pinkfong and friends, where incidents and accidents never cease. But... the solving process is a mess!? Well, anyway, the clumsy problem solver Sammy gets things done!</desc>
+    <date>2024</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/26307-28355/53876972-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015215200 +0000" stop="20261015222000 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Storytime Theater</title>
+    <desc lang="en">Come join us now and let's explore together the deep deep ocean.</desc>
+    <date>2021</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/2186-4234/Pinkfong-Storytime-Theater-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E7</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015222000 +0000" stop="20261015223700 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Songs for Children</title>
+    <sub-title lang="en">Pinkfong Play Songs</sub-title>
+    <desc lang="en">Let's sing and dance together with Pinkfong, Hogi and Friends!</desc>
+    <date>2021</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015223700 +0000" stop="20261015231900 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Musical Songs and Stories</title>
+    <sub-title lang="en">Pinkfong Nursery Rhymes and Stories</sub-title>
+    <desc lang="en">Fun and educational songs and stories loved by babies and parents all around the world.</desc>
+    <date>2016</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1688-3736/Pinkfong-Musical-Songs-and-Stories-default_v2.jpg" />
+    <episode-num system="onscreen">S1 E3</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015231900 +0000" stop="20261015233900 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Songs for Children</title>
+    <sub-title lang="en">Everyday Items Songs</sub-title>
+    <desc lang="en">Shall we learn how to apply and use life tools safely with Pinkfong? Fashionable pencil master, marching mask, elegant ballet teacher, reliable medicine ranger, stylish scissors butler, and even cute spoons and forks! With tools friends, anyone can learn in a fun and easy way!</desc>
+    <date>2022</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
+    <episode-num system="onscreen">S1 E36</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261015233900 +0000" stop="20261016000000 +0000" channel="Baby Shark TV">
+    <title lang="en">Let’s Cook with Baby Shark</title>
+    <desc lang="en">Cooking fun with Baby Shark Brooklyn Have fun cooking and happy snack time!</desc>
+    <date>2023</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/20474-22522/41932412-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E2</episode-num>
     <rating system="US">
       <value>TV-Y</value>
     </rating>
@@ -23140,6 +23207,278 @@
   </programme>
   <programme start="20261013025700 +0300" stop="20261013030000 +0300" channel="Duck TV">
     <title lang="en">Waterworld</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014000300 +0300" stop="20261014000600 +0300" channel="Duck TV">
+    <title lang="en">DuckSchool</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014000600 +0300" stop="20261014000900 +0300" channel="Duck TV">
+    <title lang="en">Shaping Up</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014000900 +0300" stop="20261014001000 +0300" channel="Duck TV">
+    <title lang="en">Home Sweet Home</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014001000 +0300" stop="20261014001300 +0300" channel="Duck TV">
+    <title lang="en">Color Magic</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014001300 +0300" stop="20261014001600 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014001600 +0300" stop="20261014001900 +0300" channel="Duck TV">
+    <title lang="en">What's Your Job?</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014001900 +0300" stop="20261014002100 +0300" channel="Duck TV">
+    <title lang="en">Groups</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014002100 +0300" stop="20261014002500 +0300" channel="Duck TV">
+    <title lang="en">Panni and Fanni</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014002500 +0300" stop="20261014002800 +0300" channel="Duck TV">
+    <title lang="en">Happy Meadow</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014002800 +0300" stop="20261014002900 +0300" channel="Duck TV">
+    <title lang="en">Pixie 2</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014002900 +0300" stop="20261014003100 +0300" channel="Duck TV">
+    <title lang="en">Sounds Around Us</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014003100 +0300" stop="20261014003200 +0300" channel="Duck TV">
+    <title lang="en">Happy Garden</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014003200 +0300" stop="20261014003500 +0300" channel="Duck TV">
+    <title lang="en">ABC - duckBC</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014003500 +0300" stop="20261014003800 +0300" channel="Duck TV">
+    <title lang="en">Monica &amp; Rudy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014003800 +0300" stop="20261014004000 +0300" channel="Duck TV">
+    <title lang="en">Cucu, I'm here!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014004000 +0300" stop="20261014004300 +0300" channel="Duck TV">
+    <title lang="en">Groups</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014004300 +0300" stop="20261014004500 +0300" channel="Duck TV">
+    <title lang="en">Enchanting Sights</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014004500 +0300" stop="20261014004800 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014004800 +0300" stop="20261014005100 +0300" channel="Duck TV">
+    <title lang="en">Miyu and Litto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014005100 +0300" stop="20261014005500 +0300" channel="Duck TV">
+    <title lang="en">What's Your Job?</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014005500 +0300" stop="20261014005700 +0300" channel="Duck TV">
+    <title lang="en">What's Your Job?</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014005700 +0300" stop="20261014010000 +0300" channel="Duck TV">
+    <title lang="en">Get Up!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014010000 +0300" stop="20261014010300 +0300" channel="Duck TV">
+    <title lang="en">Miyu and Litto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014010300 +0300" stop="20261014010500 +0300" channel="Duck TV">
+    <title lang="en">Vege-tales</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014010500 +0300" stop="20261014010800 +0300" channel="Duck TV">
+    <title lang="en">Ding Dang Dong</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014010800 +0300" stop="20261014011000 +0300" channel="Duck TV">
+    <title lang="en">Holiday</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014011000 +0300" stop="20261014011300 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014011300 +0300" stop="20261014011700 +0300" channel="Duck TV">
+    <title lang="en">India</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014011700 +0300" stop="20261014011900 +0300" channel="Duck TV">
+    <title lang="en">Safari</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014011900 +0300" stop="20261014012100 +0300" channel="Duck TV">
+    <title lang="en">Beaver Family</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014012100 +0300" stop="20261014012400 +0300" channel="Duck TV">
+    <title lang="en">Groups</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014012400 +0300" stop="20261014012600 +0300" channel="Duck TV">
+    <title lang="en">Panni and Fanni</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014012600 +0300" stop="20261014012900 +0300" channel="Duck TV">
+    <title lang="en">Miyu and Litto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014012900 +0300" stop="20261014013100 +0300" channel="Duck TV">
+    <title lang="en">Vehicles</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014013100 +0300" stop="20261014013400 +0300" channel="Duck TV">
+    <title lang="en">Beaver Family</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014013400 +0300" stop="20261014013600 +0300" channel="Duck TV">
+    <title lang="en">The World of Animals</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014013600 +0300" stop="20261014013800 +0300" channel="Duck TV">
+    <title lang="en">Dance</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014013800 +0300" stop="20261014014100 +0300" channel="Duck TV">
+    <title lang="en">Panni and Fanni</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014014100 +0300" stop="20261014014400 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014014400 +0300" stop="20261014014800 +0300" channel="Duck TV">
+    <title lang="en">Partners in Fun</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014014800 +0300" stop="20261014015000 +0300" channel="Duck TV">
+    <title lang="en">Mini Fairy Tales</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014015000 +0300" stop="20261014015200 +0300" channel="Duck TV">
+    <title lang="en">We Are Playing Now</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014015200 +0300" stop="20261014015500 +0300" channel="Duck TV">
+    <title lang="en">The World of Animals</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014015500 +0300" stop="20261014015700 +0300" channel="Duck TV">
+    <title lang="en">Vehicles</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014015700 +0300" stop="20261014020000 +0300" channel="Duck TV">
+    <title lang="en">Safari</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014020000 +0300" stop="20261014020400 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014020400 +0300" stop="20261014020700 +0300" channel="Duck TV">
+    <title lang="en">Puffy and Tubby</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014020700 +0300" stop="20261014020900 +0300" channel="Duck TV">
+    <title lang="en">The World of Animals</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014020900 +0300" stop="20261014021200 +0300" channel="Duck TV">
+    <title lang="en">Vehicles</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014021200 +0300" stop="20261014021400 +0300" channel="Duck TV">
+    <title lang="en">Safari</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014021400 +0300" stop="20261014021700 +0300" channel="Duck TV">
+    <title lang="en">Space Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014021700 +0300" stop="20261014021900 +0300" channel="Duck TV">
+    <title lang="en">Enchanting Sights</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014021900 +0300" stop="20261014022200 +0300" channel="Duck TV">
+    <title lang="en">Beaver Family</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014022200 +0300" stop="20261014022400 +0300" channel="Duck TV">
+    <title lang="en">We Are Playing Now</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014022400 +0300" stop="20261014022600 +0300" channel="Duck TV">
+    <title lang="en">Safari</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014022600 +0300" stop="20261014022900 +0300" channel="Duck TV">
+    <title lang="en">My Toys - My Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014022900 +0300" stop="20261014023200 +0300" channel="Duck TV">
+    <title lang="en">Sea Adventure</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014023200 +0300" stop="20261014023500 +0300" channel="Duck TV">
+    <title lang="en">We Are Playing Now</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014023500 +0300" stop="20261014023800 +0300" channel="Duck TV">
+    <title lang="en">Waterworld</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014023800 +0300" stop="20261014024000 +0300" channel="Duck TV">
+    <title lang="en">Mini Fairy Tales</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014024000 +0300" stop="20261014024300 +0300" channel="Duck TV">
+    <title lang="en">Puffy and Tubby</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014024300 +0300" stop="20261014024600 +0300" channel="Duck TV">
+    <title lang="en">We Are Playing Now</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014024600 +0300" stop="20261014024900 +0300" channel="Duck TV">
+    <title lang="en">Elf World</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014024900 +0300" stop="20261014025200 +0300" channel="Duck TV">
+    <title lang="en">Vehicles</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014025200 +0300" stop="20261014025400 +0300" channel="Duck TV">
+    <title lang="en">Sunville</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014025400 +0300" stop="20261014025600 +0300" channel="Duck TV">
+    <title lang="en">Sea Adventure</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014025600 +0300" stop="20261014025900 +0300" channel="Duck TV">
+    <title lang="en">Elf World</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261014025900 +0300" stop="20261014030200 +0300" channel="Duck TV">
+    <title lang="en">Enchanting Sights</title>
     <category lang="en">Kids</category>
   </programme>
 </tv>
