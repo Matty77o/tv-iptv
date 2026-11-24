@@ -10854,518 +10854,6 @@
     <display-name>Baby Shark TV</display-name>
     <icon src="https://provider-static.plex.tv/epg/cms/production/c0d601b3-28bc-4b6f-9e8b-0748d2026f65/Plex_Vertical-Default-Art_-_2000x3000.jpg" />
   </channel>
-  <programme start="20261123000000 +0000" stop="20261123001800 +0000" channel="Baby Shark TV">
-    <title lang="en">Jungle Music Festival</title>
-    <desc lang="en">You can hear the sound of music in the jungle. Who could be playing? Enjoy an exciting music festival with jungle friends!</desc>
-    <date>2020</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/26317-28365/53898030-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123001800 +0000" stop="20261123003900 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Songs for Children</title>
-    <sub-title lang="en">Pinkfong Outer Space Adventure Songs</sub-title>
-    <desc lang="en">Let's explore together from the deep deep oceans to infinite galaxy!</desc>
-    <date>2017</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
-    <episode-num system="onscreen">S1 E10</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123003900 +0000" stop="20261123005800 +0000" channel="Baby Shark TV">
-    <title lang="en">Hide 'n Seek with Shark Family</title>
-    <desc lang="en">Oh? Where did Baby Shark and Shark Family go? Help Pinkfong to find all the Shark Family!</desc>
-    <date>2021</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/2680-4728/5489363-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123005800 +0000" stop="20261123011600 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Halloween Songs</title>
-    <desc lang="en">Boo hoo! Let's celebrate Halloween! From zombies, ghosts, mummies, your favorite monsters are ALL HERE.</desc>
-    <date>2023</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/19897-21945/40749081-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123011600 +0000" stop="20261123020200 +0000" channel="Baby Shark TV">
-    <title lang="en">Dance Adventure</title>
-    <desc lang="en">Arrr-! Are you ready for a fun adventure? Come and let's sing and dance together! Arrr-!</desc>
-    <date>2022</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428157-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123020200 +0000" stop="20261123022100 +0000" channel="Baby Shark TV">
-    <title lang="en">The Way Bebefinn Learns</title>
-    <desc lang="en">Bebefinn~ Wake up! It's morning! What should we do when we wake up in the morning? Let's learn with Bebefinn!</desc>
-    <date>2022</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27723-29771/56776970-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123022100 +0000" stop="20261123025400 +0000" channel="Baby Shark TV">
-    <title lang="en">No No Shark, Yes Yes Shark</title>
-    <desc lang="en">Baby Shark and Thief Baby Shark, who avoided tasks like going to kindergarten, brushing teeth, or eating vegetables, suddenly changed their minds! What caused the change?</desc>
-    <date>2024</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27723-29771/56776971-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123025400 +0000" stop="20261123031500 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Super Rescue Team</title>
-    <desc lang="en">We Are The Pinkfong's Super Rescue Team! We solve all the problems in the town! Meet Roger the Police Car, Ready the Fire Truck, Forrest the Ambulance, Cloudia the Helicopter. Vroom Vroom, I am the Fire Truck Ready, dreaming of becoming a super-fire car! You're watching "Ready, the Fire Truck's Day", an educational and interactive Super Rescue Team series prepared to you by Pinkfong!</desc>
-    <date>2022</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/13218-15266/27072506-default_v3.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123031500 +0000" stop="20261123034800 +0000" channel="Baby Shark TV">
-    <title lang="en">Halloween Dance with Baby Shark</title>
-    <desc lang="en">HALLOWEEN SHARK DANCE! How well can you follow the Halloween Sharks dance?</desc>
-    <date>2021</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/3430-5478/7026636-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123034800 +0000" stop="20261123041900 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Police Game</title>
-    <desc lang="en">Join Police Officer Pinkfong and Ninimo to catch the naughty thief!</desc>
-    <date>2024</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27713-29761/56757095-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123041900 +0000" stop="20261123043900 +0000" channel="Baby Shark TV">
-    <title lang="en">Bebefinn</title>
-    <desc lang="en">Baby Finn Learns Something New Everyday with the Funn Family! Here comes another beautiful precious day of Finn, a Baby Shark lover just as our children, and his Family. Enjoy the daily life of the Bebefinn Family filled with joyful songs.</desc>
-    <date>2024</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428156-default_v1.jpg" />
-    <episode-num system="onscreen">S3 E3</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123043900 +0000" stop="20261123050200 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Chart Show</title>
-    <sub-title lang="en">The Very Spooky Castle</sub-title>
-    <desc lang="en">Gana Dapong has been captured in the creepy castle of horror! Can Pinkfong go past the skeleton and vampire and save Ganadafong? Solve the thrilling quiz with Pink Fong to save Gana Dapong!</desc>
-    <date>2021</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1424-3472/Pinkfong-Chart-Show-default_v1.jpg" />
-    <episode-num system="onscreen">S2 E6</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123050200 +0000" stop="20261123054000 +0000" channel="Baby Shark TV">
-    <title lang="en">Dance with Pinkfong</title>
-    <desc lang="en">You are watching "Dance with Pinkfong!", a super fun nursery rhyme created by Pinkfong. Everybody! Let's sing with Pinkfong.</desc>
-    <date>2019</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/2300-4348/Dance-with-Pinkfong-default_v1.png" />
-    <episode-num system="onscreen">S1 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123054000 +0000" stop="20261123061100 +0000" channel="Baby Shark TV">
-    <title lang="en">Storytime with Pinkfong and Animal Friends</title>
-    <desc lang="en">Shall we go out to meet our fun animal friends in the woods? Fun animal friends are waiting for us, including a pig with a cute twisty tail, a detective squirrel looking for acorns, and a rhinoceros jumping around! Let's all start together!</desc>
-    <date>2023</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/16577-18625/33951034-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123061100 +0000" stop="20261123063800 +0000" channel="Baby Shark TV">
-    <title lang="en">Bebefinn</title>
-    <desc lang="en">Baby Finn Learns Something New Everyday with the Funn Family! Here comes another beautiful precious day of Finn, a Baby Shark lover just as our children, and his Family. Enjoy the daily life of the Bebefinn Family filled with joyful songs.</desc>
-    <date>2024</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428156-default_v1.jpg" />
-    <episode-num system="onscreen">S3 E8</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123063800 +0000" stop="20261123065900 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Dinolings</title>
-    <desc lang="en">Pinkfong Dinolings is back for Season 2 with a brand-new friend, Anca! A colorful new adventure begins as our rainbow-themed little dinos welcome their new buddy. Get ready for a wild and wacky ride as they try to put a bell on the fierce Carnotaurus’s horn and chase after a runaway dino egg! What exciting fun awaits the Dinolings tomorrow? Let’s find out!</desc>
-    <date>2026</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27750-29798/56832692-default_v1.jpg" />
-    <episode-num system="onscreen">S2 E3</episode-num>
-    <rating system="US">
-      <value>TV-G</value>
-    </rating>
-  </programme>
-  <programme start="20261123065900 +0000" stop="20261123071900 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Dinolings</title>
-    <desc lang="en">Pinkfong Dinolings is back for Season 2 with a brand-new friend, Anca! A colorful new adventure begins as our rainbow-themed little dinos welcome their new buddy. Get ready for a wild and wacky ride as they try to put a bell on the fierce Carnotaurus’s horn and chase after a runaway dino egg! What exciting fun awaits the Dinolings tomorrow? Let’s find out!</desc>
-    <date>2026</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27750-29798/56832692-default_v1.jpg" />
-    <episode-num system="onscreen">S2 E4</episode-num>
-    <rating system="US">
-      <value>TV-G</value>
-    </rating>
-  </programme>
-  <programme start="20261123071900 +0000" stop="20261123074000 +0000" channel="Baby Shark TV">
-    <title lang="en">Baby Shark Hospital Play</title>
-    <desc lang="en">Welcome to Baby Shark Hospital, where Dr. Baby Shark will take care of you!</desc>
-    <date>2025</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/13218-15266/27072508-default_v1.jpg" />
-    <episode-num system="onscreen">S3 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123074000 +0000" stop="20261123080200 +0000" channel="Baby Shark TV">
-    <title lang="en">Baby Shark's Job Adventures</title>
-    <desc lang="en">Baby Shark is trying on all kinds of cool jobs! But watch out—the mischievous Dr. Octopus is trying to ruin the fun, bringing tons of wild and chaotic trouble! Can Baby Shark bravely solve the puzzles, save the day, and protect his friends and town? Dive into a thrilling career adventure full of excitement. Ready, set, let's go!</desc>
-    <date>2025</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27750-29798/56832761-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-G</value>
-    </rating>
-  </programme>
-  <programme start="20261123080200 +0000" stop="20261123092300 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Sing-Along Movie 2</title>
-    <sub-title lang="en">Wonderstar Concert</sub-title>
-    <desc lang="en">Pinkfong and Hogi decide to hold a wonderful concert with Wonderville friends, showcasing each of their favorite songs! However, while preparing for the tour, Team Wonderstar begins arguing as they are getting tired from practicing due to differences in opinions while preparing the stage… Will Pinkfong and Hogi be able to overcome various conflicts and difficulties to deliver the perfect show?</desc>
-    <date>2022</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/16014-18062/32796872-default_v1.jpeg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123092300 +0000" stop="20261123095700 +0000" channel="Baby Shark TV">
-    <title lang="en">Sing along with Pinkfong and Hogi</title>
-    <desc lang="en">Come sing along with adorable Pinkfong and Hogi!</desc>
-    <date>2020</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/5270-7318/10794755-default_v1.jpg" />
-    <episode-num system="onscreen">S2 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123095700 +0000" stop="20261123101800 +0000" channel="Baby Shark TV">
-    <title lang="en">Baby Shark Fire and Rescue Play</title>
-    <desc lang="en">Baby Shark Fire Rescue Team, Go! Brave Baby Shark rushes to help friends in danger—anytime, anywhere! Join exciting rescue missions and become a hero firefighter!</desc>
-    <date>2025</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27725-29773/56782394-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E3</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123101800 +0000" stop="20261123104100 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong and Ninimo Songs</title>
-    <desc lang="en">Join Pinkfong and Ninimo on a colorful, exciting adventure in the world of play! From rainbow color games to lively hide-and-seek and even mysterious adventures— what fun activities will be waiting for us this time? With Pinkfong and Ninimo, the joy and excitement are doubled!</desc>
-    <date>2025</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27730-29778/56791789-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123104100 +0000" stop="20261123105900 +0000" channel="Baby Shark TV">
-    <title lang="en">Super Safeguard Sammy</title>
-    <desc lang="en">Help me, Sammy!' Our hero Sammy is here to rescue friends in need! Explore safety tips through lively rhymes and engaging games. Let’s get started!</desc>
-    <date>2025</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27714-29762/56760039-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123105900 +0000" stop="20261123112200 +0000" channel="Baby Shark TV">
-    <title lang="en">Bebefinn</title>
-    <desc lang="en">Baby Finn Learns Something New Everyday with the Funn Family! Here comes another beautiful precious day of Finn, a Baby Shark lover just as our children, and his Family. Enjoy the daily life of the Bebefinn Family filled with joyful songs.</desc>
-    <date>2025</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428156-default_v1.jpg" />
-    <episode-num system="onscreen">S4 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123112200 +0000" stop="20261123114300 +0000" channel="Baby Shark TV">
-    <title lang="en">Hide 'n Seek with Shark Family</title>
-    <desc lang="en">Oh? Where did Baby Shark and Shark Family go? Help Pinkfong to find all the Shark Family!</desc>
-    <date>2026</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/2680-4728/5489363-default_v1.jpg" />
-    <episode-num system="onscreen">S6 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123114300 +0000" stop="20261123120400 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Super Rescue Team</title>
-    <desc lang="en">Hoi Poi Pinkfong! Pinkfong joins the Super Rescue Team! Join Pinkfong and the Super Rescue Team to solve all the cases happening in the city and learn essential safety tips along the way.</desc>
-    <date>2025</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/13218-15266/27072506-default_v3.jpg" />
-    <episode-num system="onscreen">S2 E3</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123120400 +0000" stop="20261123122500 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Super Rescue Team</title>
-    <desc lang="en">Hoi Poi Pinkfong! Pinkfong joins the Super Rescue Team! Join Pinkfong and the Super Rescue Team to solve all the cases happening in the city and learn essential safety tips along the way.</desc>
-    <date>2025</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/13218-15266/27072506-default_v3.jpg" />
-    <episode-num system="onscreen">S2 E4</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123122500 +0000" stop="20261123131600 +0000" channel="Baby Shark TV">
-    <title lang="en">Sing along with Pinkfong and Hogi</title>
-    <desc lang="en">Come sing along with adorable Pinkfong and Hogi!</desc>
-    <date>2021</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/5270-7318/10794755-default_v1.jpg" />
-    <episode-num system="onscreen">S3 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123131600 +0000" stop="20261123140200 +0000" channel="Baby Shark TV">
-    <title lang="en">Ambulance Rescue Special</title>
-    <desc lang="en">We Are The Pinkfong's Super Rescue Team! We solve all the problems in the town!</desc>
-    <date>2021</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/19166-21214/39251976-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123140200 +0000" stop="20261123142300 +0000" channel="Baby Shark TV">
-    <title lang="en">Baby Shark Hospital Play</title>
-    <desc lang="en">Welcome to Baby Shark Hospital, where Dr. Baby Shark will take care of you!</desc>
-    <date>2024</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/13218-15266/27072508-default_v1.jpg" />
-    <episode-num system="onscreen">S2 E5</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123142300 +0000" stop="20261123144300 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Super Rescue Team</title>
-    <desc lang="en">Hoi Poi Pinkfong! Pinkfong joins the Super Rescue Team! Join Pinkfong and the Super Rescue Team to solve all the cases happening in the city and learn essential safety tips along the way.</desc>
-    <date>2024</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/13218-15266/27072506-default_v3.jpg" />
-    <episode-num system="onscreen">S2 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123144300 +0000" stop="20261123150400 +0000" channel="Baby Shark TV">
-    <title lang="en">Hide 'n Seek with Shark Family</title>
-    <desc lang="en">Oh no~! Shark Family is missing! Baby Shark is off on a singing adventure to find them — but he needs your help! Come on, friends! Let’s sing along and help Baby Shark bring the family back!</desc>
-    <date>2025</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/2680-4728/5489363-default_v1.jpg" />
-    <episode-num system="onscreen">S5 E3</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123150400 +0000" stop="20261123153800 +0000" channel="Baby Shark TV">
-    <title lang="en">Baby Shark is Trick-or-Treating</title>
-    <desc lang="en">Halloween is almost here! You're watching "Baby Shark Brooklyn is Trick-or-Treating! ", a super catchy Halloween songs presented by Baby Shark Official!</desc>
-    <date>2021</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/3430-5478/7026634-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E4</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123153800 +0000" stop="20261123160000 +0000" channel="Baby Shark TV">
-    <title lang="en">Learn Colors with Hogi</title>
-    <desc lang="en">Learn Colors with Hogi.</desc>
-    <date>2023</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/3683-5731/7543363-default_v2.jpg" />
-    <episode-num system="onscreen">S1 E5</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123160000 +0000" stop="20261123164900 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Songs for Children</title>
-    <sub-title lang="en">Happy Easter with Baby Shark</sub-title>
-    <desc lang="en">Have fun with Baby Shark and the Shark Family!</desc>
-    <date>2020</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
-    <episode-num system="onscreen">S1 E33</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123164900 +0000" stop="20261123184700 +0000" channel="Baby Shark TV">
-    <title lang="en">Spooky Shadow Monsters</title>
-    <desc lang="en">HAPPY HALLOWEEN! Let's sing and dance with Baby Shark!</desc>
-    <date>2025</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://cdn88-accio.its-newid.net/asset/009f347c20e85e2b205e37bf07b9b057501d2a68/img/thumbnail/1918acc6/1920x1080.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123184700 +0000" stop="20261123192100 +0000" channel="Baby Shark TV">
-    <title lang="en">Learn Names with Hogi</title>
-    <desc lang="en">What is your name? Learn names of fruits, vegetables and animal friends!</desc>
-    <date>2020</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/2498-4546/5117268-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123192100 +0000" stop="20261123194900 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Storytime Theater</title>
-    <desc lang="en">Come join us now and let's explore together the deep deep ocean.</desc>
-    <date>2021</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/2186-4234/Pinkfong-Storytime-Theater-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E7</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123194900 +0000" stop="20261123201200 +0000" channel="Baby Shark TV">
-    <title lang="en">Halloween Costume Party</title>
-    <desc lang="en">The Halloween Costume Party is here! Meet the friends dressed as pirates, cowboys, ballerinas and more!</desc>
-    <date>2020</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27705-29753/56740300-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123201200 +0000" stop="20261123205400 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Musical Songs and Stories</title>
-    <sub-title lang="en">Pinkfong Nursery Rhymes and Stories</sub-title>
-    <desc lang="en">Fun and educational songs and stories loved by babies and parents all around the world.</desc>
-    <date>2016</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1688-3736/Pinkfong-Musical-Songs-and-Stories-default_v2.jpg" />
-    <episode-num system="onscreen">S1 E3</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123205400 +0000" stop="20261123211400 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Songs for Children</title>
-    <sub-title lang="en">Everyday Items Songs</sub-title>
-    <desc lang="en">Shall we learn how to apply and use life tools safely with Pinkfong? Fashionable pencil master, marching mask, elegant ballet teacher, reliable medicine ranger, stylish scissors butler, and even cute spoons and forks! With tools friends, anyone can learn in a fun and easy way!</desc>
-    <date>2022</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
-    <episode-num system="onscreen">S1 E36</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123211400 +0000" stop="20261123213500 +0000" channel="Baby Shark TV">
-    <title lang="en">Let’s Cook with Baby Shark</title>
-    <desc lang="en">Cooking fun with Baby Shark Brooklyn Have fun cooking and happy snack time!</desc>
-    <date>2023</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/20474-22522/41932412-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123213500 +0000" stop="20261123220100 +0000" channel="Baby Shark TV">
-    <title lang="en">Learn Shapes with Squid &amp; Baby Shark</title>
-    <desc lang="en">Learning and drawing shapes become easy with Pinkfong Shape Songs.</desc>
-    <date>2020</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/17152-19200/35127675-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123220100 +0000" stop="20261123230700 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong and Hogi Dance Dance</title>
-    <desc lang="en">3D Pinkfong and Hogi loves to sing and dance with best kids' songs.</desc>
-    <date>2018</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1409-3457/Pinkfong-and-Hogi-Dance-Dance-default_v2.png" />
-    <episode-num system="onscreen">S1 E1</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
-  <programme start="20261123230700 +0000" stop="20261124000000 +0000" channel="Baby Shark TV">
-    <title lang="en">Christmas Sharks</title>
-    <desc lang="en">Merry Christmas from Baby Shark to you!</desc>
-    <date>2020</date>
-    <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/4199-6247/8600599-default_v1.jpg" />
-    <episode-num system="onscreen">S1 E2</episode-num>
-    <rating system="US">
-      <value>TV-Y</value>
-    </rating>
-  </programme>
   <programme start="20261124000000 +0000" stop="20261124005600 +0000" channel="Baby Shark TV">
     <title lang="en">Pinkfong Children's Fairy Tales</title>
     <desc lang="en">A compilation of children's classic fairy tales.</desc>
@@ -11606,7 +11094,7 @@
     <date>2025</date>
     <category lang="en">Kids + Family</category>
     <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27757-29805/56846989-default_v1.jpg" />
-    <episode-num system="onscreen">S0 E1</episode-num>
+    <episode-num system="onscreen">S1 E1</episode-num>
     <rating system="US">
       <value>TV-Y</value>
     </rating>
@@ -11667,11 +11155,11 @@
     </rating>
   </programme>
   <programme start="20261124133600 +0000" stop="20261124135700 +0000" channel="Baby Shark TV">
-    <title lang="en">Hide 'n Seek with Shark Family</title>
+    <title lang="en">Hide'n Seek with Shark Family</title>
     <desc lang="en">Oh? Where did Baby Shark and Shark Family go? Help Pinkfong to find all the Shark Family!</desc>
     <date>2026</date>
     <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/2680-4728/5489363-default_v1.jpg" />
+    <icon src="https://provider-static.plex.tv/epg/cms/production/b5ed289c-81fa-4ff3-aca7-f45d47c4e23d/Plex_Horizontal-Default-Art_-_3840x2160px.jpg" />
     <episode-num system="onscreen">S6 E2</episode-num>
     <rating system="US">
       <value>TV-Y</value>
@@ -12056,11 +11544,11 @@
     </rating>
   </programme>
   <programme start="20261125071300 +0000" stop="20261125073300 +0000" channel="Baby Shark TV">
-    <title lang="en">Hide 'n Seek with Shark Family</title>
+    <title lang="en">Hide'n Seek with Shark Family</title>
     <desc lang="en">Oh? Where did Baby Shark and Shark Family go? Help Pinkfong to find all the Shark Family!</desc>
     <date>2026</date>
     <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/2680-4728/5489363-default_v1.jpg" />
+    <icon src="https://provider-static.plex.tv/epg/cms/production/b5ed289c-81fa-4ff3-aca7-f45d47c4e23d/Plex_Horizontal-Default-Art_-_3840x2160px.jpg" />
     <episode-num system="onscreen">S6 E2</episode-num>
     <rating system="US">
       <value>TV-Y</value>
@@ -12220,7 +11708,7 @@
       <value>TV-Y</value>
     </rating>
   </programme>
-  <programme start="20261125130900 +0000" stop="20261125132900 +0000" channel="Baby Shark TV">
+  <programme start="20261125130900 +0000" stop="20261125133000 +0000" channel="Baby Shark TV">
     <title lang="en">Pinkfong Colors Halloween</title>
     <desc lang="en">Learn Halloween special colors with Pinkfong and Wonderstars friends!</desc>
     <date>2025</date>
@@ -12231,7 +11719,7 @@
       <value>TV-Y</value>
     </rating>
   </programme>
-  <programme start="20261125132900 +0000" stop="20261125135100 +0000" channel="Baby Shark TV">
+  <programme start="20261125133000 +0000" stop="20261125135100 +0000" channel="Baby Shark TV">
     <title lang="en">Bebefinn</title>
     <desc lang="en">Baby Finn Learns Something New Everyday with the Funn Family! Here comes another beautiful precious day of Finn, a Baby Shark lover just as our children, and his Family. Enjoy the daily life of the Bebefinn Family filled with joyful songs.</desc>
     <date>2025</date>
@@ -12843,7 +12331,7 @@
       <value>TV-G</value>
     </rating>
   </programme>
-  <programme start="20261126160600 +0000" stop="20261126162600 +0000" channel="Baby Shark TV">
+  <programme start="20261126160600 +0000" stop="20261126162700 +0000" channel="Baby Shark TV">
     <title lang="en">Pinkfong Dinolings</title>
     <desc lang="en">Pinkfong Dinolings is back for Season 2 with a brand-new friend, Anca! A colorful new adventure begins as our rainbow-themed little dinos welcome their new buddy. Get ready for a wild and wacky ride as they try to put a bell on the fierce Carnotaurus’s horn and chase after a runaway dino egg! What exciting fun awaits the Dinolings tomorrow? Let’s find out!</desc>
     <date>2026</date>
@@ -12854,7 +12342,7 @@
       <value>TV-G</value>
     </rating>
   </programme>
-  <programme start="20261126162600 +0000" stop="20261126164700 +0000" channel="Baby Shark TV">
+  <programme start="20261126162700 +0000" stop="20261126164700 +0000" channel="Baby Shark TV">
     <title lang="en">Let's Booksplore with Hogi-Space</title>
     <desc lang="en">What happens in the library at night? Colorful books are flying all over there! Let's booksplore with Hogi.</desc>
     <date>2020</date>
@@ -12954,7 +12442,7 @@
       <value>TV-Y</value>
     </rating>
   </programme>
-  <programme start="20261126203500 +0000" stop="20261126211600 +0000" channel="Baby Shark TV">
+  <programme start="20261126203500 +0000" stop="20261126211700 +0000" channel="Baby Shark TV">
     <title lang="en">Thief Baby Shark Stole Our Colors</title>
     <desc lang="en">Thief Baby Shark appeared at the kindergarten with a mysterious vacuum cleaner! It began stealing colors from the playground and the bodies of Baby Shark and friends. Can Baby Shark restore the colors and save the kindergarten?</desc>
     <date>2023</date>
@@ -12965,7 +12453,7 @@
       <value>TV-Y</value>
     </rating>
   </programme>
-  <programme start="20261126211600 +0000" stop="20261126213600 +0000" channel="Baby Shark TV">
+  <programme start="20261126211700 +0000" stop="20261126213600 +0000" channel="Baby Shark TV">
     <title lang="en">Bebefinn</title>
     <desc lang="en">"Baby Finn Learns Something New Everyday with the Funn Family! Here comes another beautiful precious day of Finn, a Baby Shark lover just as our children, and his Family. Enjoy the daily life of the Bebefinn Family filled with joyful songs.".</desc>
     <date>2022</date>
@@ -12999,14 +12487,540 @@
       <value>TV-Y</value>
     </rating>
   </programme>
-  <programme start="20261126231800 +0000" stop="20261127000000 +0000" channel="Baby Shark TV">
-    <title lang="en">Pinkfong Musical Songs and Stories</title>
-    <sub-title lang="en">Pinkfong Nursery Rhymes and Stories</sub-title>
-    <desc lang="en">Fun and educational songs and stories loved by babies and parents all around the world.</desc>
+  <programme start="20261126223600 +0000" stop="20261126231900 +0000" channel="Baby Shark TV">
+    <title lang="en">Happy Baby Shark Month</title>
+    <desc lang="en">Baby Shark Month is back! Le'ts celebrate Baby Shark Month by singing along with a baby shark!</desc>
+    <date>2020</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27498-29546/56317915-default_v2.jpg" />
+    <episode-num system="onscreen">S1 E2</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261126231900 +0000" stop="20261127000000 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Songs for Children</title>
+    <sub-title lang="en">Pinkfong's Preschool Songs</sub-title>
+    <desc lang="en">It's time to go to school! Pinkfong knows that it's hard to say good bye to mommy and daddy! But, use the magic words "See You Later, Alligator!" You can do it!</desc>
+    <date>2022</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
+    <episode-num system="onscreen">S1 E37</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127000000 +0000" stop="20261127002400 +0000" channel="Baby Shark TV">
+    <title lang="en">Mystical Fairy Tales with Pinkfong</title>
+    <desc lang="en">Help! Pinkfong and Ninimo! Fun and creepy happenings in classic fairy tales! Join Pinkfong and Ninimo on a thrilling journey through the creepy world of timeless fairy tales!</desc>
+    <date>2024</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27701-29749/56731869-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127002400 +0000" stop="20261127005000 +0000" channel="Baby Shark TV">
+    <title lang="en">Mystical Fairy Tales with Pinkfong</title>
+    <desc lang="en">Help! Pinkfong and Ninimo! Fun and creepy happenings in classic fairy tales! Join Pinkfong and Ninimo on a thrilling journey through the creepy world of timeless fairy tales!</desc>
+    <date>2024</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27701-29749/56731869-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E2</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127005000 +0000" stop="20261127011400 +0000" channel="Baby Shark TV">
+    <title lang="en">Everything ABC Songs</title>
+    <desc lang="en">Learn your ABC with Pinkfong and friends!</desc>
+    <date>2021</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/14167-16215/29014904-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127011400 +0000" stop="20261127015200 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Songs for Children</title>
+    <sub-title lang="en">Pinkfong Word Songs</sub-title>
+    <desc lang="en">Learning words and names become easy with Pinkfong Word Songs.</desc>
     <date>2016</date>
     <category lang="en">Kids + Family</category>
-    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1688-3736/Pinkfong-Musical-Songs-and-Stories-default_v2.jpg" />
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
+    <episode-num system="onscreen">S1 E14</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127015200 +0000" stop="20261127022600 +0000" channel="Baby Shark TV">
+    <title lang="en">Sing along with Pinkfong and Hogi</title>
+    <desc lang="en">Come sing along with adorable Pinkfong and Hogi!</desc>
+    <date>2020</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/5270-7318/10794755-default_v1.jpg" />
+    <episode-num system="onscreen">S2 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127022600 +0000" stop="20261127033500 +0000" channel="Baby Shark TV">
+    <title lang="en">Learn Colors with Shape Block and more</title>
+    <desc lang="en">Let's learn colors with Shape Blocks and Wonderville Friends!</desc>
+    <date>2020</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/5932-7980/12149808-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127033500 +0000" stop="20261127035700 +0000" channel="Baby Shark TV">
+    <title lang="en">Baby Shark Monthly</title>
+    <desc lang="en">All your favorite baby sharks.</desc>
+    <date>2021</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/4886-6934/10006777-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E2</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127035700 +0000" stop="20261127041500 +0000" channel="Baby Shark TV">
+    <title lang="en">Hide 'n Seek with Shark Family</title>
+    <desc lang="en">Oh? Where did Baby Shark and Shark Family go? Help Pinkfong to find all the Shark Family!</desc>
+    <date>2021</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/2680-4728/5489363-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127041500 +0000" stop="20261127043700 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Songs for Children</title>
+    <sub-title lang="en">Pinkfong Ten Little Kids</sub-title>
+    <desc lang="en">The adorable Ten Little Friends are here to sing and dance with you. One to ten!</desc>
+    <date>2019</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
+    <episode-num system="onscreen">S1 E16</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127043700 +0000" stop="20261127045800 +0000" channel="Baby Shark TV">
+    <title lang="en">Baby Shark Hospital Play</title>
+    <desc lang="en">Welcome to Baby Shark Hospital where Dr. Baby Shark will take care of you!</desc>
+    <date>2025</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/13218-15266/27072508-default_v1.jpg" />
+    <episode-num system="onscreen">S2 E4</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127045800 +0000" stop="20261127051500 +0000" channel="Baby Shark TV">
+    <title lang="en">Let's Booksplore with Hogi-Space</title>
+    <desc lang="en">Hogi visits the magical library, and is attracted to a mysterious book.. The adventure begins!</desc>
+    <date>2020</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1422-3470/Let-s-Booksplore-with-Hogi-Space-default_v1.png" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127051500 +0000" stop="20261127055700 +0000" channel="Baby Shark TV">
+    <title lang="en">Bebefinn Number Songs</title>
+    <desc lang="en">One, two, three.Four, five, six.Seven, eight, nine, ten. Numbers, numbers.La la la la la la la. Have fun counting numbers!</desc>
+    <date>2022</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/22772-24820/46637166-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127055700 +0000" stop="20261127070100 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Songs for Children</title>
+    <sub-title lang="en">Let's Sing with Pinkfong</sub-title>
+    <desc lang="en">Everybody! Let's sing and dance with us!</desc>
+    <date>2020</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
+    <episode-num system="onscreen">S1 E20</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127070100 +0000" stop="20261127072700 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Halloween Songs</title>
+    <desc lang="en">Boo hoo! Let's celebrate Halloween! From zombies, ghosts, mummies, your favorite monsters are ALL HERE.</desc>
+    <date>2026</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/19897-21945/40749081-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E5</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127072700 +0000" stop="20261127075900 +0000" channel="Baby Shark TV">
+    <title lang="en">Baby Shark Kindergarten</title>
+    <desc lang="en">Introducing the Shark Kindergarten where Baby shark Ollie, hammerhead shark Chi-Chi, and thresher shark Dodo attend. Have fun with the friendly whale shark teacher!</desc>
+    <date>2023</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/20485-22533/41953734-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127075900 +0000" stop="20261127084800 +0000" channel="Baby Shark TV">
+    <title lang="en">Stay Safe and Healthy with Pinkfong</title>
+    <desc lang="en">Stay safe &amp; healthy with Pinkfong Safety Rangers!</desc>
+    <date>2020</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/17142-19190/35108086-default_v2.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127084800 +0000" stop="20261127091200 +0000" channel="Baby Shark TV">
+    <title lang="en">Baby Shark Brooklyn</title>
+    <desc lang="en">Baby Shark Brooklyn's adventure under the sea! 9. To Catch a Thief! 10. Welcome to the Sardine Show!</desc>
+    <date>2020</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1421-3469/Baby-Shark-Brooklyn-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E5</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127091200 +0000" stop="20261127093500 +0000" channel="Baby Shark TV">
+    <title lang="en">Baby Shark Brooklyn</title>
+    <desc lang="en">Baby Shark Brooklyn's adventure under the sea! 11. Coral Forest Rescue! 12. Bella's Surprise Village Concert.</desc>
+    <date>2020</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1421-3469/Baby-Shark-Brooklyn-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E6</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127093500 +0000" stop="20261127101700 +0000" channel="Baby Shark TV">
+    <title lang="en">Baby Shark's Festival Hide and Seek</title>
+    <desc lang="en">From masquerades and ice wonderlands to tomato splats and samba parades! The Shark Family has set off to celebrate the coolest festivals around the globe. Join Baby Shark on a search to find the family and dance around the world!</desc>
+    <date>2025</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27757-29805/56846989-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127101700 +0000" stop="20261127103400 +0000" channel="Baby Shark TV">
+    <title lang="en">Learn Colors with Hogi</title>
+    <desc lang="en">Learn colors with Hogi and Wonderville Friends!</desc>
+    <date>2026</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/3683-5731/7543363-default_v2.jpg" />
+    <episode-num system="onscreen">S1 E9</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127103400 +0000" stop="20261127110500 +0000" channel="Baby Shark TV">
+    <title lang="en">Going Potty with Pinkfong!</title>
+    <desc lang="en">Toot, toot! It's potty time! Give a big push—push, push, push! Let’s practice going potty together and celebrate every big-kid step!</desc>
+    <date>2021</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27757-29805/56846987-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127110500 +0000" stop="20261127112800 +0000" channel="Baby Shark TV">
+    <title lang="en">The Cat Song</title>
+    <desc lang="en">Get ready for a wild, wacky, and paws-itively fun day with adorable playful kittens! Nothing can stop our furry little crew—meow!</desc>
+    <date>2022</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27757-29805/56846988-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127114900 +0000" stop="20261127121000 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Super Rescue Team</title>
+    <desc lang="en">Hoi Poi Pinkfong! Pinkfong joins the Super Rescue Team! Join Pinkfong and the Super Rescue Team to solve all the cases happening in the city and learn essential safety tips along the way.</desc>
+    <date>2025</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/13218-15266/27072506-default_v3.jpg" />
+    <episode-num system="onscreen">S2 E3</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127121000 +0000" stop="20261127123200 +0000" channel="Baby Shark TV">
+    <title lang="en">Sing Along with Hogi Christmas</title>
+    <desc lang="en">Let's Sing Along with Christmas Carols and Presents!</desc>
+    <date>2021</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/12091-14139/24763224-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127123200 +0000" stop="20261127132000 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Songs for Children</title>
+    <sub-title lang="en">Happy Easter with Baby Shark</sub-title>
+    <desc lang="en">Have fun with Baby Shark and the Shark Family!</desc>
+    <date>2020</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
+    <episode-num system="onscreen">S1 E33</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127132000 +0000" stop="20261127134200 +0000" channel="Baby Shark TV">
+    <title lang="en">Baby Shark Hospital Play</title>
+    <desc lang="en">Welcome to Baby Shark Hospital, where Dr. Baby Shark will take care of you!</desc>
+    <date>2026</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/13218-15266/27072508-default_v1.jpg" />
+    <episode-num system="onscreen">S3 E4</episode-num>
+    <rating system="US">
+      <value>TV-G</value>
+    </rating>
+  </programme>
+  <programme start="20261127134200 +0000" stop="20261127140300 +0000" channel="Baby Shark TV">
+    <title lang="en">Bebefinn</title>
+    <desc lang="en">Baby Finn Learns Something New Everyday with the Funn Family! Here comes another beautiful precious day of Finn, a Baby Shark lover just as our children, and his Family. Enjoy the daily life of the Bebefinn Family filled with joyful songs.</desc>
+    <date>2026</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428156-default_v1.jpg" />
+    <episode-num system="onscreen">S5 E3</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127140300 +0000" stop="20261127142300 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Songs for Children</title>
+    <sub-title lang="en">Around the World with Baby Shark</sub-title>
+    <desc lang="en">Sing, Dance, and learn different cultures from all around the world with Baby Shark and friends!</desc>
+    <date>2021</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
+    <episode-num system="onscreen">S1 E19</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127142300 +0000" stop="20261127145600 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong ABC Phonics</title>
+    <desc lang="en">Sing along with your favorite songs and enjoy learning different sounds with rhyming words. Here we go!</desc>
+    <date>2017</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1423-3471/Pinkfong-ABC-Phonics-default_v1.png" />
+    <episode-num system="onscreen">S1 E2</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127145600 +0000" stop="20261127152600 +0000" channel="Baby Shark TV">
+    <title lang="en">Hide 'n Seek with Shark Family</title>
+    <desc lang="en">Oh? Where did Baby Shark and Shark Family go? Help Pinkfong to find all the Shark Family!</desc>
+    <date>2021</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/2680-4728/5489363-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E2</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127152600 +0000" stop="20261127160300 +0000" channel="Baby Shark TV">
+    <title lang="en">Sing along with Pinkfong and Hogi</title>
+    <sub-title lang="en">Sing along with Pinkfong and Hogi 5</sub-title>
+    <desc lang="en">Come sing along with adorable Pinkfong and Hogi!</desc>
+    <date>2022</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/5270-7318/10794755-default_v1.jpg" />
+    <episode-num system="onscreen">S5 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127160300 +0000" stop="20261127162300 +0000" channel="Baby Shark TV">
+    <title lang="en">Learn Colors with Hogi</title>
+    <desc lang="en">Learn colors with Hogi and Wonderville Friends!</desc>
+    <date>2024</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/3683-5731/7543363-default_v2.jpg" />
+    <episode-num system="onscreen">S1 E6</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127162300 +0000" stop="20261127171000 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Dinosaur Musical Stories</title>
+    <desc lang="en">ROAR! Sing and stomp with Pinkfong's Dinosaur Musical.</desc>
+    <date>2020</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1426-3474/Pinkfong-Dinosaur-Musical-Stories-default_v2.png" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127171000 +0000" stop="20261127173800 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Dinosaur Musical Stories</title>
+    <desc lang="en">Did you know that dinosaurs love to sing and dance?</desc>
+    <date>2020</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1426-3474/Pinkfong-Dinosaur-Musical-Stories-default_v2.png" />
+    <episode-num system="onscreen">S1 E2</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127173800 +0000" stop="20261127182200 +0000" channel="Baby Shark TV">
+    <title lang="en">Hogi, the Detective</title>
+    <desc lang="en">With extraordinary powers of observation, there’s no case Hogi cannot solve!</desc>
+    <date>2019</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1422-3470/Hogi--the-Detective-default_v1.png" />
     <episode-num system="onscreen">S1 E3</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127182200 +0000" stop="20261127185700 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Arts and Crafts</title>
+    <desc lang="en">Check out kids' favorite craft videos. Let's make our favorite character squishies and play with finger family.</desc>
+    <date>2018</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1423-3471/Pinkfong-Arts-and-Crafts-default_v1.png" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127185700 +0000" stop="20261127193000 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Songs for Children</title>
+    <sub-title lang="en">Baby Shark Colors</sub-title>
+    <desc lang="en">Learn different colors with Baby Shark Brooklyn and Pinkfong!</desc>
+    <date>2022</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
+    <episode-num system="onscreen">S1 E42</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127193000 +0000" stop="20261127195200 +0000" channel="Baby Shark TV">
+    <title lang="en">Bebefinn Dance Time</title>
+    <desc lang="en">Have fun dancing and singing with Bebefinn! It's dance time with mom and dad, or with siblings!</desc>
+    <date>2024</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/27710-29758/56750349-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127195200 +0000" stop="20261127202300 +0000" channel="Baby Shark TV">
+    <title lang="en">Baby shark's Transformation</title>
+    <desc lang="en">Let's learn colors and shapes with Baby Shark! You're watching "Baby Shark's Transformation", a super fun story for kids to learn colors.</desc>
+    <date>2022</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/6556-8604/13428158-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E2</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127202300 +0000" stop="20261127205700 +0000" channel="Baby Shark TV">
+    <title lang="en">Baby Shark Surprise Box</title>
+    <desc lang="en">Cake, Candy, Chocolate, Cookie, Cupcake, Doughnut, Ice Cream, Lollipop, Macaron, Pancake, Pie, Book.</desc>
+    <date>2020</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/2961-5009/6064812-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127205700 +0000" stop="20261127212800 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Songs for Children</title>
+    <sub-title lang="en">Fun Rhyming Songs</sub-title>
+    <desc lang="en">Sing, Dance and Learn Rhymes and Words with Pinkfong and Friends!</desc>
+    <date>2020</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
+    <episode-num system="onscreen">S1 E30</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127212800 +0000" stop="20261127220400 +0000" channel="Baby Shark TV">
+    <title lang="en">Hogi's Story Theater</title>
+    <desc lang="en">You're watching Hogi's Story Theater compilation, an educational and interactive series prepared to you by Pinkfong &amp; Hogi!</desc>
+    <date>2022</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/10657-12705/21827339-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E3</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127220400 +0000" stop="20261127222100 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Songs for Children</title>
+    <sub-title lang="en">Pinkfong Play Songs</sub-title>
+    <desc lang="en">Let's sing and dance together with Pinkfong, Hogi and Friends!</desc>
+    <date>2021</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/1687-3735/Pinkfong-Songs-for-Children-default_v2.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127222100 +0000" stop="20261127224200 +0000" channel="Baby Shark TV">
+    <title lang="en">Pinkfong Car Mechanic</title>
+    <desc lang="en">Welcome to the Pinkfong Repair Shop. Feel free to drop by!</desc>
+    <date>2024</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/21836-23884/44721156-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E2</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127224200 +0000" stop="20261127231700 +0000" channel="Baby Shark TV">
+    <title lang="en">Learn Colors with Hogi</title>
+    <desc lang="en">Learn colors with Hogi and Wonderville Friends!</desc>
+    <date>2021</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/3683-5731/7543363-default_v2.jpg" />
+    <episode-num system="onscreen">S1 E2</episode-num>
+    <rating system="US">
+      <value>TV-Y</value>
+    </rating>
+  </programme>
+  <programme start="20261127231700 +0000" stop="20261128000000 +0000" channel="Baby Shark TV">
+    <title lang="en">Baby Shark's Christmas Stories</title>
+    <desc lang="en">Merry Christmas! Let’s celebrate the holiday with some festive Christmas stories!</desc>
+    <date>2022</date>
+    <category lang="en">Kids + Family</category>
+    <icon src="https://dki01q1l7yn3y.cloudfront.net/thumbnails-platform-prod/assets/cs::content::shows/12091-14139/24763226-default_v1.jpg" />
+    <episode-num system="onscreen">S1 E1</episode-num>
     <rating system="US">
       <value>TV-Y</value>
     </rating>
@@ -15493,6 +15507,2178 @@
   </programme>
   <programme start="20261125025900 +0300" stop="20261125030200 +0300" channel="Duck TV">
     <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125030200 +0300" stop="20261125030500 +0300" channel="Duck TV">
+    <title lang="en">Ding Dang Dong</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125030500 +0300" stop="20261125031000 +0300" channel="Duck TV">
+    <title lang="en">The World of Animals</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125031000 +0300" stop="20261125031300 +0300" channel="Duck TV">
+    <title lang="en">Listen to This</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125031300 +0300" stop="20261125031600 +0300" channel="Duck TV">
+    <title lang="en">Animals</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125031600 +0300" stop="20261125031900 +0300" channel="Duck TV">
+    <title lang="en">City Life</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125031900 +0300" stop="20261125032200 +0300" channel="Duck TV">
+    <title lang="en">Beaver Family</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125032200 +0300" stop="20261125032400 +0300" channel="Duck TV">
+    <title lang="en">The World of Animals</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125032400 +0300" stop="20261125032700 +0300" channel="Duck TV">
+    <title lang="en">Animals</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125032700 +0300" stop="20261125032900 +0300" channel="Duck TV">
+    <title lang="en">Enchanting Sights</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125032900 +0300" stop="20261125033200 +0300" channel="Duck TV">
+    <title lang="en">The World of Animals</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125033200 +0300" stop="20261125033400 +0300" channel="Duck TV">
+    <title lang="en">My Toys - My Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125033400 +0300" stop="20261125033700 +0300" channel="Duck TV">
+    <title lang="en">Elf World</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125033700 +0300" stop="20261125034000 +0300" channel="Duck TV">
+    <title lang="en">Partners in Fun</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125034000 +0300" stop="20261125034200 +0300" channel="Duck TV">
+    <title lang="en">Safari</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125034200 +0300" stop="20261125034500 +0300" channel="Duck TV">
+    <title lang="en">My Toys - My Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125034500 +0300" stop="20261125034700 +0300" channel="Duck TV">
+    <title lang="en">Waterworld</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125034700 +0300" stop="20261125035200 +0300" channel="Duck TV">
+    <title lang="en">City Life</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125035200 +0300" stop="20261125035500 +0300" channel="Duck TV">
+    <title lang="en">Listen to This</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125035500 +0300" stop="20261125035800 +0300" channel="Duck TV">
+    <title lang="en">City Life</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125035800 +0300" stop="20261125040100 +0300" channel="Duck TV">
+    <title lang="en">Elf World</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125040100 +0300" stop="20261125040400 +0300" channel="Duck TV">
+    <title lang="en">Space Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125040400 +0300" stop="20261125040900 +0300" channel="Duck TV">
+    <title lang="en">Sport, Sport, Sport</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125040900 +0300" stop="20261125041100 +0300" channel="Duck TV">
+    <title lang="en">Enlightment Corner</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125041100 +0300" stop="20261125041400 +0300" channel="Duck TV">
+    <title lang="en">Sunville</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125041400 +0300" stop="20261125041800 +0300" channel="Duck TV">
+    <title lang="en">Puffy and Tubby</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125041800 +0300" stop="20261125042000 +0300" channel="Duck TV">
+    <title lang="en">In the Museum</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125042000 +0300" stop="20261125042300 +0300" channel="Duck TV">
+    <title lang="en">Groups</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125042300 +0300" stop="20261125042600 +0300" channel="Duck TV">
+    <title lang="en">Sunville</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125042600 +0300" stop="20261125042800 +0300" channel="Duck TV">
+    <title lang="en">Vege-tales</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125042800 +0300" stop="20261125043000 +0300" channel="Duck TV">
+    <title lang="en">Miyu and Litto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125043000 +0300" stop="20261125043400 +0300" channel="Duck TV">
+    <title lang="en">Puffy and Tubby</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125043400 +0300" stop="20261125043700 +0300" channel="Duck TV">
+    <title lang="en">Oli - The Cycles of Nature</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125043700 +0300" stop="20261125044000 +0300" channel="Duck TV">
+    <title lang="en">What's Your Job?</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125044000 +0300" stop="20261125044400 +0300" channel="Duck TV">
+    <title lang="en">Panni and Fanni</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125044400 +0300" stop="20261125044600 +0300" channel="Duck TV">
+    <title lang="en">Safari</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125044600 +0300" stop="20261125044900 +0300" channel="Duck TV">
+    <title lang="en">Color Magic</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125044900 +0300" stop="20261125045200 +0300" channel="Duck TV">
+    <title lang="en">Enlightment Corner</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125045200 +0300" stop="20261125045500 +0300" channel="Duck TV">
+    <title lang="en">Miyu and Litto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125045500 +0300" stop="20261125045700 +0300" channel="Duck TV">
+    <title lang="en">Enlightment Corner</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125045700 +0300" stop="20261125050000 +0300" channel="Duck TV">
+    <title lang="en">Miyu and Litto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125050000 +0300" stop="20261125050300 +0300" channel="Duck TV">
+    <title lang="en">Safari</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125050300 +0300" stop="20261125050500 +0300" channel="Duck TV">
+    <title lang="en">Panni and Fanni</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125050500 +0300" stop="20261125050800 +0300" channel="Duck TV">
+    <title lang="en">Color Magic</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125050800 +0300" stop="20261125051100 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125051100 +0300" stop="20261125051400 +0300" channel="Duck TV">
+    <title lang="en">Beaver Family</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125051400 +0300" stop="20261125051800 +0300" channel="Duck TV">
+    <title lang="en">Enchanting Sights</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125051800 +0300" stop="20261125052300 +0300" channel="Duck TV">
+    <title lang="en">Sport, Sport, Sport</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125052300 +0300" stop="20261125052500 +0300" channel="Duck TV">
+    <title lang="en">The Way We Travel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125052500 +0300" stop="20261125052900 +0300" channel="Duck TV">
+    <title lang="en">Space Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125052900 +0300" stop="20261125053300 +0300" channel="Duck TV">
+    <title lang="en">Enchanting Sights</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125053300 +0300" stop="20261125053500 +0300" channel="Duck TV">
+    <title lang="en">Elf World</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125053500 +0300" stop="20261125053800 +0300" channel="Duck TV">
+    <title lang="en">Dance</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125053800 +0300" stop="20261125054100 +0300" channel="Duck TV">
+    <title lang="en">What's Your Job?</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125054100 +0300" stop="20261125054400 +0300" channel="Duck TV">
+    <title lang="en">Ding Dang Dong</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125054400 +0300" stop="20261125054700 +0300" channel="Duck TV">
+    <title lang="en">Get Up!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125054700 +0300" stop="20261125055000 +0300" channel="Duck TV">
+    <title lang="en">Sport, Sport, Sport</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125055000 +0300" stop="20261125055300 +0300" channel="Duck TV">
+    <title lang="en">Dance</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125055300 +0300" stop="20261125055500 +0300" channel="Duck TV">
+    <title lang="en">Sport, Sport, Sport</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125055500 +0300" stop="20261125055900 +0300" channel="Duck TV">
+    <title lang="en">Ding Dang Dong</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125055900 +0300" stop="20261125060300 +0300" channel="Duck TV">
+    <title lang="en">Enchanting Sights</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125060300 +0300" stop="20261125060500 +0300" channel="Duck TV">
+    <title lang="en">Get Up!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125060500 +0300" stop="20261125060800 +0300" channel="Duck TV">
+    <title lang="en">Ding Dang Dong</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125060800 +0300" stop="20261125061100 +0300" channel="Duck TV">
+    <title lang="en">Dance</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125061100 +0300" stop="20261125061500 +0300" channel="Duck TV">
+    <title lang="en">Ding Dang Dong</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125061500 +0300" stop="20261125061800 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125061800 +0300" stop="20261125062100 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125062100 +0300" stop="20261125062300 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125062300 +0300" stop="20261125062600 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125062600 +0300" stop="20261125062800 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125062800 +0300" stop="20261125063100 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125063100 +0300" stop="20261125063400 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125063400 +0300" stop="20261125063700 +0300" channel="Duck TV">
+    <title lang="en">Ding Dang Dong</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125063700 +0300" stop="20261125063900 +0300" channel="Duck TV">
+    <title lang="en">Holiday</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125063900 +0300" stop="20261125064100 +0300" channel="Duck TV">
+    <title lang="en">Mini Fairy Tales</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125064100 +0300" stop="20261125064400 +0300" channel="Duck TV">
+    <title lang="en">Miyu and Litto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125064400 +0300" stop="20261125064700 +0300" channel="Duck TV">
+    <title lang="en">We Are Playing Now</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125064700 +0300" stop="20261125065000 +0300" channel="Duck TV">
+    <title lang="en">India</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125065000 +0300" stop="20261125065200 +0300" channel="Duck TV">
+    <title lang="en">Vehicles</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125065200 +0300" stop="20261125065500 +0300" channel="Duck TV">
+    <title lang="en">Miyu and Litto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125065500 +0300" stop="20261125065700 +0300" channel="Duck TV">
+    <title lang="en">Dance</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125065700 +0300" stop="20261125070000 +0300" channel="Duck TV">
+    <title lang="en">Vege-tales</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125070000 +0300" stop="20261125070300 +0300" channel="Duck TV">
+    <title lang="en">Safari</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125070300 +0300" stop="20261125070600 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125070600 +0300" stop="20261125070800 +0300" channel="Duck TV">
+    <title lang="en">Groups</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125070800 +0300" stop="20261125071000 +0300" channel="Duck TV">
+    <title lang="en">Safari</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125071000 +0300" stop="20261125071300 +0300" channel="Duck TV">
+    <title lang="en">Vehicles</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125071300 +0300" stop="20261125071600 +0300" channel="Duck TV">
+    <title lang="en">Partners in Fun</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125071600 +0300" stop="20261125071900 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125071900 +0300" stop="20261125072200 +0300" channel="Duck TV">
+    <title lang="en">What's Your Job?</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125072200 +0300" stop="20261125072600 +0300" channel="Duck TV">
+    <title lang="en">Puffy and Tubby</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125072600 +0300" stop="20261125072900 +0300" channel="Duck TV">
+    <title lang="en">Enchanting Sights</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125072900 +0300" stop="20261125073200 +0300" channel="Duck TV">
+    <title lang="en">Vege-tales</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125073200 +0300" stop="20261125073500 +0300" channel="Duck TV">
+    <title lang="en">Color Magic</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125073500 +0300" stop="20261125073700 +0300" channel="Duck TV">
+    <title lang="en">Listen to This</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125073700 +0300" stop="20261125074000 +0300" channel="Duck TV">
+    <title lang="en">Space Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125074000 +0300" stop="20261125074300 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125074300 +0300" stop="20261125074500 +0300" channel="Duck TV">
+    <title lang="en">Enlightment Corner</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125074500 +0300" stop="20261125074800 +0300" channel="Duck TV">
+    <title lang="en">What's Your Job?</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125074800 +0300" stop="20261125075000 +0300" channel="Duck TV">
+    <title lang="en">In the Museum</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125075000 +0300" stop="20261125075300 +0300" channel="Duck TV">
+    <title lang="en">City Life</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125075300 +0300" stop="20261125075500 +0300" channel="Duck TV">
+    <title lang="en">Enchanting Sights</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125075500 +0300" stop="20261125075800 +0300" channel="Duck TV">
+    <title lang="en">Listen to This</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125075800 +0300" stop="20261125080100 +0300" channel="Duck TV">
+    <title lang="en">In the Museum</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125080100 +0300" stop="20261125080500 +0300" channel="Duck TV">
+    <title lang="en">Listen to This</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125080500 +0300" stop="20261125080700 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125080700 +0300" stop="20261125081000 +0300" channel="Duck TV">
+    <title lang="en">Panni and Fanni</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125081000 +0300" stop="20261125081200 +0300" channel="Duck TV">
+    <title lang="en">Groups</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125081200 +0300" stop="20261125081500 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125081500 +0300" stop="20261125082000 +0300" channel="Duck TV">
+    <title lang="en">Listen to This</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125082000 +0300" stop="20261125082200 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125082200 +0300" stop="20261125082400 +0300" channel="Duck TV">
+    <title lang="en">Fireteam</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125082400 +0300" stop="20261125082700 +0300" channel="Duck TV">
+    <title lang="en">Train</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125082700 +0300" stop="20261125082900 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125082900 +0300" stop="20261125083200 +0300" channel="Duck TV">
+    <title lang="en">Doll Team</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125083200 +0300" stop="20261125083400 +0300" channel="Duck TV">
+    <title lang="en">Fireteam</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125083400 +0300" stop="20261125084000 +0300" channel="Duck TV">
+    <title lang="en">World of Toys</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125084000 +0300" stop="20261125084300 +0300" channel="Duck TV">
+    <title lang="en">Bathroom</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125084300 +0300" stop="20261125084500 +0300" channel="Duck TV">
+    <title lang="en">Waterworld</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125084500 +0300" stop="20261125084800 +0300" channel="Duck TV">
+    <title lang="en">India</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125084800 +0300" stop="20261125085200 +0300" channel="Duck TV">
+    <title lang="en">Puffy and Tubby</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125085200 +0300" stop="20261125085400 +0300" channel="Duck TV">
+    <title lang="en">Vehicles</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125085400 +0300" stop="20261125085700 +0300" channel="Duck TV">
+    <title lang="en">Sunville - Sportsville</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125085700 +0300" stop="20261125090000 +0300" channel="Duck TV">
+    <title lang="en">Happy Meadow</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125090000 +0300" stop="20261125090300 +0300" channel="Duck TV">
+    <title lang="en">Mimo's World</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125090300 +0300" stop="20261125090500 +0300" channel="Duck TV">
+    <title lang="en">Doll Team to the Rescue</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125090500 +0300" stop="20261125090800 +0300" channel="Duck TV">
+    <title lang="en">Risto Gusto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125090800 +0300" stop="20261125091000 +0300" channel="Duck TV">
+    <title lang="en">Vege-tales</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125091000 +0300" stop="20261125091300 +0300" channel="Duck TV">
+    <title lang="en">City Life</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125091300 +0300" stop="20261125091500 +0300" channel="Duck TV">
+    <title lang="en">Space Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125091500 +0300" stop="20261125091800 +0300" channel="Duck TV">
+    <title lang="en">Galaxy Tourists</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125091800 +0300" stop="20261125092000 +0300" channel="Duck TV">
+    <title lang="en">Beaver Family</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125092000 +0300" stop="20261125092400 +0300" channel="Duck TV">
+    <title lang="en">Mini Fairy Tales</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125092400 +0300" stop="20261125092700 +0300" channel="Duck TV">
+    <title lang="en">Sippi Sappi</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125092700 +0300" stop="20261125092900 +0300" channel="Duck TV">
+    <title lang="en">Ducky and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125092900 +0300" stop="20261125093100 +0300" channel="Duck TV">
+    <title lang="en">Henry's Stories</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125093100 +0300" stop="20261125093400 +0300" channel="Duck TV">
+    <title lang="en">Albert Explains</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125093400 +0300" stop="20261125093700 +0300" channel="Duck TV">
+    <title lang="en">Cucu, I'm here!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125093700 +0300" stop="20261125093900 +0300" channel="Duck TV">
+    <title lang="en">Ducky and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125093900 +0300" stop="20261125094100 +0300" channel="Duck TV">
+    <title lang="en">Hubbi and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125094100 +0300" stop="20261125094400 +0300" channel="Duck TV">
+    <title lang="en">Dance</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125094400 +0300" stop="20261125094700 +0300" channel="Duck TV">
+    <title lang="en">Get Up!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125094700 +0300" stop="20261125094900 +0300" channel="Duck TV">
+    <title lang="en">What's Your Job?</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125094900 +0300" stop="20261125095100 +0300" channel="Duck TV">
+    <title lang="en">Vege-tales</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125095100 +0300" stop="20261125095300 +0300" channel="Duck TV">
+    <title lang="en">We Are Playing Now</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125095300 +0300" stop="20261125095600 +0300" channel="Duck TV">
+    <title lang="en">Enchanting Sights</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125095600 +0300" stop="20261125095900 +0300" channel="Duck TV">
+    <title lang="en">Hubbi Will Take Care of It</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125095900 +0300" stop="20261125100200 +0300" channel="Duck TV">
+    <title lang="en">Margo &amp; Felix</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125100200 +0300" stop="20261125100400 +0300" channel="Duck TV">
+    <title lang="en">Hop-hop</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125100400 +0300" stop="20261125100700 +0300" channel="Duck TV">
+    <title lang="en">Mimo's World</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125100700 +0300" stop="20261125101000 +0300" channel="Duck TV">
+    <title lang="en">Sippi Sappi</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125101000 +0300" stop="20261125101200 +0300" channel="Duck TV">
+    <title lang="en">Enchanting Sights</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125101200 +0300" stop="20261125101500 +0300" channel="Duck TV">
+    <title lang="en">Sport, Sport, Sport</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125101500 +0300" stop="20261125101700 +0300" channel="Duck TV">
+    <title lang="en">Vege-tales</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125101700 +0300" stop="20261125102000 +0300" channel="Duck TV">
+    <title lang="en">Dance</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125102000 +0300" stop="20261125102200 +0300" channel="Duck TV">
+    <title lang="en">The World of Animals</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125102200 +0300" stop="20261125102600 +0300" channel="Duck TV">
+    <title lang="en">Ding Dang Dong</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125102600 +0300" stop="20261125102800 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125102800 +0300" stop="20261125102900 +0300" channel="Duck TV">
+    <title lang="en">Happy Garden</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125102900 +0300" stop="20261125103200 +0300" channel="Duck TV">
+    <title lang="en">Higher the Better</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125103200 +0300" stop="20261125103500 +0300" channel="Duck TV">
+    <title lang="en">Cucu, I'm here!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125103500 +0300" stop="20261125103600 +0300" channel="Duck TV">
+    <title lang="en">Happy Garden</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125103600 +0300" stop="20261125103800 +0300" channel="Duck TV">
+    <title lang="en">Tempo Giusto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125103800 +0300" stop="20261125104100 +0300" channel="Duck TV">
+    <title lang="en">Africa</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125104100 +0300" stop="20261125104400 +0300" channel="Duck TV">
+    <title lang="en">Higher the Better</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125104400 +0300" stop="20261125104700 +0300" channel="Duck TV">
+    <title lang="en">Color Magic</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125104700 +0300" stop="20261125105000 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125105000 +0300" stop="20261125105300 +0300" channel="Duck TV">
+    <title lang="en">Groups</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125105300 +0300" stop="20261125105500 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125105500 +0300" stop="20261125105800 +0300" channel="Duck TV">
+    <title lang="en">In the Museum</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125105800 +0300" stop="20261125110200 +0300" channel="Duck TV">
+    <title lang="en">Albert Explains</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125110200 +0300" stop="20261125110300 +0300" channel="Duck TV">
+    <title lang="en">Home Sweet Home</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125110300 +0300" stop="20261125110700 +0300" channel="Duck TV">
+    <title lang="en">Happy Meadow</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125110700 +0300" stop="20261125110900 +0300" channel="Duck TV">
+    <title lang="en">Color Clara</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125110900 +0300" stop="20261125111200 +0300" channel="Duck TV">
+    <title lang="en">Happy Kingdom</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125111200 +0300" stop="20261125111500 +0300" channel="Duck TV">
+    <title lang="en">Enchanting Sights</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125111500 +0300" stop="20261125111800 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125111800 +0300" stop="20261125112000 +0300" channel="Duck TV">
+    <title lang="en">Panni and Fanni</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125112000 +0300" stop="20261125112300 +0300" channel="Duck TV">
+    <title lang="en">Listen to This</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125112300 +0300" stop="20261125112600 +0300" channel="Duck TV">
+    <title lang="en">Enchanting Sights</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125112600 +0300" stop="20261125112800 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125112800 +0300" stop="20261125113000 +0300" channel="Duck TV">
+    <title lang="en">Hubbi and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125113000 +0300" stop="20261125113200 +0300" channel="Duck TV">
+    <title lang="en">Color Clara</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125113200 +0300" stop="20261125113400 +0300" channel="Duck TV">
+    <title lang="en">Henry's Stories</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125113400 +0300" stop="20261125113700 +0300" channel="Duck TV">
+    <title lang="en">Zack &amp; Ziggy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125113700 +0300" stop="20261125113900 +0300" channel="Duck TV">
+    <title lang="en">Happy Garden</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125113900 +0300" stop="20261125114200 +0300" channel="Duck TV">
+    <title lang="en">Zack &amp; Ziggy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125114200 +0300" stop="20261125114500 +0300" channel="Duck TV">
+    <title lang="en">Dotty, the Kitty</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125114500 +0300" stop="20261125114700 +0300" channel="Duck TV">
+    <title lang="en">Sippi Sappi</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125114700 +0300" stop="20261125114900 +0300" channel="Duck TV">
+    <title lang="en">Happy Garden</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125114900 +0300" stop="20261125115100 +0300" channel="Duck TV">
+    <title lang="en">Sippi Sappi</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125115100 +0300" stop="20261125115300 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125115300 +0300" stop="20261125115500 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125115500 +0300" stop="20261125115800 +0300" channel="Duck TV">
+    <title lang="en">Dinoland</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125115800 +0300" stop="20261125120100 +0300" channel="Duck TV">
+    <title lang="en">Happy Meadow</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125120100 +0300" stop="20261125120200 +0300" channel="Duck TV">
+    <title lang="en">Pixie 2</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125120200 +0300" stop="20261125120500 +0300" channel="Duck TV">
+    <title lang="en">Happy Meadow</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125120500 +0300" stop="20261125120800 +0300" channel="Duck TV">
+    <title lang="en">ABC - duckBC</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125120800 +0300" stop="20261125121000 +0300" channel="Duck TV">
+    <title lang="en">Ducky Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125121000 +0300" stop="20261125121400 +0300" channel="Duck TV">
+    <title lang="en">Dotty, the Kitty</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125121400 +0300" stop="20261125121600 +0300" channel="Duck TV">
+    <title lang="en">My Pet Family</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125121600 +0300" stop="20261125121800 +0300" channel="Duck TV">
+    <title lang="en">Home Sweet Home</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125121800 +0300" stop="20261125122100 +0300" channel="Duck TV">
+    <title lang="en">Finn and Fianna</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125122100 +0300" stop="20261125122300 +0300" channel="Duck TV">
+    <title lang="en">Shaping Up</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125122300 +0300" stop="20261125122600 +0300" channel="Duck TV">
+    <title lang="en">Sippi Sappi</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125122600 +0300" stop="20261125122900 +0300" channel="Duck TV">
+    <title lang="en">Cucu, I'm here!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125122900 +0300" stop="20261125123100 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125123100 +0300" stop="20261125123300 +0300" channel="Duck TV">
+    <title lang="en">Sounds Around Us</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125123300 +0300" stop="20261125123700 +0300" channel="Duck TV">
+    <title lang="en">Dotty, the Kitty</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125123700 +0300" stop="20261125124000 +0300" channel="Duck TV">
+    <title lang="en">Sunville - Sportsville</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125124000 +0300" stop="20261125124100 +0300" channel="Duck TV">
+    <title lang="en">Nature Dudes</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125124100 +0300" stop="20261125124300 +0300" channel="Duck TV">
+    <title lang="en">Hubbi and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125124300 +0300" stop="20261125124500 +0300" channel="Duck TV">
+    <title lang="en">Tempo Giusto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125124500 +0300" stop="20261125124800 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125124800 +0300" stop="20261125125100 +0300" channel="Duck TV">
+    <title lang="en">Mimo's World</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125125100 +0300" stop="20261125125400 +0300" channel="Duck TV">
+    <title lang="en">Zack &amp; Ziggy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125125400 +0300" stop="20261125125700 +0300" channel="Duck TV">
+    <title lang="en">ABC - duckBC</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125125700 +0300" stop="20261125125800 +0300" channel="Duck TV">
+    <title lang="en">Happy Garden</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125125800 +0300" stop="20261125130100 +0300" channel="Duck TV">
+    <title lang="en">Didy Baby</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125130100 +0300" stop="20261125130300 +0300" channel="Duck TV">
+    <title lang="en">Monica &amp; Rudy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125130300 +0300" stop="20261125130500 +0300" channel="Duck TV">
+    <title lang="en">Ducky and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125130500 +0300" stop="20261125130800 +0300" channel="Duck TV">
+    <title lang="en">Hubbi and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125130800 +0300" stop="20261125131100 +0300" channel="Duck TV">
+    <title lang="en">Cubie</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125131100 +0300" stop="20261125131400 +0300" channel="Duck TV">
+    <title lang="en">Raul</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125131400 +0300" stop="20261125131600 +0300" channel="Duck TV">
+    <title lang="en">Doll Team to the Rescue</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125131600 +0300" stop="20261125132000 +0300" channel="Duck TV">
+    <title lang="en">Doll Team to the Rescue</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125132000 +0300" stop="20261125132100 +0300" channel="Duck TV">
+    <title lang="en">Happy Garden</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125132100 +0300" stop="20261125132400 +0300" channel="Duck TV">
+    <title lang="en">Doll Team to the Rescue</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125132400 +0300" stop="20261125132700 +0300" channel="Duck TV">
+    <title lang="en">Didy Baby</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125132700 +0300" stop="20261125133000 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125133000 +0300" stop="20261125133200 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125133200 +0300" stop="20261125133600 +0300" channel="Duck TV">
+    <title lang="en">Doll Team to the Rescue</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125133600 +0300" stop="20261125133800 +0300" channel="Duck TV">
+    <title lang="en">Ducky and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125133800 +0300" stop="20261125134200 +0300" channel="Duck TV">
+    <title lang="en">Milo Dino</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125134200 +0300" stop="20261125134500 +0300" channel="Duck TV">
+    <title lang="en">Toby McFly</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125134500 +0300" stop="20261125134800 +0300" channel="Duck TV">
+    <title lang="en">Sunville - Sportsville</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125134800 +0300" stop="20261125135200 +0300" channel="Duck TV">
+    <title lang="en">World of Toys</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125135200 +0300" stop="20261125135400 +0300" channel="Duck TV">
+    <title lang="en">Train</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125135400 +0300" stop="20261125135700 +0300" channel="Duck TV">
+    <title lang="en">Zoo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125135700 +0300" stop="20261125135900 +0300" channel="Duck TV">
+    <title lang="en">Small - But Hardworking</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125135900 +0300" stop="20261125140100 +0300" channel="Duck TV">
+    <title lang="en">Doll Team</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125140100 +0300" stop="20261125140400 +0300" channel="Duck TV">
+    <title lang="en">Hubbi Will Take Care of It</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125140400 +0300" stop="20261125140600 +0300" channel="Duck TV">
+    <title lang="en">Ducky and Fluffy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125140600 +0300" stop="20261125140800 +0300" channel="Duck TV">
+    <title lang="en">Mimo's World</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125140800 +0300" stop="20261125141200 +0300" channel="Duck TV">
+    <title lang="en">Hubbi Will Take Care of It</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125141200 +0300" stop="20261125141600 +0300" channel="Duck TV">
+    <title lang="en">Dotty, the Kitty</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125141600 +0300" stop="20261125141900 +0300" channel="Duck TV">
+    <title lang="en">Africa</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125141900 +0300" stop="20261125142200 +0300" channel="Duck TV">
+    <title lang="en">World of Toys</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125142200 +0300" stop="20261125142600 +0300" channel="Duck TV">
+    <title lang="en">Doll Team to the Rescue</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125142600 +0300" stop="20261125142800 +0300" channel="Duck TV">
+    <title lang="en">Africa</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125142800 +0300" stop="20261125143000 +0300" channel="Duck TV">
+    <title lang="en">Didy Baby</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125143000 +0300" stop="20261125143300 +0300" channel="Duck TV">
+    <title lang="en">Doll Team to the Rescue</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125143300 +0300" stop="20261125143500 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125143500 +0300" stop="20261125143700 +0300" channel="Duck TV">
+    <title lang="en">Train</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125143700 +0300" stop="20261125143900 +0300" channel="Duck TV">
+    <title lang="en">Mimo's World</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125143900 +0300" stop="20261125144200 +0300" channel="Duck TV">
+    <title lang="en">Leon-ART</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125144200 +0300" stop="20261125144400 +0300" channel="Duck TV">
+    <title lang="en">Fireteam</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125144400 +0300" stop="20261125144800 +0300" channel="Duck TV">
+    <title lang="en">Ristorante</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125144800 +0300" stop="20261125145100 +0300" channel="Duck TV">
+    <title lang="en">Connected World</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125145100 +0300" stop="20261125145500 +0300" channel="Duck TV">
+    <title lang="en">Mimo and Bobo PLUS</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125145500 +0300" stop="20261125145800 +0300" channel="Duck TV">
+    <title lang="en">Small - But Hardworking</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125145800 +0300" stop="20261125150100 +0300" channel="Duck TV">
+    <title lang="en">Shaping Up</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125150100 +0300" stop="20261125150400 +0300" channel="Duck TV">
+    <title lang="en">Connected World</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125150400 +0300" stop="20261125150600 +0300" channel="Duck TV">
+    <title lang="en">Hubbi and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125150600 +0300" stop="20261125150800 +0300" channel="Duck TV">
+    <title lang="en">Sippi Sappi</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125150800 +0300" stop="20261125151100 +0300" channel="Duck TV">
+    <title lang="en">Fireteam</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125151100 +0300" stop="20261125151300 +0300" channel="Duck TV">
+    <title lang="en">Doll Team</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125151300 +0300" stop="20261125151600 +0300" channel="Duck TV">
+    <title lang="en">Toby McFly</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125151600 +0300" stop="20261125151800 +0300" channel="Duck TV">
+    <title lang="en">Ducky Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125151800 +0300" stop="20261125152100 +0300" channel="Duck TV">
+    <title lang="en">Fireteam in Action</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125152100 +0300" stop="20261125152400 +0300" channel="Duck TV">
+    <title lang="en">Small - But Hardworking</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125152400 +0300" stop="20261125152600 +0300" channel="Duck TV">
+    <title lang="en">Hubbi Will Take Care of It</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125152600 +0300" stop="20261125153000 +0300" channel="Duck TV">
+    <title lang="en">Planet Jumpers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125153000 +0300" stop="20261125153400 +0300" channel="Duck TV">
+    <title lang="en">Toby McFly</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125153400 +0300" stop="20261125153600 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125153600 +0300" stop="20261125153800 +0300" channel="Duck TV">
+    <title lang="en">Albert Explains</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125153800 +0300" stop="20261125154000 +0300" channel="Duck TV">
+    <title lang="en">Tempo Giusto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125154000 +0300" stop="20261125154200 +0300" channel="Duck TV">
+    <title lang="en">Home Sweet Home</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125154200 +0300" stop="20261125154300 +0300" channel="Duck TV">
+    <title lang="en">Nature Dudes</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125154300 +0300" stop="20261125154600 +0300" channel="Duck TV">
+    <title lang="en">Monica and Rudy 2</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125154600 +0300" stop="20261125154800 +0300" channel="Duck TV">
+    <title lang="en">Ducky Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125154800 +0300" stop="20261125155000 +0300" channel="Duck TV">
+    <title lang="en">DuckSchool</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125155000 +0300" stop="20261125155200 +0300" channel="Duck TV">
+    <title lang="en">Henry's Stories</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125155200 +0300" stop="20261125155400 +0300" channel="Duck TV">
+    <title lang="en">Home Sweet Home</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125155400 +0300" stop="20261125155500 +0300" channel="Duck TV">
+    <title lang="en">The Shapies</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125155500 +0300" stop="20261125155800 +0300" channel="Duck TV">
+    <title lang="en">Shaping Up</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125155800 +0300" stop="20261125160000 +0300" channel="Duck TV">
+    <title lang="en">Sounds Around Us</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125160000 +0300" stop="20261125160300 +0300" channel="Duck TV">
+    <title lang="en">Margo &amp; Felix</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125160300 +0300" stop="20261125160500 +0300" channel="Duck TV">
+    <title lang="en">Ducky and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125160500 +0300" stop="20261125160700 +0300" channel="Duck TV">
+    <title lang="en">Cucu, I'm here!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125160700 +0300" stop="20261125160900 +0300" channel="Duck TV">
+    <title lang="en">Ducky and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125160900 +0300" stop="20261125161200 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125161200 +0300" stop="20261125161400 +0300" channel="Duck TV">
+    <title lang="en">Sippi Sappi</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125161400 +0300" stop="20261125161700 +0300" channel="Duck TV">
+    <title lang="en">Monica &amp; Rudy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125161700 +0300" stop="20261125162100 +0300" channel="Duck TV">
+    <title lang="en">ABC - duckBC</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125162100 +0300" stop="20261125162500 +0300" channel="Duck TV">
+    <title lang="en">Albert Explains</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125162500 +0300" stop="20261125162800 +0300" channel="Duck TV">
+    <title lang="en">Monica &amp; Rudy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125162800 +0300" stop="20261125163000 +0300" channel="Duck TV">
+    <title lang="en">Little Melodies</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125163000 +0300" stop="20261125163300 +0300" channel="Duck TV">
+    <title lang="en">ABC - duckBC</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125163300 +0300" stop="20261125163600 +0300" channel="Duck TV">
+    <title lang="en">Margo &amp; Felix</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125163600 +0300" stop="20261125163800 +0300" channel="Duck TV">
+    <title lang="en">Tempo Giusto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125163800 +0300" stop="20261125164200 +0300" channel="Duck TV">
+    <title lang="en">Mimo's World</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125164200 +0300" stop="20261125164500 +0300" channel="Duck TV">
+    <title lang="en">Higher the Better</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125164500 +0300" stop="20261125164800 +0300" channel="Duck TV">
+    <title lang="en">Raul</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125164800 +0300" stop="20261125165000 +0300" channel="Duck TV">
+    <title lang="en">Africa</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125165000 +0300" stop="20261125165400 +0300" channel="Duck TV">
+    <title lang="en">Mimo and Bobo PLUS</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125165400 +0300" stop="20261125165700 +0300" channel="Duck TV">
+    <title lang="en">Margo &amp; Felix</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125165700 +0300" stop="20261125165900 +0300" channel="Duck TV">
+    <title lang="en">Hop-hop</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125165900 +0300" stop="20261125170100 +0300" channel="Duck TV">
+    <title lang="en">Tempo Giusto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125170100 +0300" stop="20261125170300 +0300" channel="Duck TV">
+    <title lang="en">Ducky Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125170300 +0300" stop="20261125170600 +0300" channel="Duck TV">
+    <title lang="en">Raul</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125170600 +0300" stop="20261125170800 +0300" channel="Duck TV">
+    <title lang="en">Cucu, I'm here!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125170800 +0300" stop="20261125171100 +0300" channel="Duck TV">
+    <title lang="en">Higher the Better</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125171100 +0300" stop="20261125171400 +0300" channel="Duck TV">
+    <title lang="en">DuckSchool</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125171400 +0300" stop="20261125171800 +0300" channel="Duck TV">
+    <title lang="en">Mimo and Bobo PLUS</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125171800 +0300" stop="20261125172000 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125172000 +0300" stop="20261125172400 +0300" channel="Duck TV">
+    <title lang="en">Risto Gusto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125172400 +0300" stop="20261125172700 +0300" channel="Duck TV">
+    <title lang="en">Didy Baby</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125172700 +0300" stop="20261125172900 +0300" channel="Duck TV">
+    <title lang="en">Get Up!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125172900 +0300" stop="20261125173000 +0300" channel="Duck TV">
+    <title lang="en">Nature Dudes</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125173000 +0300" stop="20261125173300 +0300" channel="Duck TV">
+    <title lang="en">Zack &amp; Ziggy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125173300 +0300" stop="20261125173500 +0300" channel="Duck TV">
+    <title lang="en">Didy Baby</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125173500 +0300" stop="20261125173800 +0300" channel="Duck TV">
+    <title lang="en">Cucu, I'm here!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125173800 +0300" stop="20261125174000 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125174000 +0300" stop="20261125174300 +0300" channel="Duck TV">
+    <title lang="en">Raul</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125174300 +0300" stop="20261125174500 +0300" channel="Duck TV">
+    <title lang="en">Monica &amp; Rudy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125174500 +0300" stop="20261125174800 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125174800 +0300" stop="20261125175100 +0300" channel="Duck TV">
+    <title lang="en">Margo &amp; Felix</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125175100 +0300" stop="20261125175300 +0300" channel="Duck TV">
+    <title lang="en">DuckSchool</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125175300 +0300" stop="20261125175500 +0300" channel="Duck TV">
+    <title lang="en">Ducky and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125175500 +0300" stop="20261125175600 +0300" channel="Duck TV">
+    <title lang="en">Happy Garden</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125175600 +0300" stop="20261125175800 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125175800 +0300" stop="20261125180000 +0300" channel="Duck TV">
+    <title lang="en">Cucu, I'm here!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125180000 +0300" stop="20261125180200 +0300" channel="Duck TV">
+    <title lang="en">Nature Dudes</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125180200 +0300" stop="20261125180400 +0300" channel="Duck TV">
+    <title lang="en">Henry's Stories</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125180400 +0300" stop="20261125180700 +0300" channel="Duck TV">
+    <title lang="en">Happy Meadow</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125180700 +0300" stop="20261125180900 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125180900 +0300" stop="20261125181200 +0300" channel="Duck TV">
+    <title lang="en">Higher the Better</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125181200 +0300" stop="20261125181300 +0300" channel="Duck TV">
+    <title lang="en">Nature Dudes</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125181300 +0300" stop="20261125181500 +0300" channel="Duck TV">
+    <title lang="en">Color Clara</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125181500 +0300" stop="20261125181700 +0300" channel="Duck TV">
+    <title lang="en">Ducky Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125181700 +0300" stop="20261125182000 +0300" channel="Duck TV">
+    <title lang="en">Didy Baby</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125182000 +0300" stop="20261125182300 +0300" channel="Duck TV">
+    <title lang="en">Fireteam</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125182300 +0300" stop="20261125182600 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125182600 +0300" stop="20261125182800 +0300" channel="Duck TV">
+    <title lang="en">Hop-hop</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125182800 +0300" stop="20261125183100 +0300" channel="Duck TV">
+    <title lang="en">Small - But Hardworking</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125183100 +0300" stop="20261125183300 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125183300 +0300" stop="20261125183600 +0300" channel="Duck TV">
+    <title lang="en">DuckSchool</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125183600 +0300" stop="20261125183900 +0300" channel="Duck TV">
+    <title lang="en">Hubbi and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125183900 +0300" stop="20261125184100 +0300" channel="Duck TV">
+    <title lang="en">Ducky Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125184100 +0300" stop="20261125184400 +0300" channel="Duck TV">
+    <title lang="en">Cucu, I'm here!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125184400 +0300" stop="20261125184700 +0300" channel="Duck TV">
+    <title lang="en">Sippi Sappi</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125184700 +0300" stop="20261125185000 +0300" channel="Duck TV">
+    <title lang="en">Raul</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125185000 +0300" stop="20261125185200 +0300" channel="Duck TV">
+    <title lang="en">Sounds Around Us</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125185200 +0300" stop="20261125185500 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125185500 +0300" stop="20261125185800 +0300" channel="Duck TV">
+    <title lang="en">Zack &amp; Ziggy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125185800 +0300" stop="20261125190100 +0300" channel="Duck TV">
+    <title lang="en">DuckSchool</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125190100 +0300" stop="20261125190400 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125190400 +0300" stop="20261125190500 +0300" channel="Duck TV">
+    <title lang="en">Nature Dudes</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125190500 +0300" stop="20261125190900 +0300" channel="Duck TV">
+    <title lang="en">Mimo and Bobo PLUS</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125190900 +0300" stop="20261125191200 +0300" channel="Duck TV">
+    <title lang="en">Raul</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125191200 +0300" stop="20261125191400 +0300" channel="Duck TV">
+    <title lang="en">Africa</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125191400 +0300" stop="20261125191600 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125191600 +0300" stop="20261125191800 +0300" channel="Duck TV">
+    <title lang="en">Africa</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125191800 +0300" stop="20261125191900 +0300" channel="Duck TV">
+    <title lang="en">Nature Dudes</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125191900 +0300" stop="20261125192100 +0300" channel="Duck TV">
+    <title lang="en">Hop-hop</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125192100 +0300" stop="20261125192400 +0300" channel="Duck TV">
+    <title lang="en">Raul</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125192400 +0300" stop="20261125192600 +0300" channel="Duck TV">
+    <title lang="en">Get Up!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125192600 +0300" stop="20261125192900 +0300" channel="Duck TV">
+    <title lang="en">Hop-hop</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125192900 +0300" stop="20261125193100 +0300" channel="Duck TV">
+    <title lang="en">Raul</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125193100 +0300" stop="20261125193400 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125193400 +0300" stop="20261125193700 +0300" channel="Duck TV">
+    <title lang="en">Raul</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125193700 +0300" stop="20261125193900 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125193900 +0300" stop="20261125194300 +0300" channel="Duck TV">
+    <title lang="en">Africa</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125194300 +0300" stop="20261125194500 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125194500 +0300" stop="20261125194700 +0300" channel="Duck TV">
+    <title lang="en">Albert Explains</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125194700 +0300" stop="20261125195000 +0300" channel="Duck TV">
+    <title lang="en">Happy Meadow</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125195000 +0300" stop="20261125195400 +0300" channel="Duck TV">
+    <title lang="en">Dotty, the Kitty</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125195400 +0300" stop="20261125195600 +0300" channel="Duck TV">
+    <title lang="en">Color Clara</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125195600 +0300" stop="20261125195800 +0300" channel="Duck TV">
+    <title lang="en">My Pet Family</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125195800 +0300" stop="20261125200000 +0300" channel="Duck TV">
+    <title lang="en">Color Clara</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125200000 +0300" stop="20261125200300 +0300" channel="Duck TV">
+    <title lang="en">ABC - duckBC</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125200300 +0300" stop="20261125200600 +0300" channel="Duck TV">
+    <title lang="en">Shaping Up</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125200600 +0300" stop="20261125200700 +0300" channel="Duck TV">
+    <title lang="en">Nature Dudes</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125200700 +0300" stop="20261125201000 +0300" channel="Duck TV">
+    <title lang="en">Shaping Up</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125201000 +0300" stop="20261125201200 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125201200 +0300" stop="20261125201500 +0300" channel="Duck TV">
+    <title lang="en">Happy Meadow</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125201500 +0300" stop="20261125201800 +0300" channel="Duck TV">
+    <title lang="en">Sippi Sappi</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125201800 +0300" stop="20261125202100 +0300" channel="Duck TV">
+    <title lang="en">Shaping Up</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125202100 +0300" stop="20261125202300 +0300" channel="Duck TV">
+    <title lang="en">DuckSchool</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125202300 +0300" stop="20261125202400 +0300" channel="Duck TV">
+    <title lang="en">Pixie 2</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125202400 +0300" stop="20261125202600 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125202600 +0300" stop="20261125202800 +0300" channel="Duck TV">
+    <title lang="en">Albert Explains</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125202800 +0300" stop="20261125203200 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125203200 +0300" stop="20261125203400 +0300" channel="Duck TV">
+    <title lang="en">Monica &amp; Rudy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125203400 +0300" stop="20261125203600 +0300" channel="Duck TV">
+    <title lang="en">Home Sweet Home</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125203600 +0300" stop="20261125203800 +0300" channel="Duck TV">
+    <title lang="en">DuckSchool</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125203800 +0300" stop="20261125204000 +0300" channel="Duck TV">
+    <title lang="en">Sounds Around Us</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125204000 +0300" stop="20261125204100 +0300" channel="Duck TV">
+    <title lang="en">Home Sweet Home</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125204100 +0300" stop="20261125204300 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125204300 +0300" stop="20261125204700 +0300" channel="Duck TV">
+    <title lang="en">DuckSchool</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125204700 +0300" stop="20261125204900 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125204900 +0300" stop="20261125205200 +0300" channel="Duck TV">
+    <title lang="en">Hipp-hopp Cactus</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125205200 +0300" stop="20261125205400 +0300" channel="Duck TV">
+    <title lang="en">Raul</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125205400 +0300" stop="20261125205600 +0300" channel="Duck TV">
+    <title lang="en">Tempo Giusto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125205600 +0300" stop="20261125205900 +0300" channel="Duck TV">
+    <title lang="en">Ristorante</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125205900 +0300" stop="20261125210100 +0300" channel="Duck TV">
+    <title lang="en">Ducky Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125210100 +0300" stop="20261125210400 +0300" channel="Duck TV">
+    <title lang="en">Dotty, the Kitty</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125210400 +0300" stop="20261125210600 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125210600 +0300" stop="20261125210800 +0300" channel="Duck TV">
+    <title lang="en">Good Night!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125210800 +0300" stop="20261125211100 +0300" channel="Duck TV">
+    <title lang="en">Shaping Up</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125211100 +0300" stop="20261125211300 +0300" channel="Duck TV">
+    <title lang="en">Hubbi and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125211300 +0300" stop="20261125211500 +0300" channel="Duck TV">
+    <title lang="en">Raul</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125211500 +0300" stop="20261125211800 +0300" channel="Duck TV">
+    <title lang="en">Dinoland</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125211800 +0300" stop="20261125212000 +0300" channel="Duck TV">
+    <title lang="en">Ducky and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125212000 +0300" stop="20261125212200 +0300" channel="Duck TV">
+    <title lang="en">Hubbi and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125212200 +0300" stop="20261125212500 +0300" channel="Duck TV">
+    <title lang="en">Fireteam</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125212500 +0300" stop="20261125212700 +0300" channel="Duck TV">
+    <title lang="en">Small - But Hardworking</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125212700 +0300" stop="20261125213000 +0300" channel="Duck TV">
+    <title lang="en">Toby McFly</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125213000 +0300" stop="20261125213400 +0300" channel="Duck TV">
+    <title lang="en">Hipp-hopp Cactus</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125213400 +0300" stop="20261125213700 +0300" channel="Duck TV">
+    <title lang="en">Finn and Fianna</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125213700 +0300" stop="20261125213900 +0300" channel="Duck TV">
+    <title lang="en">Zoo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125213900 +0300" stop="20261125214100 +0300" channel="Duck TV">
+    <title lang="en">Good Night!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125214100 +0300" stop="20261125214300 +0300" channel="Duck TV">
+    <title lang="en">Hubbi and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125214300 +0300" stop="20261125214500 +0300" channel="Duck TV">
+    <title lang="en">Sounds Around Us</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125214500 +0300" stop="20261125214800 +0300" channel="Duck TV">
+    <title lang="en">Train</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125214800 +0300" stop="20261125215100 +0300" channel="Duck TV">
+    <title lang="en">Zack &amp; Ziggy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125215100 +0300" stop="20261125215300 +0300" channel="Duck TV">
+    <title lang="en">Ducky and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125215300 +0300" stop="20261125215500 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125215500 +0300" stop="20261125215800 +0300" channel="Duck TV">
+    <title lang="en">Higher the Better</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125215800 +0300" stop="20261125220000 +0300" channel="Duck TV">
+    <title lang="en">Ducky Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125220000 +0300" stop="20261125220300 +0300" channel="Duck TV">
+    <title lang="en">Ristorante</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125220300 +0300" stop="20261125220600 +0300" channel="Duck TV">
+    <title lang="en">Hop-hop</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125220600 +0300" stop="20261125220900 +0300" channel="Duck TV">
+    <title lang="en">Shaping Up</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125220900 +0300" stop="20261125221200 +0300" channel="Duck TV">
+    <title lang="en">Cucu, I'm here!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125221200 +0300" stop="20261125221500 +0300" channel="Duck TV">
+    <title lang="en">Hubbi and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125221500 +0300" stop="20261125221800 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125221800 +0300" stop="20261125222000 +0300" channel="Duck TV">
+    <title lang="en">Tempo Giusto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125222000 +0300" stop="20261125222400 +0300" channel="Duck TV">
+    <title lang="en">Doll Team</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125222400 +0300" stop="20261125222600 +0300" channel="Duck TV">
+    <title lang="en">Henry's Stories</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125222600 +0300" stop="20261125222700 +0300" channel="Duck TV">
+    <title lang="en">Nature Dudes</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125222700 +0300" stop="20261125223100 +0300" channel="Duck TV">
+    <title lang="en">Hipp-hopp Cactus</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125223100 +0300" stop="20261125223300 +0300" channel="Duck TV">
+    <title lang="en">Cucu, I'm here!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125223300 +0300" stop="20261125223600 +0300" channel="Duck TV">
+    <title lang="en">Sippi Sappi</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125223600 +0300" stop="20261125223800 +0300" channel="Duck TV">
+    <title lang="en">Sounds Around Us</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125223800 +0300" stop="20261125224100 +0300" channel="Duck TV">
+    <title lang="en">Fireteam</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125224100 +0300" stop="20261125224500 +0300" channel="Duck TV">
+    <title lang="en">Monica &amp; Rudy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125224500 +0300" stop="20261125224800 +0300" channel="Duck TV">
+    <title lang="en">Doll Team</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125224800 +0300" stop="20261125225200 +0300" channel="Duck TV">
+    <title lang="en">Didy Baby</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125225200 +0300" stop="20261125225400 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125225400 +0300" stop="20261125225600 +0300" channel="Duck TV">
+    <title lang="en">Ducky and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125225600 +0300" stop="20261125225800 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125225800 +0300" stop="20261125230000 +0300" channel="Duck TV">
+    <title lang="en">Hop-hop</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125230000 +0300" stop="20261125230300 +0300" channel="Duck TV">
+    <title lang="en">Cucu, I'm here!</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125230300 +0300" stop="20261125230600 +0300" channel="Duck TV">
+    <title lang="en">Toby McFly</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125230600 +0300" stop="20261125230800 +0300" channel="Duck TV">
+    <title lang="en">Hubbi and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125230800 +0300" stop="20261125231100 +0300" channel="Duck TV">
+    <title lang="en">Beaver Family</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125231100 +0300" stop="20261125231300 +0300" channel="Duck TV">
+    <title lang="en">The World of Animals</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125231300 +0300" stop="20261125231600 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125231600 +0300" stop="20261125231900 +0300" channel="Duck TV">
+    <title lang="en">The World of Animals</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125231900 +0300" stop="20261125232100 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125232100 +0300" stop="20261125232500 +0300" channel="Duck TV">
+    <title lang="en">Panni and Fanni</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125232500 +0300" stop="20261125232800 +0300" channel="Duck TV">
+    <title lang="en">Fireteam</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125232800 +0300" stop="20261125233000 +0300" channel="Duck TV">
+    <title lang="en">Cubie</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125233000 +0300" stop="20261125233200 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125233200 +0300" stop="20261125233400 +0300" channel="Duck TV">
+    <title lang="en">Hubbi and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125233400 +0300" stop="20261125233800 +0300" channel="Duck TV">
+    <title lang="en">Hubbi and Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125233800 +0300" stop="20261125234100 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125234100 +0300" stop="20261125234300 +0300" channel="Duck TV">
+    <title lang="en">Panni and Fanni</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125234300 +0300" stop="20261125234500 +0300" channel="Duck TV">
+    <title lang="en">Beaver Family</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125234500 +0300" stop="20261125234800 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125234800 +0300" stop="20261125235200 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125235200 +0300" stop="20261125235400 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125235400 +0300" stop="20261125235700 +0300" channel="Duck TV">
+    <title lang="en">Toby McFly</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125235700 +0300" stop="20261125235900 +0300" channel="Duck TV">
+    <title lang="en">Leon-ART</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261125235900 +0300" stop="20261126000200 +0300" channel="Duck TV">
+    <title lang="en">Shaping Up</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126000200 +0300" stop="20261126000400 +0300" channel="Duck TV">
+    <title lang="en">Train</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126000400 +0300" stop="20261126000600 +0300" channel="Duck TV">
+    <title lang="en">Ducky Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126000600 +0300" stop="20261126000900 +0300" channel="Duck TV">
+    <title lang="en">Sunville - Sportsville</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126000900 +0300" stop="20261126001200 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126001200 +0300" stop="20261126001400 +0300" channel="Duck TV">
+    <title lang="en">City Life</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126001400 +0300" stop="20261126001700 +0300" channel="Duck TV">
+    <title lang="en">Puffy and Tubby</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126001700 +0300" stop="20261126001900 +0300" channel="Duck TV">
+    <title lang="en">City Life</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126001900 +0300" stop="20261126002200 +0300" channel="Duck TV">
+    <title lang="en">We Are Playing Now</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126002200 +0300" stop="20261126002400 +0300" channel="Duck TV">
+    <title lang="en">Space Adventures</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126002400 +0300" stop="20261126002800 +0300" channel="Duck TV">
+    <title lang="en">Doll Team to the Rescue</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126002800 +0300" stop="20261126003100 +0300" channel="Duck TV">
+    <title lang="en">Happy Meadow</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126003100 +0300" stop="20261126003300 +0300" channel="Duck TV">
+    <title lang="en">Hipp-hopp Cactus</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126003300 +0300" stop="20261126003700 +0300" channel="Duck TV">
+    <title lang="en">Ristorante</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126003700 +0300" stop="20261126004000 +0300" channel="Duck TV">
+    <title lang="en">Fireteam in Action</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126004000 +0300" stop="20261126004200 +0300" channel="Duck TV">
+    <title lang="en">Sea Adventure</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126004200 +0300" stop="20261126004400 +0300" channel="Duck TV">
+    <title lang="en">Bathroom</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126004400 +0300" stop="20261126004700 +0300" channel="Duck TV">
+    <title lang="en">Sea Adventure</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126004700 +0300" stop="20261126004900 +0300" channel="Duck TV">
+    <title lang="en">Mini Fairy Tales</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126004900 +0300" stop="20261126005100 +0300" channel="Duck TV">
+    <title lang="en">Enchanting Sights</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126005100 +0300" stop="20261126005500 +0300" channel="Duck TV">
+    <title lang="en">My Toys - My Friends</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126005500 +0300" stop="20261126005700 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126005700 +0300" stop="20261126010000 +0300" channel="Duck TV">
+    <title lang="en">Dotty, the Kitty</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126010000 +0300" stop="20261126010300 +0300" channel="Duck TV">
+    <title lang="en">Mimo &amp; Bobo</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126010300 +0300" stop="20261126010500 +0300" channel="Duck TV">
+    <title lang="en">Monica &amp; Rudy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126010500 +0300" stop="20261126010700 +0300" channel="Duck TV">
+    <title lang="en">Color Clara</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126010700 +0300" stop="20261126010900 +0300" channel="Duck TV">
+    <title lang="en">Home Sweet Home</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126010900 +0300" stop="20261126011000 +0300" channel="Duck TV">
+    <title lang="en">Pixie 2</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126011000 +0300" stop="20261126011200 +0300" channel="Duck TV">
+    <title lang="en">Sippi Sappi</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126011200 +0300" stop="20261126011500 +0300" channel="Duck TV">
+    <title lang="en">Miyu and Litto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126011500 +0300" stop="20261126011800 +0300" channel="Duck TV">
+    <title lang="en">Color Magic</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126011800 +0300" stop="20261126012200 +0300" channel="Duck TV">
+    <title lang="en">Enlightment Corner</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126012200 +0300" stop="20261126012500 +0300" channel="Duck TV">
+    <title lang="en">Miyu and Litto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126012500 +0300" stop="20261126012700 +0300" channel="Duck TV">
+    <title lang="en">In the Museum</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126012700 +0300" stop="20261126013000 +0300" channel="Duck TV">
+    <title lang="en">Lola and the Numbers</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126013000 +0300" stop="20261126013200 +0300" channel="Duck TV">
+    <title lang="en">My Pet Family</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126013200 +0300" stop="20261126013300 +0300" channel="Duck TV">
+    <title lang="en">The Shapies</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126013300 +0300" stop="20261126013600 +0300" channel="Duck TV">
+    <title lang="en">Monica and Rudy 2</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126013600 +0300" stop="20261126013800 +0300" channel="Duck TV">
+    <title lang="en">Little Melodies</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126013800 +0300" stop="20261126014200 +0300" channel="Duck TV">
+    <title lang="en">Monica &amp; Rudy</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126014200 +0300" stop="20261126014400 +0300" channel="Duck TV">
+    <title lang="en">In the Museum</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126014400 +0300" stop="20261126014700 +0300" channel="Duck TV">
+    <title lang="en">Enchanting Sights</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126014700 +0300" stop="20261126014900 +0300" channel="Duck TV">
+    <title lang="en">What's Your Job?</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126014900 +0300" stop="20261126015200 +0300" channel="Duck TV">
+    <title lang="en">In the Museum</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126015200 +0300" stop="20261126015400 +0300" channel="Duck TV">
+    <title lang="en">Groups</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126015400 +0300" stop="20261126015800 +0300" channel="Duck TV">
+    <title lang="en">Listen to This</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126015800 +0300" stop="20261126020200 +0300" channel="Duck TV">
+    <title lang="en">Ding Dang Dong</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126020200 +0300" stop="20261126020500 +0300" channel="Duck TV">
+    <title lang="en">Partners in Fun</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126020500 +0300" stop="20261126020700 +0300" channel="Duck TV">
+    <title lang="en">Mini Fairy Tales</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126020700 +0300" stop="20261126021000 +0300" channel="Duck TV">
+    <title lang="en">The World of Animals</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126021000 +0300" stop="20261126021300 +0300" channel="Duck TV">
+    <title lang="en">Panni and Fanni</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126021300 +0300" stop="20261126021600 +0300" channel="Duck TV">
+    <title lang="en">Ding Dang Dong</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126021600 +0300" stop="20261126021800 +0300" channel="Duck TV">
+    <title lang="en">Beaver Family</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126021800 +0300" stop="20261126022000 +0300" channel="Duck TV">
+    <title lang="en">Groups</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126022000 +0300" stop="20261126022300 +0300" channel="Duck TV">
+    <title lang="en">We Are Playing Now</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126022300 +0300" stop="20261126022600 +0300" channel="Duck TV">
+    <title lang="en">Safari</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126022600 +0300" stop="20261126022900 +0300" channel="Duck TV">
+    <title lang="en">India</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126022900 +0300" stop="20261126023100 +0300" channel="Duck TV">
+    <title lang="en">Safari</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126023100 +0300" stop="20261126023400 +0300" channel="Duck TV">
+    <title lang="en">Miyu and Litto</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126023400 +0300" stop="20261126023700 +0300" channel="Duck TV">
+    <title lang="en">Vehicles</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126023700 +0300" stop="20261126023900 +0300" channel="Duck TV">
+    <title lang="en">The World of Animals</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126023900 +0300" stop="20261126024200 +0300" channel="Duck TV">
+    <title lang="en">Panni and Fanni</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126024200 +0300" stop="20261126024400 +0300" channel="Duck TV">
+    <title lang="en">Vege-tales</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126024400 +0300" stop="20261126024700 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126024700 +0300" stop="20261126024900 +0300" channel="Duck TV">
+    <title lang="en">Dance</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126024900 +0300" stop="20261126025200 +0300" channel="Duck TV">
+    <title lang="en">Beaver Family</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126025200 +0300" stop="20261126025400 +0300" channel="Duck TV">
+    <title lang="en">Holiday</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126025400 +0300" stop="20261126025700 +0300" channel="Duck TV">
+    <title lang="en">Colorwheel</title>
+    <category lang="en">Kids</category>
+  </programme>
+  <programme start="20261126025700 +0300" stop="20261126030000 +0300" channel="Duck TV">
+    <title lang="en">Miyu and Litto</title>
     <category lang="en">Kids</category>
   </programme>
 </tv>
