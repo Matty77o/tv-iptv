@@ -125,6 +125,140 @@ for source_order, (source_name, source_url) in enumerate(SOURCES.items()):
 
     del root
 
+# ---------------------------------------------------------------------------
+# D-Smart (Turkish satellite TV) public schedule API.
+# The epgshare01 Turkish feeds only carry titles now; D-Smart includes full
+# Turkish descriptions, so it's the preferred source for these channels.
+# Channels are matched by D-Smart's channel name, so ID changes don't matter.
+# ---------------------------------------------------------------------------
+DSMART_URL = "https://www.dsmart.com.tr/api/v1/public/epg/schedules?page={page}&limit={limit}&day={day}"
+DSMART_DAYS = 3
+DSMART_NAMES = {
+    "TRT 1": ["TRT 1"],
+    "Kanal D": ["Kanal D"],
+    "Show TV": ["Show TV"],
+    "Star TV": ["Star", "Star TV"],
+    "NOW": ["NOW", "NOW TV"],
+    "ATV": ["ATV"],
+    "TRT Çocuk": ["TRT Çocuk"],
+    "Minika Çocuk": ["Minika Çocuk"],
+    "Moonbug Kids": ["Moonbug", "Moonbug Kids"],
+}
+
+
+def dsmart_key(name):
+    key = norm_id(name)
+    return key[:-2] if key.endswith("hd") else key
+
+
+DSMART_WANTED = {dsmart_key(n): out for out, names in DSMART_NAMES.items() for n in names}
+
+
+def dsmart_json(url):
+    req = urllib.request.Request(url, headers={
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/142 Safari/537.36",
+        "Accept": "application/json",
+    })
+    with urllib.request.urlopen(req, timeout=60) as response:
+        return json.loads(response.read().decode("utf-8"))
+
+
+def dsmart_utc(value):
+    return datetime.strptime(value[:19], "%Y-%m-%dT%H:%M:%S").replace(tzinfo=timezone.utc)
+
+
+def dsmart_duration(value):
+    # D-Smart sometimes prefixes a bogus "N days," part; ignore it.
+    if "," in value:
+        value = value.split(",", 1)[1]
+    h, m, sec = (int(x) for x in value.strip().split(":"))
+    return timedelta(hours=h, minutes=m, seconds=sec)
+
+
+def dsmart_programmes(output_id, schedule):
+    # D-Smart's start_date carries the right time of day but sometimes the
+    # wrong date, so (like iptv-org's grabber) anchor the first programme on
+    # the schedule's "day" and lay the rest out relative to it.
+    result = []
+    first_start = offset = None
+    for item in schedule:
+        try:
+            base = dsmart_utc(item["day"])
+            start_raw = dsmart_utc(item["start_date"])
+            if first_start is None:
+                first_start = start_raw
+                anchored = base.replace(hour=start_raw.hour, minute=start_raw.minute, second=start_raw.second)
+                offset = anchored - base
+            start = base + offset + (start_raw - first_start)
+            stop = start + dsmart_duration(item.get("duration") or "0:00:00")
+        except Exception:
+            continue
+        title = (item.get("program_name") or "").strip()
+        if not title or stop <= start:
+            continue
+        p = ET.Element("programme", {
+            "start": start.strftime("%Y%m%d%H%M%S +0000"),
+            "stop": stop.strftime("%Y%m%d%H%M%S +0000"),
+            "channel": output_id,
+        })
+        ET.SubElement(p, "title", {"lang": "tr"}).text = title
+        episode = str(item.get("episode") or "").strip()
+        if episode:
+            ET.SubElement(p, "sub-title", {"lang": "tr"}).text = episode
+        desc = (item.get("description") or "").strip() or (item.get("subject") or "").strip()
+        if desc:
+            ET.SubElement(p, "desc", {"lang": "tr"}).text = desc
+        genre = (item.get("genre") or "").strip()
+        if genre:
+            for g in genre.split("/"):
+                g = g.strip().replace("-", " ")
+                if g:
+                    ET.SubElement(p, "category", {"lang": "tr"}).text = g[:1].upper() + g[1:]
+        year = str(item.get("year") or "").strip()
+        if year.isdigit():
+            ET.SubElement(p, "date").text = year
+        result.append(p)
+    return result
+
+
+dsmart = {}  # output_id -> {start: programme}
+today_tr_ds = datetime.now(DUCKTV_TZ).date()
+for day_offset in range(DSMART_DAYS):
+    day = (today_tr_ds + timedelta(days=day_offset)).isoformat()
+    page, limit, pages = 1, 50, 1
+    while page <= pages:
+        try:
+            data = dsmart_json(DSMART_URL.format(page=page, limit=limit, day=day))
+        except Exception as e:
+            print(f"FAILED D-Smart {day} page {page}: {e}")
+            break
+        d = data.get("data") or {}
+        channels = d.get("channels") or []
+        if page == 1:
+            limit = max(limit, len(channels)) if channels else limit
+            pages = -(-int(d.get("total") or 0) // limit) if d.get("total") else 1
+        if not channels:
+            break
+        for ch in channels:
+            out = DSMART_WANTED.get(dsmart_key(ch.get("channel_name")))
+            if out and ch.get("schedule"):
+                bucket = dsmart.setdefault(out, {})
+                for p in dsmart_programmes(out, ch["schedule"]):
+                    bucket.setdefault(p.get("start"), p)
+        page += 1
+
+for out, progs in dsmart.items():
+    print(f"D-Smart: {out} ({len(progs)} programmes with descriptions)")
+missing_ds = set(DSMART_NAMES) - set(dsmart)
+if missing_ds:
+    print(f"D-Smart had nothing for: {', '.join(sorted(missing_ds))} (using other feeds)")
+
+
+def xmltv_dt(value):
+    return datetime.strptime(value.strip()[:20].strip(), "%Y%m%d%H%M%S %z") if " " in value.strip() \
+        else datetime.strptime(value.strip()[:14], "%Y%m%d%H%M%S").replace(tzinfo=timezone.utc)
+
+
 chosen_programmes = []
 for output_id in CHANNELS:
     options = sorted(
@@ -154,6 +288,27 @@ for output_id in CHANNELS:
         ET.SubElement(new_channel, "icon", {"src": icon_src})
     output.append(new_channel)
     added_channels.add(output_id)
+
+    if output_id in dsmart:
+        ds_progs = sorted(dsmart[output_id].values(), key=lambda p: xmltv_dt(p.get("start")))
+        last_stop = max(xmltv_dt(p.get("stop")) for p in ds_progs)
+        extra = []
+        for programme in best["programmes"]:
+            try:
+                if xmltv_dt(programme.get("start")) >= last_stop:
+                    extra.append(programme)
+            except Exception:
+                pass
+        print(f"MATCHED: dsmart -> {output_id} ({len(ds_progs)} programmes"
+              f"{f', plus {len(extra)} later ones from ' + best['label'] if extra else ''})")
+        chosen_programmes.extend(ds_progs)
+        for programme in extra:
+            new_programme = ET.Element("programme", dict(programme.attrib))
+            new_programme.set("channel", output_id)
+            for child in programme:
+                new_programme.append(child)
+            chosen_programmes.append(new_programme)
+        continue
 
     if not best["programmes"]:
         print(f"WARNING: {output_id} listed by {', '.join(e['label'] for _, e in options)} "
