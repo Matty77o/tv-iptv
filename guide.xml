@@ -22,35 +22,35 @@
   </channel>
   <channel id="TRT Çocuk">
     <display-name>TRT Çocuk</display-name>
-    <icon src="https://izmottvsc24.tvplus.com.tr:33207/CPS/images/universal/film/logo/202112/20211214/69/2021121423262397174l_op.png" />
+    <icon src="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/turkey/trt-cocuk-tr.png" />
   </channel>
   <channel id="Minika Çocuk">
     <display-name>Minika Çocuk</display-name>
-    <icon src="https://izmottvsc24.tvplus.com.tr:33207/CPS/images/universal/film/poster/20141015/001300/001300000008479179/c41ea49a-7c2e-4cd7-aac3-614129ad1793.png" />
+    <icon src="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/turkey/minika-cocuk-tr.png" />
   </channel>
   <channel id="Star TV">
     <display-name>Star TV</display-name>
-    <icon src="https://izmottvsc24.tvplus.com.tr:33207/CPS/images/universal/film/poster/20140406/001300/001300000008478854/390a4930-4c04-4ebd-945d-5d6337d5f638.png" />
+    <icon src="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/turkey/star-tv-tr.png" />
   </channel>
   <channel id="NOW">
     <display-name>NOW</display-name>
-    <icon src="https://izmottvsc24.tvplus.com.tr:33207/CPS/images/universal/film/logo/202502/20250213/48/1009529751885eb9b42e_op.png" />
+    <icon src="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/turkey/now-tr.png" />
   </channel>
   <channel id="ATV">
     <display-name>ATV</display-name>
-    <icon src="https://izmottvsc24.tvplus.com.tr:33207/CPS/images/universal/film/poster/20140406/001300/001300000008526498/c89730ab-fd3e-4ae9-8cb6-77ef1594328f.png" />
+    <icon src="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/turkey/atv-tr.png" />
   </channel>
   <channel id="Show TV">
     <display-name>Show TV</display-name>
-    <icon src="https://izmottvsc24.tvplus.com.tr:33207/CPS/images/universal/film/poster/20160607/001300/001300000008478870/91fdd69a-4042-4eb9-83c0-7c1f920ad38f.png" />
+    <icon src="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/turkey/show-tr.png" />
   </channel>
   <channel id="TRT 1">
     <display-name>TRT 1</display-name>
-    <icon src="https://izmottvsc24.tvplus.com.tr:33207/CPS/images/universal/film/logo/202510/20251030/57/0915123245585eb88428_op.png" />
+    <icon src="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/turkey/trt-1-tr.png" />
   </channel>
   <channel id="Kanal D">
     <display-name>Kanal D</display-name>
-    <icon src="https://izmottvsc24.tvplus.com.tr:33207/CPS/images/universal/film/poster/20160607/001300/001300000008478844/c084d475-4308-498a-b357-eee3070d36ca.png" />
+    <icon src="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/turkey/kanal-d-tr.png" />
   </channel>
   <programme channel="CBeebies" start="20261124005800 +0000" stop="20261124053000 +0000">
     <title lang="en">..programmes start at 6.00am</title>
