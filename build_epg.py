@@ -8,35 +8,55 @@ from datetime import datetime, timedelta, timezone
 SOURCES = {
     "uk": "https://epgshare01.online/epgshare01/epg_ripper_UK1.xml.gz",
     "tr": "https://epgshare01.online/epgshare01/epg_ripper_TR3.xml.gz",
+    # Backup Turkish feed: TR3 stopped supplying programmes for the main
+    # Turkish channels on 12 Nov 2026, TR1 carries the same channels.
+    "tr1": "https://epgshare01.online/epgshare01/epg_ripper_TR1.xml.gz",
     "us": "https://epgshare01.online/epgshare01/epg_ripper_US2.xml.gz",
     "plex": "https://epgshare01.online/epgshare01/epg_ripper_PLEX1.xml.gz",
 }
 
 DUCKTV_DAILY_URL = "https://com.com.tr/tv-rehberi/duck-tv-hd/{date}"
 DUCKTV_TZ = timezone(timedelta(hours=3))
-# Exact source EPG IDs -> the IDs you want TiviMate to use
+
+# The ID you want TiviMate to use -> source EPG IDs to try, best first.
+# IDs are compared ignoring case, dots, spaces and dashes, so
+# "TRT1.HD.tr" also matches "TRT.1.HD.tr" or "trt1.hd.tr".
+# For each channel, the first ID that actually has programmes wins
+# (searching every source), so a source that lists a channel but has no
+# listings for it no longer leaves the channel empty.
 CHANNELS = {
     # English / Kids
-    "CBeebies.HD.uk": "CBeebies",
-    "BabyFirst.TV.us2": "BabyFirst",
+    "CBeebies": ["CBeebies.HD.uk"],
+    "BabyFirst": ["BabyFirst.TV.us2"],
 
     # Extra Kids
-    "MOONBUG.KIDS.TV.tr": "Moonbug Kids",
-    "plex.tv.BABY.SHARK.TV.plex": "Baby Shark TV",
-    "PBS.Kids.Stream.us2": "PBS KIDS",
+    "Moonbug Kids": ["MOONBUG.KIDS.TV.tr", "MOONBUG.KIDS.tr", "Moonbug.Kids.us2"],
+    "Baby Shark TV": ["plex.tv.BABY.SHARK.TV.plex"],
+    "PBS KIDS": ["PBS.Kids.Stream.us2"],
 
     # Turkish / Kids
-    "TRT.ÇOCUK.HD.tr": "TRT Çocuk",
-    "MİNİKA.ÇOCUK.tr": "Minika Çocuk",
+    "TRT Çocuk": ["TRT.ÇOCUK.HD.tr", "TRT.ÇOCUK.tr"],
+    "Minika Çocuk": ["MİNİKA.ÇOCUK.tr", "MİNİKA.ÇOCUK.HD.tr"],
 
     # Turkish TV
-    "STAR.TV.HD.tr": "Star TV",
-    "NOW.tr": "NOW",
-    "ATV.HD.tr": "ATV",
-    "SHOW.TV.HD.tr": "Show TV",
-    "TRT1.HD.tr": "TRT 1",
-    "KANAL.D.HD.tr": "Kanal D",
+    "Star TV": ["STAR.TV.HD.tr", "STAR.TV.tr"],
+    "NOW": ["NOW.tr", "NOW.HD.tr", "NOW.TV.tr", "NOW.TV.HD.tr", "FOX.HD.tr", "FOX.tr"],
+    "ATV": ["ATV.HD.tr", "ATV.tr"],
+    "Show TV": ["SHOW.TV.HD.tr", "SHOW.TV.tr"],
+    "TRT 1": ["TRT1.HD.tr", "TRT.1.HD.tr", "TRT1.tr", "TRT.1.tr"],
+    "Kanal D": ["KANAL.D.HD.tr", "KANAL.D.tr"],
 }
+
+
+def norm_id(value):
+    return re.sub(r"[\s.\-_]+", "", (value or "")).casefold()
+
+
+# normalised source ID -> (output ID, priority within that channel's list)
+WANTED = {}
+for output_id, candidates in CHANNELS.items():
+    for rank, candidate in enumerate(candidates):
+        WANTED.setdefault(norm_id(candidate), (output_id, rank))
 
 
 def download(url):
@@ -60,53 +80,84 @@ output = ET.Element(
 )
 
 added_channels = set()
-matched_source_ids = set()
 programme_count = 0
 
-for source_name, source_url in SOURCES.items():
+# (output_id, rank, source_order) -> {"channel": element, "programmes": [...], "label": str}
+found = {}
+
+for source_order, (source_name, source_url) in enumerate(SOURCES.items()):
     try:
         root = download(source_url)
     except Exception as e:
         print(f"FAILED {source_name}: {e}")
         continue
 
-    print(f"{source_name}: {len(root.findall('channel'))} channels loaded")
+    print(f"{source_name}: {len(root.findall('channel'))} channels, "
+          f"{len(root.findall('programme'))} programmes loaded")
 
-    # Add channel definitions
     for channel in root.findall("channel"):
-        source_id = channel.get("id")
-        if source_id not in CHANNELS:
-            continue
+        hit = WANTED.get(norm_id(channel.get("id")))
+        if hit:
+            entry = found.setdefault((hit[0], hit[1], source_order), {
+                "channel": None, "programmes": [],
+                "label": f"{source_name}:{channel.get('id')}"})
+            entry["channel"] = channel
 
-        output_id = CHANNELS[source_id]
-        matched_source_ids.add(source_id)
-        if output_id in added_channels:
-            continue
-
-        new_channel = ET.Element("channel", {"id": output_id})
-        display = ET.SubElement(new_channel, "display-name")
-        display.text = output_id
-        icon = channel.find("icon")
-        if icon is not None and icon.get("src"):
-            ET.SubElement(new_channel, "icon", {"src": icon.get("src")})
-
-        output.append(new_channel)
-        added_channels.add(output_id)
-        print(f"MATCHED CHANNEL: {source_id} -> {output_id}")
-
-    # Add programmes
     for programme in root.findall("programme"):
         source_id = programme.get("channel")
-        if source_id not in CHANNELS:
-            continue
+        hit = WANTED.get(norm_id(source_id))
+        if hit:
+            entry = found.setdefault((hit[0], hit[1], source_order), {
+                "channel": None, "programmes": [],
+                "label": f"{source_name}:{source_id}"})
+            entry["programmes"].append(programme)
 
-        output_id = CHANNELS[source_id]
+    del root
+
+chosen_programmes = []
+for output_id in CHANNELS:
+    options = sorted(
+        ((key[1], key[2]), entry) for key, entry in found.items() if key[0] == output_id
+    )
+    if not options:
+        print(f"NOT FOUND IN ANY SOURCE: {output_id}")
+        continue
+
+    with_listings = [entry for _, entry in options if entry["programmes"]]
+    best = with_listings[0] if with_listings else options[0][1]
+
+    # Channel definition (icon from whichever matched source has one)
+    new_channel = ET.Element("channel", {"id": output_id})
+    display = ET.SubElement(new_channel, "display-name")
+    display.text = output_id
+    icon_src = None
+    for _, entry in [(None, best)] + options:
+        ch = entry["channel"]
+        icon = ch.find("icon") if ch is not None else None
+        if icon is not None and icon.get("src"):
+            icon_src = icon.get("src")
+            break
+    if icon_src:
+        ET.SubElement(new_channel, "icon", {"src": icon_src})
+    output.append(new_channel)
+    added_channels.add(output_id)
+
+    if not best["programmes"]:
+        print(f"WARNING: {output_id} listed by {', '.join(e['label'] for _, e in options)} "
+              f"but no source has programmes for it")
+        continue
+
+    print(f"MATCHED: {best['label']} -> {output_id} ({len(best['programmes'])} programmes)")
+    for programme in best["programmes"]:
         new_programme = ET.Element("programme", dict(programme.attrib))
         new_programme.set("channel", output_id)
         for child in programme:
             new_programme.append(child)
-        output.append(new_programme)
-        programme_count += 1
+        chosen_programmes.append(new_programme)
+
+for programme in chosen_programmes:
+    output.append(programme)
+    programme_count += 1
 
 # Add English Duck TV EPG
 #
