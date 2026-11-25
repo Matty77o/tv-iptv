@@ -1,4 +1,5 @@
 import gzip
+import json
 import html
 import re
 import urllib.request
@@ -46,6 +47,16 @@ CHANNELS = {
     "TRT 1": ["TRT1.HD.tr", "TRT.1.HD.tr", "TRT1.tr", "TRT.1.tr"],
     "Kanal D": ["KANAL.D.HD.tr", "KANAL.D.tr"],
 }
+
+
+# Logos set in channels.json ("icon") override the source feeds' logos.
+# The Turkish feeds point at Turkcell TV+'s image server, which is unreliable.
+try:
+    with open("channels.json", encoding="utf-8") as f:
+        LOGO_OVERRIDES = {c["id"]: c["icon"] for c in json.load(f) if c.get("icon")}
+except Exception as e:
+    print(f"WARNING: could not read logo overrides from channels.json: {e}")
+    LOGO_OVERRIDES = {}
 
 
 def norm_id(value):
@@ -137,6 +148,8 @@ for output_id in CHANNELS:
         if icon is not None and icon.get("src"):
             icon_src = icon.get("src")
             break
+    # A logo set in channels.json wins over the source feed's logo.
+    icon_src = LOGO_OVERRIDES.get(output_id) or icon_src
     if icon_src:
         ET.SubElement(new_channel, "icon", {"src": icon_src})
     output.append(new_channel)
